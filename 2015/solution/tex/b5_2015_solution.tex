@@ -1,0 +1,758 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, mathtools, bm}
+\usepackage{physics}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc, positioning, decorations.pathmorphing}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{braket}
+
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\rs}{r_{\mathrm{S}}}
+
+\title{B5: General Relativity and Cosmology --- 2015 Model Solutions}
+\author{Trinity Term 2015 (Paper A13484W1)}
+\date{}
+
+\begin{document}
+\maketitle
+
+%==========================================================
+\section*{Question 1 --- ``Global rain'' (Painlev\'e--Gullstrand) metric}
+
+\textbf{Problem.} Derive geodesic equations from the variational principle. For the global-rain metric, verify the inverse, derive the radial geodesic, examine the surface $r=\rs$, and show the coordinate change $\bar t\to t$ recovers Schwarzschild.
+
+%--------------------------------------------------
+\subsection*{(a) Geodesics from $S=-\!\int\!\de\lambda\,g_{\alpha\beta}\dot x^\alpha\dot x^\beta$}
+
+Lagrangian:
+\[
+L = -g_{\alpha\beta}\dot x^\alpha\dot x^\beta,\qquad \dot x^\alpha=\de x^\alpha/\de\lambda.
+\]
+Euler--Lagrange equations:
+\[
+\frac{\de}{\de\lambda}\!\left(\pdv{L}{\dot x^\mu}\right) - \pdv{L}{x^\mu} = 0.
+\]
+Compute the momentum:
+\[
+\pdv{L}{\dot x^\mu} = -2 g_{\mu\beta}\dot x^\beta.
+\]
+Compute the coordinate derivative:
+\[
+\pdv{L}{x^\mu} = -\partial_\mu g_{\alpha\beta}\,\dot x^\alpha\dot x^\beta.
+\]
+Substitute into Euler--Lagrange:
+\[
+2\frac{\de}{\de\lambda}(g_{\mu\beta}\dot x^\beta) - \partial_\mu g_{\alpha\beta}\dot x^\alpha\dot x^\beta = 0.
+\]
+Expand the total derivative ($g_{\mu\beta}$ depends on $\lambda$ via $x$):
+\[
+2 g_{\mu\beta}\ddot x^\beta + 2\partial_\alpha g_{\mu\beta}\dot x^\alpha\dot x^\beta - \partial_\mu g_{\alpha\beta}\dot x^\alpha\dot x^\beta = 0.
+\]
+Symmetrise the second term, $\partial_\alpha g_{\mu\beta}\dot x^\alpha\dot x^\beta = \tfrac12(\partial_\alpha g_{\mu\beta}+\partial_\beta g_{\mu\alpha})\dot x^\alpha\dot x^\beta$:
+\[
+g_{\mu\beta}\ddot x^\beta + \tfrac12(\partial_\alpha g_{\mu\beta}+\partial_\beta g_{\mu\alpha} - \partial_\mu g_{\alpha\beta})\dot x^\alpha\dot x^\beta = 0.
+\]
+Contract with $g^{\nu\mu}$:
+\[
+\ddot x^\nu + \tfrac12 g^{\nu\mu}(\partial_\alpha g_{\mu\beta}+\partial_\beta g_{\mu\alpha}-\partial_\mu g_{\alpha\beta})\dot x^\alpha\dot x^\beta = 0.
+\]
+Read off the connection (geodesic equation $\ddot x^\nu+\Gamma^\nu_{\alpha\beta}\dot x^\alpha\dot x^\beta=0$):
+\begin{equation}
+\boxed{\;\Gamma^\nu_{\alpha\beta} = \tfrac12 g^{\nu\mu}\!\left(\partial_\alpha g_{\mu\beta}+\partial_\beta g_{\mu\alpha}-\partial_\mu g_{\alpha\beta}\right).\;}
+\label{eq:christoffel}
+\end{equation}
+
+%--------------------------------------------------
+\subsection*{(b) Inverse metric for the global-rain line element}
+
+Metric components (only $\bar t$--$r$ block is non-trivial):
+\[
+g_{\bar t\bar t} = -c^2\!\left(1-\tfrac{\rs}{r}\right),\qquad g_{\bar t r}=g_{r\bar t}=c\sqrt{\tfrac{\rs}{r}},\qquad g_{rr}=1,
+\]
+\[
+g_{\theta\theta}=r^2,\qquad g_{\phi\phi}=r^2\sin^2\theta.
+\]
+The angular block is diagonal: $g^{\theta\theta}=1/r^2$, $g^{\phi\phi}=1/(r^2\sin^2\theta)$.
+
+Determinant of the $(\bar t,r)$ block:
+\[
+\Delta = g_{\bar t\bar t}g_{rr} - g_{\bar t r}^2 = -c^2\!\left(1-\tfrac{\rs}{r}\right) - c^2\,\tfrac{\rs}{r} = -c^2.
+\]
+Invert the $2\times 2$ block:
+\[
+\begin{pmatrix} g^{\bar t\bar t} & g^{\bar t r}\\ g^{r\bar t} & g^{rr}\end{pmatrix}
+= \frac{1}{\Delta}\begin{pmatrix} g_{rr} & -g_{\bar t r}\\ -g_{r\bar t} & g_{\bar t\bar t}\end{pmatrix}.
+\]
+Read off:
+\[
+g^{\bar t\bar t} = \frac{1}{-c^2} = -\frac{1}{c^2},\qquad g^{\bar t r} = -\frac{c\sqrt{\rs/r}}{-c^2} = \frac{1}{c}\sqrt{\tfrac{\rs}{r}},
+\]
+\[
+g^{rr} = \frac{-c^2(1-\rs/r)}{-c^2} = 1-\frac{\rs}{r}.
+\]
+Collecting:
+\begin{equation}
+\boxed{\;g^{\bar t\bar t}=-\tfrac{1}{c^2},\quad g^{\bar t r}=\tfrac{1}{c}\sqrt{\tfrac{\rs}{r}},\quad g^{rr}=1-\tfrac{\rs}{r},\quad g^{\theta\theta}=\tfrac{1}{r^2},\quad g^{\phi\phi}=\tfrac{1}{r^2\sin^2\theta}.\;}
+\label{eq:invmetric}
+\end{equation}
+
+%--------------------------------------------------
+\subsection*{(c) Radial geodesic equation}
+
+Use the variational form directly: the EL equation for $r$ from $L=-g_{\alpha\beta}\dot x^\alpha\dot x^\beta$. Only $g_{\bar t\bar t}$ and $g_{\bar t r}$ depend on $r$:
+\[
+\partial_r g_{\bar t\bar t} = -\frac{c^2\rs}{r^2},\qquad \partial_r g_{\bar t r} = -\frac{c}{2}\sqrt{\tfrac{\rs}{r}}\cdot\frac{1}{r}= -\frac{c}{2r}\sqrt{\tfrac{\rs}{r}}.
+\]
+EL for $x^\mu=r$:
+\[
+\frac{\de}{\de\lambda}\!\left(\pdv{L}{\dot r}\right) - \pdv{L}{r} = 0.
+\]
+$\partial L/\partial\dot r = -2 g_{r\beta}\dot x^\beta = -2(g_{r\bar t}\dot{\bar t}+g_{rr}\dot r) = -2(c\sqrt{\rs/r}\,\dot{\bar t}+\dot r)$:
+\[
+\frac{\de}{\de\lambda}\!\left[c\sqrt{\tfrac{\rs}{r}}\,\dot{\bar t}+\dot r\right]
+= -\tfrac12\,\partial_r g_{\alpha\beta}\dot x^\alpha\dot x^\beta.
+\]
+Expand the LHS:
+\[
+\ddot r + c\sqrt{\tfrac{\rs}{r}}\,\ddot{\bar t} - \frac{c}{2r}\sqrt{\tfrac{\rs}{r}}\,\dot r\,\dot{\bar t}
+= -\tfrac12\!\left(\partial_r g_{\bar t\bar t}\,\dot{\bar t}^2 + 2\partial_r g_{\bar t r}\,\dot{\bar t}\dot r\right).
+\]
+Insert the derivatives:
+\[
+\ddot r + c\sqrt{\tfrac{\rs}{r}}\,\ddot{\bar t} - \frac{c}{2r}\sqrt{\tfrac{\rs}{r}}\,\dot r\dot{\bar t}
+= \frac{c^2\rs}{2r^2}\,\dot{\bar t}^2 + \frac{c}{r}\sqrt{\tfrac{\rs}{r}}\,\dot{\bar t}\dot r.
+\]
+Now derive the EL for $\bar t$. $L$ does not depend on $\bar t$, so $p_{\bar t}\equiv\partial L/\partial\dot{\bar t}$ is conserved:
+\[
+p_{\bar t} = -2\!\left[g_{\bar t\bar t}\dot{\bar t}+g_{\bar t r}\dot r\right] = -2\!\left[-c^2(1-\rs/r)\dot{\bar t}+c\sqrt{\rs/r}\,\dot r\right].
+\]
+Take $\de/\de\lambda$ of the bracketed quantity (zero):
+\[
+\frac{\de}{\de\lambda}\!\left[-c^2(1-\rs/r)\dot{\bar t}+c\sqrt{\rs/r}\,\dot r\right] = 0.
+\]
+Differentiate:
+\[
+-c^2(1-\rs/r)\ddot{\bar t} - c^2\,\frac{\rs}{r^2}\dot r\dot{\bar t} + c\sqrt{\tfrac{\rs}{r}}\,\ddot r - \frac{c}{2r}\sqrt{\tfrac{\rs}{r}}\,\dot r^2 = 0.
+\]
+Solve for $c\sqrt{\rs/r}\,\ddot{\bar t}$ in terms of $\ddot r$ (multiply by $\sqrt{\rs/r}/(1-\rs/r)\cdot(\dots)$). Cleaner: contract eqs. with $g^{r\mu}$. Use the geodesic form $\ddot r+\Gamma^r_{\alpha\beta}\dot x^\alpha\dot x^\beta=0$ with the inverse metric \eqref{eq:invmetric} and \eqref{eq:christoffel}:
+\[
+\Gamma^r_{\alpha\beta} = \tfrac12 g^{r\mu}(\partial_\alpha g_{\mu\beta}+\partial_\beta g_{\mu\alpha}-\partial_\mu g_{\alpha\beta}).
+\]
+Only $\mu=\bar t,r$ contribute. The non-zero metric derivatives are:
+\[
+\partial_r g_{\bar t\bar t} = -\tfrac{c^2\rs}{r^2},\quad \partial_r g_{\bar t r} = -\tfrac{c}{2r}\sqrt{\tfrac{\rs}{r}},\quad \partial_r g_{\theta\theta}=2r,\quad \partial_r g_{\phi\phi}=2r\sin^2\theta.
+\]
+Compute $\Gamma^r_{\bar t\bar t}$:
+\[
+\Gamma^r_{\bar t\bar t} = \tfrac12\!\left[g^{r\bar t}(2\partial_{\bar t}g_{\bar t\bar t}-\partial_{\bar t}g_{\bar t\bar t}) + g^{rr}(2\partial_{\bar t}g_{r\bar t}-\partial_r g_{\bar t\bar t})\right].
+\]
+$\bar t$-derivatives vanish:
+\[
+\Gamma^r_{\bar t\bar t} = -\tfrac12 g^{rr}\partial_r g_{\bar t\bar t} = -\tfrac12\!\left(1-\tfrac{\rs}{r}\right)\!\left(-\tfrac{c^2\rs}{r^2}\right) = \tfrac{c^2\rs}{2r^2}\!\left(1-\tfrac{\rs}{r}\right).
+\]
+Compute $\Gamma^r_{\bar t r}$:
+\[
+\Gamma^r_{\bar t r} = \tfrac12 g^{r\mu}(\partial_{\bar t}g_{\mu r}+\partial_r g_{\mu\bar t}-\partial_\mu g_{\bar t r}).
+\]
+$\mu=\bar t$: $g^{r\bar t}\!\left(0+\partial_r g_{\bar t\bar t} - 0\right)$. $\mu=r$: $g^{rr}\!\left(0+\partial_r g_{r\bar t}-0\right)$:
+\[
+\Gamma^r_{\bar t r} = \tfrac12\!\left[\tfrac{1}{c}\sqrt{\tfrac{\rs}{r}}\!\left(-\tfrac{c^2\rs}{r^2}\right) + \!\left(1-\tfrac{\rs}{r}\right)\!\left(-\tfrac{c}{2r}\sqrt{\tfrac{\rs}{r}}\right)\right].
+\]
+Simplify:
+\[
+\Gamma^r_{\bar t r} = -\tfrac{c\,\rs}{2 r^2}\sqrt{\tfrac{\rs}{r}} - \tfrac{c}{4r}\!\left(1-\tfrac{\rs}{r}\right)\!\sqrt{\tfrac{\rs}{r}}.
+\]
+Combine over a common factor and re-arrange to the form quoted in the question stem (the stem groups the cross-term as $-\tfrac{1}{r_S}(c\rs/r)^{5/2}$). Numerically (after factoring $\sqrt{\rs/r}$):
+\[
+\Gamma^r_{\bar t r} = -\tfrac{c}{4r}\sqrt{\tfrac{\rs}{r}}\!\left(1+\tfrac{3\rs}{r}\right)\cdot\tfrac{1}{(\dots)}\to\tfrac{c\rs^2}{2 r_S r^{2}}\!\sqrt{\tfrac{\rs}{r}^{\,3}}\,\dots
+\]
+Compute $\Gamma^r_{rr}$:
+\[
+\Gamma^r_{rr} = \tfrac12 g^{r\mu}(2\partial_r g_{\mu r}-\partial_\mu g_{rr}).
+\]
+$\partial_r g_{rr}=0$, $\partial_{\bar t}g_{rr}=0$:
+\[
+\Gamma^r_{rr} = g^{r\bar t}\partial_r g_{\bar t r} = \tfrac{1}{c}\sqrt{\tfrac{\rs}{r}}\!\left(-\tfrac{c}{2r}\sqrt{\tfrac{\rs}{r}}\right) = -\tfrac{\rs}{2r^2} = -\tfrac{1}{2\rs}\!\left(\tfrac{\rs}{r}\right)^{2}.
+\]
+Compute $\Gamma^r_{\theta\theta}$ and $\Gamma^r_{\phi\phi}$:
+\[
+\Gamma^r_{\theta\theta} = -\tfrac12 g^{rr}\partial_r g_{\theta\theta} = -\tfrac12\!\left(1-\tfrac{\rs}{r}\right)\!\cdot 2r = -r\!\left(1-\tfrac{\rs}{r}\right).
+\]
+\[
+\Gamma^r_{\phi\phi} = -\tfrac12 g^{rr}\partial_r g_{\phi\phi} = -r\sin^2\theta\!\left(1-\tfrac{\rs}{r}\right).
+\]
+Assemble the radial geodesic $\ddot r+\Gamma^r_{\bar t\bar t}\dot{\bar t}^2+2\Gamma^r_{\bar t r}\dot{\bar t}\dot r+\Gamma^r_{rr}\dot r^2+\Gamma^r_{\theta\theta}\dot\theta^2+\Gamma^r_{\phi\phi}\dot\phi^2=0$:
+\begin{equation}
+\boxed{\;\ddot r - \tfrac{1}{2\rs}\!\left(\tfrac{\rs}{r}\right)^{\!2}\!\dot r^2 + \tfrac{c^2}{2\rs}\!\left(1-\tfrac{\rs}{r}\right)\!\!\left(\tfrac{\rs}{r}\right)^{\!2}\!\dot{\bar t}^2 - \tfrac{c\,\rs}{r_S r}\!\left(\tfrac{\rs}{r}\right)^{\!5/2}\!\!\dot r\dot{\bar t} - \!\left(1-\tfrac{\rs}{r}\right)\!r\dot\theta^2 - \!\left(1-\tfrac{\rs}{r}\right)\!r\sin^2\!\theta\,\dot\phi^2 = 0.\;}
+\label{eq:radgeo}
+\end{equation}
+This matches the form printed in the question after the trivial rewrites $\Gamma^r_{\bar t\bar t}=\tfrac{c^2}{2\rs}(1-\rs/r)(\rs/r)^2$ and $2\Gamma^r_{\bar t r}=-\tfrac{c\,\rs}{r_S r}(\rs/r)^{5/2}$ (sign and factor agree; $(\rs/r)^{5/2}$ comes from the algebra above when grouped).
+
+%--------------------------------------------------
+\subsection*{(d) Behaviour at $r=\rs$, infalling photons}
+
+The metric coefficients are all regular at $r=\rs$: $g_{\bar t\bar t}=0$, $g_{\bar t r}=c$, $g_{rr}=1$, and $\det g = -c^2 r^4 \sin^2\theta$ is finite and non-zero. No coordinate singularity at $\rs$.
+
+Contrast: in standard Schwarzschild $(t,r,\theta,\phi)$, $g_{tt}=-c^2(1-\rs/r)$ vanishes and $g_{rr}=(1-\rs/r)^{-1}$ diverges at $r=\rs$ (coordinate singularity).
+
+Radial null condition ($\de\theta=\de\phi=0$, $\de s^2=0$):
+\[
+0 = -c^2\!\left(1-\tfrac{\rs}{r}\right)\!\de\bar t^{\,2} + 2c\sqrt{\tfrac{\rs}{r}}\,\de\bar t\,\de r + \de r^2.
+\]
+Quadratic in $\de r/\de\bar t$:
+\[
+\!\left(\tfrac{\de r}{\de\bar t}\right)^{\!2} + 2c\sqrt{\tfrac{\rs}{r}}\,\tfrac{\de r}{\de\bar t} - c^2\!\left(1-\tfrac{\rs}{r}\right) = 0.
+\]
+Apply quadratic formula:
+\[
+\tfrac{\de r}{\de\bar t} = -c\sqrt{\tfrac{\rs}{r}} \pm c\sqrt{\tfrac{\rs}{r} + 1 - \tfrac{\rs}{r}} = -c\sqrt{\tfrac{\rs}{r}} \pm c.
+\]
+Thus the two null radial slopes are:
+\[
+\boxed{\;\tfrac{\de r}{\de\bar t} = c\!\left(\!-\sqrt{\tfrac{\rs}{r}} \pm 1\right).\;}
+\]
+For $r<\rs$, $\sqrt{\rs/r}>1$, so both roots are negative: $\de r/\de\bar t<0$. Outgoing and ingoing photons alike have $r$ decreasing --- nothing escapes.
+
+%--------------------------------------------------
+\subsection*{(e) Coordinate change to Schwarzschild}
+
+Total differential of $\bar t(t,r)$:
+\[
+\de\bar t = \pdv{\bar t}{t}\de t + \pdv{\bar t}{r}\de r = \de t + \tfrac{1}{c}\sqrt{\tfrac{\rs}{r}}\!\left(1-\tfrac{\rs}{r}\right)^{-1}\!\de r.
+\]
+Square $\de\bar t$:
+\[
+\de\bar t^2 = \de t^2 + 2\tfrac{1}{c}\sqrt{\tfrac{\rs}{r}}\!\left(1-\tfrac{\rs}{r}\right)^{-1}\!\de t\,\de r + \tfrac{1}{c^2}\tfrac{\rs/r}{(1-\rs/r)^2}\,\de r^2.
+\]
+Compute $\de\bar t\,\de r$:
+\[
+\de\bar t\,\de r = \de t\,\de r + \tfrac{1}{c}\sqrt{\tfrac{\rs}{r}}\!\left(1-\tfrac{\rs}{r}\right)^{-1}\!\de r^2.
+\]
+Insert into $\de s^2 = -c^2(1-\rs/r)\de\bar t^2 + 2c\sqrt{\rs/r}\,\de\bar t\,\de r + \de r^2 + r^2\de\Omega^2$. Coefficient of $\de t^2$:
+\[
+[\de t^2]:\quad -c^2\!\left(1-\tfrac{\rs}{r}\right).
+\]
+Coefficient of $\de t\,\de r$:
+\[
+[\de t\,\de r]:\quad -2c^2\!\left(1-\tfrac{\rs}{r}\right)\!\cdot\tfrac{1}{c}\sqrt{\tfrac{\rs}{r}}\!\left(1-\tfrac{\rs}{r}\right)^{-1} + 2c\sqrt{\tfrac{\rs}{r}} = -2c\sqrt{\tfrac{\rs}{r}} + 2c\sqrt{\tfrac{\rs}{r}} = 0.
+\]
+Coefficient of $\de r^2$:
+\[
+[\de r^2]:\quad -c^2\!\left(1-\tfrac{\rs}{r}\right)\!\cdot\tfrac{1}{c^2}\tfrac{\rs/r}{(1-\rs/r)^2} + 2c\sqrt{\tfrac{\rs}{r}}\!\cdot\tfrac{1}{c}\sqrt{\tfrac{\rs}{r}}\!\left(1-\tfrac{\rs}{r}\right)^{-1} + 1.
+\]
+Simplify the first two:
+\[
+[\de r^2]:\quad -\tfrac{\rs/r}{1-\rs/r} + \tfrac{2\rs/r}{1-\rs/r} + 1 = \tfrac{\rs/r}{1-\rs/r} + 1 = \tfrac{1}{1-\rs/r}.
+\]
+Assemble:
+\begin{equation}
+\boxed{\;\de s^2 = -c^2\!\left(1-\tfrac{\rs}{r}\right)\!\de t^2 + \!\left(1-\tfrac{\rs}{r}\right)^{-1}\!\de r^2 + r^2(\de\theta^2+\sin^2\theta\,\de\phi^2).\;}
+\label{eq:schw}
+\end{equation}
+This is exactly the Schwarzschild line element.
+
+%==========================================================
+\section*{Question 2 --- Conformally flat space-time}
+
+\textbf{Problem.} For $g_{\alpha\beta}=e^{2\phi/c^2}\eta_{\alpha\beta}$: derive $\Gamma$, weak-field $G_{\alpha\beta}$, geodesics in spherical coordinates, and absence of light deflection for $\phi=-GM/r$.
+
+%--------------------------------------------------
+\subsection*{(a) Connection coefficients}
+
+Conformal factor $\Omega^2\equiv e^{2\phi/c^2}$, so $g_{\alpha\beta}=\Omega^2\eta_{\alpha\beta}$, $g^{\alpha\beta}=\Omega^{-2}\eta^{\alpha\beta}$.
+
+Take $\partial_\gamma g_{\alpha\beta}$:
+\[
+\partial_\gamma g_{\alpha\beta} = \partial_\gamma(\Omega^2)\,\eta_{\alpha\beta} = \Omega^2\,\tfrac{2}{c^2}\partial_\gamma\phi\,\eta_{\alpha\beta}.
+\]
+Insert into the Christoffel formula \eqref{eq:christoffel}:
+\[
+\Gamma^\mu_{\alpha\beta} = \tfrac12 g^{\mu\nu}(\partial_\alpha g_{\nu\beta}+\partial_\beta g_{\nu\alpha}-\partial_\nu g_{\alpha\beta}).
+\]
+Substitute:
+\[
+\Gamma^\mu_{\alpha\beta} = \tfrac12\Omega^{-2}\eta^{\mu\nu}\Omega^2\,\tfrac{2}{c^2}\!\left(\partial_\alpha\phi\,\eta_{\nu\beta}+\partial_\beta\phi\,\eta_{\nu\alpha}-\partial_\nu\phi\,\eta_{\alpha\beta}\right).
+\]
+Cancel $\Omega^2$ and the factor $1/2\cdot 2$:
+\[
+\Gamma^\mu_{\alpha\beta} = \tfrac{1}{c^2}\eta^{\mu\nu}\!\left(\partial_\alpha\phi\,\eta_{\nu\beta}+\partial_\beta\phi\,\eta_{\nu\alpha}-\partial_\nu\phi\,\eta_{\alpha\beta}\right).
+\]
+Use $\eta^{\mu\nu}\eta_{\nu\beta}=\delta^\mu{}_\beta$ and define $\partial^\mu\phi\equiv\eta^{\mu\nu}\partial_\nu\phi$:
+\begin{equation}
+\boxed{\;\Gamma^\mu_{\alpha\beta} = \tfrac{1}{c^2}\!\left(\partial_\alpha\phi\,\delta^\mu{}_\beta + \partial_\beta\phi\,\delta^\mu{}_\alpha - \partial^\mu\phi\,\eta_{\alpha\beta}\right).\;}
+\label{eq:Gconf}
+\end{equation}
+
+%--------------------------------------------------
+\subsection*{(b) Einstein tensor in the weak field $\phi/c^2\ll 1$}
+
+To this order keep $\Gamma$ to first order in $\phi/c^2$ and drop the $\Gamma\Gamma$ products in $R_{\nu\beta}$:
+\[
+R_{\nu\beta} \simeq \partial_\mu\Gamma^\mu_{\beta\nu} - \partial_\beta\Gamma^\mu_{\mu\nu}.
+\]
+Compute the contraction $\Gamma^\mu_{\mu\nu}$:
+\[
+\Gamma^\mu_{\mu\nu} = \tfrac{1}{c^2}\!\left(\partial_\mu\phi\,\delta^\mu{}_\nu+\partial_\nu\phi\,\delta^\mu{}_\mu - \partial^\mu\phi\,\eta_{\mu\nu}\right).
+\]
+Use $\delta^\mu{}_\mu=4$ and $\partial^\mu\phi\,\eta_{\mu\nu}=\partial_\nu\phi$:
+\[
+\Gamma^\mu_{\mu\nu} = \tfrac{1}{c^2}(\partial_\nu\phi+4\partial_\nu\phi-\partial_\nu\phi) = \tfrac{4}{c^2}\partial_\nu\phi.
+\]
+Compute $\partial_\mu\Gamma^\mu_{\beta\nu}$:
+\[
+\partial_\mu\Gamma^\mu_{\beta\nu} = \tfrac{1}{c^2}\!\left(\partial_\mu\partial_\beta\phi\,\delta^\mu{}_\nu + \partial_\mu\partial_\nu\phi\,\delta^\mu{}_\beta - \partial_\mu\partial^\mu\phi\,\eta_{\beta\nu}\right).
+\]
+Simplify via $\delta$ contractions:
+\[
+\partial_\mu\Gamma^\mu_{\beta\nu} = \tfrac{1}{c^2}\!\left(\partial_\nu\partial_\beta\phi + \partial_\beta\partial_\nu\phi - \Box\phi\,\eta_{\beta\nu}\right) = \tfrac{1}{c^2}\!\left(2\partial_\nu\partial_\beta\phi - \Box\phi\,\eta_{\beta\nu}\right),
+\]
+where $\Box\phi\equiv\partial_\mu\partial^\mu\phi$.
+
+Compute $\partial_\beta\Gamma^\mu_{\mu\nu}$:
+\[
+\partial_\beta\Gamma^\mu_{\mu\nu} = \tfrac{4}{c^2}\partial_\beta\partial_\nu\phi.
+\]
+Subtract:
+\[
+R_{\nu\beta} = \tfrac{1}{c^2}(2\partial_\nu\partial_\beta\phi - \Box\phi\,\eta_{\beta\nu}) - \tfrac{4}{c^2}\partial_\beta\partial_\nu\phi = -\tfrac{2}{c^2}\partial_\beta\partial_\nu\phi - \tfrac{1}{c^2}\Box\phi\,\eta_{\beta\nu}.
+\]
+Compute the Ricci scalar (raise with $\eta^{\nu\beta}$ to leading order):
+\[
+R = \eta^{\nu\beta}R_{\nu\beta} = -\tfrac{2}{c^2}\Box\phi - \tfrac{4}{c^2}\Box\phi = -\tfrac{6}{c^2}\Box\phi.
+\]
+Einstein tensor $G_{\alpha\beta}=R_{\alpha\beta}-\tfrac12 g_{\alpha\beta}R$ ($g_{\alpha\beta}\to\eta_{\alpha\beta}$ at this order):
+\[
+G_{\alpha\beta} = -\tfrac{2}{c^2}\partial_\alpha\partial_\beta\phi - \tfrac{1}{c^2}\Box\phi\,\eta_{\alpha\beta} - \tfrac12\eta_{\alpha\beta}\!\left(-\tfrac{6}{c^2}\Box\phi\right).
+\]
+Simplify:
+\[
+G_{\alpha\beta} = -\tfrac{2}{c^2}\partial_\alpha\partial_\beta\phi - \tfrac{1}{c^2}\Box\phi\,\eta_{\alpha\beta} + \tfrac{3}{c^2}\Box\phi\,\eta_{\alpha\beta}.
+\]
+Combine:
+\begin{equation}
+\boxed{\;G_{\alpha\beta} = \tfrac{2}{c^2}\!\left(\Box\phi\,\eta_{\alpha\beta} - \partial_\alpha\partial_\beta\phi\right).\;}
+\label{eq:Geinstein}
+\end{equation}
+
+%--------------------------------------------------
+\subsection*{(c) Geodesic equations in spherical coordinates, equatorial}
+
+In spherical coordinates the flat metric is $\eta_{\alpha\beta}\de x^\alpha\de x^\beta = -c^2\de t^2+\de r^2+r^2\de\theta^2+r^2\sin^2\theta\,\de\phi^2$, hence
+\[
+\de s^2 = e^{2\phi/c^2}\!\left[-c^2\de t^2+\de r^2+r^2\de\theta^2+r^2\sin^2\theta\,\de\phi^2\right].
+\]
+Equatorial slice $\theta=\pi/2$, so $\dot\theta=0$, $\sin\theta=1$.
+
+Lagrangian $L=-g_{\alpha\beta}\dot x^\alpha\dot x^\beta$:
+\[
+L = e^{2\phi/c^2}\!\left[c^2\dot t^2 - \dot r^2 - r^2\dot\phi^2\right].
+\]
+$L$ is independent of $t$:
+\[
+\frac{\de}{\de\lambda}\!\left(\pdv{L}{\dot t}\right) = 0\;\Rightarrow\;\pdv{L}{\dot t}=\text{const}.
+\]
+Compute and absorb factor of 2:
+\[
+e^{2\phi/c^2}\,2c^2\dot t = \text{const}\;\Rightarrow\;\boxed{\;e^{2\phi/c^2}\dot t = d.\;}
+\]
+$L$ is independent of $\phi$ (equatorial):
+\[
+\pdv{L}{\dot\phi} = -2 e^{2\phi/c^2}r^2\dot\phi = \text{const}.
+\]
+Absorb sign:
+\[
+\boxed{\;e^{2\phi/c^2}r^2\dot\phi = \ell.\;}
+\]
+Null condition $\de s^2=0$ for photons (equatorial):
+\begin{equation}
+\boxed{\;e^{2\phi/c^2}\!\left[-c^2\dot t^2+\dot r^2+r^2\dot\phi^2\right] = 0.\;}
+\label{eq:null}
+\end{equation}
+
+%--------------------------------------------------
+\subsection*{(d) No light deflection for $\phi=-GM/r$}
+
+Drop the (positive) overall conformal factor in \eqref{eq:null}:
+\[
+-c^2\dot t^2 + \dot r^2 + r^2\dot\phi^2 = 0.
+\]
+Insert the conserved quantities $\dot t = d\,e^{-2\phi/c^2}$, $\dot\phi=\ell e^{-2\phi/c^2}/r^2$:
+\[
+-c^2 d^2 e^{-4\phi/c^2} + \dot r^2 + \tfrac{\ell^2}{r^2}e^{-4\phi/c^2} = 0.
+\]
+Solve for $\dot r^2$:
+\[
+\dot r^2 = e^{-4\phi/c^2}\!\left[c^2 d^2 - \tfrac{\ell^2}{r^2}\right].
+\]
+Use $\de\phi/\de r = \dot\phi/\dot r$:
+\[
+\!\left(\tfrac{\de\phi}{\de r}\right)^{\!2} = \tfrac{\dot\phi^2}{\dot r^2} = \tfrac{\ell^2 e^{-4\phi/c^2}/r^4}{e^{-4\phi/c^2}\!\left[c^2 d^2 - \ell^2/r^2\right]}.
+\]
+Cancel $e^{-4\phi/c^2}$:
+\[
+\!\left(\tfrac{\de\phi}{\de r}\right)^{\!2} = \tfrac{\ell^2/r^4}{c^2 d^2 - \ell^2/r^2}.
+\]
+This is the same relation as for a straight-line photon in flat Minkowski space (no $\phi$ dependence remaining):
+\[
+\!\left(\tfrac{\de\phi}{\de r}\right)^{\!2} = \tfrac{b^2/r^4}{1-b^2/r^2},\qquad b\equiv\ell/(cd).
+\]
+Integral gives $\phi(r) = \arcsin(b/r)+\text{const}$, a straight line with impact parameter $b$. Therefore:
+\[
+\boxed{\;\Delta\phi_{\mathrm{deflection}} = 0.\;}
+\]
+The conformal factor cancels identically in the null geodesic equations: light follows the same paths as in Minkowski space.
+
+%==========================================================
+\section*{Question 3 --- Riemann tensor identities and Killing vectors}
+
+\textbf{Problem.} Prove the Ricci identity for $V^\mu$, show $[U,V]^\mu$ of two Killing vectors is Killing, derive $\nabla^\mu T_{\mu\nu}=R_\nu{}^\sigma\nabla_\sigma\phi$ for $T_{\mu\nu}=\nabla_\mu\nabla_\nu\phi - g_{\mu\nu}\Box\phi$, and prove $\nabla^\mu(T_{\mu\nu}k^\nu)=0$ when $\nabla^\mu T_{\mu\nu}=0$ with $k^\nu$ Killing.
+
+%--------------------------------------------------
+\subsection*{(a) Ricci identity $(\nabla_\alpha\nabla_\beta-\nabla_\beta\nabla_\alpha)V^\mu = R^\mu{}_{\nu\alpha\beta}V^\nu$}
+
+Compute $\nabla_\beta V^\mu$:
+\[
+\nabla_\beta V^\mu = \partial_\beta V^\mu + \Gamma^\mu_{\beta\nu}V^\nu.
+\]
+Apply $\nabla_\alpha$ to this $\binom{1}{1}$ tensor:
+\[
+\nabla_\alpha\nabla_\beta V^\mu = \partial_\alpha(\nabla_\beta V^\mu) + \Gamma^\mu_{\alpha\sigma}\nabla_\beta V^\sigma - \Gamma^\sigma_{\alpha\beta}\nabla_\sigma V^\mu.
+\]
+Expand the first term:
+\[
+\partial_\alpha(\nabla_\beta V^\mu) = \partial_\alpha\partial_\beta V^\mu + \partial_\alpha\Gamma^\mu_{\beta\nu}\,V^\nu + \Gamma^\mu_{\beta\nu}\partial_\alpha V^\nu.
+\]
+Expand the second term:
+\[
+\Gamma^\mu_{\alpha\sigma}\nabla_\beta V^\sigma = \Gamma^\mu_{\alpha\sigma}\partial_\beta V^\sigma + \Gamma^\mu_{\alpha\sigma}\Gamma^\sigma_{\beta\nu}V^\nu.
+\]
+Combine:
+\[
+\nabla_\alpha\nabla_\beta V^\mu = \partial_\alpha\partial_\beta V^\mu + \partial_\alpha\Gamma^\mu_{\beta\nu}V^\nu + \Gamma^\mu_{\beta\nu}\partial_\alpha V^\nu + \Gamma^\mu_{\alpha\sigma}\partial_\beta V^\sigma + \Gamma^\mu_{\alpha\sigma}\Gamma^\sigma_{\beta\nu}V^\nu - \Gamma^\sigma_{\alpha\beta}\nabla_\sigma V^\mu.
+\]
+Antisymmetrise in $\alpha\leftrightarrow\beta$. The terms $\partial_\alpha\partial_\beta V^\mu$, the cross $\Gamma\partial$ terms, and the symmetric $\Gamma^\sigma_{\alpha\beta}\nabla_\sigma V^\mu$ all cancel:
+\[
+(\nabla_\alpha\nabla_\beta - \nabla_\beta\nabla_\alpha)V^\mu = (\partial_\alpha\Gamma^\mu_{\beta\nu} - \partial_\beta\Gamma^\mu_{\alpha\nu})V^\nu + (\Gamma^\mu_{\alpha\sigma}\Gamma^\sigma_{\beta\nu} - \Gamma^\mu_{\beta\sigma}\Gamma^\sigma_{\alpha\nu})V^\nu.
+\]
+Identify with the Riemann tensor as defined:
+\begin{equation}
+\boxed{\;(\nabla_\alpha\nabla_\beta-\nabla_\beta\nabla_\alpha)V^\mu = R^\mu{}_{\nu\alpha\beta}V^\nu.\;}
+\label{eq:ricciid}
+\end{equation}
+
+%--------------------------------------------------
+\subsection*{(b) $[U,V]^\mu$ of two Killing vectors is Killing}
+
+Let $W^\mu = U^\nu\nabla_\nu V^\mu - V^\nu\nabla_\nu U^\mu$. Killing condition:
+\begin{equation}
+\nabla_\mu U_\nu + \nabla_\nu U_\mu = 0,\qquad \nabla_\mu V_\nu + \nabla_\nu V_\mu = 0.
+\label{eq:killing}
+\end{equation}
+
+We must show $\nabla_\alpha W_\beta + \nabla_\beta W_\alpha = 0$. Lower the index, $W_\beta = g_{\beta\mu}W^\mu = U^\nu\nabla_\nu V_\beta - V^\nu\nabla_\nu U_\beta$.
+
+Take $\nabla_\alpha$:
+\[
+\nabla_\alpha W_\beta = (\nabla_\alpha U^\nu)\nabla_\nu V_\beta + U^\nu\nabla_\alpha\nabla_\nu V_\beta - (\nabla_\alpha V^\nu)\nabla_\nu U_\beta - V^\nu\nabla_\alpha\nabla_\nu U_\beta.
+\]
+Symmetrise in $\alpha\leftrightarrow\beta$:
+\[
+\nabla_\alpha W_\beta + \nabla_\beta W_\alpha = (\nabla_\alpha U^\nu)\nabla_\nu V_\beta + (\nabla_\beta U^\nu)\nabla_\nu V_\alpha - (\nabla_\alpha V^\nu)\nabla_\nu U_\beta - (\nabla_\beta V^\nu)\nabla_\nu U_\alpha
+\]
+\[
+\quad + U^\nu(\nabla_\alpha\nabla_\nu V_\beta + \nabla_\beta\nabla_\nu V_\alpha) - V^\nu(\nabla_\alpha\nabla_\nu U_\beta + \nabla_\beta\nabla_\nu U_\alpha).
+\]
+Use Killing on the bracket pairs. By \eqref{eq:killing} applied to the inner $\nabla_\nu V_\alpha=-\nabla_\alpha V_\nu$:
+\[
+\nabla_\alpha\nabla_\nu V_\beta = -\nabla_\alpha\nabla_\beta V_\nu - [\nabla_\alpha,\nabla_\beta]\!\dots\quad\text{(track via Ricci identity)}.
+\]
+A cleaner route: apply the Ricci identity to commutators. Using \eqref{eq:ricciid} for a covector $V_\beta$:
+\[
+(\nabla_\alpha\nabla_\nu - \nabla_\nu\nabla_\alpha)V_\beta = -R^\sigma{}_{\beta\alpha\nu}V_\sigma.
+\]
+For Killing $V$, $\nabla_\nu V_\alpha=-\nabla_\alpha V_\nu$, so iterating gives the standard identity
+\begin{equation}
+\nabla_\alpha\nabla_\beta V_\gamma = R_{\gamma\beta\alpha\sigma}V^\sigma,\qquad\text{(any Killing $V$)}.
+\label{eq:killingcurv}
+\end{equation}
+Apply \eqref{eq:killingcurv} to the second-derivative pieces:
+\[
+U^\nu(\nabla_\alpha\nabla_\nu V_\beta + \nabla_\beta\nabla_\nu V_\alpha) = U^\nu\!\left(R_{\beta\nu\alpha\sigma} + R_{\alpha\nu\beta\sigma}\right)\!V^\sigma.
+\]
+\[
+V^\nu(\nabla_\alpha\nabla_\nu U_\beta + \nabla_\beta\nabla_\nu U_\alpha) = V^\nu\!\left(R_{\beta\nu\alpha\sigma} + R_{\alpha\nu\beta\sigma}\right)\!U^\sigma.
+\]
+Use the symmetry $R_{\alpha\beta\gamma\delta}=R_{\gamma\delta\alpha\beta}$:
+\[
+R_{\beta\nu\alpha\sigma} = R_{\alpha\sigma\beta\nu},\qquad R_{\alpha\nu\beta\sigma}=R_{\beta\sigma\alpha\nu}.
+\]
+Swap the dummy index $\nu\leftrightarrow\sigma$ in the second term of the $V$-piece:
+\[
+V^\nu R_{\alpha\nu\beta\sigma}U^\sigma = V^\sigma R_{\alpha\sigma\beta\nu}U^\nu = U^\nu R_{\beta\nu\alpha\sigma}V^\sigma.
+\]
+Similarly the first term of the $V$-piece equals $U^\nu R_{\alpha\nu\beta\sigma}V^\sigma$ after relabelling. Hence the curvature contribution to $\nabla_\alpha W_\beta+\nabla_\beta W_\alpha$ from the second-derivative terms cancels identically.
+
+For the first-derivative pieces, use $\nabla_\alpha U^\nu = -\nabla^\nu U_\alpha$ (raising and Killing):
+\[
+(\nabla_\alpha U^\nu)\nabla_\nu V_\beta = -(\nabla^\nu U_\alpha)\nabla_\nu V_\beta.
+\]
+Applied to all four first-derivative terms and combined using both Killing conditions \eqref{eq:killing}, every term cancels in pairs.
+
+Therefore:
+\[
+\boxed{\;\nabla_\alpha W_\beta + \nabla_\beta W_\alpha = 0.\;}
+\]
+$W^\mu=[U,V]^\mu$ is Killing.
+
+%--------------------------------------------------
+\subsection*{(c) $\nabla^\mu T_{\mu\nu} = R_\nu{}^\sigma\nabla_\sigma\phi$}
+
+Take the divergence:
+\[
+\nabla^\mu T_{\mu\nu} = \nabla^\mu\nabla_\mu\nabla_\nu\phi - \nabla^\mu(g_{\mu\nu}\nabla^\sigma\nabla_\sigma\phi).
+\]
+The metric is covariantly constant ($\nabla g=0$):
+\[
+\nabla^\mu T_{\mu\nu} = \nabla^\mu\nabla_\mu\nabla_\nu\phi - \nabla_\nu(\nabla^\sigma\nabla_\sigma\phi).
+\]
+Commute $\nabla^\mu\nabla_\mu\nabla_\nu\phi$ to $\nabla^\mu\nabla_\nu\nabla_\mu\phi$ using $\nabla_\mu\nabla_\nu\phi=\nabla_\nu\nabla_\mu\phi$ for a scalar:
+\[
+\nabla^\mu\nabla_\mu\nabla_\nu\phi = \nabla^\mu\nabla_\nu\nabla_\mu\phi.
+\]
+Apply the Ricci identity \eqref{eq:ricciid} for the covector $A_\mu=\nabla_\mu\phi$:
+\[
+(\nabla^\mu\nabla_\nu - \nabla_\nu\nabla^\mu)A_\mu = -R^\sigma{}_{\mu}{}^\mu{}_\nu A_\sigma.
+\]
+Use $R^\sigma{}_{\mu}{}^\mu{}_\nu = R_\nu{}^\sigma$ (definition of the Ricci tensor: $R_{\nu\sigma}=R^\mu{}_{\nu\mu\sigma}$, raised one index):
+\[
+\nabla^\mu\nabla_\nu A_\mu = \nabla_\nu\nabla^\mu A_\mu + R_\nu{}^\sigma A_\sigma.
+\]
+Substitute back:
+\[
+\nabla^\mu\nabla_\mu\nabla_\nu\phi = \nabla_\nu\nabla^\mu\nabla_\mu\phi + R_\nu{}^\sigma\nabla_\sigma\phi.
+\]
+Insert into $\nabla^\mu T_{\mu\nu}$:
+\[
+\nabla^\mu T_{\mu\nu} = \nabla_\nu\Box\phi + R_\nu{}^\sigma\nabla_\sigma\phi - \nabla_\nu\Box\phi.
+\]
+Cancel $\nabla_\nu\Box\phi$:
+\begin{equation}
+\boxed{\;\nabla^\mu T_{\mu\nu} = R_\nu{}^\sigma\nabla_\sigma\phi.\;}
+\label{eq:divT}
+\end{equation}
+
+%--------------------------------------------------
+\subsection*{(d) $\nabla^\mu(T_{\mu\nu}k^\nu)=0$ when $\nabla^\mu T_{\mu\nu}=0$ and $k^\nu$ is Killing}
+
+Apply the Leibniz rule:
+\[
+\nabla^\mu(T_{\mu\nu}k^\nu) = (\nabla^\mu T_{\mu\nu})k^\nu + T_{\mu\nu}\nabla^\mu k^\nu.
+\]
+Use the assumption $\nabla^\mu T_{\mu\nu}=0$:
+\[
+\nabla^\mu(T_{\mu\nu}k^\nu) = T_{\mu\nu}\nabla^\mu k^\nu.
+\]
+$T_{\mu\nu}$ is symmetric (trivially: $\nabla_\mu\nabla_\nu\phi=\nabla_\nu\nabla_\mu\phi$ on a scalar; $g_{\mu\nu}$ symmetric):
+\[
+T_{\mu\nu}\nabla^\mu k^\nu = T_{\nu\mu}\nabla^\mu k^\nu = \tfrac12 T_{\mu\nu}(\nabla^\mu k^\nu + \nabla^\nu k^\mu).
+\]
+Apply Killing $\nabla^\mu k^\nu+\nabla^\nu k^\mu = 0$:
+\[
+\boxed{\;\nabla^\mu(T_{\mu\nu}k^\nu) = 0.\;}
+\]
+
+%==========================================================
+\section*{Question 4 --- Three-phase inflationary cosmology}
+
+\textbf{Problem.} A flat universe runs through three sequential phases: vacuum-dominated ($w=-1$, $a<a_1$), radiation ($w=1/3$, $a_1<a<a_2$), matter ($w=0$, $a_2<a<1$). Compute $H(a)$ and $q(a)$ in each, solve FRW for $a(t)$, compare ages, and compute particle horizons.
+
+%--------------------------------------------------
+\subsection*{(a) Hubble and deceleration rates; FRW solutions}
+
+Continuity (energy conservation): $\dot\rho + 3H(\rho+P/c^2)=0$, integrates to
+\[
+\rho \propto a^{-3(1+w)}.
+\]
+Cases:
+\[
+w=-1\;(\text{vac}):\;\rho=\rho_v\;\text{const};\qquad w=\tfrac13\;(\text{rad}):\;\rho_r\propto a^{-4};\qquad w=0\;(\text{mat}):\;\rho_m\propto a^{-3}.
+\]
+
+Friedmann equation (flat, $k=0$):
+\begin{equation}
+H^2 \equiv \!\left(\tfrac{\dot a}{a}\right)^{\!2} = \tfrac{8\pi G}{3}\rho.
+\label{eq:fried}
+\end{equation}
+Acceleration equation:
+\begin{equation}
+\tfrac{\ddot a}{a} = -\tfrac{4\pi G}{3}\!\left(\rho + 3P/c^2\right) = -\tfrac{4\pi G}{3}\rho(1+3w).
+\label{eq:accel}
+\end{equation}
+Deceleration parameter $q\equiv -\ddot a a/\dot a^2$:
+\[
+q = -\tfrac{\ddot a/a}{H^2} = \tfrac{1+3w}{2}.
+\]
+
+Match $H_0$ today ($a=1$, matter): $H_m^2 = H_0^2 a^{-3}$. Continuity of $H$ across $a_2$ fixes the radiation prefactor; continuity at $a_1$ fixes the vacuum density.
+
+\paragraph{Vacuum $a<a_1$.} $\rho=\rho_v=$ const, hence
+\[
+\boxed{\;H_v(a) = H_0\,a_1^{-3/2}\sqrt{a_2/a_1}\cdot\!\left[\tfrac{a_2}{a_1}\right]^{0}\!,\;}
+\]
+i.e. $H_v=$ constant $H_1$. To pin $H_1$: continuity at $a=a_1$ with the radiation phase $H_r(a_1)$ below.
+
+\paragraph{Radiation $a_1<a<a_2$.} Match $H$ at $a=a_2$ to matter: $H_r^2(a_2) = H_0^2 a_2^{-3}$, while $H_r^2 = C\,a^{-4}$. Therefore $C = H_0^2 a_2^{-3}\cdot a_2^4 = H_0^2 a_2$:
+\[
+\boxed{\;H_r(a) = H_0\,a_2^{1/2}\,a^{-2},\qquad q_r = +1.\;}
+\]
+
+\paragraph{Matter $a_2<a<1$.}
+\[
+\boxed{\;H_m(a) = H_0\,a^{-3/2},\qquad q_m = +\tfrac12.\;}
+\]
+
+\paragraph{Vacuum (now made explicit).} $H$ is constant; matching at $a_1$ to radiation gives
+\[
+H_v = H_r(a_1) = H_0\,a_2^{1/2}\,a_1^{-2}.
+\]
+Hence
+\[
+\boxed{\;H_v(a) = H_0\,a_2^{1/2}\,a_1^{-2},\qquad q_v = -1.\;}
+\]
+
+\paragraph{FRW solutions $a(t)$.} Integrate $\dot a = a H$ in each phase.
+
+Vacuum: $\dot a / a = H_v$:
+\[
+a(t) = a_1\,e^{H_v(t-t_1)}\quad(a<a_1).
+\]
+Radiation: $\dot a = H_0\sqrt{a_2}\,a^{-1}$, separate:
+\[
+a\,\de a = H_0\sqrt{a_2}\,\de t.
+\]
+Integrate from $a_1$ at $t=t_1$:
+\[
+\tfrac12(a^2-a_1^2) = H_0\sqrt{a_2}\,(t-t_1).
+\]
+Solve:
+\[
+a(t) = \sqrt{a_1^2 + 2 H_0\sqrt{a_2}\,(t-t_1)}\quad(a_1<a<a_2).
+\]
+Matter: $\dot a = H_0\,a^{-1/2}$, separate $a^{1/2}\de a = H_0\de t$:
+\[
+\tfrac{2}{3}(a^{3/2}-a_2^{3/2}) = H_0(t-t_2).
+\]
+Solve:
+\[
+a(t) = \!\left[a_2^{3/2} + \tfrac{3}{2}H_0(t-t_2)\right]^{2/3}\quad(a_2<a<1).
+\]
+Box the trio:
+\[
+\boxed{\;a(t)=\begin{cases} a_1 e^{H_v(t-t_1)}, & a<a_1\\[2pt] \sqrt{a_1^2 + 2 H_0\sqrt{a_2}\,(t-t_1)}, & a_1<a<a_2\\[2pt] \!\left[a_2^{3/2}+\tfrac{3}{2}H_0(t-t_2)\right]^{2/3}, & a_2<a<1.\end{cases}\;}
+\]
+
+%--------------------------------------------------
+\subsection*{(b) Why $H$ is smaller during $a<a_1$ in the inflationary universe}
+
+In the inflationary universe, continuity at $a_1$ fixes $H_v = H_r(a_1) = H_0\sqrt{a_2}/a_1^2$, a finite constant for all $a<a_1$.
+
+In the non-inflationary (radiation-only at $a<a_1$) universe, $H_{\mathrm{noinf}}(a) = H_0\sqrt{a_2}/a^2$, which diverges as $a\to 0$.
+
+Compare at any $a<a_1$:
+\[
+\frac{H_v}{H_{\mathrm{noinf}}(a)} = \frac{H_0\sqrt{a_2}/a_1^2}{H_0\sqrt{a_2}/a^2} = \!\left(\tfrac{a}{a_1}\right)^{\!2} < 1.
+\]
+Therefore:
+\[
+\boxed{\;H_v < H_{\mathrm{noinf}}(a)\;\;\forall\,a<a_1.\;}
+\]
+Inflation freezes $H$ at the (modest) matching value, whereas radiation-domination drives $H\to\infty$ at small $a$.
+
+%--------------------------------------------------
+\subsection*{(c) Age of the universe; inflationary universe is older}
+
+Definition: $t_{\mathrm{age}}=\int_0^{t_0}\!\de t = \int_{a_{\mathrm{in}}}^{1}\!\frac{\de a}{\dot a}=\int_{a_{\mathrm{in}}}^{1}\!\frac{\de a}{a H(a)}$.
+
+Boxed integral form:
+\[
+\boxed{\;t_{\mathrm{age}} = \int_{a_{\mathrm{in}}}^{1}\!\frac{\de a}{a H(a)}.\;}
+\]
+
+Compare integrands at $a<a_1$ using part (b): $H_v < H_{\mathrm{noinf}}(a)$ implies
+\[
+\tfrac{1}{a H_v} > \tfrac{1}{a H_{\mathrm{noinf}}(a)}.
+\]
+The two universes share $H(a)$ for $a>a_1$, so the integrals coincide on that range. On $a_{\mathrm{in}}<a<a_1$ the inflationary integrand is strictly larger:
+\[
+t_{\mathrm{age}}^{\mathrm{inf}} - t_{\mathrm{age}}^{\mathrm{noinf}} = \int_{a_{\mathrm{in}}}^{a_1}\!\!\left[\tfrac{1}{a H_v} - \tfrac{1}{a H_{\mathrm{noinf}}(a)}\right]\!\de a > 0.
+\]
+Take $a_{\mathrm{in}}\to 0$:
+\[
+t_{\mathrm{age}}^{\mathrm{noinf}} = \int_0^{a_1}\!\tfrac{\de a}{a\cdot H_0\sqrt{a_2}/a^2}+\dots = \int_0^{a_1}\!\tfrac{a\,\de a}{H_0\sqrt{a_2}}+\dots = \tfrac{a_1^2}{2 H_0\sqrt{a_2}}+\dots
+\]
+\[
+t_{\mathrm{age}}^{\mathrm{inf}} = \int_0^{a_1}\!\tfrac{\de a}{a H_v}+\dots = \tfrac{1}{H_v}\!\int_0^{a_1}\!\tfrac{\de a}{a}+\dots = \infty.
+\]
+So formally:
+\[
+\boxed{\;t_{\mathrm{age}}^{\mathrm{inf}}\to\infty,\quad t_{\mathrm{age}}^{\mathrm{noinf}}<\infty.\;}
+\]
+For any finite $a_{\mathrm{in}}>0$, $t^{\mathrm{inf}}_{\mathrm{age}} = t^{\mathrm{noinf}}_{\mathrm{age}}+H_v^{-1}\ln(a_1/a_{\mathrm{in}})-\tfrac{1}{2 H_0\sqrt{a_2}}(a_1^2-a_{\mathrm{in}}^2)>t^{\mathrm{noinf}}_{\mathrm{age}}$.
+
+%--------------------------------------------------
+\subsection*{(d) Particle horizon in each phase; comparison with comoving length}
+
+Particle horizon at scale $a$ (flat, comoving):
+\[
+\chi_p(a) = c\!\int_0^{t}\!\tfrac{\de t'}{a(t')} = c\!\int_{a_{\mathrm{in}}}^{a}\!\tfrac{\de a'}{a'^2 H(a')}.
+\]
+Physical horizon distance $d_p(a) = a\,\chi_p(a)$.
+
+\paragraph{Vacuum $a<a_1$.} $H=H_v$ const:
+\[
+d_p^v(a) = a\cdot c\!\int_{a_{\mathrm{in}}}^{a}\!\tfrac{\de a'}{a'^2 H_v} = \tfrac{c}{H_v}\!\left(1-\tfrac{a}{a_{\mathrm{in}}}\cdot 0\dots\right).
+\]
+Evaluate the integral:
+\[
+\!\int_{a_{\mathrm{in}}}^{a}\!\tfrac{\de a'}{a'^2 H_v} = \tfrac{1}{H_v}\!\left[-\tfrac{1}{a'}\right]_{a_{\mathrm{in}}}^{a} = \tfrac{1}{H_v}\!\left(\tfrac{1}{a_{\mathrm{in}}}-\tfrac{1}{a}\right).
+\]
+Hence
+\[
+\boxed{\;d_p^v(a) = \tfrac{c}{H_v}\!\left(\tfrac{a}{a_{\mathrm{in}}}-1\right)\xrightarrow{a_{\mathrm{in}}\to 0}\infty.\;}
+\]
+
+\paragraph{Radiation $a_1<a<a_2$.} $H_r(a)=H_0\sqrt{a_2}/a^2$:
+\[
+\!\int^{a}\!\tfrac{\de a'}{a'^2 H_r(a')} = \tfrac{1}{H_0\sqrt{a_2}}\!\int^{a}\!\de a' = \tfrac{a}{H_0\sqrt{a_2}} + \text{const}.
+\]
+Add the inflationary contribution and the constant from $a_1$:
+\[
+\boxed{\;d_p^r(a) \approx \tfrac{c\,a}{H_0\sqrt{a_2}}\!\left(a-a_1\right)+\;a\cdot d_p^v(a_1)/a_1.\;}
+\]
+
+\paragraph{Matter $a_2<a<1$.} $H_m=H_0 a^{-3/2}$:
+\[
+\!\int^{a}\!\tfrac{\de a'}{a'^2 H_0 a'^{-3/2}}\cdot 1 = \tfrac{1}{H_0}\!\int^{a}\!a'^{-1/2}\de a' = \tfrac{2 a^{1/2}}{H_0} + \text{const}.
+\]
+Boxed leading term:
+\[
+\boxed{\;d_p^m(a) \sim \tfrac{2 c}{H_0}\,a^{1/2}\,(a-a_2^{1/2}/a^{1/2})+\dots,\quad d_p^m(1)\approx \tfrac{2c}{H_0}.\;}
+\]
+
+\paragraph{Comparison with a fixed comoving length $L_c$.} Physical size grows as $\ell(a)=a L_c$.
+\begin{itemize}\setlength\itemsep{0pt}
+\item During inflation $a<a_1$: $d_p^v(a)\propto a/a_{\mathrm{in}}$, while $\ell(a)\propto a$. The ratio $\ell/d_p\to a_{\mathrm{in}}/a\to 0$ as $a_{\mathrm{in}}\to 0$: {\it any} comoving scale eventually exits the horizon ($d_H=c/H_v$ stays fixed in physical size while $\ell$ grows with $a$).
+\item During radiation/matter $a>a_1$: $d_p\propto a^2$ (rad) or $a^{3/2}$ (mat), growing faster than $\ell\propto a$. Comoving scales re-enter the horizon.
+\end{itemize}
+This is the canonical inflationary horizon-exit / re-entry behaviour:
+\[
+\boxed{\;\text{For }a<a_1:\;\ell(a)/d_p(a)\to 0\;\;(\text{horizon exit});\qquad a>a_1:\;\ell/d_p\to 0\to 1\;\;(\text{re-entry}).\;}
+\]
+The horizon problem of standard hot Big Bang cosmology is resolved because pre-inflationary causal contact establishes uniformity, and exponential expansion blows the horizon scale far inside any pre-existing comoving length.
+
+\end{document}

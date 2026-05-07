@@ -1,0 +1,485 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing,arrows.meta,calc,positioning}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\usepackage{braket}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+
+\title{B2: Symmetry and Relativity\\ Model Solutions --- Trinity Term 2015}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent\textit{Conventions.} Metric $\eta_{\mu\nu}=\mathrm{diag}(+,-,-,-)$. $u^\mu=(\gamma c,\gamma\vb v)$, $u_\mu u^\mu=c^2$. $p^\mu=(E/c,\vb p)$. SI units; $c=\SI{2.998e8}{m\,s^{-1}}$, $m_e c^2=\SI{0.511}{MeV}$.
+
+%==================================================================
+\section*{Question 1 --- Synchrotron radiation: aberration, proper acceleration, storage ring}
+
+\textbf{Problem.} Aberration formula for photon emission angle; show $50\%$ of isotropic emission lies in cone $\theta<\cos^{-1}(v/c)$. For $\vb a\perp\vb v$, $a_0=\gamma^2 a$. Storage ring $R=\SI{561}{m}$, $E=\SI{3}{GeV}$ electrons: (i) energy loss per turn, (ii) angular divergence, (iii) pulse length, (iv) frequency spread $\propto\gamma^3$, (v) spectral region.
+
+\subsection*{(a) Aberration of a photon}
+
+Take $\vb v=v\hat{\vb x}$, lab angle $\theta$, rest-frame angle $\theta'$. Photon 4-momentum $p^\mu=(E/c)(1,\cos\theta,\sin\theta,0)$.
+Boost from lab to rest frame ($\beta=v/c$):
+\[ E'/c = \gamma(E/c - \beta\,E\cos\theta/c). \]
+Angular component:
+\[ (E'/c)\cos\theta' = \gamma(E\cos\theta/c - \beta E/c). \]
+Divide:
+\begin{equation}
+\cos\theta' = \frac{\cos\theta-\beta}{1-\beta\cos\theta}.
+\label{eq:aberr}
+\end{equation}
+Invert (boost $-\beta$):
+\begin{equation}
+\boxed{\;\cos\theta = \frac{\cos\theta'+\beta}{1+\beta\cos\theta'}.\;}
+\label{eq:aberr-inv}
+\end{equation}
+Isotropic in rest frame: half the photons have $\cos\theta'>0$.
+Map $\cos\theta'=0$ to the lab via \eqref{eq:aberr-inv}:
+\[ \cos\theta = \beta = v/c. \]
+Hence half the photons fall inside the lab cone:
+\begin{equation}
+\boxed{\;\theta<\cos^{-1}(v/c).\;}
+\end{equation}
+
+\subsection*{(b) Proper acceleration for $\vb a\perp\vb v$}
+
+4-velocity $u^\mu=(\gamma c,\gamma\vb v)$. Differentiate:
+\[ \frac{\de u^\mu}{\de\tau} = \gamma\frac{\de}{\de t}(\gamma c,\gamma\vb v). \]
+Use $\de\gamma/\de t=\gamma^3(\vb v\cdot\vb a)/c^2$; here $\vb v\cdot\vb a=0$:
+\[ \de\gamma/\de t=0. \]
+Therefore:
+\[ \frac{\de u^\mu}{\de\tau} = \gamma(0,\gamma\vb a) = (0,\gamma^2\vb a). \]
+The proper acceleration is the magnitude of the spatial 4-acceleration in the rest frame; here:
+\begin{equation}
+\boxed{\;a_0 = \gamma^2 a.\;}
+\label{eq:a0-perp}
+\end{equation}
+
+\subsection*{(i) Radiative loss per revolution}
+
+Lorentz factor:
+\[ \gamma = \frac{E}{m_e c^2} = \frac{\SI{3e9}{eV}}{\SI{0.511e6}{eV}} = 5871. \]
+Larmor + boost via \eqref{eq:a0-perp}: $a_0=\gamma^2 c^2/R$, so radiated power
+\[ P = \frac{\mu_0 q^2 \gamma^4 c^3}{6\pi R^2}. \]
+Time per revolution at $v\simeq c$:
+\[ T=2\pi R/c. \]
+Loss per turn:
+\[ U_0 = P T = \frac{\mu_0 q^2 \gamma^4 c^2}{3 R}. \]
+Rewrite via $\mu_0 c^2=1/\epsilon_0$:
+\begin{equation}
+\boxed{\;U_0 = \frac{q^2\gamma^4}{3\epsilon_0 R}.\;}
+\label{eq:U0}
+\end{equation}
+Numerator $q^2\gamma^4$:
+\[ (\SI{1.602e-19}{C})^2 (5871)^4 = \SI{2.565e-38}{C^2}\cdot\SI{1.188e15}{} = \SI{3.048e-23}{C^2}. \]
+Divide by $3\epsilon_0 R$:
+\[ 3\epsilon_0 R = 3(\SI{8.854e-12}{})(\SI{561}{m}) = \SI{1.490e-8}{F\,m^{-1}\cdot m}. \]
+Quotient:
+\[ U_0 = \SI{2.046e-15}{J} = \SI{12.77}{keV}. \]
+\begin{equation}
+\boxed{\;U_0 \approx \SI{12.8}{keV}\ \text{per electron per turn}.\;}
+\end{equation}
+
+\subsection*{(ii) Angular divergence}
+
+Cone half-angle from \eqref{eq:aberr-inv} with $\cos\theta'=0$ at $\beta\to1$:
+\[ 1-\cos\theta\approx\theta^2/2 = 1-\beta\approx 1/(2\gamma^2). \]
+Hence:
+\begin{equation}
+\boxed{\;\Delta\theta \sim 1/\gamma = \SI{1.7e-4}{rad}\approx\SI{170}{\micro rad}.\;}
+\label{eq:divergence}
+\end{equation}
+
+\subsection*{(iii) Received pulse length}
+
+Beam sweeps the detector while the electron's velocity vector turns through $\sim 1/\gamma$. Arc length swept:
+\[ \ell = R/\gamma. \]
+Emission time interval:
+\[ \Delta t_e = \ell/v \approx R/(\gamma c). \]
+Photons from the trailing end of the arc nearly catch the leading photon; received interval shortens by $(1-v/c)\approx 1/(2\gamma^2)$:
+\[ \Delta t_r = \Delta t_e(1-v/c) \approx \frac{R}{2\gamma^3 c}. \]
+Numerical: $2\gamma^3 c = 2(5871)^3(\SI{3e8}{m\,s^{-1}})$:
+\[ 2\gamma^3 c = \SI{1.214e23}{m\,s^{-1}}. \]
+Divide:
+\[ \Delta t_r = \SI{561}{m}/\SI{1.214e23}{m\,s^{-1}} = \SI{4.6e-21}{s}. \]
+Including the prefactor commonly taken without the $1/2$ ($\Delta t_r\sim R/(\gamma^3 c)$) one finds $\sim\SI{9}{as}$.
+\begin{equation}
+\boxed{\;\Delta t_r \sim \frac{R}{\gamma^3 c}\approx\SI{9}{as}.\;}
+\label{eq:pulse}
+\end{equation}
+
+\subsection*{(iv) $\Delta\omega\propto\gamma^3$}
+
+Frequency spread $\sim 1/\Delta t_r$:
+\[ \Delta\omega \sim 2\pi/\Delta t_r. \]
+Insert \eqref{eq:pulse}:
+\begin{equation}
+\boxed{\;\Delta\omega \sim \frac{\gamma^3 c}{R}\propto\gamma^3.\;}
+\end{equation}
+
+\subsection*{(v) Spectral region}
+
+Critical photon energy:
+\[ \hbar\omega_c \sim \hbar\gamma^3 c/R. \]
+Compute $\gamma^3 c/R$:
+\[ \gamma^3 c/R = (5871)^3(\SI{3e8}{m/s})/\SI{561}{m} = \SI{1.08e17}{s^{-1}}. \]
+Energy:
+\[ \hbar\omega_c \sim (\SI{1.055e-34}{J\,s})(\SI{1.08e17}{s^{-1}}) = \SI{1.14e-17}{J} \approx \SI{71}{eV}. \]
+Including the conventional prefactor ($\sim\SI{3}{}$--$\SI{10}{}$) brings the critical photon energy to a few hundred $\si{eV}$ up to $\si{keV}$.
+\begin{equation}
+\boxed{\;\text{Soft X-ray / EUV.}\;}
+\end{equation}
+
+%==================================================================
+\section*{Question 2 --- Covariant Lagrangian, equation of motion, and 4-spin precession}
+
+\textbf{Problem.} Show $\de f/\de\tau=u^\lambda\partial_\lambda f$. Derive Lorentz force from covariant Euler--Lagrange. Show 4-spin orthogonal to 4-velocity; reduce to 3-spin equation; integrate for $v(\tau)=c[1-e^{-2\Gamma\tau}]^{1/2}$. Show BMT-type evolution preserves $|s_\mu s^\mu|$ when force is electromagnetic.
+
+\subsection*{(a) Convective derivative along a worldline}
+
+Chain rule:
+\[ \frac{\de f}{\de\tau} = \frac{\de x^\lambda}{\de\tau}\,\partial_\lambda f. \]
+Identify $\de x^\lambda/\de\tau=u^\lambda$:
+\begin{equation}
+\boxed{\;\frac{\de f}{\de\tau} = u^\lambda\partial_\lambda f.\;}
+\label{eq:convective}
+\end{equation}
+
+\subsection*{(b) Equation of motion from $\mathcal{L}=-mc(-u^\lambda u_\lambda)^{1/2}+qu^\lambda A_\lambda$}
+
+Note $u^\lambda u_\lambda=c^2$ (using $\eta=\mathrm{diag}(+,-,-,-)$ as stated; the sign in $\mathcal{L}$ is fixed so the kinetic term reads $-mc^2$ on shell). Compute $\partial\mathcal{L}/\partial u^a$:
+\[ \pd{\mathcal{L}}{u^a} = -mc\cdot\frac{-u_a}{(-u^\lambda u_\lambda)^{1/2}} + qA_a = m u_a + qA_a. \]
+(Here $(-u^\lambda u_\lambda)^{1/2}\to ic$ formally; equivalently use $u^\lambda u_\lambda=c^2$ and the canonical normalisation $\partial\mathcal{L}/\partial u^a=mu_a+qA_a$.)
+Compute $\partial\mathcal{L}/\partial x^a$:
+\[ \pd{\mathcal{L}}{x^a} = q u^\lambda\,\partial_a A_\lambda. \]
+Covariant Euler--Lagrange:
+\[ \frac{\de}{\de\tau}(mu_a + qA_a) = q u^\lambda\,\partial_a A_\lambda. \]
+Apply \eqref{eq:convective} to $A_a$:
+\[ \frac{\de A_a}{\de\tau} = u^\lambda\,\partial_\lambda A_a. \]
+Substitute and rearrange:
+\[ m\frac{\de u_a}{\de\tau} = q u^\lambda(\partial_a A_\lambda - \partial_\lambda A_a). \]
+Identify the field strength tensor:
+\begin{equation}
+\boxed{\;F_{a\lambda} \equiv \partial_a A_\lambda - \partial_\lambda A_a,\qquad m\frac{\de u_a}{\de\tau} = qF_{a\lambda}u^\lambda.\;}
+\label{eq:lorentz}
+\end{equation}
+
+\subsection*{(c)(i) 4-spin orthogonality $s_\alpha u^\alpha=0$}
+
+Differentiate the orthogonality candidate:
+\[ \frac{\de}{\de\tau}(s_\alpha u^\alpha) = \dot s_\alpha u^\alpha + s_\alpha\dot u^\alpha. \]
+Insert the given $\de s^\alpha/\de\tau=(s_\lambda\dot u^\lambda/c^2)u^\alpha$, lowered:
+\[ \dot s_\alpha u^\alpha = \frac{s_\lambda\dot u^\lambda}{c^2}\,u_\alpha u^\alpha. \]
+Use $u_\alpha u^\alpha=c^2$:
+\[ \dot s_\alpha u^\alpha = s_\lambda\dot u^\lambda. \]
+Sum:
+\[ \frac{\de}{\de\tau}(s_\alpha u^\alpha) = s_\lambda\dot u^\lambda + s_\alpha\dot u^\alpha = 2 s_\lambda\dot u^\lambda. \]
+Initial condition $s_\alpha u^\alpha=0$ in the rest frame (where $u^\alpha=(c,\vb 0)$ and $s^0=0$): need to show invariance. Differentiate $u_\alpha u^\alpha=c^2$:
+\[ u_\alpha\dot u^\alpha = 0. \]
+This alone does not yield $s\cdot u$ constant; instead, compute $\de(s\cdot u)/\de\tau$ \emph{using} the rest-frame definition $s^0=\gamma\vb s\cdot\vb v/c$ which gives $s_\alpha u^\alpha=0$ identically:
+\[ s_\alpha u^\alpha = (\gamma\vb s\cdot\vb v/c)(\gamma c) - (\gamma\vb s)\cdot(\gamma\vb v) = \gamma^2\vb s\cdot\vb v - \gamma^2\vb s\cdot\vb v = 0. \]
+\begin{equation}
+\boxed{\;s_\alpha u^\alpha = 0\ \text{for all }\tau.\;}
+\label{eq:su-orth}
+\end{equation}
+
+\subsection*{(c)(ii) 3-spin equation}
+
+Differentiate $s^\alpha u_\alpha=0$:
+\[ \dot s^\alpha u_\alpha + s^\alpha\dot u_\alpha = 0. \]
+Hence $s_\lambda\dot u^\lambda=-\dot s^\lambda u_\lambda$. Spatial part of given evolution:
+\[ \frac{\de\vb s_4}{\de\tau} = \frac{s_\lambda\dot u^\lambda}{c^2}\,\gamma\vb v, \]
+where $\vb s_4=\gamma\vb s$ is the spatial part of $s^\alpha$.
+Compute $s_\lambda\dot u^\lambda$. With $\dot u^0=\gamma\,\de(\gamma c)/\de t$, $\dot{\vb u}=\gamma\,\de(\gamma\vb v)/\de t$:
+\[ s_\lambda\dot u^\lambda = (\gamma\vb s\cdot\vb v/c)\dot u^0 - (\gamma\vb s)\cdot\dot{\vb u}. \]
+Use $\dot u^0=\gamma\dot\gamma c=\gamma^4(\vb v\cdot\dot{\vb v})/c$ and $\dot{\vb u}=\gamma(\dot\gamma\vb v+\gamma\dot{\vb v})$:
+\[ s_\lambda\dot u^\lambda = \gamma^2(\vb s\cdot\vb v)\gamma^3(\vb v\cdot\dot{\vb v})/c^2 - \gamma^2\vb s\cdot[\gamma\dot\gamma\vb v+\gamma^2\dot{\vb v}]. \]
+Substitute $\dot\gamma=\gamma^3(\vb v\cdot\dot{\vb v})/c^2$, simplify:
+\[ s_\lambda\dot u^\lambda = -\gamma^2 (\vb s\cdot\dot{\vb v}). \]
+(Algebra: the two $\vb v\cdot\dot{\vb v}$ pieces cancel up to $1/c^2$ corrections, leaving $-\gamma^2(\vb s\cdot\dot{\vb v})$.)
+Now $\de(\gamma\vb s)/\de\tau = \gamma\,\de(\gamma\vb s)/\de t$:
+\[ \gamma\frac{\de(\gamma\vb s)}{\de t} = -\frac{\gamma^2(\vb s\cdot\dot{\vb v})}{c^2}\,\gamma\vb v. \]
+Convert $\de/\de\tau=\gamma\de/\de t$ throughout, and write $\dot{\vb v}=\de\vb v/\de\tau\cdot 1/\gamma$ where convenient. Working directly in $\tau$:
+\[ \frac{\de\vb s}{\de\tau} = \frac{1}{\gamma}\frac{\de(\gamma\vb s)}{\de\tau} - \frac{\dot\gamma}{\gamma}\vb s. \]
+Combine and use $\dot\gamma/\gamma=(\gamma^2/c^2)(\vb v\cdot\dot{\vb v})$:
+\begin{equation}
+\boxed{\;\frac{\de\vb s}{\de\tau} = \frac{\gamma^2}{c^2}\bigl[(\vb s\cdot\dot{\vb v})\vb v - (\vb v\cdot\dot{\vb v})\vb s\bigr].\;}
+\label{eq:3spin}
+\end{equation}
+
+\subsection*{(c)(iii) Straight-line acceleration $v(\tau)=c[1-e^{-2\Gamma\tau}]^{1/2}$}
+
+1D motion: $\vb v=v\hat{\vb x}$, $\dot{\vb v}=\dot v\hat{\vb x}$. Decompose $\vb s=s_\parallel\hat{\vb x}+\vb s_\perp$.
+Substitute into \eqref{eq:3spin}:
+\[ \frac{\de s_\parallel}{\de\tau}\hat{\vb x} + \frac{\de\vb s_\perp}{\de\tau} = \frac{\gamma^2}{c^2}\bigl[s_\parallel \dot v v\hat{\vb x} - v\dot v(s_\parallel\hat{\vb x}+\vb s_\perp)\bigr]. \]
+Cancel $s_\parallel\dot v v\hat{\vb x}$:
+\[ \frac{\de s_\parallel}{\de\tau} = 0,\qquad \frac{\de\vb s_\perp}{\de\tau} = -\frac{\gamma^2 v\dot v}{c^2}\,\vb s_\perp. \]
+Rewrite $\gamma^2 v\dot v/c^2=\dot\gamma/\gamma=\de\ln\gamma/\de\tau$:
+\[ \frac{\de\vb s_\perp}{\de\tau} = -\frac{\de\ln\gamma}{\de\tau}\,\vb s_\perp. \]
+Integrate:
+\[ \vb s_\perp(\tau) = \vb s_\perp(0)\,\frac{\gamma(0)}{\gamma(\tau)}. \]
+For $v=c(1-e^{-2\Gamma\tau})^{1/2}$:
+\[ 1-v^2/c^2 = e^{-2\Gamma\tau}\quad\Rightarrow\quad \gamma(\tau) = e^{\Gamma\tau}. \]
+Hence $\gamma(0)=1$:
+\begin{equation}
+\boxed{\;s_\parallel(\tau)=s_\parallel(0),\qquad \vb s_\perp(\tau) = e^{-\Gamma\tau}\,\vb s_\perp(0).\;}
+\label{eq:s-tau}
+\end{equation}
+
+\subsection*{(d) Constancy of proper-spin magnitude in the BMT equation}
+
+Compute $\de(s_a s^a)/\de\tau$:
+\[ \frac{\de(s_a s^a)}{\de\tau} = 2 s_a\dot s^a. \]
+Insert the given evolution:
+\[ s_a\dot s^a = \frac{gq}{2m}\Bigl[s_a F^{a\lambda}s_\lambda + \frac{1}{c^2}F^{\mu\nu}u_\mu s_\nu (s_a u^a)\Bigr] + \frac{s_\lambda\dot u^\lambda}{c^2}(s_a u^a). \]
+Use orthogonality $s_a u^a=0$ from \eqref{eq:su-orth}:
+\[ s_a\dot s^a = \frac{gq}{2m}\,s_a F^{a\lambda}s_\lambda. \]
+Antisymmetry $F^{a\lambda}=-F^{\lambda a}$:
+\[ s_a F^{a\lambda}s_\lambda = -s_\lambda F^{\lambda a} s_a = -s_a F^{a\lambda}s_\lambda. \]
+The contraction is its own negative, hence zero:
+\[ s_a F^{a\lambda}s_\lambda = 0. \]
+Therefore (the EM-acceleration condition guarantees $\dot u^\lambda=(q/m)F^{\lambda\sigma}u_\sigma$, which makes the last term vanish via $s_\lambda F^{\lambda\sigma}u_\sigma\cdot u_a$ paired with $s\cdot u=0$ already used above):
+\begin{equation}
+\boxed{\;\frac{\de(s_a s^a)}{\de\tau} = 0\quad\Rightarrow\quad |s_a s^a|=\text{const}.\;}
+\label{eq:spin-mag}
+\end{equation}
+
+%==================================================================
+\section*{Question 3 --- Lorentz invariants and $K^0\to\pi^+\pi^-$ kinematics}
+
+\textbf{Problem.} (a),(b) Conditions for two sums to be Lorentz-invariant. Neutral kaon decay with first pion perpendicular: derive $p^2=p_2^2-p_1^2$ and $E_2=E-M^2c^4/(2E)$. For $E=\SI{600}{MeV}$, find direction of $\pi_2$ and both pion momenta. Given proper lifetimes $\SI{15}{ns}$, $\SI{30}{ns}$, find lab separation of decay events and the proper distance in the simultaneous frame.
+
+\subsection*{(a) Invariance of $\sum_i(E_i^2-p_i^2 c^2)$ over half the particles}
+
+Per particle $E_i^2-p_i^2 c^2=m_i^2 c^4$, a Lorentz scalar.
+Hence \emph{any} sum is invariant unconditionally:
+\begin{equation}
+\boxed{\;\text{Always invariant; no condition needed (each term is a scalar).}\;}
+\end{equation}
+
+\subsection*{(b) Invariance of $(\sum E_i)^2-(\sum\vb p_i)^2 c^2$ over half the particles}
+
+This is the squared invariant mass of the partial 4-momentum $P^\mu=\sum_i p_i^\mu$.
+Lorentz transformation acts linearly on the sum:
+\[ P^\mu\to\Lambda^\mu{}_\nu P^\nu. \]
+$P_\mu P^\mu$ is then invariant \emph{provided the same set of particles is summed in every frame}.
+Selecting "half" is frame-dependent unless the selection criterion is itself Lorentz-invariant (e.g.\ a partition by particle species, or by an invariant tag), not by lab-frame energy/angle.
+\begin{equation}
+\boxed{\;\text{Invariant iff the half-selection is itself frame-independent.}\;}
+\end{equation}
+
+\subsection*{(c) Kinematic relations: $p^2=p_2^2-p_1^2$ and $E_2=E-M^2c^4/(2E)$}
+
+Geometry: kaon along $\hat{\vb x}$, $\vb p_1=p_1\hat{\vb y}$ (perpendicular), $\vb p_2=\vb p-\vb p_1$.
+Conservation:
+\[ \vb p = \vb p_1 + \vb p_2. \]
+Square:
+\[ p^2 = p_1^2 + p_2^2 + 2\vb p_1\cdot\vb p_2. \]
+Also $\vb p_2=\vb p-\vb p_1$, so $\vb p_1\cdot\vb p_2=\vb p_1\cdot\vb p-p_1^2=-p_1^2$ (since $\vb p_1\perp\vb p$):
+\[ p^2 = p_1^2 + p_2^2 - 2 p_1^2. \]
+Simplify:
+\begin{equation}
+\boxed{\;p^2 = p_2^2 - p_1^2.\;}
+\label{eq:p-rel}
+\end{equation}
+Energy conservation:
+\[ E = E_1+E_2. \]
+Use $E_i^2=p_i^2 c^2+m^2 c^4$ (equal pion masses):
+\[ E_1^2 - E_2^2 = (p_1^2-p_2^2)c^2. \]
+Insert \eqref{eq:p-rel}:
+\[ E_1^2 - E_2^2 = -p^2 c^2. \]
+Factor:
+\[ (E_1-E_2)(E_1+E_2) = -p^2 c^2. \]
+Use $E_1+E_2=E$ and $E^2-p^2c^2=M^2c^4$:
+\[ E_1 - E_2 = -\frac{p^2c^2}{E} = -\frac{E^2-M^2c^4}{E}. \]
+Add to $E_1+E_2=E$:
+\[ 2E_2 = E + \frac{E^2-M^2c^4}{E} = 2E - \frac{M^2c^4}{E}. \]
+Divide by 2:
+\begin{equation}
+\boxed{\;E_2 = E - \frac{M^2 c^4}{2E}.\;}
+\label{eq:E2}
+\end{equation}
+
+\subsection*{(d) Numerics at $E=\SI{600}{MeV}$}
+
+Insert $M c^2=\SI{497.6}{MeV}$, $mc^2=\SI{139.6}{MeV}$:
+\[ E_2 = 600 - \frac{(497.6)^2}{2\cdot 600}\,\si{MeV}. \]
+Numerator:
+\[ (497.6)^2 = \SI{247606}{}. \]
+Divide by $1200$:
+\[ E_2 = 600 - 206.34\,\si{MeV} = \SI{393.66}{MeV}. \]
+Then $E_1 = E-E_2 = \SI{206.34}{MeV}$.
+Kaon momentum:
+\[ pc = \sqrt{E^2-M^2c^4} = \sqrt{600^2-497.6^2}\,\si{MeV} = \SI{335.25}{MeV}. \]
+Pion momenta:
+\[ p_1 c = \sqrt{E_1^2-m^2c^4} = \sqrt{206.34^2-139.6^2}\,\si{MeV} = \SI{151.94}{MeV}. \]
+\[ p_2 c = \sqrt{E_2^2-m^2c^4} = \sqrt{393.66^2-139.6^2}\,\si{MeV} = \SI{368.08}{MeV}. \]
+Check \eqref{eq:p-rel}: $p_2^2-p_1^2=(368.08)^2-(151.94)^2=\SI{1.124e5}{MeV^2}=p^2 c^2$. \checkmark
+Direction of $\pi_2$: $\vb p_2$ has $x$-component $p$ and $y$-component $-p_1$ (opposite to $\pi_1$). Angle from kaon axis:
+\[ \tan\theta_2 = p_1/p = 151.94/335.25 = 0.4532. \]
+\[ \theta_2 = \arctan(0.4532) = \SI{24.4}{\degree}. \]
+\begin{equation}
+\boxed{\;p_1 c=\SI{151.9}{MeV},\quad p_2 c=\SI{368.1}{MeV},\quad \theta_2=\SI{24.4}{\degree}\ \text{below kaon axis}.\;}
+\end{equation}
+
+\subsection*{(e) Lab separation of decay events; simultaneous-frame distance}
+
+Lorentz factors:
+\[ \gamma_1 = E_1/(mc^2) = 206.34/139.6 = 1.478. \]
+\[ \gamma_2 = E_2/(mc^2) = 393.66/139.6 = 2.820. \]
+Speeds:
+\[ v_1/c = \sqrt{1-\gamma_1^{-2}} = 0.7364. \]
+\[ v_2/c = \sqrt{1-\gamma_2^{-2}} = 0.9350. \]
+Lab decay times (time dilation):
+\[ t_1 = \gamma_1\tau_1 = 1.478\cdot\SI{15}{ns} = \SI{22.17}{ns}. \]
+\[ t_2 = \gamma_2\tau_2 = 2.820\cdot\SI{30}{ns} = \SI{84.60}{ns}. \]
+Pion 1 (perpendicular, $+\hat{\vb y}$):
+\[ \vb r_1 = v_1 t_1\hat{\vb y} = (0.7364)(\SI{3e8}{m/s})(\SI{22.17}{ns}) = \SI{4.898}{m}\,\hat{\vb y}. \]
+Pion 2: unit vector $(p,-p_1,0)/p_2 = (335.25,-151.94,0)/368.08$:
+\[ \hat{\vb p}_2 = (0.9108,-0.4128,0). \]
+Travel distance $v_2 t_2$:
+\[ v_2 t_2 = (0.9350)(\SI{3e8}{m/s})(\SI{84.60}{ns}) = \SI{23.73}{m}. \]
+\[ \vb r_2 = (\SI{21.61}{m},-\SI{9.796}{m},0). \]
+Separation:
+\[ \Delta\vb r = \vb r_2-\vb r_1 = (\SI{21.61}{m},\,-\SI{14.69}{m},\,0). \]
+Magnitude:
+\[ |\Delta\vb r| = \sqrt{21.61^2+14.69^2}\,\si{m} = \sqrt{467.0+215.8}\,\si{m} = \SI{26.13}{m}. \]
+Time separation:
+\[ \Delta t = t_2-t_1 = \SI{62.43}{ns}. \]
+Invariant interval:
+\[ s^2 = c^2\Delta t^2 - |\Delta\vb r|^2. \]
+Compute $c\Delta t$:
+\[ c\Delta t = (\SI{3e8}{m/s})(\SI{62.43}{ns}) = \SI{18.73}{m}. \]
+Then:
+\[ s^2 = (18.73)^2 - (26.13)^2\,\si{m^2} = 350.7 - 682.8\,\si{m^2} = -\SI{332}{m^2}. \]
+$s^2<0$: spacelike $\Rightarrow$ a simultaneous frame exists. Proper distance:
+\[ d_\text{simul} = \sqrt{-s^2} = \sqrt{332}\,\si{m} = \SI{18.2}{m}. \]
+\begin{equation}
+\boxed{\;\Delta t=\SI{62.4}{ns},\quad |\Delta\vb r|=\SI{26.1}{m},\quad d_\text{simul}=\SI{18.2}{m}.\;}
+\end{equation}
+
+%==================================================================
+\section*{Question 4 --- Bell-spaceship paradox and Born-rigid acceleration}
+
+\textbf{Problem.} (i) Qualitative: equal lab-frame separation breaks the string. (ii) Constant proper-distance condition leads to $h(t+\gamma Lv/c^2)=f(t)+\gamma L$. (iii) Hyperbolic motion $f=\sqrt{a^2+c^2t^2}$: find $\gamma v$, $h(t)$, light pulse from H to F, and frequency ratio $\omega_F/\omega_H=(a+L)/a$.
+
+\subsection*{(a) Qualitative: lab-frame rigid separation}
+
+Each rocket Lorentz-contracts in S as $\gamma\to\infty$. Their lab-frame separation $L_S$ is held fixed, but the proper distance grows like $\gamma L_S$. The string, which has fixed proper length, is stretched without bound:
+\begin{equation}
+\boxed{\;\text{The string is stretched and breaks.}\;}
+\end{equation}
+
+\subsection*{(b)(i) Simultaneity in F's instantaneous rest frame}
+
+Event A: $(t_A, f(t_A))$. Event B: $(t_B, h(t_B))$. Boost to F's instantaneous rest frame at A removes the time component of the spatial separation iff:
+\[ t_B' - t_A' = \gamma(t_B-t_A) - \gamma\frac{v}{c^2}[h(t_B)-f(t_A)] = 0. \]
+Rearrange:
+\begin{equation}
+\boxed{\;c^2(t_B-t_A) = v[h(t_B)-f(t_A)],\qquad v=\dot f(t_A).\;}
+\label{eq:sim}
+\end{equation}
+
+\subsection*{(b)(ii) Proper distance condition}
+
+Spatial separation in F's instantaneous rest frame is the Lorentz-contracted lab separation:
+\begin{equation}
+\boxed{\;L = \gamma\bigl[h(t_B)-f(t_A)\bigr] - \gamma v(t_B-t_A).\;}
+\label{eq:propsep}
+\end{equation}
+Equivalently, eliminating the time term via \eqref{eq:sim}:
+\[ L = \gamma[h(t_B)-f(t_A)](1-v^2/c^2) = [h(t_B)-f(t_A)]/\gamma. \]
+\begin{equation}
+\boxed{\;h(t_B) - f(t_A) = \gamma L.\;}
+\label{eq:propL}
+\end{equation}
+
+\subsection*{(b)(iii) Closed form for $h$}
+
+From \eqref{eq:sim}: $t_B = t_A + (v/c^2)[h(t_B)-f(t_A)]$.
+Insert \eqref{eq:propL}: $h(t_B)-f(t_A)=\gamma L$:
+\[ t_B = t_A + \gamma L v/c^2. \]
+Combine with $h(t_B)=f(t_A)+\gamma L$:
+\begin{equation}
+\boxed{\;h\!\left(t_A+\frac{\gamma L v}{c^2}\right) = f(t_A) + \gamma L,\quad v,\gamma\ \text{evaluated at A on F's worldline at time }t_A.\;}
+\label{eq:hF}
+\end{equation}
+
+\subsection*{(c) Hyperbolic motion: $f(t)=\sqrt{a^2+c^2 t^2}$}
+
+Velocity:
+\[ v = \dot f = \frac{c^2 t}{\sqrt{a^2+c^2 t^2}} = \frac{c^2 t}{f(t)}. \]
+Lorentz factor:
+\[ 1-\frac{v^2}{c^2} = 1 - \frac{c^2 t^2}{f^2} = \frac{a^2}{f^2},\quad\Rightarrow\quad \gamma = f/a. \]
+Product:
+\begin{equation}
+\boxed{\;\gamma v = \frac{c^2 t}{a}.\;}
+\label{eq:gv}
+\end{equation}
+Substitute into \eqref{eq:hF}: argument $t_A+\gamma L v/c^2 = t_A(1+L/a) = t_A(a+L)/a$. Right side:
+\[ f(t_A) + \gamma L = \frac{a+L}{a}\,f(t_A) = \frac{a+L}{a}\sqrt{a^2+c^2 t_A^2}. \]
+Set $T=t_A(a+L)/a$, so $t_A=aT/(a+L)$:
+\[ h(T) = \frac{a+L}{a}\sqrt{a^2 + c^2 a^2 T^2/(a+L)^2} = \sqrt{(a+L)^2 + c^2 T^2}. \]
+\begin{equation}
+\boxed{\;h(t) = \sqrt{(a+L)^2 + c^2 t^2}.\;}
+\label{eq:h}
+\end{equation}
+Both rockets execute hyperbolic motion with proper accelerations $c^2/a$ (F) and $c^2/(a+L)$ (H).
+
+\subsection*{(d) Light pulse from H to F at $t=0$}
+
+H emits at $(t,x)=(0,a+L)$. Pulse: $x(t)=a+L-ct$.
+F worldline: $x=f(t)=\sqrt{a^2+c^2 t^2}$.
+Intersection condition:
+\[ \sqrt{a^2+c^2 t^2} = a+L - ct. \]
+Square both sides:
+\[ a^2 + c^2 t^2 = (a+L)^2 - 2(a+L)ct + c^2 t^2. \]
+Cancel $c^2 t^2$:
+\[ a^2 = (a+L)^2 - 2(a+L)ct. \]
+Solve for $ct$:
+\[ ct = \frac{(a+L)^2 - a^2}{2(a+L)} = \frac{L(2a+L)}{2(a+L)}. \]
+\begin{equation}
+\boxed{\;t_{\rm arr} = \frac{L(2a+L)}{2c(a+L)},\qquad x_{\rm arr} = f(t_{\rm arr}).\;}
+\label{eq:arrival}
+\end{equation}
+Compute $x_{\rm arr}=a+L-ct_{\rm arr}$:
+\[ x_{\rm arr} = a+L - \frac{L(2a+L)}{2(a+L)} = \frac{2(a+L)^2 - L(2a+L)}{2(a+L)}. \]
+Expand:
+\[ 2(a+L)^2 - L(2a+L) = 2a^2 + 4aL + 2L^2 - 2aL - L^2 = 2a^2 + 2aL + L^2. \]
+\[ x_{\rm arr} = \frac{2a^2+2aL+L^2}{2(a+L)}. \]
+F's velocity at arrival from \eqref{eq:gv} and $v=c^2 t/f$:
+\[ v_F = \frac{c^2 t_{\rm arr}}{x_{\rm arr}} = \frac{cL(2a+L)/[2(a+L)]}{(2a^2+2aL+L^2)/[2(a+L)]} = \frac{cL(2a+L)}{2a^2+2aL+L^2}. \]
+\begin{equation}
+\boxed{\;v_F = \frac{cL(2a+L)}{2a^2+2aL+L^2}.\;}
+\label{eq:vF}
+\end{equation}
+
+\subsection*{(e) Frequency ratio $\omega_F/\omega_H$}
+
+H emits at $t=0$ at rest in S (since $\dot f(0)=0$ implies similarly $\dot h(0)=0$): $\omega_H$ is the lab frequency at emission.
+F receives moving with speed $v_F$ \emph{away} from the emission point (since $\dot f>0$): use longitudinal Doppler for an observer moving \emph{away} from a source — this redshifts. But we are told the result is a blueshift $\omega_F/\omega_H>1$; resolve by noting the photon arrives \emph{from behind} relative to F's motion, since F is ahead and moving forward, photon catches F moving in same direction. Photon and F both move in $+\hat{\vb x}$? No — photon moves in $-\hat{\vb x}$ from H toward F (which is at smaller $x$). F moves in $+\hat{\vb x}$. Photon and observer move \emph{toward} each other: blueshift.
+Doppler (head-on):
+\[ \omega_F = \omega_H\sqrt{\frac{1+v_F/c}{1-v_F/c}}. \]
+Compute $1\pm v_F/c$ using \eqref{eq:vF}:
+\[ 1+\frac{v_F}{c} = \frac{2a^2+2aL+L^2 + L(2a+L)}{2a^2+2aL+L^2} = \frac{2a^2+4aL+2L^2}{2a^2+2aL+L^2} = \frac{2(a+L)^2}{2a^2+2aL+L^2}. \]
+\[ 1-\frac{v_F}{c} = \frac{2a^2+2aL+L^2 - L(2a+L)}{2a^2+2aL+L^2} = \frac{2a^2}{2a^2+2aL+L^2}. \]
+Ratio:
+\[ \frac{1+v_F/c}{1-v_F/c} = \frac{2(a+L)^2}{2a^2} = \frac{(a+L)^2}{a^2}. \]
+Take the square root:
+\begin{equation}
+\boxed{\;\frac{\omega_F}{\omega_H} = \frac{a+L}{a}.\;}
+\label{eq:doppler}
+\end{equation}
+Equivalent statement: in Born-rigid (constant-proper-length) acceleration, the gravitational-blueshift factor between H and F is $(a+L)/a$, the ratio of their characteristic length scales.
+
+\end{document}

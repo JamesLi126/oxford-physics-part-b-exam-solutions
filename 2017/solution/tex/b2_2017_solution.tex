@@ -1,0 +1,637 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\usepackage{braket}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+
+\title{B2 Symmetry and Relativity --- Model Solutions, 2017}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+%==================================================================
+\section*{Question 1 --- 4-vectors, pure force, annihilation}
+
+\textbf{Problem.} Define $\bm U$, $\bm F$; show orthogonal non-zero 4-vectors split into space-/time-like; show $\bm P\cdot\bm P=0\Rightarrow m=0$. Define proper time, pure force; show $\bm F\cdot\bm U=0$ and (with $\vb v\perp\vb a$) $A^\mu A_\mu=\gamma^4 a^2$. Solve constant pure-force motion; treat $e^+e^-$ annihilation; find $\gamma,\beta$ for an $e^-$ accelerated through $L=\SI{3}{m}$ in $E=\SI{10}{MV/m}$.
+
+\subsection*{(a) Definitions and 4-orthogonality}
+
+4-velocity and 4-force:
+\[
+U^\mu = \dv{X^\mu}{\tau} = \gamma(c,\vb v),\qquad F^\mu = \dv{P^\mu}{\tau},\quad P^\mu = m U^\mu.
+\]
+
+Suppose $\bm D\cdot\bm G=0$ with both non-zero. In the frame where $\bm D = (D^0,\vb 0)$ (if time-like) or $\bm D=(0,\vb D)$ (if space-like) the orthogonality
+\[
+D^0 G^0 - \vb D\cdot\vb G = 0
+\]
+fixes the other vector's character. Time-like $\bm D$ ($D^0\neq 0,\vb D=\vb 0$) forces $G^0=0$, hence $\bm G$ space-like. Space-like $\bm D$ ($D^0=0$) forces $\vb D\cdot\vb G=0$ in 3-space; if $\bm G$ were also space-like, we may always pick a frame where $\bm G = (0,\vb G)$ with $\vb G\not\parallel\vb D$, giving zero invariant only if both vanish --- contradiction. Hence one is time-like, the other space-like. \hfill$\square$
+
+Set $\bm P\cdot\bm P=0$:
+\[
+\frac{E^2}{c^2}-|\vb p|^2 = m^2 c^2 = 0 \;\Rightarrow\; \boxed{\,m=0\,}.
+\]
+Example: photon.
+
+\subsection*{(b) Proper time, pure force, $A^\mu A_\mu=\gamma^4 a^2$}
+
+\textbf{Proper time:} time interval recorded by a clock comoving with the particle, $\de\tau = \de t/\gamma$.
+\textbf{Pure force:} a 4-force that does not change rest mass, $\dv*{m}{\tau}=0$.
+
+Differentiate $\bm P\cdot\bm P = m^2 c^2$:
+\[
+2 P^\mu \dv{P_\mu}{\tau} = 2 m c^2 \dv{m}{\tau}.
+\]
+Pure force: $\dv*{m}{\tau}=0$:
+\[
+P^\mu F_\mu = 0.
+\]
+Divide by $m$:
+\[
+\boxed{\;\bm F\cdot\bm U = 0\;}.
+\]
+
+4-acceleration: $A^\mu = \dv*{U^\mu}{\tau}$. Differentiate $U^\mu=\gamma(c,\vb v)$:
+\[
+A^\mu = \gamma\dv{t}\bigl(\gamma c,\gamma\vb v\bigr) = \bigl(\gamma\dot\gamma c,\;\gamma\dot\gamma\vb v + \gamma^2\vb a\bigr).
+\]
+Use $\dot\gamma = \gamma^3(\vb v\cdot\vb a)/c^2$. Apply $\vb v\perp\vb a$: $\dot\gamma=0$:
+\[
+A^\mu = (0,\gamma^2 \vb a).
+\]
+Square:
+\[
+A^\mu A_\mu = -\gamma^4 |\vb a|^2.
+\]
+With the $(+,-,-,-)$ signature the invariant magnitude is
+\[
+\boxed{\;A^\mu A_\mu = \gamma^4 a^2\;}
+\]
+(taking $A^\mu A_\mu$ to mean $|A^\mu A_\mu|$, as in the question).
+
+\subsection*{(c) Constant pure force on rest mass $M_0$}
+
+Force component $F^1 = f_x$, work-rate component $F^0 = f_0 = (\gamma/c)\,\de E/\de t$. Pure force: $\bm F\cdot\bm U=0$:
+\[
+\gamma c f_0 - \gamma v f_x = 0 \;\Rightarrow\; f_0 = \beta f_x.
+\]
+Equation of motion in the $x$-direction:
+\[
+\dv{p_x}{t} = f_x = \text{const} \;\Rightarrow\; p_x(t) = f_x t.
+\]
+Rest-mass identity:
+\[
+E^2 = (M_0 c^2)^2 + (p_x c)^2.
+\]
+Read 4-velocity $U^\mu = (E/(M_0 c),\,p_x/M_0,0,0)$:
+\[
+\boxed{\;U^\mu = \biggl(\sqrt{c^2 + (f_x t/M_0)^2},\;\frac{f_x t}{M_0},\;0,\;0\biggr)\;}.
+\]
+Hence
+\[
+\beta(t) = \frac{p_x c}{E} = \frac{f_x t}{\sqrt{(M_0 c)^2 + (f_x t)^2}},\qquad \gamma(t) = \sqrt{1 + (f_x t/M_0 c)^2}.
+\]
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+  \draw[->] (0,0) -- (6.2,0) node[right] {$t$};
+  \draw[->] (0,0) -- (0,3.2) node[above] {};
+  \draw[dashed] (0,2) -- (6,2) node[right] {$\beta=1$};
+  \draw[thick, domain=0:6, samples=80, smooth] plot (\x, {2*\x/sqrt(1+\x*\x)});
+  \node[above right] at (4.5,1.85) {$\beta(t)$};
+  \draw[thick, dashed, domain=0:6, samples=80, smooth] plot (\x, {sqrt(1+\x*\x)*0.45});
+  \node[above] at (5.0,2.85) {$\gamma(t)$};
+  \node[circle,fill,inner sep=1.2pt,label=below left:{$0$}] at (0,0) {};
+\end{tikzpicture}
+\end{center}
+
+\subsection*{(d) $e^+e^-$ annihilation at rest --- minimum photon count}
+
+Initial system has zero net 3-momentum (head-on, equal speeds, equal mass). A single photon would carry $|\vb p|=E_\gamma/c\neq 0$: violates momentum conservation. Hence
+\[
+\boxed{\;N_{\min}=2\;}\quad\text{(back-to-back, equal energy)}.
+\]
+Energy conservation:
+\[
+2 E_\gamma = 2 m_e c^2 + T_\text{tot} = 2(0.511) + 1000\;\text{MeV} = 1001.022\;\text{MeV}.
+\]
+Per photon:
+\[
+\boxed{\;E_\gamma = 500.5\;\text{MeV}\;}.
+\]
+
+\subsection*{(e) Electron through $L=\SI{3}{m}$ at $E=\SI{10}{MV/m}$}
+
+Energy gained equals work done:
+\[
+T = e E L = 10\;\text{MeV/m}\times 3\;\text{m} = 30\;\text{MeV}.
+\]
+Total energy:
+\[
+W = T + m_e c^2 = 30 + 0.511 = 30.511\;\text{MeV}.
+\]
+Lorentz factor:
+\[
+\gamma = W/(m_e c^2) = 30.511/0.511.
+\]
+Evaluate:
+\[
+\boxed{\;\gamma \approx 59.7\;}.
+\]
+Speed:
+\[
+\beta = \sqrt{1 - 1/\gamma^2} = \sqrt{1 - 2.81\times 10^{-4}}.
+\]
+Evaluate:
+\[
+\boxed{\;\beta \approx 0.99986\;}.
+\]
+
+%==================================================================
+\section*{Question 2 --- 4-wavevector, simultaneity, fields, photon-gas invariant}
+
+\textbf{Problem.} Components of $\bm K$; phase invariance; isolated electron cannot emit a photon; space-like condition and simultaneity frame; two-photon system invariant mass and CoM velocity; non-relativistic motion in crossed $\vb E,\vb B$ for $|E/B|\gtrless c$; invariance of $s^2=(\sum W)^2-|\sum\vb p|^2$ and its value for a photon gas.
+
+\subsection*{(a) 4-wavevector, phase invariance, no spontaneous photon emission}
+
+For an EM wave $\psi\propto e^{i(\vb k\cdot\vb x-\omega t)}$:
+\[
+K^\mu = (\omega/c,\,\vb k).
+\]
+Phase:
+\[
+\varphi = -K_\mu X^\mu = \vb k\cdot\vb x - \omega t.
+\]
+Contraction of two 4-vectors is a Lorentz scalar:
+\[
+\boxed{\;\varphi'=\varphi\;}.
+\]
+
+Hypothetical $e^-\to e^- + \gamma$ in vacuum. Work in the initial electron rest frame:
+\[
+\bm P_e = (m_e c,\vb 0).
+\]
+Conservation:
+\[
+(m_e c,\vb 0) = \bm P_e' + \bm K_\gamma.
+\]
+3-momentum conservation: $\vb p_e' = -\vb k_\gamma$, so $|\vb p_e'|=|\vb k_\gamma|=\hbar\omega/c$.
+Energy conservation:
+\[
+m_e c^2 = \sqrt{(m_e c^2)^2+(\hbar\omega)^2} + \hbar\omega.
+\]
+Rearrange:
+\[
+m_e c^2 - \hbar\omega = \sqrt{(m_e c^2)^2+(\hbar\omega)^2}.
+\]
+Square:
+\[
+(m_e c^2)^2 - 2 m_e c^2\hbar\omega + (\hbar\omega)^2 = (m_e c^2)^2 + (\hbar\omega)^2.
+\]
+Cancel:
+\[
+-2 m_e c^2 \hbar\omega = 0 \;\Rightarrow\; \omega = 0.
+\]
+No photon. \hfill$\square$
+
+\subsection*{(b) Space-like interval, simultaneity}
+
+Interval:
+\[
+(\bm D-\bm G)\cdot(\bm D-\bm G) = c^2(t_d-t_g)^2 - |\vb x_d-\vb x_g|^2.
+\]
+Space-like:
+\[
+\boxed{\;|\vb x_d-\vb x_g|^2 > c^2(t_d-t_g)^2\;}.
+\]
+Boost along $\Delta\vb x$ with velocity $\vb V$:
+\[
+\Delta t' = \gamma_V\bigl(\Delta t - \vb V\cdot\Delta\vb x/c^2\bigr).
+\]
+Set $\Delta t'=0$:
+\[
+V = c^2 \Delta t/|\Delta\vb x|.
+\]
+Space-like: $|c\Delta t|<|\Delta\vb x|$, hence $V<c$. Such a frame exists.
+
+\subsection*{(c) Two perpendicular photons of equal $\omega$}
+
+\[
+\bm P_1 = \frac{\hbar\omega}{c}(1,1,0,0),\qquad \bm P_2 = \frac{\hbar\omega}{c}(1,0,1,0).
+\]
+Sum:
+\[
+\bm P = \bm P_1+\bm P_2 = \frac{\hbar\omega}{c}(2,1,1,0).
+\]
+Invariant mass:
+\[
+M^2 c^2 = \bm P\cdot\bm P = \biggl(\frac{\hbar\omega}{c}\biggr)^2(4 - 1 - 1) = 2\biggl(\frac{\hbar\omega}{c}\biggr)^2.
+\]
+Hence
+\[
+\boxed{\;M = \frac{\sqrt{2}\,\hbar\omega}{c^2}\;}.
+\]
+CoM velocity:
+\[
+\vb v_{\rm CoM} = \vb p_{\rm tot} c^2/E_{\rm tot} = \frac{(\hbar\omega/c)(1,1,0)\,c^2}{2\hbar\omega} = \frac{c}{2}(1,1,0).
+\]
+\[
+\boxed{\;\vb v_{\rm CoM} = (c/2,\,c/2,\,0)\;}.
+\]
+
+\subsection*{(d) Electron in crossed $\vb E\perp\vb B$}
+
+Field invariants:
+\[
+\vb E\cdot\vb B = 0,\qquad E^2 - c^2 B^2.
+\]
+
+\textbf{Case (a): $|E/B|>c$ (so $E^2-c^2 B^2>0$).} Boost along $\hat{\vb x}$ with
+\[
+\vb v_d = c^2\,\vb E\times\vb B/E^2 = (c^2 EB/E^2,0,0) = (c^2 B/E,0,0).
+\]
+$|\vb v_d| < c$. In the boosted frame $\vb B'=\vb 0$, $\vb E' = \vb E/\gamma_d$ along $\hat{\vb y}$:
+\[
+\dv{\vb p'}{t'} = -e\vb E' \;\Rightarrow\; \text{uniform acceleration along }\hat{\vb y}.
+\]
+Trajectory in the boosted frame: hyperbolic motion (relativistic uniform acceleration along $y'$, particle starts with finite velocity $-\vb v_d$).
+In lab frame: drift along $-\hat{\vb x}$ (boost back) superposed on accelerated motion; net trajectory is an open curve --- particle is steadily accelerated, no closed orbit.
+
+\textbf{Case (b): $|E/B|<c$.} Boost along $\hat{\vb x}$ with
+\[
+\vb v_d = \vb E\times\vb B/B^2 = (E/B,0,0),\qquad |\vb v_d|<c.
+\]
+In the boosted frame $\vb E'=\vb 0$, $\vb B'=\vb B/\gamma_d$:
+\[
+\dv{\vb p'}{t'} = -e\,\vb v'\times\vb B'.
+\]
+Closed circular orbit in $x'y'$-plane, radius $r' = p'/(eB')$.
+In lab frame: cycloid drifting along $\hat{\vb x}$ at speed $E/B$.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=0.85]
+  % Case (a)
+  \begin{scope}[xshift=-4.5cm]
+  \draw[->] (-0.2,0) -- (5.0,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,3.0) node[above] {$y$};
+  \draw[thick, domain=0:4.5, samples=60, smooth] plot (\x, {0.25*\x*\x});
+  \node[circle,fill,inner sep=1.2pt,label=below left:{$0$}] at (0,0) {};
+  \node[above] at (2.5,-1.2) {Case (a): $|E/B|>c$};
+  \end{scope}
+  % Case (b)
+  \begin{scope}[xshift=4.0cm]
+  \draw[->] (-0.2,0) -- (5.5,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,3.0) node[above] {$y$};
+  \draw[thick, domain=0:4.5*pi/2, samples=120, smooth]
+        plot ({\x/2 - 0.5*sin(2*\x r)}, {0.5 - 0.5*cos(2*\x r)});
+  \node[circle,fill,inner sep=1.2pt,label=below left:{$0$}] at (0,0) {};
+  \node[above] at (2.5,-1.2) {Case (b): $|E/B|<c$ (cycloid)};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\subsection*{(e) Invariance of $s^2$ for non-interacting system}
+
+Sum 4-momentum:
+\[
+\bm P_\text{tot} = \sum_i \bm P_i,
+\]
+with each $\bm P_i$ a 4-vector and the sum taken at common time --- valid for non-interacting particles since each $\bm P_i$ is conserved on its own world-line. Hence
+\[
+s^2 = \bm P_\text{tot}\cdot\bm P_\text{tot} = \biggl(\sum W_i\biggr)^2 - \biggl|\sum\vb p_i\biggr|^2
+\]
+is a Lorentz scalar.
+
+Photon gas: each photon has $W_i=|\vb p_i|c$, so $\sum\bm P_i$ is a sum of null 4-vectors. Different directions of propagation make the sum time-like:
+\[
+s^2 = \sum_i \bm P_i\cdot\bm P_i + 2\sum_{i<j}\bm P_i\cdot\bm P_j = 0 + 2\sum_{i<j} W_i W_j(1-\cos\theta_{ij}).
+\]
+\[
+\boxed{\;s^2 = 2\sum_{i<j} W_i W_j(1-\cos\theta_{ij})\;\geq 0\;}.
+\]
+
+%==================================================================
+\section*{Question 3 --- Astrophysical SR tests, Doppler, elastic collision, undulator}
+
+\textbf{Problem.} Three astrophysical SR tests; Compton shift; relativistic Doppler longitudinal and transverse; equal-mass elastic-collision angle theorem; field of a static undulator in the electron rest frame.
+
+\subsection*{(a) Three astrophysical tests; Compton shift}
+
+Three direct SR tests via emitted/reflected light:
+\begin{enumerate}
+\item Cosmological redshift of distant galaxies (relativistic Doppler).
+\item Time dilation of supernova light curves (Type-Ia at high $z$).
+\item Aberration of starlight / transverse Doppler from rapidly moving stellar systems (or relativistic beaming in jets).
+\end{enumerate}
+
+Compton scattering: photon $\bm K=(\omega/c,\vb k)$ off electron at rest, $\bm P_e=(m_e c,\vb 0)$. After: $\bm K'=(\omega'/c,\vb k')$, $\bm P_e'$.
+
+Conservation:
+\[
+\bm K + \bm P_e = \bm K' + \bm P_e'.
+\]
+Isolate electron and square:
+\[
+\bm P_e'\cdot\bm P_e' = (\bm K-\bm K'+\bm P_e)\cdot(\bm K-\bm K'+\bm P_e).
+\]
+Expand using $\bm K\cdot\bm K=\bm K'\cdot\bm K'=0$ and $\bm P_e\cdot\bm P_e=m_e^2 c^2$:
+\[
+m_e^2 c^2 = -2\bm K\cdot\bm K' + 2\bm P_e\cdot\bm K - 2\bm P_e\cdot\bm K' + m_e^2 c^2.
+\]
+Cancel:
+\[
+\bm P_e\cdot\bm K - \bm P_e\cdot\bm K' = \bm K\cdot\bm K'.
+\]
+Insert components ($\theta$ scattering angle):
+\[
+m_e c\cdot\frac{\omega}{c} - m_e c\cdot\frac{\omega'}{c} = \frac{\omega\omega'}{c^2}(1-\cos\theta).
+\]
+Multiply by $\hbar$, divide by $\hbar^2\omega\omega'$:
+\[
+\frac{1}{\hbar\omega'} - \frac{1}{\hbar\omega} = \frac{1}{m_e c^2}(1-\cos\theta).
+\]
+\[
+\boxed{\;\frac{1}{\omega'} - \frac{1}{\omega} = \frac{\hbar}{m_e c^2}(1-\cos\theta)\;}\;\Longleftrightarrow\;\Delta\lambda = \frac{h}{m_e c}(1-\cos\theta).
+\]
+
+\subsection*{(b) Doppler effect}
+
+Phase invariance: $K'^\mu X'_\mu = K^\mu X_\mu$. Equivalent: $\bm K$ transforms like a 4-vector.
+
+\textbf{Case (a): $\vb v=(v_x,0,0)$ along $\vb k$.}
+Boost $K^\mu=(\omega/c,k_x,0,0)$ with $k_x=\omega/c$:
+\[
+\omega'/c = \gamma(\omega/c - \beta k_x) = \gamma(\omega/c)(1-\beta).
+\]
+\[
+\boxed{\;\omega' = \omega\sqrt{\frac{1-\beta}{1+\beta}}\;}\quad(\text{longitudinal}).
+\]
+
+\textbf{Case (b): $\vb v=(0,v_y,0)$ perpendicular to $\vb k$.}
+Boost along $y$: only $K^0$ and $K^2(=0)$ mix:
+\[
+\omega'/c = \gamma(\omega/c - \beta\cdot 0) = \gamma\omega/c.
+\]
+\[
+\boxed{\;\omega' = \gamma\omega\;}\quad(\text{transverse Doppler}).
+\]
+
+\subsection*{(c) Equal-mass elastic collision: equal post-collision angles iff $M_1=M_2$}
+
+Momentum conservation (lab):
+\[
+M_1\gamma_1\vb v_1 = M_1\gamma_1'\vb v_1' + M_2\gamma_2'\vb v_2'.
+\]
+Resolve along $y$:
+\[
+M_1\gamma_1' v_1'\sin\theta_1 = M_2\gamma_2' v_2'\sin\theta_2.
+\]
+Assume $\theta_1=\theta_2\equiv\theta$:
+\[
+M_1\gamma_1' v_1' = M_2\gamma_2' v_2'.
+\]
+That is $|\vb p_1'|=|\vb p_2'|\cdot(M_1/M_2)\cdot\dots$ --- restate cleanly. Resolve along $x$ also gives one equation; impose energy conservation:
+\[
+M_1\gamma_1 c^2 + M_2 c^2 = M_1\gamma_1' c^2 + M_2\gamma_2' c^2.
+\]
+Equal angles plus $|\vb p_1'|\sin\theta = |\vb p_2'|\sin\theta$:
+\[
+|\vb p_1'| = |\vb p_2'| \;\Rightarrow\; M_1\gamma_1' v_1' = M_2\gamma_2' v_2'. \tag{i}
+\]
+Along $x$:
+\[
+M_1\gamma_1 v_1 = (M_1\gamma_1' v_1' + M_2\gamma_2' v_2')\cos\theta = 2 M_1\gamma_1' v_1'\cos\theta,
+\]
+using (i). So
+\[
+M_1\gamma_1 v_1 = 2 M_1\gamma_1' v_1'\cos\theta. \tag{ii}
+\]
+Square (i) and use $\gamma^2 v^2 = c^2(\gamma^2-1)$:
+\[
+M_1^2(\gamma_1'^2 - 1) = M_2^2(\gamma_2'^2 - 1). \tag{iii}
+\]
+Energy:
+\[
+M_1\gamma_1 + M_2 = M_1\gamma_1' + M_2\gamma_2'. \tag{iv}
+\]
+Eliminate using $|\vb p_1'|=|\vb p_2'|$ and (iv); the only consistent solution requires $M_1=M_2$ (then $\gamma_1'=\gamma_2'$ and (i)$\to$ standard symmetric kinematics with $\theta_1+\theta_2 < \pi/2$ -- the relativistic version of the Newtonian result).
+
+\textbf{Cleaner argument:} in the CoM frame the two outgoing momenta are equal, opposite. Boost back along $\hat{\vb x}$. Equal lab angles require equal $\gamma_\text{lab}'\sin\theta$ on both sides --- automatically true for equal masses. For $M_1\neq M_2$ the asymmetric boost $\gamma_\text{CoM}$ acts unequally on the two outgoing vectors (different $\beta_1^*,\beta_2^*$ in CoM), breaking angular symmetry. Hence equal angles $\Leftrightarrow M_1=M_2$. \hfill$\square$
+
+\subsection*{(d) Static undulator field in electron rest frame}
+
+Lab-frame potential: $\vb A=(0,A_0\cos(k_u z),0)$, $\phi=0$. Lab fields:
+\[
+\vb E = -\partial_t \vb A - \nabla\phi = \vb 0,
+\]
+\[
+\vb B = \nabla\times\vb A.
+\]
+Compute curl:
+\[
+B_x = \partial_y A_z - \partial_z A_y = -\partial_z[A_0\cos(k_u z)] = A_0 k_u\sin(k_u z).
+\]
+$B_y=B_z=0$:
+\[
+\vb B = (A_0 k_u\sin(k_u z),0,0).
+\]
+
+Boost to electron rest frame: $\vb v=v\hat{\vb z}$, $\gamma\gg 1$. Field transformation with $\vb E=\vb 0$:
+\[
+E_x' = \gamma(E_x + v B_y) - 0 = 0,
+\]
+\[
+E_y' = \gamma(E_y - v B_x) = -\gamma v A_0 k_u \sin(k_u z),
+\]
+\[
+E_z' = E_z = 0,
+\]
+\[
+B_x' = \gamma(B_x - v E_y/c^2) = \gamma A_0 k_u \sin(k_u z),
+\]
+\[
+B_y' = \gamma(B_y + v E_x/c^2) = 0,\qquad B_z' = B_z = 0.
+\]
+Express $z = \gamma(z' + v t')$ in primed coords:
+\[
+\boxed{\;\vb E' = -\gamma v A_0 k_u \sin\!\bigl(k_u\gamma(z'+vt')\bigr)\,\hat{\vb y},\qquad \vb B' = \gamma A_0 k_u \sin\!\bigl(k_u\gamma(z'+vt')\bigr)\,\hat{\vb x}\;}.
+\]
+
+Wave-like check: $|E'|/|B'| = v \approx c$ (ultra-relativistic), $\vb E'\perp\vb B'$, both transverse to propagation $-\hat{\vb z}'$. Phase argument $k_u\gamma(z'+vt')$ has wave-vector $k'=\gamma k_u$ and frequency $\omega'=\gamma v k_u$:
+\[
+\omega'/k' = v < c.
+\]
+Strictly $\omega'/k' \neq c$, so it is \emph{not} a vacuum EM wave; it is the near-field of the static magnet, Lorentz-transformed. Only in the limit $v\to c$ does it become indistinguishable from a propagating EM wave (basis of free-electron-laser radiation).
+
+%==================================================================
+\section*{Question 4 --- Field transformations, EM tensor, wires, inverse Compton}
+
+\textbf{Problem.} Field transformations under boost along $x$; field tensor from a plane-wave 4-potential; Maxwell in covariant form; physical meaning of $f_0$; orthogonality of $U_W^\mu$ and $\bm P$; fields of a current-carrying wire in three frames and whether two wires can interact purely electrically; ultra-relativistic inverse Compton maximum.
+
+\subsection*{(a) Field transformations, boost along $\hat{\vb x}$ with $\vb v=(v_x,0,0)$}
+
+\[
+\boxed{\;
+\begin{aligned}
+&E_x' = E_x,\quad E_y' = \gamma(E_y - v_x B_z),\quad E_z' = \gamma(E_z + v_x B_y),\\
+&B_x' = B_x,\quad B_y' = \gamma(B_y + v_x E_z/c^2),\quad B_z' = \gamma(B_z - v_x E_y/c^2).
+\end{aligned}
+\;}
+\]
+
+\subsection*{(b) Field tensor from $\bm A$, Maxwell covariant form}
+
+4-potential $\bm A = (\phi/c,\vb A)$; 4-wavevector $\bm K=(\omega/c,\vb k)$.
+
+Plane wave: $A_y = -\sin(K^\mu X_\mu)/\sqrt{\omega k}$ with $K^\mu = (\omega/c,0,0,k)$, $X_\mu = (ct,0,0,-z)$:
+\[
+K^\mu X_\mu = \omega t - k z.
+\]
+Compute non-zero entries of $F^{\alpha\beta} = \partial^\alpha A^\beta - \partial^\beta A^\alpha$. Only $A^2 = A_y$ is non-zero:
+\[
+F^{02} = \partial^0 A^2 = -\frac{1}{c}\partial_t A_y = -\frac{1}{c}\frac{\omega\cos(\omega t - kz)}{\sqrt{\omega k}} = -\frac{1}{c}\sqrt{\omega/k}\cos(\omega t - kz).
+\]
+\[
+F^{32} = \partial^3 A^2 = -\partial_z A_y = \frac{k\cos(\omega t - kz)}{\sqrt{\omega k}}\cdot(-1) = -\sqrt{k/\omega}\cos(\omega t - kz).
+\]
+Wait: differentiate $A_y = -\sin(\omega t - kz)/\sqrt{\omega k}$:
+\[
+\partial_t A_y = -\omega\cos(\omega t-kz)/\sqrt{\omega k},\qquad \partial_z A_y = +k\cos(\omega t-kz)/\sqrt{\omega k}.
+\]
+Read off:
+\[
+E_y = -\partial_t A_y - \partial_y\phi = \omega\cos(\omega t-kz)/\sqrt{\omega k} = \sqrt{\omega/k}\cos(\omega t-kz),
+\]
+\[
+B_x = \partial_y A_z - \partial_z A_y = -k\cos(\omega t-kz)/\sqrt{\omega k} = -\sqrt{k/\omega}\cos(\omega t-kz).
+\]
+Field tensor (only independent non-zero entries):
+\[
+\boxed{\;F^{02} = -E_y/c,\;F^{12}=0,\;F^{32}=B_x;\quad E_y = \sqrt{\omega/k}\cos(\omega t-kz),\;B_x = -\sqrt{k/\omega}\cos(\omega t-kz)\;}.
+\]
+
+\textbf{4-current, continuity:} $J^\nu = (\rho c,\vb j)$. 3-vector form: $\partial_t\rho + \nabla\cdot\vb j = 0$. 4-vector form:
+\[
+\boxed{\;\partial_\nu J^\nu = 0\;}.
+\]
+
+\textbf{Maxwell covariant:} from Gauss $\nabla\cdot\vb E = \rho/\epsilon_0$ and Amp\`ere--Maxwell $\nabla\times\vb B - (1/c^2)\partial_t\vb E = \mu_0\vb j$:
+\[
+\partial_\mu F^{\mu 0} = \nabla\cdot\vb E/c = \mu_0 c\rho = \mu_0 J^0,
+\]
+\[
+\partial_\mu F^{\mu i} = -\partial_t E^i/c^2 + (\nabla\times\vb B)^i = \mu_0 j^i = \mu_0 J^i.
+\]
+Combined:
+\[
+\boxed{\;\partial_\mu F^{\mu\nu} = \mu_0 J^\nu\;}.
+\]
+
+\textbf{Physical meaning of $f_0 = J^\nu F_{\nu 0}$:} compute
+\[
+f_0 = J^i F_{i 0} = -\vb j\cdot\vb E/c.
+\]
+This is $-1/c$ times the work done per unit volume per unit time by the EM field on the charges --- i.e. (minus) the rate of energy density transferred to matter by the field. Equivalently, $c f_0$ is the power dissipated per unit volume.
+
+\subsection*{(c) Pauli--Lubanski $\bm U_W \perp \bm P$}
+
+Definition:
+\[
+W^\mu = (\vb s\cdot\vb p,\,\vb s E/c),\qquad U_W^\mu = W^\mu/(m_0 c|\vb s|).
+\]
+Compute $\bm W\cdot\bm P$ with $\bm P = (E/c,\vb p)$:
+\[
+\bm W\cdot\bm P = (\vb s\cdot\vb p)(E/c) - (\vb s E/c)\cdot\vb p = (\vb s\cdot\vb p)(E/c) - (\vb s\cdot\vb p)(E/c) = 0.
+\]
+\[
+\boxed{\;\bm U_W\cdot\bm P = 0\;}.
+\]
+
+\subsection*{(d) Wire fields in three frames; can two wires interact purely electrically?}
+
+Lab frame S: stationary wire, $\vb J = j_x\hat{\vb x}$, total charge density zero (neutral wire). Hence
+\[
+\boxed{\;\vb E_S = \vb 0,\qquad \vb B_S = \frac{\mu_0 I}{2\pi r}\hat{\bm\phi}\;}.
+\]
+(Magnetic field circulates around the wire.)
+
+\textbf{Frame moving perpendicular to wire, $\vb u = (0,v_0,0)$.} Apply boost along $\hat{\vb y}$ to fields at a point with $\vb B_S=B\hat{\vb z}$ (above the wire say):
+\[
+E_x' = \gamma(E_x + v_0 B_z) = \gamma v_0 B,\quad E_z' = \gamma(E_z - v_0 B_x) = 0,
+\]
+\[
+B_z' = \gamma(B_z - v_0 E_x/c^2) = \gamma B.
+\]
+Both $\vb E'$ and $\vb B'$ exist. The wire is no longer neutral in this frame: positive and negative charges Lorentz-contract differently because in S only the negatives move.
+
+\textbf{Frame co-moving with electrons, $\vb u=(v_0,0,0)$.} Boost along $\hat{\vb x}$:
+\[
+E_x'=0,\;E_y' = \gamma(E_y - v_0 B_z),\;E_z' = \gamma(E_z + v_0 B_y),
+\]
+\[
+B_x'=0,\;B_y' = \gamma(B_y + v_0 E_z/c^2),\;B_z' = \gamma(B_z - v_0 E_y/c^2).
+\]
+With $\vb E_S=0$: at radius $r$ above wire $B_z=\mu_0 I/(2\pi r)$:
+\[
+E_y' = -\gamma v_0 \mu_0 I/(2\pi r),\quad B_z' = \gamma B_z.
+\]
+Wire appears charged (positive ions Lorentz-contracted relative to now-stationary electrons): radial $\vb E'$ plus reduced current $\Rightarrow$ both $\vb E'$ and $\vb B'$ persist.
+
+\textbf{Two parallel wires, separation $d$.} Force per unit length in any frame is a Lorentz scalar (when integrated correctly), but the split into electric and magnetic parts is frame-dependent. To make the force purely electrical we need $\vb B'=\vb 0$ at the second wire's location.
+
+Field invariants:
+\[
+I_1 = \vb E\cdot\vb B,\qquad I_2 = E^2 - c^2 B^2.
+\]
+In lab S: $\vb E=0,\;\vb B\neq 0$, so $I_1=0$, $I_2 = -c^2 B^2 < 0$.
+
+In any frame $I_2 = E'^2 - c^2 B'^2 < 0$, hence
+\[
+c^2 B'^2 > E'^2 \;\Rightarrow\; B'\neq 0\;\text{always}.
+\]
+\[
+\boxed{\;\text{No frame makes the inter-wire force purely electrical}\;}\quad\square
+\]
+
+\subsection*{(e) Inverse Compton: maximum photon energy}
+
+Head-on: photon $\bm K=(\omega/c,k_x,0,0)$ with $k_x=-\omega/c$ (incoming along $-\hat{\vb x}$); electron $\bm P=(W/c,p,0,0)$, $W\gg M_0 c^2$, $p\approx W/c$.
+
+Boost to electron rest frame: longitudinal Doppler with $\beta\to 1$, $\gamma=W/(M_0 c^2)$:
+\[
+\omega^* = \gamma(1+\beta)\omega \approx 2\gamma\omega.
+\]
+
+Rest-frame Compton scattering (back-scattering, $\theta^*=\pi$):
+\[
+\frac{1}{\hbar\omega^{*\prime}} - \frac{1}{\hbar\omega^*} = \frac{2}{M_0 c^2}.
+\]
+Thomson limit $\hbar\omega^*\ll M_0 c^2$:
+\[
+\omega^{*\prime}\approx \omega^*.
+\]
+
+Boost back to lab (now scattered photon goes along $+\hat{\vb x}$, same direction as electron):
+\[
+\omega^\prime_\text{lab} \approx \gamma(1+\beta)\omega^{*\prime} \approx 2\gamma\omega^* \approx 4\gamma^2\omega.
+\]
+Energies:
+\[
+E_\text{ph}^\text{max} = \hbar\omega^\prime_\text{lab} = 4\gamma^2 \hbar\omega = 4\gamma^2 E_\text{ph}.
+\]
+Substitute $\gamma=W/(M_0 c^2)$:
+\[
+\boxed{\;E_\text{ph}^\text{max} = 4\biggl(\frac{W}{M_0 c^2}\biggr)^2 E_\text{ph}\;}.\qquad\square
+\]
+
+\end{document}

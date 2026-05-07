@@ -1,0 +1,283 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\usepackage{braket}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+
+\title{B2: Symmetry and Relativity --- Model Solutions, Trinity Term 2022}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent\textit{Signature $(-,+,+,+)$; $x^{\mu}=(ct,x,y,z)$, $x_{\mu}=(-ct,x,y,z)$; $\partial_{\mu}\equiv\partial/\partial x^{\mu}$, $\partial^{\mu}\equiv\partial/\partial x_{\mu}$.}
+
+%==============================================================
+\section*{Question 1 --- Lorentz covariance of Maxwell's equations}
+
+\textbf{Problem.} Identify $\partial^{\mu}$ vs $\partial_{\mu}$ among the operators in (3); show $\partial_{\mu}\partial^{\mu}$ is invariant; derive charge conservation and the 4-current; in Lorenz gauge show $\partial^{\nu}\partial_{\nu}A^{a}=-\mu_{0}J^{a}$ and prove $A^{\mu}$ is a 4-vector; for a plane wave show one can choose $\vec{k}\cdot\vec{\epsilon}=0$.
+
+\subsection*{(a)}
+Apply the chain rule to a scalar $\Phi$:
+\[ \pd{\Phi}{x'^{\mu}}=\pd{x^{\nu}}{x'^{\mu}}\,\pd{\Phi}{x^{\nu}}. \]
+Read off the transformation of $\partial/\partial x^{\mu}$:
+\[ \partial'_{\mu}=\pd{x^{\nu}}{x'^{\mu}}\,\partial_{\nu}. \]
+Compare with covariant rule (2): $\partial/\partial x^{\mu}$ transforms like $x_{\mu}$. Hence
+\[ \boxed{\;\partial_{\mu}=\Big(\tfrac{1}{c}\pd{}{t},\;\pd{}{x},\;\pd{}{y},\;\pd{}{z}\Big).\;} \]
+Raise with $\eta^{\mu\nu}=\mathrm{diag}(-1,+1,+1,+1)$:
+\[ \boxed{\;\partial^{\mu}=\Big(-\tfrac{1}{c}\pd{}{t},\;\pd{}{x},\;\pd{}{y},\;\pd{}{z}\Big).\;} \]
+
+\subsection*{(b)}
+Apply the chain rule twice:
+\[ \partial'_{\mu}\partial'^{\mu}=\pd{x^{\alpha}}{x'^{\mu}}\,\pd{x'^{\mu}}{x^{\beta}}\,\partial_{\alpha}\partial^{\beta}. \]
+The bracketed product is the inverse--matrix identity:
+\[ \pd{x^{\alpha}}{x'^{\mu}}\,\pd{x'^{\mu}}{x^{\beta}}=\delta^{\alpha}_{\;\beta}. \]
+Contract:
+\[ \boxed{\;\partial'_{\mu}\partial'^{\mu}=\partial_{\alpha}\partial^{\alpha}.\;} \]
+
+\subsection*{(c)}
+Take divergence of Amp\`ere--Maxwell, use $\nabla\cdot(\nabla\times\vec B)=0$:
+\[ 0=\mu_{0}\nabla\cdot\vec J+\frac{1}{c^{2}}\pd{}{t}(\nabla\cdot\vec E). \]
+Use Gauss $\nabla\cdot\vec E=\rho/\epsilon_{0}$ and $c^{2}=1/(\mu_{0}\epsilon_{0})$:
+\[ \pd{\rho}{t}+\nabla\cdot\vec J=0. \]
+Match to $\partial_{\mu}J^{\mu}=0$ with $\partial_{\mu}=((1/c)\partial_{t},\nabla)$:
+\[ \boxed{\;J^{\mu}=(c\rho,\;\vec J),\qquad \partial_{\mu}J^{\mu}=0.\;} \]
+$\partial_{\mu}$ is covariant by (a); quotient rule then makes $J^{\mu}$ a 4-vector.
+
+\subsection*{(d)}
+Insert $\vec E=-\nabla\phi-\partial_{t}\vec A$ into Gauss:
+\[ -\Lap\phi-\pd{}{t}(\nabla\cdot\vec A)=\rho/\epsilon_{0}. \]
+Insert potentials into Amp\`ere--Maxwell; use $\nabla\times(\nabla\times\vec A)=\nabla(\nabla\cdot\vec A)-\Lap\vec A$:
+\[ -\Lap\vec A+\nabla(\nabla\cdot\vec A)+\frac{1}{c^{2}}\pd{}{t}\!\Big(\nabla\phi+\pd{\vec A}{t}\Big)=\mu_{0}\vec J. \]
+Lorenz condition $\partial_{\mu}A^{\mu}=0$ with $A^{\mu}=(\phi/c,\vec A)$:
+\[ \frac{1}{c^{2}}\pd{\phi}{t}+\nabla\cdot\vec A=0. \]
+Substitute into the Gauss equation:
+\[ \Big(-\Lap+\tfrac{1}{c^{2}}\partial_{t}^{2}\Big)\phi=\rho/\epsilon_{0}. \]
+Substitute into the Amp\`ere equation:
+\[ \Big(-\Lap+\tfrac{1}{c^{2}}\partial_{t}^{2}\Big)\vec A=\mu_{0}\vec J. \]
+Recognise $\partial^{\nu}\partial_{\nu}=-(1/c^{2})\partial_{t}^{2}+\Lap$; combine with $A^{0}=\phi/c$ and $J^{0}=c\rho$:
+\[ \boxed{\;\partial^{\nu}\partial_{\nu}A^{a}=-\mu_{0}J^{a}.\;} \]
+RHS is a 4-vector by (c); $\partial^{\nu}\partial_{\nu}$ is a scalar by (b); quotient rule: $A^{a}$ is a 4-vector.
+
+\subsection*{(e)}
+Substitute the plane wave into Lorenz gauge:
+\[ \partial_{b}A^{b}=\epsilon^{b}k_{b}\cos(k\cdot x)=0\;\Longrightarrow\;\epsilon^{b}k_{b}=0. \]
+Residual gauge $A^{\mu}\to A^{\mu}+\partial^{\mu}\chi$ with $\Box\chi=0$. Choose $\chi=\chi_{0}\cos(k\cdot x)$; vacuum gives $k^{\mu}k_{\mu}=0$, so $\Box\chi=0$. Polarisation shifts:
+\[ \epsilon^{b}\;\longrightarrow\;\epsilon^{b}-\chi_{0}k^{b}. \]
+Choose $\chi_{0}=\epsilon^{0}/k^{0}$ to set $\epsilon^{0}=0$. Lorenz then gives $\epsilon^{b}k_{b}=\vec\epsilon\cdot\vec k=0$:
+\[ \boxed{\;\vec k\cdot\vec\epsilon=0.\;} \]
+
+%==============================================================
+\section*{Question 2 --- Pion decay kinematics}
+
+\textbf{Problem.} ($c=1$.) Find the CM-frame velocity for $N$ particles; show $\sin^{2}(A/2)=M_{\pi}^{2}/(4E_{1}E_{2})$ for $\pi^{0}\to\gamma\gamma$; with isotropic CM emission derive $\de N/\de A$; find the minimum and peak of the distribution.
+
+\subsection*{(a)}
+Total 4-momentum: $P^{\mu}=(\sum E_{i},\sum\vec p_{i})$. CM frame defined by $\sum\vec p\,'_{i}=0$. Boost by $\vec\beta$ along $\vec P_{\mathrm{tot}}$:
+\[ \vec P\,'_{\mathrm{tot}}=\gamma\big(\vec P_{\mathrm{tot}}-\vec\beta E_{\mathrm{tot}}\big). \]
+Set $\vec P\,'_{\mathrm{tot}}=0$ and adopt the question's passive-boost sign:
+\[ \boxed{\;\vec\beta=-\frac{\sum_{i}\vec p_{i}}{\sum_{i}E_{i}}.\;} \]
+
+\subsection*{(b)}
+Conservation $p_{\pi}=p_{1}+p_{2}$; square:
+\[ -M_{\pi}^{2}=p_{1}^{2}+p_{2}^{2}+2\,p_{1}\!\cdot\!p_{2}. \]
+Photons massless ($p_{i}^{2}=0$):
+\[ M_{\pi}^{2}=-2\,p_{1}\!\cdot\!p_{2}=2(E_{1}E_{2}-\vec p_{1}\!\cdot\!\vec p_{2}). \]
+Use $|\vec p_{i}|=E_{i}$ and $\vec p_{1}\!\cdot\!\vec p_{2}=E_{1}E_{2}\cos A$:
+\[ M_{\pi}^{2}=2E_{1}E_{2}(1-\cos A). \]
+Apply $1-\cos A=2\sin^{2}(A/2)$:
+\begin{equation} \boxed{\;\sin^{2}(A/2)=\frac{M_{\pi}^{2}}{4E_{1}E_{2}}.\;} \label{eq:sinA-half} \end{equation}
+
+\subsection*{(c)}
+CM frame: photons back-to-back with $E^{*}_{1}=E^{*}_{2}=M_{\pi}/2$. Boost photon 1 (angle $\theta_{*}$) and photon 2 (angle $\pi-\theta_{*}$):
+\[ E_{1}=\gamma\tfrac{M_{\pi}}{2}(1+\beta\cos\theta_{*}). \]
+\[ E_{2}=\gamma\tfrac{M_{\pi}}{2}(1-\beta\cos\theta_{*}). \]
+Multiply:
+\[ E_{1}E_{2}=\gamma^{2}\frac{M_{\pi}^{2}}{4}(1-\beta^{2}\cos^{2}\theta_{*}). \]
+Insert into \eqref{eq:sinA-half}:
+\begin{equation} \sin^{2}(A/2)=\frac{1}{\gamma^{2}(1-\beta^{2}\cos^{2}\theta_{*})}. \label{eq:sinA-thetastar} \end{equation}
+Invert for $\cos^{2}\theta_{*}$ (use $\gamma^{2}\beta^{2}=\gamma^{2}-1$):
+\begin{equation} \cos^{2}\theta_{*}=\frac{\gamma^{2}\sin^{2}(A/2)-1}{(\gamma^{2}-1)\sin^{2}(A/2)}. \label{eq:cos2-star} \end{equation}
+Differentiate \eqref{eq:sinA-thetastar}:
+\[ \sin(A/2)\cos(A/2)\,\de A=\frac{2\beta^{2}\sin\theta_{*}\cos\theta_{*}}{\gamma^{2}(1-\beta^{2}\cos^{2}\theta_{*})^{2}}\,\de\theta_{*}. \]
+Use $\gamma^{2}(1-\beta^{2}\cos^{2}\theta_{*})=1/\sin^{2}(A/2)$:
+\[ \sin(A/2)\cos(A/2)\,\de A=2\beta^{2}\gamma^{2}\sin\theta_{*}\cos\theta_{*}\sin^{4}(A/2)\,\de\theta_{*}. \]
+Solve for $\de\theta_{*}/\de A$:
+\[ \frac{\de\theta_{*}}{\de A}=\frac{\cos(A/2)}{2\beta^{2}\gamma^{2}\sin^{3}(A/2)\sin\theta_{*}\cos\theta_{*}}. \]
+Apply CM rule $\de N/\de\theta_{*}=a\sin\theta_{*}$:
+\[ \frac{\de N}{\de A}=\frac{a\cos(A/2)}{2\beta^{2}\gamma^{2}\sin^{3}(A/2)\cos\theta_{*}}. \]
+Substitute \eqref{eq:cos2-star} and use $\beta^{2}\gamma^{2}=\gamma^{2}-1$:
+\[ \frac{1}{\beta^{2}\gamma^{2}\cos\theta_{*}}=\frac{\sin(A/2)}{\sqrt{\gamma^{2}-1}\sqrt{\gamma^{2}\sin^{2}(A/2)-1}}. \]
+Combine; replace $\sqrt{\gamma^{2}-1}=\gamma\beta$:
+\[ \boxed{\;\frac{\de N}{\de A}=\frac{a}{2\gamma}\,\frac{\cos(A/2)}{\beta\sin^{2}(A/2)\sqrt{\gamma^{2}\sin^{2}(A/2)-1}},\quad f(\gamma)=\frac{1}{2\gamma}.\;} \]
+
+\subsection*{(d)}
+From \eqref{eq:sinA-thetastar}, $\sin^{2}(A/2)$ minimised when $1-\beta^{2}\cos^{2}\theta_{*}$ maximised, i.e.\ at $\cos^{2}\theta_{*}=0$:
+\[ \sin^{2}(A_{\min}/2)=1/\gamma^{2}. \]
+\[ \boxed{\;A_{\min}=2\arcsin(1/\gamma).\;} \]
+The factor $1/\sqrt{\gamma^{2}\sin^{2}(A/2)-1}$ diverges as $A\to A_{\min}^{+}$; the other factors are smooth and finite there. Hence
+\[ \boxed{\;A_{\mathrm{peak}}=A_{\min}=2\arcsin(1/\gamma).\;} \]
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+  \draw[->] (-0.3,0) -- (8.5,0) node[right] {$A$};
+  \draw[->] (0,-0.3) -- (0,3.6) node[above] {$\de N/\de A$};
+  \node[below left] at (0,0) {$0$};
+  \draw[dashed] (1.5,0) -- (1.5,3.2);
+  \node[below] at (1.5,-0.05) {$A_{\min}$};
+  \node[below] at (7.5,-0.05) {$\pi$};
+  \draw[thick,domain=1.55:7.5,smooth,samples=120] plot (\x,{0.6/sqrt(0.06*(\x-1.5))+0.3});
+  \node[circle,fill,inner sep=1.2pt,label=above right:{peak}] at (1.55,3.0) {};
+  \draw[dashed] (7.5,0) -- (7.5,0.5);
+\end{tikzpicture}
+\end{center}
+
+%==============================================================
+\section*{Question 3 --- 4-velocity, addition, two-star problem}
+
+\textbf{Problem.} (a) Show $\de\tau=\de t/\gamma_{u}$ and $u^{\alpha}=(c\gamma_{u},\gamma_{u}\vec u)$. (b) Find $\vec w$ in standard-configuration B. (c) For arbitrary boost $\vec v$, derive $|\vec w|$. (d) Stars $S_{1},S_{2}$ at $c/2$ in A; light from $S_{2}$ at $\omega_{0}$ received by $S_{1}$ at $\omega_{0}$: find the propagation angle in $S_{1}$'s frame, and the propagation direction in A.
+
+\subsection*{(a)}
+Invariant interval; in rest frame $\de\vec x=0$:
+\[ -c^{2}\de\tau^{2}=-c^{2}\de t^{2}+\de\vec x\cdot\de\vec x. \]
+Use $\de\vec x=\vec u\,\de t$:
+\[ \de\tau^{2}=\de t^{2}(1-u^{2}/c^{2}). \]
+Take positive root:
+\[ \boxed{\;\de\tau=\de t/\gamma_{u}.\;} \]
+4-velocity:
+\[ u^{\alpha}=\frac{\de x^{\alpha}}{\de\tau}=\gamma_{u}\frac{\de x^{\alpha}}{\de t}=\gamma_{u}(c,\vec u). \]
+\[ \boxed{\;u^{\alpha}=(c\gamma_{u},\;\gamma_{u}\vec u).\;} \]
+
+\subsection*{(b)}
+Boost $u^{\alpha}$ along $+x$:
+\[ u'^{0}=\gamma_{v}(u^{0}-\beta_{v}u^{1}),\quad u'^{1}=\gamma_{v}(u^{1}-\beta_{v}u^{0}),\quad u'^{2}=u^{2},\quad u'^{3}=u^{3}. \]
+Read off $\vec w=c\vec u'/u'^{0}$:
+\[ \boxed{\;w_{x}=\frac{u_{x}-v}{1-vu_{x}/c^{2}},\quad w_{y}=\frac{u_{y}}{\gamma_{v}(1-vu_{x}/c^{2})},\quad w_{z}=\frac{u_{z}}{\gamma_{v}(1-vu_{x}/c^{2})}.\;} \]
+
+\subsection*{(c)}
+Decompose along $\hat v$: $\vec u_{\parallel}=(\vec u\cdot\hat v)\hat v$, $\vec u_{\perp}=\vec u-\vec u_{\parallel}$. Generalise (b):
+\[ \vec w=\frac{1}{1-\vec v\cdot\vec u/c^{2}}\Big[(\vec u_{\parallel}-\vec v)+\vec u_{\perp}/\gamma_{v}\Big]. \]
+Square (orthogonal pieces):
+\[ |\vec w|^{2}=\frac{|\vec u_{\parallel}-\vec v|^{2}+|\vec u_{\perp}|^{2}/\gamma_{v}^{2}}{(1-\vec v\cdot\vec u/c^{2})^{2}}. \]
+Insert $1/\gamma_{v}^{2}=1-v^{2}/c^{2}$:
+\[ |\vec u_{\parallel}-\vec v|^{2}+|\vec u_{\perp}|^{2}/\gamma_{v}^{2}=|\vec u_{\parallel}-\vec v|^{2}+|\vec u_{\perp}|^{2}-(v^{2}/c^{2})|\vec u_{\perp}|^{2}. \]
+Combine first two via orthogonality:
+\[ |\vec u_{\parallel}-\vec v|^{2}+|\vec u_{\perp}|^{2}=|\vec u-\vec v|^{2}=(\vec v-\vec u)\cdot(\vec v-\vec u). \]
+Apply hint with $\vec u_{\parallel}\times\vec v=0$, so $|\vec u\times\vec v|=|\vec u_{\perp}||\vec v|$:
+\[ v^{2}|\vec u_{\perp}|^{2}=|\vec u\times\vec v|^{2}=(\vec v\times\vec u)\cdot(\vec v\times\vec u). \]
+Substitute and take root:
+\begin{equation} \boxed{\;|\vec w|=\frac{\sqrt{(\vec v-\vec u)\cdot(\vec v-\vec u)-(1/c^{2})(\vec v\times\vec u)\cdot(\vec v\times\vec u)}}{1-\vec v\cdot\vec u/c^{2}}.\;} \label{eq:w-mag} \end{equation}
+
+\subsection*{(d)}
+Set $\vec v=\vec u_{1}=(c/2,0,0)$, $\vec u=\vec u_{2}=(c/2)(1,1,0)/\sqrt{2}$. Compute building blocks:
+\[ \vec v\cdot\vec u=\frac{c^{2}}{4\sqrt{2}}. \]
+\[ (\vec v-\vec u)\cdot(\vec v-\vec u)=\frac{c^{2}}{2}\!\left(1-\frac{1}{\sqrt{2}}\right). \]
+\[ |\vec v\times\vec u|^{2}=v^{2}u^{2}-(\vec v\cdot\vec u)^{2}=\frac{c^{4}}{16}-\frac{c^{4}}{32}=\frac{c^{4}}{32}. \]
+Insert into \eqref{eq:w-mag}:
+\[ V_{\mathrm{rel}}^{2}=\frac{(c^{2}/2)(1-1/\sqrt{2})-c^{2}/32}{(1-1/(4\sqrt{2}))^{2}}. \]
+Numerical evaluation; $1/\sqrt{2}=0.7071$, $1/(4\sqrt{2})=0.1768$:
+\[ \text{Numerator}/c^{2}=0.5\times 0.2929-0.03125=0.11520. \]
+\[ \text{Denominator}=(0.8232)^{2}=0.67770. \]
+\[ V_{\mathrm{rel}}^{2}/c^{2}=0.11520/0.67770=0.17000. \]
+\[ V_{\mathrm{rel}}/c=0.41231. \]
+\[ \Gamma=1/\sqrt{0.83000}=1.09764. \]
+Doppler-equality (source $S_{2}$, receiver $S_{1}$); $\hat n$ is light direction in $S_{1}$:
+\[ \omega_{\mathrm{obs}}=\frac{\omega_{0}}{\Gamma(1-\vec V_{\mathrm{rel}}\cdot\hat n/c)}=\omega_{0}. \]
+Solve for $\cos\alpha=\hat V_{\mathrm{rel}}\cdot\hat n$:
+\[ \cos\alpha=\frac{c}{V_{\mathrm{rel}}}\!\left(1-\frac{1}{\Gamma}\right). \]
+Numerical:
+\[ 1-1/\Gamma=1-0.91105=0.08895. \]
+\[ \cos\alpha=0.08895/0.41231=0.21574. \]
+\[ \boxed{\;\alpha=\arccos\!\big[(c/V_{\mathrm{rel}})(1-1/\Gamma)\big]\approx 77.55^{\circ}.\;} \]
+
+\textit{Direction in frame A.} The Doppler-equality condition is symmetric under exchange of source and receiver. In A both stars move at speed $c/2$, so the configuration is invariant under reflection about the bisector of $\hat u_{1},\hat u_{2}$. The light ray must lie on this symmetry axis:
+\[ \boxed{\;\hat n_{A}\propto\hat u_{1}+\hat u_{2}=\Big(1+\tfrac{1}{\sqrt 2},\;\tfrac{1}{\sqrt 2},\;0\Big),\;} \]
+i.e.\ at angle $\arctan[(1/\sqrt 2)/(1+1/\sqrt 2)]=22.5^{\circ}$ to the $x$-axis.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.4]
+  \draw[->] (-0.3,0) -- (3.2,0) node[right] {$x$};
+  \draw[->] (0,-0.3) -- (0,2.4) node[above] {$y$};
+  \node[circle,fill,inner sep=1.4pt,label=below left:{$O$}] at (0,0) {};
+  \draw[->,thick,blue] (0,0) -- (2.2,0) node[below right] {$\vec u_{1}$};
+  \draw[->,thick,red] (0,0) -- (1.556,1.556) node[above right] {$\vec u_{2}$};
+  \draw[->,thick,dashed] (0,0) -- (2.0,0.828) node[above] {$\hat n_{A}$};
+  \draw (0.6,0) arc[start angle=0,end angle=22.5,radius=0.6];
+  \node at (0.85,0.13) {\scriptsize $22.5^{\circ}$};
+  \draw (0.4,0) arc[start angle=0,end angle=45,radius=0.4];
+  \node at (0.55,0.27) {\scriptsize $45^{\circ}$};
+\end{tikzpicture}
+\end{center}
+
+%==============================================================
+\section*{Question 4 --- Constant force, 4-force, synchrotron}
+
+\textbf{Problem.} (a) For constant $\vec F$ from rest find $\vec v(t)$ and show $|\vec v|\to c$. (b) Show $F^{\alpha}=(\gamma\vec F\cdot\vec v/c,\gamma\vec F)$ with $\vec F=m\gamma^{3}[\vec a+\vec v\times(\vec v\times\vec a)/c^{2}]$. (c) Compare radiative loss in linear vs circular accelerators. (d) Choose particle/machine to minimise loss.
+
+\subsection*{(a)}
+Integrate $\vec F=\de(\gamma m\vec v)/\de t$ from rest:
+\[ \gamma m\vec v=\vec F t. \]
+Square and use $\gamma^{2}v^{2}=v^{2}/(1-v^{2}/c^{2})$:
+\[ \frac{m^{2}v^{2}}{1-v^{2}/c^{2}}=F^{2}t^{2}. \]
+Clear the denominator:
+\[ m^{2}v^{2}=F^{2}t^{2}(1-v^{2}/c^{2}). \]
+Collect $v^{2}$:
+\[ v^{2}\big(m^{2}+F^{2}t^{2}/c^{2}\big)=F^{2}t^{2}. \]
+Solve and align direction:
+\[ \boxed{\;\vec v(t)=\frac{\vec F t/m}{\sqrt{1+(Ft/(mc))^{2}}}.\;} \]
+Take $t\to\infty$: numerator $\sim Ft/m$, denominator $\sim Ft/(mc)$, ratio $\to c$:
+\[ \boxed{\;\lim_{t\to\infty}|\vec v|=c.\;} \]
+
+\subsection*{(b)}
+Time component, $F^{0}=\de p^{0}/\de\tau$ with $\de m/\de t=0$:
+\[ F^{0}=\gamma\frac{\de(m\gamma c)}{\de t}=\frac{\gamma}{c}\frac{\de E}{\de t}. \]
+Apply work-energy $\de E/\de t=\vec F\cdot\vec v$:
+\[ F^{0}=\gamma\vec F\cdot\vec v/c. \]
+Spatial: $F^{i}=\gamma\,\de p^{i}/\de t=\gamma F^{i}$:
+\[ \boxed{\;F^{\alpha}=(\gamma\vec F\cdot\vec v/c,\;\gamma\vec F).\;} \]
+Now $\vec F=\de(m\gamma\vec v)/\de t$:
+\[ \vec F=m\Big(\frac{\de\gamma}{\de t}\vec v+\gamma\vec a\Big). \]
+Use $\de\gamma/\de t=\gamma^{3}\vec v\cdot\vec a/c^{2}$:
+\[ \vec F=m\gamma\vec a+\frac{m\gamma^{3}}{c^{2}}(\vec v\cdot\vec a)\vec v. \]
+Apply BAC--CAB with $\vec A=\vec B=\vec v,\vec C=\vec a$:
+\[ \vec v\times(\vec v\times\vec a)=(\vec v\cdot\vec a)\vec v-v^{2}\vec a. \]
+Rearrange:
+\[ (\vec v\cdot\vec a)\vec v=\vec v\times(\vec v\times\vec a)+v^{2}\vec a. \]
+Substitute:
+\[ \vec F=m\gamma\vec a+\frac{m\gamma^{3}}{c^{2}}\big[\vec v\times(\vec v\times\vec a)+v^{2}\vec a\big]. \]
+Group $\vec a$ terms; use $1+\gamma^{2}v^{2}/c^{2}=\gamma^{2}$:
+\[ \vec F=m\gamma\!\Big(1+\frac{\gamma^{2}v^{2}}{c^{2}}\Big)\vec a+\frac{m\gamma^{3}}{c^{2}}\vec v\times(\vec v\times\vec a). \]
+\[ \boxed{\;\vec F=m\gamma^{3}\!\left[\vec a+\frac{\vec v\times(\vec v\times\vec a)}{c^{2}}\right].\;} \]
+
+\subsection*{(c)}
+Linear case ($\vec a\parallel\vec v$): $\vec v\times\vec a=0$:
+\[ F=m\gamma^{3}a. \]
+Compute the invariant directly using the Minkowski-norm of $F^{\alpha}$ (for $\vec F\parallel\vec v$, $F^{\alpha}F_{\alpha}=F^{2}$):
+\[ \frac{\de p^{\alpha}}{\de\tau}\frac{\de p_{\alpha}}{\de\tau}=F^{2}=m^{2}\gamma^{6}a^{2}. \]
+Insert into Larmor:
+\[ P_{\mathrm{lin}}=\frac{q^{2}}{6\pi\epsilon_{0}m^{2}c^{3}}\,m^{2}\gamma^{6}a^{2}=\frac{q^{2}\gamma^{6}a^{2}}{6\pi\epsilon_{0}c^{3}}. \]
+Circular case ($\vec a\perp\vec v$): $\vec v\times(\vec v\times\vec a)=-v^{2}\vec a$:
+\[ F=m\gamma^{3}(1-v^{2}/c^{2})a=m\gamma a. \]
+Then $\vec F\cdot\vec v=0$, $F^{\alpha}F_{\alpha}=\gamma^{2}F^{2}$:
+\[ \frac{\de p^{\alpha}}{\de\tau}\frac{\de p_{\alpha}}{\de\tau}=\gamma^{2}m^{2}\gamma^{2}a^{2}=m^{2}\gamma^{4}a^{2}. \]
+\[ P_{\mathrm{circ}}=\frac{q^{2}\gamma^{4}a^{2}}{6\pi\epsilon_{0}c^{3}}. \]
+Ratio at fixed $(\gamma,a)$:
+\[ \boxed{\;\frac{P_{\mathrm{lin}}}{P_{\mathrm{circ}}}=\gamma^{2}.\;} \]
+
+\subsection*{(d)}
+Larmor scaling at fixed energy in a ring ($\gamma=E/mc^{2}$):
+\[ P_{\mathrm{circ}}\propto\frac{q^{2}\gamma^{4}a^{2}}{m^{2}c^{3}}\propto\frac{E^{4}}{m^{6}c^{8}}. \]
+Mass ratio: $m_{\mu}/m_{e}\approx 207$. Suppression in a ring: $(m_{\mu}/m_{e})^{6}\approx 7.9\times 10^{13}$. In a linear machine the curvature term vanishes, removing the $\gamma^{4}$ factor entirely. Combine: choose
+\[ \boxed{\;\text{muon in a linear accelerator}.\;} \]
+Reason: (i) linear geometry eliminates the synchrotron $\gamma^{4}$ enhancement (no centripetal acceleration); (ii) the muon's larger rest mass suppresses Larmor by $1/m^{2}$ at fixed force, equivalently $1/m^{6}$ at fixed energy.
+
+\end{document}

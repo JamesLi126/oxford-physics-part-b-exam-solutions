@@ -1,0 +1,390 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\usetikzlibrary{calc, positioning, decorations.markings}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+\newcommand{\fourv}[1]{\mathsf{#1}}
+\DeclareMathOperator{\diag}{diag}
+
+\title{B2 Symmetry and Relativity, 2021 --- Model Solutions}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+%==================================================================
+\section*{Question 1 --- Charges in a uniform electric field}
+
+\textbf{Problem.} Electron at $x=0$, positron at $x=+d$, both at rest in $S$. At $t=0$ a constant field $\vb E$ is switched on. (a) world lines for $\vb E=E\hat{\vb x}$; (b) motion in $S'$ moving at $v\hat{\vb x}$ and momentum status; (c) for $\vb E=-E\hat{\vb x}$ with $d=\SI{20}{cm}$, $E=\SI{50}{kV/cm}$, find KE at collision, $N_{\min}$, photon $\lambda$; (d) minimum $d$ to produce $W^+W^-$, and linear vs.\ circular colliders.
+
+\subsection*{(a)}
+
+Forces: electron feels $-eE\hat{\vb x}$, positron $+eE\hat{\vb x}$. They accelerate apart.
+
+Equation of motion: $\de p/\de t = qE$ with $p=\gamma m v$:
+\[ p(t) = qEt. \]
+Use $E_{\rm tot}^2=p^2c^2+m^2c^4$ and integrate $v=pc^2/E_{\rm tot}$:
+\begin{equation}
+x(t) = x_0 + \frac{c^2}{a_0}\!\left[\sqrt{1+(a_0 t/c)^2}-1\right],\quad a_0=eE/m_e.
+\label{eq:hyperbolic}
+\end{equation}
+Each world line is a hyperbola: vertical tangent at $t=0$, asymptote at slope $\pm 1/c$. Mirror-symmetric about $x=d/2$.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=0.95]
+  \draw[->, thick] (-3.6,0) -- (4.6,0) node[right] {$x$};
+  \draw[->, thick] (0,-0.3) -- (0,4.6) node[above] {$ct$};
+  \node[circle,fill,inner sep=1.4pt,label=below left:{$O$}] at (0,0) {};
+  \node[circle,fill,inner sep=1.4pt,label=below:{$d$}] at (1.6,0) {};
+  % electron hyperbola (left)
+  \draw[thick,blue,domain=0:1.6,smooth,variable=\u]
+       plot ({-1.5*(cosh(\u)-1)}, {1.5*sinh(\u)});
+  \node[blue] at (-2.4,3.6) {$e^-$};
+  % positron hyperbola (right)
+  \draw[thick,red,domain=0:1.6,smooth,variable=\u]
+       plot ({1.6+1.5*(cosh(\u)-1)}, {1.5*sinh(\u)});
+  \node[red] at (4.0,3.6) {$e^+$};
+  % light cones from each start
+  \draw[gray,dashed] (0,0) -- (-3.3,3.3);
+  \draw[gray,dashed] (0,0) -- (3.3,3.3);
+  \draw[gray,dashed] (1.6,0) -- (-1.7,3.3);
+  \draw[gray,dashed] (1.6,0) -- (4.4,2.8);
+\end{tikzpicture}
+\end{center}
+
+\boxed{\;\text{Mirror hyperbolae about }x=d/2,\; a_0=eE/m_e.\;}
+
+\subsection*{(b)}
+
+In $S'$ the surfaces $t'=\,$const tilt: events ``field on at electron'' (origin) and ``field on at positron'' $(d,0)$ are not simultaneous in $S'$. Time gap:
+\[ \Delta t' = -\gamma v d/c^2. \]
+For $v>0$ the positron's switch-on lies at \emph{earlier} $t'$. So in $S'$ the positron accelerates first while the electron remains at rest.
+
+Trajectories remain hyperbolic (boost along $\hat{\vb x}$ maps hyperbolic motion to hyperbolic motion) but no longer mirror-symmetric.
+
+Total 3-momentum in $S$: forces equal and opposite:
+\[ \dot{\vb P}_{\rm tot} = -eE\hat{\vb x} + eE\hat{\vb x} = 0. \]
+Hence $\vb P_{\rm tot}$ conserved in $S$.
+
+In $S'$: $E'_x=E_x$, but during the simultaneity-mismatch interval only one particle accelerates:
+\[ \dv{\vb P'_{\rm tot}}{t'} = +eE\hat{\vb x}'\quad\text{(transient, positron only)}. \]
+Hence $\vb P'_{\rm tot}$ \emph{not} conserved during the transient: external (field) source is non-simultaneous in $S'$, so the system is open.
+
+\textbf{4-vector status.} Each $\fourv P_i$ is a 4-vector. The sum $\sum_i \fourv P_i(t)$ depends on the spacelike slice ($t=$const in $S$ vs.\ $t'=$const in $S'$). For an isolated system the slice-dependence drops out and the total is a 4-vector; for our open system (field on, particles still in field), the slice matters and $\fourv P_{\rm tot}$ is not a 4-vector.
+
+\boxed{\;\vb P_{\rm tot}\text{ conserved in }S;\text{ not in }S'\text{ during transient};\;\fourv P_{\rm tot}\text{ a 4-vector only for closed system.}\;}
+
+\subsection*{(c)}
+
+Reverse field: electron pushed $+\hat{\vb x}$, positron $-\hat{\vb x}$. They meet at $x=d/2$ by symmetry. Each crosses distance $d/2$.
+
+Work--energy theorem:
+\[ T = eE\,\frac{d}{2}. \]
+Substitute $E=\SI{5e6}{V/m}$, $d/2=\SI{0.10}{m}$:
+\[ T = e\times\SI{5e6}{V/m}\times\SI{0.10}{m} = \SI{5e5}{eV}. \]
+Hence
+\boxed{\;T = \SI{0.500}{MeV}\text{ per particle.}\;}
+
+Total energy in lab (= ZMF by symmetry):
+\[ E_{\rm tot} = 2(m_ec^2 + T) = 2(\SI{0.511}{MeV}+\SI{0.500}{MeV}) = \SI{2.022}{MeV}. \]
+
+\textbf{Photon number.} ZMF total $\bm p=0$. Single photon has $|\bm p_\gamma|=E_\gamma/c\neq 0$: forbidden. Two photons back-to-back conserve both energy and momentum:
+\boxed{\;N_{\min}=2.\;}
+
+\textbf{Wavelength.} Each photon carries $E_\gamma=E_{\rm tot}/2$:
+\[ E_\gamma = \SI{1.011}{MeV}. \]
+Apply $\lambda = hc/E_\gamma$ with $hc=\SI{1240}{eV.nm}$:
+\[ \lambda = \frac{\SI{1240}{eV.nm}}{\SI{1.011e6}{eV}}. \]
+Evaluate:
+\boxed{\;\lambda \approx \SI{1.23}{pm}.\;}
+
+\subsection*{(d)}
+
+Threshold for $e^+e^-\to W^+W^-$: $E_{\rm tot}\ge 2m_W c^2$:
+\[ 2(m_ec^2 + T_{\min}) = 2 m_W c^2. \]
+Neglect $m_e c^2 \ll m_W c^2$:
+\[ T_{\min} = m_W c^2 = \SI{80.379}{GeV}. \]
+Use $T_{\min}=eE\,d_{\min}/2$:
+\[ d_{\min} = \frac{2 m_W c^2}{eE}. \]
+Substitute $eE=\SI{5e6}{eV/m}$:
+\[ d_{\min} = \frac{2\times\SI{80.379e9}{eV}}{\SI{5e6}{eV/m}}. \]
+Evaluate:
+\boxed{\;d_{\min}\approx \SI{32}{km}.\;}
+
+\textbf{Linear vs.\ circular.} Synchrotron loss per turn $\propto \gamma^4/r$; for electrons at TeV scale $\gamma\sim 10^6$, prohibitive. Linear: no centripetal $a$, no synchrotron loss; ideal for $e^\pm$ at high energy. But single-pass: low luminosity. Circular: ideal for protons ($\gamma_p/\gamma_e = m_e/m_p$), continuous bunch reuse, high luminosity (LHC).
+
+%==================================================================
+\section*{Question 2 --- Liénard--Wiechert and synchrotron radiation}
+
+\textbf{Problem.} (a) Derive $A^\mu$ for an arbitrarily moving charge; explain radiative vs.\ non-radiative. (b) Synchrotron $r=\SI{500}{m}$, $B=\SI{0.02}{T}$: find $\gamma$, $E$, energy loss per turn (Larmor). (c) Detector at $+\hat{\vb x}$: show pulses, estimate duration.
+
+\subsection*{(a)}
+
+Source 4-velocity $U^\mu=\de X^\mu/\de\tau$, with $U\cdot U = -c^2$. Retarded null separation $R^\mu = X^\mu_{\rm obs} - X^\mu(\tau_{\rm ret})$ with
+\[ R\cdot R = 0,\quad R^0 > 0. \]
+Ansatz, manifestly covariant:
+\begin{equation}
+A^\mu = \frac{q}{4\pi\epsilon_0}\,\frac{U^\mu/c}{-R_\nu U^\nu}.
+\label{eq:LW}
+\end{equation}
+Verify in instantaneous rest frame at retarded event: $U^\mu = (c,\bm 0)$, $R^\mu=(r,\bm r)$ with $r=|\bm r|$:
+\[ -R_\nu U^\nu = -(-r\,c) = r c. \]
+Substitute:
+\[ A^\mu_{\rm rest} = \frac{q}{4\pi\epsilon_0}\,\frac{(1,\bm 0)}{rc}\cdot c = \left(\frac{1}{c}\frac{q}{4\pi\epsilon_0 r},\;\bm 0\right). \]
+Recognise static Coulomb. Both sides are 4-vectors; agreement in one frame $\Rightarrow$ all frames.
+
+In a general frame, $U^\mu=\gamma(c,\bm v)$, $-R_\nu U^\nu = \gamma c r(1-\hat{\bm r}\cdot\bm v/c) \equiv \gamma c r \kappa$:
+\[ \phi = \frac{1}{4\pi\epsilon_0}\frac{q}{r\kappa}\bigg|_{\rm ret},\qquad \bm A = \frac{\mu_0}{4\pi}\frac{q\bm v}{r\kappa}\bigg|_{\rm ret}. \]
+
+\textbf{Field structure.} $\bm E = -\nabla\phi - \partial_t\bm A$; chain rule through $t_{\rm ret}$ yields
+\[ \bm E = \frac{q}{4\pi\epsilon_0}\!\left[\underbrace{\frac{(\hat{\bm r}-\bm v/c)(1-v^2/c^2)}{\kappa^3 r^2}}_{\text{velocity, }\propto 1/r^2} + \underbrace{\frac{\hat{\bm r}\times[(\hat{\bm r}-\bm v/c)\times\dot{\bm v}/c]}{\kappa^3 r}}_{\text{acceleration, }\propto 1/r}\right]_{\rm ret}. \]
+Velocity term: $|\bm S|\propto 1/r^4$; flux through sphere $\to 0$ at infinity --- non-radiative. Acceleration term: $|\bm S|\propto 1/r^2$; finite power at infinity --- radiative. Only accelerating charges radiate.
+
+\subsection*{(b)}
+
+Magnetic rigidity $p=eBr$:
+\[ pc = ceBr. \]
+Use $ceB = \SI{0.3}{GeV/(c\cdot T\cdot m)}\cdot c$ practical constant: $pc[\si{GeV}] = 0.3\,B[\si{T}]\,r[\si{m}]$:
+\[ pc = 0.3\times 0.02\times 500\;\si{GeV} = \SI{3}{GeV}. \]
+Since $m_ec^2=\SI{0.511}{MeV}\ll pc$:
+\[ E \approx pc = \SI{3}{GeV}. \]
+\boxed{\;E\approx \SI{3}{GeV}.\;}
+
+Lorentz factor:
+\[ \gamma = \frac{E}{m_ec^2} = \frac{\SI{3e9}{eV}}{\SI{0.511e6}{eV}}. \]
+Evaluate:
+\boxed{\;\gamma \approx 5.87\times 10^3.\;}
+
+\textbf{Larmor radiation.} Proper acceleration for circular motion ($\bm a\perp\bm v$): $a_0 = \gamma^2 a$ with $a\approx c^2/r$:
+\[ a_0^2 = \gamma^4 c^4/r^2. \]
+Substitute into Larmor:
+\[ P_L = \frac{2}{3}\frac{e^2}{4\pi\epsilon_0}\frac{\gamma^4 c}{r^2}. \]
+Numerics with $e^2/(4\pi\epsilon_0)=\SI{2.31e-28}{J.m}$:
+\[ P_L = \tfrac{2}{3}\times\SI{2.31e-28}{J.m}\times\frac{(5.87\times 10^3)^4\times \SI{3e8}{m/s}}{(\SI{500}{m})^2}. \]
+Evaluate:
+\[ P_L \approx \SI{2.2e-7}{W}. \]
+
+Period $T = 2\pi r/c$:
+\[ \Delta E = P_L\,T = \frac{e^2 \gamma^4}{3\epsilon_0\,r}. \]
+Numerics:
+\[ \Delta E = \frac{(\SI{1.602e-19}{C})^2 (5.87\times 10^3)^4}{3\times\SI{8.854e-12}{F/m}\times\SI{500}{m}}. \]
+Evaluate:
+\boxed{\;\Delta E \approx \SI{2.3e-15}{J}\approx \SI{14}{keV}\text{ per turn}.\;}
+
+\subsection*{(c)}
+
+Ultra-relativistic beaming: acceleration field concentrated in cone of half-angle
+\[ \Delta\theta\sim 1/\gamma. \]
+Detector at $+\hat{\bm x}$ illuminated only while $\bm v$ within $\sim 1/\gamma$ of $\hat{\bm x}$. One pulse per revolution, period $T_{\rm rev}=2\pi r/c$.
+
+\textbf{Pulse duration.} Emission arc subtends $\Delta\theta\sim 2/\gamma$ at the centre:
+\[ \Delta t_{\rm emit} = \frac{r\cdot 2/\gamma}{v} \approx \frac{2r}{\gamma c}. \]
+Retardation compression (source approaching detector at $\beta c$):
+\[ \Delta t_{\rm obs} = (1-\beta)\Delta t_{\rm emit}. \]
+Use $1-\beta\approx 1/(2\gamma^2)$:
+\[ \Delta t_{\rm obs} \approx \frac{2r}{\gamma c}\cdot\frac{1}{2\gamma^2} = \frac{r}{\gamma^3 c}. \]
+Numerics:
+\[ \Delta t_{\rm obs} = \frac{\SI{500}{m}}{(5.87\times 10^3)^3 \times \SI{3e8}{m/s}}. \]
+Evaluate:
+\boxed{\;\Delta t_{\rm obs}\sim r/(\gamma^3 c)\approx \SI{8}{as}.\;}
+
+Implies critical frequency $\omega_c \sim \gamma^3 c/r$, $\hbar\omega_c\sim \SI{80}{eV}$ (EUV/soft X-ray).
+
+%==================================================================
+\section*{Question 3 --- Crossed fields and the EM stress--energy tensor}
+
+\textbf{Problem.} (a) Electron from rest in $\vb E=(E,0,0)$, $\vb B=(0,B,0)$: best frame and trajectory for $|E/B|>c$ and $|E/B|<c$. (b) Top row $T^{0\nu}$ from $T^{\mu\nu}=\epsilon_0c^2(-F^{\mu\lambda}F^\nu{}_\lambda - \tfrac14 g^{\mu\nu}F_{\kappa\lambda}F^{\kappa\lambda})$. (c) Capacitor moving along $\hat{\vb x}$: plates $\parallel xy$ then $\parallel yz$; $T^{\mu\nu}$ in rest and lab frames; energy flow.
+
+\subsection*{(a)}
+
+Invariants:
+\[ \vb E\cdot\vb B = 0,\qquad I_2 = E^2 - c^2 B^2. \]
+$\vb E\perp\vb B$, so a frame exists in which one of $\vb E,\vb B$ is zero.
+
+\textbf{Case (i) $|E/B|>c$ ($I_2>0$):} $\vb E$ wins. Boost along $\hat{\vb z}$ at speed
+\[ u = c^2 B/E < c \]
+gives $\vb B'=0$, pure $\vb E'=\sqrt{I_2}\,\hat{\vb x}$. In $S'$: hyperbolic motion along $\hat{\vb x}'$ (\eqref{eq:hyperbolic}). In $S$: same motion plus uniform drift $-u\hat{\vb z}$.
+
+\textbf{Case (ii) $|E/B|<c$ ($I_2<0$):} $\vb B$ wins. $\vb E\times\vb B$ drift frame:
+\[ \bm v_{\rm drift} = \frac{\vb E\times\vb B}{B^2} = (E/B)\hat{\vb z},\qquad |\bm v_{\rm drift}|<c. \]
+In $S''$: $\vb E''=0$, pure $\vb B''$ along $\hat{\vb y}$. Electron at rest in $S$ has velocity $-\bm v_{\rm drift}$ in $S''$, executes uniform circular motion in $xz''$-plane. Boost back: cycloid in $xz$-plane, starting at a cusp (rest in $S$).
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+  \draw[->, thick] (-0.3,0) -- (5.8,0) node[right] {$z$};
+  \draw[->, thick] (0,-1.5) -- (0,0.6) node[above] {$x$};
+  \node[circle,fill,inner sep=1.4pt,label=above left:{$O$}] at (0,0) {};
+  \draw[thick,blue,domain=0:5.0,smooth,variable=\t,samples=80]
+     plot ({\t-0.5*sin(\t r)},{-0.5+0.5*cos(\t r)});
+  % cusp markers
+  \node[circle,fill,inner sep=1.2pt] at (0,0) {};
+  \node[circle,fill,inner sep=1.2pt] at ({2*pi-0.5*sin(2*pi r)},{-0.5+0.5*cos(2*pi r)}) {};
+  \node[blue] at (4.6,-1.2) {cycloid in $S$};
+  \draw[blue,->,thin] (4.0,-1.05) -- (3.0,-0.75);
+\end{tikzpicture}
+\end{center}
+
+\boxed{\;|E/B|>c:\text{ accelerated drift; }\;|E/B|<c:\text{ cycloid (}\vb E\times\vb B\text{ drift)}.\;}
+
+\subsection*{(b)}
+
+Use metric $\eta=\diag(-1,+1,+1,+1)$. Faraday tensor:
+\[ F^{0i} = E^i/c,\qquad F^{ij} = -\epsilon^{ijk}B_k. \]
+Invariant scalar:
+\[ F_{\kappa\lambda}F^{\kappa\lambda} = 2(\vb B^2 - \vb E^2/c^2). \]
+
+\textbf{$T^{00}$.} Compute $F^{0\lambda}F^0{}_\lambda$. Lower index: $F^0{}_i = -F^{0i} = -E^i/c$. So
+\[ F^{0\lambda}F^0{}_\lambda = (E^i/c)(-E^i/c) = -\vb E^2/c^2. \]
+Substitute, using $g^{00}=-1$:
+\[ T^{00} = \epsilon_0 c^2\!\left[\,\vb E^2/c^2 + \tfrac14(-)(2)(\vb B^2-\vb E^2/c^2)\,\right]. \]
+Wait --- careful with signs: $-\tfrac14 g^{00}F_{\kappa\lambda}F^{\kappa\lambda} = -\tfrac14(-1)(2)(\vb B^2-\vb E^2/c^2) = \tfrac12(\vb B^2-\vb E^2/c^2)$:
+\[ T^{00} = \epsilon_0 c^2\bigl[\,\vb E^2/c^2 + \tfrac12(\vb B^2-\vb E^2/c^2)\,\bigr]. \]
+Simplify:
+\[ T^{00} = \tfrac12\epsilon_0\vb E^2 + \tfrac{1}{2\mu_0}\vb B^2 \equiv u_{\rm EM}. \]
+
+\textbf{$T^{0i}$.} $g^{0i}=0$, so
+\[ T^{0i} = -\epsilon_0 c^2 F^{0\lambda}F^i{}_\lambda. \]
+Use $F^{0\lambda}=(0,\vb E/c)$ and lower index of $F^{i\mu}$. Take $i=x$:
+\[ F^{x\mu} = (E^x/c,\,0,\,-B_z,\,B_y),\quad F^x{}_\mu = (-E^x/c,\,0,\,-B_z,\,B_y). \]
+Contract:
+\[ F^{0\lambda}F^x{}_\lambda = (E^x/c)(-E^x/c)\cdot[\text{but }F^{00}=0]\dots \]
+More directly: $F^{0\lambda}F^x{}_\lambda = (E^y/c)(-B_z) + (E^z/c)(B_y) = -(\vb E\times\vb B)_x/c$.
+
+Hence
+\[ T^{0i} = -\epsilon_0 c^2\cdot\bigl(-(\vb E\times\vb B)_i/c\bigr) = \epsilon_0 c(\vb E\times\vb B)_i. \]
+Recognise $\vb S = (\vb E\times\vb B)/\mu_0$:
+\[ T^{0i} = \frac{(\vb E\times\vb B)_i}{\mu_0 c} = \frac{S_i}{c}. \]
+Combine:
+\begin{equation}
+\boxed{\;T^{0\nu} = \left(u_{\rm EM},\;\bm S/c\right) = \left(\tfrac12\epsilon_0\vb E^2 + \tfrac{1}{2\mu_0}\vb B^2,\;\frac{\vb E\times\vb B}{\mu_0 c}\right).\;}
+\label{eq:T0nu}
+\end{equation}
+$T^{00}$ = EM energy density; $T^{0i}$ = $c\times$(momentum density) = energy flux/$c$.
+
+\subsection*{(c)}
+
+\textbf{Plates $\parallel xy$, motion along $\hat{\vb x}$.} Rest frame $S^*$: $\vb E^*=E\hat{\vb z}$, $\vb B^*=0$. Faraday tensor non-zero entries: $F^{*03}=E/c$, $F^{*30}=-E/c$.
+
+Compute $T^{*\mu\nu}$ from \eqref{eq:T0nu} extended; with $\vb B^*=0$, energy density $u^*=\tfrac12\epsilon_0 E^2$, $\vb S^*=0$. Maxwell stress: tension along $\vb E$ (i.e.\ $\hat{\vb z}$), pressure transverse ($\hat{\vb x},\hat{\vb y}$):
+\[ T^{*\mu\nu}_{(xy)} = u^*\,\diag(+1,+1,+1,-1). \]
+
+Boost to lab along $-\hat{\vb x}$ (i.e.\ lab moves at $-v\hat{\vb x}$ in $S^*$, equivalently $S^*$ moves at $+v\hat{\vb x}$ relative to lab); $\Lambda^0{}_0=\gamma$, $\Lambda^0{}_1=\Lambda^1{}_0=\beta\gamma$, $\Lambda^1{}_1=\gamma$. Apply to the $(0,1)$ block, which is $\diag(u^*,u^*)$:
+\[ T'^{00} = \gamma^2(T^{*00}+\beta^2 T^{*11}) = \gamma^2 u^*(1+\beta^2). \]
+Off-diagonal:
+\[ T'^{01} = \gamma^2\beta(T^{*00}+T^{*11}) = 2\gamma^2\beta\, u^*. \]
+And:
+\[ T'^{11} = \gamma^2(\beta^2 T^{*00}+T^{*11}) = \gamma^2 u^*(1+\beta^2). \]
+Other components unchanged. Hence
+\begin{equation}
+\boxed{\;T^{\mu\nu}_{(xy),\rm lab} = u^*\!\begin{pmatrix}\gamma^2(1+\beta^2)&2\gamma^2\beta&0&0\\ 2\gamma^2\beta&\gamma^2(1+\beta^2)&0&0\\ 0&0&+1&0\\ 0&0&0&-1\end{pmatrix},\;\;u^*=\tfrac12\epsilon_0 E^2.\;}
+\end{equation}
+
+\textbf{Plates $\parallel yz$, motion along $\hat{\vb x}$.} Rest frame: $\vb E^*=E\hat{\vb x}$, $\vb B^*=0$. Tension along $\hat{\vb x}$:
+\[ T^{*\mu\nu}_{(yz)} = u^*\,\diag(+1,-1,+1,+1). \]
+Boost along $\hat{\vb x}$: field $\parallel$ boost, so $\vb E,\vb B$ both unchanged in lab. Stress--energy tensor invariant under this boost:
+\begin{equation}
+\boxed{\;T^{\mu\nu}_{(yz),\rm lab} = u^*\,\diag(+1,-1,+1,+1).\;}
+\end{equation}
+
+\textbf{Energy flow.} $T^{0i}$ = energy flux (Poynting / $c$).
+\begin{itemize}
+\item $(xy)$: $T^{01}=2\gamma^2\beta u^*\neq 0$. Lab sees $\vb B = -\bm v\times\vb E/c^2$ (transverse to motion), so $\vb S=\vb E\times\vb B/\mu_0$ along $+\hat{\vb x}$. Electrostatic energy is convected with the moving capacitor.
+\item $(yz)$: $T^{0i}=0$. Field $\parallel$ boost generates no $\vb B$, no $\vb S$. Energy density unchanged in lab; \emph{no} EM energy flux despite the capacitor moving.
+\end{itemize}
+\boxed{\;\text{Convection only when boost has component }\perp\vb E.\;}
+
+%==================================================================
+\section*{Question 4 --- Symmetry, Lorentz group, rotation generators}
+
+\textbf{Problem.} (a) Define symmetry; identify SR's; SR-consistency criterion. (b) Show 2D rotation orthogonal, 1D boost not. (c) $J_3$ generates $R_z(\theta)$; meaning of $[J_i,J_j]$; rotations form a group. (d) Why boosts alone don't form a group; smallest group containing all 3D Lorentz transformations and connection to the rest.
+
+\subsection*{(a)}
+
+A \emph{symmetry} is a transformation of the dynamical variables that leaves the equations of motion form-invariant. By Noether: continuous symmetries $\leftrightarrow$ conservation laws.
+
+\textbf{SR symmetry.} \emph{Lorentz invariance}: laws form-invariant under $\Lambda^\mu{}_\nu$ (boosts $+$ rotations); with translations forms the Poincaré group. Equivalently, $\eta_{\mu\nu}$ and $c$ are invariant.
+
+\textbf{Criterion.} An equation is SR-consistent iff both sides are Lorentz tensors of identical rank/index structure. Example: $\fourv F = m\fourv A$ is consistent (4-vectors); $\bm F=m\bm a$ alone is not (3-vector $\bm F$ does not transform as part of any single 4-vector without $\gamma$).
+
+\subsection*{(b)}
+
+Clockwise 2D rotation:
+\[ R(\theta) = \begin{pmatrix}\cos\theta & \sin\theta\\ -\sin\theta & \cos\theta\end{pmatrix}. \]
+Transpose:
+\[ R^T(\theta) = R(-\theta). \]
+Multiply:
+\[ R^T R = R(-\theta)R(\theta) = R(0) = I. \]
+Hence orthogonal.
+
+1D Lorentz boost (rapidity $\eta$):
+\[ \Lambda(\eta) = \begin{pmatrix}\cosh\eta & -\sinh\eta\\ -\sinh\eta & \cosh\eta\end{pmatrix}. \]
+Symmetric, so $\Lambda^T=\Lambda$:
+\[ \Lambda^T\Lambda = \Lambda^2 = \begin{pmatrix}\cosh 2\eta & -\sinh 2\eta\\ -\sinh 2\eta & \cosh 2\eta\end{pmatrix}\neq I. \]
+Boost preserves Minkowski form, not Euclidean: $\Lambda^T\eta\Lambda = \eta$ (pseudo-orthogonal).
+
+\boxed{\;R^TR=I;\;\Lambda^T\Lambda\neq I,\text{ but }\Lambda^T\eta\Lambda=\eta.\;}
+
+\subsection*{(c)}
+
+\textbf{$J_3$ exponentiates.} Compute $J_3^2$:
+\[ J_3^2 = \begin{pmatrix}1&0&0\\ 0&1&0\\ 0&0&0\end{pmatrix} \equiv P. \]
+Note $J_3 P = J_3$, so $J_3^{2k}=P$, $J_3^{2k+1}=J_3$ ($k\ge 1$).
+
+Expand exponential:
+\[ e^{-i\theta J_3} = (I-P) + P\sum_{k\ge 0}\frac{(-i\theta)^{2k}}{(2k)!} - i J_3 \sum_{k\ge 0}\frac{(-i\theta)^{2k}\theta}{(2k+1)!}\cdot(-i)\dots \]
+Cleaner: separate even/odd:
+\[ e^{-i\theta J_3} = (I-P) + P\cos\theta - i J_3\sin\theta. \]
+Use $-iJ_3 = \begin{pmatrix}0&-1&0\\ 1&0&0\\ 0&0&0\end{pmatrix}$:
+\[ e^{-i\theta J_3} = \begin{pmatrix}\cos\theta & -\sin\theta & 0\\ \sin\theta & \cos\theta & 0\\ 0 & 0 & 1\end{pmatrix} = R_z(\theta). \]
+Hence $J_3$ generates rotation about $\hat{\bm z}$.
+
+\textbf{Lie algebra.}
+\[ [J_i,J_j] = i\epsilon_{ijk}J_k. \]
+Meaning: structure constants of the rotation group; quantifies non-commutativity of infinitesimal rotations. Two infinitesimal rotations about $\hat{\bm x}$ then $\hat{\bm y}$ differ from the reverse order by a rotation about $\hat{\bm z}$.
+
+\textbf{Group axioms.} Closure: BCH series
+\[ e^A e^B = e^{A+B+\tfrac12[A,B]+\dots} \]
+involves only nested commutators. By $[J_i,J_j]=i\epsilon_{ijk}J_k$, every commutator stays in $\mathrm{span}\{J_k\}$; so $e^A e^B = e^{-i\theta'\hat n'^k J_k}$, again a rotation. Identity: $R(0)=I$. Inverse: $R(-\theta,\hat{\bm n})$. Associativity: matrix multiplication. All four axioms hold.
+
+\boxed{\;\text{Closure of }[J_i,J_j]\text{ }\Leftrightarrow\text{ rotations form a group SO(3)}.\;}
+
+\subsection*{(d)}
+
+\textbf{Boost commutator:}
+\[ [K_i,K_j] = -i\epsilon_{ijk}J_k. \]
+Two boosts in different directions yield a \emph{rotation} (Wigner / Thomas), not another boost. Hence $\mathrm{span}\{K_i\}$ alone does not close under commutators: not a sub-algebra. By BCH, the product of two non-collinear boosts is a boost composed with a rotation; closure fails.
+
+(Boosts in a fixed direction $\hat{\bm n}$, generated by a single $K_i$, do form a 1-parameter sub-group: rapidities add.)
+
+\textbf{Smallest group.} Add rotations: full algebra $\{J_i,K_i\}$ obeys
+\[ [J_i,J_j]=i\epsilon_{ijk}J_k, \]
+\[ [J_i,K_j]=i\epsilon_{ijk}K_k, \]
+\[ [K_i,K_j]=-i\epsilon_{ijk}J_k. \]
+This closes; exponentiation gives the proper orthochronous Lorentz group:
+\boxed{\;\mathrm{SO}^+(1,3).\;}
+
+\textbf{Connection to the wider Lorentz group.} $O(1,3)$ has four disconnected components, classified by $\det\Lambda=\pm 1$ and $\Lambda^0{}_0\gtrless 0$:
+\begin{center}
+\begin{tabular}{l c c l}
+\toprule
+component & $\det$ & $\Lambda^0{}_0$ & connector to $\mathrm{SO}^+$\\
+\midrule
+$\mathrm{SO}^+(1,3)$ & $+1$ & $\ge 1$ & identity\\
+$P\cdot\mathrm{SO}^+$ & $-1$ & $\ge 1$ & parity $P:(t,\bm x)\to(t,-\bm x)$\\
+$T\cdot\mathrm{SO}^+$ & $-1$ & $\le -1$ & time reversal $T:(t,\bm x)\to(-t,\bm x)$\\
+$PT\cdot\mathrm{SO}^+$ & $+1$ & $\le -1$ & $PT$\\
+\bottomrule
+\end{tabular}
+\end{center}
+$P,T$ are discrete, not reachable by exponentiating $\{J_i,K_i\}$; appended ``by hand'' to recover full $O(1,3)$.
+
+\end{document}

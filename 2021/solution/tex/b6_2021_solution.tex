@@ -1,0 +1,546 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\usepackage{braket}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+\newcommand{\kB}{k_{B}}
+
+\title{B6 Condensed-Matter Physics --- Model Solutions, Trinity 2021}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+%==============================================================
+\section*{Question 1 --- Powder neutron diffraction of cubic RbMnF$_3$}
+
+\textbf{Problem.} Cubic RbMnF$_3$ powder, neutrons of $E=\SI{25}{meV}$. Rings at $2\theta=\ang{24.6},\ang{35.1},\ang{43.4},\ang{50.5}$. Find $d_{hkl}$, Miller indices, lattice type and accurate $a$ ($\approx \SI{0.4}{nm}$). Below $T_c=\SI{83}{K}$ two new rings; one at $\ang{21.3}$. Mechanism, predict the second.
+
+\subsection*{(a) Why neutrons rather than X-rays}
+
+Neutrons carry a magnetic moment that couples to unpaired electron spin density.
+\boxed{\;\text{Use neutrons to detect magnetic order (e.g.\ AFM Mn$^{2+}$ structure in RbMnF$_3$); X-rays cannot.}\;}
+
+\subsection*{(b) Lattice-plane spacings}
+
+de Broglie wavelength from $E=p^2/2m_n$:
+\[
+\lambda \;=\; \frac{h}{\sqrt{2 m_n E}}.
+\]
+Convert energy:
+\[
+E \;=\; 25\times 10^{-3}\times 1.602\times 10^{-19}\,\si{J} \;=\; 4.005\times 10^{-21}\,\si{J}.
+\]
+Compute momentum:
+\[
+\sqrt{2 m_n E} \;=\; \sqrt{2\cdot 1.67493\times 10^{-27}\cdot 4.005\times 10^{-21}} \;=\; 3.663\times 10^{-24}\,\si{kg.m.s^{-1}}.
+\]
+Wavelength:
+\[
+\lambda \;=\; \frac{6.626\times 10^{-34}}{3.663\times 10^{-24}} \;=\; \SI{0.1809}{nm}.
+\]
+Bragg's law:
+\begin{equation}
+d_{hkl} \;=\; \frac{\lambda}{2\sin\theta},\qquad \theta=\tfrac{1}{2}(2\theta).
+\label{eq:bragg}
+\end{equation}
+Tabulate:
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+$2\theta$ & $\theta$ & $\sin\theta$ & $d_{hkl}$ \\
+\midrule
+$\ang{24.6}$ & $\ang{12.30}$ & $0.2130$ & $\SI{0.4247}{nm}$ \\
+$\ang{35.1}$ & $\ang{17.55}$ & $0.3015$ & $\SI{0.3000}{nm}$ \\
+$\ang{43.4}$ & $\ang{21.70}$ & $0.3697$ & $\SI{0.2447}{nm}$ \\
+$\ang{50.5}$ & $\ang{25.25}$ & $0.4266$ & $\SI{0.2120}{nm}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{equation}
+\boxed{\;d_1{=}\SI{0.425}{nm},\ d_2{=}\SI{0.300}{nm},\ d_3{=}\SI{0.245}{nm},\ d_4{=}\SI{0.212}{nm}.\;}
+\label{eq:dvals}
+\end{equation}
+
+\subsection*{(c) Miller indices, lattice type, and accurate $a$}
+
+Cubic spacing:
+\begin{equation}
+d_{hkl} \;=\; \frac{a}{\sqrt{N}},\qquad N\equiv h^2+k^2+l^2.
+\label{eq:dN}
+\end{equation}
+Compute $N=(a/d)^2$ with $a\approx\SI{0.4}{nm}$:
+\[
+N \;\approx\; 0.886,\;1.778,\;2.671,\;3.560.
+\]
+Identify $N=1,2,3,4$ after small rescaling of $a$.
+
+Selection rules: $N=1$ allowed rules out FCC (needs all-even or all-odd); $N=2$ allowed rules out BCC (needs $h+k+l$ even, but only the larger $N=2,4,6\ldots$ pattern). Hence
+\boxed{\;\text{simple cubic.}\;}
+
+Miller indices in order: $(100),(110),(111),(200)$.
+
+Refit $a=d\sqrt{N}$:
+\[
+a_1 \;=\; 0.4247\cdot 1 \;=\; \SI{0.4247}{nm}.
+\]
+\[
+a_2 \;=\; 0.3000\cdot \sqrt{2} \;=\; \SI{0.4243}{nm}.
+\]
+\[
+a_3 \;=\; 0.2447\cdot \sqrt{3} \;=\; \SI{0.4239}{nm}.
+\]
+\[
+a_4 \;=\; 0.2120\cdot 2 \;=\; \SI{0.4240}{nm}.
+\]
+Average:
+\begin{equation}
+\boxed{\;a \;=\; \SI{0.4242 \pm 0.0004}{nm}.\;}
+\label{eq:abox}
+\end{equation}
+
+\subsection*{(d) Field changes ring intensity but not angle}
+
+Bragg angles depend only on $d_{hkl}$; field-induced lattice distortion (magnetostriction) is negligible. Neutron structure factor splits into nuclear and magnetic parts:
+\[
+F_{hkl} \;=\; F^{\text{nuc}}_{hkl} \;+\; F^{\text{mag}}_{hkl}(\hat{\bm B}).
+\]
+Field polarises the Mn$^{2+}$ paramagnetic moments, modifying $\bm M_\perp(\bm Q)$ and hence $|F_{hkl}|^2$.
+\boxed{\;\text{Field aligns Mn$^{2+}$ moments; magnetic structure factor changes ring intensities.}\;}
+
+\subsection*{(e) New rings below $T_c$: G-type antiferromagnetism}
+
+Mechanism: nearest-neighbour Mn moments alternate in sign on the simple-cubic Mn sublattice (G-type AFM). Magnetic unit cell is $2a\times 2a\times 2a$.
+
+Magnetic reflections at $\bm Q=(2\pi/a)(h',k',l')$ with $h',k',l'$ half-odd-integers; lowest-order $N_{\text{mag}}=h'^2+k'^2+l'^2$.
+
+Smallest $N_{\text{mag}}$: $(\tfrac12,\tfrac12,\tfrac12)$ gives $N_{\text{mag}}=3/4$. Spacing:
+\[
+d^{*} \;=\; \frac{a}{\sqrt{3/4}} \;=\; \SI{0.4898}{nm}.
+\]
+Bragg angle:
+\[
+\sin\theta \;=\; \frac{\lambda}{2 d^{*}} \;=\; \frac{0.1809}{2\cdot 0.4898} \;=\; 0.1847.
+\]
+\[
+2\theta \;=\; \ang{21.3},
+\]
+matching the observation.
+\boxed{\;\text{G-type AFM ordering; magnetic period }2a.\;}
+
+Next allowed magnetic reflection: $(\tfrac32,\tfrac12,\tfrac12)$, $N_{\text{mag}}=11/4$. Spacing:
+\[
+d^{**} \;=\; \frac{a}{\sqrt{11/4}} \;=\; \frac{0.4242\cdot 2}{\sqrt{11}}\,\si{nm} \;=\; \SI{0.2558}{nm}.
+\]
+Bragg angle:
+\[
+\sin\theta \;=\; \frac{0.1809}{2\cdot 0.2558} \;=\; 0.3537.
+\]
+\begin{equation}
+\boxed{\;2\theta_{\text{2nd}} \;\approx\; \ang{41.4}.\;}
+\label{eq:secondring}
+\end{equation}
+Slots between $(110)$ at $\ang{35.1}$ and $(111)$ at $\ang{43.4}$, consistent with the observation window.
+
+%==============================================================
+\section*{Question 2 --- Crystal structure and phonons of AlP / Si}
+
+\textbf{Problem.} AlP plan view (zinc-blende). (a) Bravais lattice, lattice points, basis. (b) Reciprocal-lattice formula and derive the AlP reciprocal lattice. (c) Acoustic/optical phonon counts; longitudinal/transverse along $[100]$ and number of distinct acoustic velocities. (d) For Si ($a=\SI{0.5431}{nm}$, $v_L=\SI{8433}{m.s^{-1}}$ along $[100]$) estimate $\hbar\omega_{\text{LA}}$ at $\bm k=(2\pi/a,0,0)$. (e) Phonon-spectrum difference between AlP and Si at this $\bm k$.
+
+\subsection*{(a) Bravais lattice and basis}
+
+Al sites at corners and all six face centres: FCC. P sites at $(\tfrac14,\tfrac14,\tfrac14)a$ and the three FCC translates: same FCC lattice shifted by $(\tfrac14,\tfrac14,\tfrac14)a$. This is the zinc-blende structure.
+
+Conventional-cell FCC lattice points:
+\[
+(0,0,0),\;(\tfrac12,\tfrac12,0),\;(\tfrac12,0,\tfrac12),\;(0,\tfrac12,\tfrac12).
+\]
+\begin{equation}
+\boxed{\;\text{Bravais: FCC. Basis: Al at }(0,0,0),\ \text{P at }(\tfrac14,\tfrac14,\tfrac14)a.\;}
+\label{eq:basis}
+\end{equation}
+
+\subsection*{(b) Reciprocal lattice}
+
+General formula ($\bm a_i\cdot\bm b_j=2\pi\delta_{ij}$):
+\begin{equation}
+\bm b_1 \;=\; 2\pi\,\frac{\bm a_2\times\bm a_3}{\bm a_1\cdot(\bm a_2\times\bm a_3)},\quad
+\bm b_2 \;=\; 2\pi\,\frac{\bm a_3\times\bm a_1}{\bm a_1\cdot(\bm a_2\times\bm a_3)},\quad
+\bm b_3 \;=\; 2\pi\,\frac{\bm a_1\times\bm a_2}{\bm a_1\cdot(\bm a_2\times\bm a_3)}.
+\label{eq:bidef}
+\end{equation}
+
+FCC primitive vectors:
+\[
+\bm a_1 \;=\; \tfrac{a}{2}(\hat{\bm y}+\hat{\bm z}),\quad
+\bm a_2 \;=\; \tfrac{a}{2}(\hat{\bm z}+\hat{\bm x}),\quad
+\bm a_3 \;=\; \tfrac{a}{2}(\hat{\bm x}+\hat{\bm y}).
+\]
+Compute the cross product:
+\[
+\bm a_2\times\bm a_3 \;=\; \tfrac{a^2}{4}(\hat{\bm z}+\hat{\bm x})\times(\hat{\bm x}+\hat{\bm y}) \;=\; \tfrac{a^2}{4}(\hat{\bm y}-\hat{\bm x}+\hat{\bm z}).
+\]
+Primitive-cell volume:
+\[
+\bm a_1\cdot(\bm a_2\times\bm a_3) \;=\; \tfrac{a^3}{8}(\hat{\bm y}+\hat{\bm z})\cdot(\hat{\bm y}-\hat{\bm x}+\hat{\bm z}) \;=\; \tfrac{a^3}{4}.
+\]
+Substitute into \eqref{eq:bidef}:
+\[
+\bm b_1 \;=\; \frac{2\pi}{a}(-\hat{\bm x}+\hat{\bm y}+\hat{\bm z}),\quad
+\bm b_2 \;=\; \frac{2\pi}{a}(\hat{\bm x}-\hat{\bm y}+\hat{\bm z}),\quad
+\bm b_3 \;=\; \frac{2\pi}{a}(\hat{\bm x}+\hat{\bm y}-\hat{\bm z}).
+\]
+Recognise BCC primitives:
+\[
+\bm b_1+\bm b_2 \;=\; \frac{4\pi}{a}\hat{\bm z},\qquad \bm b_2+\bm b_3 \;=\; \frac{4\pi}{a}\hat{\bm x},\qquad \bm b_1+\bm b_3 \;=\; \frac{4\pi}{a}\hat{\bm y}.
+\]
+\begin{equation}
+\boxed{\;\text{Reciprocal lattice: BCC, conventional cubic edge }4\pi/a.\;}
+\label{eq:reclat}
+\end{equation}
+
+\subsection*{(c) Phonon-mode counting along $[100]$}
+
+Two atoms in the basis $\Rightarrow$ $3\times 2=6$ branches per $\bm k$: 3 acoustic, $3(2-1)=3$ optical.
+\boxed{\;\text{3 acoustic + 3 optical.}\;}
+
+Along $[100]$, $C_{4v}$ symmetry: 1 LA + 2 TA. The two TA modes are related by the four-fold rotation about $[100]$, hence degenerate.
+\boxed{\;\text{1 LA, 2 (degenerate) TA $\Rightarrow$ two distinct acoustic velocities, $v_{\text{LA}}\neq v_{\text{TA}}$.}\;}
+
+\subsection*{(d) LA phonon energy at $\bm k=(2\pi/a,0,0)$ in Si}
+
+Approximation: 1D monatomic chain along $[100]$ with nearest-neighbour spacing $a/2$ (Si has atoms at $0$ and $a/2$ projected onto $[100]$).
+
+Diatomic-chain dispersion:
+\[
+\omega(k) \;=\; 2\sqrt{K/m}\,\big|\sin(k a_{\text{ch}}/2)\big|,\qquad a_{\text{ch}}=a/2.
+\]
+Match small-$k$ to sound speed:
+\[
+\omega \;\approx\; \sqrt{K/m}\,k a_{\text{ch}} \;\equiv\; v_L\, k.
+\]
+Read off the prefactor:
+\[
+\omega(k) \;=\; \frac{2 v_L}{a_{\text{ch}}}\big|\sin(k a_{\text{ch}}/2)\big| \;=\; \frac{4 v_L}{a}\big|\sin(k a/4)\big|.
+\]
+Evaluate at $k=2\pi/a$:
+\[
+\omega \;=\; \frac{4 v_L}{a}\sin(\pi/2) \;=\; \frac{4 v_L}{a}.
+\]
+Energy:
+\[
+\hbar\omega \;=\; \frac{4\hbar v_L}{a} \;=\; \frac{4\cdot 1.0546\times 10^{-34}\cdot 8433}{0.5431\times 10^{-9}}\,\si{J}.
+\]
+\[
+\hbar\omega \;\approx\; 6.55\times 10^{-21}\,\si{J} \;\approx\; \SI{0.041}{eV}.
+\]
+\begin{equation}
+\boxed{\;\hbar\omega_{\text{LA}}(2\pi/a,0,0)\;\approx\;\SI{40}{meV}.\;}
+\label{eq:hwLA}
+\end{equation}
+Approximations: 1D chain replaces 3D dynamics; sinusoidal dispersion extrapolated from sound speed; harmonic. Experimental Si LA at $X$ is $\sim\SI{50}{meV}$, agreement within a factor of $\sim 1.2$.
+
+\subsection*{(e) Why AlP and Si differ at $\bm k=(2\pi/a,0,0)$}
+
+In Si the two basis atoms are identical: nonsymmorphic diamond symmetry forces LA$(X)=$LO$(X)$ and TA$(X)=$TO$(X)$ (degenerate at the zone boundary).
+
+In AlP the two basis atoms differ in mass ($M_{\text{Al}}=26.98$~u, $M_{\text{P}}=30.97$~u). 1D diatomic chain at the zone boundary:
+\[
+\omega_{\text{LA}}^2 \;=\; \frac{2K}{M_{\max}},\qquad \omega_{\text{LO}}^2 \;=\; \frac{2K}{M_{\min}}.
+\]
+Mass mismatch opens a gap:
+\[
+\omega_{\text{LO}}^2-\omega_{\text{LA}}^2 \;=\; 2K\!\left(\frac{1}{M_{\min}}-\frac{1}{M_{\max}}\right) \;>\; 0.
+\]
+LA mode: heavy P oscillates, Al fixed. LO mode: light Al oscillates, P fixed.
+
+Additionally AlP is partly ionic, so long-range Coulomb dipole field gives extra LO--TO splitting (absent in covalent Si).
+\boxed{\;\text{Si: LA$(X)=$LO$(X)$. AlP: gap opens (LO above LA) from Al/P mass mismatch + ionicity.}\;}
+
+%==============================================================
+\section*{Question 3 --- 2D heat capacity: phonons, free electrons, gapless semiconductor}
+
+\textbf{Problem.} (a) 2D insulator: $C_v/N_a$ at high $T$ and trend on cooling. (b) 2D electron gas at $\kB T\gg E_F$: $C_v/N_e$ and trend on cooling. (c)--(d) 2D undoped semiconductor with $E_{\text{gap}}\to 0$, $m_e^*=m_h^*\equiv m^*$: density of states; $N_c(T)$, $C_v^{\text{tot}}/N_c$; reconcile with equipartition. (e) Ratio $C_v^{\text{tot}}/C_v$ when $\kB T\ll E_F$ in (b) but $\kB T\gg E_{\text{gap}}$ in (c)/(d). Useful: $\int_0^\infty\de x/(e^x+1)=\ln 2$, $\int_0^\infty x\,\de x/(e^x+1)=\pi^2/12$.
+
+\subsection*{(a) 2D insulator}
+
+Each 2D atom: 2 kinetic + 2 potential quadratic degrees of freedom $\Rightarrow$ equipartition $4\cdot\tfrac12\kB=2\kB$ per atom.
+\begin{equation}
+\boxed{\;\left(C_v/N_a\right)_{T\to\infty} \;=\; 2\kB.\;}
+\label{eq:DP2D}
+\end{equation}
+2D Debye: $C_v\propto T^2$ at low $T$. \boxed{\;\text{Decreases on cooling.}\;}
+
+\subsection*{(b) 2D classical electron gas, $\kB T\gg E_F$}
+
+Equipartition (2 translational kinetic d.o.f.):
+\begin{equation}
+\boxed{\;\left(C_v/N_e\right)_{\kB T\gg E_F} \;=\; \kB.\;}
+\label{eq:Cv2Dgas}
+\end{equation}
+Sommerfeld at $\kB T\ll E_F$: $C_v\propto T\to 0$. \boxed{\;\text{Decreases on cooling.}\;}
+
+\subsection*{(c) 2D density of states}
+
+Set band edges at $E=0$ (gap $\to 0$). Parabolic 2D dispersions:
+\[
+E_c(\bm k) \;=\; +\frac{\hbar^2 k^2}{2m^*},\qquad E_v(\bm k) \;=\; -\frac{\hbar^2 k^2}{2m^*}.
+\]
+2D parabolic band DOS (per area, including 2 spins) is constant:
+\begin{equation}
+\boxed{\;g_c(E) \;=\; g_v(E) \;=\; \frac{m^*}{\pi\hbar^2}\quad\text{(each band)}.\;}
+\label{eq:dos2D}
+\end{equation}
+
+\subsection*{(d) $N_c(T)$, $C_v^{\text{tot}}/N_c$, equipartition check}
+
+Particle--hole symmetry ($m_e^*=m_h^*$) pins $\mu=0$ at all $T$.
+
+Conduction-band density per area:
+\[
+n_c \;=\; \int_0^\infty\!\de E\,\frac{m^*}{\pi\hbar^2}\,\frac{1}{e^{E/\kB T}+1}.
+\]
+Substitute $x=E/\kB T$:
+\[
+n_c \;=\; \frac{m^*\kB T}{\pi\hbar^2}\int_0^\infty\!\frac{\de x}{e^x+1}.
+\]
+Use $\int=\ln 2$:
+\begin{equation}
+\boxed{\;N_c(T) \;=\; A\,\frac{m^*\kB T\,\ln 2}{\pi\hbar^2}.\;}
+\label{eq:Nc}
+\end{equation}
+
+Conduction-band thermal energy per area:
+\[
+u_c \;=\; \int_0^\infty\!\de E\,g_c\,E\,\frac{1}{e^{E/\kB T}+1}.
+\]
+Substitute $x=E/\kB T$:
+\[
+u_c \;=\; \frac{m^*(\kB T)^2}{\pi\hbar^2}\int_0^\infty\!\frac{x\,\de x}{e^x+1}.
+\]
+Use $\int=\pi^2/12$:
+\[
+u_c \;=\; \frac{m^*(\kB T)^2}{\pi\hbar^2}\cdot\frac{\pi^2}{12}.
+\]
+By particle--hole symmetry, valence band contributes equally:
+\[
+u_{\text{tot}} \;=\; 2u_c \;=\; \frac{\pi m^*\kB^2 T^2}{6\hbar^2}.
+\]
+Differentiate:
+\begin{equation}
+\frac{C_v^{\text{tot}}}{A} \;=\; \pd{u_{\text{tot}}}{T} \;=\; \frac{\pi m^*\kB^2 T}{3\hbar^2}.
+\label{eq:Cvtot}
+\end{equation}
+Divide by $n_c$ from \eqref{eq:Nc}:
+\[
+\frac{C_v^{\text{tot}}}{N_c} \;=\; \frac{\pi m^*\kB^2 T/(3\hbar^2)}{m^*\kB T\,\ln 2/(\pi\hbar^2)}.
+\]
+Cancel:
+\begin{equation}
+\boxed{\;\frac{C_v^{\text{tot}}}{N_c} \;=\; \frac{\pi^2}{3\ln 2}\,\kB \;\approx\; 4.74\,\kB.\;}
+\label{eq:Cvper}
+\end{equation}
+
+No equipartition violation: at fixed $T$ there are $\sim N_c$ electrons \emph{and} $\sim N_c$ holes; the heat capacity is shared between $\sim 2N_c$ thermally active particles, not $N_c$. Moreover the carrier number itself depends on $T$ (it grows linearly), a regime equipartition does not address.
+
+\subsection*{(e) Ratio $C_v^{\text{tot}}/C_v$}
+
+2D Fermi gas at $\kB T\ll E_F$ (Sommerfeld with constant DOS $g(E_F)=m/\pi\hbar^2$):
+\[
+\frac{C_v}{A} \;=\; \frac{\pi^2}{3}\,g(E_F)\,\kB^2 T \;=\; \frac{\pi m\,\kB^2 T}{3\hbar^2}\cdot\pi.
+\]
+Simplify:
+\[
+\frac{C_v}{A} \;=\; \frac{\pi^2 m\,\kB^2 T}{3\hbar^2}.
+\]
+Take ratio (with $m^*=m$):
+\[
+\frac{C_v^{\text{tot}}}{C_v} \;=\; \frac{\pi m^*\kB^2 T/(3\hbar^2)}{\pi^2 m\kB^2 T/(3\hbar^2)}.
+\]
+Cancel:
+\begin{equation}
+\boxed{\;\frac{C_v^{\text{tot}}}{C_v} \;=\; \frac{1}{\pi} \;\approx\; 0.318.\;}
+\label{eq:ratio}
+\end{equation}
+Gapless semiconductor has more heat per carrier but far fewer carriers, so per unit area the Fermi gas wins by $\pi$.
+
+%==============================================================
+\section*{Question 4 --- Magnetism of GaAs and shallow donors}
+
+\textbf{Problem.} (a) Magnetic class of undoped GaAs at $T=0$. (b) Larmor--Langevin $\chi=-\mu_0\rho e^2\langle r^2\rangle/(6 m_e)$ for undoped GaAs. (c) Light $n$-doping with Si: binding radius, binding energy, and the temperature at which donor spin and orbital susceptibilities cancel. (d) Below density $1/a_{\text{bind}}^3$ the impurity-band width is $W=E_{\text{bind}}\exp(-\alpha n^{-1/3}/a_{\text{bind}})$; explain the exponential. (e) At $T=0$, write $\chi_{\text{spin}}^{\text{IB}}(n)$ with $\alpha=1$; find the dopant density at which it equals $|\chi_{\text{LL}}|$ from (b), and the upper temperature for validity. GaAs data: $\rho_m=\SI{5.9}{g.cm^{-3}}$, $E_g=\SI{1.4}{eV}$, $m^*=0.067 m_e$, $g=-0.45$, $\epsilon_r=12.9$.
+
+\subsection*{(a) Magnetic class}
+
+Filled valence band, empty conduction band, no localised moments, no Pauli paramagnetism (zero DOS at $E_F$), no exchange. Only orbital response (Lenz):
+\boxed{\;\text{Diamagnetic.}\;}
+
+\subsection*{(b) Larmor--Langevin $\chi$ for undoped GaAs}
+
+GaAs formula-unit mass:
+\[
+m_{\text{f.u.}} \;=\; (69.7+74.9)\,\text{u} \;=\; 144.6\,\text{u}.
+\]
+Number density of formula units:
+\[
+n_{\text{f.u.}} \;=\; \frac{5.9\times 10^3}{144.6\cdot 1.6605\times 10^{-27}}\,\si{m^{-3}} \;=\; 2.46\times 10^{28}\,\si{m^{-3}}.
+\]
+Electrons per formula unit: $Z_{\text{Ga}}+Z_{\text{As}}=64$.
+
+Electron density:
+\[
+\rho_e \;=\; 64\,n_{\text{f.u.}} \;\approx\; 1.57\times 10^{30}\,\si{m^{-3}}.
+\]
+Approximation (valence dominant, $30\%$ level): $\langle r^2\rangle\sim a_0^2$:
+\[
+\langle r^2\rangle \;\approx\; (0.529\times 10^{-10})^2\,\si{m^2} \;\approx\; 2.8\times 10^{-21}\,\si{m^2}.
+\]
+Substitute into $\chi=-\mu_0\rho_e e^2\langle r^2\rangle/(6 m_e)$:
+\[
+\chi_{\text{LL}} \;=\; -(4\pi\times 10^{-7})\cdot\frac{1.57\times 10^{30}\cdot(1.602\times 10^{-19})^2}{6\cdot 9.109\times 10^{-31}}\cdot 2.8\times 10^{-21}.
+\]
+Evaluate the inner factor:
+\[
+\frac{1.57\times 10^{30}\cdot 2.566\times 10^{-38}}{5.466\times 10^{-30}} \;\approx\; 7.37\times 10^{21}.
+\]
+Multiply by $\mu_0$ and $\langle r^2\rangle$:
+\[
+\chi_{\text{LL}} \;\approx\; -(1.257\times 10^{-6})\cdot 7.37\times 10^{21}\cdot 2.8\times 10^{-21}.
+\]
+Numerical:
+\begin{equation}
+\boxed{\;\chi_{\text{LL}} \;\sim\; -3\times 10^{-5}\ \text{(SI, dimensionless)}.\;}
+\label{eq:chiLL}
+\end{equation}
+Order-of-magnitude consistent with tabulated values for covalent semiconductors.
+
+\subsection*{(c) Donor binding radius, energy, and cancellation $T^*$}
+
+Hydrogenic with $e^2\to e^2/\epsilon_r$, $m_e\to m^*$:
+\[
+a_{\text{bind}} \;=\; \frac{4\pi\epsilon_0\epsilon_r\hbar^2}{m^* e^2} \;=\; a_0\,\frac{\epsilon_r m_e}{m^*}.
+\]
+Evaluate:
+\[
+a_{\text{bind}} \;=\; 0.529\,\si{\angstrom}\cdot\frac{12.9}{0.067} \;=\; 192.5\,a_0 \;\approx\; \SI{10.2}{nm}.
+\]
+\[
+E_{\text{bind}} \;=\; \mathrm{Ry}\cdot\frac{m^*/m_e}{\epsilon_r^2} \;=\; \SI{13.6}{eV}\cdot\frac{0.067}{12.9^2}.
+\]
+Evaluate:
+\[
+E_{\text{bind}} \;\approx\; \SI{13.6}{eV}\cdot 4.03\times 10^{-4} \;\approx\; \SI{5.5}{meV}.
+\]
+\begin{equation}
+\boxed{\;a_{\text{bind}}\approx\SI{10.2}{nm},\qquad E_{\text{bind}}\approx\SI{5.5}{meV}.\;}
+\label{eq:donor}
+\end{equation}
+
+Donor spin (Curie, $S=\tfrac12$):
+\[
+\chi_{\text{spin}} \;=\; \frac{\mu_0 n_d g^2\mu_B^2}{4\kB T}.
+\]
+Donor orbital (Larmor with effective mass $m^*$, hydrogenic $\langle r^2\rangle_{1s}=3 a_{\text{bind}}^2$):
+\[
+\chi_{\text{orb}} \;=\; -\mu_0\,\frac{n_d e^2}{6 m^*}\cdot 3 a_{\text{bind}}^2 \;=\; -\frac{\mu_0 n_d e^2 a_{\text{bind}}^2}{2 m^*}.
+\]
+Set $\chi_{\text{spin}}+\chi_{\text{orb}}=0$:
+\[
+\frac{\mu_0 n_d g^2\mu_B^2}{4\kB T^*} \;=\; \frac{\mu_0 n_d e^2 a_{\text{bind}}^2}{2 m^*}.
+\]
+Cancel $\mu_0 n_d$:
+\[
+\kB T^* \;=\; \frac{g^2\mu_B^2\, m^*}{2 e^2 a_{\text{bind}}^2}.
+\]
+Use $\mu_B^2=e^2\hbar^2/(4 m_e^2)$:
+\[
+\kB T^* \;=\; \frac{g^2\hbar^2 m^*}{8 m_e^2 a_{\text{bind}}^2}.
+\]
+Use $E_{\text{bind}}=\hbar^2/(2 m^* a_{\text{bind}}^2)$, so $\hbar^2/(m^* a_{\text{bind}}^2)=2 E_{\text{bind}}$:
+\[
+\kB T^* \;=\; \frac{g^2}{8}\cdot\left(\frac{m^*}{m_e}\right)^2\cdot 2 E_{\text{bind}}.
+\]
+Simplify:
+\begin{equation}
+\boxed{\;\kB T^* \;=\; \frac{g^2}{4}\!\left(\frac{m^*}{m_e}\right)^{\!2}E_{\text{bind}}.\;}
+\label{eq:Tstar}
+\end{equation}
+Numerical with $g^2=0.2025$, $(m^*/m_e)^2=4.49\times 10^{-3}$, $E_{\text{bind}}=\SI{5.5}{meV}$:
+\[
+\kB T^* \;\approx\; \frac{0.2025\cdot 4.49\times 10^{-3}\cdot 5.5\times 10^{-3}}{4}\,\si{eV}.
+\]
+Evaluate:
+\[
+\kB T^* \;\approx\; 1.25\times 10^{-6}\,\si{eV}.
+\]
+\begin{equation}
+\boxed{\;T^*\;\approx\;\SI{15}{mK}.\;}
+\label{eq:Tnum}
+\end{equation}
+
+\subsection*{(d) Why the impurity bandwidth is exponentially small}
+
+Donor 1s wavefunction decays as $e^{-r/a_{\text{bind}}}$. Tight-binding hopping $t$ between donors at separation $r\sim n^{-1/3}$ is the wavefunction overlap, also $\propto e^{-r/a_{\text{bind}}}$. Bandwidth $W\sim t$, with prefactor $E_{\text{bind}}$ (the only available energy scale):
+\[
+W \;\sim\; E_{\text{bind}}\,\exp\!\left(-\alpha n^{-1/3}/a_{\text{bind}}\right).
+\]
+\boxed{\;\text{Exponential = wavefunction overlap of neighbouring 1s donor states.}\;}
+
+\subsection*{(e) Impurity-band spin $\chi$, crossover density, validity}
+
+For $\kB T\ll W$ the half-filled impurity band is a Pauli system. DOS $\sim n/W$ (one state per donor in band of width $W$):
+\[
+\chi_{\text{spin}}^{\text{IB}} \;\sim\; \mu_0(g\mu_B)^2\,\frac{n}{W}.
+\]
+Substitute $W$ with $\alpha=1$:
+\begin{equation}
+\boxed{\;\chi_{\text{spin}}^{\text{IB}} \;\sim\; \mu_0\,\frac{g^2\mu_B^2 n}{E_{\text{bind}}}\,\exp\!\left(\frac{1}{n^{1/3}\,a_{\text{bind}}}\right).\;}
+\label{eq:chiIB}
+\end{equation}
+
+Crossover $\chi_{\text{spin}}^{\text{IB}}\sim|\chi_{\text{LL}}|=3\times 10^{-5}$. Evaluate the prefactor at $n^*\sim 1/a_{\text{bind}}^3\approx \SI{e24}{m^{-3}}$:
+\[
+\mu_0(g\mu_B)^2 \;=\; (1.257\times 10^{-6})\cdot 0.2025\cdot(9.27\times 10^{-24})^2 \;\approx\; 2.19\times 10^{-53}.
+\]
+Divide by $E_{\text{bind}}=8.8\times 10^{-22}$~J:
+\[
+\frac{\mu_0 g^2\mu_B^2}{E_{\text{bind}}} \;\approx\; 2.5\times 10^{-32}\,\si{m^3}.
+\]
+Multiply by $n=\SI{e24}{m^{-3}}$:
+\[
+\frac{\mu_0 g^2\mu_B^2 n}{E_{\text{bind}}} \;\approx\; 2.5\times 10^{-8}\quad\text{at }n=1/a_{\text{bind}}^3.
+\]
+Match $|\chi_{\text{LL}}|=3\times 10^{-5}$ requires exponential $\sim 10^3$:
+\[
+n^{-1/3}/a_{\text{bind}} \;\sim\; \ln(10^3) \;\approx\; 7.
+\]
+Solve:
+\[
+n^* \;\sim\; \frac{1}{(7 a_{\text{bind}})^3} \;\sim\; 3\times 10^{-3}/a_{\text{bind}}^3 \;\sim\; \SI{3e21}{m^{-3}} \;\sim\; \SI{3e15}{cm^{-3}}.
+\]
+\begin{equation}
+\boxed{\;n^*\;\sim\;10^{15}\text{--}10^{16}\,\si{cm^{-3}}\quad(\text{well below the Mott density }\sim 10^{18}\,\si{cm^{-3}}).\;}
+\label{eq:nstar}
+\end{equation}
+
+Validity: Pauli regime requires $\kB T\ll W$. At $n^*$:
+\[
+W \;\sim\; E_{\text{bind}}\,e^{-7} \;\approx\; \SI{5.5}{meV}\cdot 9\times 10^{-4} \;\approx\; \SI{5}{\micro eV}.
+\]
+\begin{equation}
+\boxed{\;T_{\max}\;\sim\;W/\kB\;\sim\;\SI{50}{mK}\text{--}\SI{0.1}{K}.\;}
+\label{eq:Tmax}
+\end{equation}
+Sub-kelvin temperatures (dilution-fridge regime).
+
+\bigskip\noindent\emph{End of solutions.}
+
+\end{document}

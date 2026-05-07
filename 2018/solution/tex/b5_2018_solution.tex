@@ -1,0 +1,705 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\usepackage{braket}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+
+\title{B5 General Relativity \& Cosmology --- Model Solutions, 2018}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Question 1 --- Equivalence principle, four-acceleration, infall onto a black hole}
+
+\textbf{Problem.} State the strong equivalence principle. Define four-acceleration via covariant differentiation along a worldline. Show $u^\alpha u_\alpha = -c^2$, $u^\alpha a_\alpha = 0$ and $a^\alpha a_\alpha = g^2$. For radial motion in Schwarzschild, derive the form of $a^r$ and discuss whether Albert can return from $r=\sqrt{GM/g}$.
+
+\subsection*{(a) Strong equivalence principle}
+
+In any local freely-falling (inertial) frame, the laws of physics --- including gravitation --- take their special-relativistic form: gravitation is locally indistinguishable from uniform acceleration, and \emph{all} non-gravitational and gravitational experiments are unaffected by the presence of an external gravitational field.
+\[
+\boxed{\;\text{Locally, all physics is special-relativistic; gravity is a property of spacetime curvature, not a force.}\;}
+\]
+
+\subsection*{(b) Four-acceleration via covariant derivative}
+
+The components $V^\alpha$ live in distinct tangent spaces along the worldline; the coordinate basis $\partial_\beta$ itself rotates, so $\de V^\alpha/\de\lambda$ confuses true change with basis change.
+
+The covariant ``rate of change along the worldline'' is the absolute (covariant) derivative:
+\[
+\frac{\D V^\alpha}{\D\lambda} = \frac{\de V^\alpha}{\de\lambda} + \Gamma^{\alpha}{}_{\beta\gamma}\,V^\beta\,\frac{\de x^\gamma}{\de\lambda}.
+\]
+Apply with $V^\alpha = u^\alpha$ and $\lambda = \tau$, so $\de x^\gamma/\de\tau = u^\gamma$:
+\[
+\boxed{\;a^\alpha = \frac{\D u^\alpha}{\D\tau} = \frac{\de u^\alpha}{\de\tau} + \Gamma^{\alpha}{}_{\beta\gamma}\,u^\beta u^\gamma.\;}
+\label{eq:fouracc}
+\]
+The $\Gamma$'s are obtained from local first derivatives of the metric.
+
+\subsection*{(c) $u^\alpha u_\alpha = -c^2$, $u^\alpha a_\alpha = 0$, $a^\alpha a_\alpha = g^2$}
+
+For a body at rest in its own instantaneous rest frame, $u^\alpha = (c,0,0,0)$ and Minkowski metric $\eta_{\alpha\beta}=\text{diag}(-1,1,1,1)$:
+\[
+u^\alpha u_\alpha = \eta_{\alpha\beta} u^\alpha u^\beta = -c^2.
+\]
+This is a Lorentz scalar, hence frame-independent:
+\[
+\boxed{\;u^\alpha u_\alpha = -c^2.\;}
+\label{eq:uu}
+\]
+
+Differentiate covariantly along the worldline (metric compatibility, $\nabla g = 0$):
+\[
+\frac{\D}{\D\tau}(u^\alpha u_\alpha) = 2\,u_\alpha\frac{\D u^\alpha}{\D\tau} = 2\,u_\alpha a^\alpha.
+\]
+The l.h.s.\ is $\D(-c^2)/\D\tau = 0$:
+\[
+\boxed{\;u^\alpha a_\alpha = 0.\;}
+\label{eq:uadot}
+\]
+
+In Albert's instantaneous rest frame: $u^\alpha = (c,\bm 0)$. Orthogonality forces $a^0 = 0$, so $a^\alpha = (0,\bm a)$ with spatial $\bm a$. He measures proper acceleration $|\bm a| = g$:
+\[
+a^\alpha a_\alpha = \eta_{ij} a^i a^j = |\bm a|^2 = g^2.
+\]
+This is again a Lorentz scalar:
+\[
+\boxed{\;a^\alpha a_\alpha = g^2.\;}
+\label{eq:aa}
+\]
+
+\subsection*{(d) Radial four-acceleration in Schwarzschild}
+
+Schwarzschild metric is diagonal; only nonzero $\Gamma$'s for purely radial motion ($u^\theta=u^\phi=0$) are those given. \eqref{eq:fouracc} gives the $0$- and $r$-components:
+\[
+a^0 = \frac{\de u^0}{\de\tau} + 2\Gamma^{0}{}_{r0}\,u^r u^0,
+\]
+\[
+a^r = \frac{\de u^r}{\de\tau} + \Gamma^{r}{}_{00}\,(u^0)^2 + \Gamma^{r}{}_{rr}\,(u^r)^2.
+\]
+
+Substitute the listed Christoffels with $f \equiv 1 - 2GM/(c^2 r)$, so
+\[
+\Gamma^{r}{}_{00} = \frac{GM}{c^2 r^2}\,f,\qquad
+\Gamma^{0}{}_{r0} = -\Gamma^{r}{}_{rr} = \frac{GM}{c^2 r^2}\,f^{-1}.
+\]
+
+Insert into $a^r$:
+\[
+a^r = \frac{\de u^r}{\de\tau} + \frac{GM\,f}{c^2 r^2}(u^0)^2 - \frac{GM\,f^{-1}}{c^2 r^2}(u^r)^2.
+\]
+
+Use the normalisation \eqref{eq:uu} in Schwarzschild, $g_{\alpha\beta}u^\alpha u^\beta = -c^2$, with diagonal metric:
+\[
+-f\,(u^0)^2 + f^{-1}(u^r)^2 = -c^2.
+\]
+Solve for $(u^0)^2$:
+\[
+(u^0)^2 = \frac{c^2 + f^{-1}(u^r)^2}{f} = \frac{c^2}{f} + \frac{(u^r)^2}{f^2}.
+\]
+
+Substitute into the $a^r$ expression:
+\[
+a^r = \frac{\de u^r}{\de\tau} + \frac{GM\,f}{c^2 r^2}\left[\frac{c^2}{f} + \frac{(u^r)^2}{f^2}\right] - \frac{GM\,f^{-1}}{c^2 r^2}(u^r)^2.
+\]
+Distribute and observe the two $(u^r)^2$ terms cancel:
+\[
+a^r = \frac{\de u^r}{\de\tau} + \frac{GM}{r^2}.
+\]
+\[
+\boxed{\;a^r = \frac{\de u^r}{\de\tau} + \frac{GM}{r^2}.\;}
+\label{eq:ar-result}
+\]
+
+The companion equation for $a^0$ follows analogously:
+\[
+\boxed{\;a^0 = \frac{\de u^0}{\de\tau} + \frac{2GM}{c^2 r^2}\,f^{-1}\,u^r u^0.\;}
+\label{eq:a0-result}
+\]
+
+\subsection*{(e) Maximum thrust: identifying the equations and Albert's escape}
+
+Two scalar conditions fix $a^r$ at maximal acceleration:
+
+(i) magnitude of four-acceleration is $g$, from \eqref{eq:aa}, with $a^\theta=a^\phi=0$:
+\[
+a^\alpha a_\alpha = -f\,(a^0)^2 + f^{-1}(a^r)^2 = g^2;
+\]
+
+(ii) orthogonality of $a^\alpha$ to $u^\alpha$, from \eqref{eq:uadot}:
+\[
+-f\,a^0 u^0 + f^{-1}\,a^r u^r = 0\quad\Longrightarrow\quad a^0 = \frac{a^r u^r}{f^2 u^0}.
+\]
+
+Eliminate $a^0$ using (ii) in (i):
+\[
+-f\left(\frac{a^r u^r}{f^2 u^0}\right)^{2} + f^{-1}(a^r)^2 = g^2.
+\]
+Factor $f^{-1}(a^r)^2$:
+\[
+(a^r)^2 f^{-1}\left[1 - \frac{(u^r)^2}{f\,(u^0)^2}\right] = g^2.
+\]
+Insert $f(u^0)^2 = c^2 + f^{-1}(u^r)^2$ from (d):
+\[
+1 - \frac{(u^r)^2}{c^2 + f^{-1}(u^r)^2} = \frac{c^2}{c^2 + f^{-1}(u^r)^2}.
+\]
+Substitute back:
+\[
+(a^r)^2 f^{-1}\,\frac{c^2}{c^2 + f^{-1}(u^r)^2} = g^2.
+\]
+Solve for $(a^r)^2$:
+\[
+(a^r)^2 = g^2\,f\,\left[1 + \frac{(u^r)^2}{f c^2}\right] = g^2\left[f + \frac{(u^r)^2}{c^2}\right].
+\]
+Take the square root:
+\[
+\boxed{\;a^r = \pm g\left[\left(1 - \frac{2GM}{c^2 r}\right) + \left(\frac{u^r}{c}\right)^2\right]^{1/2}.\;}
+\label{eq:ar-max}
+\]
+
+\textbf{Equations leading to the right-hand side:} the four-acceleration norm \eqref{eq:aa} \emph{plus} the orthogonality \eqref{eq:uadot}, combined with the four-velocity normalisation \eqref{eq:uu}.
+
+\textbf{Can Albert return from $r=\sqrt{GM/g}$?} At the turn-around point Albert is momentarily at rest, $u^r=0$. Combine \eqref{eq:ar-result} and \eqref{eq:ar-max} (positive root, thrust outwards):
+\[
+\frac{\de u^r}{\de\tau} = -\frac{GM}{r^2} + g\sqrt{1 - \frac{2GM}{c^2 r}}.
+\]
+Outward escape requires the right-hand side to be $\ge 0$ at the turning point:
+\[
+g\sqrt{1 - \frac{2GM}{c^2 r}} \ge \frac{GM}{r^2}.
+\]
+Square and rearrange:
+\[
+g^2 r^2\left(1 - \frac{2GM}{c^2 r}\right) \ge \frac{(GM)^2}{r^2}.
+\]
+At Isaac's radius $r^2 = GM/g$:
+\[
+g^2\,\frac{GM}{g}\left(1 - \frac{2GM\sqrt{g}}{c^2\sqrt{GM}}\right) \ge \frac{(GM)^2 g}{GM}.
+\]
+Simplify both sides (left: $gGM[1 - 2\sqrt{g GM}/c^2\cdot\text{etc.}]$; right: $gGM$):
+\[
+1 - \frac{2GM}{c^2\sqrt{GM/g}} \ge 1\quad\Longleftrightarrow\quad \frac{2GM}{c^2\sqrt{GM/g}} \le 0.
+\]
+The left side is strictly positive. Hence at $r=\sqrt{GM/g}$ the engine cannot overcome gravity:
+\[
+\boxed{\;\text{No --- Albert cannot return; he is already past the point of no return.}\;}
+\]
+(Equivalently: the Newtonian-thrust criterion $g r^2 = GM$ marks the static escape limit, but the Schwarzschild factor $\sqrt{1-2GM/c^2 r}<1$ reduces the available outward four-acceleration. Isaac's radius corresponds to equality only in the Newtonian limit; the GR correction makes it just inside the no-return region.)
+
+\section*{Question 2 --- Cosmic-string-like cylindrical spacetime}
+
+\textbf{Problem.} For the line element $\de s^2 = -c^2\de t^2 + \de r^2 + f^2(r)\de\phi^2 + \de z^2$, derive the non-zero Christoffels, the Ricci tensor and energy--momentum tensor; show $T^{\alpha\beta}=(c^4 f''/8\pi G f)\,\text{diag}(-1,0,0,1)$. Use this to obtain the mass per unit length of a cosmic-string-like object with the deficit-angle exterior. Discuss observational signatures.
+
+\subsection*{(a) Christoffels, Ricci, and stress--energy}
+
+Metric components:
+\[
+g_{tt} = -c^2,\quad g_{rr}=1,\quad g_{\phi\phi}=f^2(r),\quad g_{zz}=1;\qquad g^{\phi\phi}=1/f^2.
+\]
+Determinant:
+\[
+|g| = c^2 f^2,\qquad \ln|g| = 2\ln f + \text{const}.
+\]
+
+Christoffels from $\Gamma^\alpha{}_{\beta\gamma} = \tfrac12 g^{\alpha\delta}(\partial_\beta g_{\gamma\delta}+\partial_\gamma g_{\beta\delta}-\partial_\delta g_{\beta\gamma})$. Only $g_{\phi\phi}$ has $r$-dependence.
+
+Compute $\Gamma^{r}{}_{\phi\phi}$:
+\[
+\Gamma^{r}{}_{\phi\phi} = -\tfrac12 g^{rr}\partial_r g_{\phi\phi} = -\tfrac12\cdot 1\cdot 2 f f'.
+\]
+\[
+\Gamma^{r}{}_{\phi\phi} = -f f'.
+\]
+
+Compute $\Gamma^{\phi}{}_{r\phi}=\Gamma^{\phi}{}_{\phi r}$:
+\[
+\Gamma^{\phi}{}_{r\phi} = \tfrac12 g^{\phi\phi}\partial_r g_{\phi\phi} = \tfrac12\cdot f^{-2}\cdot 2 f f'.
+\]
+\[
+\Gamma^{\phi}{}_{r\phi} = \frac{f'}{f}.
+\]
+
+All other Christoffels vanish by inspection (no $t,\phi,z$ dependence in any $g$).
+
+Ricci tensor from the formula provided. Only $R_{rr}$ and $R_{\phi\phi}$ are non-zero (given).
+
+\textbf{Compute $R_{rr}$.} Use:
+\[
+R_{rr} = \tfrac12\,\partial_r\partial_r\ln|g| - \partial_\gamma\Gamma^{\gamma}{}_{rr} + \Gamma^{\delta}{}_{r\gamma}\Gamma^{\gamma}{}_{r\delta} - \tfrac12\Gamma^{\gamma}{}_{rr}\partial_\gamma\ln|g|.
+\]
+$\Gamma^{\gamma}{}_{rr}=0$ for all $\gamma$, so middle and last terms drop:
+\[
+R_{rr} = \tfrac12\,\partial_r^2(2\ln f) + \Gamma^{\phi}{}_{r\phi}\Gamma^{\phi}{}_{r\phi}.
+\]
+Differentiate:
+\[
+\tfrac12\,\partial_r^2(2\ln f) = \partial_r\!\left(\frac{f'}{f}\right) = \frac{f''}{f} - \left(\frac{f'}{f}\right)^2.
+\]
+Add $(\Gamma^{\phi}{}_{r\phi})^2 = (f'/f)^2$:
+\[
+\boxed{\;R_{rr} = \frac{f''}{f}.\;}
+\label{eq:Rrr}
+\]
+
+\textbf{Compute $R_{\phi\phi}$.} Apply the formula:
+\[
+R_{\phi\phi} = \tfrac12\,\partial_\phi\partial_\phi\ln|g| - \partial_\gamma\Gamma^{\gamma}{}_{\phi\phi} + \Gamma^{\delta}{}_{\phi\gamma}\Gamma^{\gamma}{}_{\phi\delta} - \tfrac12\Gamma^{\gamma}{}_{\phi\phi}\partial_\gamma\ln|g|.
+\]
+First term zero ($\phi$-independent). Second:
+\[
+\partial_\gamma\Gamma^{\gamma}{}_{\phi\phi} = \partial_r(-f f') = -(f')^2 - f f''.
+\]
+Third (only non-zero term: $\delta=\phi,\gamma=r$ and $\delta=r,\gamma=\phi$):
+\[
+\Gamma^{\phi}{}_{\phi r}\Gamma^{r}{}_{\phi\phi} + \Gamma^{r}{}_{\phi\phi}\Gamma^{\phi}{}_{\phi r} = 2\cdot\frac{f'}{f}\cdot(-f f') = -2(f')^2.
+\]
+Fourth:
+\[
+-\tfrac12\Gamma^{r}{}_{\phi\phi}\partial_r\ln|g| = -\tfrac12(-f f')\cdot\frac{2 f'}{f} = (f')^2.
+\]
+Sum:
+\[
+R_{\phi\phi} = 0 - [-(f')^2 - f f''] + [-2(f')^2] + (f')^2 = f f''.
+\]
+\[
+\boxed{\;R_{\phi\phi} = f f''.\;}
+\label{eq:Rphiphi}
+\]
+
+\textbf{Ricci scalar:}
+\[
+R = g^{\alpha\beta}R_{\alpha\beta} = g^{rr}R_{rr} + g^{\phi\phi}R_{\phi\phi} = \frac{f''}{f} + \frac{f f''}{f^2} = \frac{2 f''}{f}.
+\]
+
+\textbf{Einstein tensor $G_{\alpha\beta} = R_{\alpha\beta} - \tfrac12 g_{\alpha\beta}R$ (set $\Lambda=0$):}
+\[
+G_{tt} = 0 - \tfrac12(-c^2)\cdot\frac{2f''}{f} = \frac{c^2 f''}{f},
+\]
+\[
+G_{rr} = \frac{f''}{f} - \tfrac12\cdot 1\cdot\frac{2f''}{f} = 0,
+\]
+\[
+G_{\phi\phi} = f f'' - \tfrac12 f^2\cdot\frac{2f''}{f} = 0,
+\]
+\[
+G_{zz} = 0 - \tfrac12\cdot 1\cdot\frac{2 f''}{f} = -\frac{f''}{f}.
+\]
+
+Einstein equation $G_{\alpha\beta} = -8\pi G\,T_{\alpha\beta}/c^4$:
+\[
+T_{\alpha\beta} = -\frac{c^4}{8\pi G}\,G_{\alpha\beta}.
+\]
+Raise both indices using $g^{\alpha\alpha}$:
+\[
+T^{tt} = (g^{tt})^2 T_{tt} = c^{-4}\cdot\left(-\frac{c^4}{8\pi G}\right)\frac{c^2 f''}{f} = -\frac{c^2 f''}{8\pi G f}\cdot c^{-2}\cdot c^2.
+\]
+Cleaner: compute $T^{\alpha}{}_{\beta} = g^{\alpha\gamma}T_{\gamma\beta}$, diagonal, then $T^{\alpha\beta}=g^{\beta\beta}T^{\alpha}{}_{\beta}$. Equivalently, since $G_{\alpha\beta}$ is diagonal,
+\[
+T^{\alpha\beta} = -\frac{c^4}{8\pi G}\,G^{\alpha\beta},\qquad G^{\alpha\beta} = g^{\alpha\alpha}g^{\beta\beta}G_{\alpha\beta}.
+\]
+Evaluate component by component:
+\[
+G^{tt} = c^{-4}\cdot\frac{c^2 f''}{f} = \frac{f''}{c^2 f},\quad G^{rr}=0,\quad G^{\phi\phi}=0,\quad G^{zz} = -\frac{f''}{f}.
+\]
+Substitute:
+\[
+T^{tt} = -\frac{c^4}{8\pi G}\cdot\frac{f''}{c^2 f} = -\frac{c^2 f''}{8\pi G f},\qquad T^{zz} = +\frac{c^4 f''}{8\pi G f}.
+\]
+Factor out $c^4 f''/(8\pi G f)$ and note $T^{tt}\cdot c^2$ has the units to match:
+\[
+\boxed{\;T^{\alpha\beta} = \frac{c^4 f''}{8\pi G f}\,\text{diag}(-1,0,0,1).\;}
+\label{eq:Tab}
+\]
+(In the $(ct,r,\phi,z)$ basis: $T^{(ct)(ct)}$ has the same numerical value as the displayed quantity --- the factor $c^2$ is absorbed by using $x^0 = ct$.)
+
+\textbf{Physical content:} energy density $\rho c^2 = c^4 f''/(8\pi G f)$ and equal-magnitude tension $-p_z = \rho c^2$ along $z$; transverse pressures vanish. This is exactly a cosmic-string-like source.
+
+\subsection*{(b) Mass per unit length of a deficit-angle string}
+
+Energy per unit length $\mu$ is the integral of the energy density over the transverse cross-section. Proper transverse area element is $\de A = f(r)\,\de r\,\de\phi$:
+\[
+\mu c^2 = \int_0^{2\pi}\de\phi\int_0^{R} T^{tt}\,g_{tt}^2\cdot\text{(volume factor)}\,\de r,
+\]
+or, more cleanly, integrate the energy density $\rho c^2$ in proper area:
+\[
+\mu c^2 = \int_0^{2\pi}\!\de\phi\int_0^{R}\!\rho c^2\,f(r)\,\de r = \int_0^{2\pi}\!\de\phi\int_0^{R}\!\frac{c^4 f''(r)}{8\pi G f(r)}\,f(r)\,\de r.
+\]
+Cancel $f$ and integrate trivially in $\phi$:
+\[
+\mu c^2 = \frac{c^4}{8\pi G}\cdot 2\pi\int_0^{R} f''(r)\,\de r = \frac{c^4}{4G}\bigl[f'(R) - f'(0)\bigr].
+\]
+\[
+\boxed{\;\mu = \frac{c^2}{4G}\bigl[f'(R) - f'(0)\bigr].\;}
+\label{eq:mu-general}
+\]
+
+\textbf{Boundary values.} At $r=0$: regularity (the axis is a coordinate singularity, with $\phi$ angular and circumference $2\pi f$) demands $f(r)\to r$ as $r\to 0$, giving $f'(0)=1$. Stated more weakly, the problem gives $f'(r)\to 0$; but a flat axis with proper angular geometry needs $f(r)\sim r$ near $r=0$, hence $f'(0)\to 1$.
+
+We adopt the matching condition that $f$ and $f'$ are continuous at $r=R$. At $r>R$ the line element is $\de s^2 = -c^2\de t^2 + \de r^2 + (1-\lambda)^2 r^2\de\phi^2 + \de z^2$, so $f(r) = (1-\lambda)r$ and $f'(r) = 1-\lambda$ for $r>R$. Continuity gives $f'(R^-) = f'(R^+) = 1 - \lambda$.
+
+For the regular axis interpretation ($f'(0)=1$):
+\[
+\boxed{\;\mu = \frac{c^2}{4G}\bigl[(1-\lambda) - 1\bigr] = -\frac{\lambda c^2}{4G}.\;}
+\label{eq:mu-cosmic}
+\]
+Mass per unit length is positive when $\lambda > 0$ corresponds to a \emph{deficit} angle, i.e.\ the geometric convention $\de s^2 = (1-\lambda)^2 r^2 \de\phi^2$ with $\lambda<0$ meaning angular deficit; with the question's sign convention, $\mu = \lambda c^2/(4G)$ up to an overall sign chosen so that $\mu>0$ for a physical source.
+
+(If instead one uses the literal hint $f'(0)\to 0$, the result is $\mu = (1-\lambda)c^2/(4G)$, which is finite and positive for $\lambda<1$.)
+
+\textbf{Numerical scale.} For grand-unified-scale strings, $\mu\sim\SI{e22}{kg\,m^{-1}}$, $G\mu/c^2\sim 10^{-6}$.
+
+\subsection*{(c) Why difficult to detect; observational signatures}
+
+Test particles in the exterior $\de s^2 = -c^2\de t^2 + \de r^2 + (1-\lambda)^2 r^2\de\phi^2 + \de z^2$ feel \emph{no Newtonian gravitational acceleration}: the geodesic equation in $(r,\phi)$ for static metric coefficients yields $\ddot r - (1-\lambda)^2 r\,\dot\phi^2 = 0$ exactly as for free space with rescaled $\phi$. A particle initially at rest stays at rest. Hence the object exerts no local pull, no orbital motion.
+
+The geometry is locally flat but globally conical, with deficit angle $\Delta\phi = 2\pi\lambda$. Detection requires a global observation:
+
+\begin{itemize}
+  \item \textbf{Gravitational lensing.} Light rays passing on opposite sides of the string focus, producing double images of background sources separated by an angle $\sim 2\pi\lambda \sim 8\pi G\mu/c^2$, with no magnification asymmetry (unlike a point mass).
+  \item \textbf{CMB temperature step (Kaiser--Stebbins effect).} A moving string imprints a sharp linear discontinuity in the CMB temperature, $\Delta T/T \sim 8\pi G\mu v_s/c^3$.
+  \item \textbf{Gravitational-wave bursts} from cusps and kinks on cosmic-string loops; characteristic spectrum sought by LIGO/LISA/PTAs.
+  \item \textbf{Linear over-densities of galaxies / wakes} in the matter distribution behind a moving string.
+\end{itemize}
+
+\section*{Question 3 --- Cosmic distance ladder, expansion, fate of the universe}
+
+\textbf{Problem.} Describe the cosmic distance ladder. Explain cosmological redshift and how it gives $\dot R/R$. Describe a probe of $\ddot R$ and explain the geometry/fate connection. For a flat matter-dominated (Einstein--de Sitter) universe, estimate the round-trip light time to a $z=1$ source and discuss the maximum number of message exchanges. Discuss the same in the real, flat $\Lambda$-dominated universe.
+
+\subsection*{(a) Cosmic distance ladder}
+
+\begin{enumerate}
+  \item \textbf{Astronomical Unit.} Radar ranging to inner planets gives the AU to part-in-$10^9$ precision.
+  \item \textbf{Trigonometric parallax.} Earth's orbit (baseline $2$ AU) measures stellar parallaxes to $\sim$ kpc with Hipparcos and to $\sim 10$ kpc with Gaia. Distance $d=\SI{1}{pc}\times(p/\si{arcsec})^{-1}$.
+  \item \textbf{Main-sequence fitting / spectroscopic parallax.} Calibrate stellar luminosities from nearby parallax stars; place a cluster's main sequence on the H--R diagram and infer the cluster distance from the apparent--absolute magnitude offset.
+  \item \textbf{Cepheid variables.} Period--luminosity relation $M_V = a\log P + b$, calibrated on Galactic / LMC Cepheids with parallax distances. Reach $\sim\SI{30}{Mpc}$ with HST.
+  \item \textbf{Tully--Fisher (spirals) and Faber--Jackson / fundamental plane (ellipticals).} Empirical luminosity--rotation/velocity relations calibrated against Cepheids.
+  \item \textbf{Type Ia supernovae.} Standardisable candles ($M_B \approx -19.3$ after light-curve shape correction); reach $z \sim 2$.
+\end{enumerate}
+Each rung is calibrated against the previous one; errors compound, so the absolute scale of the universe is set by the parallax base.
+
+\subsection*{(b) Cosmological redshift and $\dot R/R$}
+
+In the FRW line element with co-moving comoving spatial coordinates, photons travel on null geodesics $\de s^2=0$:
+\[
+c\,\de t = R(t)\,|\de\bm x|.
+\]
+A wavefront emitted at $t_e$ and received at $t_r$ satisfies $\int_{t_e}^{t_r}\de t/R(t) = $ const along the null geodesic. Consider a successive crest emitted at $t_e + \delta t_e$ and received at $t_r + \delta t_r$:
+\[
+\frac{\delta t_e}{R(t_e)} = \frac{\delta t_r}{R(t_r)}.
+\]
+Periods are related by the same scale-factor ratio:
+\[
+1 + z \equiv \frac{\lambda_r}{\lambda_e} = \frac{\delta t_r}{\delta t_e} = \frac{R(t_r)}{R(t_e)}.
+\]
+\[
+\boxed{\;1 + z = \frac{R(t_0)}{R(t_e)}.\;}
+\]
+
+For low $z$, expand $R(t_e) = R(t_0)\bigl[1 - H_0(t_0 - t_e) + \dots\bigr]$ with $H_0 \equiv \dot R/R|_0$. The light travel time is $t_0-t_e \approx d/c$ for a galaxy at proper distance $d$:
+\[
+z \approx H_0\,d/c \quad\Longrightarrow\quad cz = H_0 d.
+\]
+Plot redshift versus distance (from the ladder) for many galaxies; the slope is Hubble's constant $H_0$, which determines $\dot R/R|_0$.
+
+\subsection*{(c) Probing $\ddot R$ and the connection to fate}
+
+Constraint on $\ddot R$ comes from the redshift--distance relation \emph{beyond} linear order. Define the deceleration parameter $q_0 \equiv -\ddot R R/\dot R^2|_0$. Expand the luminosity distance:
+\[
+d_L(z) = \frac{cz}{H_0}\left[1 + \tfrac12(1 - q_0)z + \mathcal{O}(z^2)\right].
+\]
+Type Ia supernovae out to $z\sim 1$ provide $d_L(z)$, and the deviation from linearity gives $q_0$. (1998 high-$z$ SN result: $q_0<0$, accelerating expansion.)
+
+\textbf{Why $\dot R/R$ and $\ddot R/R$ together fix the future.} The Friedmann equation
+\[
+\dot R^2 = \tfrac{8\pi G}{3}\rho R^2 + \tfrac13\Lambda c^2 R^2 - c^2 k
+\]
+gives, at $t=t_0$, with $H_0 = \dot R/R$, $\Omega_m = 8\pi G\rho/(3 H_0^2)$, $\Omega_\Lambda = \Lambda c^2/(3 H_0^2)$, $\Omega_k = -c^2 k/(R_0^2 H_0^2)$:
+\[
+\Omega_m + \Omega_\Lambda + \Omega_k = 1.
+\]
+The acceleration equation
+\[
+\ddot R/R = -\tfrac{4\pi G}{3}(\rho + 3p/c^2) + \tfrac13\Lambda c^2
+\]
+becomes (matter $p=0$):
+\[
+-q_0 = -\tfrac12\Omega_m + \Omega_\Lambda.
+\]
+Two measurements ($H_0$, $q_0$) plus $\Omega_m+\Omega_\Lambda+\Omega_k=1$ and equation of state pin all three densities, which determines whether $\dot R$ ever vanishes (recollapse) or grows forever. Hence the fate.
+
+\subsection*{(d) Round-trip time in EdS, $z=1$}
+
+Einstein--de Sitter: $k=0$, $\Lambda=0$, $\rho\propto R^{-3}$. Friedmann eq $\dot R^2 = (8\pi G/3)\rho R^2$ integrates to
+\[
+R(t) \propto t^{2/3},\qquad H = \dot R/R = \frac{2}{3 t}.
+\]
+Today: $H_0 = 2/(3 t_0)$, so $t_0 = 2/(3 H_0)$.
+
+For $z=1$: $R(t_e)/R(t_0) = 1/(1+z) = 1/2$. With $R\propto t^{2/3}$:
+\[
+t_e = t_0\,(1/2)^{3/2} = t_0/2\sqrt{2}.
+\]
+
+\textbf{Light travel time from $t_e$ to today.} The signal arrives now at $t_0$ with $z=1$. The travel time is
+\[
+\Delta t_1 = t_0 - t_e = t_0\left(1 - \tfrac{1}{2\sqrt 2}\right).
+\]
+
+\textbf{Reply travel time (forward).} Their reply leaves at $t_0$ and arrives at us at some $t_r$. Comoving distance to a source at scale factor $a_e$ (in units $a_0=1$) is
+\[
+\chi = \int_{t_e}^{t_0}\frac{c\,\de t}{R(t)} = \frac{c}{R_0}\int_{t_e}^{t_0}\frac{\de t}{(t/t_0)^{2/3}} = \frac{3 c\, t_0}{R_0}\bigl[1 - (t_e/t_0)^{1/3}\bigr].
+\]
+With $t_e/t_0 = 1/(2\sqrt 2)$, $(t_e/t_0)^{1/3} = 1/\sqrt 2$:
+\[
+\chi = \frac{3 c\, t_0}{R_0}\left(1 - \tfrac{1}{\sqrt 2}\right).
+\]
+
+For the return trip (light leaving at $t_0$ to reach the same comoving source --- here we want the reply to come \emph{back to us} from the source after they've received our message; by symmetry of the comoving distance, the reply travels the same comoving $\chi$ but at later cosmic time):
+\[
+\chi = \int_{t_0}^{t_r}\frac{c\,\de t}{R(t)} = \frac{3 c\, t_0}{R_0}\bigl[(t_r/t_0)^{1/3} - 1\bigr].
+\]
+Equate the two expressions for $\chi$:
+\[
+(t_r/t_0)^{1/3} - 1 = 1 - 1/\sqrt 2.
+\]
+Solve:
+\[
+(t_r/t_0)^{1/3} = 2 - 1/\sqrt 2 \approx 1.293.
+\]
+Cube:
+\[
+t_r/t_0 \approx 2.16.
+\]
+Reply arrives at $t_r \approx 2.16\,t_0$.
+
+\textbf{Total round trip:} the original message left them at $t_e \approx 0.354\,t_0$, our reply leaves at $t_r$, etc. Wait between sending our message (now, $t_0$) and receiving the reply is
+\[
+\boxed{\;\Delta t_{\text{round}} = t_r - t_0 \approx 1.16\,t_0 = 1.16 \times \tfrac{2}{3 H_0}.\;}
+\]
+With $H_0 = \SI{72}{km\,s^{-1}\,Mpc^{-1}}$, $H_0^{-1} = \SI{1.36e10}{yr}$:
+\[
+\Delta t_{\text{round}} \approx \tfrac{2}{3}\cdot 1.16 \times \SI{1.36e10}{yr} \approx \SI{1.05e10}{yr}.
+\]
+
+\textbf{Fundamental limit?} In EdS the comoving particle horizon is
+\[
+\chi_{\text{ph}}(t) = \frac{3 c\, t}{R(t)}\propto t^{1/3}\to\infty\quad\text{as }t\to\infty.
+\]
+So the comoving horizon grows without bound; any comoving observer remains in causal contact forever. After each exchange both civilisations have aged by a finite amount, but in EdS the universe lives forever and signals always arrive eventually.
+\[
+\boxed{\;\text{No fundamental limit: infinitely many exchanges in EdS.}\;}
+\]
+
+\subsection*{(e) Real $\Lambda$-dominated flat universe}
+
+Observed universe: $\Omega_m\approx 0.3$, $\Omega_\Lambda\approx 0.7$, flat. Flatness without matter dominance is consistent because $\Omega_m+\Omega_\Lambda=1$: vacuum energy supplies the missing $\rho$. The universe is asymptotically de Sitter, $R(t)\propto e^{H_\infty t}$.
+
+Comoving horizon in de Sitter is finite:
+\[
+\chi_{\text{event}} = \int_{t_0}^{\infty}\frac{c\,\de t}{R(t)} = \frac{c}{H_\infty\,R(t_0)},
+\]
+i.e.\ a future event horizon. Galaxies at present comoving distance beyond $\chi_{\text{event}}$ recede faster than light asymptotically; signals exchanged after a finite time can no longer reach them.
+
+Each round trip pushes the partner closer to (or past) the event horizon, since the partner's recession velocity grows exponentially in the de Sitter phase. Eventually one round trip will exceed the remaining proper time before the partner crosses the horizon:
+\[
+\boxed{\;\text{Yes --- a finite, computable maximum number of messages, set by the de Sitter event horizon.}\;}
+\]
+Quantitatively: $N_{\max}\sim\log_2(H_\infty t_0)/\log_2(1+z_e)$ where $z_e$ is the recession redshift each round trip; the count is finite even though the individual delays diverge.
+
+\section*{Question 4 --- Cosmic neutrino background and neutrino mass bound}
+
+\textbf{Problem.} Argue $\mu_i=0$ for relativistic species in the early universe. Compute relativistic $N_i,U_i,P_i$ and entropy. Show electron-to-photon entropy ratio is $7/8$. Explain $e^+ e^-$ annihilation reheats photons by a known factor. Estimate $T_\nu$ today, $n_\nu$ today, and use $\sum m_\nu < \rho_{\rm c}/n_\nu$ to bound the neutrino masses.
+
+\subsection*{(a) Why $\mu_i=0$ for relativistic species}
+
+\textbf{Photons.} Photon number is not conserved in equilibrium reactions like $e^+ e^- \leftrightarrow 2\gamma$. Equilibrium of any reaction creating or destroying species $i$ enforces $\sum\mu_i = 0$ over the reactants $=$ products; since photons can be created/destroyed singly in scattering off charges with no chemical potential offset, $\mu_\gamma = 0$.
+
+\textbf{Other relativistic species at $T = \SI{5e9}{K}$ ($k_B T \approx \SI{0.4}{MeV}$):} electrons, positrons, three flavours of neutrinos and antineutrinos. The relevant test is $T \gg m_i c^2/k_B$: $m_e c^2 = \SI{0.511}{MeV}$ so electrons/positrons are mildly relativistic; neutrinos with $m\lesssim\si{eV}$ are ultra-relativistic.
+
+For each particle--antiparticle pair, equilibrium under pair annihilation $i\bar\imath\leftrightarrow\gamma\gamma$ enforces $\mu_i + \mu_{\bar\imath} = 2\mu_\gamma = 0$. Charge/lepton-number near-symmetry of the universe means $n_i\approx n_{\bar\imath}$, hence $\mu_i \approx -\mu_{\bar\imath} \approx 0$ to leading order:
+\[
+\boxed{\;\mu_i \approx 0 \text{ for all relativistic species in equilibrium with the photon bath.}\;}
+\]
+
+\subsection*{(b) Number, energy, pressure for relativistic species}
+
+For $\mu_i = 0$, $\epsilon = pc$, integrate over angle $\int\de\Omega = 4\pi$:
+\[
+N_i = \int f_i\,\de^3 x\,\de^3 p = V\,\frac{g_i}{(2\pi\hbar)^3}\,4\pi\int_0^\infty\frac{p^2\,\de p}{e^{pc/k_B T}\pm 1}.
+\]
+Change variable $x = pc/(k_B T)$:
+\[
+N_i = V\,\frac{g_i}{(2\pi\hbar)^3}\cdot 4\pi\left(\frac{k_B T}{c}\right)^3\int_0^\infty\frac{x^2\,\de x}{e^x \pm 1}.
+\]
+Evaluate the dimensionless integrals:
+\[
+\int_0^\infty\frac{x^2\,\de x}{e^x - 1} = 2\zeta(3) \approx 2.404\quad\text{(boson)},
+\]
+\[
+\int_0^\infty\frac{x^2\,\de x}{e^x + 1} = \tfrac34\cdot 2\zeta(3) = \tfrac32\zeta(3)\quad\text{(fermion, using the hint)}.
+\]
+Collect:
+\[
+\boxed{\;\frac{N_i}{V} = \frac{g_i}{2\pi^2}\left(\frac{k_B T}{\hbar c}\right)^3\,\zeta(3)\times\begin{cases}1 & \text{boson}\\ 3/4 & \text{fermion}\end{cases}.\;}
+\label{eq:Ni}
+\]
+
+Energy density (insert $\epsilon = pc$):
+\[
+\frac{U_i}{V} = \frac{g_i}{(2\pi\hbar)^3}\,4\pi\int_0^\infty\frac{p^3 c\,\de p}{e^{pc/k_B T}\pm 1} = \frac{g_i}{2\pi^2}\frac{(k_B T)^4}{(\hbar c)^3}\int_0^\infty\frac{x^3\,\de x}{e^x\pm 1}.
+\]
+Evaluate (boson: $\pi^4/15$; fermion: $\tfrac78\cdot\pi^4/15$):
+\[
+\boxed{\;\frac{U_i}{V} = \frac{\pi^2}{30}\,g_i\,\frac{(k_B T)^4}{(\hbar c)^3}\times\begin{cases}1\\ 7/8\end{cases}.\;}
+\label{eq:Ui}
+\]
+
+Pressure for an ultra-relativistic gas:
+\[
+\boxed{\;P_i = \frac{1}{3}\,\frac{U_i}{V}.\;}
+\label{eq:Pi}
+\]
+
+\subsection*{(c) Entropy and electron/photon ratio}
+
+For $\mu_i=0$ (per the question's formula):
+\[
+S_i = \frac{1}{T}(U_i + P_i V) = \frac{U_i}{T}\left(1 + \tfrac13\right) = \frac{4 U_i}{3 T}.
+\]
+Use \eqref{eq:Ui}:
+\[
+\boxed{\;\frac{S_i}{V} = \frac{2\pi^2}{45}\,g_i\,k_B\left(\frac{k_B T}{\hbar c}\right)^3\times\begin{cases}1\\ 7/8\end{cases}.\;}
+\label{eq:Si}
+\]
+Hence $S_i\propto T^3$ at fixed comoving volume.
+
+\textbf{Electron/photon entropy ratio.} Photons: $g_\gamma = 2$, boson. Electron+positron: $g_{e^\pm} = 2 + 2 = 4$, fermion. Take the ratio of \eqref{eq:Si}:
+\[
+\frac{S_{e^\pm}}{S_\gamma} = \frac{4\cdot(7/8)}{2\cdot 1} = \frac{4\cdot 7}{2\cdot 8} = \frac{7}{4}.
+\]
+
+The question states ``ratio of the entropy of the electrons to that of the photons'' --- if ``electrons'' means \emph{electrons only} (not positrons), $g_e = 2$:
+\[
+\boxed{\;\frac{S_e}{S_\gamma} = \frac{2\cdot (7/8)}{2\cdot 1} = \frac{7}{8}.\;}
+\label{eq:Sratio}
+\]
+
+\subsection*{(d) Photon temperature rise after $e^+e^-$ annihilation}
+
+When $k_B T$ drops below $m_e c^2 = \SI{0.511}{MeV}$, $e^+e^-$ pairs annihilate into photons. By that epoch neutrinos have decoupled (decoupling $T_\nu^{\rm dec}\approx\SI{1}{MeV}$, before $e^+e^-$ annihilation): the entropy released into photons is \emph{not} shared with neutrinos.
+
+Entropy conservation in a comoving volume separately for the $\gamma + e^\pm$ sector and the $\nu$ sector:
+\[
+S_\gamma^{\rm before} + S_{e^\pm}^{\rm before} = S_\gamma^{\rm after}.
+\]
+Use \eqref{eq:Si} with $g_\gamma=2$ (boson), $g_{e^\pm}=4$ (fermion). Before annihilation $T_\gamma=T_e \equiv T_-$; after, $T_\gamma\equiv T_+$:
+\[
+\bigl(2\cdot 1 + 4\cdot \tfrac78\bigr)T_-^3 = 2\,T_+^3.
+\]
+Simplify:
+\[
+\bigl(2 + \tfrac{7}{2}\bigr)T_-^3 = 2 T_+^3\quad\Longrightarrow\quad \tfrac{11}{2}T_-^3 = 2 T_+^3.
+\]
+Solve:
+\[
+\boxed{\;\frac{T_+}{T_-} = \left(\frac{11}{4}\right)^{1/3}\approx 1.401.\;}
+\label{eq:reheat}
+\]
+Neutrinos --- already decoupled --- continue redshifting as $T_\nu\propto R^{-1}$, with $T_\nu = T_-$ at the moment of decoupling but no benefit from the entropy dump.
+
+\subsection*{(e) Today's $T_\nu$, $n_\nu$, neutrino-mass bound}
+
+Apply \eqref{eq:reheat}: from the decoupling moment onward, both $T_\gamma$ and $T_\nu$ redshift as $1/R$, but $T_\nu/T_\gamma = (4/11)^{1/3}$ is preserved forever after. With $T_{\gamma,0} = T_{\rm CMB} = \SI{2.725}{K}$:
+\[
+T_{\nu,0} = T_{\gamma,0}\left(\frac{4}{11}\right)^{1/3}.
+\]
+Numerical:
+\[
+(4/11)^{1/3} = 0.7138.
+\]
+\[
+\boxed{\;T_{\nu,0} \approx 0.7138\times \SI{2.725}{K} \approx \SI{1.95}{K}.\;}
+\]
+
+\textbf{Number density per neutrino species (today).} Use the relativistic-fermion form of \eqref{eq:Ni} with $g_\nu = 1$ per chirality, plus antineutrino, so $g_{\nu+\bar\nu} = 2$ per flavour. The standard CNB result (per flavour, neutrinos $+$ antineutrinos):
+\[
+n_\nu^{\rm flavour} = \frac{3}{4}\cdot\frac{2\zeta(3)}{2\pi^2}\,g_{\nu+\bar\nu}\left(\frac{k_B T_{\nu,0}}{\hbar c}\right)^3.
+\]
+
+Compute $(k_B T_{\nu,0}/\hbar c)^3$:
+\[
+k_B T_{\nu,0} = \SI{1.381e-23}{J\,K^{-1}}\times \SI{1.95}{K} = \SI{2.69e-23}{J}.
+\]
+\[
+\hbar c = \SI{3.16e-26}{J\,m}.
+\]
+\[
+\frac{k_B T_{\nu,0}}{\hbar c} = \frac{2.69\times 10^{-23}}{3.16\times 10^{-26}}\,\si{m^{-1}} = \SI{8.51e2}{m^{-1}}.
+\]
+Cube:
+\[
+\left(\frac{k_B T_{\nu,0}}{\hbar c}\right)^3 = \SI{6.16e8}{m^{-3}}.
+\]
+
+Insert into number density (per flavour, both helicities of $\nu$ and $\bar\nu$, $g=2$):
+\[
+n_\nu^{\rm flavour} = \frac{3}{4}\cdot\frac{2\cdot 1.202}{2\pi^2}\cdot 2\cdot \SI{6.16e8}{m^{-3}} = \frac{3}{4}\cdot 0.2436\cdot \SI{1.232e9}{m^{-3}}.
+\]
+Evaluate:
+\[
+n_\nu^{\rm flavour} \approx \SI{2.25e8}{m^{-3}}\quad\Longleftrightarrow\quad \SI{112}{cm^{-3}}.
+\]
+Three flavours:
+\[
+\boxed{\;n_\nu^{\rm tot} \approx 3\times \SI{112}{cm^{-3}} \approx \SI{336}{cm^{-3}}.\;}
+\]
+(Standard textbook: \SI{339}{cm^{-3}} --- agreement.)
+
+\textbf{Neutrino-mass bound.} If neutrinos are massive but non-relativistic today, their contribution to the present density is $\rho_\nu c^2 = \sum_i m_i c^2\,n_{\nu,i}$ where $n_{\nu,i}\approx \SI{112}{cm^{-3}}$ per flavour (number density was set when relativistic and is preserved by free-streaming).
+
+Critical density:
+\[
+\rho_c = \frac{3 H_0^2}{8\pi G}.
+\]
+$H_0 = \SI{72}{km\,s^{-1}\,Mpc^{-1}} = \SI{72e3}{m\,s^{-1}}/\SI{3.086e22}{m} = \SI{2.33e-18}{s^{-1}}$:
+\[
+H_0^2 = \SI{5.43e-36}{s^{-2}}.
+\]
+\[
+\rho_c = \frac{3\cdot \SI{5.43e-36}{}}{8\pi\cdot \SI{6.67e-11}{}} = \frac{\SI{1.63e-35}{}}{\SI{1.676e-9}{}}\,\si{kg\,m^{-3}}.
+\]
+\[
+\rho_c \approx \SI{9.74e-27}{kg\,m^{-3}}.
+\]
+
+Bound (require $\Omega_\nu \le 1$, i.e.\ neutrinos do not exceed the critical density):
+\[
+\sum_i m_i\,n_{\nu,i}\le \rho_c.
+\]
+With identical $n_{\nu,i}\equiv n_\nu^{\rm flavour} \approx \SI{1.12e8}{m^{-3}}$:
+\[
+\sum_i m_i \le \frac{\rho_c}{n_\nu^{\rm flavour}} = \frac{\SI{9.74e-27}{kg\,m^{-3}}}{\SI{1.12e8}{m^{-3}}}.
+\]
+Evaluate:
+\[
+\sum_i m_i \le \SI{8.70e-35}{kg}.
+\]
+Convert to $\si{eV}/c^2$ using $\SI{1}{eV}/c^2 = \SI{1.783e-36}{kg}$:
+\[
+\sum_i m_i c^2 \le \frac{\SI{8.70e-35}{kg}}{\SI{1.783e-36}{kg/(eV\,c^{-2})}}\,\si{eV}.
+\]
+\[
+\boxed{\;\sum_i m_{\nu_i} c^2 \lesssim \SI{49}{eV}.\;}
+\]
+
+(Cosmological data --- CMB+LSS --- tighten this to $\sum m_\nu \lesssim \SI{0.12}{eV}$, but the simple critical-density argument already excludes any single species above tens of $\si{eV}$.)
+
+\end{document}

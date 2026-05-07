@@ -1,0 +1,378 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\usepackage{braket}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+
+\title{B2 Symmetry and Relativity --- Model Solutions, 2020}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+Metric $(+,-,-,-)$ throughout. Capital bold $\bm U$, $\bm P$, etc.\ denote 4-vectors; lower-case bold $\vb v$, $\vb p$, etc.\ denote 3-vectors.
+
+%==================================================================
+\section*{Question 1 --- Threshold collisions and $\pi^0$ decay}
+
+\textbf{Problem.} A particle of mass $m$, total energy $E$, hits a stationary mass $M$, producing $N$ particles of masses $m_i$. (a) Find threshold $E$. (b) Apply to $p+p\to p+p+\pi^0$: threshold proton kinetic energy and pion lab velocity. (c) Wavelength of the $\pi^0\to 2\gamma$ photons in the pion rest frame; show half the photons go into a lab cone of half-angle $\cos^{-1}(v/c)$. (d) How can the threshold be lowered.
+
+\subsection*{(a)}
+
+Total 4-momentum: $\bm P_\text{tot}=\bm P_m+\bm P_M$, conserved.
+
+Lab frame, target at rest:
+\[ \bm P_M=(Mc,\bm 0),\qquad \bm P_m=(E/c,\vb p). \]
+Compute the invariant square:
+\[ \bm P_\text{tot}^2 = (E/c+Mc)^2-\vb p^{\,2}. \]
+Expand:
+\[ \bm P_\text{tot}^2 = E^2/c^2 - \vb p^{\,2} + 2EM + M^2c^2. \]
+On-shell projectile: $E^2/c^2-\vb p^{\,2}=m^2c^2$:
+\begin{equation}
+\bm P_\text{tot}^2 = m^2c^2 + M^2c^2 + 2EM.
+\label{eq:s-lab}
+\end{equation}
+At threshold the products are at rest in the CoM frame:
+\[ \bm P_\text{tot}^2 = \Big(\textstyle\sum_i m_i\Big)^2 c^2. \]
+Equate to \eqref{eq:s-lab} and solve for $E$:
+\begin{equation}
+\boxed{\;E_\text{min} = \frac{\bigl(\sum_i m_i\bigr)^2 - m^2 - M^2}{2M}\,c^2.\;}
+\label{eq:Emin}
+\end{equation}
+
+\subsection*{(b)}
+
+Set $m=M=m_p$, $\sum m_i = 2m_p+m_\pi$ in \eqref{eq:Emin}:
+\[ E_\text{min} = \frac{(2m_p+m_\pi)^2 - 2m_p^2}{2m_p}\,c^2. \]
+Expand the square:
+\[ E_\text{min} = \frac{4m_p^2 + 4m_p m_\pi + m_\pi^2 - 2m_p^2}{2m_p}\,c^2. \]
+Simplify:
+\[ E_\text{min} = \Bigl(m_p + 2m_\pi + \frac{m_\pi^2}{2m_p}\Bigr)c^2. \]
+Subtract $m_pc^2$ for kinetic energy:
+\[ T_\text{min} = \Bigl(2m_\pi + \frac{m_\pi^2}{2m_p}\Bigr)c^2. \]
+Numerical: $m_\pi c^2 = \SI{135}{MeV}$, $m_p c^2 = \SI{938}{MeV}$:
+\[ T_\text{min} = 2\cdot 135 + \frac{135^2}{2\cdot 938}\ \text{MeV}. \]
+Evaluate:
+\[ T_\text{min} = 270 + 9.7\ \text{MeV}. \]
+\[ \boxed{\;T_\text{min} \approx \SI{280}{MeV} \approx 2.07\,m_\pi c^2.\;} \]
+Comment: only $\sim 5\%$ above the naive $2m_\pi c^2$, the small excess being the recoil kinetic energy of the products.
+
+Pion lab velocity at threshold: all three products move together in the lab with the CoM velocity. Total 4-momentum in lab:
+\[ \bm P_\text{tot} = (E/c+m_pc,\,\vb p),\qquad |\vb p|c = \sqrt{E^2-m_p^2c^4}. \]
+CoM velocity:
+\[ v_\pi = \frac{|\vb p|c^2}{E+m_pc^2}. \]
+Numerics: $E = T_\text{min}+m_pc^2 = 1218\ \text{MeV}$:
+\[ |\vb p|c = \sqrt{1218^2 - 938^2}\ \text{MeV} = \SI{777}{MeV}. \]
+Denominator:
+\[ E+m_pc^2 = 1218 + 938 = \SI{2156}{MeV}. \]
+\[ \boxed{\;v_\pi/c = 777/2156 \approx 0.360.\;} \]
+
+\subsection*{(c)}
+
+In the pion rest frame, $\pi^0\to\gamma\gamma$ gives back-to-back photons with energy $E_\gamma'=m_\pi c^2/2$.
+
+Photon wavelength:
+\[ \lambda' = \frac{hc}{E_\gamma'} = \frac{2hc}{m_\pi c^2}. \]
+Evaluate ($hc = \SI{1240}{MeV.fm}$):
+\[ \lambda' = \frac{2\cdot 1240}{135}\ \text{fm}. \]
+\[ \boxed{\;\lambda' \approx \SI{18.4}{fm}.\;} \]
+
+Cone of half the photons. Pion frame: photons isotropic, so half are emitted with $\cos\theta'\ge 0$, i.e.\ into the forward hemisphere $\theta'\in[0,\pi/2]$.
+
+Aberration (boost along $+x$, photon emitted at angle $\theta'$ to $+x$ in pion frame):
+\[ \cos\theta = \frac{\cos\theta'+\beta}{1+\beta\cos\theta'},\qquad \beta=v/c. \]
+Forward-hemisphere boundary $\theta'=\pi/2$, so $\cos\theta'=0$:
+\[ \cos\theta = \frac{0+\beta}{1+0} = \beta. \]
+\[ \boxed{\;\theta = \cos^{-1}(v/c).\;} \]
+Half the photons (those with $\cos\theta'\ge 0$) lie inside this lab cone.
+
+\subsection*{(d)}
+
+Use a colliding-beam (symmetric) configuration: two protons of equal and opposite 3-momentum, so the lab \emph{is} the CoM frame.
+
+Threshold from $\bm P_\text{tot}^2 = (2E_\text{lab}/c)^2 = (2m_p+m_\pi)^2 c^2$:
+\[ E_\text{lab} = (m_p + m_\pi/2)c^2. \]
+Kinetic energy per beam:
+\[ T_\text{beam} = \tfrac{1}{2}m_\pi c^2 = \SI{67.5}{MeV}. \]
+Total kinetic energy (both beams):
+\[ T_\text{total} = m_\pi c^2 = \SI{135}{MeV}. \]
+\[ \boxed{\;\Delta T = 280-135 = \SI{145}{MeV}\text{ saved; reduction factor }\approx 2.\;} \]
+Final state: at threshold the three products $p,p,\pi^0$ are at rest in the lab.
+
+%==================================================================
+\section*{Question 2 --- Rocket dynamics and the photon rocket}
+
+\textbf{Problem.} (a) Define $\bm U$, $\bm F$ and show $\de E/\de t = \vb v\cdot\vb f$. (b) Rocket with proper acceleration $a_0$: write equation of motion in rapidity $\eta$, derive trajectory $x^2-c^2t^2=(c^2/a_0)^2$, and show a photon emitted from origin never catches the rocket. (c) Photon rocket: show $m\to\alpha m$ with $\alpha=\sqrt{(1-\beta)/(1+\beta)}$; fuel fraction to reach $\gamma=8$ then decelerate; comment on massive-exhaust case.
+
+\subsection*{(a)}
+
+Definitions:
+\[ \bm U = \frac{\de \bm X}{\de\tau} = \gamma(c,\vb v),\qquad \bm F = \frac{\de \bm P}{\de\tau} = \gamma(\dot E/c,\,\vb f), \]
+where $\bm P=(E/c,\vb p)$, $\vb f=\de\vb p/\de t$ is the 3-force, $\tau$ proper time.
+
+Pure force preserves rest mass: $\bm P^2 = m^2c^2 = $ const, so $\bm P\cdot\bm F=0$:
+\[ \frac{E}{c^2}\frac{\de E}{\de t} - \vb p\cdot\vb f = 0. \]
+Use $\vb p = (E/c^2)\vb v$:
+\[ \frac{E}{c^2}\frac{\de E}{\de t} = \frac{E}{c^2}\,\vb v\cdot\vb f. \]
+Cancel $E/c^2$:
+\[ \boxed{\;\frac{\de E}{\de t} = \vb v\cdot\vb f.\;} \]
+
+\subsection*{(b)}
+
+Rapidity definition: $\cosh\eta=\gamma$, $\sinh\eta=\gamma\beta$, so $v/c=\tanh\eta$.
+
+Use the hint $A^\mu A_\mu = c^2\dot\eta^2\cosh^2\eta$. In the instantaneous rest frame the 4-acceleration has spatial part $a_0$:
+\[ A^\mu A_\mu = a_0^2. \]
+(Sign: spacelike with our metric; $A^\mu A_\mu=-a_0^2$ if we use $(+,-,-,-)$, but convention here is $|A|=a_0$.) Equate magnitudes:
+\[ c\,\dot\eta\cosh\eta = a_0. \]
+Initial conditions: $\eta(0)=0$. Integrate:
+\[ c\sinh\eta = a_0 t. \]
+\begin{equation}
+\sinh\eta = a_0 t/c.
+\label{eq:eta-t}
+\end{equation}
+Lab velocity:
+\[ v = c\tanh\eta = \frac{a_0 t}{\sqrt{1+(a_0 t/c)^2}}. \]
+Position from $\de x/\de t = v$:
+\[ x(t) = \int_0^t \frac{a_0 t'\,\de t'}{\sqrt{1+(a_0 t'/c)^2}}. \]
+Substitute $u = 1+(a_0 t'/c)^2$:
+\[ x(t) = \frac{c^2}{a_0}\bigl[\sqrt{1+(a_0 t/c)^2}-1\bigr]. \]
+Choose origin at $x_0 = -c^2/a_0$ (i.e.\ shift $x\to x+c^2/a_0$):
+\[ x(t) = \frac{c^2}{a_0}\sqrt{1+(a_0 t/c)^2}. \]
+Square:
+\[ x^2 = (c^2/a_0)^2 + c^2 t^2. \]
+\begin{equation}
+\boxed{\;x^2 - c^2 t^2 = (c^2/a_0)^2.\;}
+\label{eq:hyperbola}
+\end{equation}
+
+\textbf{Photon never catches the rocket.} Photon worldline from $(t,x)=(0,0)$ in $+x$: $x_\gamma = ct$.
+
+Light cone $x=ct$ is the asymptote of the hyperbola \eqref{eq:hyperbola}:
+\[ x_\text{rocket} = \sqrt{(c^2/a_0)^2 + c^2 t^2} > ct\quad\forall\,t. \]
+Difference at large $t$:
+\[ x_\text{rocket} - ct \sim \frac{c}{2 a_0 t}\to 0^+. \]
+Photon asymptotically approaches but never overtakes the rocket: the rocket has a \emph{Rindler horizon} at $x=ct$, beyond which signals from the origin cannot reach it.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+  \draw[->] (-0.3,0) -- (5.5,0) node[right] {$ct$};
+  \draw[->] (0,-0.3) -- (0,4.5) node[above] {$x$};
+  % light cone x = ct
+  \draw[dashed] (0,0) -- (4.3,4.3) node[pos=0.85, sloped, above] {$x=ct$};
+  % hyperbola x = sqrt(R^2 + (ct)^2), R=1.2
+  \draw[thick, domain=0:4.2, samples=80, smooth, variable=\t]
+       plot ({\t}, {sqrt(1.44 + \t*\t)});
+  \node[circle,fill,inner sep=1.2pt,label=left:{$O$}] at (0,0) {};
+  \node[circle,fill,inner sep=1.2pt,label=left:{$c^2/a_0$}] at (0,1.2) {};
+  \node at (3.6,4.0) {rocket};
+  \draw[->] (3.2,3.7) -- (2.7,3.45);
+\end{tikzpicture}
+\end{center}
+
+\subsection*{(c)}
+
+Initial state (rocket frame): mass $m$ at rest, $\bm P_i = (mc,\bm 0)$.
+
+After: rocket has mass $m'$, lab speed $v$, 4-momentum $\bm P_r=\gamma m'(c,\vb v)$; emitted photons carry total $\bm P_\gamma=(E_\gamma/c,-E_\gamma/c\,\hat{\vb v})$ (backward).
+
+Conservation:
+\[ mc = \gamma m'c + E_\gamma/c, \]
+\[ 0 = \gamma m' v - E_\gamma/c. \]
+Eliminate $E_\gamma$:
+\[ mc = \gamma m'c + \gamma m' v. \]
+Factor:
+\[ m = \gamma m'(1+\beta). \]
+Solve for $m'/m$:
+\[ \frac{m'}{m} = \frac{1}{\gamma(1+\beta)} = \frac{\sqrt{1-\beta^2}}{1+\beta}. \]
+Simplify radical:
+\[ \frac{m'}{m} = \sqrt{\frac{(1-\beta)(1+\beta)}{(1+\beta)^2}}. \]
+\begin{equation}
+\boxed{\;\alpha \equiv \frac{m'}{m} = \sqrt{\frac{1-\beta}{1+\beta}}.\;}
+\label{eq:alpha}
+\end{equation}
+
+\textbf{Fuel fraction.} Two stages: accelerate to $\gamma_1=8$ (factor $\alpha_1$), then decelerate to rest from speed $v_1$ (factor $\alpha_2$). By symmetry of \eqref{eq:alpha} under boost-and-reverse, $\alpha_2$ has the same form (now exhaust forward, but $|\beta|$ unchanged):
+\[ m_\text{final}/m_\text{initial} = \alpha_1\alpha_2 = \alpha_1^2. \]
+Get $\beta_1$ from $\gamma_1=8$:
+\[ \beta_1 = \sqrt{1-1/64} = \sqrt{63/64}. \]
+Compute $\alpha_1^2$:
+\[ \alpha_1^2 = \frac{1-\beta_1}{1+\beta_1}. \]
+Rationalise:
+\[ \alpha_1^2 = \frac{(1-\beta_1)^2}{1-\beta_1^2} = (1-\beta_1)^2\gamma_1^2. \]
+Use $1-\beta_1 = 1/[\gamma_1(\gamma_1+\sqrt{\gamma_1^2-1})]\cdot(\gamma_1+\sqrt{\gamma_1^2-1})/\gamma_1$, or directly:
+\[ 1-\beta_1 = 1-\sqrt{63}/8 \approx 1-0.9922 = 0.00781. \]
+\[ 1+\beta_1 \approx 1.9922. \]
+\[ \alpha_1^2 = 0.00781/1.9922 \approx 3.92\times 10^{-3}. \]
+Fuel fraction:
+\[ \boxed{\;f = 1 - \alpha_1^2 \approx 0.996,\text{ i.e.\ }\approx 99.6\%\text{ of initial mass is fuel}.\;} \]
+
+\textbf{Massive exhaust.} Photons carry away the maximum momentum per unit energy ($p=E/c$). Massive exhaust at the same energy carries less momentum, so more energy (hence more rest mass) must be expended for the same impulse. Therefore the fuel fraction is even larger.
+
+%==================================================================
+\section*{Question 3 --- Field tensor, gauge invariance, moving wire}
+
+\textbf{Problem.} (a) Components of $F^{\mu\nu}$; show $\partial_\nu F^{\mu\nu}=\mu_0 J^\mu$ encodes Gauss + Amp\`ere; build an invariant of $\vb E,\vb B$. (b) From $F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu$ show gauge invariance and reduce Maxwell to $\partial_\nu\partial^\nu A^\mu=-\mu_0 J^\mu$ in a suitable gauge. (c) Charged wire moving along its length: find $\vb E,\vb B$ in rest frame $S$ and lab $S'$; is there a frame with $\vb E=0$?
+
+\subsection*{(a)}
+
+Field tensor (metric $(+,-,-,-)$, raised indices):
+\[ F^{\mu\nu} = \begin{pmatrix} 0 & -E_x/c & -E_y/c & -E_z/c \\ E_x/c & 0 & -B_z & B_y \\ E_y/c & B_z & 0 & -B_x \\ E_z/c & -B_y & B_x & 0 \end{pmatrix}. \]
+4-current: $J^\mu=(c\rho,\vb J)$.
+
+Take $\mu=0$ in $\partial_\nu F^{\mu\nu}=\mu_0 J^\mu$:
+\[ \partial_i F^{0i} = \mu_0 c\rho. \]
+Insert $F^{0i}=-E_i/c$:
+\[ -\frac{1}{c}\nabla\cdot\vb E = \mu_0 c\rho. \]
+Use $\mu_0 c^2 = 1/\epsilon_0$:
+\[ \nabla\cdot\vb E = \rho/\epsilon_0. \quad\checkmark\text{(Gauss)} \]
+
+Take $\mu=i$ (spatial):
+\[ \partial_0 F^{i0}+\partial_j F^{ij} = \mu_0 J^i. \]
+Insert $F^{i0}=E_i/c$, $F^{ij}=-\epsilon^{ijk}B_k$:
+\[ \frac{1}{c^2}\partial_t E_i - \epsilon^{ijk}\partial_j B_k = \mu_0 J_i. \]
+Recognise $\nabla\times\vb B$:
+\[ \nabla\times\vb B - \frac{1}{c^2}\pd{\vb E}{t} = \mu_0\vb J. \quad\checkmark\text{(Amp\`ere--Maxwell)} \]
+
+\textbf{Invariant.} Form the scalar $F_{\mu\nu}F^{\mu\nu}$:
+\[ F_{\mu\nu}F^{\mu\nu} = -2(E/c)^2 + 2 B^2. \]
+\[ \boxed{\;\tfrac{1}{2}F_{\mu\nu}F^{\mu\nu} = B^2 - E^2/c^2 = \text{Lorentz invariant}.\;} \]
+
+\subsection*{(b)}
+
+Gauge transformation: $A^\mu\to A^\mu+\partial^\mu\chi$:
+\[ F^{\mu\nu}\to \partial^\mu(A^\nu+\partial^\nu\chi)-\partial^\nu(A^\mu+\partial^\mu\chi). \]
+Cross terms cancel by symmetry of mixed partials:
+\[ F^{\mu\nu}\to F^{\mu\nu}. \quad\checkmark \]
+
+Substitute $F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu$ into $\partial_\nu F^{\mu\nu}=\mu_0 J^\mu$:
+\[ \partial_\nu\partial^\mu A^\nu - \partial_\nu\partial^\nu A^\mu = \mu_0 J^\mu. \]
+Swap order in first term:
+\[ \partial^\mu(\partial_\nu A^\nu) - \partial_\nu\partial^\nu A^\mu = \mu_0 J^\mu. \]
+Choose Lorenz gauge $\partial_\nu A^\nu = 0$:
+\[ \boxed{\;\partial_\nu\partial^\nu A^\mu = -\mu_0 J^\mu.\;} \]
+Note sign: $\partial_\nu\partial^\nu = (1/c^2)\partial_t^2 - \nabla^2 = \Box$, giving $\Box A^\mu = \mu_0 J^\mu$ in the more familiar wave-equation sign convention; the question's stated form differs by a sign convention on $F^{\mu\nu}$.
+
+\subsection*{(c)}
+
+Wire rest frame $S$: linear charge density $\rho$ (per unit length), no current. By Gauss with cylindrical symmetry at radial distance $r$:
+\[ E_r = \frac{\rho}{2\pi\epsilon_0 r}. \]
+\[ \boxed{\;\vb E_S = \frac{\rho}{2\pi\epsilon_0 r}\hat{\vb r},\qquad \vb B_S = \bm 0.\;} \]
+
+Lab frame $S'$: wire moves with velocity $\vb v$ along its length ($\hat{\vb z}$). Boost is parallel to the wire, so transverse $\vb E_\perp$ and $\vb B_\perp$ transform as
+\[ \vb E'_\perp = \gamma(\vb E_\perp + \vb v\times\vb B_\perp),\qquad \vb B'_\perp = \gamma\bigl(\vb B_\perp - (\vb v/c^2)\times\vb E_\perp\bigr). \]
+Insert $\vb B=\bm 0$:
+\[ \vb E' = \gamma E_r\hat{\vb r} = \frac{\gamma\rho}{2\pi\epsilon_0 r}\hat{\vb r}. \]
+\[ \vb B' = -\gamma(\vb v/c^2)\times E_r\hat{\vb r} = \frac{\gamma\rho v}{2\pi\epsilon_0 c^2 r}\,\hat{\vb z}\times\hat{\vb r}. \]
+Rewrite using $\rho' = \gamma\rho$ (length contraction increases line density) and $I' = \rho' v$:
+\[ \vb E' = \frac{\rho'}{2\pi\epsilon_0 r}\hat{\vb r},\qquad \vb B' = \frac{\mu_0 I'}{2\pi r}\hat{\bm\varphi}. \]
+\[ \boxed{\;\vb E' \text{ Coulomb of } \rho'=\gamma\rho;\quad \vb B' \text{ Amp\`ere of } I' = \gamma\rho v.\;} \]
+
+\textbf{Frame with $\vb E=0$?} Invariant $E^2 - c^2 B^2$ (or equivalently $B^2-E^2/c^2$):
+\[ E_S^2 - c^2 B_S^2 = E_S^2 > 0. \]
+Invariant is positive, so $\vb E$ dominates in every frame; no boost can null $\vb E$.
+\[ \boxed{\;\text{No frame has }\vb E=0.\;} \]
+
+%==================================================================
+\section*{Question 4 --- EM wave 4-potential, intervals, photon CoM, relative speed}
+
+\textbf{Problem.} (a) Write $A^\mu$ for a vacuum EM wave; show phase $\phi$ is invariant; show an isolated electron cannot emit a photon. (b) Condition for spacelike separation; can simultaneity be achieved? (c) Two photons with 4-momenta $\bm P_1$ ($+x$), $\bm P_2$ ($+y$), same $\omega$: rest mass and CoM velocity. (d) Derive the relative speed formula.
+
+\subsection*{(a)}
+
+4-potential of plane wave:
+\[ A^\mu(\bm X) = A_0^\mu \cos(\bm K\cdot\bm X), \]
+where $A_0^\mu$ is constant amplitude, $\bm K=(\omega/c,\vb k)$ is the 4-wavevector, $\bm X=(ct,\vb x)$.
+
+Phase $\phi = \bm K\cdot\bm X = \omega t - \vb k\cdot\vb x$.
+
+Both $\bm K$ and $\bm X$ are 4-vectors; their contraction is a scalar:
+\[ \boxed{\;\phi = K_\mu X^\mu \text{ is Lorentz invariant}.\;} \]
+
+\textbf{Electron $\to e + \gamma$ forbidden.} 4-momentum conservation: $\bm P_e = \bm P_e' + \bm P_\gamma$. Rearrange:
+\[ \bm P_\gamma = \bm P_e - \bm P_e'. \]
+Square:
+\[ \bm P_\gamma^2 = \bm P_e^2 - 2\bm P_e\cdot\bm P_e' + \bm P_e'^2. \]
+Insert $\bm P_e^2 = \bm P_e'^2 = m_e^2c^2$, $\bm P_\gamma^2 = 0$:
+\[ 0 = 2m_e^2c^2 - 2\bm P_e\cdot\bm P_e'. \]
+Evaluate in the initial electron rest frame, $\bm P_e = (m_ec,\bm 0)$:
+\[ \bm P_e\cdot\bm P_e' = m_e c\cdot E_e'/c = m_e E_e'. \]
+Substitute:
+\[ m_e c^2 = E_e'. \]
+But $E_e' \ge m_e c^2$ with equality only at $\vb p_e' = \bm 0$, which forces $\bm P_\gamma=0$:
+\[ \boxed{\;\text{No photon can be emitted; }e^-\to e^-\gamma\text{ forbidden in vacuum}.\;} \]
+
+\subsection*{(b)}
+
+Interval:
+\[ (\Delta\bm X)^2 = c^2(\Delta t)^2 - (\Delta\vb x)^2. \]
+Spacelike condition:
+\[ \boxed{\;c^2(t_2-t_1)^2 < (\vb x_2-\vb x_1)^2.\;} \]
+
+Simultaneity in $S'$: require $\Delta t' = 0$. Boost along $\hat{\vb n}$ with speed $u$:
+\[ c\Delta t' = \gamma(c\Delta t - (u/c)\,\hat{\vb n}\cdot\Delta\vb x). \]
+Set $\Delta t' = 0$:
+\[ u\,\hat{\vb n}\cdot\Delta\vb x = c^2\Delta t. \]
+Solve for $u$ along $\Delta\vb x$:
+\[ u = c^2\Delta t/|\Delta\vb x|. \]
+Spacelike $\Rightarrow c|\Delta t|<|\Delta\vb x|$, so $|u|<c$ is achievable:
+\[ \boxed{\;\text{Yes, a frame }S'\text{ exists in which the events are simultaneous}.\;} \]
+
+\subsection*{(c)}
+
+Photon 4-momenta:
+\[ \bm P_1 = (\hbar\omega/c)(1,1,0,0),\qquad \bm P_2 = (\hbar\omega/c)(1,0,1,0). \]
+Total:
+\[ \bm P = \bm P_1+\bm P_2 = (\hbar\omega/c)(2,1,1,0). \]
+Square (metric $(+,-,-,-)$):
+\[ \bm P^2 = (\hbar\omega/c)^2(4-1-1) = 2(\hbar\omega/c)^2. \]
+Rest mass:
+\[ M^2c^2 = \bm P^2 = 2(\hbar\omega/c)^2. \]
+\[ \boxed{\;M = \sqrt{2}\,\hbar\omega/c^2.\;} \]
+
+CoM velocity: $\vb v_\text{CoM} = c^2\vb p_\text{tot}/E_\text{tot}$:
+\[ \vb p_\text{tot} = (\hbar\omega/c)(\hat{\vb x}+\hat{\vb y}),\qquad E_\text{tot} = 2\hbar\omega. \]
+Substitute:
+\[ \vb v_\text{CoM} = \frac{c^2 (\hbar\omega/c)(\hat{\vb x}+\hat{\vb y})}{2\hbar\omega} = \frac{c}{2}(\hat{\vb x}+\hat{\vb y}). \]
+\[ \boxed{\;\vb v_\text{CoM} = \tfrac{c}{2}(\hat{\vb x}+\hat{\vb y}),\quad |\vb v_\text{CoM}|=c/\sqrt{2}.\;} \]
+
+\subsection*{(d)}
+
+Particle 1 has 3-velocity $\vb u$ in frame $S$; boost to particle 2's rest frame, which moves at $\vb v$ in $S$. The relative speed is $|\vb u'|$ where $\vb u'$ is the velocity of 1 in 2's frame.
+
+Velocity addition (boost $-\vb v$ to go to 2's rest frame):
+\[ \vb u'_\parallel = \frac{\vb u_\parallel - \vb v}{1-\vb u\cdot\vb v/c^2},\qquad \vb u'_\perp = \frac{\vb u_\perp}{\gamma_v(1-\vb u\cdot\vb v/c^2)}, \]
+where $\parallel,\perp$ refer to $\vb v$.
+
+Define $D = 1-\vb u\cdot\vb v/c^2$ for brevity.
+
+Square magnitude:
+\[ |\vb u'|^2 = |\vb u'_\parallel|^2 + |\vb u'_\perp|^2 = \frac{(\vb u_\parallel-\vb v)^2}{D^2} + \frac{\vb u_\perp^2}{\gamma_v^2 D^2}. \]
+Common denominator $\gamma_v^2 D^2$:
+\[ |\vb u'|^2 = \frac{\gamma_v^2(\vb u_\parallel-\vb v)^2 + \vb u_\perp^2}{\gamma_v^2 D^2}. \]
+Use $\gamma_v^2 = 1/(1-v^2/c^2)$, so $1/\gamma_v^2 = 1-v^2/c^2$:
+\[ \gamma_v^2(\vb u_\parallel-\vb v)^2 + \vb u_\perp^2 = (\vb u_\parallel-\vb v)^2 + \vb u_\perp^2 + \frac{v^2/c^2}{1-v^2/c^2}(\vb u_\parallel-\vb v)^2. \]
+Simpler: multiply numerator and denominator by $1/\gamma_v^2$:
+\[ |\vb u'|^2 = \frac{(\vb u_\parallel-\vb v)^2 + (1-v^2/c^2)\vb u_\perp^2}{D^2}. \]
+Combine $(\vb u_\parallel-\vb v)^2 + \vb u_\perp^2 = (\vb u-\vb v)^2$:
+\[ |\vb u'|^2 = \frac{(\vb u-\vb v)^2 - (v^2/c^2)\vb u_\perp^2}{D^2}. \]
+Use the hint $(\vb a\times\vb b)^2 = a^2 b^2 - (\vb a\cdot\vb b)^2$ with $\vb a=\vb u$, $\vb b=\vb v$:
+\[ (\vb u\times\vb v)^2 = u^2 v^2 - (\vb u\cdot\vb v)^2. \]
+Note $\vb u\cdot\vb v = u_\parallel v$, $\vb u_\perp^2 = u^2 - u_\parallel^2$:
+\[ v^2\vb u_\perp^2 = v^2 u^2 - v^2 u_\parallel^2 = (\vb u\times\vb v)^2. \]
+Substitute back:
+\[ |\vb u'|^2 = \frac{(\vb u-\vb v)^2 - (\vb u\times\vb v)^2/c^2}{(1-\vb u\cdot\vb v/c^2)^2}. \]
+Take the square root:
+\[ \boxed{\;w = |\vb u'| = \frac{\sqrt{(\vb u-\vb v)^2 - (\vb u\times\vb v)^2/c^2}}{1-\vb u\cdot\vb v/c^2}.\;} \]
+Sanity: parallel motion $\vb u\times\vb v=0$ recovers $w=|u-v|/(1-uv/c^2)$; non-relativistic limit $w\to|\vb u-\vb v|$.
+
+\end{document}

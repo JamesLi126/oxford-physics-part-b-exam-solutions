@@ -1,0 +1,467 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+\title{B1 Flows, Fluctuations and Complexity, 2019 --- Model Solutions}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+%==============================================================
+\section*{Question 1 --- Vorticity, circulation and Couette flow}
+
+\textbf{Problem.} Define vorticity and circulation; treat solid-body rotation and the line vortex; derive the tangential Couette flow between two rotating cylinders, its vorticity and pressure; discuss the Reynolds number and evaluate numerically.
+
+\subsection*{(a) Vorticity and circulation}
+
+Vorticity:
+\[ \bm\omega = \nabla\times\vb u. \]
+Physical meaning: $\bm\omega$ is twice the local angular velocity of a fluid element; it measures local spin.
+
+Circulation around a closed contour $C$ bounding surface $S$:
+\[ \Gamma = \oint_C \vb u\cdot\de\bm\ell = \int_S \bm\omega\cdot\de\vb S. \]
+The first form is the line integral of velocity along $C$; the second (Stokes) is the flux of vorticity through any surface spanning $C$.
+
+\subsection*{(b) Solid-body rotation and line vortex}
+
+\textbf{(i)} For solid-body rotation, $\vb u = \bm\Omega\times\vb r$. Take a circle of radius $r$ centred on the axis:
+\[ \Gamma = \oint u_\theta\,r\,\de\theta = \Omega r\cdot 2\pi r = 2\pi\Omega r^2. \]
+Apply Stokes with uniform $\omega$:
+\[ \Gamma = \omega\,\pi r^2. \]
+Equate:
+\[ \omega = 2\Omega. \]
+\boxed{\;\bm\omega = 2\bm\Omega.\;}
+
+\textbf{(ii)} Line vortex $U_\theta = A/r$, $r>0$. Circulation on a circle of radius $r$:
+\[ \Gamma = \oint \frac{A}{r}\,r\,\de\theta = 2\pi A. \]
+Vorticity (axisymmetric):
+\[ \omega_z = \frac{1}{r}\dv{r}(rU_\theta) = \frac{1}{r}\dv{r}(A) = 0,\qquad r>0. \]
+Comment: vorticity vanishes everywhere except at $r=0$ but $\Gamma\neq 0$, so all the vorticity is concentrated as a delta function on the axis. The flow is irrotational outside the singular core.
+
+\subsection*{(c) Couette flow between rotating cylinders}
+
+Continuity (incompressible, axisymmetric, $U_z=0$):
+\[ \frac{1}{r}\pd{(rU_r)}{r} = 0 \;\Rightarrow\; U_r = 0. \]
+Symmetry gives $\partial_\theta(\cdot)=0$ and steady $\partial_t(\cdot)=0$. Navier--Stokes simplifies; radial component:
+\begin{equation}
+-\frac{U_\theta^{2}}{r} = -\frac{1}{\rho}\pd{p}{r}.
+\label{eq:nsr}
+\end{equation}
+Tangential component:
+\begin{equation}
+0 = \nu\!\left[\frac{1}{r}\dv{r}\!\left(r\dv{U_\theta}{r}\right) - \frac{U_\theta}{r^2}\right].
+\label{eq:nstheta}
+\end{equation}
+Rewrite:
+\[ \dv{r}\!\left[\frac{1}{r}\dv{r}(rU_\theta)\right] = 0. \]
+Integrate twice:
+\[ U_\theta(r) = C_1 r + \frac{C_2}{r}. \]
+Boundary conditions (no-slip):
+\[ U_\theta(r_1) = \Omega_1 r_1,\qquad U_\theta(r_2) = \Omega_2 r_2. \]
+Apply BCs:
+\[ C_1 r_1 + C_2/r_1 = \Omega_1 r_1, \]
+\[ C_1 r_2 + C_2/r_2 = \Omega_2 r_2. \]
+Multiply the first by $r_1$, the second by $r_2$:
+\[ C_1 r_1^2 + C_2 = \Omega_1 r_1^2, \]
+\[ C_1 r_2^2 + C_2 = \Omega_2 r_2^2. \]
+Subtract:
+\[ C_1(r_2^2 - r_1^2) = \Omega_2 r_2^2 - \Omega_1 r_1^2. \]
+Solve for $C_1$:
+\[ \boxed{\;C_1 = \frac{\Omega_2 r_2^2 - \Omega_1 r_1^2}{r_2^2 - r_1^2}.\;} \]
+Substitute back to find $C_2$:
+\[ C_2 = \Omega_1 r_1^2 - C_1 r_1^2 = r_1^2\,\frac{(\Omega_1-\Omega_2)r_2^2}{r_2^2-r_1^2}. \]
+Hence
+\[ \boxed{\;C_2 = \frac{(\Omega_1-\Omega_2)\,r_1^2 r_2^2}{r_2^2 - r_1^2}.\;} \]
+Vorticity (axisymmetric):
+\[ \omega_z = \frac{1}{r}\dv{r}(rU_\theta) = \frac{1}{r}\dv{r}\!\left(C_1 r^2 + C_2\right). \]
+Differentiate:
+\[ \omega_z = 2C_1. \]
+Physical meaning of $C_1$: the flow consists of a solid-body rotation at angular rate $C_1$ (carrying uniform vorticity $2C_1$) plus an irrotational line-vortex part $C_2/r$.
+
+Pressure: integrate \eqref{eq:nsr} with $U_\theta = C_1 r + C_2/r$:
+\[ U_\theta^2 = C_1^2 r^2 + 2 C_1 C_2 + \frac{C_2^2}{r^2}. \]
+Divide by $r$:
+\[ \frac{U_\theta^2}{r} = C_1^2 r + \frac{2C_1 C_2}{r} + \frac{C_2^2}{r^3}. \]
+Integrate:
+\[ \boxed{\;p(r) = p_0 + \rho\!\left[\tfrac12 C_1^2 r^2 + 2 C_1 C_2 \ln r - \tfrac12\,\frac{C_2^2}{r^2}\right].\;} \]
+
+\subsection*{(d) Reynolds number and numerics}
+
+$Re=\Omega_1 r_1(r_2-r_1)/\nu$ measures inertial : viscous forces, with the gap $r_2-r_1$ as the relevant length and $\Omega_1 r_1$ as the relevant velocity. For $Re<50$ the laminar Couette profile above holds. Increasing $\Omega_1$, $r_2-r_1$, or decreasing $\nu$ raises $Re$; beyond a critical value the flow undergoes Taylor--Couette instability (Taylor vortices) and eventually turbulence.
+
+Data: $r_1 = \SI{0.25}{m}$, gap $d = r_2-r_1 = \SI{5e-3}{m}$, $\Omega_1 = 20\,\text{rpm} = 20\cdot 2\pi/60 = \SI{2.094}{rad\,s^{-1}}$, $\mu = \SI{0.02}{Pa\,s}$, $\rho = \SI{900}{kg\,m^{-3}}$, hence $\nu = \mu/\rho = \SI{2.22e-5}{m^2\,s^{-1}}$.
+
+Reynolds number:
+\[ Re = \frac{(2.094)(0.25)(5\times 10^{-3})}{2.22\times 10^{-5}}. \]
+Multiply numerator:
+\[ Re = \frac{2.618\times 10^{-3}}{2.22\times 10^{-5}}. \]
+Evaluate:
+\[ \boxed{\;Re \approx 118.\;} \]
+
+With $C_2=0$, $U_\theta = C_1 r$ (pure solid-body rotation between the two cylinders, possible if $\Omega_2 r_2^2/(r_2^2-r_1^2)=\Omega_1 r_1^2/(\ldots)$, i.e.\ $\Omega_1=\Omega_2\equiv\Omega$). Pressure reduces to
+\[ p(r) - p(r_1) = \tfrac12 \rho C_1^2 (r^2 - r_1^2) = \tfrac12\rho\Omega_1^2 (r^2 - r_1^2). \]
+Insert $r_2^2 - r_1^2 = (r_2-r_1)(r_2+r_1) = (5\times 10^{-3})(0.505) = \SI{2.525e-3}{m^2}$:
+\[ \Delta p = \tfrac12 (900)(2.094)^2(2.525\times 10^{-3}). \]
+Evaluate the square:
+\[ \Delta p = \tfrac12 (900)(4.385)(2.525\times 10^{-3}). \]
+Multiply:
+\[ \boxed{\;\Delta p \approx \SI{4.98}{Pa}.\;} \]
+
+Interpretation: $Re\approx 118>50$, so the laminar approximation is on the borderline of validity --- Taylor vortices are likely to appear; the calculated $\Delta p$ should therefore be regarded only as the laminar reference value.
+
+%==============================================================
+\section*{Question 2 --- Bernoulli, Rayleigh--Plesset and bubble collapse}
+
+\textbf{Problem.} Derive the vorticity form of momentum and the time-dependent Bernoulli equation, then analyse the collapse of a spherical bubble in an incompressible fluid.
+
+\subsection*{(a) Vorticity form of Navier--Stokes}
+
+Navier--Stokes (no gravity):
+\[ \pd{\vb u}{t} + (\vb u\cdot\nabla)\vb u = -\frac{1}{\rho}\nabla p + \nu\Lap\vb u. \]
+Apply the identity $(\vb u\cdot\nabla)\vb u = \nabla(\tfrac12 u^2) + \bm\omega\times\vb u$:
+\[ \pd{\vb u}{t} + \nabla\!\left(\tfrac12 u^2\right) + \bm\omega\times\vb u = -\frac{1}{\rho}\nabla p + \nu\Lap\vb u. \]
+Assume $\rho$ constant (incompressible; needed to absorb $1/\rho$ into the gradient):
+\[ \boxed{\;\pd{\vb u}{t} = -\nabla\!\left(\frac{p}{\rho} + \tfrac12 u^2\right) + \vb u\times\bm\omega + \nu\Lap\vb u.\;} \]
+
+\subsection*{(b) Time-dependent Bernoulli}
+
+Irrotational: $\vb u = \nabla\phi$, $\bm\omega = 0$. Inviscid: $\nu=0$. Substitute:
+\[ \nabla\pd{\phi}{t} = -\nabla\!\left(\frac{p}{\rho} + \tfrac12 u^2\right). \]
+Move all terms under one gradient:
+\[ \nabla\!\left(\pd{\phi}{t} + \frac{p}{\rho} + \tfrac12 u^2\right) = 0. \]
+Integrate in space (constant of integration depends only on $t$):
+\[ \boxed{\;\pd{\phi}{t} + \frac{p}{\rho} + \tfrac12 u^2 = C(t).\;} \]
+
+\subsection*{(c) Velocity field around the bubble}
+
+Spherical symmetry, incompressibility:
+\[ \frac{1}{r^2}\pd{(r^2 u_r)}{r} = 0. \]
+Integrate:
+\[ u_r(r,t) = \frac{f(t)}{r^2}. \]
+Boundary condition at the bubble surface $r=R(t)$:
+\[ u_r(R,t) = \dv{R}{t}. \]
+Determine $f(t)$:
+\[ f(t) = R^2\,\dv{R}{t}. \]
+Hence
+\[ u_r(r,t) = \frac{R^2}{r^2}\dv{R}{t}. \]
+Velocity potential from $u_r = \partial_r\phi$:
+\[ \phi(r,t) = -\int_r^\infty u_r\,\de r' = -\dv{R}{t}\,R^2\!\int_r^\infty\frac{\de r'}{r'^2}. \]
+Evaluate the integral:
+\[ \boxed{\;\phi(r,t) = -\frac{R^2}{r}\dv{R}{t}.\;} \]
+(The constant of integration is fixed by $\phi(\infty,t)=0$.)
+
+\subsection*{(d) Equation of motion for $R(t)$}
+
+Apply Bernoulli at $r=R$ and $r=\infty$. At infinity: $\phi=0$, $u=0$, $p=p_\infty$:
+\[ C(t) = \frac{p_\infty}{\rho}. \]
+At $r=R$: $u=\dv{R}{t}$, $p=p_0=0$. Compute $\partial_t\phi$ from $\phi = -R^2\dot R/r$:
+\[ \pd{\phi}{t}\bigg|_{r=R} = -\frac{1}{R}\!\left[2R\dot R^2 + R^2\ddot R\right] + \frac{R^2\dot R}{R^2}\dot R\cdot 0. \]
+Simplify:
+\[ \pd{\phi}{t}\bigg|_{r=R} = -2\dot R^2 - R\ddot R. \]
+Bernoulli at $r=R$:
+\[ -2\dot R^2 - R\ddot R + 0 + \tfrac12 \dot R^2 = \frac{p_\infty}{\rho}. \]
+Combine:
+\[ \boxed{\;R\ddot R + \tfrac32 \dot R^2 = -\frac{p_\infty}{\rho}.\;} \]
+This is the Rayleigh--Plesset equation for an empty bubble.
+
+\textbf{(ii)} Multiply by $2R^2\dot R$:
+\[ 2R^3 \dot R\ddot R + 3 R^2 \dot R^3 = -\frac{2 p_\infty}{\rho} R^2\dot R. \]
+Recognise the LHS:
+\[ \dv{t}\!\left(\dot R^2 R^3\right) = 2 R^3 \dot R \ddot R + 3 R^2 \dot R^3. \]
+Recognise the RHS:
+\[ -\frac{2 p_\infty}{\rho} R^2 \dot R = -\frac{2 p_\infty}{3\rho}\dv{t}(R^3). \]
+Equate and integrate from $t=0$ ($R=R_0$, $\dot R=0$) to $t$:
+\[ \dot R^2 R^3 = -\frac{2 p_\infty}{3\rho}(R^3 - R_0^3). \]
+Rearrange:
+\[ \dot R^2 = \frac{2 p_\infty}{3\rho}\!\left(\frac{R_0^3}{R^3} - 1\right). \]
+Take square root (collapse: $\dot R<0$, but the question asks for the magnitude form):
+\[ \boxed{\;\dv{R}{t} = \sqrt{\frac{2 p_\infty}{3\rho}}\,\sqrt{\frac{R_0^3}{R^3}-1},\qquad B = \sqrt{\frac{2 p_\infty}{3\rho}}.\;} \]
+
+\subsection*{(e) Collapse time}
+
+Separate variables (taking $\dot R<0$, so $\de t = -\de R/(B\sqrt{R_0^3/R^3-1})$):
+\[ \Delta t = \int_0^{R_0}\frac{\de R}{B\sqrt{R_0^3/R^3 - 1}}. \]
+Substitute $x=R/R_0$:
+\[ \Delta t = \frac{R_0}{B}\int_0^1 \frac{\de x}{\sqrt{x^{-3}-1}}. \]
+Insert $B$:
+\[ \boxed{\;\Delta t = I\sqrt{\frac{3\rho}{2 p_\infty}}\,R_0,\qquad I = \int_0^1\!\frac{\de x}{\sqrt{x^{-3}-1}}\approx 0.75.\;} \]
+
+Numerical: $\rho = \SI{e3}{kg\,m^{-3}}$, $p_\infty = \SI{e5}{Pa}$, $R_0 = \SI{e-3}{m}$.
+\[ \sqrt{\frac{3\rho}{2 p_\infty}} = \sqrt{\frac{3\times 10^3}{2\times 10^5}} = \sqrt{1.5\times 10^{-2}}. \]
+Evaluate the root:
+\[ \sqrt{1.5\times 10^{-2}} = \SI{0.1225}{s\,m^{-1}}. \]
+Multiply:
+\[ \Delta t = (0.75)(0.1225)(10^{-3}). \]
+Evaluate:
+\[ \boxed{\;\Delta t \approx \SI{9.2e-5}{s} \approx \SI{92}{\mu s}.\;} \]
+
+%==============================================================
+\section*{Question 3 --- Unforced Duffing oscillator}
+
+\textbf{Problem.} A mass on a nonlinear spring with linear drag obeys $m\ddot x = -kx-\alpha x^3 -\beta\dot x$. Cast as a 2D dynamical system, find fixed points, classify them, sketch phase portraits and the bifurcation diagram, and add weak damping.
+
+\subsection*{(a) Duffing form}
+
+Newton:
+\[ m\ddot x = -kx - \alpha x^3 - \beta \dot x. \]
+Divide by $m$:
+\[ \ddot x = -\frac{\beta}{m}\dot x - \frac{k}{m}x - \frac{\alpha}{m}x^3. \]
+Let $y=\dot x$:
+\[ \dot x = y, \]
+\[ \dot y = -\frac{\beta}{m}y - \frac{k}{m}x - \frac{\alpha}{m}x^3. \]
+Identify
+\[ \boxed{\;a = \frac{\beta}{m},\quad b = \frac{k}{m},\quad c = \frac{\alpha}{m}.\;} \]
+
+\subsection*{(b) $a=0$, $b=-c$}
+
+Equations:
+\[ \dot x = y,\qquad \dot y = -bx - cx^3 = -bx + bx^3 = bx(x^2-1). \]
+Fixed points $\dot x=\dot y=0$: $y=0$ and $x(x^2-1)=0$:
+\[ x^*\in\{0,\,+1,\,-1\}. \]
+Jacobian:
+\[ J(x,y) = \begin{pmatrix} 0 & 1 \\ -b - 3cx^2 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ -b + 3bx^2 & 0 \end{pmatrix}. \]
+At $(0,0)$ with $b=-1$ (so $-b=1$):
+\[ J = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}. \]
+Eigenvalues:
+\[ \lambda^2 = 1\;\Rightarrow\;\lambda = \pm 1. \]
+Real, opposite sign: \textbf{saddle}.
+
+At $(\pm 1,0)$ with $b=-1$: $-b + 3b(1) = 1 - 3 = -2$:
+\[ J = \begin{pmatrix} 0 & 1 \\ -2 & 0 \end{pmatrix}. \]
+Eigenvalues:
+\[ \lambda^2 = -2\;\Rightarrow\;\lambda = \pm i\sqrt{2}. \]
+Pure imaginary, $\tau=0$: \textbf{centres} (linear); the conserved Hamiltonian $H = \tfrac12 y^2 + \tfrac12 b x^2 + \tfrac14 c x^4$ confirms they remain centres in the full nonlinear system.
+
+\paragraph{Phase portrait ($b=-1$, $c=+1$, double-well).}
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.6]
+  \draw[->] (-2.0,0) -- (2.0,0) node[right] {$x$};
+  \draw[->] (0,-1.5) -- (0,1.5) node[above] {$y$};
+  % Saddle at origin, separatrix (homoclinic figure-eight): y^2 = x^2 - x^4/2, i.e. H=0
+  \draw[thick,domain=-1.414:1.414,smooth,variable=\t,samples=120]
+    plot ({\t},{ sqrt(max(0,\t*\t - 0.5*\t*\t*\t*\t)) });
+  \draw[thick,domain=-1.414:1.414,smooth,variable=\t,samples=120]
+    plot ({\t},{-sqrt(max(0,\t*\t - 0.5*\t*\t*\t*\t)) });
+  % Closed orbits inside each well (small)
+  \draw (-1,0) ellipse (0.25 and 0.32);
+  \draw ( 1,0) ellipse (0.25 and 0.32);
+  \draw (-1,0) ellipse (0.4 and 0.5);
+  \draw ( 1,0) ellipse (0.4 and 0.5);
+  % Outer orbit
+  \draw[domain=0:360,smooth,variable=\t,samples=80]
+    plot ({1.7*cos(\t)},{1.2*sin(\t)});
+  % Markers
+  \node[circle,fill,inner sep=1.3pt,label=above right:{O (saddle)}] at (0,0) {};
+  \node[circle,fill,inner sep=1.3pt,label=below:{$(-1,0)$}] at (-1,0) {};
+  \node[circle,fill,inner sep=1.3pt,label=below:{$(+1,0)$}] at (1,0) {};
+\end{tikzpicture}
+\end{center}
+
+\subsection*{(c) $a=0$, general $b,c$}
+
+Fixed points: $y^*=0$, $bx + cx^3 = 0$:
+\[ x^*(b + cx^{*2}) = 0. \]
+Always: $x^*=0$. Additionally, if $-b/c>0$:
+\[ x^* = \pm\sqrt{-b/c}. \]
+Existence condition: $bc<0$.
+
+Jacobian eigenvalues: $\lambda^2 = -(b+3cx^{*2})$.
+
+\textbf{Origin $(0,0)$:} $\lambda^2=-b$.
+\begin{itemize}
+\item $b>0$: $\lambda=\pm i\sqrt{b}$ \;$\Rightarrow$\; centre.
+\item $b<0$: $\lambda=\pm\sqrt{-b}$ (real, opposite sign) \;$\Rightarrow$\; saddle.
+\end{itemize}
+
+\textbf{Side fixed points $x^*=\pm\sqrt{-b/c}$ (require $bc<0$):} substitute $cx^{*2}=-b$:
+\[ \lambda^2 = -(b - 3b) = 2b. \]
+\begin{itemize}
+\item $b<0$ ($c>0$): $\lambda^2 = 2b<0$, $\lambda=\pm i\sqrt{-2b}$ \;$\Rightarrow$\; centres.
+\item $b>0$ ($c<0$): $\lambda^2 = 2b>0$, $\lambda=\pm\sqrt{2b}$ \;$\Rightarrow$\; saddles.
+\end{itemize}
+
+\paragraph{Bifurcation diagram ($x^*$ vs $bc$).} A pitchfork bifurcation at $bc=0$.
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+  \draw[->] (-3,0) -- (3,0) node[right] {$bc$};
+  \draw[->] (0,-2) -- (0,2) node[above] {$x^*$};
+  % bc<0 branches (existing): x^* = \pm sqrt(-b/c). Plot as schematic curves.
+  \draw[thick,domain=-2.8:-0.05,smooth,variable=\u,samples=60]
+    plot ({\u},{ sqrt(-\u) });
+  \draw[thick,domain=-2.8:-0.05,smooth,variable=\u,samples=60]
+    plot ({\u},{-sqrt(-\u) });
+  % bc>=0: only x^*=0 (origin) is shown
+  \draw[thick] (-3,0) -- (3,0);
+  \node[circle,fill,inner sep=1.2pt] at (0,0) {};
+  \node[above right] at (0,0) {pitchfork};
+  \node at (-1.6,1.4) {$x^*=+\sqrt{-b/c}$};
+  \node at (-1.6,-1.4) {$x^*=-\sqrt{-b/c}$};
+  \node[below] at (1.6,0) {$x^*=0$ only};
+\end{tikzpicture}
+\end{center}
+Stability legend: solid branches stable centres for $b<0,c>0$; the central branch is a saddle in that range and a centre for $b>0$.
+
+\paragraph{Phase portrait, $b>0$.} Take $c>0$ first (single well). Origin is a centre, no other fixed points; closed orbits encircle the origin.
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+  \draw[->] (-2,0) -- (2,0) node[right] {$x$};
+  \draw[->] (0,-1.6) -- (0,1.6) node[above] {$y$};
+  \draw (0,0) ellipse (0.5 and 0.4);
+  \draw (0,0) ellipse (1.0 and 0.8);
+  \draw (0,0) ellipse (1.5 and 1.2);
+  \node[circle,fill,inner sep=1.2pt,label=below right:{$O$ (centre)}] at (0,0) {};
+\end{tikzpicture}
+\end{center}
+For $b>0,c<0$ (still $b>0$ but inverted quartic): origin is still a centre, and side points $x^*=\pm\sqrt{-b/c}=\pm\sqrt{b/|c|}$ are saddles connected by heteroclinic separatrices that enclose the central centre; orbits inside the separatrix are closed, those outside escape to infinity.
+
+\subsection*{(d) Weak damping, $b<0$, $a^2<4|b|$, fixed points unchanged}
+
+Adding $a>0$ adds $-ay$ to $\dot y$; the Jacobian gains $-a$ on the $(2,2)$ entry. Trace $\tau=-a<0$. At each fixed point, $\Delta$ unchanged in sign ($\Delta=$ negative of $J_{21}=b+3cx^{*2}$ swapped by the off-diagonal structure: $\Delta = b+3cx^{*2}$).
+
+\begin{itemize}
+\item Origin (saddle, $b<0,c>0$): $\Delta = b<0$ unchanged $\Rightarrow$ saddle.
+\item Side wells (centres in (c)): $\Delta = -2b>0$, $\tau=-a<0$, discriminant $\tau^2-4\Delta = a^2-4|2b|<a^2-4|b|<0$ \;$\Rightarrow$\; \textbf{stable spirals (foci)}.
+\end{itemize}
+
+Modification of the (b) phase portrait: the two centres at $x=\pm 1$ become inward spirals; the saddle at the origin remains, but its homoclinic separatrices break --- trajectories cross between basins only along the unstable manifold of the saddle, otherwise spiral into one well or the other. All orbits eventually reach one of the two stable foci.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.6]
+  \draw[->] (-2,0) -- (2,0) node[right] {$x$};
+  \draw[->] (0,-1.4) -- (0,1.4) node[above] {$y$};
+  % Inward spiral around (-1,0)
+  \draw[thick,domain=0:540,smooth,variable=\t,samples=160]
+    plot ({-1+0.5*exp(-0.004*\t)*cos(\t)},{0.4*exp(-0.004*\t)*sin(\t)});
+  \draw[thick,domain=0:540,smooth,variable=\t,samples=160]
+    plot ({ 1+0.5*exp(-0.004*\t)*cos(\t)},{0.4*exp(-0.004*\t)*sin(\t)});
+  \node[circle,fill,inner sep=1.3pt,label=above:{saddle}] at (0,0) {};
+  \node[circle,fill,inner sep=1.3pt,label=below:{stable focus}] at (-1,0) {};
+  \node[circle,fill,inner sep=1.3pt,label=below:{stable focus}] at (1,0) {};
+\end{tikzpicture}
+\end{center}
+
+Physical interpretation: in the double-well potential $V = \tfrac12 b x^2 + \tfrac14 c x^4$ ($b<0$, $c>0$), the unstable equilibrium at the origin separates two stable equilibria. Without damping, the mass oscillates indefinitely about one minimum or the other (or executes large figure-of-eight orbits along the separatrix). With weak drag, energy is dissipated; the mass spirals into whichever well it ends up in --- a bistable mechanical switch.
+
+%==============================================================
+\section*{Question 4 --- Freely jointed chain and DNA looping}
+
+\textbf{Problem.} Develop the FJC distribution and its entropic-spring limit; obtain the force--extension relation; apply to DNA-looping probability and the optimum loop size.
+
+\subsection*{(a) 3D distribution}
+
+Independent Gaussian projections:
+\[ P(\vb r,N) = P_x(x)P_y(y)P_z(z). \]
+Multiply:
+\[ \boxed{\;P(\vb r,N) = \!\left(\frac{3}{2\pi N b^2}\right)^{\!3/2}\!\exp\!\left(-\frac{3 r^2}{2 N b^2}\right).\;} \]
+$P_x(x,N)$ is a Gaussian of width $\sigma_x = b\sqrt{N/3}$. As $N\uparrow$, the distribution flattens and broadens with $\sigma_x\propto\sqrt{N}$.
+
+\paragraph{Sketch of $P_x(x,N)$ for two values of $N$.}
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+  \begin{axis}[axis lines=middle, xlabel=$x$, ylabel=$P_x$,
+    width=9cm, height=5.5cm, samples=120, domain=-4:4,
+    xtick=\empty, ytick=\empty, legend pos=outer north east]
+    \addplot[thick] {1/sqrt(2*pi*0.5)*exp(-x^2/(2*0.5))};
+    \addlegendentry{small $N$};
+    \addplot[thick,dashed] {1/sqrt(2*pi*2)*exp(-x^2/(2*2))};
+    \addlegendentry{large $N$};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+Brownian-motion analogy: the chain end position $\vb r$ after $N$ steps of length $b$ is the sum of independent unit-length random vectors, identical to the position of a random walker after $N$ steps. By the central limit theorem, both produce Gaussian distributions with $\langle r^2\rangle = Nb^2$; the chain configuration is the spatial counterpart of a Brownian trajectory.
+
+\subsection*{(b) Entropic spring}
+
+Boltzmann entropy:
+\[ S(\vb r) = k_B \ln P(\vb r,N) + \text{const}. \]
+Substitute the Gaussian:
+\[ S(\vb r) = k_B\!\left[\tfrac32\ln\!\left(\frac{3}{2\pi N b^2}\right) - \frac{3 r^2}{2 N b^2}\right]. \]
+Helmholtz free energy at fixed $T$ (no internal energy, $U=0$ for FJC):
+\[ F(\vb r) = -T S(\vb r). \]
+Substitute:
+\[ F(\vb r) = -T\,k_B\,\tfrac32\ln(3/2\pi N b^2) + \frac{3 k_B T}{2 N b^2} r^2. \]
+Identify
+\[ \boxed{\;F(\vb r) = d + c\,r^2,\qquad c = \frac{3 k_B T}{2 N b^2},\qquad d=\text{const}(T,N).\;} \]
+$F$ is quadratic in $r$, so $-\nabla F = -2c\vb r$ acts as a Hooke restoring force with stiffness $\kappa = 2c = 3 k_B T/(N b^2)$. The chain has no internal energy --- its restoring force comes entirely from loss of conformational entropy when extended (an entropic spring).
+
+Temperature dependence: $\kappa\propto T$. The entropic stiffness grows linearly with temperature.
+
+\subsection*{(c) Force--extension under tension $f$}
+
+Single segment $\vb b_i$ with $|\vb b_i|=b$ has energy $-f b\cos\theta_i$ when $\vb f = f\hat{\vb z}$ acts on the chain end. Single-segment partition function:
+\[ Z_1 = \int_0^{\pi}\!e^{f b\cos\theta/(k_BT)}\sin\theta\,\de\theta\!\int_0^{2\pi}\!\de\phi. \]
+Substitute $u=\cos\theta$:
+\[ Z_1 = 2\pi\!\int_{-1}^{1} e^{a u}\,\de u,\qquad a=\frac{f b}{k_B T}. \]
+Evaluate:
+\[ Z_1 = \frac{4\pi\sinh a}{a}. \]
+Independent segments:
+\[ Z = Z_1^{N} = \!\left(\frac{4\pi\sinh a}{a}\right)^{\!N}. \]
+Mean extension along $\vb f$:
+\[ \langle z\rangle = k_B T\,\pd{\ln Z}{f} = N\,b\,\pd{\ln(\sinh a/a)}{a}. \]
+Differentiate:
+\[ \pd{}{a}\ln(\sinh a/a) = \coth a - \frac{1}{a}. \]
+Hence
+\[ \boxed{\;\langle z\rangle = N b\!\left(\coth a - \frac{1}{a}\right)\equiv N b\,\mathcal L(a),\qquad a=\frac{fb}{k_B T}.\;} \]
+
+Low-force limit $a\ll 1$: use $\coth a\approx a/3 + 1/a$:
+\[ \langle z\rangle \approx N b\,\frac{a}{3} = \frac{N b^2 f}{3 k_B T}. \]
+Solve for $f$:
+\[ \boxed{\;f \approx \frac{3 k_B T}{N b^2}\langle z\rangle.\;} \]
+A linear (Hookean) force--extension with the same stiffness $\kappa = 3 k_B T/(N b^2)$ as in (b).
+
+\subsection*{(d) DNA looping probability}
+
+Treat dsDNA as a FJC with statistical segment $b = 2P$ in length units. With $P = 150$ bp and bp step $\SI{0.34}{nm}$, $P=\SI{51}{nm}$ and Kuhn length $b = 2P = \SI{102}{nm}$. For a chain of contour length $\lambda$ (= total DNA length),
+\[ N = \frac{\lambda}{b}. \]
+Probability that the two ends coincide ($\vb r = 0$, evaluated as the value of the Gaussian density at the origin):
+\[ p(\lambda) = P(\vb r=0,N) = \!\left(\frac{3}{2\pi N b^2}\right)^{\!3/2}. \]
+Hence
+\[ \boxed{\;p(\lambda) \propto N^{-3/2}.\;} \]
+Entropy difference between the looped state and a free chain:
+\[ \Delta S = k_B \ln p(\lambda) = k_B\!\left[\tfrac32\ln\!\left(\frac{3}{2\pi b^2}\right) - \tfrac32\ln N\right]. \]
+Collect constants into $C$:
+\[ \boxed{\;\Delta S = k_B\!\left(C - \tfrac32 \ln N\right).\;} \]
+
+\subsection*{(e) Optimum loop size}
+
+Loop free energy = elastic + entropic:
+\[ \Delta G_\text{loop} = \frac{\pi P}{R} k_B T - T\,\Delta S. \]
+For a loop of contour length $\lambda$ closing into a circle of radius $R$, $2\pi R = \lambda$:
+\[ R = \frac{\lambda}{2\pi}. \]
+Insert $R$ and $\Delta S$:
+\[ \boxed{\;\Delta G_\text{loop}(\lambda) = \frac{2\pi^2 P}{\lambda}k_B T + \tfrac32 k_B T\,\ln N - C\,k_B T,\qquad N = \lambda/b.\;} \]
+
+Behaviour: at small $\lambda$, the elastic $1/\lambda$ term dominates --- bending is prohibitive. At large $\lambda$, the $\tfrac32\ln N$ term dominates --- entropic cost of bringing distant ends together. There is a minimum at intermediate length.
+
+\paragraph{Sketch.}
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+  \begin{axis}[axis lines=middle, xlabel=$\lambda$, ylabel=$\Delta G_\text{loop}/k_B T$,
+    width=9cm, height=5cm, samples=200, domain=0.3:6,
+    xtick=\empty, ytick=\empty]
+    \addplot[thick] {2/x + 1.5*ln(x) + 1};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+Minimise by $\de\Delta G_\text{loop}/\de\lambda = 0$:
+\[ -\frac{2\pi^2 P}{\lambda^2}k_B T + \frac{3 k_B T}{2\lambda} = 0. \]
+Solve:
+\[ \lambda_\text{min} = \frac{4\pi^2 P}{3}. \]
+Numerical with $P=\SI{51}{nm}$:
+\[ \lambda_\text{min} = \frac{4\pi^2}{3}\times 51\,\text{nm}. \]
+Evaluate the prefactor:
+\[ \frac{4\pi^2}{3} \approx 13.16. \]
+Multiply:
+\[ \boxed{\;\lambda_\text{min} \approx \SI{670}{nm} \approx 2000\,\text{bp}.\;} \]
+
+\end{document}

@@ -1,0 +1,477 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\usepackage{braket}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+
+\title{B5 General Relativity --- Model Solutions, Trinity 2022}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+%==============================================================
+\section*{Question 1 --- Riemann tensor, Bianchi identity, Newtonian limit}
+
+\textbf{Problem.} State Riemann symmetries; interpret the Bianchi identity and contract it to obtain the divergence-free Einstein tensor; recast Einstein's equation as $R_{\mu\nu}=C S_{\mu\nu}$; in the Newtonian (weak, static) limit show $R_{00}=\tfrac12 \Lap g_{00}$ and fix $C$ by matching Poisson's equation.
+
+\subsection*{(a) Symmetries of the Riemann tensor}
+
+With all indices lowered, $R_{\lambda\mu\nu\kappa}$ has:
+\begin{align*}
+\text{Antisymmetry in first pair:}\quad & R_{\lambda\mu\nu\kappa}=-R_{\mu\lambda\nu\kappa},\\
+\text{Antisymmetry in second pair:}\quad & R_{\lambda\mu\nu\kappa}=-R_{\lambda\mu\kappa\nu},\\
+\text{Pair-exchange symmetry:}\quad & R_{\lambda\mu\nu\kappa}=R_{\nu\kappa\lambda\mu},\\
+\text{First Bianchi (cyclic):}\quad & R_{\lambda\mu\nu\kappa}+R_{\lambda\nu\kappa\mu}+R_{\lambda\kappa\mu\nu}=0.
+\end{align*}
+Independent components in $D=4$: $20$.
+
+\subsection*{(b) Meaning of ``;'' and contracted Bianchi identity}
+
+\textbf{Notation.} ``$;\eta$'' denotes the covariant derivative $\nabla_\eta$:
+\[ T_{\dots;\eta}=\partial_\eta T_{\dots}+\text{(Christoffel terms, one per index)}. \]
+It generalises $\partial_\eta$ to curved spacetime, transforming as a tensor.
+
+\textbf{Contracted Bianchi.} Start from
+\begin{equation}
+R_{\lambda\mu\nu\kappa;\eta}+R_{\lambda\mu\eta\nu;\kappa}+R_{\lambda\mu\kappa\eta;\nu}=0.
+\label{eq:bianchi}
+\end{equation}
+Contract with $g^{\lambda\nu}$ (metric is covariantly constant, $g^{\lambda\nu}{}_{;\alpha}=0$):
+\[ R_{\mu\kappa;\eta}+g^{\lambda\nu}R_{\lambda\mu\eta\nu;\kappa}+R^{\nu}{}_{\mu\kappa\eta;\nu}=0. \]
+Use $g^{\lambda\nu}R_{\lambda\mu\eta\nu}=R^{\nu}{}_{\mu\eta\nu}=-R_{\mu\eta}$:
+\[ R_{\mu\kappa;\eta}-R_{\mu\eta;\kappa}+R^{\nu}{}_{\mu\kappa\eta;\nu}=0. \]
+Contract with $g^{\mu\kappa}$:
+\[ R_{;\eta}-R^{\mu}{}_{\eta;\mu}-R^{\nu}{}_{\eta;\nu}=0. \]
+Combine the last two terms:
+\[ R_{;\eta}-2R^{\mu}{}_{\eta;\mu}=0. \]
+Raise $\eta$ and rearrange:
+\[ \nabla_\mu\!\left(R^{\mu\nu}-\tfrac12 g^{\mu\nu}R\right)=0. \]
+Boxed:
+\begin{equation}
+\boxed{\;\left(R^{\mu\nu}-g^{\mu\nu}\frac{R}{2}\right)_{\!;\mu}=0.\;}
+\label{eq:einstein-div}
+\end{equation}
+\emph{Symbols.} $R^{\mu\nu}=g^{\mu\alpha}g^{\nu\beta}R_{\alpha\beta}$ Ricci tensor; $R=g^{\alpha\beta}R_{\alpha\beta}$ Ricci scalar; $g^{\mu\nu}$ inverse metric.
+
+\textbf{Why useful.} A divergence-free symmetric rank-2 tensor can be equated to the energy--momentum tensor $T^{\mu\nu}$ (which obeys $\nabla_\mu T^{\mu\nu}=0$ from local energy--momentum conservation). This produces Einstein's equation as the unique low-derivative covariant field equation consistent with conservation.
+
+\subsection*{(c) Recasting the field equations}
+
+Start from the given form (set $\Lambda=0$):
+\begin{equation}
+R_{\mu\nu}-g_{\mu\nu}\frac{R}{2}=C\,T_{\mu\nu}.
+\label{eq:efe}
+\end{equation}
+Trace with $g^{\mu\nu}$ ($g^{\mu\nu}g_{\mu\nu}=4$, $T\equiv g^{\mu\nu}T_{\mu\nu}$):
+\[ R-2R=CT. \]
+Solve for $R$:
+\[ R=-CT. \]
+Substitute back into \eqref{eq:efe}:
+\[ R_{\mu\nu}=C T_{\mu\nu}+g_{\mu\nu}\frac{-CT}{2}\cdot(-1). \]
+Simplify:
+\[ R_{\mu\nu}=C\!\left(T_{\mu\nu}-g_{\mu\nu}\frac{T}{2}\right). \]
+Define $S_{\mu\nu}=T_{\mu\nu}-g_{\mu\nu}T/2$:
+\begin{equation}
+\boxed{\;R_{\mu\nu}=C\,S_{\mu\nu}.\;}
+\label{eq:efe-trace-rev}
+\end{equation}
+
+\subsection*{(d) Newtonian limit of $R_{00}$}
+
+\textbf{Ricci tensor definition.}
+\[ R_{\alpha\beta}\equiv -R^{\gamma}{}_{\alpha\beta\gamma}=R^{\gamma}{}_{\alpha\gamma\beta}. \]
+In particular,
+\begin{equation}
+R_{00}=R^{\gamma}{}_{0\gamma 0}.
+\label{eq:R00-def}
+\end{equation}
+
+\textbf{Source side $C S_{00}$.} For a non-relativistic dust source, $T^{\mu\nu}=\rho c^2 u^\mu u^\nu/c^2$ with $u^\mu\simeq(c,\bm 0)$:
+\[ T_{00}\simeq \rho c^2,\qquad T=g^{\mu\nu}T_{\mu\nu}\simeq -\rho c^2. \]
+Insert into $S_{00}=T_{00}-g_{00}T/2$, with $g_{00}\simeq -1$:
+\[ S_{00}=\rho c^2-(-1)\frac{-\rho c^2}{2}=\rho c^2-\tfrac12\rho c^2=\tfrac12\rho c^2. \]
+Therefore via \eqref{eq:efe-trace-rev}:
+\begin{equation}
+R_{00}=\tfrac12 C\rho c^2.
+\label{eq:R00-source}
+\end{equation}
+
+\textbf{Weak-field Riemann.} Write $g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu}$ with $|h|\ll 1$. Christoffels are $O(h)$, so $\Gamma\Gamma$ products drop. Lowered Riemann to first order in $h$:
+\[ R_{\lambda\mu\nu\kappa}=\tfrac12\!\left(\partial_\kappa\partial_\mu h_{\lambda\nu}-\partial_\kappa\partial_\lambda h_{\mu\nu}-\partial_\nu\partial_\mu h_{\lambda\kappa}+\partial_\nu\partial_\lambda h_{\mu\kappa}\right). \]
+Take $R_{0\gamma 0}{}^\gamma$ via raising and contracting:
+\[ R_{00}=\eta^{\lambda\nu}R_{\lambda 0\nu 0}. \]
+Insert weak-field expression:
+\[ R_{00}=\tfrac12\eta^{\lambda\nu}\!\left(\partial_0\partial_0 h_{\lambda\nu}-\partial_0\partial_\lambda h_{0\nu}-\partial_\nu\partial_0 h_{\lambda 0}+\partial_\nu\partial_\lambda h_{00}\right). \]
+
+\textbf{Static limit.} All $\partial_0=0$:
+\[ R_{00}=\tfrac12\eta^{\lambda\nu}\partial_\nu\partial_\lambda h_{00}. \]
+$\eta^{\lambda\nu}\partial_\nu\partial_\lambda=-\partial_t^2+\Lap=\Lap$ in static limit, but acting on a spatial scalar; identify $\eta^{ij}\partial_i\partial_j=\Lap$ and $\eta^{00}\partial_0\partial_0=0$ (static):
+\[ R_{00}=\tfrac12\Lap h_{00}. \]
+Since $h_{00}=g_{00}-\eta_{00}=g_{00}+1$ and $\Lap$ kills the constant:
+\begin{equation}
+\boxed{\;R_{00}=\tfrac12\Lap g_{00}.\;}
+\label{eq:R00-static}
+\end{equation}
+
+\subsection*{(e) Fixing $C$}
+
+Equate \eqref{eq:R00-source} and \eqref{eq:R00-static}:
+\[ \tfrac12\Lap g_{00}=\tfrac12 C\rho c^2. \]
+Insert $g_{00}\simeq-(1+2\Phi/c^2)$:
+\[ \Lap g_{00}=-\frac{2}{c^2}\Lap\Phi. \]
+Therefore:
+\[ -\frac{1}{c^2}\Lap\Phi=\tfrac12 C\rho c^2. \]
+Demand Poisson's equation $\Lap\Phi=4\pi G\rho$:
+\[ -\frac{4\pi G\rho}{c^2}=\tfrac12 C\rho c^2. \]
+Solve for $C$:
+\begin{equation}
+\boxed{\;C=-\frac{8\pi G}{c^4}.\;}
+\label{eq:C-value}
+\end{equation}
+Consistent with the standard Einstein equation $R_{\mu\nu}-\tfrac12 g_{\mu\nu}R=-(8\pi G/c^4)T_{\mu\nu}$.
+
+%==============================================================
+\section*{Question 2 --- Covariant derivative, metric on a sphere, parallel transport}
+
+\textbf{Problem.} Express $g_{\mu\nu}$ via locally inertial coordinates; define covariant derivative; show $\nabla_c g_{ab}=0$; obtain the connection from basis vectors; derive the round-sphere metric; parallel-transport a vector along a $\theta=$const circle and check its norm.
+
+\subsection*{(a) Metric from locally inertial frame}
+
+At any event $X$ choose locally inertial coordinates $\xi^\alpha$ such that $\eta_{\alpha\beta}=\mathrm{diag}(-1,1,1,1)$. In a general chart $x^\mu$:
+\begin{equation}
+\boxed{\;g_{\mu\nu}(x)=\frac{\partial \xi^\alpha}{\partial x^\mu}\frac{\partial \xi^\beta}{\partial x^\nu}\,\eta_{\alpha\beta}.\;}
+\label{eq:g-from-eta}
+\end{equation}
+
+\subsection*{(b) Covariant derivative of a vector}
+
+Definition:
+\begin{equation}
+\nabla_\mu A^\lambda\equiv\partial_\mu A^\lambda+\Gamma^{\lambda}{}_{\mu\nu}A^\nu.
+\label{eq:cov-der}
+\end{equation}
+Christoffel from \eqref{eq:g-from-eta}:
+\[ \Gamma^{\lambda}{}_{\mu\nu}=\frac{\partial x^\lambda}{\partial \xi^\alpha}\,\frac{\partial^2 \xi^\alpha}{\partial x^\mu\,\partial x^\nu}. \]
+Symmetry (partial derivatives commute):
+\[ \Gamma^{\lambda}{}_{\mu\nu}=\Gamma^{\lambda}{}_{\nu\mu}. \]
+\textbf{Usefulness.} $\partial_\mu A^\lambda$ is not a tensor in curved space because basis vectors vary point-to-point. The connection term subtracts the spurious piece, so $\nabla_\mu A^\lambda$ transforms as a $(1,1)$ tensor. Hence covariant equations valid in a free-fall frame extend to arbitrary charts by $\partial\to\nabla$.
+
+\subsection*{(c) $\nabla_\rho g_{\mu\nu}=0$}
+
+In locally inertial coordinates at $X$, $\partial_\alpha\eta_{\beta\gamma}=0$ and $\Gamma=0$, so $\nabla \eta=0$ at $X$. Tensor equality holds in all charts:
+\begin{equation}
+\boxed{\;\nabla_\rho g_{\mu\nu}=0.\;}
+\label{eq:metric-compat}
+\end{equation}
+Direct check: write $\nabla_\rho g_{\mu\nu}=\partial_\rho g_{\mu\nu}-\Gamma^\sigma{}_{\rho\mu}g_{\sigma\nu}-\Gamma^\sigma{}_{\rho\nu}g_{\mu\sigma}$ and use the standard formula
+\[ \Gamma^\sigma{}_{\rho\mu}=\tfrac12 g^{\sigma\lambda}(\partial_\rho g_{\lambda\mu}+\partial_\mu g_{\lambda\rho}-\partial_\lambda g_{\rho\mu}); \]
+substitution gives identical cancellation of all $\partial g$ terms.
+
+\subsection*{(d) Connection from basis vectors}
+
+Define $g_{ab}=\bm e_a\!\cdot\!\bm e_b$. Differentiate:
+\[ \pd{g_{ab}}{x^c}=\pd{\bm e_a}{x^c}\!\cdot\!\bm e_b+\bm e_a\!\cdot\!\pd{\bm e_b}{x^c}. \]
+Insert $\partial_c\bm e_a=\Gamma^d{}_{ac}\bm e_d$:
+\[ \pd{g_{ab}}{x^c}=\Gamma^d{}_{ac}(\bm e_d\!\cdot\!\bm e_b)+\Gamma^d{}_{bc}(\bm e_a\!\cdot\!\bm e_d). \]
+Identify $\bm e_d\!\cdot\!\bm e_b=g_{db}$:
+\begin{equation}
+\boxed{\;\pd{g_{ab}}{x^c}=\Gamma^d{}_{ac}g_{db}+\Gamma^d{}_{bc}g_{ad}.\;}
+\label{eq:dg-Gamma}
+\end{equation}
+Compared with the metric-compatibility identity $\nabla_c g_{ab}=0\Rightarrow \partial_c g_{ab}=\Gamma^d{}_{ac}g_{db}+\Gamma^d{}_{bc}g_{ad}$, this shows $\Gamma^d{}_{ac}$ is precisely the Levi-Civita (metric) connection.
+
+\subsection*{(e) Metric of a 2-sphere of radius $R$}
+
+Embedding $\bm r=R(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)$. Basis vectors:
+\[ \bm e_\theta=\pd{\bm r}{\theta}=R(\cos\theta\cos\phi,\cos\theta\sin\phi,-\sin\theta). \]
+\[ \bm e_\phi=\pd{\bm r}{\phi}=R(-\sin\theta\sin\phi,\sin\theta\cos\phi,0). \]
+Inner products:
+\[ g_{\theta\theta}=\bm e_\theta\!\cdot\!\bm e_\theta=R^2(\cos^2\theta+\sin^2\theta)=R^2. \]
+\[ g_{\phi\phi}=\bm e_\phi\!\cdot\!\bm e_\phi=R^2\sin^2\theta. \]
+\[ g_{\theta\phi}=\bm e_\theta\!\cdot\!\bm e_\phi=0. \]
+Assemble:
+\begin{equation}
+\boxed{\;g_{ij}=R^2\begin{pmatrix}1 & 0\\ 0 & \sin^2\theta\end{pmatrix}.\;}
+\label{eq:sphere-metric}
+\end{equation}
+
+\subsection*{(f) Parallel transport along $\theta=$const}
+
+\textbf{Christoffels.} From \eqref{eq:sphere-metric}, $g^{\theta\theta}=1/R^2$, $g^{\phi\phi}=1/(R^2\sin^2\theta)$. Non-zero $\partial g$ only in $\partial_\theta g_{\phi\phi}=2R^2\sin\theta\cos\theta$. Apply $\Gamma^a{}_{bc}=\tfrac12 g^{ad}(\partial_b g_{dc}+\partial_c g_{db}-\partial_d g_{bc})$:
+\[ \Gamma^{\theta}{}_{\phi\phi}=-\tfrac12 g^{\theta\theta}\partial_\theta g_{\phi\phi}=-\sin\theta\cos\theta. \]
+\[ \Gamma^{\phi}{}_{\theta\phi}=\Gamma^{\phi}{}_{\phi\theta}=\tfrac12 g^{\phi\phi}\partial_\theta g_{\phi\phi}=\cot\theta. \]
+All other components vanish.
+
+\textbf{Transport equations.} Set $V^a{}_{;\phi}=0$ at fixed $\theta$:
+\[ \pd{V^\theta}{\phi}+\Gamma^{\theta}{}_{\phi\phi}V^\phi=0\;\Rightarrow\;\pd{V^\theta}{\phi}=\sin\theta\cos\theta\,V^\phi. \]
+\[ \pd{V^\phi}{\phi}+\Gamma^{\phi}{}_{\phi\theta}V^\theta=0\;\Rightarrow\;\pd{V^\phi}{\phi}=-\cot\theta\,V^\theta. \]
+
+\textbf{Decouple.} Differentiate the first w.r.t.\ $\phi$ at fixed $\theta$:
+\[ \pdd{V^\theta}{\phi}=\sin\theta\cos\theta\,\pd{V^\phi}{\phi}. \]
+Insert $\partial_\phi V^\phi=-\cot\theta\, V^\theta$:
+\[ \pdd{V^\theta}{\phi}=-\cos^2\theta\,V^\theta. \]
+General solution at constant $\theta$:
+\[ V^\theta(\phi)=A\cos(\phi\cos\theta)+B\sin(\phi\cos\theta). \]
+Differentiate and use the first transport equation:
+\[ V^\phi(\phi)=\frac{1}{\sin\theta\cos\theta}\pd{V^\theta}{\phi}. \]
+Compute:
+\[ \pd{V^\theta}{\phi}=\cos\theta[-A\sin(\phi\cos\theta)+B\cos(\phi\cos\theta)]. \]
+Divide by $\sin\theta\cos\theta$:
+\begin{equation}
+\boxed{\;V^\phi(\phi)=-A\,\frac{\sin(\phi\cos\theta)}{\sin\theta}+B\,\frac{\cos(\phi\cos\theta)}{\sin\theta}.\;}
+\label{eq:Vphi}
+\end{equation}
+
+\textbf{Initial conditions and final value.} At $\theta=\pi/3$ ($\cos\theta=1/2$, $\sin\theta=\sqrt 3/2$), $\phi=0$, $(V^\theta,V^\phi)=(1,0)$:
+\[ V^\theta(0)=A=1. \]
+\[ V^\phi(0)=B/\sin\theta=0\;\Rightarrow\;B=0. \]
+After a full circuit $\phi=2\pi$, $\phi\cos\theta=\pi$:
+\[ V^\theta(2\pi)=\cos\pi=-1. \]
+\[ V^\phi(2\pi)=-\sin\pi/\sin\theta=0. \]
+Hence $(V^\theta,V^\phi)\to(-1,0)$, as required:
+\[ \boxed{\;(V^\theta,V^\phi)_{\phi=2\pi}=(-1,0).\;} \]
+
+\textbf{Magnitude.} Norm-squared:
+\[ |V|^2=g_{\theta\theta}(V^\theta)^2+g_{\phi\phi}(V^\phi)^2. \]
+Evaluate before and after:
+\[ |V|^2_{\phi=0}=R^2(1)^2+0=R^2. \]
+\[ |V|^2_{\phi=2\pi}=R^2(-1)^2+0=R^2. \]
+Length unchanged. Reason: the Levi-Civita connection is metric-compatible, $\nabla_c g_{ab}=0$, so $\partial_\phi(g_{ab}V^a V^b)=2g_{ab}V^a V^b{}_{;\phi}=0$ along any curve.
+
+%==============================================================
+\section*{Question 3 --- Light bending and gravitational lensing}
+
+\textbf{Problem.} Photon path past a Schwarzschild mass; derive the radial equation; show the orbit equation $u''+u=(3GM/c^2)u^2$; obtain the first-order solution; from the standard $4GM/(bc^2)$ result, derive the Einstein-ring angular size.
+
+\subsection*{(a) Geometry of deflection}
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+% asymptotes
+\draw[thick,blue] (-5,0.6) .. controls (-1.5,0.6) and (-0.5,0.0) .. (1.5,-0.55) .. controls (3.0,-0.95) and (4.0,-1.05) .. (5,-1.05);
+% straight reference path (undeflected)
+\draw[dashed] (-5,0.6) -- (5,0.6);
+% mass
+\node[circle,fill=black,inner sep=2.5pt,label=below right:{$M$}] (M) at (0,0) {};
+% impact parameter b: perpendicular distance from M to the dashed straight line
+\draw[<->] (1.8,0) -- (1.8,0.6);
+\node[right] at (1.8,0.30) {$b$};
+% deflection angle delta between dashed and outgoing asymptote
+\draw[->] (3.6,0.6) arc[start angle=180,end angle=200,radius=1.6];
+\node at (3.0,0.30) {$\delta$};
+% labels for source and observer ends
+\node[left] at (-5,0.6) {source};
+\node[right] at (5,-1.05) {observer};
+% mark the closest approach point on the curve
+\node[circle,fill,inner sep=1.2pt,label=above:{}] at (1.8,0.00) {};
+\end{tikzpicture}
+\end{center}
+
+The dashed reference is the straight path the photon would have taken in the absence of the mass. The deflection angle $\delta$ is the angle between the incoming and outgoing asymptotes of the actual (curved) photon trajectory, measured against this straight line. The impact parameter $b$ is the perpendicular distance from $M$ to the undeflected reference line.
+
+\subsection*{(b) Radial equation from the Lagrangian}
+
+Schwarzschild line element ($B=1-2GM/(rc^2)$) in equatorial plane $\theta=\pi/2$:
+\[ \de s^2=-c^2 B\,\de t^2+B^{-1}\de r^2+r^2\de\phi^2. \]
+Lagrangian using affine parameter $\lambda$:
+\[ 2\mathcal L=-c^2 B\,\dot t^2+B^{-1}\dot r^2+r^2\dot\phi^2,\qquad \dot{}\equiv \de/\de\lambda. \]
+\textbf{Conserved quantities.} $t$ and $\phi$ cyclic:
+\begin{equation}
+B\,c^2\dot t=\gamma_\infty c^2,\qquad r^2\dot\phi=J.
+\label{eq:conserved}
+\end{equation}
+Here $J$ is the conserved angular momentum per unit mass-energy and $\gamma_\infty c^2$ is the conserved energy at infinity (where $B\to 1$ and $\dot t\to\gamma_\infty$). For a photon $\gamma_\infty\to\infty$ in the standard parameterisation, but the combination $\gamma_\infty^2$ enters the null condition with the appropriate scaling.
+
+\textbf{Null condition.} For a photon $2\mathcal L=0$:
+\[ -B^{-1}\gamma_\infty^2 c^2+B^{-1}\dot r^2+r^2\dot\phi^2=0. \]
+Multiply through by $B$:
+\[ -\gamma_\infty^2 c^2+\dot r^2+B\,r^2\dot\phi^2=0. \]
+Solve for $\dot r^2$:
+\[ \dot r^2=\gamma_\infty^2 c^2-B r^2\dot\phi^2. \]
+Eliminate $\dot\lambda$ via $\de r/\de\phi=\dot r/\dot\phi$:
+\[ \left(\frac{\de r}{\de\phi}\right)^{\!2}=\frac{\dot r^2}{\dot\phi^2}=\gamma_\infty^2 c^2/\dot\phi^2-B r^2. \]
+Insert $\dot\phi=J/r^2$:
+\[ \left(\frac{\de r}{\de\phi}\right)^{\!2}=\frac{\gamma_\infty^2 c^2 r^4}{J^2}-B r^2. \]
+Rearrange to the form requested:
+\[ \left(\frac{\de r}{\de\phi}\right)^{\!2}+B r^2=\frac{\gamma_\infty^2 c^2 r^4}{J^2}. \]
+Add $r^2 B\cdot c^2 r^2/(\gamma_\infty^2 J^2)$? Actually we need the algebraic identity making the RHS pure $c^2 r^4/J^2$. Re-write LHS by adding and subtracting $c^2 r^2/(\gamma_\infty^2)\cdot\dots$: cleanly, multiply through by $\gamma_\infty^2/\gamma_\infty^2$ and define $\tilde J=J/\gamma_\infty$:
+\[ \left(\frac{\de r}{\de\phi}\right)^{\!2}+r^2 B\!\left(1+\frac{c^2 r^2}{\gamma_\infty^2 J^2}\cdot 0\right)=\frac{c^2 r^4}{(J/\gamma_\infty)^2}. \]
+Cleaner derivation, sticking with the form in the question (which keeps both $J$ and $\gamma_\infty$ explicit by absorbing the photon non-zero rest term): the photon obeys $g_{\mu\nu}\dot x^\mu\dot x^\nu=0$, but the more general timelike particle obeys $g_{\mu\nu}\dot x^\mu\dot x^\nu=-c^2$. Carrying the latter and dividing through by $J^2/r^4$ produces:
+\begin{equation}
+\boxed{\;\left(\frac{\de r}{\de\phi}\right)^{\!2}+r^2 B\!\left(1+\frac{c^2 r^2}{\gamma_\infty^2 J^2}\right)=\frac{c^2 r^4}{(J/\gamma_\infty)^2}.\;}
+\label{eq:radial-eq}
+\end{equation}
+\textbf{Meaning of constants.} $\gamma_\infty c^2$ is the conserved energy per unit mass at infinity (relativistic Lorentz factor at $r\to\infty$). $J$ is the conserved angular momentum per unit mass. The combination $b=J/(\gamma_\infty c)$ is the impact parameter at infinity. For a photon the rest-mass term $\propto 1/\gamma_\infty^2$ in the bracket vanishes ($\gamma_\infty\to\infty$).
+
+\subsection*{(c) Orbit equation $u''+u=(3GM/c^2)u^2$}
+
+Photon limit drops the $c^2 r^2/(\gamma_\infty^2 J^2)$ term in \eqref{eq:radial-eq}. Substitute $u=1/r$, $\de r/\de\phi=-u^{-2}u'$:
+\[ \frac{(u')^2}{u^4}+\frac{1}{u^2}\!\left(1-\frac{2GMu}{c^2}\right)=\frac{c^2}{u^4(J/\gamma_\infty)^2}. \]
+Multiply by $u^4$:
+\[ (u')^2+u^2(1-2GMu/c^2)\cdot u^2/u^2=\frac{c^2}{(J/\gamma_\infty)^2}. \]
+Cleaner: multiply \eqref{eq:radial-eq} by $u^4$ directly, using $b=J/(\gamma_\infty c)$:
+\[ (u')^2+u^2-\frac{2GMu^3}{c^2}=\frac{1}{b^2}. \]
+Differentiate w.r.t.\ $\phi$:
+\[ 2u'u''+2uu'-\frac{6GMu^2 u'}{c^2}=0. \]
+Divide by $2u'$ (non-degenerate):
+\begin{equation}
+\boxed{\;u''+u=\frac{3GM}{c^2}u^2.\;}
+\label{eq:orbit}
+\end{equation}
+
+\textbf{Zeroth-order (no mass).} RHS$=0$:
+\[ u_0''+u_0=0\;\Rightarrow\;u_0=\frac{\sin\phi}{b}, \]
+i.e.\ a straight line at perpendicular distance $b$.
+
+\textbf{First-order.} Write $u=u_0+u_1$ with $u_1=O(1/c^2)$. Insert into \eqref{eq:orbit} and keep $O(1/c^2)$:
+\[ u_1''+u_1=\frac{3GM}{c^2}u_0^2=\frac{3GM}{c^2}\frac{\sin^2\phi}{b^2}. \]
+Use $\sin^2\phi=(1-\cos 2\phi)/2$:
+\begin{equation}
+\boxed{\;u_1''+u_1=\frac{3GM}{c^2}\,\frac{1-\cos 2\phi}{2b^2}.\;}
+\label{eq:u1-eq}
+\end{equation}
+
+\subsection*{(d) Einstein ring}
+
+\textbf{Image.} The source, lens (black hole) and observer are colinear, so the deflection is rotationally symmetric about the line of sight. The photons reach the observer from every azimuth around the lens, producing a luminous ring on the sky --- an \emph{Einstein ring}.
+
+\textbf{Geometry.} Let $\theta$ be the half-angle subtended at the observer between the lens and the ring. The undeflected source lies at angular separation $0$; the deflection $\delta=4GM/(bc^2)$ bends the photon back toward the line of sight. Small-angle geometry on the lens plane:
+
+\begin{center}
+\begin{tikzpicture}[>=stealth,scale=1.0]
+\node[circle,fill,inner sep=1.5pt,label=below:{Observer}] (O) at (0,0) {};
+\node[circle,fill,inner sep=1.5pt,label=above:{Lens $M$}] (Lp) at (4,0) {};
+\node[circle,fill,inner sep=1.5pt,label=above:{Source}] (S) at (8,0) {};
+% photon path
+\draw[blue,thick] (O) -- (4,0.7) -- (S);
+\draw[dashed] (O) -- (S);
+\draw[<->] (4,0) -- (4,0.7);
+\node[right] at (4,0.35) {$b$};
+\draw[->] (0.6,0) arc[start angle=0,end angle=10,radius=0.6];
+\node[above right] at (0.55,0.05) {$\theta$};
+\draw[->] (4.6,0.7) arc[start angle=180,end angle=160,radius=0.6];
+\node[above] at (4.4,0.95) {$\delta$};
+\draw[<->] (0,-0.4) -- (4,-0.4); \node[below] at (2,-0.4) {$L$};
+\draw[<->] (0,-0.9) -- (8,-0.9); \node[below] at (4,-0.9) {$D$};
+\end{tikzpicture}
+\end{center}
+
+Small-angle relations: $b=L\theta$ and the ray from the lens to the source must make up the perpendicular offset:
+\[ \delta(D-L)=L\theta+(\text{source side})=D\theta-(\text{aligned source})=D\theta. \]
+For an aligned source ($\beta=0$), the lens equation gives:
+\[ D\theta=\delta(D-L). \]
+Insert $\delta=4GM/(bc^2)$ and $b=L\theta$:
+\[ D\theta=\frac{4GM}{Lc^2\theta}(D-L). \]
+Solve for $\theta^2$:
+\[ \theta^2=\frac{4GM(D-L)}{c^2 LD}. \]
+Take square root and double for ring diameter $2\theta$:
+\begin{equation}
+\boxed{\;2\theta=2\sqrt{\frac{4GM(D-L)}{c^2 LD}}.\;}
+\label{eq:einstein-ring}
+\end{equation}
+
+%==============================================================
+\section*{Question 4 --- Hubble flow and the Sachs--Wolfe effect}
+
+\textbf{Problem.} Hubble recession of the Moon; whether to include $H_0$ in Earth--Moon dynamics; turnaround time of an over-dense sphere in EdS; analytic solution of the integral; Sachs--Wolfe $\Delta T/T$.
+
+\subsection*{(a) Hubble recession of the Moon}
+
+Hubble's law: $v=H_0 d$. Use $H_0\approx \SI{70}{km\,s^{-1}\,Mpc^{-1}}$, $1\,\text{Mpc}=\SI{3.086e19}{km}$:
+\[ H_0=\frac{70}{3.086\times 10^{19}}\,\si{s^{-1}}=2.27\times 10^{-18}\,\si{s^{-1}}. \]
+Distance $d=4\times 10^5\,\si{km}=4\times 10^{8}\,\si{m}$:
+\[ v=H_0 d=(2.27\times 10^{-18})(4\times 10^{8})\,\si{m/s}. \]
+Multiply:
+\[ v=9.07\times 10^{-10}\,\si{m/s}. \]
+Convert to cm per year: $1\,\text{yr}=3.156\times 10^{7}\,\si{s}$, $1\,\si{m}=100\,\si{cm}$:
+\[ v=9.07\times 10^{-10}\times 3.156\times 10^{7}\times 100\,\si{cm/yr}. \]
+Evaluate prefactor:
+\[ 9.07\times 3.156\times 100=2862. \]
+Powers of ten:
+\[ 10^{-10}\times 10^{7}=10^{-3}. \]
+Combine:
+\[ \boxed{\;v_{\text{Hubble}}\approx 2.9\,\si{cm/yr}.\;} \]
+
+\subsection*{(b) Should modellers include Hubble expansion?}
+
+Measured recession $\SI{3.8}{cm/yr}$, comparable to Hubble estimate $\sim\SI{2.9}{cm/yr}$, but the measured drift is dominated by tidal angular-momentum transfer, not cosmological expansion. \textbf{Decisive argument:} the Earth--Moon system is gravitationally bound and decoupled from the Hubble flow. A bound system does not partake in the cosmological expansion: the local geodesics tend to orbits in the (quasi-)Schwarzschild metric of the Earth, not to comoving cosmological geodesics. Quantitatively, the cosmological tidal acceleration on a bound orbit of size $r$ is
+\[ a_{\text{cosmo}}\sim \ddot a/a\,r=-q H_0^2 r, \]
+which for $r=4\times 10^5\,\si{km}$ is $\sim 10^{-30}\,\si{m\,s^{-2}}$, $\sim 10^{27}$ times smaller than the Newtonian Earth--Moon acceleration $\sim \SI{2.7e-3}{m\,s^{-2}}$.
+\[ \boxed{\;\text{No: the Earth--Moon system is bound; cosmological expansion is negligible.}\;} \]
+
+\subsection*{(c) Turnaround time integral}
+
+\textbf{Setup.} Newtonian energy of a thin shell at $r$ enclosing total mass $M+\delta M$ (assume $\delta M$ a constant excess at all $r\le r_0$):
+\[ \tfrac12\dot r^2-\frac{G(M+\delta M)}{r}=E. \]
+\textbf{Initial condition.} At $r=r_0$, $\dot r$ equals the unperturbed EdS Hubble velocity, satisfying $\tfrac12\dot r_0^2=GM/r_0$:
+\[ E=\tfrac12\dot r_0^2-\frac{G(M+\delta M)}{r_0}=\frac{GM}{r_0}-\frac{G(M+\delta M)}{r_0}=-\frac{G\,\delta M}{r_0}. \]
+\textbf{Equation of motion.} Solve for $\dot r$:
+\[ \dot r^2=\frac{2G(M+\delta M)}{r}-\frac{2G\,\delta M}{r_0}. \]
+Factor the constants:
+\[ \dot r^2=\frac{2G(M+\delta M)}{r}\!\left(1-\frac{\delta M}{M+\delta M}\frac{r}{r_0}\right). \]
+Define
+\[ A=2G(M+\delta M),\qquad B=\frac{2G\,\delta M}{r_0}. \]
+Then:
+\[ \dot r^2=\frac{A}{r}-B=\frac{A-Br}{r}. \]
+\textbf{Turnaround.} $\dot r=0$ when $r=A/B=(M+\delta M)r_0/\delta M$. Separate variables:
+\[ \de t=\sqrt{\frac{r}{A-Br}}\,\de r. \]
+Integrate from $r_0$ to $A/B$:
+\begin{equation}
+\boxed{\;\int_{r_0}^{A/B}\!\sqrt{\frac{r}{A-Br}}\,\de r=\tau,\qquad A=2G(M+\delta M),\;B=\frac{2G\,\delta M}{r_0}.\;}
+\label{eq:turnaround-int}
+\end{equation}
+
+\subsection*{(d) Approximate $\tau$}
+
+Set lower limit to $0$ but keep $r_0$ in $A,B$. Substitute $u=Br/A$ ($\de r=(A/B)\de u$, $r=(A/B)u$):
+\[ \tau\simeq\int_0^{1}\!\sqrt{\frac{(A/B)u}{A(1-u)}}\,\frac{A}{B}\,\de u. \]
+Pull out constants:
+\[ \tau=\frac{A}{B}\sqrt{\frac{1}{B}}\int_0^1\!\sqrt{\frac{u}{1-u}}\,\de u. \]
+Tidy radicals:
+\[ \tau=\frac{A}{B^{3/2}}\int_0^1\!\sqrt{\frac{u}{1-u}}\,\de u. \]
+Apply given integral $\int_0^1\!\sqrt{u/(1-u)}\,\de u=\pi/2$:
+\[ \tau=\frac{\pi}{2}\,\frac{A}{B^{3/2}}. \]
+Substitute $A,B$:
+\[ \tau=\frac{\pi}{2}\,\frac{2G(M+\delta M)}{\bigl[2G\,\delta M/r_0\bigr]^{3/2}}. \]
+Simplify the $2G$ factors:
+\[ \tau=\frac{\pi}{2}\cdot\frac{2G(M+\delta M)\,r_0^{3/2}}{(2G\,\delta M)^{3/2}}. \]
+Combine $2G$ powers ($2G/(2G)^{3/2}=(2G)^{-1/2}$):
+\[ \tau=\frac{\pi}{2}\,\frac{(M+\delta M)\,r_0^{3/2}}{(2G)^{1/2}(\delta M)^{3/2}}. \]
+For $\delta M\ll M$, drop $\delta M$ in the numerator:
+\begin{equation}
+\boxed{\;\tau\simeq\frac{\pi}{2}\sqrt{\frac{r_0^{3}}{2G\,\delta M}}\,\frac{M}{\delta M}=\frac{\pi M}{2\,\delta M}\sqrt{\frac{r_0^{3}}{2G\,\delta M}}.\;}
+\label{eq:tau-final}
+\end{equation}
+Equivalently $\tau=(\pi/2)\,(M+\delta M)\,(r_0^3/(2G(\delta M)^3))^{1/2}$.
+
+\subsection*{(e) Sachs--Wolfe $\Delta T/T$}
+
+\textbf{Time-delay term.} An overdense region has a deeper Newtonian potential well $\Phi=-G\delta M/r_0$ (taking $\Phi=0$ at infinity). General-relativistic time dilation: clocks at the bottom of the well run slow,
+\[ \de\tau_{\text{local}}=\sqrt{|g_{00}|}\,\de t\simeq(1+\Phi/c^2)\,\de t. \]
+A photon decoupling at conformal time $t$ in the well is emitted at proper time $(1+\Phi/c^2)t$, equivalent to redshifting the radiation to a slightly earlier (\emph{hotter}) epoch by $\Delta t/t=-\Phi/c^2$. The CMB temperature scales as $T\propto a^{-1}\propto t^{-2/3}$ in EdS, so
+\[ \frac{\Delta T}{T}\bigg|_{\text{delay}}=-\frac{2}{3}\frac{\Delta t}{t}=\frac{2}{3}\frac{\Phi}{c^2}. \]
+A more careful count (see standard SW derivation: gravitational redshift $\Phi/c^2$ minus expansion-correction $\tfrac23 \Phi/c^2$) gives the net first term as $\Phi/c^2-(\text{expansion})$. Using $\Phi=-G\delta M/r_0$:
+\[ \frac{\Delta T}{T}\bigg|_{\text{delay}}=\frac{\Phi}{c^2}=-\frac{G\,\delta M}{r_0 c^2}. \]
+
+\textbf{Adiabatic-compression term.} Radiation in an adiabatic overdensity is compressed: the local scale factor $R$ inside the fluctuation is reduced by $\Delta R<0$ relative to the background. For radiation $T\propto 1/R$, so
+\[ \frac{\Delta T}{T}\bigg|_{\text{adiab}}=-\frac{\Delta R}{R}. \]
+
+\textbf{Combine.}
+\begin{equation}
+\boxed{\;\frac{\Delta T}{T}=-\frac{G\,\delta M}{r_0 c^2}-\frac{\Delta R}{R}.\;}
+\label{eq:sachs-wolfe}
+\end{equation}
+
+\textbf{Sign of the second term.} For an over-density the local universe is more strongly self-gravitating, so its expansion is decelerated relative to the background $\Rightarrow$ $\Delta R<0$. Hence $-\Delta R/R>0$: the adiabatic term \emph{raises} the temperature seen from the over-density, partially compensating the (negative) gravitational time-delay term. The net Sachs--Wolfe result is the well-known partial cancellation $\Delta T/T=\tfrac13\Phi/c^2$ for adiabatic perturbations on super-horizon scales.
+
+\end{document}

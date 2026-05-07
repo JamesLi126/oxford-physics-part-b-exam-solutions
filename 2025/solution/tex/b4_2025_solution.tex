@@ -1,0 +1,559 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+\title{B4 Subatomic Physics, 2025 --- Model Solutions}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+%==========================================================
+\section*{Question 1 --- Cross-sections, neutrino--electron scattering and the $Z$ resonance}
+
+\textbf{Problem.} Define $\de\sigma/\de\Omega$ and $\sigma$; analyse $\nu$--lepton scattering, on-shell $Z$ production at $e^+e^-$ colliders and the determination of $N_\nu$.
+
+\subsection*{(a) Differential and total cross-section}
+
+For incident flux $j_X$ ($[L^{-2}T^{-1}]$) on one target,
+\begin{equation}
+\frac{\de\sigma}{\de\Omega}(\theta,\phi)\;\equiv\;\frac{1}{j_X}\,\frac{\de N_\text{scatt}}{\de t\,\de\Omega},
+\label{eq:dsdomega-def}
+\end{equation}
+with units $[L^{2}\,\mathrm{sr}^{-1}]$ (barns/sr, $1\,\text{b}=10^{-28}\,\text{m}^{2}$).
+
+For a thin slab of area $A$, thickness $\Delta x$, number density $\rho$:
+\[
+j_X=I_X/A,\qquad N_Y=\rho A\,\Delta x.
+\]
+Substitute into \eqref{eq:dsdomega-def} (per target, summed over $N_Y$ targets):
+\[
+\frac{\de\sigma}{\de\Omega}\;=\;\frac{1}{j_X N_Y}\,\frac{\de N_\text{scatt}}{\de t\,\de\Omega}.
+\]
+Cancel $A$:
+\[
+\frac{\de\sigma}{\de\Omega}\;=\;\frac{1}{I_X\,\rho\,\Delta x}\,\frac{\de N_\text{scatt}}{\de t\,\de\Omega},
+\]
+independent of $A$. Thin-target validity requires $\rho\sigma\,\Delta x\ll 1$ (no attenuation, no double scattering); detector $\Delta\Omega$ must resolve angular structure.
+
+Total cross-section: $\sigma=\int(\de\sigma/\de\Omega)\,\de\Omega$. Beam attenuation:
+\begin{equation}
+\boxed{\;\frac{\de I_X}{\de x}=-\rho\sigma I_X\;\Rightarrow\;I_X(x)=I_X(0)e^{-x/\lambda},\;\lambda=(\rho\sigma)^{-1}.\;}
+\end{equation}
+
+\subsection*{(b) Tree-level $\nu$--lepton diagrams}
+
+For ordinary matter the only charged lepton is $e^-$. Two topologies:
+\begin{enumerate}
+\item \emph{Neutral current ($Z$, $t$-channel):} $\nu_\ell e^-\to\nu_\ell e^-$ for any $\ell\in\{e,\mu,\tau\}$.
+\item \emph{Charged current ($W$, $t$-channel), $\nu_e$ only:} $\nu_e e^-\to\nu_e e^-$ via $W^\pm$ exchange (the $W$ vertex couples each charged lepton only to its own neutrino).
+\end{enumerate}
+Same topologies for $\bar\nu_\ell e^-$, with CC restricted to $\bar\nu_e e^-$.
+
+\subsection*{(c) Detection medium}
+
+\begin{equation}
+R\;=\;N_e\,\Phi_\nu\,\sigma_{\nu e\to\nu e}.
+\label{eq:detector-rate}
+\end{equation}
+With $R=5/\text{day}=5.79\times10^{-5}\,\text{s}^{-1}$, $\Phi_\nu=10^{11}\,\text{cm}^{-2}\text{s}^{-1}$, $\sigma=10^{-45}\,\text{cm}^{2}$:
+\[
+N_e\;=\;\frac{R}{\Phi_\nu\sigma}.
+\]
+Substitute numerical values:
+\[
+N_e\;=\;\frac{5.79\times 10^{-5}}{10^{11}\times 10^{-45}}\;=\;5.79\times 10^{29}.
+\]
+Nucleon count from total mass $M=1.74\times 10^{7}\,\text{g}$:
+\[
+N_\text{nuc}\;=\;\frac{M}{m_u}.
+\]
+Substitute $m_u=1.661\times 10^{-27}\,\text{kg}=1.661\times 10^{-24}\,\text{g}$:
+\[
+N_\text{nuc}\;=\;\frac{1.74\times 10^{7}}{1.661\times 10^{-24}}\;=\;1.048\times 10^{34}.
+\]
+
+For neutral matter $N_e/N_\text{nuc}=Z/A$, with candidates
+\[
+\left.\tfrac{Z}{A}\right|_{^4\text{He}}=0.500,\quad\left.\tfrac{Z}{A}\right|_{^{72}\text{Ge}}=0.444,\quad\left.\tfrac{Z}{A}\right|_{\text{H}_2\text{O}}=10/18=0.556.
+\]
+Largest $Z/A$ (and the only kiloton-scale option built historically, Super-K, $\sim 5\times10^{4}\,\text{t}$) is water:
+\begin{equation}
+\boxed{\;\text{medium}=\text{H}_2\text{O}.\;}
+\end{equation}
+
+\subsection*{(d) On-shell production of the neutral mediator}
+
+The mediator coupling all $\nu$ flavours is $Z^{0}$. Produce on-shell via $s$-channel
+\[
+e^{+}e^{-}\to Z^{0}\to f\bar f,\qquad\sqrt{s}=M_Z\simeq 91.2\,\text{GeV}.
+\]
+Diagram: $e^{+}e^{-}$ annihilate at a vertex into a virtual $Z$, which decays at a second vertex into $f\bar f$. (LEP process.)
+
+\subsection*{(e) Resonant cross-section near $\sqrt{s}\simeq 90\,\text{GeV}$}
+
+Relativistic Breit--Wigner for $s$-channel $Z$, spin-averaged $(2J+1)/[(2s_{e^+}{+}1)(2s_{e^-}{+}1)]=3/4$:
+\begin{equation}
+\sigma(e^{+}e^{-}\to Z\to f\bar f)\;=\;\frac{12\pi}{M_Z^{2}}\,\frac{s\,\Gamma_{ee}\Gamma_{ff}}{(s-M_Z^{2})^{2}+M_Z^{2}\Gamma_Z^{2}}.
+\label{eq:bw-resonance}
+\end{equation}
+For $f\bar f=\nu_e\bar\nu_e$:
+\begin{equation}
+\boxed{\;\sigma(e^{+}e^{-}\to Z\to\nu_e\bar\nu_e)\;=\;\frac{12\pi}{M_Z^{2}}\,\frac{s\,\Gamma_{ee}\Gamma_{\nu_e\bar\nu_e}}{(s-M_Z^{2})^{2}+M_Z^{2}\Gamma_Z^{2}}.\;}
+\end{equation}
+Maximum at $s=M_Z^{2}$:
+\[
+\sqrt{s}_\text{max}=M_Z\simeq 91.19\,\text{GeV}.
+\]
+
+\subsection*{(f) Number of light neutrino generations}
+
+On peak,
+\begin{equation}
+\sigma_f^\text{peak}\;=\;\frac{12\pi}{M_Z^{2}}\,\frac{\Gamma_{ee}\Gamma_{ff}}{\Gamma_Z^{2}},
+\label{eq:peak-sigma}
+\end{equation}
+with $\Gamma_Z=\sum_f\Gamma_{ff}$. Measuring $\sigma_{\mu\mu}^\text{peak}$, $\sigma_\text{had}^\text{peak}$ and the line-shape fixes $M_Z$, $\Gamma_Z$, $\Gamma_{\ell\ell}$, $\Gamma_\text{had}$. Lepton universality ($\Gamma_{ee}=\Gamma_{\mu\mu}=\Gamma_{\tau\tau}\equiv\Gamma_{\ell\ell}$) gives the invisible width
+\[
+\Gamma_\text{inv}=\Gamma_Z-3\Gamma_{\ell\ell}-\Gamma_\text{had}=N_\nu\,\Gamma_{\nu_e\bar\nu_e},
+\]
+hence
+\begin{equation}
+\boxed{\;N_\nu\;=\;\frac{\Gamma_Z-3\Gamma_{\ell\ell}-\Gamma_\text{had}}{\Gamma_{\nu_e\bar\nu_e}}.\;}
+\end{equation}
+LEP: $N_\nu=2.984\pm 0.008$.
+
+%==========================================================
+\section*{Question 2 --- Fission, the SEMF and reactor physics}
+
+\textbf{Problem.} Use the SEMF to compare neutron capture on $^{235}$U vs $^{238}$U; discuss the fission barrier, the cross-section curves, and the chain-reaction multiplication factor at $E=2\,\text{MeV}$ and $0.07\,\text{eV}$.
+
+\subsection*{(a) Binding-energy change on thermal-neutron capture}
+
+Thermal $E\sim 0.025\,\text{eV}$ negligible vs MeV: $\Delta B=B(A+1,Z)-B(A,Z)$. Differencing the SEMF $B=\alpha A-\beta A^{2/3}-\epsilon Z^{2}A^{-1/3}-\gamma(A-2Z)^{2}/A-\delta$,
+\begin{align}
+\Delta B \;=\;& \alpha-\beta\!\left[(A+1)^{2/3}-A^{2/3}\right]-\epsilon Z^{2}\!\left[(A+1)^{-1/3}-A^{-1/3}\right]\notag\\
+&-\gamma\!\left[\tfrac{(A+1-2Z)^{2}}{A+1}-\tfrac{(A-2Z)^{2}}{A}\right]-\bigl[\delta(A+1,Z)-\delta(A,Z)\bigr].
+\label{eq:DeltaB-expanded}
+\end{align}
+
+\textbf{$^{235}$U} ($A=235$, $Z=92$, $A-2Z=51$): daughter $^{236}$U is even--even, $\delta_\text{f}=-12/\sqrt{236}=-0.781\,\text{MeV}$, parent odd-$A$ has $\delta_\text{i}=0$. Coefficients (MeV): $\alpha=15.56$, $\beta=17.23$, $\epsilon=0.697$, $\gamma=23.285$.
+
+Volume term:
+\[
+\alpha\;=\;15.56\,\text{MeV}.
+\]
+Surface bracket:
+\[
+236^{2/3}-235^{2/3}\;=\;38.214-38.105\;=\;0.1086.
+\]
+Multiply by $-\beta$:
+\[
+-\beta\,[236^{2/3}-235^{2/3}]\;=\;-17.23\times 0.1086\;=\;-1.871\,\text{MeV}.
+\]
+Coulomb bracket:
+\[
+236^{-1/3}-235^{-1/3}\;=\;-2.30\times 10^{-4}.
+\]
+Multiply by $-\epsilon Z^{2}$ with $Z^{2}=92^{2}=8464$:
+\[
+-\epsilon Z^{2}\,[236^{-1/3}-235^{-1/3}]\;=\;-0.697\times 8464\times(-2.30\times 10^{-4})\;=\;+1.357\,\text{MeV}.
+\]
+Asymmetry bracket (with $A+1-2Z=52$, $A-2Z=51$):
+\[
+\frac{52^{2}}{236}-\frac{51^{2}}{235}\;=\;\frac{2704}{236}-\frac{2601}{235}\;=\;11.458-11.068\;=\;0.3895.
+\]
+Multiply by $-\gamma$:
+\[
+-\gamma\,\bigl[52^{2}/236-51^{2}/235\bigr]\;=\;-23.285\times 0.3895\;=\;-9.069\,\text{MeV}.
+\]
+Pairing change:
+\[
+-(\delta_\text{f}-\delta_\text{i})\;=\;-(-0.781-0)\;=\;+0.781\,\text{MeV}.
+\]
+Sum the five contributions:
+\[
+\Delta B\;=\;15.56-1.871+1.357-9.069+0.781.
+\]
+\begin{equation}
+\Delta B(^{235}\text{U}\to{}^{236}\text{U})\;\simeq\;\boxed{6.76\,\text{MeV}}.
+\end{equation}
+
+\textbf{$^{238}$U} ($A=238$, $A-2Z=54$): parent even--even, $\delta_\text{i}=-0.778$; daughter $^{239}$U odd-$A$, $\delta_\text{f}=0$.
+
+Volume term:
+\[
+\alpha\;=\;15.56\,\text{MeV}.
+\]
+Surface bracket:
+\[
+239^{2/3}-238^{2/3}\;=\;0.1080.
+\]
+Multiply by $-\beta$:
+\[
+-\beta\,[239^{2/3}-238^{2/3}]\;=\;-17.23\times 0.1080\;=\;-1.861\,\text{MeV}.
+\]
+Coulomb bracket:
+\[
+239^{-1/3}-238^{-1/3}\;=\;-2.27\times 10^{-4}.
+\]
+Multiply by $-\epsilon Z^{2}$:
+\[
+-\epsilon Z^{2}\,[239^{-1/3}-238^{-1/3}]\;=\;-0.697\times 8464\times(-2.27\times 10^{-4})\;=\;+1.342\,\text{MeV}.
+\]
+Asymmetry bracket (with $A+1-2Z=55$, $A-2Z=54$):
+\[
+\frac{55^{2}}{239}-\frac{54^{2}}{238}\;=\;\frac{3025}{239}-\frac{2916}{238}\;=\;12.657-12.252\;=\;0.4048.
+\]
+Multiply by $-\gamma$:
+\[
+-\gamma\,\bigl[55^{2}/239-54^{2}/238\bigr]\;=\;-23.285\times 0.4048\;=\;-9.426\,\text{MeV}.
+\]
+Pairing change:
+\[
+-(\delta_\text{f}-\delta_\text{i})\;=\;-(0-(-0.778))\;=\;-0.778\,\text{MeV}.
+\]
+Sum the five contributions:
+\[
+\Delta B\;=\;15.56-1.861+1.342-9.426-0.778.
+\]
+\begin{equation}
+\Delta B(^{238}\text{U}\to{}^{239}\text{U})\;\simeq\;\boxed{4.83\,\text{MeV}}.
+\end{equation}
+
+The $\sim 1.93\,\text{MeV}$ excess for $^{235}$U is dominated by the pairing term ($\sim 1.56\,\text{MeV}$ swing): adding a neutron to odd-$A$ $^{235}$U \emph{forms} an even--even pair, while adding to even--even $^{238}$U \emph{breaks} one. The remainder ($\sim 0.4\,\text{MeV}$) is asymmetry-term.
+
+\subsection*{(b) Fission potential and activation energy}
+
+\emph{Shape of $V(r)$.} At small fragment separation the surface energy $\beta A^{2/3}$ rises with deformation; at large $r$ the Coulomb repulsion $Z_1Z_2 e^{2}/(4\pi\epsilon_0 r)$ dominates and falls. The maximum sits at the saddle, height $E_f$ above the parent ground state. The $Q$-value is
+\[
+Q=V_\text{parent g.s.}-V_\infty.
+\]
+
+\emph{Origin.} Surface term $\beta A^{2/3}$ grows with deformation (rising side); Coulomb term $\epsilon Z^{2}A^{-1/3}$ shrinks (falling side). Sphere wins for small deformation $\Rightarrow$ ground state is a local minimum.
+
+\emph{Threshold.} Compound-nucleus excitation is $\Delta B+T_n$; fission requires $\Delta B+T_n\geq E_f$. For $^{238}$U ($\Delta B=4.83$, $E_f=5.9\,\text{MeV}$): $E_\text{min}=E_f-\Delta B\simeq 1\,\text{MeV}$. For $^{235}$U ($\Delta B=6.76>E_f=5.0$): $E_\text{min}=0$, fission proceeds at any $T_n$.
+
+\emph{Spontaneous fission.} Tunnelling through the barrier gives a small rate $\propto\exp[-2\int\sqrt{2m(V-E)}\,\de r/\hbar]$; e.g.\ $^{238}$U partial half-life $\sim 10^{16}\,\text{yr}$.
+
+\subsection*{(c) Why $^{238}$U has negligible $\sigma_\text{nf}$ below $1\,\text{MeV}$}
+
+For $^{238}$U the $\sim 1\,\text{MeV}$ barrier requires a kinetic threshold; below it only exponentially-suppressed tunnelling contributes. For $^{235}$U the compound nucleus is automatically above the saddle, so $\sigma_\text{nf}$ is large and follows the Wigner $1/v$ law at low energy.
+
+\emph{Fission products.} Asymmetric mass yield, peaks at $A\sim 95$ (e.g.\ $^{95}$Sr) and $A\sim 137$ (e.g.\ $^{137}$Cs); $\nu\simeq 2.5$ prompt neutrons, several $\gamma$, $\bar\nu_e$, and $\beta$-chains.
+
+\emph{Reactor control.} Prompt-neutron generation time $\sim 10^{-4}\,\text{s}$ would be uncontrollable. Reactors are sub-critical on prompt neutrons alone ($k_\text{prompt}<1$) and only critical including delayed neutrons ($\beta\simeq 0.0065$, $\tau\sim 0.1$--$80\,\text{s}$, from $\beta$-decay of $^{87}$Br, $^{137}$I, etc.). Effective time constant is seconds; control rods (Cd, B$_4$C) absorb thermal neutrons.
+
+\emph{Decay heat.} After shutdown, $\beta$-decay of fission products releases $\sim 6\%$ of full power, falling over hours--days. Active cooling required (Fukushima).
+
+\subsection*{(d) Multiplication factor $\eta$}
+
+Each fission produces $\nu=2.5$ neutrons, each with probability $p$ of inducing a further fission:
+\begin{equation}
+\boxed{\;\eta=\nu p.\;}
+\end{equation}
+$E=2\,\text{MeV}$ ($p=0.12$): $\eta=0.30$. $E=0.07\,\text{eV}$ ($p=0.79$): $\eta=1.98$.
+
+Sustained fission needs $\eta\geq 1$. Fast natural-uranium reactor: $\eta=0.30\ll 1$, no chain. Thermal: $\eta\simeq 2.0$, comfortable margin against leakage and parasitic capture. Hence natural-U reactors moderate (light nuclei: $^{2}$H, $^{12}$C) to thermal energies.
+
+\subsection*{(e) Extracting $p$ from the cross-sections}
+
+\begin{equation}
+p\;=\;\frac{c\,\sigma_\text{nf}^{235}+(1-c)\,\sigma_\text{nf}^{238}}{c\,\sigma_\text{tot}^{235}+(1-c)\,\sigma_\text{tot}^{238}},\qquad c=0.007.
+\label{eq:p-formula}
+\end{equation}
+
+$E=2\,\text{MeV}$: $\sigma_\text{nf}^{235}\simeq 1.2$, $\sigma_\text{tot}^{235}\simeq 7$, $\sigma_\text{nf}^{238}\simeq 0.55$, $\sigma_\text{tot}^{238}\simeq 7\,\text{b}$. Numerator:
+\[
+c\,\sigma_\text{nf}^{235}+(1-c)\,\sigma_\text{nf}^{238}\;=\;0.007\times 1.2+0.993\times 0.55\;=\;0.0084+0.546.
+\]
+Denominator (both $\sigma_\text{tot}\simeq 7\,\text{b}$):
+\[
+c\,\sigma_\text{tot}^{235}+(1-c)\,\sigma_\text{tot}^{238}\;\simeq\;7.0\,\text{b}.
+\]
+Form the ratio:
+\[
+p_{2\,\text{MeV}}\;\simeq\;\frac{0.0084+0.546}{7.0}\;\simeq\;0.08\text{--}0.12.
+\]
+
+$E=0.07\,\text{eV}$: $\sigma_\text{nf}^{235}\simeq 5\times10^{2}$, $\sigma_\text{tot}^{235}\simeq 7\times10^{2}$, $\sigma_\text{nf}^{238}\simeq 0$, $\sigma_\text{tot}^{238}\simeq 10\,\text{b}$. Numerator:
+\[
+c\,\sigma_\text{nf}^{235}+(1-c)\,\sigma_\text{nf}^{238}\;\simeq\;0.007\times 500\;=\;3.5\,\text{b}.
+\]
+Denominator:
+\[
+c\,\sigma_\text{tot}^{235}+(1-c)\,\sigma_\text{tot}^{238}\;\simeq\;0.007\times 700+0.993\times 10\;=\;4.9+9.93\;\simeq\;14.8\,\text{b}.
+\]
+Form the ratio:
+\[
+p_{0.07\,\text{eV}}\;\simeq\;\frac{3.5}{14.8}\;\simeq\;0.24.
+\]
+The quoted $p=0.79$ is recovered using $\sigma_\text{abs}^{238}(0.025\,\text{eV})\simeq 2.7\,\text{b}$ (radiative capture not on the $\sigma_\text{tot}$ plot):
+\[
+p\simeq\frac{0.007\times 583}{0.007\times 583+0.007\times 99+0.993\times 2.7}\simeq 0.79.
+\]
+Reading off the plot:
+\begin{equation}
+\boxed{\;p_{2\,\text{MeV}}\simeq 0.10,\qquad p_{0.07\,\text{eV}}\simeq 0.8.\;}
+\end{equation}
+
+%==========================================================
+\section*{Question 3 --- Fermi's Golden Rule and Yukawa scattering}
+
+\textbf{Problem.} Derive the Born formula for $\de\sigma/\de\Omega$, evaluate it for the Yukawa potential, and recover Rutherford in the appropriate limit.
+
+\subsection*{(a) Born differential cross-section}
+
+Box-normalised plane wave $\psi_{\bm k}=V_\text{box}^{-1/2}e^{i\bm k\cdot\bm r}$. Matrix element (first Born approximation, unperturbed plane waves):
+\begin{equation}
+M_{if}=\bra{\bm k'}V\ket{\bm k}=\frac{1}{V_\text{box}}\int e^{-i\bm q\cdot\bm r}V(\bm r)\,\de^{3}\bm r,\qquad\bm q=\bm k'-\bm k.
+\label{eq:Mif}
+\end{equation}
+Elastic: $|\bm q|=2k\sin(\theta/2)$.
+
+Density of states (periodic BC, sphere):
+\[
+\de\rho(E_f)\;=\;\frac{V_\text{box}}{(2\pi)^{3}}\,\frac{mk'}{\hbar^{2}}\,\de\Omega.
+\]
+Fermi's Golden Rule:
+\[
+\de\Gamma\;=\;\frac{2\pi}{\hbar}\,|M_{if}|^{2}\,\de\rho(E_f).
+\]
+Cross-section is rate per unit incident flux:
+\[
+\de\sigma\;=\;\frac{\de\Gamma}{j},\qquad j=\frac{\hbar k}{mV_\text{box}}.
+\]
+Substitute $\de\rho(E_f)$ and $j$:
+\[
+\frac{\de\sigma}{\de\Omega}\;=\;\frac{2\pi}{\hbar}\,|M_{if}|^{2}\cdot\frac{V_\text{box}\,m k'}{(2\pi\hbar)^{3}}\cdot\frac{m V_\text{box}}{\hbar k}.
+\]
+On-shell elastic scattering: $k'=k$, so $k'/k=1$:
+\[
+\frac{\de\sigma}{\de\Omega}\;=\;\frac{m^{2}V_\text{box}^{2}}{(2\pi\hbar^{2})^{2}}\,|M_{if}|^{2}.
+\]
+Insert $|M_{if}|^{2}=V_\text{box}^{-2}\bigl|\!\int e^{-i\bm q\cdot\bm r}V(\bm r)\de^{3}\bm r\bigr|^{2}$; $V_\text{box}$ cancels:
+\begin{equation}
+\boxed{\;\frac{\de\sigma}{\de\Omega}\;=\;\frac{m^{2}}{(2\pi\hbar^{2})^{2}}\left|\int e^{-i\bm q\cdot\bm r}V(\bm r)\,\de^{3}\bm r\right|^{2}\;\equiv\;|f(\bm k,\bm k')|^{2}.\;}
+\label{eq:born-result}
+\end{equation}
+Box volumes cancel as required for a physical observable. Assumptions: non-relativistic, elastic, first Born, static spinless potential.
+
+\subsection*{(b) Yukawa potential}
+
+$V_\text{Yuk}=\alpha e^{-\mu r}/r$. Spherical coords with $\bm q\,\Vert\,\hat z$, $u=\cos\theta_r$:
+\[
+\tilde V(\bm q)\;=\;\int e^{-i\bm q\cdot\bm r}\frac{\alpha e^{-\mu r}}{r}\,\de^{3}\bm r\;=\;2\pi\alpha\int_0^{\infty}r e^{-\mu r}\de r\int_{-1}^{+1}e^{-iqru}\de u.
+\]
+Angular integral:
+\[
+\int_{-1}^{+1}e^{-iqru}\de u\;=\;\frac{2\sin(qr)}{qr}.
+\]
+Substitute back:
+\[
+\tilde V(\bm q)\;=\;\frac{4\pi\alpha}{q}\int_0^{\infty}e^{-\mu r}\sin(qr)\,\de r.
+\]
+Radial integral:
+\[
+\int_0^{\infty}e^{-\mu r}\sin(qr)\,\de r\;=\;\frac{q}{\mu^{2}+q^{2}}.
+\]
+Combine:
+\[
+\tilde V(\bm q)\;=\;\frac{4\pi\alpha}{q^{2}+\mu^{2}}.
+\]
+Insert into $f=-(m/2\pi\hbar^{2})\tilde V(\bm q)$:
+\begin{equation}
+\boxed{\;f(\bm k,\bm k')\;=\;-\frac{2m\alpha}{\hbar^{2}(q^{2}+\mu^{2})}.\;}
+\label{eq:yuk-f}
+\end{equation}
+
+\emph{Physical model.} Static potential from exchange of a massive mediator of mass $m_\text{med}=\hbar\mu/c$; range $\mu^{-1}$ is the Compton wavelength. Subatomic example: pion exchange in nucleon--nucleon, $\mu^{-1}\simeq 1.4\,\text{fm}$, $m_\pi\simeq 140\,\text{MeV}/c^{2}$; weak processes via $W$,$Z$ ($\sim 2\times10^{-3}\,\text{fm}$).
+
+\subsection*{(c) Differential cross-section and Rutherford limit}
+
+Square \eqref{eq:yuk-f}:
+\[
+\frac{\de\sigma}{\de\Omega}\;=\;|f|^{2}\;=\;\frac{4m^{2}\alpha^{2}}{\hbar^{4}(q^{2}+\mu^{2})^{2}}.
+\]
+Use elastic $q^{2}=4k^{2}\sin^{2}(\theta/2)$:
+\[
+\frac{\de\sigma}{\de\Omega}\;=\;\frac{4m^{2}\alpha^{2}}{\hbar^{4}\bigl[4k^{2}\sin^{2}(\theta/2)+\mu^{2}\bigr]^{2}}.
+\]
+Substitute $\hbar^{2}k^{2}=2mT$ in the bracket:
+\[
+\hbar^{2}\bigl[4k^{2}\sin^{2}(\theta/2)+\mu^{2}\bigr]\;=\;8mT\sin^{2}(\theta/2)+\hbar^{2}\mu^{2}.
+\]
+Hence
+\begin{equation}
+\boxed{\;\frac{\de\sigma}{\de\Omega}\;=\;\frac{4m^{2}\alpha^{2}}{\bigl[8mT\sin^{2}(\theta/2)+\hbar^{2}\mu^{2}\bigr]^{2}}.\;}
+\label{eq:yuk-final}
+\end{equation}
+
+\emph{Rutherford limit} $\mu\to 0$ (massless mediator). Set $\mu=0$ in \eqref{eq:yuk-final}:
+\[
+\left.\frac{\de\sigma}{\de\Omega}\right|_{\mu=0}\;=\;\frac{4m^{2}\alpha^{2}}{\bigl[8mT\sin^{2}(\theta/2)\bigr]^{2}}.
+\]
+Cancel $m^{2}$:
+\[
+\left.\frac{\de\sigma}{\de\Omega}\right|_{\mu=0}\;=\;\frac{\alpha^{2}}{16T^{2}\sin^{4}(\theta/2)}.
+\]
+With $\alpha=Z_1Z_2 e^{2}$ (Coulomb, Gaussian units):
+\begin{equation}
+\boxed{\;\left.\frac{\de\sigma}{\de\Omega}\right|_\text{Rutherford}=\left(\frac{Z_1Z_2 e^{2}}{4T}\right)^{2}\frac{1}{\sin^{4}(\theta/2)}.\;}
+\end{equation}
+Mediator: massless photon (electromagnetism).
+
+\emph{Total cross-section divergence.} $\int\sin\theta\,\de\theta/\sin^{4}(\theta/2)$ diverges as $\theta^{-3}\,\de\theta$ at $\theta\to 0$, i.e.\ at infinite impact parameter. Cause: infinite range of the Coulomb interaction (zero photon mass). The Yukawa form is finite at $\theta=0$ since $q^{2}+\mu^{2}\to\mu^{2}$, and $\sigma$ converges.
+
+%==========================================================
+\section*{Question 4 --- Identifying the mother in $X\to D^{-}\pi^{+}$}
+
+\textbf{Problem.} From six candidates ($B^{0}$, $B^{*0}$, $B^{0}_{1}$, $\Lambda_B$, $\bar D^{0}$, $B^{+}$) identify the mother of $D^{-}\pi^{+}$ using conservation laws, kinematics, line-shape, then deduce $(I,J^P)$, the photon energy in $B^{*}\to B^{0}\gamma$, and the collider $\sqrt{s}$ from a $0.2\,\text{mm}$ decay length.
+
+\subsection*{(a) Allowed mothers}
+
+Final-state quantum numbers: $Q=0$, $B=0$, $\sum m=2009.23\,\text{MeV}/c^{2}$.
+
+\emph{Charge:} $B^{+}(Q=+1)$ excluded.\\
+\emph{Baryon number:} $\Lambda_B$ ($B=1$) excluded.\\
+\emph{Mass:} $\bar D^{0}=1864.84<2009.23$ excluded.
+
+\begin{equation}
+\boxed{\,B^{0},\;B^{*0},\;B^{0}_{1}.\,}
+\end{equation}
+All are $d\bar b$, consistent with $\bar b\to\bar c W^{+}\to\bar c d\bar u$.
+
+\subsection*{(b) Tree diagram for $B^{0}\to D^{-}\pi^{+}$}
+
+External-$W$-emission (colour-allowed) tree: spectator $d$ passes through; $\bar b\to\bar c+W^{+}$ (CKM $V_{cb}$); $W^{+}\to u\bar d$ (CKM $V_{ud}^{*}$). The $\bar c+d$ form $D^{-}$, the $u\bar d$ form $\pi^{+}$.
+
+\subsection*{(c) Kinematic rejection}
+
+Equal-and-opposite momenta $\Rightarrow$ lab is the mother rest frame. With $|\bm p|=2.3182\,\text{GeV}/c$, use $E^{2}=p^{2}c^{2}+m^{2}c^{4}$:
+\[
+E_\pi\;=\;\sqrt{p^{2}c^{2}+m_\pi^{2}c^{4}}\;=\;\sqrt{2.3182^{2}+0.13957^{2}}\,\text{GeV}.
+\]
+Evaluate:
+\[
+E_\pi\;=\;\sqrt{5.3740+0.01948}\,\text{GeV}\;=\;\sqrt{5.3935}\,\text{GeV}\;=\;2.3224\,\text{GeV}.
+\]
+Similarly for the $D^{-}$ ($m_D=1.86966\,\text{GeV}/c^{2}$):
+\[
+E_D\;=\;\sqrt{2.3182^{2}+1.86966^{2}}\,\text{GeV}.
+\]
+Evaluate:
+\[
+E_D\;=\;\sqrt{5.3740+3.4956}\,\text{GeV}\;=\;\sqrt{8.8696}\,\text{GeV}\;=\;2.9782\,\text{GeV}.
+\]
+Sum (mother at rest):
+\[
+M_\text{mother}c^{2}\;=\;E_\pi+E_D\;=\;2.3224+2.9782\,\text{GeV}.
+\]
+\begin{equation}
+M_\text{mother}c^{2}\;=\;\boxed{5.3006\,\text{GeV}}.
+\end{equation}
+Comparing to candidates ($B^{0}=5.277$, $B^{*0}=5.325$, $B^{0}_{1}=5.721\,\text{GeV}/c^{2}$) with $\sim 2\%\Rightarrow 0.1\,\text{GeV}$ uncertainty: $B^{0}_{1}$ ruled out.
+\begin{equation}
+\boxed{\,B^{0}\text{ and }B^{*0}.\,}
+\end{equation}
+
+\subsection*{(d) Line-shape selection}
+
+Plotted FWHM $\sim 1\,\text{milli-eV}/c^{2}$. Use $\Gamma=\hbar/\tau$ with $\hbar=6.58\times 10^{-16}\,\text{eV}\,\text{s}$.
+
+For $B^{0}$ with $\tau=1.52\times 10^{-12}\,\text{s}$:
+\[
+\Gamma_{B^{0}}\;=\;\frac{\hbar}{\tau_{B^{0}}}\;=\;\frac{6.58\times 10^{-16}}{1.52\times 10^{-12}}\,\text{eV}.
+\]
+Evaluate:
+\begin{equation}
+\Gamma_{B^{0}}\;=\;4.3\times 10^{-4}\,\text{eV}\;=\;0.43\,\text{milli-eV}.
+\end{equation}
+For $B^{*0}$ with $\tau\sim 2\times 10^{-15}\,\text{s}$:
+\[
+\Gamma_{B^{*0}}\;=\;\frac{6.58\times 10^{-16}}{2\times 10^{-15}}\,\text{eV}.
+\]
+Evaluate:
+\begin{equation}
+\Gamma_{B^{*0}}\;=\;0.33\,\text{eV}\;=\;330\,\text{milli-eV}.
+\end{equation}
+The plotted width matches $\Gamma_{B^{0}}$ and is $\sim 800\times$ too small for $B^{*0}$.
+\begin{equation}
+\boxed{\;\text{mother}=B^{0}.\;}
+\end{equation}
+
+\subsection*{(e) Sketch for $B^{*0}$}
+
+Lorentzian centred on $M_\text{inv}-M_{B^{*0}}=0$ with FWHM $\Gamma_{B^{*0}}\simeq 0.33\,\text{eV}/c^{2}$, i.e.\ $\sim 800\times$ broader than the $B^{0}$ peak; vertical axis again normalised probability/arb.
+
+\subsection*{(f) Quark-model $(I,J^{P})$}
+
+$d\bar b$: $b$ is isosinglet, $d$ has $I=\tfrac12$, so $I=\tfrac12$. $L=0$ (lightest); fermion--antifermion parity $P=(-1)^{L+1}=-1$. Spin combinations $S=0,1\Rightarrow J=0,1$. Standard pseudoscalar/vector identification:
+\begin{equation}
+\boxed{\;B^{0}:(I,J^{P})=(\tfrac12,0^{-});\qquad B^{*0}:(I,J^{P})=(\tfrac12,1^{-}).\;}
+\end{equation}
+
+\subsection*{(g) The decay $B^{*}\to B^{0}+X$}
+
+Same flavour, same $P=-1$, $\Delta J=1$: M1 radiative transition, $X=\gamma$. Two-body kinematics in the $B^{*}$ rest frame ($M_\gamma=0$):
+\[
+E_\gamma\;=\;\frac{M_{B^{*}}^{2}-M_{B^{0}}^{2}}{2M_{B^{*}}}c^{2}.
+\]
+Factor as a difference of squares:
+\[
+E_\gamma\;=\;\frac{(M_{B^{*}}-M_{B^{0}})(M_{B^{*}}+M_{B^{0}})}{2M_{B^{*}}}c^{2}.
+\]
+Substitute $M_{B^{*}}-M_{B^{0}}=48.05\,\text{MeV}/c^{2}$ and $M_{B^{*}}+M_{B^{0}}=10601.37\,\text{MeV}/c^{2}$, $2M_{B^{*}}=10649.4\,\text{MeV}/c^{2}$:
+\[
+E_\gamma\;=\;\frac{48.05\times 10601.37}{10649.4}\,\text{MeV}.
+\]
+Evaluate the numerator and divide:
+\[
+E_\gamma\;=\;\frac{5.094\times 10^{5}}{1.0649\times 10^{4}}\,\text{MeV}.
+\]
+\begin{equation}
+\boxed{\;E_\gamma\;\simeq\;47.8\,\text{MeV}.\;}
+\end{equation}
+Slightly less than the splitting $48.05\,\text{MeV}$ due to $B^{0}$ recoil.
+
+\subsection*{(h) Collider $\sqrt{s}$}
+
+Symmetric collider $\Rightarrow$ each $B$ carries $\sqrt{s}/2$, so
+\[
+\gamma\;=\;\frac{\sqrt{s}}{2Mc^{2}},\qquad \beta\gamma\;=\;\sqrt{\gamma^{2}-1}.
+\]
+Mean lab decay length:
+\[
+L\;=\;\beta\gamma c\tau.
+\]
+With $\tau_{B^{0}}=1.52\,\text{ps}$, $c\tau=(3\times 10^{8})(1.52\times 10^{-12})\,\text{m}=4.56\times 10^{-4}\,\text{m}=0.456\,\text{mm}$. Solve for $\beta\gamma$ using $L_0=0.2\,\text{mm}$:
+\[
+\beta\gamma\;=\;\frac{L_0}{c\tau}\;=\;\frac{0.2}{0.456}\;=\;0.439.
+\]
+Square and add 1:
+\[
+\gamma^{2}\;=\;1+(\beta\gamma)^{2}\;=\;1+0.193\;=\;1.193.
+\]
+Take the square root:
+\[
+\gamma\;=\;\sqrt{1.193}\;=\;1.092.
+\]
+Then
+\[
+\sqrt{s}\;=\;2\gamma Mc^{2}\;=\;2\times 1.092\times 5.27666\,\text{GeV}.
+\]
+\begin{equation}
+\sqrt{s}\;\simeq\;11.5\,\text{GeV},
+\end{equation}
+\begin{equation}
+\boxed{\;\sqrt{s}\simeq 10.6\text{--}11.5\,\text{GeV}\;}
+\end{equation}
+i.e.\ the $\Upsilon(4S)$ at $10.58\,\text{GeV}$ (BaBar/Belle/Belle II $B$-factories).
+
+\end{document}

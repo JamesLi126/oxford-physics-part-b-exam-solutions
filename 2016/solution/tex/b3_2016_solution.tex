@@ -1,0 +1,531 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\usepackage{braket}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+
+\title{B3 Quantum, Atomic and Molecular Physics --- Model Solutions, 2016}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+%==============================================================
+\section*{Question 1 --- Alkali-like spectra of Ca\textsuperscript{+}}
+%==============================================================
+
+\subsection*{(a) Notation and selection rules}
+
+\textbf{Problem.} Explain the term symbol $3\mathrm{d}\,{}^{2}\!\mathrm{D}_{5/2}-5\mathrm{p}\,{}^{2}\!\mathrm{P}_{3/2}$ and state the electric-dipole selection rules for alkali-like atoms.
+
+For each level $n\ell\,{}^{2S+1}L_{J}$ of the single valence electron:
+\begin{itemize}\itemsep0pt
+\item $n$ --- principal quantum number of the active electron (3 and 5).
+\item $\ell$ --- orbital quantum number of the active electron, given by the lowercase letter ($\mathrm{d}\Rightarrow\ell=2$, $\mathrm{p}\Rightarrow\ell=1$).
+\item $2S+1=2$ --- spin multiplicity, so $S=\tfrac{1}{2}$ (single valence electron).
+\item $L$ --- total orbital quantum number; for one electron $L=\ell$ (D$\Rightarrow L=2$, P$\Rightarrow L=1$).
+\item $J$ --- total electronic angular-momentum quantum number, $\vb J=\vb L+\vb S$, with values $J=5/2$ and $J=3/2$.
+\end{itemize}
+
+Electric-dipole selection rules (one-electron jump):
+\[
+\Delta\ell=\pm 1,\qquad \Delta L=\pm 1,\qquad \Delta S=0,\qquad \Delta J=0,\pm 1\ (\text{not }0\to0),\qquad \Delta M_{J}=0,\pm 1.
+\]
+For the quoted line $\Delta\ell=2-1=1$ and $\Delta J=5/2-3/2=1$: allowed.
+
+\subsection*{(b) Energy-level diagram for Ca\texorpdfstring{$^{+}$}{+}}
+
+\textbf{Problem.} Build an energy-level diagram from the doublet series:
+(i) resonance doublet at \SI{393.4}{nm}, \SI{396.9}{nm}; series limit \SI{104.4}{nm}.
+(ii) doublet at \SI{373.7}{nm}, \SI{370.6}{nm}; series limit $\sim$\SI{142}{nm}.
+
+Ground configuration of Ca$^{+}$: $[\mathrm{Ar}]\,4\mathrm{s}\,{}^{2}\!\mathrm{S}_{1/2}$.
+
+Series (i): the resonance lines start from the ground state $4\mathrm{s}\,{}^{2}\!\mathrm{S}_{1/2}$, so the first doublet is $4\mathrm{p}\,{}^{2}\!\mathrm{P}_{1/2,3/2}\to 4\mathrm{s}\,{}^{2}\!\mathrm{S}_{1/2}$. Energy of the series limit gives the ionisation energy from $4$s:
+\[
+E_{\mathrm{ion}}(4\mathrm{s})=\frac{hc}{\lambda_{\infty}}=\frac{1239.8\,\si{eV.nm}}{104.4\,\si{nm}}=\SI{11.88}{eV}.
+\]
+
+Series (ii): its limit lies at $\sim\SI{142}{nm}$, lower binding energy than (i):
+\[
+E_{\mathrm{ion}}=\frac{1239.8}{142.0}=\SI{8.73}{eV}.
+\]
+This is consistent with the limit being reached from a more weakly bound lower term. The first doublet at \SIlist{373.7;370.6}{nm} therefore originates from $5\mathrm{s}\,{}^{2}\!\mathrm{S}_{1/2}\to 4\mathrm{p}\,{}^{2}\!\mathrm{P}_{3/2,1/2}$ (allowed: $\Delta\ell=\pm 1$). Equivalently, the lower term of series (ii) is $4\mathrm{p}\,{}^{2}\!\mathrm{P}$, which sits $E_{\mathrm{ion}}(4\mathrm{s})-E_{\mathrm{ion}}(4\mathrm{p})=11.88-8.73=\SI{3.15}{eV}$ above the ground state, matching $hc/\SI{393.4}{nm}=\SI{3.15}{eV}$. Self-consistent.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+% energy axis
+\draw[->] (0,0) -- (0,9) node[above]{$E$};
+% ground 4s
+\draw[thick] (1,0) -- (3,0) node[right]{$4\mathrm{s}\,{}^{2}\!\mathrm{S}_{1/2}$};
+% 4p doublet
+\draw[thick] (4,3.15) -- (6,3.15) node[right]{$4\mathrm{p}\,{}^{2}\!\mathrm{P}_{1/2}$};
+\draw[thick] (4,3.18) -- (6,3.18); % 1/2 close
+\draw[thick] (4,3.18+0.18) -- (6,3.18+0.18) node[right]{$4\mathrm{p}\,{}^{2}\!\mathrm{P}_{3/2}$};
+% 3d doublet (will be added in (c)) place at ~1.7 eV above ground
+\draw[thick,blue] (7,1.69) -- (9,1.69) node[right]{$3\mathrm{d}\,{}^{2}\!\mathrm{D}_{3/2}$};
+\draw[thick,blue] (7,1.70) -- (9,1.70);
+\draw[thick,blue] (7,1.72) -- (9,1.72) node[right]{$3\mathrm{d}\,{}^{2}\!\mathrm{D}_{5/2}$};
+% 5s
+\draw[thick] (4,6.47) -- (6,6.47) node[right]{$5\mathrm{s}\,{}^{2}\!\mathrm{S}_{1/2}$};
+% ionisation limit
+\draw[dashed] (1,8.0) -- (9,8.0) node[right]{ionisation limit ($\SI{11.88}{eV}$)};
+% transitions series (i)  4p -> 4s : 393.4 and 396.9 nm
+\draw[->,thick,red] (4.5,3.36) -- (1.5,0.05) node[midway,above,sloped]{\scriptsize $\SI{393.4}{nm}$};
+\draw[->,thick,red] (5.5,3.15) -- (2.5,0.05) node[midway,below,sloped]{\scriptsize $\SI{396.9}{nm}$};
+% transitions series (ii) 5s -> 4p : 373.7 and 370.6 nm
+\draw[->,thick,orange] (4.5,6.47) -- (4.5,3.40) node[midway,left]{\scriptsize $\SI{373.7}{nm}$};
+\draw[->,thick,orange] (5.5,6.47) -- (5.5,3.20) node[midway,right]{\scriptsize $\SI{370.6}{nm}$};
+% series limits indication
+\node[red,right] at (1.0,8.0) {};
+\node[red] at (2.0,8.3) {\scriptsize series (i) limit $\SI{104.4}{nm}$};
+\node[orange] at (5.0,8.3) {\scriptsize series (ii) limit $\sim\SI{142}{nm}$};
+% ground level marker for clarity
+\node[circle,fill,inner sep=1.0pt] at (1,0){};
+\end{tikzpicture}
+\end{center}
+
+\subsection*{(c) Triplet-IR series}
+
+\textbf{Problem.} Series limit at $\SI{121.8}{nm}$; lines at \SIlist{849.8;854.2;866.2}{nm}. Identify origin.
+
+Ionisation energy from the lower term of this series:
+\[
+E_{\mathrm{ion}}=\frac{1239.8}{121.8}=\SI{10.18}{eV}.
+\]
+Energy of lower term above ground:
+\[
+11.88-10.18=\SI{1.70}{eV}.
+\]
+This matches the metastable $3\mathrm{d}\,{}^{2}\!\mathrm{D}$ term (fine-structure doublet $J=3/2,\,5/2$). The IR lines therefore come from $4\mathrm{p}\,{}^{2}\!\mathrm{P}_{1/2,3/2}\to 3\mathrm{d}\,{}^{2}\!\mathrm{D}_{3/2,5/2}$. Allowed combinations by $\Delta J=0,\pm 1$ (excluding $\mathrm{P}_{1/2}\!\to\!\mathrm{D}_{5/2}$ with $\Delta J=2$).
+
+Order by energy: $\mathrm{P}_{3/2}$ above $\mathrm{P}_{1/2}$; $\mathrm{D}_{5/2}$ above $\mathrm{D}_{3/2}$. Largest $\Delta E$ (shortest $\lambda$) is $\mathrm{P}_{3/2}\!\to\!\mathrm{D}_{3/2}$; smallest $\Delta E$ is $\mathrm{P}_{1/2}\!\to\!\mathrm{D}_{3/2}$. Therefore:
+\[
+\boxed{\;
+\begin{aligned}
+\SI{849.8}{nm}&:\;4\mathrm{p}\,{}^{2}\!\mathrm{P}_{3/2}\to 3\mathrm{d}\,{}^{2}\!\mathrm{D}_{3/2},\\
+\SI{854.2}{nm}&:\;4\mathrm{p}\,{}^{2}\!\mathrm{P}_{3/2}\to 3\mathrm{d}\,{}^{2}\!\mathrm{D}_{5/2},\\
+\SI{866.2}{nm}&:\;4\mathrm{p}\,{}^{2}\!\mathrm{P}_{1/2}\to 3\mathrm{d}\,{}^{2}\!\mathrm{D}_{3/2}.
+\end{aligned}\;}
+\]
+The transition $\mathrm{P}_{1/2}\!\to\!\mathrm{D}_{5/2}$ ($\Delta J=2$) is forbidden, hence only three lines.
+
+(The $3\mathrm{d}\,{}^{2}\!\mathrm{D}$ levels are added to the diagram above.)
+
+\subsection*{(d) Zeeman pattern of the \SI{393.4}{nm} line}
+
+\textbf{Problem.} Number of components observed perpendicular to $\vb B$ for $4\mathrm{p}\,{}^{2}\!\mathrm{P}_{3/2}\to 4\mathrm{s}\,{}^{2}\!\mathrm{S}_{1/2}$.
+
+In the anomalous Zeeman regime each level splits into $2J+1$ sublevels with shift $g_{J}\mu_{B}B M_{J}$:
+\[
+g_{J}=1+\frac{J(J+1)+S(S+1)-L(L+1)}{2J(J+1)}.
+\]
+Upper level $J=3/2$, $L=1$, $S=1/2$:
+\[
+g_{J}=1+\frac{15/4+3/4-2}{2\cdot 15/4}=1+\frac{5/2}{15/2}=\tfrac{4}{3}.
+\]
+Lower level $J=1/2$, $L=0$, $S=1/2$:
+\[
+g_{J}=2.
+\]
+The $g$-factors differ, so the splitting is anomalous: each transition with $\Delta M_{J}=0,\pm 1$ has a distinct frequency.
+Allowed transitions $M_{J}^{(u)}\to M_{J}^{(\ell)}$:
+\begin{itemize}\itemsep0pt
+\item $\Delta M_{J}=+1$: $-3/2\!\to\!-1/2$, $-1/2\!\to\!+1/2$ ($\sigma^{+}$, 2 lines).
+\item $\Delta M_{J}=0$: $-1/2\!\to\!-1/2$, $+1/2\!\to\!+1/2$ ($\pi$, 2 lines).
+\item $\Delta M_{J}=-1$: $+3/2\!\to\!+1/2$, $+1/2\!\to\!-1/2$ ($\sigma^{-}$, 2 lines).
+\end{itemize}
+Total: 6 components, all distinct in frequency. Observed perpendicular to $\vb B$, $\pi$ and $\sigma^{\pm}$ are all visible (as linearly polarised lines).
+\[
+\boxed{\;\text{6 components}\;}
+\]
+
+%==============================================================
+\section*{Question 2 --- Interval rule, hyperfine structure of Mn}
+%==============================================================
+
+\subsection*{(a) Lande interval rule}
+
+\textbf{Problem.} Show $E_{J}-E_{J-1}=AJ$ for $H=A\,\vb J_{1}\!\cdot\!\vb J_{2}$.
+
+Square the coupling $\vb J=\vb J_{1}+\vb J_{2}$:
+\[
+\vb J^{2}=\vb J_{1}^{2}+\vb J_{2}^{2}+2\,\vb J_{1}\!\cdot\!\vb J_{2}.
+\]
+Solve for the dot product:
+\[
+\vb J_{1}\!\cdot\!\vb J_{2}=\tfrac{1}{2}\!\left(\vb J^{2}-\vb J_{1}^{2}-\vb J_{2}^{2}\right).
+\]
+Take the eigenvalue in a $\ket{J_{1},J_{2};J,M}$ state:
+\[
+E_{J}=\tfrac{1}{2}A\hbar^{2}\!\left[J(J+1)-J_{1}(J_{1}+1)-J_{2}(J_{2}+1)\right].
+\]
+Difference between adjacent $J$ levels:
+\[
+E_{J}-E_{J-1}=\tfrac{1}{2}A\hbar^{2}\!\left[J(J+1)-(J-1)J\right]=\tfrac{1}{2}A\hbar^{2}\cdot 2J.
+\]
+\[
+\boxed{\;E_{J}-E_{J-1}=A\hbar^{2}J\equiv AJ\;}
+\]
+(absorbing $\hbar^{2}$ into $A$).
+
+\subsection*{(b) Conditions for the rule and an example}
+
+Required conditions:
+\begin{itemize}\itemsep0pt
+\item Pure $LS$ (Russell--Saunders) coupling: residual electrostatic interaction $\gg$ spin--orbit interaction, so $L$ and $S$ are good quantum numbers.
+\item Spin--orbit interaction is dominated by a single one-body term $\xi\vb L\!\cdot\!\vb S$ (or pair sum reducible to it), so $H_{SO}=A\,\vb L\!\cdot\!\vb S$.
+\item Higher-order effects (configuration interaction, spin--spin, magnetic interaction with neighbouring terms) are negligible.
+\end{itemize}
+
+Example: in the alkaline-earth two-electron atom such as Mg ($3\mathrm{s}3\mathrm{p}\,{}^{3}\!\mathrm{P}$), the term $^{3}\!\mathrm{P}$ ($S=1$, $L=1$) splits into $J=0,1,2$:
+\[
+E_{2}-E_{1}=2A,\qquad E_{1}-E_{0}=A,\qquad \frac{E_{2}-E_{1}}{E_{1}-E_{0}}=2.
+\]
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+\draw[->] (0,0)--(0,5) node[above]{$E$};
+\draw[thick] (1,0)--(3,0) node[right]{$^{3}\!\mathrm{P}_{0}$};
+\draw[thick] (1,1)--(3,1) node[right]{$^{3}\!\mathrm{P}_{1}$};
+\draw[thick] (1,3)--(3,3) node[right]{$^{3}\!\mathrm{P}_{2}$};
+\draw[<->,dashed] (0.5,0)--(0.5,1) node[midway,left]{$A$};
+\draw[<->,dashed] (0.5,1)--(0.5,3) node[midway,left]{$2A$};
+\draw[dotted] (3.2,4.2)--(5.2,4.2) node[right]{unsplit ${}^{3}\!\mathrm{P}$};
+\draw[dashed] (3,0)--(3.2,4.2);
+\draw[dashed] (3,1)--(3.2,4.2);
+\draw[dashed] (3,3)--(3.2,4.2);
+\node[circle,fill,inner sep=1pt] at (1,0){};
+\node[circle,fill,inner sep=1pt] at (1,1){};
+\node[circle,fill,inner sep=1pt] at (1,3){};
+\end{tikzpicture}
+\end{center}
+
+\subsection*{(c) Form of the hyperfine Hamiltonian}
+
+The electrons are in an eigenstate of $\vb J^{2}$ and $J_{z}$, so $\vb B_{e}$ at the nucleus is generated by the bound electrons and, by the Wigner--Eckart theorem (vector operator inside a manifold of fixed $J$), is proportional to $\vb J$:
+\[
+\vb B_{e}=-\frac{B_{e}}{\hbar\sqrt{J(J+1)}}\vb J\propto \vb J.
+\]
+Insert into $H_{\mathrm{hfs}}$:
+\[
+H_{\mathrm{hfs}}=-g_{I}\mu_{N}\vb I\!\cdot\!\vb B_{e}=A\,\vb I\!\cdot\!\vb J,
+\]
+with $A$ the hyperfine constant. Adding $\vb F=\vb I+\vb J$, the good quantum numbers are
+\[
+\boxed{\;I,\,J,\,F,\,M_{F}\;}
+\]
+(plus the configuration labels $L$, $S$ that fix $J$).
+
+\subsection*{(d) \texorpdfstring{$^{55}$Mn}{55Mn}: deduce \texorpdfstring{$I,J,A$}{I,J,A}}
+
+\textbf{Problem.} Splittings (MHz): $72,\,145,\,217.3,\,289.7,\,362.1$.
+
+By the interval rule the spacing between adjacent $F$ levels is $A F$, so consecutive splittings form an arithmetic progression with common difference $A$:
+\[
+\Delta\nu_{F}=AF.
+\]
+Tabulate ratios:
+\[
+72:145:217.3:289.7:362.1 \;\approx\; 1:2:3:4:5.
+\]
+Therefore $F$ runs over five consecutive integers (or half-integers) $F_{\min},\dots,F_{\max}$ with the smallest interval $AF_{\min}=72$ MHz.
+Number of distinct $F$ values is $6$ (five intervals between six adjacent levels):
+\[
+2\min(I,J)+1=6\quad\Longrightarrow\quad \min(I,J)=\tfrac{5}{2}.
+\]
+The smallest $F=|I-J|$, and $AF_{\min}=72$ MHz with the next interval $AF_{\min{+}1}=145\approx 2\times72$:
+\[
+\frac{145}{72}=\frac{F_{\min}+1}{F_{\min}}\Rightarrow F_{\min}=1.
+\]
+Cross-check: ratios $217.3/72=3.02$, $289.7/72=4.02$, $362.1/72=5.03$ --- consistent. So $F_{\min}=1$, $F_{\max}=6$. With $\min(I,J)=5/2$ and $F_{\min}=|I-J|=1$:
+\[
+|I-J|=1,\qquad I+J=6,
+\]
+giving $\{I,J\}=\{5/2,\,7/2\}$.
+
+The ground configuration of Mn is $[\mathrm{Ar}]3\mathrm{d}^{5}4\mathrm{s}^{2}$; Hund's rules give a half-filled $3\mathrm{d}^{5}$ shell, $L=0$, $S=5/2$, hence $J=5/2$ ($^{6}\!\mathrm{S}_{5/2}$). Therefore:
+\[
+\boxed{\;J=\tfrac{5}{2},\quad I({}^{55}\mathrm{Mn})=\tfrac{5}{2}\;}
+\]
+With $AF_{\min}=A\cdot 1=72$ MHz:
+\[
+\boxed{\;A({}^{55}\mathrm{Mn})=\SI{72.4}{MHz}\;}
+\]
+(taking the average $A=(72+145/2+217.3/3+289.7/4+362.1/5)/5\approx 72.4$ MHz).
+
+\subsection*{(e) \texorpdfstring{$^{56}$Mn}{56Mn}: ratio of nuclear \texorpdfstring{$g$}{g}-factors}
+
+Splittings: $85,\,141,\,197.4,\,253.8,\,310.2$ MHz. Differences:
+\[
+141-85=56,\quad 197.4-141=56.4,\quad 253.8-197.4=56.4,\quad 310.2-253.8=56.4.
+\]
+Common difference $A^{(56)}=56.4$ MHz. The smallest splitting is at $F_{\min}$:
+\[
+A^{(56)}F_{\min}=85\;\Rightarrow\;F_{\min}=\frac{85}{56.4}\approx 1.51\approx \tfrac{3}{2}.
+\]
+There are again 5 intervals $\Rightarrow$ 6 adjacent levels $\Rightarrow 2\min(I,J)+1=6\Rightarrow \min(I,J)=5/2$. With $J=5/2$ unchanged and $F_{\min}=|I-J|=3/2$:
+\[
+I({}^{56}\mathrm{Mn})=J+F_{\min}=\tfrac{5}{2}+\tfrac{3}{2}=4\quad(\text{or }I=1,\ \text{but the spread of 5 intervals fixes }2\min(I,J)=5).
+\]
+Take $I=4$ (the odd-odd nucleus has the larger spin; only this gives 6 adjacent $F$ levels). $F$ ranges $|I-J|,\dots,I+J=\tfrac{3}{2},\dots,\tfrac{13}{2}$: 6 levels, 5 intervals.
+
+Ratio of magnetic moments. The hyperfine constant satisfies
+\[
+A=\frac{g_{I}\mu_{N}\,B_{e}}{\hbar^{2}\sqrt{J(J+1)}\sqrt{I(I+1)}}\cdot\hbar^{2}\;\propto\;g_{I},
+\]
+since $J$ and the electronic configuration (hence $B_{e}$) are common to the two isotopes. Therefore
+\[
+\frac{g_{I}({}^{56}\mathrm{Mn})}{g_{I}({}^{55}\mathrm{Mn})}=\frac{A^{(56)}}{A^{(55)}}=\frac{56.4}{72.4}.
+\]
+\[
+\boxed{\;\frac{g_{I}({}^{56}\mathrm{Mn})}{g_{I}({}^{55}\mathrm{Mn})}\approx 0.78\;}
+\]
+
+%==============================================================
+\section*{Question 3 --- Three- and four-level lasers, gain saturation}
+%==============================================================
+
+\subsection*{(a) Three- vs.\ four-level lasers}
+
+\textbf{Three-level laser:} pump $|0\rangle\!\to\!|2\rangle$, fast non-radiative decay $|2\rangle\!\to\!|1\rangle$, lasing transition $|1\rangle\!\to\!|0\rangle$ (lower laser level $=$ ground state). To achieve population inversion $N_{1}>N_{0}/2$, more than half the atoms must be removed from the ground state, requiring large pump power. Example: ruby (Cr$^{3+}$:Al$_{2}$O$_{3}$, $\lambda=\SI{694.3}{nm}$).
+
+\textbf{Four-level laser:} pump $|0\rangle\!\to\!|3\rangle$, fast decay $|3\rangle\!\to\!|2\rangle$, lasing $|2\rangle\!\to\!|1\rangle$, fast decay $|1\rangle\!\to\!|0\rangle$. Lower laser level is essentially empty in the steady state, so any population in $|2\rangle$ provides inversion. Example: Nd:YAG (\SI{1064}{nm}), He--Ne (\SI{632.8}{nm}).
+
+\textbf{Threshold:} threshold inversion $N^{*}_{\mathrm{th}}=\gamma/\sigma$ ($\gamma=$ round-trip loss). For three-level $N^{*}_{\mathrm{th}}\approx N_{0}/2$, pump rate $\propto N_{\mathrm{tot}}/2$. For four-level $N^{*}_{\mathrm{th}}$ may be many orders of magnitude smaller than $N_{\mathrm{tot}}$, so threshold pump power is correspondingly smaller.
+
+\subsection*{(b) Rate equations without radiation}
+
+\textbf{Problem.} Steady-state inversion with pump $R_{2}$, decay $A_{21}$ only, lower-level lifetime $\tau_{1}$ fed only by spontaneous emission.
+
+Rate equations:
+\[
+\dot N_{2}=R_{2}-A_{21}N_{2},
+\]
+\[
+\dot N_{1}=A_{21}N_{2}-\frac{N_{1}}{\tau_{1}}.
+\]
+Steady state $\dot N_{2}=\dot N_{1}=0$:
+\[
+N_{2}=\frac{R_{2}}{A_{21}},\qquad N_{1}=A_{21}N_{2}\tau_{1}=R_{2}\tau_{1}.
+\]
+Inversion density:
+\[
+N^{*}=N_{2}-\frac{g_{2}}{g_{1}}N_{1}=\frac{R_{2}}{A_{21}}-\frac{g_{2}}{g_{1}}R_{2}\tau_{1}.
+\]
+\[
+\boxed{\;N^{*}=R_{2}\!\left(\frac{1}{A_{21}}-\frac{g_{2}}{g_{1}}\tau_{1}\right)\;}
+\]
+
+\subsection*{(c) Rate equations with radiation; saturation}
+
+Add stimulated emission/absorption. Define $\sigma(\omega)$ = stimulated cross-section; the stimulated rate per atom is $\sigma I/\hbar\omega$. Including degeneracy ratio $g_{2}/g_{1}$:
+\[
+\dot N_{2}=R_{2}-A_{21}N_{2}-\frac{\sigma I}{\hbar\omega}\!\left(N_{2}-\frac{g_{2}}{g_{1}}N_{1}\right),
+\]
+\[
+\dot N_{1}=A_{21}N_{2}-\frac{N_{1}}{\tau_{1}}+\frac{\sigma I}{\hbar\omega}\!\left(N_{2}-\frac{g_{2}}{g_{1}}N_{1}\right).
+\]
+Define stimulated rate $W\equiv\sigma I/\hbar\omega$. Steady state:
+\[
+N_{2}=\frac{R_{2}}{A_{21}+W(1-g_{2}N_{1}/(g_{1}N_{2}))}\,,
+\]
+better: combine the two equations to obtain $N^{*}$ directly. Form $\dot N_{2}-(g_{2}/g_{1})\dot N_{1}=0$:
+\[
+0=R_{2}-A_{21}N_{2}-W N^{*}-\frac{g_{2}}{g_{1}}\!\left(A_{21}N_{2}-\frac{N_{1}}{\tau_{1}}+W N^{*}\right).
+\]
+Group terms:
+\[
+0=R_{2}-A_{21}N_{2}\!\left(1+\frac{g_{2}}{g_{1}}\right)+\frac{g_{2}N_{1}}{g_{1}\tau_{1}}-W N^{*}\!\left(1+\frac{g_{2}}{g_{1}}\right).
+\]
+Use $\dot N_{2}=0$ to write $N_{2}=(R_{2}-W N^{*})/A_{21}$ and $\dot N_{1}=0\Rightarrow N_{1}=\tau_{1}(A_{21}N_{2}+W N^{*})$:
+\[
+N^{*}=N_{2}-\frac{g_{2}}{g_{1}}N_{1}=\frac{R_{2}-W N^{*}}{A_{21}}-\frac{g_{2}}{g_{1}}\tau_{1}(A_{21}N_{2}+W N^{*}).
+\]
+Substitute $A_{21}N_{2}=R_{2}-W N^{*}$:
+\[
+N^{*}=\frac{R_{2}-W N^{*}}{A_{21}}-\frac{g_{2}}{g_{1}}\tau_{1}\!\left(R_{2}-W N^{*}+W N^{*}\right).
+\]
+Simplify the last bracket:
+\[
+N^{*}=\frac{R_{2}-W N^{*}}{A_{21}}-\frac{g_{2}}{g_{1}}\tau_{1}R_{2}.
+\]
+Rearrange:
+\[
+N^{*}\!\left(1+\frac{W}{A_{21}}\right)=\frac{R_{2}}{A_{21}}-\frac{g_{2}}{g_{1}}\tau_{1}R_{2}=N^{*}_{0}.
+\]
+Define the unsaturated inversion $N^{*}_{0}\equiv R_{2}\!\left(1/A_{21}-(g_{2}/g_{1})\tau_{1}\right)$:
+\[
+N^{*}=\frac{N^{*}_{0}}{1+W/A_{21}}.
+\]
+Gain coefficient $\alpha=\sigma N^{*}$:
+\[
+\alpha=\frac{\sigma N^{*}_{0}}{1+\sigma I/(\hbar\omega A_{21})}.
+\]
+\[
+\boxed{\;\alpha=\frac{\alpha_{0}}{1+I/I_{s}},\qquad \alpha_{0}=\sigma(\omega_{21})N^{*}_{0},\qquad I_{s}=\frac{\hbar\omega_{21}A_{21}}{\sigma(\omega_{21})}.\;}
+\]
+$\alpha_{0}$: small-signal (unsaturated) gain coefficient. $I_{s}$: saturation intensity --- the intensity at which $\alpha$ falls to $\alpha_{0}/2$.
+
+\textbf{Limit $I\gg I_{s}$.} Then $\alpha\approx \alpha_{0}I_{s}/I$, so
+\[
+\frac{\de I}{\de z}=\alpha I=\alpha_{0}I_{s}.
+\]
+Intensity grows \emph{linearly} with $z$ (saturated amplifier):
+\[
+I(z)=I(0)+\alpha_{0}I_{s}z.
+\]
+
+\subsection*{(d) Numerical \texorpdfstring{$\alpha_{0}$}{alpha0}}
+
+Transition 1: $\sigma=4\times 10^{-15}\,\si{cm^{2}}$, $R_{2}=5\times 10^{19}\,\si{s^{-1}cm^{-3}}$, $A_{21}=3\times 10^{6}\,\si{s^{-1}}$, $g_{2}=5$, $\tau_{1}=2\times 10^{-8}\,\si{s}$, $g_{1}=3$.
+
+Compute $N^{*}_{0}$ piecewise:
+\[
+\frac{1}{A_{21}}=\frac{1}{3\times 10^{6}}=3.33\times 10^{-7}\,\si{s}.
+\]
+\[
+\frac{g_{2}}{g_{1}}\tau_{1}=\frac{5}{3}\times 2\times 10^{-8}=3.33\times 10^{-8}\,\si{s}.
+\]
+Difference:
+\[
+\frac{1}{A_{21}}-\frac{g_{2}}{g_{1}}\tau_{1}=3.33\times 10^{-7}-0.333\times 10^{-7}=3.00\times 10^{-7}\,\si{s}.
+\]
+Multiply by $R_{2}$:
+\[
+N^{*}_{0}=5\times 10^{19}\times 3.00\times 10^{-7}=1.50\times 10^{13}\,\si{cm^{-3}}.
+\]
+Multiply by $\sigma$:
+\[
+\alpha_{0}=4\times 10^{-15}\times 1.50\times 10^{13}=6.0\times 10^{-2}\,\si{cm^{-1}}.
+\]
+\[
+\boxed{\;\alpha_{0}^{(1)}\approx 0.060\,\si{cm^{-1}}\;}
+\]
+
+Transition 2: $A_{21}=3\times 10^{6}\,\si{s^{-1}}$, $g_{2}=3$, $\tau_{1}=3\times 10^{-7}\,\si{s}$, $g_{1}=1$, same $\sigma$, $R_{2}$.
+\[
+\frac{1}{A_{21}}=3.33\times 10^{-7}\,\si{s}.
+\]
+\[
+\frac{g_{2}}{g_{1}}\tau_{1}=3\times 3\times 10^{-7}=9.0\times 10^{-7}\,\si{s}.
+\]
+Difference:
+\[
+3.33\times 10^{-7}-9.0\times 10^{-7}=-5.67\times 10^{-7}\,\si{s}.
+\]
+Multiply by $R_{2}$:
+\[
+N^{*}_{0}=5\times 10^{19}\times(-5.67\times 10^{-7})=-2.83\times 10^{13}\,\si{cm^{-3}}.
+\]
+\[
+\boxed{\;\alpha_{0}^{(2)}\approx -0.113\,\si{cm^{-1}}\;}
+\]
+$N^{*}_{0}<0$: no inversion ever (the lower level lives too long), so this transition cannot lase.
+
+%==============================================================
+\section*{Question 4 --- Two-state atom in an oscillating field}
+%==============================================================
+
+\subsection*{(a) Coupled amplitude equation}
+
+\textbf{Problem.} Derive $\dot c_{2}=-i\Omega\cos(\omega t)\mathrm{e}^{i\omega_{0}t}c_{1}-(iV_{22}/\hbar)c_{2}$ from the TDSE.
+
+Insert $\Psi=c_{1}\psi_{1}\mathrm{e}^{-iE_{1}t/\hbar}+c_{2}\psi_{2}\mathrm{e}^{-iE_{2}t/\hbar}$ into $i\hbar\partial_{t}\Psi=(\hat H_{0}+\hat V)\Psi$:
+\[
+i\hbar\!\left(\dot c_{1}\psi_{1}\mathrm{e}^{-iE_{1}t/\hbar}+\dot c_{2}\psi_{2}\mathrm{e}^{-iE_{2}t/\hbar}\right)=\hat V\!\left(c_{1}\psi_{1}\mathrm{e}^{-iE_{1}t/\hbar}+c_{2}\psi_{2}\mathrm{e}^{-iE_{2}t/\hbar}\right).
+\]
+Project onto $\psi_{2}$ (multiply by $\psi_{2}^{*}$ and integrate):
+\[
+i\hbar\dot c_{2}\mathrm{e}^{-iE_{2}t/\hbar}=c_{1}V_{21}\mathrm{e}^{-iE_{1}t/\hbar}+c_{2}V_{22}\mathrm{e}^{-iE_{2}t/\hbar},
+\]
+where $V_{ij}=\bra{\psi_{i}}\hat V(t)\ket{\psi_{j}}=\bra{\psi_{i}}ex\ket{\psi_{j}}\mathcal{E}\cos\omega t$.
+Multiply both sides by $\mathrm{e}^{iE_{2}t/\hbar}/(i\hbar)$:
+\[
+\dot c_{2}=\frac{V_{21}}{i\hbar}\mathrm{e}^{i(E_{2}-E_{1})t/\hbar}c_{1}+\frac{V_{22}}{i\hbar}c_{2}.
+\]
+Define $\omega_{0}\equiv (E_{2}-E_{1})/\hbar$ and the Rabi frequency
+\[
+\Omega\equiv\frac{e\mathcal{E}}{\hbar}\bra{\psi_{2}}x\ket{\psi_{1}}=\frac{\bra{\psi_{2}}ex\ket{\psi_{1}}\mathcal{E}}{\hbar}.
+\]
+Then $V_{21}=\hbar\Omega\cos(\omega t)$:
+\[
+\boxed{\;\dot c_{2}=-i\Omega\cos(\omega t)\mathrm{e}^{i\omega_{0}t}c_{1}-\frac{iV_{22}}{\hbar}c_{2}\;}
+\]
+with
+\[
+\omega_{0}=\frac{E_{2}-E_{1}}{\hbar},\qquad V_{22}=\bra{\psi_{2}}ex\ket{\psi_{2}}\mathcal{E}\cos\omega t,\qquad \Omega=\frac{e\mathcal{E}\bra{\psi_{2}}x\ket{\psi_{1}}}{\hbar}.
+\]
+
+\textbf{Why $V_{22}=0$.} The atomic eigenstates $\psi_{2}$ have definite parity (since $\hat H_{0}$ is parity-even, eigenfunctions of a non-degenerate level have definite parity); $|\psi_{2}|^{2}$ is even and $x$ is odd, so $\int|\psi_{2}|^{2}x\,\mathrm{d}^{3}\vb r=0$. Hence $\bra{\psi_{2}}x\ket{\psi_{2}}=0$ and $V_{22}=0$.
+
+\subsection*{(b) First-order \texorpdfstring{$c_{2}(t)$}{c2(t)}}
+
+With $V_{22}=0$, $c_{1}\simeq 1$, and $\cos(\omega t)=\tfrac{1}{2}(\mathrm{e}^{i\omega t}+\mathrm{e}^{-i\omega t})$:
+\[
+\dot c_{2}=-\frac{i\Omega}{2}\!\left[\mathrm{e}^{i(\omega_{0}+\omega)t}+\mathrm{e}^{i(\omega_{0}-\omega)t}\right].
+\]
+Integrate from $0$ to $t$ with $c_{2}(0)=0$:
+\[
+c_{2}(t)=-\frac{i\Omega}{2}\!\left[\frac{\mathrm{e}^{i(\omega_{0}+\omega)t}-1}{i(\omega_{0}+\omega)}+\frac{\mathrm{e}^{i(\omega_{0}-\omega)t}-1}{i(\omega_{0}-\omega)}\right].
+\]
+\[
+\boxed{\;c_{2}(t)=-\frac{\Omega}{2}\!\left[\frac{\mathrm{e}^{i(\omega_{0}+\omega)t}-1}{\omega_{0}+\omega}+\frac{\mathrm{e}^{i(\omega_{0}-\omega)t}-1}{\omega_{0}-\omega}\right]\;}
+\]
+
+\subsection*{(c) Rotating-wave approximation; \texorpdfstring{$|c_{2}|^{2}$}{|c2|^2}}
+
+Near resonance $\omega\sim\omega_{0}$: the term $1/(\omega_{0}-\omega)$ is small in denominator and dominates, while $1/(\omega_{0}+\omega)\sim 1/(2\omega_{0})$ is small and oscillates rapidly --- it averages to zero on the timescale of interest. Drop the counter-rotating term (RWA):
+\[
+c_{2}(t)\approx-\frac{\Omega}{2}\,\frac{\mathrm{e}^{i(\omega_{0}-\omega)t}-1}{\omega_{0}-\omega}.
+\]
+Factor out $\mathrm{e}^{i(\omega_{0}-\omega)t/2}$:
+\[
+c_{2}(t)=-\frac{\Omega}{2}\,\mathrm{e}^{i(\omega_{0}-\omega)t/2}\,\frac{2i\sin\!\tfrac{1}{2}(\omega_{0}-\omega)t}{\omega_{0}-\omega}.
+\]
+Take the modulus squared:
+\[
+\boxed{\;|c_{2}(t)|^{2}=\Omega^{2}\,\frac{\sin^{2}\!\tfrac{1}{2}(\omega_{0}-\omega)t}{(\omega_{0}-\omega)^{2}}=\frac{\Omega^{2}t^{2}}{4}\,\mathrm{sinc}^{2}\!\!\left(\frac{(\omega_{0}-\omega)t}{2}\right)\;}
+\]
+
+\subsection*{(d) Broadband stimulated absorption}
+
+For broadband radiation spectral energy density $\rho(\omega)$ replaces $\tfrac{1}{2}\epsilon_{0}\mathcal{E}^{2}$. The Rabi frequency squared at frequency $\omega$ is
+\[
+\Omega^{2}(\omega)=\frac{e^{2}|\bra{\psi_{2}}x\ket{\psi_{1}}|^{2}\mathcal{E}^{2}(\omega)}{\hbar^{2}}=\frac{2 e^{2}|x_{12}|^{2}}{\epsilon_{0}\hbar^{2}}\rho(\omega)\,\de\omega.
+\]
+Different frequency components are mutually incoherent; sum (integrate) the probabilities:
+\[
+|c_{2}(t)|^{2}=\int_{0}^{\infty}\!\frac{2 e^{2}|x_{12}|^{2}}{\epsilon_{0}\hbar^{2}}\rho(\omega)\,\frac{\sin^{2}\!\tfrac{1}{2}(\omega_{0}-\omega)t}{(\omega_{0}-\omega)^{2}}\,\de\omega.
+\]
+For weak slowly-varying $\rho$ around $\omega_{0}$, pull $\rho(\omega_{0})$ out of the integral and extend limits to $\pm\infty$:
+\[
+|c_{2}(t)|^{2}\approx\frac{2 e^{2}|x_{12}|^{2}}{\epsilon_{0}\hbar^{2}}\rho(\omega_{0})\!\int_{-\infty}^{\infty}\!\frac{\sin^{2}\!\tfrac{1}{2}(\omega_{0}-\omega)t}{(\omega_{0}-\omega)^{2}}\,\de\omega.
+\]
+Apply the given integral $\int_{-\infty}^{\infty}[\sin\tfrac{1}{2}(\omega-\omega_{0})t/\tfrac{1}{2}(\omega-\omega_{0})]^{2}\de\omega=2\pi t$, equivalently
+\[
+\int_{-\infty}^{\infty}\frac{\sin^{2}\!\tfrac{1}{2}(\omega_{0}-\omega)t}{(\omega_{0}-\omega)^{2}}\,\de\omega=\frac{\pi t}{2}\cdot 2 = \frac{\pi t}{2}\cdot 2\;\Rightarrow\;\frac{\pi t}{2}\cdot 2.
+\]
+Carefully: with $u=(\omega-\omega_{0})t/2$, $\sin^{2}u/u^{2}\cdot(t/2)\de u/( ( 2u/t)^{2})\cdot$ --- use the supplied result directly:
+\[
+\int_{-\infty}^{\infty}\!\frac{\sin^{2}\!\tfrac{1}{2}(\omega-\omega_{0})t}{[\tfrac{1}{2}(\omega-\omega_{0})]^{2}}\,\de\omega=2\pi t \;\Rightarrow\;\int_{-\infty}^{\infty}\!\frac{\sin^{2}\!\tfrac{1}{2}(\omega-\omega_{0})t}{(\omega-\omega_{0})^{2}}\,\de\omega=\frac{\pi t}{2}.
+\]
+Hence
+\[
+|c_{2}(t)|^{2}=\frac{2 e^{2}|x_{12}|^{2}}{\epsilon_{0}\hbar^{2}}\rho(\omega_{0})\cdot\frac{\pi t}{2}=\frac{\pi e^{2}|x_{12}|^{2}}{\epsilon_{0}\hbar^{2}}\rho(\omega_{0})\,t.
+\]
+Transition rate $W_{12}=\de|c_{2}|^{2}/\de t$:
+\[
+\boxed{\;W_{12}=\frac{\pi e^{2}|\bra{\psi_{2}}x\ket{\psi_{1}}|^{2}}{\epsilon_{0}\hbar^{2}}\,\rho(\omega_{0})\;}
+\]
+This is constant in time: standard Fermi-golden-rule form for stimulated absorption. (A factor $1/3$ enters if averaging over polarisation directions and using $|\bra{\psi_{2}}\vb r\ket{\psi_{1}}|^{2}$ instead of the $x$-component alone.)
+
+\end{document}

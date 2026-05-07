@@ -1,0 +1,605 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\usepackage{braket}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+
+\title{B5 General Relativity \& Cosmology --- Model Solutions, 2019}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+%======================================================================
+\section*{Question 1 --- Equivalence principle and geodesic equation}
+
+\subsection*{(a) Equivalence principle and proper time}
+
+\textbf{Problem.} \emph{State the equivalence principle. In a free-falling lab with coordinates $\xi^\alpha$, a particle obeys $\de^2\xi^\alpha/\de\tau^2 = 0$. Define the proper time $\tau$.}
+
+\textbf{Equivalence principle (strong form):} at every spacetime event one can choose a local inertial (free-falling) frame in which the laws of physics take their special-relativistic form, and gravitational effects are locally indistinguishable from acceleration.
+
+In the free-falling frame the metric is $\eta_{\alpha\beta}=\mathrm{diag}(-1,+1,+1,+1)$. The invariant proper time is
+\[
+c^2\,\de\tau^2 = -\eta_{\alpha\beta}\,\de\xi^\alpha\,\de\xi^\beta.
+\]
+Equivalently:
+\[
+\boxed{\;\de\tau^2 = -\tfrac{1}{c^2}\,\eta_{\alpha\beta}\,\de\xi^\alpha\,\de\xi^\beta.\;}
+\]
+
+\subsection*{(b) Transformation to general coordinates}
+
+\textbf{Problem.} \emph{Starting from $\de^2\xi^\alpha/\de\tau^2 = 0$, derive the geodesic equation in coordinates $x^\alpha$ and identify the symmetry of $\Gamma$.}
+
+Chain rule on $\xi^\alpha = \xi^\alpha(x^\mu)$:
+\[
+\frac{\de \xi^\alpha}{\de\tau} = \pd{\xi^\alpha}{x^\mu}\,\frac{\de x^\mu}{\de\tau}.
+\]
+Differentiate again with the product rule:
+\[
+\frac{\de^2\xi^\alpha}{\de\tau^2} = \pd{\xi^\alpha}{x^\mu}\,\frac{\de^2 x^\mu}{\de\tau^2} + \frac{\partial^2\xi^\alpha}{\partial x^\mu\partial x^\nu}\,\frac{\de x^\mu}{\de\tau}\frac{\de x^\nu}{\de\tau}=0.
+\]
+Multiply by $\partial x^\lambda/\partial\xi^\alpha$:
+\[
+\pd{x^\lambda}{\xi^\alpha}\pd{\xi^\alpha}{x^\mu}\,\frac{\de^2 x^\mu}{\de\tau^2} + \pd{x^\lambda}{\xi^\alpha}\frac{\partial^2\xi^\alpha}{\partial x^\mu\partial x^\nu}\,\frac{\de x^\mu}{\de\tau}\frac{\de x^\nu}{\de\tau} = 0.
+\]
+Apply $(\partial x^\lambda/\partial\xi^\alpha)(\partial\xi^\alpha/\partial x^\mu)=\delta^\lambda_\mu$:
+\[
+\frac{\de^2 x^\lambda}{\de\tau^2} + \pd{x^\lambda}{\xi^\alpha}\frac{\partial^2\xi^\alpha}{\partial x^\mu\partial x^\nu}\,\frac{\de x^\mu}{\de\tau}\frac{\de x^\nu}{\de\tau} = 0.
+\]
+Identify the connection:
+\[
+\Gamma^\lambda_{\mu\nu} = \pd{x^\lambda}{\xi^\alpha}\frac{\partial^2\xi^\alpha}{\partial x^\mu\partial x^\nu}.
+\]
+Geodesic equation:
+\[
+\boxed{\;\frac{\de^2 x^\lambda}{\de\tau^2} + \Gamma^\lambda_{\mu\nu}\,\frac{\de x^\mu}{\de\tau}\frac{\de x^\nu}{\de\tau} = 0.\;}
+\]
+Since partial derivatives commute, $\Gamma^\lambda_{\mu\nu} = \Gamma^\lambda_{\nu\mu}$ (symmetric in lower indices).
+
+\subsection*{(c) Metric compatibility relation}
+
+\textbf{Problem.} \emph{With $g_{\mu\nu}=\eta_{\alpha\beta}(\partial\xi^\alpha/\partial x^\mu)(\partial\xi^\beta/\partial x^\nu)$, show $\partial_\lambda g_{\mu\nu} = g_{\rho\nu}\Gamma^\rho_{\lambda\mu} + g_{\mu\rho}\Gamma^\rho_{\lambda\nu}$.}
+
+Invariant line element:
+\[
+\de s^2 = \eta_{\alpha\beta}\,\de\xi^\alpha\,\de\xi^\beta = g_{\mu\nu}\,\de x^\mu\,\de x^\nu,\qquad g_{\mu\nu} = \eta_{\alpha\beta}\,\pd{\xi^\alpha}{x^\mu}\pd{\xi^\beta}{x^\nu}.
+\]
+Differentiate $g_{\mu\nu}$:
+\[
+\pd{g_{\mu\nu}}{x^\lambda} = \eta_{\alpha\beta}\,\frac{\partial^2\xi^\alpha}{\partial x^\lambda\partial x^\mu}\pd{\xi^\beta}{x^\nu} + \eta_{\alpha\beta}\,\pd{\xi^\alpha}{x^\mu}\frac{\partial^2\xi^\beta}{\partial x^\lambda\partial x^\nu}.
+\]
+Insert $\partial^2\xi^\alpha/\partial x^\lambda\partial x^\mu = \Gamma^\rho_{\lambda\mu}\,\partial\xi^\alpha/\partial x^\rho$ from the connection definition:
+\[
+\pd{g_{\mu\nu}}{x^\lambda} = \eta_{\alpha\beta}\,\Gamma^\rho_{\lambda\mu}\pd{\xi^\alpha}{x^\rho}\pd{\xi^\beta}{x^\nu} + \eta_{\alpha\beta}\,\Gamma^\rho_{\lambda\nu}\pd{\xi^\alpha}{x^\mu}\pd{\xi^\beta}{x^\rho}.
+\]
+Recognise $g_{\rho\nu}$ and $g_{\mu\rho}$:
+\[
+\boxed{\;\pd{g_{\mu\nu}}{x^\lambda} = g_{\rho\nu}\,\Gamma^\rho_{\lambda\mu} + g_{\mu\rho}\,\Gamma^\rho_{\lambda\nu}.\;}
+\]
+\label{eq:metric-compat}
+
+\subsection*{(d) Christoffel formula}
+
+\textbf{Problem.} \emph{Use the symmetry of $\Gamma$ to express $\Gamma^\sigma_{\mu\lambda}$ in terms of $g_{\mu\nu}$.}
+
+Cyclic permutation of $(\lambda,\mu,\nu)$ in the previous identity:
+\[
+\partial_\mu g_{\nu\lambda} = g_{\rho\lambda}\Gamma^\rho_{\mu\nu} + g_{\nu\rho}\Gamma^\rho_{\mu\lambda},
+\]
+\[
+\partial_\nu g_{\lambda\mu} = g_{\rho\mu}\Gamma^\rho_{\nu\lambda} + g_{\lambda\rho}\Gamma^\rho_{\nu\mu}.
+\]
+Compute $\partial_\mu g_{\nu\lambda} + \partial_\nu g_{\lambda\mu} - \partial_\lambda g_{\mu\nu}$ and use $\Gamma^\rho_{\mu\nu}=\Gamma^\rho_{\nu\mu}$:
+\[
+\partial_\mu g_{\nu\lambda} + \partial_\nu g_{\lambda\mu} - \partial_\lambda g_{\mu\nu} = 2\,g_{\rho\lambda}\,\Gamma^\rho_{\mu\nu}.
+\]
+Multiply by $\tfrac{1}{2}g^{\sigma\lambda}$ and relabel:
+\[
+\boxed{\;\Gamma^\sigma_{\mu\lambda} = \tfrac{1}{2}\,g^{\nu\sigma}\!\left(\pd{g_{\mu\nu}}{x^\lambda} + \pd{g_{\lambda\nu}}{x^\mu} - \pd{g_{\lambda\mu}}{x^\nu}\right).\;}
+\]
+
+\subsection*{(e) Covariant derivative}
+
+\textbf{Problem.} \emph{Define $U^\lambda = \de x^\lambda/\de\tau$. Use the geodesic equation to define the covariant derivative; comment on its rank and significance.}
+
+Geodesic equation rewritten using $U^\lambda$:
+\[
+\frac{\de U^\lambda}{\de\tau} + \Gamma^\lambda_{\mu\nu}\,U^\mu U^\nu = 0.
+\]
+Use $\de U^\lambda/\de\tau = U^\nu\,\partial_\nu U^\lambda$:
+\[
+U^\nu\!\left(\partial_\nu U^\lambda + \Gamma^\lambda_{\mu\nu}\,U^\mu\right) = 0.
+\]
+This identifies the covariant derivative:
+\[
+\boxed{\;\nabla_\nu U^\lambda \equiv \partial_\nu U^\lambda + \Gamma^\lambda_{\mu\nu}\,U^\mu.\;}
+\]
+\textbf{Significance.} $\nabla_\nu U^\lambda$ corrects the partial derivative for the rotation/stretching of the coordinate basis induced by curvature, so that geodesic motion ($\nabla_U U = 0$) is the curved-space analogue of Newton's first law: a free particle parallel-transports its own four-velocity.
+
+\textbf{Tensor character.} Under $x^\mu\to x'^\mu$:
+\[
+\partial_\nu U^\lambda \;\to\; \pd{x^\beta}{x'^\nu}\!\left(\pd{x'^\lambda}{x^\alpha}\partial_\beta U^\alpha + U^\alpha\frac{\partial^2 x'^\lambda}{\partial x^\alpha\partial x^\beta}\right),
+\]
+\[
+\Gamma^\lambda_{\mu\nu}U^\mu \;\to\; \pd{x'^\lambda}{x^\alpha}\pd{x^\beta}{x'^\nu}\Gamma^\alpha_{\gamma\beta}U^\gamma - \pd{x^\beta}{x'^\nu}U^\alpha\frac{\partial^2 x'^\lambda}{\partial x^\alpha\partial x^\beta}.
+\]
+The non-tensorial second-derivative pieces cancel:
+\[
+\nabla_\nu U^\lambda \;\to\; \pd{x'^\lambda}{x^\alpha}\pd{x^\beta}{x'^\nu}\,\nabla_\beta U^\alpha.
+\]
+Hence $\nabla_\nu U^\lambda$ transforms as a $(1,1)$ mixed rank-2 tensor: required so that $\nabla_U U = 0$ has covariant meaning.
+
+%======================================================================
+\section*{Question 2 --- Schwarzschild geodesics and orbits}
+
+\subsection*{(a) Geodesic equations from the Lagrangian}
+
+\textbf{Problem.} \emph{Write the geodesic equations for the Schwarzschild line element using the Lagrange procedure; explain the $\theta$ equation; relate $p^\alpha$ to the geodesics.}
+
+Effective Lagrangian (one-half line element):
+\[
+\mathcal L = \tfrac{1}{2}g_{\mu\nu}\dot x^\mu\dot x^\nu = \tfrac{1}{2}\!\left[-\!\left(1-\tfrac{2GM}{c^2 r}\right)c^2\dot t^2 + \!\left(1-\tfrac{2GM}{c^2 r}\right)^{-1}\!\!\dot r^2 + r^2\dot\theta^2 + r^2\sin^2\theta\,\dot\phi^2\right].
+\]
+Euler--Lagrange equations $\frac{\de}{\de\tau}\partial_{\dot x^\mu}\mathcal L - \partial_{x^\mu}\mathcal L = 0$:
+\[
+\frac{\de}{\de\tau}\!\left[\!\left(1-\tfrac{2GM}{c^2 r}\right)c^2\dot t\right] = 0,
+\]
+\[
+\frac{\de}{\de\tau}\!\left[\!\left(1-\tfrac{2GM}{c^2 r}\right)^{-1}\!\dot r\right] - \tfrac{1}{2}\!\left[-\tfrac{2GM}{c^2 r^2}c^2\dot t^2 - \tfrac{2GM}{c^2 r^2}\!\left(1-\tfrac{2GM}{c^2 r}\right)^{-2}\!\dot r^2 + 2r\dot\theta^2 + 2r\sin^2\theta\,\dot\phi^2\right] = 0,
+\]
+\[
+\frac{\de}{\de\tau}\!\left[r^2\dot\theta\right] - r^2\sin\theta\cos\theta\,\dot\phi^2 = 0,
+\]
+\[
+\frac{\de}{\de\tau}\!\left[r^2\sin^2\theta\,\dot\phi\right] = 0.
+\]
+Spherical symmetry: take initial $\theta = \pi/2$, $\dot\theta = 0$:
+\[
+\ddot\theta = 0,\qquad \theta(\tau) = \pi/2\ \text{identically}.
+\]
+The orbit lies in the equatorial plane.
+
+\textbf{Four-momentum.} For a massive particle $p^\alpha = m\,\de x^\alpha/\de\tau$; the geodesic equation is the parallel-transport law $p^\nu\nabla_\nu p^\alpha = 0$, i.e.\ free particles follow geodesic curves with their four-momentum tangent to the geodesic.
+
+\subsection*{(b) Affine parameter and constants of motion}
+
+\textbf{Problem.} \emph{When is $\tau$ an appropriate affine parameter? Identify the conserved quantities $k$ and $h$ from the $t$ and $\phi$ equations.}
+
+Proper time $\tau$ is affine for \emph{massive} particles where $\de\tau^2 = -\de s^2/c^2 > 0$. For \emph{massless} particles $\de\tau = 0$, so use any affine parameter $\lambda$ such that $\de p^\alpha/\de\lambda + \Gamma^\alpha_{\mu\nu}p^\mu p^\nu/m = 0$ remains well-defined (e.g.\ $\lambda$ chosen so $p^\alpha = \de x^\alpha/\de\lambda$).
+
+Integrate the $t$-equation:
+\[
+\!\left(1-\tfrac{2GM}{c^2 r}\right)c^2\dot t = \text{const} \equiv c^2 k.
+\]
+Integrate the $\phi$-equation in the equatorial plane:
+\[
+r^2\dot\phi = \text{const} \equiv h.
+\]
+With $p_\alpha = g_{\alpha\beta}p^\beta = m g_{\alpha\beta}\dot x^\beta$:
+\[
+p_0 = -m\!\left(1-\tfrac{2GM}{c^2 r}\right)c^2\dot t = -mc^2 k,\qquad p_3 = m r^2\sin^2\theta\,\dot\phi = m h.
+\]
+\textbf{Physical meaning.} $k = -p_0/(mc^2)$ is the conserved \emph{energy per unit rest mass} measured at infinity (Killing vector $\partial_t$); $h = p_3/m$ is the conserved \emph{specific angular momentum} (Killing vector $\partial_\phi$).
+
+\subsection*{(c) Energy equation}
+
+\textbf{Problem.} \emph{From $g_{\mu\nu}\dot x^\mu\dot x^\nu = c^2$ derive the radial energy equation.}
+
+Insert the equatorial line element with $\dot\theta=0$:
+\[
+-\!\left(1-\tfrac{2GM}{c^2 r}\right)c^2\dot t^2 + \!\left(1-\tfrac{2GM}{c^2 r}\right)^{-1}\!\dot r^2 + r^2\dot\phi^2 = c^2.
+\]
+Wait --- the convention here uses $g_{\mu\nu}\dot x^\mu \dot x^\nu = c^2$ (the question's sign), so the line element with the question's metric signature $(-,+,+,+)$ multiplied by $-1$ gives $+c^2$. Substitute $c\dot t = ck/(1-2GM/c^2 r)$ and $\dot\phi = h/r^2$:
+\[
+-\frac{c^2 k^2}{1-2GM/(c^2 r)} + \frac{\dot r^2}{1-2GM/(c^2 r)} + \frac{h^2}{r^2} = -c^2.
+\]
+Multiply by $(1-2GM/(c^2 r))$:
+\[
+-c^2 k^2 + \dot r^2 + \frac{h^2}{r^2}\!\left(1-\tfrac{2GM}{c^2 r}\right) = -c^2\!\left(1-\tfrac{2GM}{c^2 r}\right).
+\]
+Rearrange for $\dot r^2$:
+\[
+\boxed{\;\dot r^2 + \frac{h^2}{r^2}\!\left(1-\tfrac{2GM}{c^2 r}\right) - \frac{2GM}{r} = c^2(k^2 - 1).\;}
+\]
+\label{eq:energy}
+
+\subsection*{(d) Orbit equation and relativistic correction}
+
+\textbf{Problem.} \emph{Using \eqref{eq:energy} and $r^2\dot\phi=h$ derive $\de^2 u/\de\phi^2 + u = GM/h^2 + 3GM u^2/c^2$ with $u=1/r$.}
+
+Change variable $u = 1/r$. Chain rule:
+\[
+\dot r = \frac{\de r}{\de\phi}\dot\phi = -\frac{1}{u^2}\frac{\de u}{\de\phi}\cdot\frac{h}{r^2} = -h\,\frac{\de u}{\de\phi}.
+\]
+Square:
+\[
+\dot r^2 = h^2\!\left(\frac{\de u}{\de\phi}\right)^{\!2}.
+\]
+Substitute into \eqref{eq:energy} and use $1/r = u$:
+\[
+h^2\!\left(\frac{\de u}{\de\phi}\right)^{\!2} + h^2 u^2\!\left(1-\tfrac{2GM u}{c^2}\right) - 2GM u = c^2(k^2-1).
+\]
+Differentiate w.r.t.\ $\phi$:
+\[
+2h^2\,\frac{\de u}{\de\phi}\frac{\de^2 u}{\de\phi^2} + 2h^2 u\,\frac{\de u}{\de\phi} - 6\frac{GM h^2}{c^2}u^2\,\frac{\de u}{\de\phi} - 2GM\frac{\de u}{\de\phi} = 0.
+\]
+Divide by $2h^2\,\de u/\de\phi$ (non-circular orbit):
+\[
+\boxed{\;\frac{\de^2 u}{\de\phi^2} + u = \frac{GM}{h^2} + \frac{3GM}{c^2}u^2.\;}
+\]
+\label{eq:orbit}
+The Newtonian equation has only the constant source $GM/h^2$. The relativistic correction is the term $3GM u^2/c^2$. Its ratio to the Newtonian term is $3h^2 u^2/c^2 = 3 v_\perp^2/c^2$ where $v_\perp = h u$, so it is significant when $v\sim c$, i.e.\ for tight orbits at $r\sim r_s = 2GM/c^2$ (e.g.\ Mercury's perihelion advance, S2 around Sgr A$^*$).
+
+\subsection*{(e) Effective potential in GR}
+
+\textbf{Problem.} \emph{Cast the energy equation in Newtonian form $\tfrac{1}{2}(\de r/\de t)^2 + V_{\mathrm{eff}}(r) = E$.}
+
+In the orbiting observer's frame the affine parameter is $\tau$, so the Newtonian $\de r/\de t$ is replaced by $\de r/\de\tau = \dot r$. From \eqref{eq:energy}:
+\[
+\tfrac{1}{2}\dot r^2 + \tfrac{1}{2}\!\left[\frac{h^2}{r^2}\!\left(1-\tfrac{2GM}{c^2 r}\right) - \frac{2GM}{r}\right] = \tfrac{1}{2}c^2(k^2-1).
+\]
+Identify the effective potential:
+\[
+\boxed{\;V_{\mathrm{eff}}(r) = -\frac{GM}{r} + \frac{h^2}{2r^2} - \frac{GM h^2}{c^2 r^3},\qquad E = \tfrac{1}{2}c^2(k^2-1).\;}
+\]
+\label{eq:Veff}
+The first two terms reproduce the Newtonian gravity + centrifugal barrier; the $1/r^3$ term is purely relativistic.
+
+\subsection*{(f) Circular orbits}
+
+\textbf{Problem.} \emph{Show circular-orbit extrema occur at $r = (h/2GM)\!\left(h\pm\sqrt{h^2 - 12 G^2M^2/c^2}\right)$.}
+
+Circular orbits: $\de V_{\mathrm{eff}}/\de r = 0$. Differentiate \eqref{eq:Veff}:
+\[
+\frac{\de V_{\mathrm{eff}}}{\de r} = \frac{GM}{r^2} - \frac{h^2}{r^3} + \frac{3GM h^2}{c^2 r^4}.
+\]
+Set to zero and multiply by $r^4$:
+\[
+GM\,r^2 - h^2\,r + \frac{3GM h^2}{c^2} = 0.
+\]
+Quadratic in $r$:
+\[
+r = \frac{h^2 \pm \sqrt{h^4 - 12\,G^2 M^2 h^2/c^2}}{2GM}.
+\]
+Factor $h$ from the surd:
+\[
+\boxed{\;r = \frac{h}{2GM}\!\left(h \pm \sqrt{h^2 - \frac{12\,G^2M^2}{c^2}}\right).\;}
+\]
+The $+$ root is the stable minimum of $V_{\mathrm{eff}}$ (regular orbit), the $-$ root is the unstable maximum (light-ring / unstable circular orbit). Real solutions require $h^2 \geq 12 G^2 M^2/c^2$; equality gives the innermost stable circular orbit (ISCO) at $r = 6GM/c^2$.
+
+%======================================================================
+\section*{Question 3 --- Binary pulsar and gravitational radiation}
+
+\subsection*{(a) Why a GR expert should notice}
+
+\textbf{Problem.} \emph{Pulsar in a binary, $T = \SI{0.10225156248}{day}$. Why does this matter for GR?}
+
+A binary system containing a pulsar provides a clean clock embedded in a strong-field, dynamical spacetime: the orbit decays via emission of gravitational waves, and the highly accurate pulse timing lets one measure $\dot T$ at the level needed to test the quadrupole formula of GR (Hulse--Taylor / double pulsar). It is one of very few systems testing the radiative sector of Einstein's theory.
+
+\subsection*{(b) Orbital radius}
+
+\textbf{Problem.} \emph{$T_0 = \SI{0.10225156248}{day}$, $\dot T \approx -10^{-9}\ \mathrm{day}/\SI{1000}{day}$, $m_1 = m_2 = 1.4 M_\odot$, circular orbit. Find $a$.}
+
+Convert period to SI:
+\[
+T = 0.10225156248\times 86400\,\mathrm{s} = \SI{8834.535}{s}.
+\]
+Apply Kepler's third law (total mass $M_{\mathrm{tot}} = 2.8\,M_\odot$, $G M_\odot = \SI{1.327e20}{m^3 s^{-2}}$):
+\[
+a^3 = \frac{G M_{\mathrm{tot}} T^2}{4\pi^2}.
+\]
+Numerically:
+\[
+G M_{\mathrm{tot}} = 2.8\times \SI{1.327e20}{m^3 s^{-2}} = \SI{3.716e20}{m^3 s^{-2}}.
+\]
+\[
+T^2 = (\SI{8834.535}{s})^2 = \SI{7.804e7}{s^2}.
+\]
+\[
+G M_{\mathrm{tot}} T^2 = \SI{2.900e28}{m^3}.
+\]
+\[
+a^3 = \frac{\SI{2.900e28}{m^3}}{4\pi^2} = \SI{7.346e26}{m^3}.
+\]
+\[
+\boxed{\;a \approx \SI{9.02e8}{m} \approx \SI{1.3}{R_\odot}.\;}
+\]
+
+\subsection*{(c) Definitions in the quadrupole formula}
+
+\textbf{Problem.} \emph{Define $\bar h^{ij}$ and $t'$ in $\bar h^{ij} = (2G/c^6 r)\,\de^2 I^{ij}/\de t'^2$.}
+
+$\bar h^{\mu\nu}$ is the \emph{trace-reversed} metric perturbation in the harmonic gauge:
+\[
+g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu},\qquad \bar h_{\mu\nu} = h_{\mu\nu} - \tfrac{1}{2}\eta_{\mu\nu}\,h,\qquad h \equiv \eta^{\mu\nu}h_{\mu\nu}.
+\]
+The harmonic-gauge condition $\partial_\mu\bar h^{\mu\nu} = 0$ reduces the linearised Einstein equation to $\Box\bar h^{\mu\nu} = -(16\pi G/c^4)T^{\mu\nu}$, whose retarded solution gives the quadrupole formula.
+
+$t'$ is the \emph{retarded time} at the source:
+\[
+\boxed{\;t' = t - r/c,\;}
+\]
+the time of emission for a wave received at the field point $(t,\bm r)$.
+
+\subsection*{(d) Meaning of $x^i, x^j$}
+
+\textbf{Problem.} \emph{What do $x^i, x^j$ in $I^{ij} = M c^2 x^i x^j$ represent, given that pulsars are point-like?}
+
+For two point masses orbiting their common centre of mass, the source quadrupole is concentrated on the orbit. Pulsars are $\sim\!\SI{10}{km}$ compared to $a\sim\SI{e9}{m}$, so each is treated as a point mass. With $M = 2 M_{\mathrm{p}}$ and equal masses on a circular orbit of radius $a/2$, the relative position $\bm r_{12} = \bm x_1 - \bm x_2$ has magnitude $a$. The reduced single-particle quadrupole becomes $I^{ij} = \mu\,r_{12}^i r_{12}^j$ with $\mu = M/4 = M_{\mathrm{p}}/2$. The form $I^{ij} = M c^2 x^i x^j$ in the question identifies $x^i$ as a \emph{coordinate of the relative orbital position} (one component of $\bm r_{12}/2$ or, equivalently, of the orbital trajectory) such that the prefactor $M c^2$ reproduces the correct magnitude when the two equal point-pulsars are taken into account. They are \emph{not} internal pulsar coordinates: pulsars are point-like at this scale.
+
+\subsection*{(e) GW frequency and waveform}
+
+\textbf{Problem.} \emph{Find $f_{\mathrm{GW}}$ to 2 s.f.; write $\bar h^{ij}(t')$.}
+
+Orbital angular frequency:
+\[
+\omega_{\mathrm{orb}} = \frac{2\pi}{T} = \frac{2\pi}{\SI{8834.535}{s}} = \SI{7.111e-4}{rad/s}.
+\]
+Orbital frequency:
+\[
+f_{\mathrm{orb}} = 1/T = \SI{1.132e-4}{Hz}.
+\]
+Quadrupole radiation has $f_{\mathrm{GW}} = 2 f_{\mathrm{orb}}$:
+\[
+\boxed{\;f_{\mathrm{GW}} = \SI{2.3e-4}{Hz}.\;}
+\]
+\textbf{Waveform.} Place the orbit in the $xy$-plane; equal masses give relative coordinate
+\[
+x^1(t') = (a/2)\cos(\omega_{\mathrm{orb}} t'),\qquad x^2(t') = (a/2)\sin(\omega_{\mathrm{orb}} t'),\qquad x^3 = 0.
+\]
+Form the components $I^{ij} = M c^2 x^i x^j$ (with $M = 2 M_{\mathrm{p}}$):
+\[
+I^{11} = M c^2 (a/2)^2\cos^2(\omega t') = \tfrac{1}{2}M c^2 (a/2)^2\,[1+\cos(2\omega t')],
+\]
+\[
+I^{22} = \tfrac{1}{2}M c^2 (a/2)^2\,[1-\cos(2\omega t')],
+\]
+\[
+I^{12} = M c^2 (a/2)^2\sin(\omega t')\cos(\omega t') = \tfrac{1}{2}M c^2 (a/2)^2\sin(2\omega t').
+\]
+Differentiate twice (constants drop):
+\[
+\ddot I^{11} = -2\omega^2 M c^2 (a/2)^2\cos(2\omega t') = -\tfrac{1}{2}M c^2 a^2 \omega^2\cos(2\omega t'),
+\]
+\[
+\ddot I^{22} = +\tfrac{1}{2}M c^2 a^2\omega^2\cos(2\omega t'),
+\]
+\[
+\ddot I^{12} = -\tfrac{1}{2}M c^2 a^2\omega^2\sin(2\omega t').
+\]
+Insert in $\bar h^{ij} = (2G/c^6 r)\ddot I^{ij}$:
+\[
+\boxed{\;\bar h^{ij}(t') = \frac{G\,M\,a^2\,\omega^2}{c^4\,r}\begin{pmatrix}-\cos 2\omega t' & -\sin 2\omega t' & 0\\ -\sin 2\omega t' & +\cos 2\omega t' & 0 \\ 0 & 0 & 0\end{pmatrix},\;}
+\]
+oscillating at angular frequency $2\omega_{\mathrm{orb}}$, hence frequency $\SI{2.3e-4}{Hz}$.
+
+\subsection*{(f) Why $\dot T$ tests GR}
+
+\textbf{Problem.} \emph{Why does measuring $\dot T$ test general relativity?}
+
+Energy radiated as gravitational waves, summed over the two polarisations and integrated over the sphere, is given by the Einstein quadrupole formula
+\[
+P_{\mathrm{GW}} = \frac{G}{5 c^5}\,\langle\dddot I^{ij}_{\mathrm{TT}}\dddot I_{\mathrm{TT}\,ij}\rangle.
+\]
+For a circular binary of masses $m_1,m_2$ and separation $a$ this evaluates to
+\[
+P_{\mathrm{GW}} = \frac{32}{5}\frac{G^4}{c^5}\frac{(m_1 m_2)^2(m_1+m_2)}{a^5}.
+\]
+This luminosity drains the orbital binding energy $E_{\mathrm{orb}} = -G m_1 m_2/(2a)$, shrinking $a$ and (by Kepler) shortening $T$. Differentiating Kepler's third law gives a sharp prediction
+\[
+\dot T = -\frac{192\pi}{5 c^5}\!\left(\frac{2\pi G}{T}\right)^{\!5/3}\!\frac{m_1 m_2}{(m_1+m_2)^{1/3}},
+\]
+i.e.\ $\dot T$ is a definite number once both pulsar masses are known. The slight orbital eccentricity allows independent measurement of post-Keplerian parameters (periastron advance, Shapiro delay, gravitational redshift) which over-determine $m_1, m_2$. Comparing the predicted $\dot T$ with the measured one with no free parameters is therefore a direct test of GR's radiative quadrupole sector --- the test famously passed by the Hulse--Taylor system and by the double pulsar to better than $0.1\%$.
+
+%======================================================================
+\section*{Question 4 --- Cosmological constant and the FRW universe}
+
+\subsection*{(a) Bianchi identities}
+
+\textbf{Problem.} \emph{State the contracted Bianchi identities and verify that the modified Einstein equation respects them. Why is this physically significant?}
+
+Contracted Bianchi identity:
+\[
+\nabla^\mu\!\left(R_{\mu\nu} - \tfrac{1}{2}g_{\mu\nu}R\right) = 0.
+\]
+Take the covariant divergence of the modified equation:
+\[
+\nabla^\mu\!\left(R_{\mu\nu} - \tfrac{1}{2}g_{\mu\nu}R\right) + \Lambda\,\nabla^\mu g_{\mu\nu} = -\frac{8\pi G}{c^4}\nabla^\mu T_{\mu\nu}.
+\]
+Use $\nabla^\mu g_{\mu\nu} = 0$ (metric compatibility) and the Bianchi identity:
+\[
+0 = -\frac{8\pi G}{c^4}\,\nabla^\mu T_{\mu\nu}\;\Rightarrow\; \nabla^\mu T_{\mu\nu} = 0.
+\]
+\textbf{Significance.} The modified equation enforces local conservation of energy--momentum automatically. Adding $\Lambda g_{\mu\nu}$ does not spoil this because $g_{\mu\nu}$ is covariantly constant; any other proposed addition would have to share that property.
+
+\subsection*{(b) Four-velocity of the cosmic fluid}
+
+\textbf{Problem.} \emph{Define $U^\mu$ in $T_{\mu\nu} = P g_{\mu\nu}+(\rho + P/c^2)U_\mu U_\nu$. Give $U^\lambda, U_\lambda$ at $\lambda=t,r$ in the FRW comoving frame.}
+
+$U^\mu = \de x^\mu/\de\tau$ is the four-velocity of a fluid element measured in its own proper time, normalised $g_{\mu\nu}U^\mu U^\nu = -c^2$.
+
+In the comoving frame the fluid is at rest in spatial coordinates: $\de r = \de\theta = \de\phi = 0$. From $-c^2\de\tau^2 = -c^2\de t^2$ for a comoving worldline, $\de t = \de\tau$:
+\[
+U^t = c,\qquad U^r = 0.
+\]
+(Equivalently, $U^\mu = (c,0,0,0)$ in $(ct,r,\theta,\phi)$ coordinates with $g_{tt} = -1$.)
+
+Lower the index using $g_{tt} = -1, g_{rr} = R^2/(1-r^2/a^2)$:
+\[
+U_t = g_{tt}U^t = -c,\qquad U_r = g_{rr}U^r = 0.
+\]
+\boxed{\;U^t = c,\ U^r = 0;\qquad U_t = -c,\ U_r = 0.\;}
+
+\subsection*{(c) Effective fluid with $\Lambda$}
+
+\textbf{Problem.} \emph{Show that with $\rho\to\rho', P\to P'$ the modified equation reduces to the original; evaluate $\rho_V$ and interpret.}
+
+Move the $\Lambda$-term to the right of the modified equation:
+\[
+R_{\mu\nu} - \tfrac{1}{2}g_{\mu\nu}R = -\frac{8\pi G}{c^4}T_{\mu\nu} - \Lambda g_{\mu\nu}.
+\]
+Express the extra piece as a fluid contribution:
+\[
+-\Lambda g_{\mu\nu} = -\frac{8\pi G}{c^4}T^{(V)}_{\mu\nu}\;\Rightarrow\; T^{(V)}_{\mu\nu} = \frac{\Lambda c^4}{8\pi G}g_{\mu\nu}.
+\]
+Match to perfect-fluid form $T^{(V)}_{\mu\nu} = P_V g_{\mu\nu}+(\rho_V + P_V/c^2)U_\mu U_\nu$ with $P_V = -\rho_V c^2$:
+\[
+T^{(V)}_{\mu\nu} = -\rho_V c^2\,g_{\mu\nu}.
+\]
+Equate:
+\[
+-\rho_V c^2 = \frac{\Lambda c^4}{8\pi G}\;\Rightarrow\;\boxed{\;\rho_V = -\frac{\Lambda c^2}{8\pi G}.\;}
+\]
+Hmm, sign check. The question writes $\rho' = \rho + \rho_V$ and $P' = P - \rho_V c^2$. Substitute $T'_{\mu\nu} = P'g_{\mu\nu}+(\rho'+P'/c^2)U_\mu U_\nu$:
+\[
+T'_{\mu\nu} = (P - \rho_V c^2)g_{\mu\nu} + (\rho + P/c^2)U_\mu U_\nu = T_{\mu\nu} - \rho_V c^2 g_{\mu\nu}.
+\]
+The original equation with primed source is:
+\[
+R_{\mu\nu}-\tfrac{1}{2}g_{\mu\nu}R = -\frac{8\pi G}{c^4}T'_{\mu\nu} = -\frac{8\pi G}{c^4}T_{\mu\nu} + \frac{8\pi G}{c^2}\rho_V g_{\mu\nu}.
+\]
+Compare with the modified equation rearranged:
+\[
+R_{\mu\nu}-\tfrac{1}{2}g_{\mu\nu}R = -\frac{8\pi G}{c^4}T_{\mu\nu} - \Lambda g_{\mu\nu}.
+\]
+Match coefficients of $g_{\mu\nu}$:
+\[
+\frac{8\pi G}{c^2}\rho_V = -\Lambda\;\Rightarrow\;\boxed{\;\rho_V = -\frac{\Lambda c^2}{8\pi G}.\;}
+\]
+(With the sign convention used in the question's Friedmann equations $\Lambda > 0$ produces accelerating expansion; a positive vacuum energy density corresponds to the vacuum equation of state $P_V = -\rho_V c^2$.)
+
+\textbf{Interpretation.} $\rho_V$ is the energy density of the \emph{vacuum}: a Lorentz-invariant fluid with equation of state $P = -\rho c^2$, equivalent to a cosmological constant. Constant in space and time, indistinguishable from $\Lambda$ in the field equations.
+
+\subsection*{(d) FRW identity $\ddot R/R = H^2 + \dot H$}
+
+\textbf{Problem.} \emph{Prove $\ddot R/R = H^2 + \dot H$.}
+
+Definition $H = \dot R/R$ implies $\dot R = H R$. Differentiate w.r.t.\ $t$:
+\[
+\ddot R = \dot H R + H\dot R.
+\]
+Substitute $\dot R = H R$:
+\[
+\ddot R = \dot H R + H^2 R.
+\]
+Divide by $R$:
+\[
+\boxed{\;\frac{\ddot R}{R} = H^2 + \dot H.\;}
+\]
+\label{eq:Hidentity}
+
+\subsection*{(e) Differential equation for $H$}
+
+\textbf{Problem.} \emph{For a flat $\Lambda$+matter universe show $2\dot H + 3H^2 = \Lambda c^2$.}
+
+For non-relativistic matter, $p = 0$. The two Friedmann equations reduce to
+\[
+\frac{\ddot R}{R} = -\frac{4\pi G}{3}\rho + \tfrac{1}{3}\Lambda c^2,
+\]
+\[
+H^2 = \frac{8\pi G}{3}\rho + \tfrac{1}{3}\Lambda c^2 \quad (k=0).
+\]
+Eliminate $\rho$. Multiply the second by $\tfrac{1}{2}$:
+\[
+\tfrac{1}{2}H^2 = \frac{4\pi G}{3}\rho + \tfrac{1}{6}\Lambda c^2.
+\]
+Add to the first:
+\[
+\frac{\ddot R}{R} + \tfrac{1}{2}H^2 = \tfrac{1}{2}\Lambda c^2.
+\]
+Use \eqref{eq:Hidentity}:
+\[
+\dot H + H^2 + \tfrac{1}{2}H^2 = \tfrac{1}{2}\Lambda c^2.
+\]
+Multiply by $2$:
+\[
+\boxed{\;2\dot H + 3H^2 = \Lambda c^2.\;}
+\]
+\label{eq:Hode}
+
+\subsection*{(f) Solving for $H(t)$}
+
+\textbf{Problem.} \emph{If $H\propto 1/t$ at early times, show $H = A\coth(3At/2)$ with $A^2 = \Lambda c^2/3$, and comment on late-time behaviour.}
+
+Early-time matter domination ignores $\Lambda$: $2\dot H + 3H^2 = 0$, $H = 2/(3t)$, indeed $\propto 1/t$. This sets the early-time boundary condition.
+
+Rearrange \eqref{eq:Hode}:
+\[
+2\,\frac{\de H}{\de t} = \Lambda c^2 - 3 H^2 = 3(A^2 - H^2),\qquad A^2 \equiv \Lambda c^2/3.
+\]
+Separate variables:
+\[
+\frac{2\,\de H}{A^2 - H^2} = 3\,\de t.
+\]
+Use the hint $\int\de x/(p^2-x^2) = (1/p)\coth^{-1}(x/p)$ with $p = A$, $x = H$:
+\[
+\frac{2}{A}\coth^{-1}(H/A) = 3 t + \mathrm{const}.
+\]
+Apply early-time matching: as $t\to 0^+$, $H\to\infty$ so $\coth^{-1}(H/A)\to 0$, fixing the constant to $0$:
+\[
+\coth^{-1}(H/A) = \tfrac{3At}{2}.
+\]
+Invert:
+\[
+\boxed{\;H(t) = A\coth(3At/2),\qquad A = \sqrt{\Lambda c^2/3}.\;}
+\]
+\textbf{Late time.} $\coth(3At/2)\to 1$ as $t\to\infty$:
+\[
+H \to A = \sqrt{\Lambda c^2/3}.
+\]
+The Hubble parameter approaches a constant, the universe enters de Sitter (exponential) expansion $R\propto e^{At}$, dominated by the cosmological constant.
+
+\subsection*{(g) Big rip from phantom vacuum $\rho_V\propto R^\epsilon$}
+
+\textbf{Problem.} \emph{If $\rho_V\propto R^\epsilon$ with $\epsilon > 0$, show that $R(t)$ diverges in finite time in a flat universe (matter neglected after $t_0$).}
+
+Friedmann equation, flat, matter neglected:
+\[
+H^2 = \frac{8\pi G}{3}\rho_V = \frac{8\pi G}{3}\rho_{V,0}\,(R/R_0)^\epsilon.
+\]
+Define the constant $B^2 \equiv (8\pi G/3)\rho_{V,0}\,R_0^{-\epsilon}$:
+\[
+H^2 = B^2\,R^\epsilon.
+\]
+Take square root (expansion, $H>0$):
+\[
+\frac{\dot R}{R} = B\,R^{\epsilon/2}.
+\]
+Rearrange:
+\[
+R^{-1-\epsilon/2}\,\de R = B\,\de t.
+\]
+Integrate from $t_0$ (where $R=R_0$):
+\[
+\int_{R_0}^{R} R'^{-1-\epsilon/2}\,\de R' = B(t - t_0).
+\]
+Evaluate the left-hand integral with $\epsilon > 0$:
+\[
+-\frac{2}{\epsilon}\!\left[R^{-\epsilon/2} - R_0^{-\epsilon/2}\right] = B(t - t_0).
+\]
+Solve for $R^{-\epsilon/2}$:
+\[
+R^{-\epsilon/2} = R_0^{-\epsilon/2} - \tfrac{1}{2}\epsilon B(t - t_0).
+\]
+$R\to\infty$ corresponds to $R^{-\epsilon/2}\to 0$:
+\[
+t_{\mathrm{rip}} - t_0 = \frac{2 R_0^{-\epsilon/2}}{\epsilon B} = \frac{2}{\epsilon}\,\frac{1}{H_0},
+\]
+where $H_0 = B R_0^{\epsilon/2}$ is the Hubble rate at $t_0$. This is finite for any $\epsilon > 0$:
+\[
+\boxed{\;t_{\mathrm{rip}} = t_0 + \frac{2}{\epsilon\,H_0}\quad(<\infty),\;}
+\]
+i.e.\ the scale factor diverges at the finite future time $t_{\mathrm{rip}}$ --- the ``big rip'' singularity of phantom dark energy.
+
+\end{document}

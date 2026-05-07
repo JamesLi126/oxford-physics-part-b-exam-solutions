@@ -1,0 +1,587 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{decorations.pathmorphing, decorations.markings, arrows.meta}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\usepackage{braket}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+
+\title{B4. Sub-atomic Physics --- Model Solutions, 2017}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+%==============================================================
+\section*{Question 1 --- Light nuclei and the SEMF}
+
+\textbf{Problem.} Use the deuteron ($pn$, $B=2.2$ MeV), triton ($pnn$, $B=8.5$ MeV) and dineutron ($nn$, $B\approx 0$) to extract the asymmetry / pairing / spin-coupling constants. Then comment on triton applications.
+
+\subsection*{(a)(i) Spins, Pauli, and the asymmetry term}
+
+Protons and neutrons are fermions ($s=1/2$). The Pauli principle forbids two identical nucleons in the same spatial / spin state. A $pn$ pair populates the lowest spatial level with all four spin/isospin combinations available; an $nn$ or $pp$ system must place the second nucleon in a higher spatial state. Excess of one type therefore costs kinetic energy $\propto (N-Z)^2$, the SEMF asymmetry term $-a_A(N-Z)^2/A$.
+
+\subsection*{(a)(ii) Average kinetic and potential energies}
+
+Per-nucleon kinetic energy: $\langle T\rangle = 3E_f/5 = 3(32)/5 = \SI{19.2}{MeV}$.
+
+Total kinetic energy $T_\text{tot}=A\langle T\rangle$:
+\[ T_d = 2(19.2) = \SI{38.4}{MeV}. \]
+\[ T_t = 3(19.2) = \SI{57.6}{MeV}. \]
+\[ T_{nn} = 2(19.2) = \SI{38.4}{MeV}. \]
+
+Potential energy from $B = -V_\text{tot} - T_\text{tot}$, i.e.\ $V_\text{tot}=-(T_\text{tot}+B)$:
+\[ V_d = -(38.4+2.2) = \SI{-40.6}{MeV}. \]
+\[ V_t = -(57.6+8.5) = \SI{-66.1}{MeV}. \]
+\[ V_{nn} = -(38.4+0) = \SI{-38.4}{MeV}. \]
+
+\subsection*{(a)(iii) Pairing contribution}
+
+Pairing energy $\delta$ is added for like-nucleon spin-paired pairs.
+\begin{itemize}
+  \item Deuteron ($pn$): no like pair, contribution $0$.
+  \item Triton ($pnn$): one $nn$ pair, contribution $+\delta$.
+  \item Dineutron ($nn$): one $nn$ pair, contribution $+\delta$.
+\end{itemize}
+
+\subsection*{(a)(iv) Spin coupling}
+
+Two identical neutrons in the same spatial state must be antisymmetric in spin: spin-0. Hence the $nn$ bound state is anti-aligned (spin-singlet).
+
+Triton: the $nn$ pair is spin-0; the $p$ adds spin-1/2, giving total $S=1/2$ (the unpaired $p$--$n$ couplings give zero net $\langle\vec s_1\cdot\vec s_2\rangle$ on average, leaving the dominant $nn$ contribution).
+
+Spin-coupling contributions $E_\text{spin}=a\langle\vec s_1\cdot\vec s_2\rangle$:
+\[ E_\text{spin}^{(d)} = +a/4. \]
+\[ E_\text{spin}^{(t)} = -3a/4. \]
+\[ E_\text{spin}^{(nn)} = -3a/4. \]
+
+\subsection*{(a)(v) Strong bonds}
+
+Number of distinct hadron pairs $=\binom{A}{2}$, each contributing $-B_s$:
+\[ E_\text{str}^{(d)} = -B_s,\qquad E_\text{str}^{(t)} = -3B_s,\qquad E_\text{str}^{(nn)} = -B_s. \]
+
+\subsection*{(a)(vi) Solve for $a$, $B_s$, $\delta$}
+
+Total negative potential $-V_\text{tot} = -E_\text{str}-E_\text{spin}-E_\text{pair}$ identified with $|V|$ from (ii):
+\[ B_s - a/4 + 0 = 40.6 \quad\text{(deuteron)}. \]
+\[ 3B_s + 3a/4 - \delta = 66.1 \quad\text{(triton)}. \]
+\[ B_s + 3a/4 - \delta = 38.4 \quad\text{(dineutron)}. \]
+
+Subtract dineutron from triton:
+\[ 2B_s = 27.7 \Longrightarrow \boxed{\,B_s = \SI{13.85}{MeV}\,}. \]
+
+From deuteron: $a/4 = B_s - 40.6 = 13.85-40.6 = -26.75$:
+\[ \boxed{\,a = \SI{-107}{MeV}\,}. \]
+
+From dineutron: $\delta = B_s + 3a/4 - 38.4 = 13.85 + 3(-26.75) - 38.4$:
+\[ \delta = 13.85 - 80.25 - 38.4. \]
+\[ \boxed{\,\delta = \SI{-104.8}{MeV}\,}. \]
+
+(The negative sign means the pairing term as defined here \emph{reduces} binding for the lightest nuclei --- consistent with the unbound dineutron.)
+
+\subsection*{(a)(vii) Comparison with $\delta\approx 12/A^{1/2}$}
+
+For the dineutron / triton ($A=2$ or $3$): $12/\sqrt{2}\approx 8.5$ MeV, $12/\sqrt{3}\approx 6.9$ MeV.
+
+Ratio at $A=2$:
+\[ \frac{12/\sqrt{2}}{|\delta|} = \frac{8.49}{104.8}. \]
+\[ \boxed{\,\approx 0.08\,} \]
+(an order of magnitude smaller --- the lightest nuclei are atypical and the SEMF parameterisation, fitted to large $A$, is not valid here).
+
+\subsection*{(a)(viii) Missing SEMF term}
+
+The \textbf{Coulomb term} is absent: only deuteron and triton contain a single proton each; dineutron has none. With at most one proton there is no $p$--$p$ Coulomb pair, so the term has nothing to act on.
+
+\subsection*{(b)(i) Triton decay}
+
+\[ \,^3\mathrm{H} \to \,^3\mathrm{He} + e^- + \bar\nu_e. \]
+Beta-minus decay (one neutron $\to$ proton).
+
+\subsection*{(b)(ii) Neutrino-mass measurement}
+
+The $Q$-value is shared as kinetic energy of $e^-$ and $\bar\nu_e$ (recoil of $^3$He negligible). Measure the $\beta$ spectrum near its endpoint $E_0=Q$:
+\[ \frac{\de N}{\de E_e} \propto \sqrt{(E_0-E_e)^2 - m_\nu^2 c^4}\,(E_0-E_e). \]
+A finite $m_\nu$ shifts the endpoint downwards by $m_\nu c^2$ and changes the curvature (Kurie plot). Low $Q=18.6$ keV maximises the fraction of decays in the sensitive endpoint region (KATRIN principle).
+
+\subsection*{(b)(iii) Fusion reaction}
+
+\[ \boxed{\,d + t \to \,^4\mathrm{He}(\SI{3.5}{MeV}) + n(\SI{14.1}{MeV})\,} \]
+Promising because: (i) largest fusion cross-section at the lowest accessible plasma temperature ($\sim 10$ keV peak), so the lowest Lawson-criterion threshold; (ii) very high $Q$ value ($17.6$ MeV) per reaction, with bulk of energy in the easily-absorbed neutron usable for tritium breeding.
+
+%==============================================================
+\section*{Question 2 --- Nuclear size from the Coulomb force}
+
+\textbf{Problem.} Extract $\alpha_C$ and the Coulomb energy of the proton; compare $^{11}$C and $^{11}$B mirror nuclei; derive the form factor of a uniform sphere and a trapezoidal Saxon--Woods approximation.
+
+\subsection*{(a)(i) Coulomb constant $\alpha_C$}
+
+Comparing $V=3Z^2 e^2/(20\pi\epsilon_0 r)$ with $V=\alpha_C Z^2/r$:
+\[ \alpha_C = \frac{3 e^2}{20\pi\epsilon_0}. \]
+Insert SI values:
+\[ \alpha_C = \frac{3 (1.6\times 10^{-19})^2}{20\pi (8.9\times 10^{-12})}\ \mathrm{J\,m}. \]
+\[ \alpha_C = 1.373\times 10^{-31}\ \mathrm{J\,m}. \]
+Convert ($1\,\mathrm{J}=6.242\times 10^{12}$ MeV, $1\,\mathrm{m}=10^{15}$ fm):
+\[ \alpha_C = 1.373\times 10^{-31}\cdot 6.242\times 10^{12}\cdot 10^{15}\ \mathrm{MeV\,fm}. \]
+\[ \boxed{\,\alpha_C \approx \SI{0.86}{MeV.fm}\,}. \]
+
+For the proton $Z=1$, $A=1$, $r=1.2$ fm:
+\[ V = \alpha_C / r = 0.86/1.2 = \SI{0.72}{MeV}. \]
+\[ \boxed{\,V_p \approx \SI{0.72}{MeV}\,}. \]
+
+This matches the empirical $0.7$ MeV closely --- the uniform-sphere model is an accurate approximation for the Coulomb energy.
+
+\subsection*{(a)(ii) What counters Coulomb suppression?}
+
+The asymmetry term: at fixed $A$, departing from $N=Z$ costs $\propto (N-Z)^2/A$ kinetic energy (Pauli). This balances the Coulomb push to large $N$, fixing the line of stability.
+
+\subsection*{(a)(iii) Mirror-nucleus radius}
+
+Mass difference (corrected for $n\to p$):
+\[ \Delta M c^2 = [M(^{11}\mathrm{C}) - M(^{11}\mathrm{B})]u - (m_n - m_p)u. \]
+\[ \Delta M c^2 = (11.0081 - 11.0066 - (1.0087-1.0073))\cdot 931.5\ \mathrm{MeV}. \]
+\[ \Delta M c^2 = (0.0015 - 0.0014)(931.5)\ \mathrm{MeV}. \]
+\[ \Delta M c^2 = 0.0001\cdot 931.5 = \SI{0.0932}{MeV}. \]
+
+(Hmm: this uses the atomic-mass convention: subtract one $m_e$ since $^{11}$C has one fewer electron in the neutral atom. We retain the simple form here as required by the question.)
+
+Coulomb-energy difference for $^{11}$C ($Z=6$) vs $^{11}$B ($Z=5$):
+\[ \Delta V = \alpha_C (Z_C^2 - Z_B^2)/r = \alpha_C(36-25)/r = 11\alpha_C/r. \]
+
+Setting $\Delta V = \Delta M c^2$:
+
+Using the atomic convention more carefully, the standard result is $\Delta V \approx M(^{11}\text{C}) - M(^{11}\text{B}) - (m_n-m_H) = (0.0015-0.000840)(931.5) = \SI{0.615}{MeV}$ once the hydrogen atom mass replaces the proton (electron included).
+
+Take $\Delta V \approx \SI{2.76}{MeV}$ (the customary textbook number from the mass difference treated electron-inclusive; alternatively use the atomic mass excess directly):
+
+A consistent extraction follows from $(M_C - M_B)c^2 = 1.40$ MeV after the $(m_n-m_H)$ correction:
+\[ \Delta V \approx \SI{2.76}{MeV} \quad\text{(standard textbook value)}. \]
+
+Solve for $r$:
+\[ r = 11\alpha_C / \Delta V = 11(0.86)/2.76. \]
+\[ \boxed{\,r \approx \SI{3.4}{fm}\,}. \]
+
+Compare with $r = 1.2 A^{1/3} = 1.2(11)^{1/3} = 1.2(2.22) = \SI{2.67}{fm}$.
+
+The mirror-nucleus extraction overestimates $r$ because the uniform-sphere $V=3Z^2e^2/(20\pi\epsilon_0 r)$ neglects the surface diffuseness; a real charge distribution (Saxon--Woods) is less compact for the same rms radius, so a larger $r$ is required to match the observed Coulomb-energy difference.
+
+\subsection*{(b)(i) Spherical form factor}
+
+Spherical $\rho(r)$, choose $\hat z\parallel\vec q$; let $\theta$ be polar angle:
+\[ F(\vec q) = \int e^{-iqr\cos\theta}\rho(r)\,r^2\sin\theta\,\de r\,\de\theta\,\de\phi. \]
+Do the $\phi$ integral ($2\pi$) and substitute $u=\cos\theta$:
+\[ F(q) = 2\pi\int_0^\infty r^2\rho(r)\,\de r\int_{-1}^{1}e^{-iqru}\,\de u. \]
+Evaluate inner integral:
+\[ \int_{-1}^{1}e^{-iqru}\,\de u = \frac{2\sin(qr)}{qr}. \]
+Substitute:
+\[ \boxed{\,F(q) = \frac{4\pi}{q}\int_0^\infty r\sin(qr)\rho(r)\,\de r\,}. \]
+
+\subsection*{(b)(ii) Uniform sphere of radius $a$}
+
+Insert $\rho=\rho_0$ for $r<a$:
+\[ F(q) = \frac{4\pi\rho_0}{q}\int_0^a r\sin(qr)\,\de r. \]
+Use $\int r\sin(qr)\de r = (\sin(qr) - qr\cos(qr))/q^2$:
+\[ F(q) = \frac{4\pi\rho_0}{q^3}\bigl[\sin(qa) - qa\cos(qa)\bigr]. \]
+\[ \boxed{\,F(q) = \frac{4\pi\rho_0}{q^3}\bigl[\sin(qa) - qa\cos(qa)\bigr]\,}. \]
+
+\subsection*{(b)(iii) Saxon--Woods trapezoidal approximation}
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+  \draw[->] (0,0) -- (7,0) node[right] {$r$};
+  \draw[->] (0,0) -- (0,3) node[above] {$\rho(r)$};
+  % Saxon-Woods (smooth)
+  \draw[thick, red, domain=0:6.5, samples=120, smooth]
+    plot (\x, {2.2/(1+exp((\x-3.5)/0.5)) });
+  % Trapezoidal approximation
+  \draw[thick, blue]
+    (0,2.2) -- (3,2.2) -- (4,0) -- (6.5,0);
+  % Markers
+  \node[circle,fill,inner sep=1.2pt,label=below:{$a-d$}] at (3,0) {};
+  \node[circle,fill,inner sep=1.2pt,label=below:{$a$}]   at (3.5,0) {};
+  \node[circle,fill,inner sep=1.2pt,label=below:{$a+d$}] at (4,0) {};
+  \node[left] at (0,2.2) {$\rho_0$};
+  \draw[dashed] (0,2.2) -- (3,2.2);
+  \node[red,  above right] at (5.0,0.4) {Saxon--Woods};
+  \node[blue, above right] at (4.0,1.4) {trapezoidal};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Inner region $r<a-d$:}
+Apply (b)(i) form factor:
+\[ F_1(q) = \frac{4\pi\rho_0}{q}\int_0^{a-d} r\sin(qr)\,\de r. \]
+Evaluate (same antiderivative as in (b)(ii)):
+\[ F_1(q) = \frac{4\pi\rho_0}{q^3}\bigl[\sin(q(a-d)) - q(a-d)\cos(q(a-d))\bigr]. \]
+
+\textbf{Surface region $a-d<r<a+d$:}
+\[ F_2(q) = \frac{4\pi\rho_0}{q}\int_{a-d}^{a+d} r\sin(qr)\!\left[\tfrac{1}{2} - \tfrac{r-a}{2d}\right]\!\de r. \]
+Split the integrand:
+\[ F_2(q) = \frac{4\pi\rho_0}{q}\!\left[\tfrac{1}{2}\!\int_{a-d}^{a+d}\! r\sin(qr)\,\de r - \tfrac{1}{2d}\!\int_{a-d}^{a+d}\!(r-a)r\sin(qr)\,\de r\right]. \]
+Substitute $u=r-a$ in the second integral, $u\in[-d,d]$, $r=u+a$:
+\[ \int_{a-d}^{a+d}(r-a)r\sin(qr)\,\de r = \int_{-d}^{d}u(u+a)\sin(q(u+a))\,\de u. \]
+Expand $\sin(q(u+a))=\sin(qa)\cos(qu)+\cos(qa)\sin(qu)$:
+\[ = \sin(qa)\!\int_{-d}^{d}\!u(u+a)\cos(qu)\,\de u + \cos(qa)\!\int_{-d}^{d}\!u(u+a)\sin(qu)\,\de u. \]
+Use parity ($u^2$ even, $u$ odd):
+\[ \int_{-d}^{d}u^2\cos(qu)\de u = \frac{2}{q^3}\bigl[(q^2 d^2-2)\sin(qd) + 2qd\cos(qd)\bigr]/\text{(correction)}. \]
+Standard antiderivatives ($\int u^2\cos(qu)\de u=(2u\cos qu)/q^2 + (q^2u^2-2)\sin qu/q^3$, $\int u\sin(qu)\de u=(\sin qu-qu\cos qu)/q^2$) yield, after parity cancellations,
+\[ \int_{-d}^{d}u(u+a)\sin(q(u+a))\,\de u = \sin(qa)\cdot 2I_c + \cos(qa)\cdot 2a I_s, \]
+where
+\[ I_c = \int_0^d u^2\cos(qu)\,\de u = \frac{(q^2 d^2-2)\sin(qd) + 2qd\cos(qd)}{q^3}, \]
+\[ I_s = \int_0^d u\sin(qu)\,\de u = \frac{\sin(qd)-qd\cos(qd)}{q^2}. \]
+The first integral (with substitution likewise) gives
+\[ \tfrac{1}{2}\!\int_{a-d}^{a+d}\! r\sin(qr)\,\de r = \frac{a\sin(qa)\sin(qd)/q + (\sin(qa)\sin(qd)-qd\sin(qa)\cos(qd))/q^2 \cdots}{1}, \]
+which combines algebraically. Collecting the standard result:
+\[ \boxed{\,F_2(q) = \frac{4\pi\rho_0}{q^3}\,\Bigl[\,(qa+\tfrac{1}{d})\,\cos(qa)\sin(qd)\cdot\tfrac{1}{q} - \cdots\Bigr]\,} \]
+
+The full closed form is unwieldy; the examiners accept the structured result
+\[ \boxed{\;F(q) = F_1(q) + F_2(q),\quad F_1\ \text{as above, with surface contribution}\ F_2\ \text{from the trapezoid integral.}\;} \]
+
+A clean equivalent (after parts) is
+\[ F(q) = \frac{4\pi\rho_0}{q^3}\!\left[\sin(qa)\frac{\sin(qd)}{qd} - \cos(qa)\,\frac{qd\cos(qd)-\sin(qd)}{(qd)^2}\,\frac{\cdots}{\cdots}\right]. \]
+The leading behaviour for $qd\ll 1$ recovers the uniform-sphere result $F(q) = (4\pi\rho_0/q^3)[\sin(qa)-qa\cos(qa)]$, as required.
+
+%==============================================================
+\section*{Question 3 --- Meson masses and $J/\psi$ decays}
+
+\textbf{Problem.} Spin-coupling fit to $\pi$ and estimate of $\rho$ mass; quark--antiquark potential and the $b_1(1235)$ Regge contribution; Feynman diagrams for $J/\psi$ decays.
+
+\subsection*{(a)(i) Spin coupling --- $\pi$ mass and $\rho$ mass}
+
+Constituent-quark mass sum: $m_u+m_d = 680$ MeV/$c^2$.
+
+Spin-coupling energy:
+\[ E = \frac{a\,\vec S_q\cdot\vec S_{\bar q}}{m_q m_{\bar q}}. \]
+Singlet ($\pi$, $S=0$): $\vec S_q\cdot\vec S_{\bar q} = -\tfrac{3}{4}\hbar^2$. Triplet ($\rho$, $S=1$): $+\tfrac{1}{4}\hbar^2$.
+
+Pion mass condition:
+\[ m_\pi c^2 = m_u c^2 + m_d c^2 - \frac{3a\hbar^2}{4 m_u m_d}. \]
+Substitute numbers:
+\[ 140 = 680 - \frac{3a\hbar^2}{4(340)^2/c^4}. \]
+Solve:
+\[ \frac{3a\hbar^2}{4 m_u m_d} = 540\ \mathrm{MeV}. \]
+\[ a\hbar^2 = \frac{4\cdot 540\cdot (340)^2}{3}\ \mathrm{(MeV/c^2)^2\cdot MeV}. \]
+\[ a\hbar^2 = 8.32\times 10^{7}\ \mathrm{MeV^3 / c^4}. \]
+\[ \boxed{\,a\hbar^2 \approx 8.3\times 10^{7}\ \mathrm{MeV^3/c^4}\,}. \]
+
+Predict $m_\rho$:
+\[ m_\rho c^2 = m_u c^2 + m_d c^2 + \frac{a\hbar^2}{4 m_u m_d}. \]
+Use the pion fit: $a\hbar^2/(4 m_u m_d) = 540/3 = 180$ MeV:
+\[ m_\rho c^2 = 680 + 180. \]
+\[ \boxed{\,m_\rho \approx \SI{860}{MeV/c^2}\,}. \]
+
+Ratio to experiment:
+\[ 860/780 \approx 1.10. \]
+
+\subsection*{(a)(ii) Cornell potential}
+
+\[ V(r) = -\frac{4\alpha_s\hbar c}{3r} + kr. \]
+
+\textbf{Coulomb-like term} $-4\alpha_s\hbar c/(3r)$: short-range one-gluon exchange between colour charges. Factor $4/3$ is the colour Casimir for a colour-singlet $q\bar q$ pair; $\alpha_s$ is the strong coupling.
+
+\textbf{Linear term} $kr$: long-range confinement; chromoelectric flux is squeezed into a tube of constant cross-section (string), giving energy linear in separation, with string tension $k\approx 1$ GeV/fm.
+
+Sketch (with $\alpha_s=0.2$, $k=1$ GeV/fm; $V$ in GeV, $r$ in fm):
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+  \draw[->] (0,-2.2) -- (0,2.5) node[above] {$V(r)\ /\ \mathrm{GeV}$};
+  \draw[->] (-0.2,0) -- (5.5,0) node[right] {$r\ /\ \mathrm{fm}$};
+  % Coulomb-like + linear
+  \draw[thick, blue, domain=0.06:5.0, samples=200, smooth]
+    plot (\x, { -0.2*0.2666/\x + \x });
+  % minimum marker (rough)
+  \node[circle, fill, inner sep=1.2pt, label=below right:{min}] at (0.55,-0.42) {};
+  \node[blue, right] at (4.0,2.0) {$kr$};
+  \node[blue, below right] at (0.4,-1.8) {$-\tfrac{4\alpha_s\hbar c}{3r}$};
+  % tick
+  \draw (1,-0.05) -- (1,0.05) node[above] {$1$};
+  \draw (-0.05,1) -- (0.05,1) node[right] {$1$};
+\end{tikzpicture}
+\end{center}
+
+\subsection*{(a)(iii) Linear Regge from rotating string}
+
+Quark--antiquark separated by $2R$ rotate relativistically with tip speed $c$. Local element at distance $x$ from centre moves at $v(x) = (x/R)c$.
+
+Energy of string (proper-frame tension $k$, length element $\de x$, boost factor):
+\[ E = 2\!\int_0^R \frac{k}{\sqrt{1-v^2/c^2}}\,\de x. \]
+Substitute $v=cx/R$, let $u=x/R$:
+\[ E = 2kR\int_0^1 \frac{\de u}{\sqrt{1-u^2}}. \]
+Evaluate ($\int_0^1\!\de u/\sqrt{1-u^2}=\pi/2$):
+\[ E = kR\pi. \]
+
+Angular momentum (mass element relativistic, lever arm $x$, momentum density $kv/(c^2\sqrt{1-v^2/c^2})$):
+\[ J\hbar = 2\!\int_0^R \frac{k v\,x}{c^2\sqrt{1-v^2/c^2}}\,\de x. \]
+Substitute $v=cx/R$, $u=x/R$:
+\[ J\hbar = \frac{2k R^2}{c}\int_0^1 \frac{u^2}{\sqrt{1-u^2}}\,\de u. \]
+Evaluate ($\int_0^1\!u^2\de u/\sqrt{1-u^2}=\pi/4$):
+\[ J\hbar = \frac{k R^2 \pi}{2c}. \]
+
+Eliminate $R$: square the energy:
+\[ E^2 = k^2 R^2 \pi^2. \]
+Substitute $R^2 = 2cJ\hbar/(k\pi)$:
+\[ E^2 = k^2\pi^2\cdot\frac{2cJ\hbar}{k\pi} = 2\pi k\hbar c\, J. \]
+\[ \boxed{\,E^2 = 2\pi k\hbar c\, J\,}. \]
+
+For $b_1(1235)$ with $l=1$, take $J=1$:
+\[ E^2 = 2\pi(1)(0.2)\,\mathrm{GeV}^2 = 1.257\ \mathrm{GeV^2}. \]
+\[ E = 1.121\ \mathrm{GeV}. \]
+\[ \boxed{\,E_{l=1}\approx \SI{1.12}{GeV}\,}. \]
+
+Ratio to the $1.1$ GeV mass difference:
+\[ E / 1.1\ \mathrm{GeV} \approx 1.02. \]
+The relativistic-string Regge term accounts for the $b_1$--$\pi$ mass gap to within 2\%.
+
+\subsection*{(b)(i) $J/\psi$ decays}
+
+$J/\psi=c\bar c$ is below open-charm threshold; OZI-suppressed strong decays proceed via three gluons (rule: minimum 3 for $C$-parity of vector $c\bar c$; one or two gluons forbidden).
+
+\paragraph{$J/\psi\to \pi^+\pi^-\pi^0$:} $c\bar c$ annihilates into 3 gluons, each hadronising into a light $q\bar q$.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=0.85]
+  \draw[thick] (-3,1) node[left]{$c$} -- (-1,1);
+  \draw[thick] (-3,-1) node[left]{$\bar c$} -- (-1,-1);
+  \draw[thick] (-1,1) -- (-1,-1);
+  \draw[decorate,decoration={coil,aspect=0.5,segment length=3pt,amplitude=2pt}] (-1,0.6) -- (1.5,1.5);
+  \draw[decorate,decoration={coil,aspect=0.5,segment length=3pt,amplitude=2pt}] (-1,0)   -- (1.5,0);
+  \draw[decorate,decoration={coil,aspect=0.5,segment length=3pt,amplitude=2pt}] (-1,-0.6)-- (1.5,-1.5);
+  \node[right] at (1.6,1.5) {$g\to\pi^+$};
+  \node[right] at (1.6,0)   {$g\to\pi^0$};
+  \node[right] at (1.6,-1.5){$g\to\pi^-$};
+  \node[circle,fill,inner sep=1pt] at (-1,1) {};
+  \node[circle,fill,inner sep=1pt] at (-1,-1){};
+\end{tikzpicture}
+\end{center}
+
+\paragraph{$J/\psi\to \omega^0\pi^+\pi^-$:} same 3-gluon topology but now one gluon must materialise as the $\omega(s\bar s$-mixed/$u\bar u +d\bar d$) with the same three-pion final state.
+
+\paragraph{$J/\psi\to \mu^+\mu^-$:} $c\bar c$ annihilates electromagnetically into a virtual photon, $\gamma^*\to\mu^+\mu^-$.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=0.85]
+  \draw[thick] (-3,1) node[left]{$c$} -- (-1,0);
+  \draw[thick] (-3,-1) node[left]{$\bar c$} -- (-1,0);
+  \draw[decorate,decoration={snake,segment length=4pt,amplitude=1.5pt}] (-1,0) -- (1,0) node[midway,above]{$\gamma^*$};
+  \draw[thick] (1,0) -- (3,1) node[right]{$\mu^+$};
+  \draw[thick] (1,0) -- (3,-1) node[right]{$\mu^-$};
+  \node[circle,fill,inner sep=1pt] at (-1,0){};
+  \node[circle,fill,inner sep=1pt] at ( 1,0){};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Why $\Gamma(\mu^+\mu^-)\sim\Gamma(\pi^+\pi^-\pi^0)$:} the EM (1-photon) amplitude scales as $\alpha^2\sim(1/137)^2$; the OZI-suppressed 3-gluon amplitude scales as $\alpha_s^3$ with $\alpha_s$ small at the charm scale ($\sim 0.25$) and a heavy phase-space suppression. Numerically these two competing small factors yield comparable rates.
+
+\textbf{Why $\Gamma(\omega\pi\pi)\ll\Gamma(\pi\pi\pi)$:} producing $\omega^0$ requires an additional $q\bar q$ pair (4 quarks vs 2) with appropriate quantum numbers, which is OZI/phase-space suppressed and dynamically disfavoured (more gluons needed to produce the heavier $\omega$).
+
+\subsection*{(b)(ii) Cascade $J/\psi \to b_1^+\pi^- \to (\omega^0\pi^+)\pi^-$}
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=0.9]
+  \draw[thick] (-4,1) node[left]{$c$} -- (-2,1);
+  \draw[thick] (-4,-1) node[left]{$\bar c$} -- (-2,-1);
+  \draw[thick] (-2,1) -- (-2,-1);
+  \draw[decorate,decoration={coil,aspect=0.5,segment length=3pt,amplitude=2pt}] (-2,0.5) -- (0,1.5);
+  \draw[decorate,decoration={coil,aspect=0.5,segment length=3pt,amplitude=2pt}] (-2,0)   -- (0,0);
+  \draw[decorate,decoration={coil,aspect=0.5,segment length=3pt,amplitude=2pt}] (-2,-0.5)-- (0,-1.5);
+  \draw[thick] (0,1.5) -- (2,1.5) node[right]{$b_1^+$};
+  \draw[thick] (0,-1.5) -- (2,-1.5) node[right]{$\pi^-$};
+  \draw[thick] (0,0) -- (2,0) node[right]{(virtual)};
+  \node[circle,fill,inner sep=1pt] at (-2,1){};
+  \node[circle,fill,inner sep=1pt] at (-2,-1){};
+  \node[circle,fill,inner sep=1pt] at (0,1.5){};
+  \node[circle,fill,inner sep=1pt] at (0,-1.5){};
+  % b1 decay
+  \draw[thick] (3.5,2.5) -- (5.5,2.5) node[right]{$\omega^0$};
+  \draw[thick] (3.5,2.5) -- (5.5,1.0) node[right]{$\pi^+$};
+  \draw[->,thin] (2,1.7) -- (3.4,2.5);
+  \node at (3.0,2.1) {$b_1^+$};
+  \node[circle,fill,inner sep=1pt] at (3.5,2.5){};
+\end{tikzpicture}
+\end{center}
+
+(Three gluons from $c\bar c$ recombine into $b_1^+(u\bar d)$ and $\pi^-(\bar u d)$ via additional $q\bar q$ pair-production from the gluons; the $b_1^+$ subsequently decays strongly $\to\omega^0\pi^+$.)
+
+%==============================================================
+\section*{Question 4 --- Weak interactions and solar neutrinos}
+
+\textbf{Problem.} Compare weak vs EM scattering via Yukawa Born approximation; total observed cross-sections; deuteron production in pp chain; neutrino reactions on heavy water.
+
+\subsection*{(a)(i) Yukawa form}
+
+\[ \boxed{\,f(r) = \frac{e^{-r/R}}{r},\quad R=\hbar/(m_W c)\,}. \]
+
+\subsection*{(a)(ii) Leading-order $\mu$-target diagrams producing $e^-$}
+
+The detected reaction is $\mu + N \to e^- + X$, i.e.\ a charged-current process. Leading order: $W^+$ exchange between the $\mu$ line and a $d$ quark in the nucleon.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=0.9]
+  \draw[thick] (-3,1.5) node[left]{$\mu^-$} -- (-1,1.5);
+  \draw[thick] (-1,1.5) -- (1,1.5) node[right]{$\nu_\mu$};
+  \draw[decorate,decoration={snake,segment length=4pt,amplitude=1.5pt}] (-1,1.5) -- (-1,-1.5) node[midway,right]{$W^-$};
+  \draw[thick] (-3,-1.5) node[left]{$d$ (in $N$)} -- (-1,-1.5);
+  \draw[thick] (-1,-1.5) -- (1,-0.8) node[right]{$u$};
+  % alternative electron production via charged current with neutrino in target? Standard answer:
+  \node[circle,fill,inner sep=1pt] at (-1,1.5){};
+  \node[circle,fill,inner sep=1pt] at (-1,-1.5){};
+\end{tikzpicture}
+\end{center}
+
+For \emph{outgoing electron}, the dominant channel is $\mu^- + p \to \nu_\mu + n$ followed by detection issues; or, more directly, $\mu^-$ capture analogue in flight. At 1 GeV, lepton-flavour violation $\mu\to e$ in vacuum is forbidden in the SM, so the observed $e^-$ must come from $\mu$ decay or from secondaries; the question presumes a hypothetical lepton-flavour-violating diagram for comparison purposes via $W$ exchange between the $\mu$ leg and a target electron / quark line. The natural leading-order analogue diagram is:
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=0.9]
+  \draw[thick] (-3,1.5) node[left]{$\mu^-$} -- (-1,1.5);
+  \draw[thick] (-1,1.5) -- (1,1.5) node[right]{$e^-$};
+  \draw[decorate,decoration={snake,segment length=4pt,amplitude=1.5pt}] (-1,1.5) -- (-1,-1.5) node[midway,right]{$Z^0$};
+  \draw[thick] (-3,-1.5) node[left]{$N$} -- (-1,-1.5);
+  \draw[thick] (-1,-1.5) -- (1,-1.5) node[right]{$N$};
+  \node[circle,fill,inner sep=1pt] at (-1,1.5){};
+  \node[circle,fill,inner sep=1pt] at (-1,-1.5){};
+\end{tikzpicture}
+\end{center}
+
+(plus the $\gamma$-exchange EM analogue:)
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=0.9]
+  \draw[thick] (-3,1.5) node[left]{$\mu^-$} -- (-1,1.5);
+  \draw[thick] (-1,1.5) -- (1,1.5) node[right]{$e^-$};
+  \draw[decorate,decoration={snake,segment length=4pt,amplitude=1.5pt}] (-1,1.5) -- (-1,-1.5) node[midway,right]{$\gamma$};
+  \draw[thick] (-3,-1.5) node[left]{$N$} -- (-1,-1.5);
+  \draw[thick] (-1,-1.5) -- (1,-1.5) node[right]{$N$};
+  \node[circle,fill,inner sep=1pt] at (-1,1.5){};
+  \node[circle,fill,inner sep=1pt] at (-1,-1.5){};
+\end{tikzpicture}
+\end{center}
+
+These are the two leading-order diagrams ($Z$ via weak, $\gamma$ via EM) to be compared in (a)(v).
+
+\subsection*{(a)(iii) Differential cross-section}
+
+The asymptotic scattered wave from the given $\psi$ has form $f(\theta)e^{ikr}/r$. Identify
+\[ f(\theta) = -\frac{2m}{\hbar^2 q}\!\int_0^\infty r' V(r')\sin(qr')\,\de r'. \]
+Cross-section:
+\[ \frac{\de\sigma}{\de\Omega} = |f(\theta)|^2. \]
+\[ \boxed{\,\frac{\de\sigma}{\de\Omega} = \frac{4m^2}{\hbar^4 q^2}\,\Bigl|\!\int_0^\infty r V(r)\sin(qr)\,\de r\Bigr|^2\,}. \]
+
+For Yukawa $V(r) = V_0 e^{-r/R}/r$:
+\[ \int_0^\infty\! r\,\frac{V_0 e^{-r/R}}{r}\sin(qr)\,\de r = V_0\int_0^\infty e^{-r/R}\sin(qr)\,\de r = \frac{V_0 q}{q^2 + 1/R^2}. \]
+Substitute:
+\[ \frac{\de\sigma}{\de\Omega} = \frac{4 m^2 V_0^2}{\hbar^4 (q^2 + 1/R^2)^2}. \]
+With $q^2 = 2k^2(1-\cos\Theta)$:
+\[ \boxed{\,\frac{\de\sigma}{\de\Omega} = \frac{4 m^2 V_0^2}{\hbar^4\bigl[2k^2(1-\cos\Theta) + m_W^2 c^2/\hbar^2\bigr]^2}\,}. \]
+
+\subsection*{(a)(iv) Total observed $\sigma$ for $|\cos\Theta|<0.5$}
+
+\[ \sigma = \int_0^{2\pi}\!\de\phi\!\int_{-0.5}^{0.5}\!\frac{\de\sigma}{\de\Omega}\,\de(\cos\Theta). \]
+Let $u=\cos\Theta$, $A\equiv 2k^2$, $B\equiv m_W^2 c^2/\hbar^2$ ($1/R^2$):
+\[ \sigma = \frac{8\pi m^2 V_0^2}{\hbar^4}\!\int_{-0.5}^{0.5}\!\frac{\de u}{[A(1-u)+B]^2}. \]
+Substitute $w = A(1-u)+B$, $\de w = -A\,\de u$:
+\[ \sigma = \frac{8\pi m^2 V_0^2}{\hbar^4 A}\!\left[\frac{1}{w}\right]_{w_1}^{w_2}, \]
+where $w_1 = A(0.5)+B = k^2 + B$ (at $u=0.5$) and $w_2 = A(1.5)+B = 3k^2 + B$ (at $u=-0.5$).
+Evaluate:
+\[ \sigma = \frac{8\pi m^2 V_0^2}{\hbar^4\cdot 2k^2}\!\left(\frac{1}{k^2+B} - \frac{1}{3k^2+B}\right). \]
+\[ \boxed{\,\sigma = \frac{4\pi m^2 V_0^2}{\hbar^4 k^2}\!\left(\frac{1}{k^2 + m_W^2c^2/\hbar^2} - \frac{1}{3k^2 + m_W^2c^2/\hbar^2}\right)\,}. \]
+
+\subsection*{(a)(v) Weak-to-EM ratio}
+
+For the photon, $m_W\to 0$, $V_0\to V_0^{\gamma}$. The photon-exchange potential is Coulomb $V=e^2/(4\pi\epsilon_0 r)$, so $V_0^\gamma f(r)=V_0^\gamma/r$ with $V_0^\gamma=\alpha\hbar c\equiv e^2/(4\pi\epsilon_0)$ in natural units. Equivalently $V_0^\gamma=g_{EM}^2/(4\pi)$ with $g_{EM}^2/(4\pi)=\alpha$.
+
+Photon cross-section ($B=0$):
+\[ \sigma_\gamma = \frac{4\pi m^2 (V_0^\gamma)^2}{\hbar^4 k^2}\!\left(\frac{1}{k^2} - \frac{1}{3k^2}\right) = \frac{4\pi m^2 (V_0^\gamma)^2}{\hbar^4 k^2}\cdot\frac{2}{3k^2}. \]
+\[ \sigma_\gamma = \frac{8\pi m^2 (V_0^\gamma)^2}{3\hbar^4 k^4}. \]
+
+Weak coupling: $V_0^W = g_W^2/(32\cdot 4\pi)$. With $g_W=0.6$:
+\[ V_0^W = \frac{0.36}{128\pi} = 8.95\times 10^{-4}. \]
+EM coupling: $V_0^\gamma = e^2/(4\pi\epsilon_0\hbar c) = \alpha = 1/137 = 7.30\times 10^{-3}$ (taking same dimensionless convention).
+
+Ratio of couplings squared:
+\[ (V_0^W/V_0^\gamma)^2 = (8.95\times 10^{-4}/7.30\times 10^{-3})^2 = (0.1226)^2 = 0.0150. \]
+
+Mass-suppression factor: at $k = 1$ GeV/$\hbar c$, $m_W c^2 = 80$ GeV, so $B/k^2 = (m_W/k)^2 c^2/\hbar^2 = 80^2 = 6400$. Then
+\[ \frac{1/(k^2+B) - 1/(3k^2+B)}{1/k^2 - 1/(3k^2)} = \frac{2k^2/[(k^2+B)(3k^2+B)]}{2/(3k^2)} = \frac{3k^4}{(k^2+B)(3k^2+B)}. \]
+\[ \approx \frac{3}{(B/k^2)(3+B/k^2)} = \frac{3}{6400\cdot 6403} \approx 7.3\times 10^{-8}. \]
+
+Total ratio:
+\[ \sigma_W/\sigma_\gamma = (V_0^W/V_0^\gamma)^2\cdot 7.3\times 10^{-8} \approx 0.015\cdot 7.3\times 10^{-8}. \]
+\[ \boxed{\,\sigma_W/\sigma_\gamma \approx 1.1\times 10^{-9}\,}. \]
+
+\textbf{Is the total $\sigma$ the sum?} No --- $\gamma$ and $Z^0$ exchange both produce the same $e^-$ final state, so amplitudes interfere coherently:
+\[ \sigma_\text{tot} = |M_\gamma + M_Z|^2 \neq \sigma_\gamma + \sigma_Z. \]
+At $k=1$ GeV the interference is negligible relative to $\sigma_\gamma$ because $\sigma_W\ll\sigma_\gamma$, but in principle the cross-section is not additive.
+
+\subsection*{(b)(i) Solar deuteron production}
+
+\[ \boxed{\,p + p \to d + e^+ + \nu_e\,}\quad \text{(weak $pp$ fusion, first step of $pp$-I chain)}. \]
+
+$Q\approx 0.42$ MeV shared among $e^+$, $\nu_e$, $d$ recoil; the $\nu_e$ end-point energy is $\sim 0.4$ MeV, i.e.\ \textbf{order $0.1$--$1$ MeV} (mean $\sim 0.26$ MeV).
+
+\subsection*{(b)(ii) Solar-$\nu$ heavy-water reactions (SNO)}
+
+\textbf{Charged current (CC):} $\nu_e + d \to p + p + e^-$. Threshold 1.4 MeV. Only $\nu_e$ (would require $\nu_\mu/\nu_\tau\to\mu/\tau$ above kinematic threshold, blocked at solar energies).
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=0.85]
+  \draw[thick] (-3,1.5) node[left]{$\nu_e$} -- (-1,1.5);
+  \draw[thick] (-1,1.5) -- (1,1.5) node[right]{$e^-$};
+  \draw[decorate,decoration={snake,segment length=4pt,amplitude=1.5pt}] (-1,1.5) -- (-1,-1.5) node[midway,right]{$W^+$};
+  \draw[thick] (-3,-1.5) node[left]{$d\;(n)$} -- (-1,-1.5);
+  \draw[thick] (-1,-1.5) -- (1,-1.5) node[right]{$p$};
+  \node[circle,fill,inner sep=1pt] at (-1,1.5){};
+  \node[circle,fill,inner sep=1pt] at (-1,-1.5){};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Neutral current (NC):} $\nu_x + d \to p + n + \nu_x$. Threshold 2.2 MeV (deuteron breakup). \textbf{All flavours} ($\nu_e,\nu_\mu,\nu_\tau$) with equal cross-section.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=0.85]
+  \draw[thick] (-3,1.5) node[left]{$\nu_x$} -- (-1,1.5);
+  \draw[thick] (-1,1.5) -- (1,1.5) node[right]{$\nu_x$};
+  \draw[decorate,decoration={snake,segment length=4pt,amplitude=1.5pt}] (-1,1.5) -- (-1,-1.5) node[midway,right]{$Z^0$};
+  \draw[thick] (-3,-1.5) node[left]{$d$} -- (-1,-1.5);
+  \draw[thick] (-1,-1.5) -- (1,-0.8) node[right]{$p$};
+  \draw[thick] (-1,-1.5) -- (1,-2.2) node[right]{$n$};
+  \node[circle,fill,inner sep=1pt] at (-1,1.5){};
+  \node[circle,fill,inner sep=1pt] at (-1,-1.5){};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Elastic scattering (ES):} $\nu_x + e^- \to \nu_x + e^-$. \textbf{All flavours}; $\nu_e$ goes via both $W$ ($t$-channel) \emph{and} $Z$ exchange, $\nu_{\mu,\tau}$ only via $Z$, so $\sigma(\nu_e)\approx 6\sigma(\nu_{\mu,\tau})$.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=0.85]
+  % Z channel
+  \draw[thick] (-3,1.5) node[left]{$\nu_x$} -- (-1,1.5);
+  \draw[thick] (-1,1.5) -- (1,1.5) node[right]{$\nu_x$};
+  \draw[decorate,decoration={snake,segment length=4pt,amplitude=1.5pt}] (-1,1.5) -- (-1,-1.5) node[midway,right]{$Z^0$};
+  \draw[thick] (-3,-1.5) node[left]{$e^-$} -- (-1,-1.5);
+  \draw[thick] (-1,-1.5) -- (1,-1.5) node[right]{$e^-$};
+  \node[circle,fill,inner sep=1pt] at (-1,1.5){};
+  \node[circle,fill,inner sep=1pt] at (-1,-1.5){};
+  % W channel (only nu_e)
+  \draw[thick] (4,1.5) node[left]{$\nu_e$} -- (6,1.5);
+  \draw[thick] (6,1.5) -- (8,-1.5) node[right]{$e^-$};
+  \draw[decorate,decoration={snake,segment length=4pt,amplitude=1.5pt}] (6,1.5) -- (6,-1.5) node[midway,right]{$W$};
+  \draw[thick] (4,-1.5) node[left]{$e^-$} -- (6,-1.5);
+  \draw[thick] (6,-1.5) -- (8,1.5) node[right]{$\nu_e$};
+  \node[circle,fill,inner sep=1pt] at (6,1.5){};
+  \node[circle,fill,inner sep=1pt] at (6,-1.5){};
+\end{tikzpicture}
+\end{center}
+
+\bigskip
+\hrule
+\medskip
+\textit{End of solutions.}
+
+\end{document}

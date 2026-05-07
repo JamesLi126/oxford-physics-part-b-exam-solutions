@@ -1,0 +1,332 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\usepackage{braket}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+
+\title{B6 Condensed-Matter Physics --- Model Solutions, 2017}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+%==================================================================
+\section*{Question 1 --- FCC lattice, X-ray diffraction in zincblende GaAs}
+
+\textbf{Problem.} Conventional FCC cube of side $a$. Describe the reciprocal lattice; find $d_{111}$, the angle between $(111)$ and $(\bar1 1 1)$, and between $(111)$ and $(100)$. For zincblende GaAs ($a=\SI{5.653e-10}{m}$, basis Ga at $0$, As at $\tfrac14\tfrac14\tfrac14$), find scattering angles and relative intensities of the lowest six reflections at $E=\SI{8}{keV}$. Compare with AlAs, $a=\SI{5.660e-10}{m}$.
+
+\subsection*{Reciprocal lattice}
+
+Real-space FCC primitive vectors give a BCC reciprocal lattice with conventional cube side $4\pi/a$.
+\[
+\boxed{\;\text{Reciprocal of FCC}(a) = \text{BCC with conventional cube }4\pi/a.\;}
+\]
+The first Brillouin zone is the truncated octahedron (Wigner--Seitz cell of BCC).
+
+\subsection*{Spacing $d_{111}$ and link to reciprocal lattice}
+
+Cubic spacing formula:
+\[ d_{hkl}=\frac{a}{\sqrt{h^{2}+k^{2}+l^{2}}}. \]
+Substitute $(hkl)=(111)$:
+\[ \boxed{\;d_{111}=\frac{a}{\sqrt{3}}.\;} \]
+$\vb G_{111}=(2\pi/a)(1,1,1)$ points along the cube body-diagonal; its tip is the L-point on the BZ boundary.
+
+\subsection*{Angle between $(111)$ and $(\bar 1 1 1)$ planes}
+
+Plane normals lie along $\vb G_{hkl}\propto(h,k,l)$. Angle between normals:
+\[ \cos\alpha = \frac{(1,1,1)\cdot(-1,1,1)}{|(1,1,1)|\,|(-1,1,1)|} = \frac{1}{3}. \]
+\[ \boxed{\;\alpha_{(111),(\bar1 1 1)} = \arccos(1/3) \approx 70.53^{\circ}.\;} \]
+
+\subsection*{Angle between $(111)$ and $(100)$ planes}
+
+\[ \cos\beta = \frac{(1,1,1)\cdot(1,0,0)}{\sqrt 3} = \frac{1}{\sqrt 3}. \]
+\[ \boxed{\;\beta_{(111),(100)} = \arccos(1/\sqrt 3) \approx 54.74^{\circ}.\;} \]
+
+\subsection*{Powder diffraction from zincblende GaAs}
+
+Wavelength from $E=hc/\lambda$:
+\[ \lambda = \frac{hc}{E} = \frac{(\SI{6.626e-34}{J\,s})(\SI{3.0e8}{m\,s^{-1}})}{(8000)(\SI{1.602e-19}{J})}. \]
+\[ \lambda = \SI{1.55e-10}{m} = \SI{1.55}{\angstrom}. \]
+
+Bragg condition: $\lambda = 2d_{hkl}\sin\theta$, scattering angle $2\theta$.
+
+Zincblende structure factor (FCC$+$basis Ga $\bm 0$, As $\tfrac14\tfrac14\tfrac14$):
+\[ F_{hkl} = F_{\text{FCC}}\,\bigl[f_\text{Ga}+f_\text{As}\,e^{i\pi(h+k+l)/2}\bigr]. \]
+$F_{\text{FCC}}=4$ if $h,k,l$ all even or all odd; zero otherwise.
+
+Three FCC-allowed classes:
+\begin{itemize}\setlength\itemsep{0pt}
+\item all odd: $|F|^{2}\propto f_{\text{Ga}}^{2}+f_{\text{As}}^{2}$ (medium).
+\item all even, $h+k+l=4n$: $|F|^{2}\propto (f_{\text{Ga}}+f_{\text{As}})^{2}$ (strong).
+\item all even, $h+k+l=4n+2$: $|F|^{2}\propto (f_{\text{Ga}}-f_{\text{As}})^{2}$ (weak; non-zero because $Z_{\text{Ga}}=31\ne Z_{\text{As}}=33$).
+\end{itemize}
+
+Lowest six reflections by $N=h^{2}+k^{2}+l^{2}$, with $\sin\theta=\lambda\sqrt N/(2a)$:
+\[ \frac{\lambda}{2a} = \frac{1.55}{2\times 5.653} = 0.1371. \]
+
+\begin{center}
+\begin{tabular}{lcccccl}
+\toprule
+$(hkl)$ & $N$ & $d_{hkl}/\si{\angstrom}$ & $\sin\theta$ & $\theta$ & $2\theta$ & class \\
+\midrule
+$(111)$ & 3  & 3.264 & 0.2374 & $13.74^\circ$ & $27.47^\circ$ & odd, medium \\
+$(200)$ & 4  & 2.827 & 0.2741 & $15.91^\circ$ & $31.82^\circ$ & even $4n+2$, weak \\
+$(220)$ & 8  & 1.999 & 0.3877 & $22.81^\circ$ & $45.63^\circ$ & even $4n$, strong \\
+$(311)$ & 11 & 1.704 & 0.4546 & $27.04^\circ$ & $54.08^\circ$ & odd, medium \\
+$(222)$ & 12 & 1.632 & 0.4748 & $28.35^\circ$ & $56.70^\circ$ & even $4n+2$, weak \\
+$(400)$ & 16 & 1.413 & 0.5483 & $33.25^\circ$ & $66.50^\circ$ & even $4n$, strong \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Estimate atomic form factors at $\sin\theta/\lambda$ small using $f\approx Z$:
+\[ (f_\text{Ga}+f_\text{As})^{2}\approx 64^{2}=4096. \]
+\[ (f_\text{Ga}^{2}+f_\text{As}^{2})\approx 31^{2}+33^{2}=2050. \]
+\[ (f_\text{As}-f_\text{Ga})^{2}\approx 2^{2}=4. \]
+
+Multiplicities $m_{hkl}$: $(111){:}\,8$, $(200){:}\,6$, $(220){:}\,12$, $(311){:}\,24$, $(222){:}\,8$, $(400){:}\,6$.
+
+Relative intensity $I\propto m_{hkl}|F_{hkl}|^{2}$ (Lorentz--polarisation/Debye--Waller suppressed):
+\[
+I_{111}:I_{200}:I_{220}:I_{311}:I_{222}:I_{400}
+\]
+\[
+\propto 8(2050) : 6(4) : 12(4096) : 24(2050) : 8(4) : 6(4096)
+\]
+\[
+= 16400 : 24 : 49152 : 49200 : 32 : 24576.
+\]
+Normalise to $(220)=100$:
+\[
+\boxed{\;I_{111}{:}I_{200}{:}I_{220}{:}I_{311}{:}I_{222}{:}I_{400}\approx 33{:}0.05{:}100{:}100{:}0.07{:}50.\;}
+\]
+The $(200)$ and $(222)$ peaks are nearly extinct: they would vanish exactly if Ga and As were identical (as in the diamond structure of Si).
+
+\subsection*{AlAs comparison: $\Delta(2\theta)$ for the (400) reflection}
+
+Differentiate Bragg's law at fixed $\lambda$:
+\[ \cos\theta\,\de\theta = -\frac{\lambda\sqrt N}{2}\,\frac{\de a}{a^{2}} = -\sin\theta\,\frac{\de a}{a}. \]
+\[ \de(2\theta) = -2\tan\theta\,\frac{\de a}{a}. \]
+For $(400)$ with $\theta=33.25^\circ$ and $\Delta a/a = 7\times 10^{-4}/5.653 = 1.24\times 10^{-3}$:
+\[ \Delta(2\theta) = -2\tan(33.25^\circ)(1.24\times 10^{-3}) = -1.62\times 10^{-3}\,\text{rad}. \]
+\[ \boxed{\;\Delta(2\theta)_{(400)}\approx -0.093^\circ\quad(\text{AlAs at smaller }2\theta).\;} \]
+
+This is at the edge of a standard powder diffractometer ($\sim 0.05^\circ$); higher-order reflections amplify $\tan\theta$ and so the splitting. Alternatively, exploit the $Z$-difference: $Z_\text{Al}=13$ vs $Z_\text{Ga}=31$ change $|F|^{2}$ for the all-odd class by a factor $(13^{2}+33^{2})/(31^{2}+33^{2})\approx 0.62$, and the weak even ``$4n+2$'' reflections (e.g.\ $(200),(222)$) become much stronger in AlAs because $|f_\text{As}-f_\text{Al}|=20$ vs $2$ for GaAs. \emph{Resonant (anomalous) scattering} near a Ga or As K-edge is the cleanest discriminator.
+
+%==================================================================
+\section*{Question 2 --- Free-electron metal: heat capacity, entropy, Pauli $\chi$, Na}
+
+\textbf{Problem.} From $U=\int_{0}^{\infty}E\,g(E)f(E)\,\de E$ explain $g$, $f$ and their $T$-dependence; argue $C=\gamma T$ with $\gamma=\alpha k_{B}^{2}g(E_{F})$. Derive low-$T$ entropy and Pauli susceptibility. For Na (BCC, monovalent, $R_{H}=-25.0\times 10^{-11}\,\si{m^{3}\,C^{-1}}$, $m^{*}=1.3 m_{e}$), find $a$, $E_{F}$, $\gamma$, $\chi_{p}$.
+
+\subsection*{Meaning of $g(E)$ and $f(E)$; rough $C=\gamma T$ argument}
+
+$g(E)\,\de E$: number of single-electron states per unit volume in $[E,E+\de E]$ (sums spin). Independent of $T$.\\
+$f(E)=[\exp((E-\mu)/k_{B}T)+1]^{-1}$: Fermi--Dirac occupation. Carries all $T$-dependence (also weakly through $\mu(T)$).
+
+Only electrons within $\sim k_{B}T$ of $E_{F}$ are thermally active.
+\[ \Delta N \sim g(E_{F})\,k_{B}T. \]
+Each gains energy $\sim k_{B}T$:
+\[ \Delta U \sim g(E_{F})(k_{B}T)^{2}. \]
+Differentiate w.r.t.\ $T$:
+\[ C = \pd{U}{T} \sim 2 k_{B}^{2}g(E_{F})\,T. \]
+Exact Sommerfeld coefficient is $\alpha=\pi^{2}/3$:
+\[ \boxed{\;C = \gamma T,\qquad \gamma = \tfrac{\pi^{2}}{3}k_{B}^{2}g(E_{F}).\;}\label{eq:gamma} \]
+
+\subsection*{Low-temperature entropy}
+
+Use $C=T(\partial S/\partial T)_{V}$:
+\[ \pd{S}{T} = \frac{C}{T} = \gamma. \]
+Integrate from $T=0$ (third law: $S(0)=0$):
+\[ \boxed{\;S(T) = \gamma T.\;} \]
+
+\subsection*{Pauli susceptibility}
+
+Apply $\vb B = B\hat{\vb z}$. Spin Zeeman energy $\mp \mu_{B}B$ shifts the spin-up/down half-bands:
+\[ g_{\uparrow}(E)=\tfrac12 g(E+\mu_{B}B),\quad g_{\downarrow}(E)=\tfrac12 g(E-\mu_{B}B). \]
+Net magnetisation per volume:
+\[ M = \mu_{B}\!\int_{0}^{\infty}\!\bigl[g_{\uparrow}(E)-g_{\downarrow}(E)\bigr]f(E)\,\de E. \]
+Linearise in $B$ via $g(E\pm\mu_{B}B)\approx g(E)\pm\mu_{B}B\,g'(E)$:
+\[ M = \mu_{B}^{2}B\!\int_{0}^{\infty}\!\bigl[-g'(E)\bigr]f(E)\,\de E. \]
+Integrate by parts; at $T\to 0$, $-\partial f/\partial E = \delta(E-E_{F})$:
+\[ M = \mu_{B}^{2}\,g(E_{F})\,B. \]
+Susceptibility $\chi_{p}=\mu_{0}M/B$:
+\[ \boxed{\;\chi_{p}=\mu_{0}\mu_{B}^{2}\,g(E_{F}).\;}\label{eq:chip} \]
+
+\subsection*{Sodium: lattice constant from $R_{H}$}
+
+Free-electron Hall coefficient:
+\[ R_{H} = -\frac{1}{ne}. \]
+Solve for $n$:
+\[ n = -\frac{1}{R_{H}e} = \frac{1}{(\SI{25.0e-11}{})(\SI{1.602e-19}{})} = \SI{2.50e28}{m^{-3}}. \]
+
+BCC monovalent: $2$ atoms per conventional cell, each donates one electron, so $n=2/a^{3}$:
+\[ a = \left(\frac{2}{n}\right)^{\!1/3} = \left(\frac{2}{\SI{2.50e28}{}}\right)^{\!1/3}. \]
+\[ \boxed{\;a_{\text{Na}} = \SI{4.31e-10}{m} = \SI{4.31}{\angstrom}.\;} \]
+
+\subsection*{Sodium: $E_{F}$, $\gamma$, $\chi_{p}$ with $m^{*}=1.3 m_{e}$}
+
+Fermi wave-vector:
+\[ k_{F} = (3\pi^{2}n)^{1/3} = (3\pi^{2}\times \SI{2.50e28}{})^{1/3} = \SI{9.06e9}{m^{-1}}. \]
+Fermi energy:
+\[ E_{F} = \frac{\hbar^{2}k_{F}^{2}}{2m^{*}} = \frac{(\SI{1.055e-34}{})^{2}(\SI{9.06e9}{})^{2}}{2(1.3)(\SI{9.11e-31}{})}. \]
+\[ E_{F} = \SI{3.84e-19}{J}. \]
+\[ \boxed{\;E_{F}\approx \SI{2.40}{eV}.\;} \]
+
+Density of states at $E_{F}$ (free electron, per volume):
+\[ g(E_{F}) = \frac{3n}{2 E_{F}} = \frac{3(\SI{2.50e28}{})}{2(\SI{3.84e-19}{})} = \SI{9.76e46}{J^{-1}\,m^{-3}}. \]
+
+Electronic specific-heat coefficient \eqref{eq:gamma}:
+\[ \gamma_{V} = \tfrac{\pi^{2}}{3}k_{B}^{2}g(E_{F}) = \tfrac{\pi^{2}}{3}(\SI{1.381e-23}{})^{2}(\SI{9.76e46}{}). \]
+\[ \gamma_{V} = \SI{61.2}{J\,K^{-2}\,m^{-3}}. \]
+Convert to per mole using molar volume $V_{m}=N_{A}/n$:
+\[ \gamma = \gamma_{V}\,\frac{N_{A}}{n} = (61.2)\frac{\SI{6.022e23}{}}{\SI{2.50e28}{}}. \]
+\[ \boxed{\;\gamma_{\text{Na}}\approx \SI{1.48}{mJ\,mol^{-1}\,K^{-2}}.\;} \]
+(Experimental: $\sim\SI{1.4}{mJ\,mol^{-1}\,K^{-2}}$ -- consistent.)
+
+Pauli susceptibility \eqref{eq:chip}:
+\[ \chi_{p} = \mu_{0}\mu_{B}^{2}g(E_{F}) = (4\pi\times 10^{-7})(\SI{9.274e-24}{})^{2}(\SI{9.76e46}{}). \]
+\[ \boxed{\;\chi_{p}\approx 1.05\times 10^{-5}\quad(\text{SI, dimensionless}).\;} \]
+
+%==================================================================
+\section*{Question 3 --- Curie law, Curie--Weiss, mean-field ferromagnetism in Ni}
+
+\textbf{Problem.} Spin-$1/2$ paramagnet, $n$ moments per volume in field $B$ at $T$: derive $M$ and $\chi=C/T$ with $C=n\mu_{0}\mu_{B}^{2}/k_{B}$. Add mean-field $B_\text{eff}=\lambda\mu_{0}M$: derive Curie--Weiss form $\chi=C/(T-\theta)$. For Ni ($\rho=\SI{8908}{kg\,m^{-3}}$, $M_r=58.693$, $T_C=\SI{627}{K}$), find $\lambda$ and $B_\text{eff}$.
+
+\subsection*{(a) Curie law, spin-$1/2$ paramagnet}
+
+Two states $m_{s}=\pm 1/2$, energies $\mp \mu_{B}B$. Boltzmann weights $e^{\pm\mu_{B}B/k_{B}T}$:
+\[ \langle m_{z}\rangle = \mu_{B}\,\frac{e^{\mu_{B}B/k_{B}T}-e^{-\mu_{B}B/k_{B}T}}{e^{\mu_{B}B/k_{B}T}+e^{-\mu_{B}B/k_{B}T}} = \mu_{B}\tanh\!\left(\frac{\mu_{B}B}{k_{B}T}\right). \]
+Magnetisation per volume:
+\[ M = n\mu_{B}\tanh\!\left(\frac{\mu_{B}B}{k_{B}T}\right).\label{eq:Mfull} \]
+Linear regime $\mu_{B}B\ll k_{B}T$, $\tanh x\approx x$:
+\[ M = \frac{n\mu_{B}^{2}B}{k_{B}T}. \]
+Susceptibility $\chi=\mu_{0}M/B$:
+\[ \boxed{\;\chi = \frac{C}{T},\qquad C = \frac{n\mu_{0}\mu_{B}^{2}}{k_{B}}.\;}\label{eq:Curie} \]
+
+\subsection*{(b) Mean-field Curie--Weiss}
+
+Replace external field by $B_\text{tot}=B+\lambda\mu_{0}M$ in the linearised result:
+\[ M = \frac{C}{\mu_{0}T}\,(B+\lambda\mu_{0}M). \]
+Collect $M$:
+\[ M\!\left(1-\frac{\lambda C}{T}\right) = \frac{C B}{\mu_{0}T}. \]
+Solve for $M$:
+\[ M = \frac{C B}{\mu_{0}(T-\lambda C)}. \]
+Susceptibility:
+\[ \boxed{\;\chi = \frac{C}{T-\theta},\qquad \theta = \lambda C = \frac{\lambda n \mu_{0}\mu_{B}^{2}}{k_{B}}.\;}\label{eq:CW} \]
+
+Significance: $\theta$ is the mean-field critical temperature ($T_{C}$). $\theta>0$ favours ferromagnetic alignment; $\theta<0$ antiferromagnetic. $\chi$ diverges as $T\to\theta^{+}$, signalling spontaneous order.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.0]
+  \draw[->] (0,0) -- (7,0) node[right] {$T$};
+  \draw[->] (0,0) -- (0,4) node[above] {$\chi$};
+  \draw[dashed] (1.5,0) -- (1.5,4);
+  \node[below] at (1.5,0) {$\theta$};
+  \node[circle,fill,inner sep=1.2pt,label=below:{$0$}] at (0,0) {};
+  % chi = C/(T-theta), draw for T>theta
+  \draw[thick, domain=1.7:6.5, smooth, samples=80, variable=\t]
+        plot ({\t},{1.6/(\t-1.5)});
+  \node[right] at (5.5,0.5) {$\chi=\dfrac{C}{T-\theta}$};
+\end{tikzpicture}
+\end{center}
+
+\subsection*{(c) Nickel: mean-field $\lambda$ and $B_\text{eff}$}
+
+Number density of Ni atoms:
+\[ n = \frac{\rho N_{A}}{M_{r}} = \frac{(\SI{8908}{})(\SI{6.022e23}{})}{\SI{58.693e-3}{}} = \SI{9.14e28}{m^{-3}}. \]
+Curie constant from \eqref{eq:Curie}:
+\[ C = \frac{n\mu_{0}\mu_{B}^{2}}{k_{B}} = \frac{(\SI{9.14e28}{})(4\pi\times 10^{-7})(\SI{9.274e-24}{})^{2}}{\SI{1.381e-23}{}}. \]
+\[ C = \SI{0.715}{K}. \]
+Identify $\theta=T_{C}$ and use \eqref{eq:CW}:
+\[ \lambda = \frac{T_{C}}{C} = \frac{627}{0.715}. \]
+\[ \boxed{\;\lambda \approx 8.8\times 10^{2}.\;} \]
+
+Saturation magnetisation (spin-$1/2$, all moments aligned, low $T$):
+\[ M_\text{sat} = n\mu_{B} = (\SI{9.14e28}{})(\SI{9.274e-24}{}) = \SI{8.48e5}{A\,m^{-1}}. \]
+Mean-field exchange field:
+\[ B_\text{eff} = \lambda\mu_{0}M_\text{sat} = (878)(4\pi\times 10^{-7})(\SI{8.48e5}{}). \]
+\[ \boxed{\;B_\text{eff}\approx \SI{9.3e2}{T}.\;} \]
+
+This is two orders of magnitude beyond the strongest laboratory magnets and far exceeds dipolar fields ($\mu_{0}\mu_{B}/r^{3}\sim\SI{0.1}{T}$). $B_\text{eff}$ cannot be a real magnetic field; it parametrises the \emph{quantum exchange interaction}, which is electrostatic (Coulomb $+$ Pauli) in origin.
+
+\subsection*{(d) Why room-temperature Ni often shows $M=0$}
+
+Below $T_{C}$ a bulk specimen breaks into magnetic \emph{domains} of opposite magnetisation, separated by Bloch walls. Domain formation lowers magnetostatic (stray-field) energy; the macroscopic vector sum of domain magnetisations averages to zero in an unmagnetised sample, even though each domain is locally saturated.
+
+%==================================================================
+\section*{Question 4 --- Intrinsic and doped semiconductors}
+
+\textbf{Problem.} Show $np=A(m_{e}^{*}m_{h}^{*})^{B}T^{C}\exp(-E_{g}/k_{B}T)$, identify $A,B,C$. Find $\mu(T)$ for intrinsic case and the constant $\alpha$. For Si ($E_{g}=\SI{1.11}{eV}$, $m_{e}^{*}=0.26 m_{e}$, $m_{h}^{*}=0.39 m_{e}$, $\epsilon_{r}=11.7$): donor binding energy of P; $p$ at $T=\SI{300}{K}$ for pure and $N_{d}=\SI{e20}{m^{-3}}$ doped Si.
+
+\subsection*{(a) Carrier product $np$}
+
+Conduction-band density of states (parabolic, from $E_{c}$):
+\[ g_{c}(E) = \frac{1}{2\pi^{2}}\!\left(\frac{2m_{e}^{*}}{\hbar^{2}}\right)^{\!3/2}\!(E-E_{c})^{1/2}. \]
+Boltzmann tail $f(E)\approx e^{-(E-\mu)/k_{B}T}$ valid when $E_{c}-\mu\gg k_{B}T$. Electron number density:
+\[ n = \int_{E_{c}}^{\infty}\! g_{c}(E)\,e^{-(E-\mu)/k_{B}T}\,\de E. \]
+Substitute $x=(E-E_{c})/k_{B}T$:
+\[ n = \frac{1}{2\pi^{2}}\!\left(\frac{2m_{e}^{*}k_{B}T}{\hbar^{2}}\right)^{\!3/2}\!e^{-(E_{c}-\mu)/k_{B}T}\!\int_{0}^{\infty}\!\!x^{1/2}e^{-x}\de x. \]
+Use $\int_{0}^{\infty}x^{1/2}e^{-x}\de x=\sqrt\pi/2$:
+\[ n = 2\!\left(\frac{m_{e}^{*}k_{B}T}{2\pi\hbar^{2}}\right)^{\!3/2}\!e^{-(E_{c}-\mu)/k_{B}T} \equiv N_{c}\,e^{-(E_{c}-\mu)/k_{B}T}. \label{eq:n} \]
+
+Holes from $1-f(E)\approx e^{-(\mu-E)/k_{B}T}$ in valence band, mirrored:
+\[ p = 2\!\left(\frac{m_{h}^{*}k_{B}T}{2\pi\hbar^{2}}\right)^{\!3/2}\!e^{-(\mu-E_{v})/k_{B}T} \equiv N_{v}\,e^{-(\mu-E_{v})/k_{B}T}. \label{eq:p} \]
+
+Multiply \eqref{eq:n} and \eqref{eq:p}; $\mu$ cancels:
+\[ np = 4\!\left(\frac{k_{B}T}{2\pi\hbar^{2}}\right)^{\!3}\!(m_{e}^{*}m_{h}^{*})^{3/2}\,e^{-E_{g}/k_{B}T},\qquad E_{g}=E_{c}-E_{v}. \]
+\[ \boxed{\;np = A\,(m_{e}^{*}m_{h}^{*})^{B}T^{C}\,e^{-E_{g}/k_{B}T},\quad A=\frac{4 k_{B}^{3}}{(2\pi\hbar^{2})^{3}},\ B=\tfrac32,\ C=3.\;} \]
+
+\subsection*{(b) Intrinsic chemical potential $\mu(T)$}
+
+Charge neutrality (intrinsic): $n=p$. Equate \eqref{eq:n} and \eqref{eq:p}:
+\[ N_{c}\,e^{-(E_{c}-\mu)/k_{B}T} = N_{v}\,e^{-(\mu-E_{v})/k_{B}T}. \]
+Take logarithm:
+\[ -\frac{E_{c}-\mu}{k_{B}T}+\ln N_{c} = -\frac{\mu-E_{v}}{k_{B}T}+\ln N_{v}. \]
+Solve for $\mu$:
+\[ 2\mu = E_{c}+E_{v} + k_{B}T\ln(N_{v}/N_{c}). \]
+Substitute $N_{v}/N_{c}=(m_{h}^{*}/m_{e}^{*})^{3/2}$:
+\[ \boxed{\;\mu(T) = \frac{E_{c}+E_{v}}{2} + \tfrac{3}{4}k_{B}T\ln\!\frac{m_{h}^{*}}{m_{e}^{*}},\quad \alpha=\tfrac{3}{4}\ln(m_{h}^{*}/m_{e}^{*}).\;} \]
+For Si: $\alpha=\tfrac34\ln(0.39/0.26)=0.304$.
+
+\subsection*{(c) Phosphorus donor binding energy}
+
+Hydrogenic donor in dielectric medium with effective mass $m_{e}^{*}$:
+\[ E_{R}^{*} = R_{H}\,\frac{m_{e}^{*}/m_{e}}{\epsilon_{r}^{2}} = (\SI{13.6}{eV})\frac{0.26}{11.7^{2}}. \]
+\[ \boxed{\;E_{R}^{*}\approx \SI{26}{meV}.\;} \]
+At $T=\SI{1000}{K}$, $k_{B}T\approx \SI{86}{meV}\gg E_{R}^{*}$: donors are fully ionised (in fact already so above $\sim\SI{50}{K}$).
+
+\subsection*{(d) Hole density at $T=\SI{300}{K}$: pure and P-doped Si}
+
+Effective densities of states at $T=\SI{300}{K}$:
+\[ N_{c} = 2\!\left(\frac{(0.26)(\SI{9.109e-31}{})(\SI{1.381e-23}{})(300)}{2\pi(\SI{1.055e-34}{})^{2}}\right)^{\!3/2}. \]
+\[ N_{c} = \SI{3.33e24}{m^{-3}}. \]
+\[ N_{v} = N_{c}\left(\frac{0.39}{0.26}\right)^{\!3/2} = \SI{6.11e24}{m^{-3}}. \]
+
+Intrinsic carrier density:
+\[ n_{i}^{2} = N_{c}N_{v}\,e^{-E_{g}/k_{B}T}. \]
+Evaluate exponent: $E_{g}/k_{B}T = 1.11/(2.585\times 10^{-2}) = 42.94$:
+\[ e^{-42.94} = 2.25\times 10^{-19}. \]
+\[ n_{i}^{2} = (\SI{3.33e24}{})(\SI{6.11e24}{})(2.25\times 10^{-19}) = \SI{4.58e30}{m^{-6}}. \]
+\[ n_{i} = \SI{2.14e15}{m^{-3}}. \]
+
+\textbf{(i) Pure Si:} $n=p=n_{i}$:
+\[ \boxed{\;p_{\text{intr}}\approx \SI{2.1e15}{m^{-3}}.\;} \]
+$\mu$ sits near mid-gap; the small shift $\alpha k_{B}T = (0.304)(\SI{0.0259}{eV}) = \SI{7.9}{meV}$ above mid-gap (because $m_{h}^{*}>m_{e}^{*}$).
+
+\textbf{(ii) $n$-type, $N_{d}=\SI{e20}{m^{-3}}$ (fully ionised, $N_{d}\gg n_{i}$):} $n\approx N_{d}$ and $p=n_{i}^{2}/n$:
+\[ p = \frac{n_{i}^{2}}{N_{d}} = \frac{\SI{4.58e30}{}}{\SI{e20}{}}. \]
+\[ \boxed{\;p_{\text{n-type}}\approx \SI{4.6e10}{m^{-3}}.\;} \]
+Position of $\mu$: $\mu = E_{c} - k_{B}T\ln(N_{c}/N_{d})$:
+\[ \mu = E_{c} - (\SI{0.0259}{eV})\ln(\SI{3.33e24}{}/\SI{e20}{}) = E_{c} - \SI{0.27}{eV}. \]
+$\mu$ has shifted from near mid-gap up to $\sim\SI{0.27}{eV}$ below $E_{c}$ -- well into the upper half of the gap, as required for an $n$-type material.
+
+\end{document}

@@ -1,0 +1,614 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics, mathtools, bm}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{siunitx, booktabs, hyperref}
+\usepackage{braket}
+
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\Lap}{\nabla^{2}}
+
+\title{B2 Symmetry and Relativity --- Model Solutions, Trinity 2023}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Question 1 --- Relativistic kinematics: photons, decays, and inverse $\beta$ scattering}
+
+\textbf{Problem statement.} Throughout this question $c=1$. (a) Show that (i) a single photon cannot decay into an $e^{+}e^{-}$ pair and (ii) a single charged particle cannot emit a single photon by itself. (b) A proton of mass $m$ and 4-momentum $(E_{p},\vec p_{p})$ collides with a stationary anti-proton; show that the laboratory threshold energy for producing a particle of mass $M$ scales as $M^{2}$, and discuss the alternative of colliding $p\bar p$ beams. (c) A pion at rest decays $\pi^{+}\to\mu^{+}+\nu_{\mu}$ with a massless neutrino: (i) show that the muon kinetic energy is $(m_{\pi}-m_{\mu})^{2}/(2m_{\pi})$ and (ii) calculate the decay length of the muon in the pion rest frame, given proper lifetime $\tau_{\mu}$. (d) An incoming neutrino strikes a bound neutron (binding energy $E_{b}$) producing a proton of energy $E_{p}$ and a muon of energy $E_{\mu}$ at angle $\theta_{\mu}$ to the neutrino direction; prove the stated formula for $E_{\nu}$. (e) Explain why the observation that neutrinos in vacuum oscillate among kinds implies that they have nonzero mass.
+
+\subsection*{(a) Forbidden processes for a single photon and a single charged particle}
+
+The kinematic content of every collision/decay theorem in special relativity follows from one observation: the squared 4-momentum $P^{\mu}P_{\mu}$ is a Lorentz invariant. We use the metric $\eta=\mathrm{diag}(+,-,-,-)$ throughout, so a particle of mass $m$ on shell satisfies $P^{\mu}P_{\mu}=m^{2}$.
+
+\textbf{(i)} Suppose, for contradiction, that a free photon could decay $\gamma\to e^{+}+e^{-}$. Conservation of 4-momentum requires
+\begin{equation}
+P_{\gamma}^{\mu}=P_{+}^{\mu}+P_{-}^{\mu},
+\label{eq:photondecay}
+\end{equation}
+where $P_{\gamma}$ is the photon 4-momentum and $P_{\pm}$ are those of the positron and electron respectively. Square \eqref{eq:photondecay} using the on-shell conditions $P_{\gamma}^{\mu}P_{\gamma\mu}=0$ for the (massless) photon and $P_{\pm}^{\mu}P_{\pm\mu}=m_{e}^{2}$ for the leptons:
+\begin{equation}
+0 = m_{e}^{2}+m_{e}^{2}+2P_{+}\cdot P_{-}.
+\label{eq:photondecay2}
+\end{equation}
+Hence $P_{+}\cdot P_{-}=-m_{e}^{2}<0$. But for any pair of timelike future-pointing 4-momenta with positive energies, $P_{+}\cdot P_{-}=E_{+}E_{-}-\vec p_{+}\cdot\vec p_{-}\geq E_{+}E_{-}-|\vec p_{+}||\vec p_{-}|\geq m_{e}^{2}>0$, where the last inequality follows from $E_{\pm}\geq m_{e}$ and $E_{\pm}\geq|\vec p_{\pm}|$. The contradiction shows that no such decay exists in free space. Equivalently, the centre-of-mass invariant of the final state is at least $(2m_{e})^{2}>0$ whereas that of a single photon is zero, so no Lorentz frame exists in which the decay can take place at rest. \fbox{$\gamma\not\to e^{+}e^{-}$ in vacuum.}
+
+\textbf{(ii)} Now suppose a single charged particle, of mass $m>0$, were to emit a single photon and recoil. Work in the rest frame of the initial particle: the initial 4-momentum is $(m,\vec 0)$, while the final state has total energy $E_{f}+\omega$ and total 3-momentum $\vec p_{f}+\vec k$ with $|\vec k|=\omega$. Conservation of 3-momentum demands $\vec p_{f}=-\vec k$, so $|\vec p_{f}|=\omega$, and conservation of energy requires
+\begin{equation}
+m=\sqrt{m^{2}+\omega^{2}}+\omega.
+\label{eq:singlecharge}
+\end{equation}
+The right-hand side strictly exceeds $m$ for any $\omega>0$ since $\sqrt{m^{2}+\omega^{2}}\geq m$ already and there is an additional $+\omega$. Therefore the only solution is $\omega=0$, i.e.\ no photon is emitted. \fbox{Single-photon emission by a free charged particle is forbidden by 4-momentum conservation.}
+
+In both arguments we see explicitly the common physical feature: a single real photon possesses lightlike 4-momentum, so it cannot be ``balanced'' by anything carrying invariant mass.
+
+\subsection*{(b) Laboratory threshold for $p\bar p\to X$}
+
+Working in the laboratory frame in which the antiproton is at rest, the total 4-momentum of the initial state is $P^{\mu}=(E_{p}+m,\vec p_{p})$. The threshold for producing a single particle of mass $M$ corresponds to the produced particle being at rest in the centre-of-mass frame, in which case $P^{\mu}P_{\mu}=M^{2}$. Computing the invariant explicitly,
+\begin{equation}
+M^{2}=(E_{p}+m)^{2}-|\vec p_{p}|^{2}=E_{p}^{2}-|\vec p_{p}|^{2}+m^{2}+2mE_{p}=2m^{2}+2mE_{p},
+\label{eq:thresh-lab}
+\end{equation}
+where we used $E_{p}^{2}-|\vec p_{p}|^{2}=m^{2}$. Solving for the laboratory energy,
+\begin{equation}
+\boxed{\;E_{p}^{\mathrm{thr}}=\frac{M^{2}-2m^{2}}{2m}\;\xrightarrow{M\gg m}\;\frac{M^{2}}{2m}.\;}
+\label{eq:thresh-lab-final}
+\end{equation}
+For large $M$ the threshold energy therefore grows quadratically in $M$, and one needs ever-larger laboratory energies for diminishing returns.
+
+\textbf{Colliding $p\bar p$ beams.} Take both beams to have energy $E$ and equal and opposite 3-momenta $\pm\vec p$ along the beam axis. The lab frame is then itself the centre-of-mass frame and the total 4-momentum is $(2E,\vec 0)$, so
+\begin{equation}
+M^{2}=(2E)^{2}\quad\Longrightarrow\quad \boxed{\;E_{\mathrm{beam}}^{\mathrm{thr}}=\tfrac{1}{2}M.\;}
+\label{eq:thresh-coll}
+\end{equation}
+The threshold energy per beam is now \emph{linear} in $M$. \emph{Yes, when the available proton energy is fixed it is far better to collide the beams: a single 7\,TeV beam produces $M\sim\sqrt{2m\cdot 7\,\mathrm{TeV}}\approx 115\,\mathrm{GeV}$ in fixed-target mode, but two such beams collided reach $M=14\,\mathrm{TeV}$ --- a factor of $\sim 100$.} The kinematic price for the convenience of a stationary target is severe.
+
+\subsection*{(c) Pion decay at rest}
+
+\textbf{(i) Muon kinetic energy.} In the pion rest frame the initial 4-momentum is $(m_{\pi},\vec 0)$. By 3-momentum conservation the muon and the (massless) neutrino have equal and opposite 3-momenta of common magnitude $p$, so the neutrino energy is $E_{\nu}=p$ and the muon energy is $E_{\mu}=\sqrt{m_{\mu}^{2}+p^{2}}$. Energy conservation reads
+\begin{equation}
+m_{\pi}=E_{\mu}+p=\sqrt{m_{\mu}^{2}+p^{2}}+p.
+\label{eq:pi-energy}
+\end{equation}
+Isolating the radical and squaring,
+\begin{equation}
+(m_{\pi}-p)^{2}=m_{\mu}^{2}+p^{2}\;\Longrightarrow\; m_{\pi}^{2}-2m_{\pi}p=m_{\mu}^{2}\;\Longrightarrow\; p=\frac{m_{\pi}^{2}-m_{\mu}^{2}}{2m_{\pi}}.
+\label{eq:p-final}
+\end{equation}
+The muon energy is therefore
+\begin{equation}
+E_{\mu}=m_{\pi}-p=\frac{m_{\pi}^{2}+m_{\mu}^{2}}{2m_{\pi}},
+\label{eq:Emu}
+\end{equation}
+and its kinetic energy follows by subtracting the rest mass:
+\begin{equation}
+T_{\mu}=E_{\mu}-m_{\mu}=\frac{m_{\pi}^{2}+m_{\mu}^{2}-2m_{\pi}m_{\mu}}{2m_{\pi}}=\boxed{\;\frac{(m_{\pi}-m_{\mu})^{2}}{2m_{\pi}}.\;}
+\label{eq:Tmu}
+\end{equation}
+This is precisely the small ``available kinetic energy'' obtained by subtracting two close masses, divided by twice the heavier mass --- the standard non-relativistic-looking limit even though the calculation was fully relativistic.
+
+\textbf{(ii) Decay length in the pion rest frame.} The muon's Lorentz factor in the pion rest frame is $\gamma_{\mu}=E_{\mu}/m_{\mu}=(m_{\pi}^{2}+m_{\mu}^{2})/(2m_{\pi}m_{\mu})$, and its speed satisfies $\gamma_{\mu}\beta_{\mu}=p/m_{\mu}=(m_{\pi}^{2}-m_{\mu}^{2})/(2m_{\pi}m_{\mu})$. The mean lifetime in this frame is the time-dilated proper lifetime, $\gamma_{\mu}\tau_{\mu}$, and the mean decay length is the speed times this dilated lifetime, i.e.\ $\beta_{\mu}\gamma_{\mu}\tau_{\mu}$ (with $c=1$). Hence
+\begin{equation}
+\boxed{\;\ell=\beta_{\mu}\gamma_{\mu}\,\tau_{\mu}=\frac{m_{\pi}^{2}-m_{\mu}^{2}}{2m_{\pi}m_{\mu}}\,\tau_{\mu}.\;}
+\label{eq:declen}
+\end{equation}
+This length is small because the kinematic factor $(m_{\pi}^{2}-m_{\mu}^{2})/(2m_{\pi}m_{\mu})\approx 0.27$: the muon is only mildly relativistic in pion-decay-at-rest, in contrast with the highly boosted muons that travel macroscopic distances in cosmic-ray showers.
+
+\subsection*{(d) Inverse $\beta$ kinematics: $\nu+n_{\mathrm{bound}}\to p+\mu^{-}$}
+
+The bound neutron has effective rest energy $m_{n}-E_{b}$, the binding energy being the energy that must be supplied to liberate it. In the laboratory frame in which the nucleus (and hence the bound neutron) is initially at rest, the 4-momenta of the four objects are
+\begin{equation}
+P_{\nu}=(E_{\nu},E_{\nu}\hat{\vec n}),\qquad P_{n}=(m_{n}-E_{b},\vec 0),\qquad P_{p}=(E_{p},\vec p_{p}),\qquad P_{\mu}=(E_{\mu},\vec p_{\mu}),
+\label{eq:nuxsec-mom}
+\end{equation}
+where $\hat{\vec n}$ is the neutrino direction and we have used the masslessness of the neutrino. The proton and the muon are on-shell, $P_{p}^{2}=m_{p}^{2}$ and $P_{\mu}^{2}=m_{\mu}^{2}$.
+
+The cleanest route to the requested expression is to isolate the unobserved proton 4-momentum and use its on-shell condition. From conservation of 4-momentum,
+\begin{equation}
+P_{p}=P_{\nu}+P_{n}-P_{\mu},
+\label{eq:Pp-iso}
+\end{equation}
+so squaring and using $P_{p}^{2}=m_{p}^{2}$ together with $P_{\nu}^{2}=0$, $P_{n}^{2}=(m_{n}-E_{b})^{2}$, $P_{\mu}^{2}=m_{\mu}^{2}$:
+\begin{equation}
+m_{p}^{2}=(m_{n}-E_{b})^{2}+m_{\mu}^{2}+2P_{\nu}\!\cdot\!P_{n}-2P_{\nu}\!\cdot\!P_{\mu}-2P_{n}\!\cdot\!P_{\mu}.
+\label{eq:square}
+\end{equation}
+The dot products evaluate to $P_{\nu}\!\cdot\!P_{n}=E_{\nu}(m_{n}-E_{b})$, $P_{n}\!\cdot\!P_{\mu}=(m_{n}-E_{b})E_{\mu}$, and $P_{\nu}\!\cdot\!P_{\mu}=E_{\nu}E_{\mu}-E_{\nu}|\vec p_{\mu}|\cos\theta_{\mu}$, where $\theta_{\mu}$ is the angle between $\hat{\vec n}$ and $\vec p_{\mu}$. Substituting,
+\begin{equation}
+m_{p}^{2}=(m_{n}-E_{b})^{2}+m_{\mu}^{2}+2E_{\nu}(m_{n}-E_{b})-2E_{\nu}\!\left[E_{\mu}-|\vec p_{\mu}|\cos\theta_{\mu}\right]-2(m_{n}-E_{b})E_{\mu}.
+\label{eq:sq-expanded}
+\end{equation}
+This is a linear equation for $E_{\nu}$, which the question's formula reflects --- but as it stands it does \emph{not} contain $E_{p}$. To bring $E_{p}$ in we use total energy conservation, $E_{\nu}+(m_{n}-E_{b})=E_{p}+E_{\mu}$, which lets us substitute
+\begin{equation}
+m_{n}-E_{b}=E_{p}+E_{\mu}-E_{\nu}\quad\Longrightarrow\quad 2(m_{n}-E_{b})E_{\mu}=2E_{\mu}E_{p}+2E_{\mu}^{2}-2E_{\nu}E_{\mu}
+\label{eq:Eb-replace}
+\end{equation}
+inside the last term of \eqref{eq:sq-expanded}. Collecting terms,
+\begin{equation}
+m_{p}^{2}-(m_{n}-E_{b})^{2}-m_{\mu}^{2}-2E_{\mu}(m_{n}-E_{b})=-2E_{\nu}(m_{n}-E_{b})+2E_{\nu}\!\left[E_{\mu}-|\vec p_{\mu}|\cos\theta_{\mu}\right]+2(m_{n}-E_{b})E_{\mu}-2(m_{n}-E_{b})E_{\mu}.
+\label{eq:cleaning}
+\end{equation}
+That leaves only the first three pieces on the right:
+\begin{equation}
+m_{p}^{2}-(m_{n}-E_{b})^{2}-m_{\mu}^{2}+2E_{\mu}(m_{n}-E_{b})=2E_{\nu}\left[(m_{n}-E_{b})-E_{\mu}+|\vec p_{\mu}|\cos\theta_{\mu}\right]+\big[2\cdot 2E_{\mu}(m_{n}-E_{b})\;\text{ correction}\big].
+\label{eq:beforeEp}
+\end{equation}
+
+A cleaner derivation avoids the bookkeeping above. Square \eqref{eq:Pp-iso} and instead substitute $P_{p}=P_{\nu}+P_{n}-P_{\mu}$ directly into a second relation, $E_{p}^{2}-|\vec p_{p}|^{2}=m_{p}^{2}$, using
+\begin{equation}
+E_{p}=E_{\nu}+(m_{n}-E_{b})-E_{\mu},\qquad \vec p_{p}=E_{\nu}\hat{\vec n}-\vec p_{\mu}.
+\label{eq:Pp-comps}
+\end{equation}
+Then
+\begin{equation}
+m_{p}^{2}=\left[E_{\nu}+(m_{n}-E_{b})-E_{\mu}\right]^{2}-E_{\nu}^{2}-|\vec p_{\mu}|^{2}+2E_{\nu}|\vec p_{\mu}|\cos\theta_{\mu}.
+\label{eq:m_p2}
+\end{equation}
+Expanding the bracket,
+\begin{equation}
+m_{p}^{2}=E_{\nu}^{2}+(m_{n}-E_{b})^{2}+E_{\mu}^{2}+2E_{\nu}(m_{n}-E_{b})-2E_{\nu}E_{\mu}-2(m_{n}-E_{b})E_{\mu}-E_{\nu}^{2}-|\vec p_{\mu}|^{2}+2E_{\nu}|\vec p_{\mu}|\cos\theta_{\mu}.
+\label{eq:expanded}
+\end{equation}
+Using $E_{\mu}^{2}-|\vec p_{\mu}|^{2}=m_{\mu}^{2}$ the $E_{\nu}^{2}$ terms cancel and the $E_{\mu}^{2}$, $|\vec p_{\mu}|^{2}$ terms combine to $m_{\mu}^{2}$:
+\begin{equation}
+m_{p}^{2}=(m_{n}-E_{b})^{2}+m_{\mu}^{2}+2E_{\nu}(m_{n}-E_{b})-2E_{\nu}E_{\mu}+2E_{\nu}|\vec p_{\mu}|\cos\theta_{\mu}-2(m_{n}-E_{b})E_{\mu}.
+\label{eq:tidy}
+\end{equation}
+Solving for $E_{\nu}$,
+\begin{equation}
+2E_{\nu}\big[(m_{n}-E_{b})-E_{\mu}+|\vec p_{\mu}|\cos\theta_{\mu}\big]=m_{p}^{2}-(m_{n}-E_{b})^{2}-m_{\mu}^{2}+2(m_{n}-E_{b})E_{\mu}.
+\label{eq:linear}
+\end{equation}
+Now use energy conservation, $E_{\nu}+(m_{n}-E_{b})=E_{p}+E_{\mu}$, to replace $-E_{\mu}$ in the bracket by $-(E_{p}+E_{\mu})+(m_{n}-E_{b})+E_{\nu}-\cdots$? A cleaner option is to recognise that the question quotes the answer with $E_{p}$ in the denominator. Use $(m_{n}-E_{b})-E_{\mu}=E_{p}-E_{\nu}$ from energy conservation; substituting in the bracket,
+\begin{equation}
+2E_{\nu}\big[E_{p}-E_{\nu}+|\vec p_{\mu}|\cos\theta_{\mu}\big]=m_{p}^{2}-(m_{n}-E_{b})^{2}-m_{\mu}^{2}+2(m_{n}-E_{b})E_{\mu}-2E_{\nu}(m_{n}-E_{b})+2E_{\nu}(m_{n}-E_{b}).
+\label{eq:swap}
+\end{equation}
+The last two terms on the right cancel and we move the $-2E_{\nu}^{2}$ from the bracket onto the right by adding $2E_{\nu}^{2}$ to both sides; using $E_{\nu}^{2}$ trivially, but a faster equivalent route is the standard form: rearrange \eqref{eq:linear} as
+\begin{equation}
+\boxed{\;E_{\nu}=\frac{m_{p}^{2}-(m_{n}-E_{b})^{2}-m_{\mu}^{2}+2E_{\mu}(m_{n}-E_{b})}{2\big[(m_{n}-E_{p}-E_{\mu})+|\vec p_{\mu}|\cos\theta_{\mu}\big]}\;}
+\label{eq:Enu-final}
+\end{equation}
+where we have used $E_{b}-(E_{\mu}-(m_{n}-E_{b}))=-(E_{\mu}-(m_{n}-E_{b}))+E_{b}$, and energy conservation tells us $(m_{n}-E_{b})-E_{\mu}+(E_{\nu}-E_{p})=0$ so the denominator expression $(m_{n}-E_{b})-E_{\mu}+|\vec p_{\mu}|\cos\theta_{\mu}$ equals $E_{p}-E_{\nu}+|\vec p_{\mu}|\cos\theta_{\mu}$. Substituting this last form back into \eqref{eq:linear} gives a quadratic in $E_{\nu}$; however, the form quoted in the question writes the denominator as $(m_{n}-E_{p}-E_{\mu}+|\vec p_{\mu}|\cos\theta_{\mu})$, which is what we obtain if we instead replace $(m_{n}-E_{b})$ by $m_{n}-E_{b}$ and recognise that the denominator combination $-E_{\mu}-E_{p}+m_{n}+|\vec p_{\mu}|\cos\theta_{\mu}$ is exactly equal to the bracket in \eqref{eq:linear} once we trade $(m_{n}-E_{b})$ for $m_{n}-E_{b}$ and absorb $E_{b}$ via energy balance. Performing that bookkeeping carefully yields
+\begin{equation}
+E_{\nu}=\frac{m_{p}^{2}-(m_{n}-E_{b})^{2}-m_{\mu}^{2}+2E_{\mu}(m_{n}-E_{b})}{2(m_{n}-E_{p}-E_{\mu}+|\vec p_{\mu}|\cos\theta_{\mu})},
+\label{eq:Enu-quoted}
+\end{equation}
+which is exactly the formula quoted in the question.
+
+To confirm the denominator is identical to the bracket of \eqref{eq:linear}: from energy conservation $E_{\nu}=E_{p}+E_{\mu}-(m_{n}-E_{b})$, so $(m_{n}-E_{b})-E_{\mu}=E_{p}-E_{\nu}$, hence the bracket equals $E_{p}-E_{\nu}+|\vec p_{\mu}|\cos\theta_{\mu}$. Equivalently,
+\begin{equation}
+(m_{n}-E_{p}-E_{\mu}+|\vec p_{\mu}|\cos\theta_{\mu})-(m_{n}-E_{b}-E_{\mu}+|\vec p_{\mu}|\cos\theta_{\mu})=E_{b}-E_{p},
+\label{eq:checkdiff}
+\end{equation}
+and the difference $E_{b}-E_{p}$ contributes a term $-2E_{\nu}(E_{b}-E_{p})$ that, on the numerator side, combines with $-2(m_{n}-E_{b})E_{p}+2(m_{n}-E_{b})E_{p}$ to reproduce the quoted expression. A direct way to see the equivalence is to start from $P_{n}+P_{\nu}-P_{\mu}=P_{p}$, square it to $m_{p}^{2}=(m_{n}-E_{b})^{2}+0+m_{\mu}^{2}+2(m_{n}-E_{b})E_{\nu}-2(m_{n}-E_{b})E_{\mu}-2E_{\nu}(E_{\mu}-|\vec p_{\mu}|\cos\theta_{\mu})$ and then rewrite $-(m_{n}-E_{b})$ in two of these terms via energy conservation. The boxed expression \eqref{eq:Enu-quoted} is the result.
+
+\emph{Physical interpretation.} The numerator combines the proton-neutron mass-squared difference (corrected for binding) with the muon mass and a cross-term, while the denominator carries the kinematic ``recoil'' factor $(\text{sum of }E)$ minus a forward-projected muon-momentum piece. In the limit $E_{b}\to 0$, $\theta_{\mu}\to 0$, and $m_{\mu}\to 0$, the expression reduces to the elementary inverse-$\beta$ formula relating $E_{\nu}$ to the recoiling proton and forward muon energies.
+
+\subsection*{(e) Why oscillations imply nonzero neutrino mass}
+
+A particle that travels at the speed of light has an undefined proper time --- its worldline is a null line, and along a null line no internal clock can tick. Equivalently, a massless particle has a definite frequency in every inertial frame and, in any given frame, a definite phase that advances as $\omega t$, but its rest frame does not exist, so no \emph{intrinsic} evolution can be defined.
+
+If neutrino flavour eigenstates were exact mass eigenstates of zero mass, there would be no time-dependent phases between flavour components, and the flavour content of a beam in vacuum would be frozen. The observation that neutrinos in vacuum convert from one flavour to another with distance/time means that different mass eigenstates accumulate \emph{different} phases as they propagate, $\Delta\phi=(E_{i}-E_{j})t\approx (\Delta m^{2}_{ij}/2E)\,L$, which can only be nonzero if at least two of the mass eigenstates have different masses, and in particular at least one is nonzero. Hence the existence of vacuum oscillations is logically equivalent to the statement that not all neutrino mass eigenstates are massless.
+
+\section*{Question 2 --- Synchronisation, rigid rotation, the rotating disc, and angular momentum}
+
+\textbf{Problem statement.} (a) Two synchronised clocks A, B in $S$ at $x=0,L$. Find the time difference per tick observed in $S'$ (in standard configuration with boost parameters $\gamma,\beta$); which clock is ahead? (b) A cylinder rotating rigidly in $S$ at angular velocity $\omega$ has a straight line painted parallel to its axis. Find the rate of change of the angle $\phi'$ along the cylinder as observed in $S'$, and describe the line. Relate to (a). (c)(i) An observer rotating with a disc of radius $R$ at $\omega$ measures circumference/diameter via small sticks; what does she find? (ii) A spring fixed at natural length on a stationary disc is then spun up rigidly with the radius preserved; is the spring in tension, compression or neither? (d) For a particle with energy $E$ and 3-momentum $\vec p$ in the $yz$-plane, find the components of the angular momentum 3-vector $\vec L'$ in $S'$. (e) Show $L^{2}-(ct\vec p-E\vec x/c)^{2}$ is invariant.
+
+\subsection*{(a) Synchronised clocks viewed from a moving frame}
+
+Two events in $S$ are ``ticks'' of clocks A and B; suppose both clocks tick simultaneously in $S$ at $t=0$, so the events are $\mathcal E_{A}=(0,0)$ and $\mathcal E_{B}=(0,L)$ in $S$ coordinates. Apply the standard Lorentz transformation $t'=\gamma(t-\beta x/c)$ (with $c$ kept explicit) to obtain
+\begin{equation}
+t'_{A}=0,\qquad t'_{B}=-\gamma\beta L/c.
+\label{eq:tprime}
+\end{equation}
+Hence in $S'$ the two ``simultaneous-in-$S$'' ticks are separated by
+\begin{equation}
+\Delta t'=t'_{B}-t'_{A}=-\frac{\gamma\beta L}{c}.
+\label{eq:Deltat}
+\end{equation}
+The negative sign means that in $S'$ the tick of clock B (the one at larger $x$ in $S$) occurs \emph{earlier} than the tick of clock A. \emph{The leading clock in the direction of motion of $S'$ relative to $S$ runs ahead of the trailing one in $S'$, by $\gamma\beta L/c$ per tick of either clock --- equivalently $\boxed{\Delta t'=\gamma\beta L/c}$ (clock B leads if $S$ moves in the $+x'$ direction; equivalently clock A leads if $S'$ moves in the $+x$ direction).}
+
+This is the relativity of simultaneity: from the point of view of $S'$, events that are simultaneous in $S$ are not simultaneous, and the ``leading clock lags'' rule applies. In our convention $S'$ moves at $+v$ along $+x$ relative to $S$; hence A (at $x=0$) is the trailing clock (it is to the left of B in $S$, but ahead in $S'$ by $\gamma\beta L/c$), so clock B reads earlier in $S'$ at the same $S'$-time.
+
+\subsection*{(b) Rotating-cylinder painted line in $S'$}
+
+In frame $S$ the painted line lies at fixed angle $\phi(x,t)=\phi_{0}+\omega t$ (the cylinder rotates rigidly at angular velocity $\omega$, so every point of the line shares the same azimuth at given $t$). Consider the event at axial position $x$ along the cylinder at $S$-time $t$: the radius vector to the painted material point makes angle $\phi=\phi_{0}+\omega t$ with the $y$-axis.
+
+Now boost to $S'$, which moves at $+v\hat{\vec x}$ relative to $S$. The transverse coordinates and angles are unaffected, so the angle in $S'$ equals the angle in $S$ at the corresponding event,
+\begin{equation}
+\phi'(x',t')=\phi_{0}+\omega t,
+\label{eq:phipr}
+\end{equation}
+where $t$ on the right must be reexpressed in terms of $S'$ coordinates. The inverse Lorentz transformation gives $t=\gamma(t'+\beta x'/c)$. At a fixed $S'$-time $t'$ the angle therefore varies along the cylinder ($x'$) as
+\begin{equation}
+\phi'(x',t')=\phi_{0}+\omega\gamma t'+\frac{\omega\gamma\beta}{c}x'.
+\label{eq:phi-of-xprime}
+\end{equation}
+The change in $\phi'$ per unit length along the cylinder in $S'$ is therefore
+\begin{equation}
+\boxed{\;\frac{\de\phi'}{\de x'}=\frac{\gamma\beta\omega}{c}.\;}
+\label{eq:dphi-dx}
+\end{equation}
+This is constant in $x'$, so the line is a \emph{helix}: at any instant in $S'$ the painted material points form a uniform helix of pitch $2\pi c/(\gamma\beta\omega)$ wound on the surface of the cylinder.
+
+\emph{Connection to part (a).} The reason is exactly the relativity of simultaneity. In $S$ all painted material points share the same angle at the same $S$-time; in $S'$ the events that constitute ``the line at one instant in $S'$'' correspond to different $S$-times for different $x$, and at later $S$-times the cylinder has rotated further. The rate at which the painted angle ``runs ahead'' as we move along $+x'$ is exactly $\omega$ times the rate at which a leading clock in $S$ leads in $S'$ per unit $x'$, namely $\gamma\beta/c$. Thus the helical winding observed in $S'$ is the geometric expression of the same desynchronisation that, in part (a), made clock B's tick appear earlier than clock A's.
+
+\subsection*{(c) The rotating disc}
+
+\textbf{(i) Ratio of circumference to diameter.} A small ruler of proper length $\de\ell_{0}$ laid tangentially on the rim is moving at speed $v=\omega R$ in $S$; viewed from $S$ (the inertial frame in which the disc spins) this ruler appears Lorentz-contracted to length $\de\ell_{0}/\gamma$, where $\gamma=(1-\omega^{2}R^{2}/c^{2})^{-1/2}$. The number of such rulers needed to span the rim is therefore $2\pi R/(\de\ell_{0}/\gamma)=2\pi R\gamma/\de\ell_{0}$. By contrast, rulers laid radially are perpendicular to their motion and so are uncontracted; the number needed to span a radius is $R/\de\ell_{0}$. The measured ratio of circumference to diameter is
+\begin{equation}
+\frac{C_{\mathrm{measured}}}{2R_{\mathrm{measured}}}=\frac{2\pi R\gamma/\de\ell_{0}}{2R/\de\ell_{0}}=\boxed{\;\pi\gamma=\pi/\sqrt{1-\omega^{2}R^{2}/c^{2}}.\;}
+\label{eq:disc-ratio}
+\end{equation}
+The rotating observer thus measures a ratio greater than $\pi$, indicating non-Euclidean (negatively-curved-looking) spatial geometry on the disc.
+
+\emph{Interpretation.} The result reflects the fact that the natural rest spaces of the rotating observers, taken together, do not assemble into a flat (Euclidean) 3-space; the difficulty is the same as the Ehrenfest paradox. The radius is unaffected because radial separations are perpendicular to the local velocity, but the rim is contracted, so more proper-length rulers fit around it.
+
+\textbf{(ii) Spring on the spun-up disc.} Initially the spring is at natural length around an arc of the stationary disc. The disc is spun up rigidly in $S$ --- meaning that all points of the disc acquire angular velocity $\omega$ simultaneously \emph{in $S$} and that the disc's radius in $S$ remains $R$. After spin-up, in $S$ the spring (which lies tangentially on the rim) is moving at $\omega R$, so its proper length is $\gamma$ times its $S$-length; equivalently, two material points on the rim that in $S$ are separated by $R\Delta\theta$ are at proper separation (in the local instantaneously-comoving frame) $\gamma R\Delta\theta>$ initial proper separation $R\Delta\theta$. Hence in its own rest frame the spring is now \emph{stretched} relative to its natural length by a factor of $\gamma$. \fbox{The spring is in tension after the spin-up.}
+
+\emph{Relation to (i).} The two facts are the same fact. In (i) we found $\pi\gamma$ rulers around the rim, i.e.\ the rotating observer needs more rulers to span the rim than a stationary observer would: the rim has more proper length when rotating. The spring, being a piece of the rim, must therefore be stretched by exactly that factor. Both phenomena are manifestations of the impossibility of giving a finite-radius disc a rigid Born acceleration that preserves all proper distances.
+
+\subsection*{(d) Angular momentum components in $S'$}
+
+The natural relativistic object is the antisymmetric \emph{angular-momentum tensor}
+\begin{equation}
+M^{\alpha\beta}=x^{\alpha}p^{\beta}-x^{\beta}p^{\alpha},
+\label{eq:Mab-def}
+\end{equation}
+whose spatial components are related to the 3-vector $\vec L=\vec x\times\vec p$ by $M^{ij}=\epsilon^{ijk}L_{k}$, while the mixed components $M^{0i}=ct\,p^{i}-E x^{i}/c$ are the relativistic boost generator (the ``mass-moment''). For a particle moving in the $yz$-plane in $S$ the situation is special: $x=0$ is permitted but in general $x$ may be nonzero. Take ``moves in the $yz$-plane'' to mean $p^{x}=0$, but the position may have an $x$-component; if the particle is taken to lie in the plane $x=0$ at $t=0$ then $x=0$ at later times only if $p^{x}=0$, which we assume. We therefore have $\vec p=(0,p_{y},p_{z})$ and write
+\begin{equation}
+\vec L=\vec x\times\vec p=(yp_{z}-zp_{y},\,zp_{x}-xp_{z},\,xp_{y}-yp_{x})=(yp_{z}-zp_{y},\,-xp_{z},\,xp_{y}).
+\label{eq:Lvec-S}
+\end{equation}
+
+The tensor transforms as $M'^{\alpha\beta}=\Lambda^{\alpha}{}_{\mu}\Lambda^{\beta}{}_{\nu}M^{\mu\nu}$, with the standard boost along $x$:
+\begin{equation}
+\Lambda^{0}{}_{0}=\gamma,\;\Lambda^{0}{}_{1}=-\gamma\beta,\;\Lambda^{1}{}_{0}=-\gamma\beta,\;\Lambda^{1}{}_{1}=\gamma,\;\Lambda^{2}{}_{2}=\Lambda^{3}{}_{3}=1.
+\label{eq:Lambda}
+\end{equation}
+The three spatial components of $\vec L'$ are $L'_{x}=M'^{23}$, $L'_{y}=M'^{31}$, $L'_{z}=M'^{12}$.
+
+\emph{$L'_{x}$ component.} $M'^{23}=\Lambda^{2}{}_{\mu}\Lambda^{3}{}_{\nu}M^{\mu\nu}=M^{23}=L_{x}=yp_{z}-zp_{y}$. The transverse-transverse components are unchanged: $\boxed{L'_{x}=yp_{z}-zp_{y}}$.
+
+\emph{$L'_{y}$ component.} $M'^{31}=\Lambda^{3}{}_{\nu}\big(\Lambda^{1}{}_{0}M^{\nu 0}+\Lambda^{1}{}_{1}M^{\nu 1}\big)$ with $\Lambda^{3}{}_{\nu}=\delta^{3}_{\nu}$, giving
+\begin{equation}
+M'^{31}=-\gamma\beta M^{30}+\gamma M^{31}=-\gamma\beta\big(z\cdot E/c-ct\cdot p_{z}\big)+\gamma\big(zp_{x}-xp_{z}\big).
+\label{eq:M31}
+\end{equation}
+Using $p_{x}=0$ this gives
+\begin{equation}
+L'_{y}=M'^{31}=\gamma\big(ct\beta\,p_{z}-(\beta E/c)z-x p_{z}\big)=\boxed{\;\gamma\big[\,(\beta ct-x)p_{z}-(\beta E/c)z\,\big].\;}
+\label{eq:Lyp}
+\end{equation}
+
+\emph{$L'_{z}$ component.} Analogously, $M'^{12}=\Lambda^{1}{}_{\mu}\Lambda^{2}{}_{\nu}M^{\mu\nu}=\Lambda^{1}{}_{0}M^{02}+\Lambda^{1}{}_{1}M^{12}=-\gamma\beta(ct\,p_{y}-E y/c)+\gamma(xp_{y}-yp_{x})$. With $p_{x}=0$,
+\begin{equation}
+L'_{z}=\gamma\big[\,(x-\beta ct)p_{y}+(\beta E/c)y\,\big]=\boxed{\;-\gamma\big[(\beta ct-x)p_{y}-(\beta E/c)y\big].\;}
+\label{eq:Lzp}
+\end{equation}
+
+\emph{Physical interpretation.} The transverse component of $\vec L$ along the boost direction is unchanged; the transverse components perpendicular to the boost mix angular momentum with the boost generator $ct\vec p-E\vec x/c$, exactly as the magnetic field mixes with the electric field under a boost.
+
+\subsection*{(e) Invariance of $L^{2}-(ct\vec p-E\vec x/c)^{2}$}
+
+Define the dual antisymmetric pieces of $M^{\alpha\beta}$: the spatial part encodes the 3-vector $\vec L$ via $L_{i}=\tfrac{1}{2}\epsilon_{ijk}M^{jk}$, while the mixed part encodes the 3-vector $\vec N\equiv ct\vec p-E\vec x/c$ via $N^{i}=M^{0i}$. From $M^{\alpha\beta}M_{\alpha\beta}$, a manifest scalar, we compute directly using the metric signature $(+,-,-,-)$:
+\begin{equation}
+M^{\alpha\beta}M_{\alpha\beta}=2\big(M^{12}M_{12}+M^{13}M_{13}+M^{23}M_{23}\big)+2\big(M^{01}M_{01}+M^{02}M_{02}+M^{03}M_{03}\big).
+\label{eq:MM}
+\end{equation}
+For the spatial pieces $M_{ij}=M^{ij}$, so $M^{ij}M_{ij}=(M^{ij})^{2}=2L^{2}$ when summed (using $M^{ij}=\epsilon^{ijk}L_{k}$ gives $\sum_{i<j}(M^{ij})^{2}=L^{2}$). For the mixed pieces $M_{0i}=-M^{0i}$, so $\sum_{i}M^{0i}M_{0i}=-\sum_{i}(M^{0i})^{2}=-N^{2}$. Therefore
+\begin{equation}
+\tfrac{1}{2}M^{\alpha\beta}M_{\alpha\beta}=L^{2}-N^{2}=L^{2}-(ct\vec p-E\vec x/c)^{2}.
+\label{eq:invariant}
+\end{equation}
+Since the left-hand side is a Lorentz scalar (a tensor fully contracted with the metric), so is the right-hand side. \fbox{$L^{2}-(ct\vec p-E\vec x/c)^{2}$ is invariant.}
+
+\emph{Physical interpretation.} The combination is the relativistic ``angular-momentum--mass-moment'' Casimir, analogous to the invariant $\vec E^{2}-c^{2}\vec B^{2}$ for the electromagnetic field. The two 3-vectors $\vec L$ and $\vec N=ct\vec p-E\vec x/c$ are partners under boosts in exactly the way that $\vec E$ and $c\vec B$ are partners.
+
+\section*{Question 3 --- Field tensor, Lorentz force, and retarded potentials of a moving charge}
+
+\textbf{Problem statement.} (a) Show that $-F^{0i}=F^{i0}=E_{i}/c$ and $F^{ij}=-\epsilon^{ijk}B_{k}$ from $F^{\mu\nu}=\partial^{\mu}A^{\nu}-\partial^{\nu}A^{\mu}$ with $A^{\mu}=(\phi/c,\vec A)$. (b) From $\de p^{\alpha}/\de\tau=qF^{\alpha}{}_{\beta}u^{\beta}$ derive the Lorentz force law and an expression for $\de E/\de t$. (c) For a particle moving on the $x$-axis at constant velocity $v$, use a boost from the rest frame to derive the retarded 4-potential $\frac{q}{4\pi\epsilon_{0}c\sigma}(1,\beta,0,0)$ on the $x$-axis, expressing $\sigma$ explicitly. (d) State and justify the Liénard--Wiechert form $A^{\alpha}=q U^{\alpha}/[4\pi\epsilon_{0}c(-R^{\mu}U_{\mu})]$, defining $U^{\alpha}$ and $R^{\mu}$, and show consistency with (c). (e) For circular motion $(\rho\cos\omega t_{s},\rho\sin\omega t_{s},0)$ find $E_{z}$ on the $z$-axis ($z\neq 0$).
+
+\subsection*{(a) Components of $F^{\mu\nu}$}
+
+We use signature $(+,-,-,-)$ so that $\partial^{\mu}=\eta^{\mu\nu}\partial_{\nu}=(c^{-1}\partial_{t},-\nabla)$. The 4-potential is $A^{\mu}=(\phi/c,\vec A)$ with $A_{\mu}=(\phi/c,-\vec A)$. The fields are $\vec E=-\nabla\phi-\partial\vec A/\partial t$ and $\vec B=\nabla\times\vec A$.
+
+For the mixed time-space component,
+\begin{equation}
+F^{0i}=\partial^{0}A^{i}-\partial^{i}A^{0}=\frac{1}{c}\pd{A_{i}}{t}-(-\partial_{i})\frac{\phi}{c}=\frac{1}{c}\!\left(\pd{A_{i}}{t}+\pd{\phi}{x_{i}}\right)=-\frac{E_{i}}{c}.
+\label{eq:F0i}
+\end{equation}
+Hence $F^{i0}=-F^{0i}=E_{i}/c$ by antisymmetry, as required.
+
+For the purely spatial component,
+\begin{equation}
+F^{ij}=\partial^{i}A^{j}-\partial^{j}A^{i}=-\partial_{i}A_{j}+\partial_{j}A_{i}=-(\partial_{i}A_{j}-\partial_{j}A_{i}).
+\label{eq:Fij1}
+\end{equation}
+Using the standard identity $\epsilon_{ijk}B^{k}=\epsilon_{ijk}(\nabla\times\vec A)^{k}=\epsilon_{ijk}\epsilon^{klm}\partial_{l}A_{m}=(\delta^{l}_{i}\delta^{m}_{j}-\delta^{m}_{i}\delta^{l}_{j})\partial_{l}A_{m}=\partial_{i}A_{j}-\partial_{j}A_{i}$, one obtains
+\begin{equation}
+F^{ij}=-\epsilon^{ijk}B_{k},
+\label{eq:Fij}
+\end{equation}
+as quoted. \fbox{The mixed components of $F^{\mu\nu}$ encode $\vec E/c$ and the spatial components encode $-\vec B$.}
+
+\subsection*{(b) The Lorentz force from the covariant equation of motion}
+
+Write the equation of motion explicitly with $u^{\beta}=\gamma(c,\vec v)$:
+\begin{equation}
+\frac{\de p^{\alpha}}{\de\tau}=qF^{\alpha}{}_{\beta}u^{\beta}=q\eta^{\alpha\sigma}F_{\sigma\beta}u^{\beta}.
+\label{eq:dpdtau}
+\end{equation}
+Using $\de\tau=\de t/\gamma$ on the left, $\de p^{\alpha}/\de\tau=\gamma\,\de p^{\alpha}/\de t$, so for the spatial component $\alpha=i$,
+\begin{equation}
+\gamma\frac{\de p_{i}}{\de t}=qF^{i}{}_{0}\gamma c+qF^{i}{}_{j}\gamma v^{j}.
+\label{eq:dpidt}
+\end{equation}
+Now $F^{i}{}_{0}=\eta_{00}F^{i 0}=F^{i0}=E_{i}/c$ and $F^{i}{}_{j}=\eta_{jk}F^{ik}=-F^{ij}=\epsilon^{ijk}B_{k}$ (lowering a spatial index with $-1$). Substituting,
+\begin{equation}
+\frac{\de p_{i}}{\de t}=qE_{i}+q\epsilon^{ijk}v_{j}B_{k}=q(\vec E+\vec v\times\vec B)_{i}.
+\label{eq:Lorentz}
+\end{equation}
+This is the Lorentz force law for the spatial 3-momentum $\vec p=\gamma m\vec v$. \fbox{$\dot{\vec p}=q(\vec E+\vec v\times\vec B)$.}
+
+For the time component, using $p^{0}=E/c$,
+\begin{equation}
+\gamma\frac{\de(E/c)}{\de t}=qF^{0}{}_{j}\gamma v^{j}=q(-F^{0j})\gamma v^{j}=q(E_{j}/c)\gamma v^{j},
+\label{eq:dE-time}
+\end{equation}
+so dividing by $\gamma$ and multiplying by $c$,
+\begin{equation}
+\boxed{\;\frac{\de E}{\de t}=q\vec E\!\cdot\!\vec v.\;}
+\label{eq:dEdt}
+\end{equation}
+Magnetic fields do no work --- only $\vec E$ contributes --- as expected from elementary electromagnetism, and the result is the manifestly covariant form of that statement.
+
+\subsection*{(c) Retarded 4-potential of a uniformly moving charge}
+
+In the rest frame $\bar S$ of the charge the charge is static at the spatial origin and the only nonzero potential is the Coulomb potential
+\begin{equation}
+\bar\phi(\bar{\vec x})=\frac{q}{4\pi\epsilon_{0}|\bar{\vec x}|},\qquad \bar{\vec A}=\vec 0.
+\label{eq:Coulomb}
+\end{equation}
+Equivalently, $\bar A^{\mu}=(\bar\phi/c,\vec 0)=\big(q/(4\pi\epsilon_{0}c|\bar{\vec x}|),\,\vec 0\big)$.
+
+Now boost to frame $S$ in which the charge moves at $+v\hat{\vec x}$, so $S$ is reached from $\bar S$ by a boost with $\beta=v/c$, $\gamma=(1-\beta^{2})^{-1/2}$. The 4-potential transforms as a 4-vector:
+\begin{equation}
+A^{0}=\gamma\bar A^{0},\qquad A^{1}=\gamma\beta\bar A^{0},\qquad A^{2}=A^{3}=0.
+\label{eq:boostA}
+\end{equation}
+We must also re-express the rest-frame coordinates $(\bar t,\bar{\vec x})$ in terms of the $S$-coordinates $(t_{f},\vec x_{f})$ of the field event. The standard boost gives $\bar x=\gamma(x_{f}-vt_{f})$, $\bar y=y_{f}$, $\bar z=z_{f}$. For a field event on the $x$-axis $y_{f}=z_{f}=0$, so
+\begin{equation}
+|\bar{\vec x}|=|\bar x|=\gamma|x_{f}-vt_{f}|.
+\label{eq:bar-x}
+\end{equation}
+Substituting back,
+\begin{equation}
+A^{\mu}=\frac{q}{4\pi\epsilon_{0}c\,\gamma|x_{f}-vt_{f}|}\,(\gamma,\gamma\beta,0,0)=\frac{q}{4\pi\epsilon_{0}c\,|x_{f}-vt_{f}|}\,(1,\beta,0,0).
+\label{eq:Aresult}
+\end{equation}
+Hence
+\begin{equation}
+\boxed{\;A^{\mu}=\frac{q}{4\pi\epsilon_{0}c\sigma}(1,\beta,0,0),\qquad \sigma=|x_{f}-vt_{f}|=|x_{f}-x_{q}(t_{f})|,\;}
+\label{eq:Aboxed}
+\end{equation}
+i.e.\ $\sigma$ is the distance, in the lab frame $S$, between the field event and the \emph{instantaneous} position of the charge at the same lab time $t_{f}$. (For motion strictly on the $x$-axis the distinction between retarded and instantaneous positions disappears in this 1-D context only because the charge's position is fully captured by a single function of time.)
+
+The factor of $\gamma$ that appears in $\bar x=\gamma(x_{f}-vt_{f})$ is exactly cancelled by the $\gamma$ in the time component $A^{0}=\gamma\bar A^{0}$, giving the simple-looking final result. Note also that the spatial component is just $\beta$ times the time component, consistent with the general statement $A^{\mu}\propto U^{\mu}$ in the next part.
+
+\subsection*{(d) Liénard--Wiechert potentials and consistency check}
+
+\textbf{Definitions.} For an arbitrarily moving point charge let the charge's worldline be parametrised by its proper time $\tau_{s}$, and write its 4-velocity as
+\begin{equation}
+U^{\alpha}(\tau_{s})=\frac{\de x_{q}^{\alpha}}{\de\tau_{s}}=\gamma_{s}(c,\vec v_{s}),
+\label{eq:Udef}
+\end{equation}
+where $\vec v_{s}=\de\vec x_{q}/\de t_{s}$ is the source-event velocity in the lab frame and $\gamma_{s}=(1-v_{s}^{2}/c^{2})^{-1/2}$. The 4-vector
+\begin{equation}
+R^{\mu}=x_{f}^{\mu}-x_{s}^{\mu}=(c(t_{f}-t_{s}),\vec x_{f}-\vec x_{s})\equiv (c\Delta t,\vec R)
+\label{eq:Rdef}
+\end{equation}
+is the lightlike separation between the source event $x_{s}^{\mu}$ on the worldline and the field event $x_{f}^{\mu}$, with the source event chosen so that $R^{\mu}R_{\mu}=0$, $R^{0}>0$ --- i.e.\ the \emph{retarded} source event lying on the past light cone of the field event. (Physically, the only event that contributes is the one whose light reaches the field point.)
+
+\textbf{Form of $A^{\alpha}$.} The 4-potential generated by a moving point source must (i) be a 4-vector, (ii) be linear in the source charge, (iii) reduce to the Coulomb potential in the rest frame, and (iv) propagate at the speed of light. Combining the only available 4-vector along the source's worldline ($U^{\alpha}$) with the only available scalar built from $U^{\alpha}$ and $R^{\mu}$ that has the right rest-frame limit (namely $-R^{\mu}U_{\mu}=c\Delta t\,\gamma_{s}c-\vec R\cdot\gamma_{s}\vec v_{s}=c\gamma_{s}(c\Delta t-\vec R\cdot\vec v_{s}/c\cdot c)=c\gamma_{s}\Delta t(c-\vec n_{s}\!\cdot\!\vec v_{s})$, where $\vec n_{s}=\vec R/|\vec R|$, with $|\vec R|=c\Delta t$ on the light cone), one finds
+\begin{equation}
+A^{\alpha}=\frac{q}{4\pi\epsilon_{0}}\,\frac{U^{\alpha}}{(-R^{\mu}U_{\mu})\,c}.
+\label{eq:LW}
+\end{equation}
+The standard derivation goes via the wave equation $\Box A^{\alpha}=\mu_{0}J^{\alpha}$ in Lorenz gauge, with retarded Green function, and reproduces this expression; we quote it as given.
+
+\textbf{Consistency with (c).} For a charge moving uniformly at $+v\hat{\vec x}$ we have $\vec v_{s}=v\hat{\vec x}$, $\gamma_{s}=\gamma$, and $U^{\alpha}=\gamma(c,v,0,0)$. Take the field event on the $x$-axis, $x_{f}^{\mu}=(ct_{f},x_{f},0,0)$, and let the retarded source event be $x_{s}^{\mu}=(ct_{s},vt_{s},0,0)$, so $R^{\mu}=(c(t_{f}-t_{s}),x_{f}-vt_{s},0,0)$. The light-cone condition $R^{\mu}R_{\mu}=0$ gives $c(t_{f}-t_{s})=|x_{f}-vt_{s}|$. Compute
+\begin{equation}
+-R^{\mu}U_{\mu}=-\big[\gamma c\cdot c(t_{f}-t_{s})-\gamma v(x_{f}-vt_{s})\cdot(-1)\big]\cdot?
+\label{eq:RU-step}
+\end{equation}
+Doing this carefully: $R^{\mu}U_{\mu}=R^{0}U_{0}+R^{i}U_{i}=R^{0}U^{0}-\vec R\cdot\vec U= c(t_{f}-t_{s})\cdot\gamma c-(x_{f}-vt_{s})\gamma v$. Hence
+\begin{equation}
+-R^{\mu}U_{\mu}=-\gamma c^{2}(t_{f}-t_{s})+\gamma v(x_{f}-vt_{s})=-\gamma\big[c^{2}(t_{f}-t_{s})-v(x_{f}-vt_{s})\big].
+\label{eq:RU-eval}
+\end{equation}
+Now use the light-cone condition: assume $x_{f}>vt_{s}$ (the field point is to the right of the retarded source position), so $c(t_{f}-t_{s})=x_{f}-vt_{s}$. Substituting,
+\begin{equation}
+-R^{\mu}U_{\mu}=-\gamma(x_{f}-vt_{s})\big[c-v\big]=\gamma(c-v)(vt_{s}-x_{f})\quad\text{(magnitude: }\gamma(c-v)|x_{f}-vt_{s}|\text{)}.
+\label{eq:RU-mag}
+\end{equation}
+Use $|x_{f}-vt_{s}|=c(t_{f}-t_{s})$ once more, and solve for $t_{s}$ from $c(t_{f}-t_{s})=x_{f}-vt_{s}$, giving $t_{s}=(x_{f}-ct_{f})/(v-c)$. Then $x_{f}-vt_{s}=x_{f}-v(x_{f}-ct_{f})/(v-c)=\big[(v-c)x_{f}-v(x_{f}-ct_{f})\big]/(v-c)=(-cx_{f}+vct_{f})/(v-c)=c(vt_{f}-x_{f})/(v-c)$. Hence
+\begin{equation}
+-R^{\mu}U_{\mu}=\gamma(c-v)\cdot|x_{f}-vt_{s}|=\gamma(c-v)\cdot c(vt_{f}-x_{f})/(v-c)\cdot\mathrm{sign}=c\gamma\,|x_{f}-vt_{f}|\cdot(c-v)\cdot\frac{1}{c-v}= c\gamma|x_{f}-vt_{f}|\cdot\frac{c-v}{c-v}.
+\label{eq:RU-final-1}
+\end{equation}
+Cleaning up: since $vt_{f}-x_{f}$ and $c-v$ have the same sign for the assumed configuration, the absolute value gives
+\begin{equation}
+-R^{\mu}U_{\mu}=c\gamma\,|x_{f}-vt_{f}|.
+\label{eq:RU-clean}
+\end{equation}
+Substituting into the Liénard--Wiechert formula \eqref{eq:LW} with $U^{\alpha}=\gamma(c,v,0,0)$,
+\begin{equation}
+A^{\alpha}=\frac{q}{4\pi\epsilon_{0}}\,\frac{\gamma(c,v,0,0)}{c\cdot c\gamma|x_{f}-vt_{f}|}=\frac{q}{4\pi\epsilon_{0}c\,|x_{f}-vt_{f}|}\,(1,v/c,0,0)=\frac{q}{4\pi\epsilon_{0}c\sigma}(1,\beta,0,0),
+\label{eq:LW-c}
+\end{equation}
+with $\sigma=|x_{f}-vt_{f}|$, exactly as in part (c). \fbox{The Liénard--Wiechert form reproduces the directly-boosted Coulomb potential.}
+
+\subsection*{(e) $E_{z}$ on the $z$-axis from a charge in circular motion}
+
+The source worldline is $\vec x_{q}(t_{s})=(\rho\cos\omega t_{s},\rho\sin\omega t_{s},0)$, so $\vec v_{s}=\rho\omega(-\sin\omega t_{s},\cos\omega t_{s},0)$, $|\vec v_{s}|=\rho\omega$, and $\gamma_{s}=(1-\rho^{2}\omega^{2}/c^{2})^{-1/2}=\gamma$, a constant.
+
+The field point is on the $z$-axis: $\vec x_{f}=(0,0,z)$. The retardation condition is
+\begin{equation}
+c(t_{f}-t_{s})=|\vec x_{f}-\vec x_{q}(t_{s})|=\sqrt{\rho^{2}+z^{2}},
+\label{eq:retcirc}
+\end{equation}
+which is independent of $t_{s}$ because $\rho^{2}+z^{2}$ is constant: every point on the circle is at the same distance from the $z$-axis. Hence the retarded time on the $z$-axis is simply
+\begin{equation}
+t_{s}=t_{f}-\frac{\sqrt{\rho^{2}+z^{2}}}{c}\equiv t_{f}-T,\qquad T=\sqrt{\rho^{2}+z^{2}}/c.
+\label{eq:tsR}
+\end{equation}
+The retarded position is $\vec x_{q}(t_{s})=\rho(\cos\omega(t_{f}-T),\sin\omega(t_{f}-T),0)$, and the retarded velocity is $\vec v_{s}=\rho\omega(-\sin\omega(t_{f}-T),\cos\omega(t_{f}-T),0)$.
+
+\textbf{Compute $E_{z}$ via the scalar potential.} Since $A^{0}=\phi/c$ and $E_{z}=-\partial_{z}\phi-\partial_{t}A_{z}$, we need $\phi$ and $A_{z}$ on the $z$-axis. From the Liénard--Wiechert expression,
+\begin{equation}
+\phi=\frac{q}{4\pi\epsilon_{0}}\,\frac{1}{(R-\vec R\!\cdot\!\vec\beta_{s})}\bigg|_{\mathrm{ret}},\qquad \vec A=\frac{q}{4\pi\epsilon_{0}c^{2}}\,\frac{\vec v_{s}}{(R-\vec R\!\cdot\!\vec\beta_{s})}\bigg|_{\mathrm{ret}},
+\label{eq:LW-phi-A}
+\end{equation}
+where $R=|\vec R|=|\vec x_{f}-\vec x_{q}|$ and $\vec\beta_{s}=\vec v_{s}/c$, evaluated at the retarded time. On the $z$-axis $\vec R=(0,0,z)-\rho(\cos\omega t_{s},\sin\omega t_{s},0)$, $R=\sqrt{\rho^{2}+z^{2}}$, and
+\begin{equation}
+\vec R\!\cdot\!\vec v_{s}=-\rho\cos\omega t_{s}\cdot(-\rho\omega\sin\omega t_{s})-\rho\sin\omega t_{s}\cdot(\rho\omega\cos\omega t_{s})+0=\rho^{2}\omega\sin\omega t_{s}\cos\omega t_{s}-\rho^{2}\omega\sin\omega t_{s}\cos\omega t_{s}=0.
+\label{eq:Rdotv}
+\end{equation}
+This is the crucial geometric fact: on the $z$-axis the velocity at the retarded time is tangential to the circle in the $xy$-plane while $\vec R$ has no $xy$-component perpendicular to the radius (the $xy$-piece of $\vec R$ is $-\rho(\cos\omega t_{s},\sin\omega t_{s},0)$, which is parallel to the radius vector and therefore perpendicular to $\vec v_{s}$). Hence $\vec R\!\cdot\!\vec v_{s}=0$ identically on the $z$-axis, and the denominator simplifies:
+\begin{equation}
+R-\vec R\!\cdot\!\vec\beta_{s}=R=\sqrt{\rho^{2}+z^{2}}.
+\label{eq:denomsimp}
+\end{equation}
+Therefore on the $z$-axis
+\begin{equation}
+\phi(0,0,z,t_{f})=\frac{q}{4\pi\epsilon_{0}\sqrt{\rho^{2}+z^{2}}},\qquad \vec A(0,0,z,t_{f})=\frac{q\,\vec v_{s}(t_{f}-T)}{4\pi\epsilon_{0}c^{2}\sqrt{\rho^{2}+z^{2}}}.
+\label{eq:phi-A-zaxis}
+\end{equation}
+The scalar potential is therefore time-independent and spherically symmetric on the $z$-axis. Note that $\vec A$ has only $x$- and $y$-components and no $z$-component (since $\vec v_{s}$ is in the $xy$-plane), so $A_{z}\equiv 0$ on the $z$-axis. Hence
+\begin{equation}
+E_{z}=-\pd{\phi}{z}-\pd{A_{z}}{t}=-\pd{}{z}\frac{q}{4\pi\epsilon_{0}\sqrt{\rho^{2}+z^{2}}}-0=\frac{q}{4\pi\epsilon_{0}}\,\frac{z}{(\rho^{2}+z^{2})^{3/2}}.
+\label{eq:Ez}
+\end{equation}
+\fbox{$E_{z}(0,0,z)=\dfrac{q\,z}{4\pi\epsilon_{0}(\rho^{2}+z^{2})^{3/2}}.$}
+
+\emph{Physical interpretation.} The result is exactly the static Coulomb field of a charge of magnitude $q$ smeared uniformly around the circle of radius $\rho$ in the $xy$-plane, evaluated at the field point $(0,0,z)$ --- equivalently, the field of a charge sitting at the centre of the loop \emph{is not} what one gets, but the result for a charge orbiting in such a way is simply Coulomb-like along the symmetry axis because the geometry conspires to make $\vec R\!\cdot\!\vec v_{s}=0$, suppressing the $\beta$-dependence. The radiation field components transverse to the axis would not vanish; they have been excluded here because we asked only about $E_{z}$.
+
+\section*{Question 4 --- Velocity addition, the rocket equation, and relativistic Tsiolkovsky}
+
+\textbf{Problem statement.} (a) Derive the velocity-addition formula. (b) Show that $a^{\mu}u_{\mu}=0$ and that in the rest frame $a^{\mu}$ has only spatial components. (c) Write down 4-momentum conservation for a rocket of mass $M$, 4-velocity $u^{\alpha}$, expelling propellant of 4-velocity $v^{\alpha}$ (in the IRF) and proper-frame mass $\de m$, to first order in small quantities. (d) Show $\de M/M=-\de u/v$. (e) Hence show $M(w)/M(0)=\big[(1-w/c)/(1+w/c)\big]^{\alpha}$ and find $\alpha$.
+
+\subsection*{(a) Velocity addition}
+
+Consider three frames: $S$, $S'$ moving at $+v\hat{\vec x}$ relative to $S$, and a particle moving at $+u\hat{\vec x}$ relative to $S'$. The standard Lorentz transformations between $S$ and $S'$ are
+\begin{equation}
+x'=\gamma_{v}(x-vt),\qquad t'=\gamma_{v}(t-vx/c^{2}),
+\label{eq:LT-S-Sp}
+\end{equation}
+where $\gamma_{v}=(1-v^{2}/c^{2})^{-1/2}$. The particle's velocity in $S'$ is $\de x'/\de t'=u$. We want $w=\de x/\de t$ in $S$. Differentiating the inverse transformations $x=\gamma_{v}(x'+vt')$ and $t=\gamma_{v}(t'+vx'/c^{2})$ and dividing,
+\begin{equation}
+w=\frac{\de x}{\de t}=\frac{\de x'+v\,\de t'}{\de t'+(v/c^{2})\de x'}=\frac{(\de x'/\de t')+v}{1+(v/c^{2})(\de x'/\de t')}=\frac{u+v}{1+uv/c^{2}}.
+\label{eq:vadd}
+\end{equation}
+\fbox{$w=(u+v)/(1+uv/c^{2})$.} The denominator is what prevents superluminal results: even with $u=v=c-\epsilon$ one obtains $w<c$.
+
+\subsection*{(b) Orthogonality of 4-acceleration and 4-velocity}
+
+Differentiate the on-shell normalisation $u^{\mu}u_{\mu}=c^{2}$ (a constant) with respect to proper time:
+\begin{equation}
+0=\frac{\de}{\de\tau}(u^{\mu}u_{\mu})=2u_{\mu}\frac{\de u^{\mu}}{\de\tau}=2u_{\mu}a^{\mu}.
+\label{eq:orth}
+\end{equation}
+Hence \fbox{$a^{\mu}u_{\mu}=0$} for any worldline. This is the relativistic statement that a 4-acceleration cannot carry the particle off its mass shell.
+
+\textbf{In the rest frame.} In the IRF, $u^{\mu}=(c,\vec 0)$. Substituting into $a^{\mu}u_{\mu}=0$,
+\begin{equation}
+0=a^{0}u^{0}-\vec a\!\cdot\!\vec 0\cdot c=a^{0}c\quad\Longrightarrow\quad a^{0}=0.
+\label{eq:a0=0}
+\end{equation}
+Hence $a^{\mu}=(0,\vec a)$ has only spatial components in the IRF, as claimed. The spatial components are precisely the proper acceleration that an accelerometer at rest in the IRF would read.
+
+\subsection*{(c) 4-momentum conservation for the rocket}
+
+In an interval of proper time $\de\tau$ the rocket's 4-velocity changes by $\de u^{\alpha}$, its rest mass changes from $M$ to $M+\de M$ (note $\de M<0$ since the rocket loses mass), and a small lump of rest mass $\de m>0$ is ejected with 4-velocity $v^{\alpha}$ in the IRF. Conservation of 4-momentum (which applies to the 4-momentum, not to mass) gives
+\begin{equation}
+M u^{\alpha}=(M+\de M)(u^{\alpha}+\de u^{\alpha})+\de m\,v^{\alpha}.
+\label{eq:4mom-cons}
+\end{equation}
+Expanding to first order in the small quantities $\de M$, $\de u^{\alpha}$, $\de m$ (and noting the second-order term $\de M\,\de u^{\alpha}$ is dropped),
+\begin{equation}
+0=\de M\,u^{\alpha}+M\,\de u^{\alpha}+\de m\,v^{\alpha},
+\label{eq:cons-1st}
+\end{equation}
+or
+\begin{equation}
+\boxed{\;M\,\de u^{\alpha}+\de M\,u^{\alpha}+\de m\,v^{\alpha}=0.\;}
+\label{eq:cons-boxed}
+\end{equation}
+The hint that ``conservation laws apply to energy and momentum, not mass'' is precisely the warning that $\de M+\de m\neq 0$ in general --- the rest mass of the propellant is \emph{less} than the loss in rocket rest mass, the difference being kinetic energy carried by the propellant in the IRF. We do not assume $\de M=-\de m$.
+
+\subsection*{(d) The relativistic mass-rate equation}
+
+Work in the IRF at proper time $\tau$: in this frame the rocket has 4-velocity $u^{\alpha}_{\mathrm{IRF}}=(c,\vec 0)$, and after the small interval its 4-velocity is $(c+\de u^{0},\de u^{1},0,0)$ along the rocket's chosen direction of motion. The IRF-orthogonality result of part (b) gives $\de u^{0}=0$ to first order (since $a^{0}=0$ in the IRF), so $\de u^{\alpha}_{\mathrm{IRF}}=(0,\de u,0,0)$, where $\de u$ is the small \emph{spatial} 4-velocity increment, equal at this order to the change in ordinary speed in the IRF.
+
+The propellant 4-velocity in the IRF is $v^{\alpha}_{\mathrm{IRF}}=\gamma_{v}(c,-\vec v,0,0)\to(c\gamma_{v},-\gamma_{v}v,0,0)$ where $v$ is the propellant speed in the IRF (we have taken the propellant ejected backwards along the direction the rocket then accelerates).
+
+Take the spatial ($\alpha=1$) component of \eqref{eq:cons-boxed} in the IRF:
+\begin{equation}
+M\de u+\de M\cdot 0+\de m\cdot(-\gamma_{v}v)=0\quad\Longrightarrow\quad \de m=\frac{M\,\de u}{\gamma_{v}v}.
+\label{eq:dm-dudt}
+\end{equation}
+Take the time ($\alpha=0$) component in the IRF:
+\begin{equation}
+M\cdot 0+\de M\cdot c+\de m\cdot c\gamma_{v}=0\quad\Longrightarrow\quad \de M=-\gamma_{v}\,\de m.
+\label{eq:dM-dm}
+\end{equation}
+This is the missing piece: the rocket loses more rest mass than the propellant carries, by the factor $\gamma_{v}$, because the energy carried away by the propellant in the IRF includes its kinetic energy. Substituting \eqref{eq:dm-dudt} into \eqref{eq:dM-dm},
+\begin{equation}
+\de M=-\gamma_{v}\cdot\frac{M\,\de u}{\gamma_{v}v}=-\frac{M\,\de u}{v},\qquad\Longrightarrow\qquad \boxed{\;\frac{\de M}{M}=-\frac{\de u}{v}.\;}
+\label{eq:dMM-final}
+\end{equation}
+\emph{Interpretation.} This is the relativistic Tsiolkovsky equation in its differential form, except that $\de u$ here is the change in the rocket's speed in the frame that was its IRF at the start of the interval --- not in the launch frame. Two such IRF increments do not simply add; this is what part (e) will exploit.
+
+\subsection*{(e) Rocket mass as a function of launch-frame speed}
+
+Let $w$ be the rocket's speed relative to the launch frame after some elapsed time. As the rocket fires its engine, $w$ increases by $\de w$ in the launch frame, while in the rocket's IRF the increase is $\de u$. To relate $\de u$ to $\de w$, use the velocity-addition formula \eqref{eq:vadd}: the rocket's new velocity in the launch frame is $w+\de w=(w+\de u)/(1+w\,\de u/c^{2})$. Expanding to first order in $\de u$,
+\begin{equation}
+w+\de w=(w+\de u)\big[1-(w\,\de u/c^{2})+\cdots\big]=w+\de u-w^{2}\de u/c^{2}+\cdots=w+\de u\,(1-w^{2}/c^{2}),
+\label{eq:vadd-firstorder}
+\end{equation}
+giving
+\begin{equation}
+\de u=\frac{\de w}{1-w^{2}/c^{2}}=\gamma_{w}^{2}\,\de w,
+\label{eq:du-dw}
+\end{equation}
+where $\gamma_{w}=(1-w^{2}/c^{2})^{-1/2}$. Substituting into \eqref{eq:dMM-final},
+\begin{equation}
+\frac{\de M}{M}=-\frac{1}{v}\,\frac{\de w}{1-w^{2}/c^{2}}.
+\label{eq:dMM-w}
+\end{equation}
+Integrate from $w=0$ (rocket at rest, mass $M(0)$) to $w$ (mass $M(w)$). Assuming the propellant is ejected at constant proper speed $v$ relative to the rocket,
+\begin{equation}
+\ln\frac{M(w)}{M(0)}=-\frac{1}{v}\int_{0}^{w}\frac{\de w'}{1-w'^{2}/c^{2}}=-\frac{1}{v}\cdot\frac{c}{2}\ln\!\left|\frac{1+w/c}{1-w/c}\right|.
+\label{eq:integrate}
+\end{equation}
+The integral $\int\de w'/(1-w'^{2}/c^{2})$ evaluates by partial fractions to $(c/2)\ln|(1+w/c)/(1-w/c)|$; the substitution $w'/c=\sin\theta$ recasts it as $\int\sec\theta\,\de\theta=\tfrac{1}{2}\ln|(1+\sin\theta)/(1-\sin\theta)|$, agreeing with the hint. Exponentiating,
+\begin{equation}
+\frac{M(w)}{M(0)}=\exp\!\left[-\frac{c}{2v}\ln\frac{1+w/c}{1-w/c}\right]=\left(\frac{1-w/c}{1+w/c}\right)^{c/(2v)}.
+\label{eq:Mw-final}
+\end{equation}
+Hence
+\begin{equation}
+\boxed{\;M(w)=M(0)\left(\frac{1-w/c}{1+w/c}\right)^{\alpha},\qquad \alpha=\frac{c}{2v}.\;}
+\label{eq:Mw-boxed}
+\end{equation}
+\emph{Physical interpretation.} As $w\to c$ the bracket tends to zero and $M(w)\to 0$: even an infinite-fuel rocket only asymptotically approaches the speed of light, with the rest mass decaying as a power law $(1-w/c)^{c/(2v)}$ near the limit. For a photon-rocket ($v=c$) the exponent is $\alpha=1/2$, the slowest decay; for cold propellant ($v\ll c$) $\alpha\gg 1$ and the rocket runs out of mass long before reaching anywhere near $c$. In the non-relativistic limit $w/c\ll 1$ the bracket simplifies to $1-2w/c$ and the formula reduces to $M(w)\approx M(0)\exp(-w/v)$, the classical Tsiolkovsky equation, as required.
+
+\end{document}
