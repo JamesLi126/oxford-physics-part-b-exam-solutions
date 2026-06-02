@@ -54,11 +54,19 @@ e^{+}e^{-}\to\gamma^{*}/Z^{0}\to\tau^{+}\tau^{-},\qquad\tau^{+}\to\mu^{+}\nu_{\m
 
 \textbf{Missing-energy sketches.}
 
-Channel 1: each $W$ decay is two-body, $E_{\ell}^{*}=M_{W}/2$ in the $W$ rest frame (isotropic). Boost to lab ($E_{W}=\sqrt{s}/2$, $p_{W}=\sqrt{s/4-M_{W}^{2}}$) flattens the spectrum:
+Channel 1: each $W$ decay is two-body. Charged-lepton energy in $W$ rest frame:
 \[
-E_{\ell}^{\text{lab}}\in\bigl[\tfrac12(E_{W}-p_{W}),\,\tfrac12(E_{W}+p_{W})\bigr].
+E_{\ell}^{*}\;=\;M_{W}/2\quad(\text{isotropic}).
 \]
-Two flat (box) charged-lepton spectra convolve to a triangular missing-energy distribution centred at $\sqrt{s}/2$.
+Boost to lab with $W$ energy and momentum:
+\[
+E_{W}\;=\;\sqrt{s}/2,\qquad p_{W}\;=\;\sqrt{s/4-M_{W}^{2}}.
+\]
+Charged-lepton lab energy is a box (flat) spectrum:
+\[
+E_{\ell}^{\text{lab}}\;\in\;\bigl[\tfrac12(E_{W}-p_{W}),\,\tfrac12(E_{W}+p_{W})\bigr].
+\]
+Missing energy per event is $\sqrt{s}-E_{\mu}-E_{e}$; convolving two independent box spectra gives a triangular distribution centred at $\sqrt{s}/2$.
 
 Channel 2: leptonic $\tau$ decay has the Michel spectrum, charged-lepton energy
 \[
@@ -96,9 +104,13 @@ At $\sqrt{s}=M_{Z}$, $Z^{0}\to\tau^{+}\tau^{-}$ produces back-to-back taus. ``Tw
 \[
 \tau\to e\,\bar\nu_{e}\nu_{\tau},\qquad\mathrm{BR}\simeq 17.8\%.
 \]
-Both legs:
+Probability that both legs go to $e$:
 \[
-P_{ee}\;=\;[\mathrm{BR}(\tau\to e\nu\bar\nu)]^{2}\;=\;(0.178)^{2}.
+P_{ee}\;=\;[\mathrm{BR}(\tau\to e\nu\bar\nu)]^{2}.
+\]
+Plug in:
+\[
+P_{ee}\;=\;(0.178)^{2}.
 \]
 Evaluate:
 \begin{equation}
@@ -116,6 +128,9 @@ Lepton universality: $\Gamma_{ee}=\Gamma_{\mu\mu}=\Gamma_{\tau\tau}\simeq 83.9\,
 \frac{\Gamma_{ee}}{\Gamma_\text{had}}\;=\;\frac{83.9}{1744}.
 \]
 Evaluate:
+\[
+\frac{\Gamma_{ee}}{\Gamma_\text{had}}\;\simeq\;0.0481.
+\]
 \begin{equation}
 \boxed{\;\frac{N(e^{+}e^{-})}{N(\text{had})}\;\simeq\;4.8\%.\;}
 \end{equation}
@@ -184,15 +199,23 @@ s\;=\;m_{\pi}^{2}+m_{p}^{2}+2m_{p}E_{\pi}^{\text{lab}},\qquad E_{\pi}^{\text{lab
 \end{equation}
 Substitute $m_{\pi}=139.6\,\text{MeV}$, $m_{p}=938.3\,\text{MeV}$, $T_{\pi}=195\,\text{MeV}$:
 \[
-E_{\pi}^{\text{lab}}\;=\;195+139.6\;=\;334.6\,\text{MeV}.
-\]
-Insert into \eqref{eq:s-fixed}:
-\[
-s\;=\;(0.1396)^{2}+(0.9383)^{2}+2(0.9383)(0.3346)\,\text{GeV}^{2}.
+E_{\pi}^{\text{lab}}\;=\;195+139.6\,\text{MeV}.
 \]
 Evaluate:
 \[
-s\;=\;0.0195+0.8804+0.6280\;=\;1.528\,\text{GeV}^{2}.
+E_{\pi}^{\text{lab}}\;=\;334.6\,\text{MeV}.
+\]
+Insert into \eqref{eq:s-fixed} (using GeV):
+\[
+s\;=\;(0.1396)^{2}+(0.9383)^{2}+2(0.9383)(0.3346)\,\text{GeV}^{2}.
+\]
+Sum the three terms:
+\[
+s\;=\;0.0195+0.8804+0.6280\,\text{GeV}^{2}.
+\]
+Evaluate:
+\[
+s\;=\;1.528\,\text{GeV}^{2}.
 \]
 Take the square root:
 \[
@@ -204,15 +227,23 @@ Take the square root:
 
 Width transform: differentiate \eqref{eq:s-fixed} at fixed $m_{\pi},m_{p}$:
 \[
+\frac{\de s}{\de T_{\pi}}\;=\;2m_{p}.
+\]
+Apply $\de s = 2\sqrt{s}\,\de\sqrt{s}$:
+\[
 2\sqrt{s}\,\Delta\sqrt{s}\;=\;2m_{p}\,\Delta T_{\pi}.
 \]
-Solve for $\Gamma\simeq\Delta\sqrt{s}$:
+Solve for $\Gamma\simeq\Delta\sqrt{s}$ (FWHM):
 \[
 \Gamma\;=\;\frac{m_{p}}{\sqrt{s}}\,\Delta T_{\pi}.
 \]
-Substitute:
+Plug in $m_{p}=0.938$, $\sqrt{s}=1.236\,\text{GeV}$, $\Delta T_{\pi}=180\,\text{MeV}$:
 \[
-\Gamma\;=\;\frac{0.938}{1.236}\times 180\,\text{MeV}\;=\;137\,\text{MeV}.
+\Gamma\;=\;\frac{0.938}{1.236}\times 180\,\text{MeV}.
+\]
+Evaluate:
+\[
+\Gamma\;\simeq\;137\,\text{MeV}.
 \]
 Lifetime $\tau=\hbar/\Gamma$:
 \[
@@ -243,17 +274,30 @@ CM wavenumber from \eqref{eq:s-fixed}:
 \[
 k_{R}^{2}\;=\;\frac{[s-(m_{\pi}+m_{p})^{2}][s-(m_{\pi}-m_{p})^{2}]}{4s}.
 \]
-Substitute $s=1.528\,\text{GeV}^{2}$, $(m_{\pi}+m_{p})^{2}=1.162$, $(m_{\pi}-m_{p})^{2}=0.638\,\text{GeV}^{2}$:
+Compute mass sums: $(m_{\pi}+m_{p})^{2}=1.162\,\text{GeV}^{2}$, $(m_{\pi}-m_{p})^{2}=0.638\,\text{GeV}^{2}$.
+Substitute with $s=1.528\,\text{GeV}^{2}$:
 \[
-k_{R}^{2}\;=\;\frac{(1.528-1.162)(1.528-0.638)}{4\times 1.528}\,\text{GeV}^{2}\;=\;\frac{0.366\times 0.890}{6.112}\,\text{GeV}^{2}.
+k_{R}^{2}\;=\;\frac{(1.528-1.162)(1.528-0.638)}{4\times 1.528}\,\text{GeV}^{2}.
+\]
+Reduce the numerator and denominator:
+\[
+k_{R}^{2}\;=\;\frac{0.366\times 0.890}{6.112}\,\text{GeV}^{2}.
 \]
 Evaluate:
 \[
-k_{R}^{2}\;=\;0.0533\,\text{GeV}^{2}\;\Rightarrow\;k_{R}\simeq 231\,\text{MeV}.
+k_{R}^{2}\;=\;0.0533\,\text{GeV}^{2}.
 \]
-Peak cross-section using $1\,\text{GeV}^{-2}=0.389\,\text{mb}$:
+Take the square root:
 \[
-\sigma_\text{el}^\text{peak}\;=\;\frac{8\pi}{0.0533}\,\text{GeV}^{-2}\;=\;471\,\text{GeV}^{-2}\;=\;471\times 0.389\,\text{mb}.
+k_{R}\;\simeq\;0.231\,\text{GeV}.
+\]
+Peak cross-section (in natural units, $\hbar c=1$):
+\[
+\sigma_\text{el}^\text{peak}\;=\;\frac{8\pi}{0.0533}\,\text{GeV}^{-2}.
+\]
+Convert using $1\,\text{GeV}^{-2}=0.389\,\text{mb}$:
+\[
+\sigma_\text{el}^\text{peak}\;=\;471\times 0.389\,\text{mb}.
 \]
 \begin{equation}
 \boxed{\;\sigma_\text{el}^\text{peak}\simeq 184\,\text{mb},\;}
@@ -313,11 +357,15 @@ Insert into \eqref{eq:fBorn-def}:
 \[
 f(\theta,k)\;=\;-\frac{m}{2\pi\hbar^{2}}\,U_{0}(2\pi\sigma^{2})^{3/2}\,e^{-q^{2}\sigma^{2}/2}.
 \]
+Expand $(2\pi\sigma^{2})^{3/2}=(2\pi)^{3/2}\sigma^{3}$:
+\[
+f(\theta,k)\;=\;-\frac{m\,U_{0}(2\pi)^{3/2}\sigma^{3}}{2\pi\hbar^{2}}\,e^{-q^{2}\sigma^{2}/2}.
+\]
 Substitute $q^{2}=2k^{2}(1-\cos\theta)$:
 \[
 f(\theta,k)\;=\;-\frac{m\,U_{0}(2\pi)^{3/2}\sigma^{3}}{2\pi\hbar^{2}}\,e^{-\sigma^{2}k^{2}(1-\cos\theta)}.
 \]
-Tidy the prefactor:
+Cancel one factor of $2\pi$ in the prefactor:
 \begin{equation}
 \boxed{\;f(\theta,k)\;=\;A\,e^{-\sigma^{2}k^{2}(1-\cos\theta)},\qquad A=-\frac{m\,U_{0}\,\sigma^{3}\sqrt{2\pi}}{\hbar^{2}}.\;}
 \label{eq:Aresult}
@@ -333,11 +381,15 @@ Substitute $u=1-\cos\theta$, $\de u=\sin\theta\,\de\theta$, $u\in[0,2]$:
 \[
 \sigma_\text{tot}(k)\;=\;2\pi A^{2}\int_{0}^{2}e^{-2\sigma^{2}k^{2}u}\,\de u.
 \]
-Evaluate the integral:
+Carry out the elementary integral:
+\[
+\int_{0}^{2}e^{-2\sigma^{2}k^{2}u}\,\de u\;=\;\frac{1-e^{-4\sigma^{2}k^{2}}}{2\sigma^{2}k^{2}}.
+\]
+Combine:
 \[
 \sigma_\text{tot}(k)\;=\;2\pi A^{2}\,\frac{1-e^{-4\sigma^{2}k^{2}}}{2\sigma^{2}k^{2}}.
 \]
-Tidy:
+Cancel the factor of 2:
 \begin{equation}
 \boxed{\;\sigma_\text{tot}(k)\;=\;B\bigl(1-e^{-4\sigma^{2}k^{2}}\bigr),\qquad B=\frac{\pi A^{2}}{\sigma^{2}k^{2}}=\frac{2\pi^{2}m^{2}U_{0}^{2}\sigma^{4}}{\hbar^{4}k^{2}}.\;}
 \label{eq:Bresult}
@@ -360,21 +412,25 @@ T\;\sim\;\frac{p^{2}}{2m_{N}}\;=\;\frac{(200)^{2}}{2(940)}\,\text{MeV}\;\simeq\;
 
 \subsection*{(e) Estimate of $U_{0}$ from $|E|=2.2\,\text{MeV}$}
 
-Two-body deuteron: reduced mass $\mu=m_{p}m_{n}/(m_{p}+m_{n})\simeq m_{N}/2\simeq 470\,\text{MeV}/c^{2}$. Variational ansatz of width $\sigma$:
+Two-body deuteron: reduced mass $\mu=m_{p}m_{n}/(m_{p}+m_{n})\simeq m_{N}/2\simeq 470\,\text{MeV}/c^{2}$. Localised state of width $\sigma$ has total energy:
 \[
 E\;\approx\;\frac{\hbar^{2}}{2\mu\sigma^{2}}+U_{0}\,\langle e^{-r^{2}/2\sigma^{2}}\rangle.
 \]
-Take $\langle e^{-r^{2}/2\sigma^{2}}\rangle\sim 1$ for an order-of-magnitude estimate. Set $E=-2.2\,\text{MeV}$:
+Take $\langle e^{-r^{2}/2\sigma^{2}}\rangle\sim 1$ for an order-of-magnitude estimate:
 \[
-\frac{(\hbar c)^{2}}{2\mu c^{2}\sigma^{2}}+U_{0}\;=\;-2.2\,\text{MeV}.
+E\;\approx\;\frac{(\hbar c)^{2}}{2\mu c^{2}\sigma^{2}}+U_{0}.
 \]
-Kinetic term:
+Plug in $\hbar c=197\,\text{MeV fm}$, $\mu c^{2}=470\,\text{MeV}$, $\sigma=1\,\text{fm}$:
 \[
-T\;=\;\frac{(197)^{2}}{2(470)(1)^{2}}\,\text{MeV}\;\simeq\;41\,\text{MeV}.
+T\;=\;\frac{(197)^{2}}{2(470)(1)^{2}}\,\text{MeV}.
 \]
-Solve for $U_{0}$:
+Evaluate:
 \[
-U_{0}\;=\;-T-|E|\;=\;-41-2.2\,\text{MeV}.
+T\;\simeq\;41\,\text{MeV}.
+\]
+Set $E=-2.2\,\text{MeV}$ and solve for $U_{0}$:
+\[
+U_{0}\;=\;E-T\;=\;-2.2-41\,\text{MeV}.
 \]
 \begin{equation}
 \boxed{\;U_{0}\;\simeq\;-43\,\text{MeV (attractive)}.\;}
@@ -383,48 +439,72 @@ Canonical depth of the nucleon--nucleon well; binding is the small difference of
 
 \subsection*{(f) Mean free path of a $10\,\text{MeV}$ neutron in water}
 
-CM wavenumber for $E=10\,\text{MeV}$:
+Born formula \eqref{eq:Bresult} uses reduced mass $\mu=m_{N}/2$ and relative wavenumber $k$. For neutron of lab kinetic energy $T_{\text{lab}}=10\,\text{MeV}$ on a stationary proton, the relative kinetic energy is:
 \[
-\hbar c\,k\;=\;\sqrt{2m_{n}c^{2}\cdot E}\;=\;\sqrt{2(940)(10)}\,\text{MeV}\;=\;137\,\text{MeV}.
+T_{\text{rel}}\;=\;\tfrac{1}{2}T_{\text{lab}}\;=\;5\,\text{MeV}.
 \]
-Hence $k=137/197\,\text{fm}^{-1}=0.696\,\text{fm}^{-1}$, $\sigma k=0.696$, $4\sigma^{2}k^{2}=1.94$:
+Relative wavenumber from $(\hbar c k)^{2}=2\mu c^{2}\,T_{\text{rel}}$:
 \[
-1-e^{-4\sigma^{2}k^{2}}\;=\;1-e^{-1.94}\;=\;0.856.
-\]
-Compute $B$ from \eqref{eq:Bresult} using natural units. Group the prefactor:
-\[
-\frac{m_{n}c^{2}\,|U_{0}|\,\sigma^{2}}{(\hbar c)^{2}}\;=\;\frac{(940)(43)(1)^{2}}{(197)^{2}}.
+\hbar c\,k\;=\;\sqrt{2(470)(5)}\,\text{MeV}.
 \]
 Evaluate:
 \[
-\frac{m_{n}c^{2}\,|U_{0}|\,\sigma^{2}}{(\hbar c)^{2}}\;=\;\frac{40\,420}{38\,809}\;=\;1.041.
+\hbar c\,k\;=\;68.6\,\text{MeV}.
+\]
+Convert to inverse length with $\hbar c=197\,\text{MeV fm}$:
+\[
+k\;=\;68.6/197\,\text{fm}^{-1}\;=\;0.348\,\text{fm}^{-1}.
+\]
+Compute the exponent argument for $\sigma=1\,\text{fm}$:
+\[
+4\sigma^{2}k^{2}\;=\;4(0.348)^{2}\;=\;0.485.
 \]
 Hence
 \[
-B\;=\;\frac{2\pi^{2}}{(\sigma k)^{2}}\,(1.041)^{2}\,\sigma^{2}\;=\;\frac{2\pi^{2}(1.084)}{0.484}\,\text{fm}^{2}.
+1-e^{-4\sigma^{2}k^{2}}\;=\;1-e^{-0.485}\;=\;0.384.
+\]
+Compute $B$ from \eqref{eq:Bresult} in natural units. Group the dimensionless ratio:
+\[
+\frac{\mu c^{2}\,|U_{0}|\,\sigma^{2}}{(\hbar c)^{2}}\;=\;\frac{(470)(43)(1)^{2}}{(197)^{2}}.
 \]
 Evaluate:
 \[
-B\;\simeq\;44.2\,\text{fm}^{2}\;=\;0.442\,\text{barn}.
+\frac{\mu c^{2}\,|U_{0}|\,\sigma^{2}}{(\hbar c)^{2}}\;=\;\frac{20\,210}{38\,809}\;=\;0.521.
+\]
+Insert into $B=(2\pi^{2}/k^{2})[\mu c^{2}|U_{0}|\sigma^{2}/(\hbar c)^{2}]^{2}$:
+\[
+B\;=\;\frac{2\pi^{2}(0.521)^{2}}{(0.348)^{2}}\,\text{fm}^{2}.
+\]
+Reduce:
+\[
+B\;=\;\frac{2\pi^{2}(0.272)}{0.121}\,\text{fm}^{2}.
+\]
+Evaluate:
+\[
+B\;\simeq\;44.3\,\text{fm}^{2}\;=\;0.443\,\text{barn}.
 \]
 Total cross-section:
 \[
-\sigma_\text{tot}\;=\;B\times 0.856\;=\;0.378\,\text{barn}\;=\;3.78\times 10^{-25}\,\text{cm}^{2}.
+\sigma_\text{tot}\;=\;B\times 0.384\;=\;0.170\,\text{barn}\;=\;1.70\times 10^{-25}\,\text{cm}^{2}.
 \]
 
 Hydrogen number density in water ($\rho=1\,\text{g/cm}^{3}$, $M=18\,\text{g/mol}$, two H per molecule):
 \[
-n_{H}\;=\;\frac{2N_{A}\rho}{M}\;=\;\frac{2(6.02\times 10^{23})}{18}\,\text{cm}^{-3}\;=\;6.69\times 10^{22}\,\text{cm}^{-3}.
+n_{H}\;=\;\frac{2N_{A}\rho}{M}\;=\;\frac{2(6.02\times 10^{23})}{18}\,\text{cm}^{-3}.
+\]
+Evaluate:
+\[
+n_{H}\;=\;6.69\times 10^{22}\,\text{cm}^{-3}.
 \]
 Mean free path:
 \[
-\lambda\;=\;\frac{1}{n_{H}\,\sigma_\text{tot}}\;=\;\frac{1}{(6.69\times 10^{22})(3.78\times 10^{-25})}\,\text{cm}.
+\lambda\;=\;\frac{1}{n_{H}\,\sigma_\text{tot}}\;=\;\frac{1}{(6.69\times 10^{22})(1.70\times 10^{-25})}\,\text{cm}.
 \]
 Evaluate:
 \begin{equation}
-\boxed{\;\lambda\;\simeq\;40\,\text{cm}.\;}
+\boxed{\;\lambda\;\simeq\;88\,\text{cm}.\;}
 \end{equation}
-Order-of-magnitude consistent with the moderation length in light water (Born underestimates by $\sim 2$--$3$ near a nearly-bound channel).
+Order-of-magnitude consistent with the few-tens-of-cm moderation length in light water; Born neglects nearly-bound $S$-wave enhancement at low $k$.
 
 %==========================================================
 \section*{Question 4 --- SEMF, fission and reactor neutrinos}
@@ -453,20 +533,23 @@ with $a_{V}\!\simeq\!15.8$, $a_{S}\!\simeq\!17.8$, $a_{C}\!\simeq\!0.71$, $a_{A}
 
 \subsection*{(b) Energy released per fission}
 
+Energy release is the gain in total binding (free neutrons carry no binding):
 \[
 \Delta E\;\simeq\;B(^{92}\text{Kr})+B(^{141}\text{Ba})-B(^{235}\text{U}).
 \]
-Read $B/A$ from the curve:
+Read $B/A$ from the curve, $^{235}\text{U}$ at $\simeq 7.6\,\text{MeV}$:
 \[
 B(^{235}\text{U})\;\simeq\;235\times 7.6\,\text{MeV}\;=\;1786\,\text{MeV}.
 \]
+At $A\simeq 92$, $B/A\simeq 8.7\,\text{MeV}$:
 \[
 B(^{92}\text{Kr})\;\simeq\;92\times 8.7\,\text{MeV}\;=\;800\,\text{MeV}.
 \]
+At $A\simeq 141$, $B/A\simeq 8.4\,\text{MeV}$:
 \[
 B(^{141}\text{Ba})\;\simeq\;141\times 8.4\,\text{MeV}\;=\;1184\,\text{MeV}.
 \]
-Sum (free neutrons unbound):
+Sum:
 \[
 \Delta E\;=\;800+1184-1786\,\text{MeV}.
 \]
@@ -478,7 +561,11 @@ Sum (free neutrons unbound):
 
 Each fission $\Rightarrow$ two neutron-rich daughters $\Rightarrow$ ${\sim}3$ $\beta^{-}$ each $\Rightarrow$ $\bar n_{\nu}\simeq 6$ $\bar\nu_{e}$/fission. Fission rate:
 \[
-R_\text{fiss}\;=\;\frac{P_\text{th}}{\Delta E}\;=\;\frac{10^{10}\,\text{J/s}}{200\,\text{MeV}\times 1.602\times 10^{-13}\,\text{J/MeV}}.
+R_\text{fiss}\;=\;\frac{P_\text{th}}{\Delta E}.
+\]
+Plug in $P_\text{th}=10^{10}\,\text{J/s}$ and $\Delta E=200\,\text{MeV}=3.20\times 10^{-11}\,\text{J}$:
+\[
+R_\text{fiss}\;=\;\frac{10^{10}}{3.20\times 10^{-11}}\,\text{s}^{-1}.
 \]
 Evaluate:
 \[
@@ -496,20 +583,32 @@ R_{\bar\nu}\;=\;\bar n_{\nu}\,R_\text{fiss}\;=\;6\times 3.12\times 10^{20}\,\tex
 
 Isotropic flux at $D=200\,\text{km}=2\times 10^{7}\,\text{cm}$:
 \[
-\Phi\;=\;\frac{R_{\bar\nu}}{4\pi D^{2}}\;=\;\frac{1.9\times 10^{21}}{4\pi(2\times 10^{7})^{2}}\,\text{cm}^{-2}\,\text{s}^{-1}.
+\Phi\;=\;\frac{R_{\bar\nu}}{4\pi D^{2}}.
+\]
+Plug in:
+\[
+\Phi\;=\;\frac{1.87\times 10^{21}}{4\pi(2\times 10^{7})^{2}}\,\text{cm}^{-2}\,\text{s}^{-1}.
+\]
+Compute the denominator $4\pi(2\times 10^{7})^{2}=5.03\times 10^{15}$:
+\[
+\Phi\;=\;\frac{1.87\times 10^{21}}{5.03\times 10^{15}}\,\text{cm}^{-2}\,\text{s}^{-1}.
 \]
 Evaluate:
 \[
-\Phi\;=\;\frac{1.9\times 10^{21}}{5.03\times 10^{15}}\;=\;3.78\times 10^{5}\,\text{cm}^{-2}\,\text{s}^{-1}.
+\Phi\;\simeq\;3.72\times 10^{5}\,\text{cm}^{-2}\,\text{s}^{-1}.
 \]
 Above-threshold fraction $10\%$:
 \[
-\Phi_\text{eff}\;=\;0.10\,\Phi\;=\;3.78\times 10^{4}\,\text{cm}^{-2}\,\text{s}^{-1}.
+\Phi_\text{eff}\;=\;0.10\,\Phi\;\simeq\;3.72\times 10^{4}\,\text{cm}^{-2}\,\text{s}^{-1}.
 \]
 
-Free-proton density per gram of $\text{C}_{20}\text{H}_{34}$ ($M=20(12)+34=274\,\text{g/mol}$):
+Free-proton density per gram of $\text{C}_{20}\text{H}_{34}$ uses $M=20(12)+34=274\,\text{g/mol}$:
 \[
-n_{p}\;=\;\frac{34\,N_{A}}{M}\;=\;\frac{34(6.02\times 10^{23})}{274}\,\text{g}^{-1}.
+n_{p}\;=\;\frac{34\,N_{A}}{M}.
+\]
+Plug in:
+\[
+n_{p}\;=\;\frac{34(6.02\times 10^{23})}{274}\,\text{g}^{-1}.
 \]
 Evaluate:
 \[
@@ -517,22 +616,34 @@ n_{p}\;\simeq\;7.47\times 10^{22}\,\text{g}^{-1}.
 \]
 Event rate per gram:
 \[
-r\;=\;n_{p}\,\sigma_\text{IBD}\,\Phi_\text{eff}\;=\;(7.47\times 10^{22})(4\times 10^{-42})(3.78\times 10^{4})\,\text{s}^{-1}\,\text{g}^{-1}.
+r\;=\;n_{p}\,\sigma_\text{IBD}\,\Phi_\text{eff}.
+\]
+Plug in:
+\[
+r\;=\;(7.47\times 10^{22})(4\times 10^{-42})(3.72\times 10^{4})\,\text{s}^{-1}\,\text{g}^{-1}.
 \]
 Evaluate:
 \[
-r\;\simeq\;1.13\times 10^{-14}\,\text{s}^{-1}\,\text{g}^{-1}.
+r\;\simeq\;1.11\times 10^{-14}\,\text{s}^{-1}\,\text{g}^{-1}.
 \]
 Counts per gram per month ($t=2.59\times 10^{6}\,\text{s}$):
 \[
-N_{1}\;=\;r\,t\;=\;1.13\times 10^{-14}\times 2.59\times 10^{6}\;\simeq\;2.93\times 10^{-8}\,\text{events/g}.
+N_{1}\;=\;r\,t\;=\;1.11\times 10^{-14}\times 2.59\times 10^{6}.
+\]
+Evaluate:
+\[
+N_{1}\;\simeq\;2.88\times 10^{-8}\,\text{events/g}.
 \]
 Required mass for 10 events:
 \[
-M_\text{det}\;=\;\frac{10}{N_{1}}\;=\;\frac{10}{2.93\times 10^{-8}}\,\text{g}\;\simeq\;3.4\times 10^{8}\,\text{g}.
+M_\text{det}\;=\;\frac{10}{N_{1}}\;=\;\frac{10}{2.88\times 10^{-8}}\,\text{g}.
+\]
+Evaluate:
+\[
+M_\text{det}\;\simeq\;3.5\times 10^{8}\,\text{g}.
 \]
 \begin{equation}
-\boxed{\;M_\text{det}\;\simeq\;340\,\text{tonnes}\;(\sim\!\text{kT scale, KamLAND-class}).\;}
+\boxed{\;M_\text{det}\;\simeq\;350\,\text{tonnes}\;(\sim\!\text{kT scale, KamLAND-class}).\;}
 \end{equation}
 
 \subsection*{(e) Missing assumption}

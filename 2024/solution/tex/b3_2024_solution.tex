@@ -35,21 +35,41 @@ Lorentz boost of the nuclear $\bm E=-\nabla\phi$ to the electron frame, $\order{
 \]
 Central potential, $\bm E=-\hat{\bm r}\,\partial_r\phi$:
 \[
-\bm v\times\bm E=\frac{1}{r}\,\partial_r\phi\,(\bm r\times\bm v).
+\bm v\times\bm E=-\partial_r\phi\,(\bm v\times\hat{\bm r}).
 \]
-Identify $\bm L=m_e\bm r\times\bm v$:
+Use $\hat{\bm r}=\bm r/r$:
 \[
-\bm B'=\frac{1}{m_e c^{2}}\,\frac{1}{r}\,\partial_r\phi\,\bm L.
+\bm v\times\bm E=-\frac{1}{r}\,\partial_r\phi\,(\bm v\times\bm r).
 \]
-Zeeman energy $-\bm\mu_s\!\cdot\!\bm B'$; substitute Thomas-corrected $g_s-1\approx 1$ and $U=-e\phi$:
+Identify $\bm L=m_e\bm r\times\bm v=-m_e\bm v\times\bm r$:
+\[
+\bm v\times\bm r=-\frac{\bm L}{m_e}.
+\]
+Insert in $\bm B'$:
+\[
+\bm B'=-\frac{1}{m_e c^{2}}\,\frac{1}{r}\,\partial_r\phi\,\bm L.
+\]
+Zeeman energy of spin moment in $\bm B'$:
+\[
+H'=-\bm\mu_s\!\cdot\!\bm B'=\frac{g_s\mu_{\rm B}}{\hbar}\,\bm S\!\cdot\!\bm B'.
+\]
+Substitute $\mu_{\rm B}=e\hbar/(2m_e)$:
+\[
+H'=\frac{g_s\,e}{2 m_e}\,\bm S\!\cdot\!\bm B'.
+\]
+Substitute $\bm B'$:
+\[
+H'=-\frac{g_s\,e}{2 m_e^{2}c^{2}}\,\frac{1}{r}\,\partial_r\phi\,\bm L\!\cdot\!\bm S.
+\]
+Apply Thomas correction $g_s\to g_s-1\approx 1$ and write $U=-e\phi$ so $-e\,\partial_r\phi=\partial_r U$:
 \begin{equation}
-\boxed{\;H_{\rm SO}=\frac{1}{m_e^{2}c^{2}}\,\frac{1}{r}\,\frac{\partial U}{\partial r}\,\bm L\!\cdot\!\bm S.\;}
+\boxed{\;H_{\rm SO}=\frac{1}{2 m_e^{2}c^{2}}\,\frac{1}{r}\,\frac{\partial U}{\partial r}\,\bm L\!\cdot\!\bm S.\;}
 \label{eq:HSO-general}
 \end{equation}
 
-Hydrogenic $U=-Ze^{2}/(4\pi\epsilon_0 r)$:
+Hydrogenic $U=-Ze^{2}/(4\pi\epsilon_0 r)$, so $\partial_r U=Ze^{2}/(4\pi\epsilon_0 r^{2})$:
 \begin{equation}
-H_{\rm SO}=\frac{Ze^{2}}{4\pi\epsilon_0\,m_e^{2}c^{2}\,r^{3}}\,\bm L\!\cdot\!\bm S\equiv\xi(r)\,\bm L\!\cdot\!\bm S.
+H_{\rm SO}=\frac{Ze^{2}}{8\pi\epsilon_0\,m_e^{2}c^{2}\,r^{3}}\,\bm L\!\cdot\!\bm S\equiv\xi(r)\,\bm L\!\cdot\!\bm S.
 \label{eq:HSO-H}
 \end{equation}
 
@@ -59,20 +79,43 @@ Coupled basis $\bm J=\bm L+\bm S$:
 \[
 \bm L\!\cdot\!\bm S=\tfrac12(\bm J^{2}-\bm L^{2}-\bm S^{2}).
 \]
-For $s=1/2$, $l\neq 0$, $j=l\pm 1/2$:
+Take eigenvalues with $s=1/2$, $l\neq 0$, $j=l\pm 1/2$:
 \[
-\Braket{\bm L\!\cdot\!\bm S}_{j=l+1/2}=\tfrac{\hbar^{2}}{2}\,l,\qquad
-\Braket{\bm L\!\cdot\!\bm S}_{j=l-1/2}=-\tfrac{\hbar^{2}}{2}(l+1).
+\Braket{\bm L\!\cdot\!\bm S}_{j}=\frac{\hbar^{2}}{2}\,[j(j+1)-l(l+1)-s(s+1)].
 \]
-Splitting $\Delta E_j=\Braket{\xi(r)}\Braket{\bm L\!\cdot\!\bm S}_j$:
+Evaluate $j=l+1/2$, $j(j+1)=l^{2}+2l+3/4$:
+\[
+\Braket{\bm L\!\cdot\!\bm S}_{j=l+1/2}=\frac{\hbar^{2}}{2}\,l.
+\]
+Evaluate $j=l-1/2$, $j(j+1)=l^{2}-1/4$:
+\[
+\Braket{\bm L\!\cdot\!\bm S}_{j=l-1/2}=-\frac{\hbar^{2}}{2}(l+1).
+\]
+Take expectation value $\Delta E_j=\Braket{\xi(r)}\Braket{\bm L\!\cdot\!\bm S}_j$ and subtract:
+\[
+\Delta E=\Braket{\xi(r)}\left[\frac{\hbar^{2}}{2}\,l+\frac{\hbar^{2}}{2}(l+1)\right].
+\]
+Collect:
 \[
 \Delta E=\Braket{\xi(r)}\,\tfrac{\hbar^{2}}{2}(2l+1).
 \]
-Insert hydrogenic $\Braket{1/r^3}=2(Z/na_0)^3/[l(l+1)(2l+1)]$:
+Insert $\Braket{\xi(r)}=\dfrac{Ze^{2}}{8\pi\epsilon_0 m_e^{2}c^{2}}\Braket{1/r^{3}}$ with hydrogenic $\Braket{1/r^3}=2(Z/na_0)^3/[l(l+1)(2l+1)]$:
 \[
-\Delta E=\frac{Ze^{2}\hbar^{2}}{4\pi\epsilon_0\,m_e^{2}c^{2}}\,\frac{Z^{3}}{n^{3}a_0^{3}}\,\frac{1}{l(l+1)}.
+\Delta E=\frac{Ze^{2}}{8\pi\epsilon_0 m_e^{2}c^{2}}\cdot\frac{2 Z^{3}}{n^{3}a_0^{3}\,l(l+1)(2l+1)}\cdot\frac{\hbar^{2}(2l+1)}{2}.
 \]
-Apply $\alpha=e^2/(4\pi\epsilon_0\hbar c)$, $a_0=\hbar/(\alpha m_e c)$, $hcR_\infty=\tfrac12 m_e c^2\alpha^2$:
+Cancel the $(2l+1)$ factors:
+\[
+\Delta E=\frac{Z^{4} e^{2}\hbar^{2}}{8\pi\epsilon_0\,m_e^{2}c^{2}\,n^{3}a_0^{3}\,l(l+1)}.
+\]
+Apply $e^2/(4\pi\epsilon_0)=\alpha\hbar c$ so $e^2/(8\pi\epsilon_0)=\alpha\hbar c/2$:
+\[
+\Delta E=\frac{Z^{4}\alpha\hbar^{3}c}{2 m_e^{2}c^{2}\,n^{3}a_0^{3}\,l(l+1)}.
+\]
+Apply $a_0=\hbar/(\alpha m_e c)$, so $1/a_0^{3}=\alpha^{3}m_e^{3}c^{3}/\hbar^{3}$:
+\[
+\Delta E=\frac{Z^{4}\alpha^{4} m_e c^{2}}{2 n^{3}\,l(l+1)}.
+\]
+Apply $hcR_\infty=\tfrac12 m_e c^{2}\alpha^{2}$, so $\alpha^{4}m_e c^{2}=2\alpha^{2}hcR_\infty$:
 \begin{equation}
 \boxed{\;\Delta E=\frac{Z^{4}\alpha^{2}hcR_{\infty}}{n^{3}\,l(l+1)}\quad(l\neq 0).\;}
 \label{eq:DeltaE-final}
@@ -82,29 +125,78 @@ Apply $\alpha=e^2/(4\pi\epsilon_0\hbar c)$, $a_0=\hbar/(\alpha m_e c)$, $hcR_\in
 
 Bohr energy $E_{n\to n'}=hcR_\infty Z^2(1/n^2-1/n'^2)$.
 
-H ($Z=1$, $2\to 3$): $hcR_\infty(1/4-1/9)=\tfrac{5}{36}hcR_\infty$.
-
-He$^+$ ($Z=2$, $4\to 6$): $4 hcR_\infty(1/16-1/36)=\tfrac{5}{36}hcR_\infty$.
-
+H ($Z=1$, $2\to 3$):
+\[
+\Delta E^{\rm H}=hcR_\infty\!\left(\frac{1}{4}-\frac{1}{9}\right)=\frac{9-4}{36}hcR_\infty=\frac{5}{36}hcR_\infty.
+\]
+He$^+$ ($Z=2$, $4\to 6$):
+\[
+\Delta E^{\rm He^+}=4 hcR_\infty\!\left(\frac{1}{16}-\frac{1}{36}\right)=4hcR_\infty\frac{36-16}{16\cdot 36}=\frac{5}{36}hcR_\infty.
+\]
 Same Bohr wavelength $\lambda\simeq\SI{656}{nm}$ (H$_\alpha$), $\nu_0\simeq\SI{4.57e14}{Hz}$.
 
-Largest fine-structure splitting is at smallest $l\neq 0$, i.e.\ $l=1$. Apply \eqref{eq:DeltaE-final}:
+Largest fine-structure splitting is at smallest $l\neq 0$, i.e.\ $l=1$. Apply \eqref{eq:DeltaE-final} for H, $Z=1, n=2, l=1$:
 \[
-\Delta E^{\rm H}_{n=2,l=1}=\frac{1\cdot\alpha^{2}}{8\cdot 2}\,hcR_\infty=\frac{\alpha^{2}}{16}\,hcR_\infty.
+\Delta E^{\rm H}_{n=2,l=1}=\frac{1^{4}\cdot\alpha^{2}}{2^{3}\cdot 1\cdot 2}\,hcR_\infty.
 \]
+Reduce:
 \[
-\Delta E^{\rm He^+}_{n=4,l=1}=\frac{16\,\alpha^{2}}{64\cdot 2}\,hcR_\infty=\frac{\alpha^{2}}{8}\,hcR_\infty.
+\Delta E^{\rm H}_{n=2,l=1}=\frac{\alpha^{2}}{16}\,hcR_\infty.
 \]
-Express as fraction of $h\nu_0=\tfrac{5}{36}hcR_\infty$:
+Apply \eqref{eq:DeltaE-final} for He$^+$, $Z=2, n=4, l=1$:
+\[
+\Delta E^{\rm He^+}_{n=4,l=1}=\frac{2^{4}\,\alpha^{2}}{4^{3}\cdot 1\cdot 2}\,hcR_\infty=\frac{16}{128}\alpha^{2}hcR_\infty.
+\]
+Reduce:
+\[
+\Delta E^{\rm He^+}_{n=4,l=1}=\frac{\alpha^{2}}{8}\,hcR_\infty.
+\]
+Divide H splitting by $h\nu_0=\tfrac{5}{36}hcR_\infty$:
+\[
+\frac{\Delta\nu^{\rm H}}{\nu_0}=\frac{\alpha^{2}/16}{5/36}=\frac{36\alpha^{2}}{16\cdot 5}=\frac{36\alpha^{2}}{80}.
+\]
+Reduce:
+\[
+\frac{\Delta\nu^{\rm H}}{\nu_0}=\frac{9\alpha^{2}}{20}.
+\]
+Insert $\alpha^{2}\simeq 5.33\times 10^{-5}$:
+\[
+\frac{\Delta\nu^{\rm H}}{\nu_0}\simeq\frac{9\cdot 5.33\times 10^{-5}}{20}\simeq 2.4\times 10^{-5}.
+\]
+Divide He$^+$ splitting similarly:
+\[
+\frac{\Delta\nu^{\rm He^+}}{\nu_0}=\frac{\alpha^{2}/8}{5/36}=\frac{36\alpha^{2}}{40}=\frac{9\alpha^{2}}{10}.
+\]
+Insert $\alpha^{2}$:
+\[
+\frac{\Delta\nu^{\rm He^+}}{\nu_0}\simeq\frac{9\cdot 5.33\times 10^{-5}}{10}\simeq 4.8\times 10^{-5}.
+\]
+Collect results:
 \begin{equation}
 \boxed{\;\frac{\Delta\nu^{\rm H}}{\nu_0}=\frac{9\alpha^{2}}{20}\simeq 2.4\times 10^{-5},\qquad
 \frac{\Delta\nu^{\rm He^+}}{\nu_0}=\frac{9\alpha^{2}}{10}\simeq 4.8\times 10^{-5}.\;}
 \label{eq:fs-fractions}
 \end{equation}
 
-\textit{Mass shift.} Reduced-mass Rydberg $R_M=R_\infty/(1+m_e/M)$ gives
+\textit{Mass shift.} Reduced-mass Rydberg $R_M=R_\infty/(1+m_e/M)$ shifts the transition frequency:
 \[
-\frac{\Delta\nu_{\rm mass}}{\nu_0}\simeq\frac{m_e}{M_p}-\frac{m_e}{M_\alpha}\simeq\frac{3}{4}\cdot\frac{1}{1836}\simeq 4\times 10^{-4},
+\frac{\nu(M)}{\nu_0}=\frac{R_M}{R_\infty}=\frac{1}{1+m_e/M}.
+\]
+Expand to leading order in $m_e/M$:
+\[
+\frac{\nu(M)}{\nu_0}\simeq 1-\frac{m_e}{M}.
+\]
+Take the difference between H ($M=m_p$) and He$^+$ ($M=M_\alpha\simeq 4m_p$):
+\[
+\frac{\Delta\nu_{\rm mass}}{\nu_0}=\frac{\nu(m_p)-\nu(4m_p)}{\nu_0}\simeq\frac{m_e}{m_p}-\frac{m_e}{4m_p}.
+\]
+Collect:
+\[
+\frac{\Delta\nu_{\rm mass}}{\nu_0}\simeq\frac{3}{4}\cdot\frac{m_e}{m_p}.
+\]
+Insert $m_e/m_p\simeq 1/1836$:
+\[
+\frac{\Delta\nu_{\rm mass}}{\nu_0}\simeq\frac{3}{4}\cdot\frac{1}{1836}\simeq 4\times 10^{-4},
 \]
 an order of magnitude larger than the fine-structure splittings; mass shift dominates the wavelength difference.
 
@@ -165,11 +257,19 @@ Insert $k_{\rm B}T\simeq\SI{4.14e-21}{J}$, $M=m_p$, $c^2\simeq\SI{9e16}{m^2 s^{-
 \[
 \frac{\Delta\nu_{\rm D}^{\rm H}}{\nu_0}=\sqrt{\frac{8\cdot 4.14\!\times\!10^{-21}\!\cdot\!0.693}{1.67\!\times\!10^{-27}\cdot 9\!\times\!10^{16}}}.
 \]
-Evaluate:
+Evaluate the radicand:
+\[
+\frac{\Delta\nu_{\rm D}^{\rm H}}{\nu_0}=\sqrt{\frac{2.296\times 10^{-20}}{1.503\times 10^{-10}}}=\sqrt{1.527\times 10^{-10}}.
+\]
+Take the square root:
 \[
 \frac{\Delta\nu_{\rm D}^{\rm H}}{\nu_0}\simeq 1.2\times 10^{-5}.
 \]
-He$^+$ has $M=4 m_p$, so width scales by $1/\sqrt{4}=1/2$:
+He$^+$ has $M\simeq 4 m_p$, so width scales by $1/\sqrt{M/m_p}=1/\sqrt{4}=1/2$:
+\[
+\frac{\Delta\nu_{\rm D}^{\rm He^+}}{\nu_0}=\frac{1}{2}\cdot 1.2\times 10^{-5}.
+\]
+Collect both results:
 \begin{equation}
 \boxed{\;\frac{\Delta\nu_{\rm D}^{\rm H}}{\nu_0}\simeq 1.2\times 10^{-5},\qquad
 \frac{\Delta\nu_{\rm D}^{\rm He^+}}{\nu_0}\simeq 6\times 10^{-6}.\;}
@@ -184,9 +284,21 @@ Equate $n=2,l=1$ splitting to $\tfrac{5}{36}hcR_\infty$:
 \[
 \frac{Z^{4}\alpha^{2}}{16}\,hcR_\infty=\frac{5}{36}\,hcR_\infty.
 \]
-Solve for $Z^4$:
+Cancel $hcR_\infty$ and rearrange for $Z^4$:
 \[
-Z^{4}=\frac{80}{36\,\alpha^{2}}\simeq 4.2\times 10^{4}.
+Z^{4}=\frac{5\cdot 16}{36\,\alpha^{2}}=\frac{80}{36\,\alpha^{2}}=\frac{20}{9\alpha^{2}}.
+\]
+Insert $\alpha^{2}\simeq 5.33\times 10^{-5}$:
+\[
+Z^{4}\simeq\frac{20}{9\cdot 5.33\times 10^{-5}}=\frac{20}{4.80\times 10^{-4}}\simeq 4.17\times 10^{4}.
+\]
+Take square root:
+\[
+Z^{2}\simeq\sqrt{4.17\times 10^{4}}\simeq 204.
+\]
+Take square root again:
+\[
+Z\simeq\sqrt{204}\simeq 14.3.
 \]
 \begin{equation}
 \boxed{\;Z\simeq 14\;\;(\text{e.g.\ Si}^{13+}).\;}
@@ -213,11 +325,13 @@ $-g_I\mu_N\bm I\!\cdot\!\bm B$: nuclear Zeeman, smaller by $m_e/m_p\sim 1/1836$.
 
 \subsection*{(b) Cross-over field}
 
-Set $g_J\mu_{\rm B}B_c\simeq A$:
+Set the Zeeman shift equal to the hyperfine splitting $g_J\mu_{\rm B}B_c\simeq A$.
+
+Compute $A$ from $\nu_{\rm HF}=\SI{1420}{MHz}$:
 \[
-A=h\cdot\SI{1420}{MHz}\simeq\SI{9.41e-25}{J}.
+A=h\,\nu_{\rm HF}=\SI{6.63e-34}{J\,s}\cdot\SI{1.42e9}{Hz}\simeq\SI{9.41e-25}{J}.
 \]
-With $g_J\simeq 2$ for the $1\,^2S_{1/2}$ ground state:
+With $g_J\simeq 2$ for the $1\,^2S_{1/2}$ ground state, solve for $B_c$:
 \[
 B_c=\frac{A}{g_J\mu_{\rm B}}=\frac{\SI{9.41e-25}{J}}{2\cdot\SI{9.27e-24}{J/T}}.
 \]
@@ -229,15 +343,31 @@ Evaluate:
 
 \subsection*{(c) Weak-field eigenenergies}
 
-Total spin $\bm F=\bm I+\bm J$, $\bm I\!\cdot\!\bm J=\tfrac{\hbar^2}{2}[F(F+1)-I(I+1)-J(J+1)]$.
-
-For $I=J=1/2$, $F=0,1$:
+Take $\bm I,\bm J$ dimensionless (in units of $\hbar$). Define $\bm F=\bm I+\bm J$ and square:
 \[
-E_{F=1}^{(0)}=+\tfrac14 A\hbar^{2},\qquad E_{F=0}^{(0)}=-\tfrac34 A\hbar^{2}.
+\bm F^{2}=\bm I^{2}+\bm J^{2}+2\bm I\!\cdot\!\bm J.
 \]
-Apply projection theorem within fixed $F$:
+Solve for $\bm I\cdot\bm J$:
 \[
-\Braket{F m_F|J_z|F m_F}=\frac{F(F+1)+J(J+1)-I(I+1)}{2F(F+1)}\,m_F\hbar.
+\bm I\!\cdot\!\bm J=\tfrac{1}{2}[F(F+1)-I(I+1)-J(J+1)].
+\]
+Insert $I=J=1/2$, $F=1$:
+\[
+\Braket{\bm I\!\cdot\!\bm J}_{F=1}=\tfrac{1}{2}[2-\tfrac34-\tfrac34]=\tfrac14.
+\]
+Insert $F=0$:
+\[
+\Braket{\bm I\!\cdot\!\bm J}_{F=0}=\tfrac{1}{2}[0-\tfrac34-\tfrac34]=-\tfrac34.
+\]
+Multiply by $A$:
+\[
+E_{F=1}^{(0)}=+\tfrac14 A,\qquad E_{F=0}^{(0)}=-\tfrac34 A.
+\]
+Hyperfine splitting $E_{F=1}-E_{F=0}=A=h\nu_{\rm HF}$ identifies $A$.
+
+Apply projection theorem within fixed $F$ to the Zeeman terms:
+\[
+\Braket{F m_F|J_z|F m_F}=\frac{F(F+1)+J(J+1)-I(I+1)}{2F(F+1)}\,m_F.
 \]
 Read off the Land\'e $g_F$:
 \[
@@ -245,7 +375,7 @@ g_F=g_J\,\frac{F(F+1)+J(J+1)-I(I+1)}{2F(F+1)}-\frac{m_e}{m_p}\,g_I\,\frac{F(F+1)
 \]
 Combine zero-field and Zeeman:
 \begin{equation}
-\boxed{\;E(F,m_F)=A\hbar^{2}\,\tfrac{F(F+1)-I(I+1)-J(J+1)}{2}+g_F\mu_{\rm B}B\,m_F\hbar.\;}
+\boxed{\;E(F,m_F)=A\,\tfrac{F(F+1)-I(I+1)-J(J+1)}{2}+g_F\mu_{\rm B}B\,m_F.\;}
 \label{eq:weak-field-E}
 \end{equation}
 For ground-state H: $g_{F=1}\simeq +1$, $g_{F=0}=0$ to leading order in $m_e/m_p$. Triplet splits linearly with $B$; singlet unshifted at first order.
@@ -258,40 +388,60 @@ In $|m_J,m_I\rangle$ Zeeman is diagonal. Decompose:
 \]
 Drop ladder pieces (off-diagonal in the strong-field basis):
 \[
-\Braket{m_J,m_I|\bm I\!\cdot\!\bm J|m_J,m_I}=\hbar^2 m_J m_I.
+\Braket{m_J,m_I|\bm I\!\cdot\!\bm J|m_J,m_I}=m_J m_I.
 \]
 Add the Zeeman terms:
 \[
-E(m_J,m_I)=A\hbar^{2}m_J m_I+g_J\mu_{\rm B}B\,m_J\hbar-g_I\mu_N B\,m_I\hbar.
+E(m_J,m_I)=A\,m_J m_I+g_J\mu_{\rm B}B\,m_J-g_I\mu_N B\,m_I.
 \]
 Insert the four sign combinations:
 \begin{align}
-E_1=E(+\tfrac12,+\tfrac12)&=+\tfrac14 A\hbar^{2}+\tfrac12 g_J\mu_{\rm B}B\hbar-\tfrac12 g_I\mu_N B\hbar,\label{eq:strong1}\\
-E_2=E(+\tfrac12,-\tfrac12)&=-\tfrac14 A\hbar^{2}+\tfrac12 g_J\mu_{\rm B}B\hbar+\tfrac12 g_I\mu_N B\hbar,\label{eq:strong2}\\
-E_3=E(-\tfrac12,+\tfrac12)&=-\tfrac14 A\hbar^{2}-\tfrac12 g_J\mu_{\rm B}B\hbar-\tfrac12 g_I\mu_N B\hbar,\label{eq:strong3}\\
-E_4=E(-\tfrac12,-\tfrac12)&=+\tfrac14 A\hbar^{2}-\tfrac12 g_J\mu_{\rm B}B\hbar+\tfrac12 g_I\mu_N B\hbar.\label{eq:strong4}
+E_1=E(+\tfrac12,+\tfrac12)&=+\tfrac14 A+\tfrac12 g_J\mu_{\rm B}B-\tfrac12 g_I\mu_N B,\label{eq:strong1}\\
+E_2=E(+\tfrac12,-\tfrac12)&=-\tfrac14 A+\tfrac12 g_J\mu_{\rm B}B+\tfrac12 g_I\mu_N B,\label{eq:strong2}\\
+E_3=E(-\tfrac12,+\tfrac12)&=-\tfrac14 A-\tfrac12 g_J\mu_{\rm B}B-\tfrac12 g_I\mu_N B,\label{eq:strong3}\\
+E_4=E(-\tfrac12,-\tfrac12)&=+\tfrac14 A-\tfrac12 g_J\mu_{\rm B}B+\tfrac12 g_I\mu_N B.\label{eq:strong4}
 \end{align}
 Stretched states $|\!\uparrow\Uparrow\rangle,|\!\downarrow\Downarrow\rangle$ ($|m_F|=1$) are exact eigenstates at all $B$; the $m_F=0$ pair is given exactly by Breit--Rabi.
 
 \subsection*{(e) Forces and the H maser}
 
-High-field upper states $E_1,E_2$ have $m_J=+1/2$; magnetic moment $\mu_z\simeq -\mu_{\rm B}$ (electron dominates). Force:
+High-field upper states $E_1,E_2$ have $m_J=+1/2$; magnetic moment $\mu_z\simeq -\mu_{\rm B}$ (electron dominates). Differentiate $E(m_J,m_I)$ w.r.t.\ $B$:
 \[
-F_z=-\frac{\partial E}{\partial z}=-(g_J\mu_{\rm B}m_J\hbar)\,\frac{\partial B_z}{\partial z}\mp(\tfrac12 g_I\mu_N\hbar)\,\frac{\partial B_z}{\partial z}.
+\frac{\partial E}{\partial B}=g_J\mu_{\rm B}m_J-g_I\mu_N m_I.
 \]
-Take leading electronic piece, $g_J\mu_{\rm B}/2\simeq\mu_{\rm B}$, $m_{\rm H}\simeq m_p$:
+Apply $F_z=-(\partial E/\partial z)=-(\partial E/\partial B)\,\partial_z B_z$:
+\[
+F_z=-g_J\mu_{\rm B}m_J\,\frac{\partial B_z}{\partial z}+g_I\mu_N m_I\,\frac{\partial B_z}{\partial z}.
+\]
+Take leading electronic piece, $g_J m_J=+1$ at $m_J=+1/2$:
+\[
+F_z\simeq-\mu_{\rm B}\,\frac{\partial B_z}{\partial z}.
+\]
+Divide by $m_p$ to get acceleration:
 \[
 a\simeq\frac{\mu_{\rm B}}{m_p}\,\frac{\partial B_z}{\partial z}=\frac{\SI{9.27e-24}{J/T}}{\SI{1.67e-27}{kg}}\cdot\SI{20}{T/m}.
 \]
-Evaluate:
+Compute the ratio:
+\[
+\frac{\mu_{\rm B}}{m_p}\simeq 5.55\times 10^{3}\;\si{m\,s^{-2}/(T/m)}.
+\]
+Multiply by the gradient:
+\[
+a\simeq 5.55\times 10^{3}\cdot 20\;\si{m\,s^{-2}}.
+\]
+Collect:
 \begin{equation}
 \boxed{\;|a|\simeq\SI{1.1e5}{m\,s^{-2}}\;\text{for both upper states.}\;}
 \label{eq:accel}
 \end{equation}
 
-Fractional force difference set by nuclear Zeeman:
+Force difference between $E_1$ ($m_I=+1/2$) and $E_2$ ($m_I=-1/2$):
 \[
-\frac{\Delta F}{\langle F\rangle}\simeq\frac{g_I\mu_N}{g_J\mu_{\rm B}}\sim\frac{1}{1836}\sim 5\times 10^{-4}.
+\Delta F=F_z(E_1)-F_z(E_2)=g_I\mu_N\,\frac{\partial B_z}{\partial z}.
+\]
+Divide by the mean $\langle F\rangle\simeq g_J\mu_{\rm B}m_J\,\partial_z B_z$:
+\[
+\frac{\Delta F}{\langle F\rangle}\simeq\frac{g_I\mu_N}{g_J\mu_{\rm B}m_J}\sim\frac{m_e}{m_p}\sim\frac{1}{1836}\sim 5\times 10^{-4}.
 \]
 
 \textit{Breit--Rabi connection.} Stretched states $|\!\uparrow\Uparrow\rangle,|\!\downarrow\Downarrow\rangle$ correspond to $|F=1,m_F=\pm 1\rangle$. The $m_F=0$ pair: $E_2$ at high field connects to $|F=1,m_F=0\rangle$; $E_3$ connects to $|F=0,m_F=0\rangle$.
@@ -303,8 +453,8 @@ Fractional force difference set by nuclear Zeeman:
   % zero-field anchor
   \fill (0,0.6) circle (1.4pt);
   \fill (0,-1.8) circle (1.4pt);
-  \node[left=4pt] at (0,0.6) {$+A\hbar^2/4$};
-  \node[left=4pt] at (0,-1.8) {$-3A\hbar^2/4$};
+  \node[left=4pt] at (0,0.6) {$+A/4$};
+  \node[left=4pt] at (0,-1.8) {$-3A/4$};
   % m_F = +1 stretched: rises linearly
   \draw[thick,blue,domain=0:6,smooth,variable=\x] plot ({\x},{0.6+0.35*\x});
   \fill[blue] (6,2.7) circle (1.4pt);
@@ -342,37 +492,59 @@ Three-level: $|1\rangle$ is the ground state; need $N_2>N_1$, i.e.\ $>\!\tfrac12
 
 \subsection*{(b) Gain coefficient}
 
-Rate equation for a beam of intensity $I$, lineshape $g(\nu-\nu_0)$, in the unsaturated regime:
+A monochromatic beam of intensity $I$ has energy density $I/c$ concentrated near $\omega$. Stimulated rate per atom on a homogeneously broadened line:
 \[
-\frac{\de I}{\de z}=\frac{\hbar\omega_0}{c}\,g(\nu-\nu_0)\,(B_{21}N_2-B_{12}N_1)\,I.
+W_{\rm stim}=B_{21}\,\rho_\omega\,g(\omega-\omega_0)=B_{21}\,\frac{I}{c}\,g(\omega-\omega_0),
 \]
-Assumptions: (i) plane wave; (ii) homogeneous broadening, $\int g\,\de\nu=1$; (iii) populations not depleted; (iv) thermal photons negligible at optical frequency.
+with $\int g\,\de\omega=1$.
 
-Define $\gamma(\nu)$ by $\de I/\de z=\gamma I$:
+Net rate of photons per volume into the beam:
 \[
-\gamma(\nu)=\frac{\hbar\omega_0\,g(\nu-\nu_0)}{c}\,(B_{21}N_2-B_{12}N_1).
+\frac{1}{\hbar\omega_0}\,\frac{\de I}{\de z}=(B_{21}N_2-B_{12}N_1)\,\frac{I}{c}\,g(\omega-\omega_0).
+\]
+Multiply by $\hbar\omega_0$:
+\[
+\frac{\de I}{\de z}=\hbar\omega_0\,(B_{21}N_2-B_{12}N_1)\,\frac{I}{c}\,g(\omega-\omega_0).
+\]
+Assumptions: (i) plane wave; (ii) homogeneous broadening; (iii) populations not depleted; (iv) thermal photons negligible at optical frequency.
+
+Define $\gamma(\omega)$ by $\de I/\de z=\gamma I$:
+\[
+\gamma(\omega)=\frac{\hbar\omega_0\,g(\omega-\omega_0)}{c}\,(B_{21}N_2-B_{12}N_1).
 \]
 Apply $g_1 B_{12}=g_2 B_{21}$:
 \[
-\gamma(\nu)=\frac{\hbar\omega_0\,g(\nu-\nu_0)}{c}\,B_{21}\!\left[N_2-\frac{g_2}{g_1}N_1\right].
+\gamma(\omega)=\frac{\hbar\omega_0\,g(\omega-\omega_0)}{c}\,B_{21}\!\left[N_2-\frac{g_2}{g_1}N_1\right].
 \]
-Eliminate $B_{21}$ via $A_{21}=\hbar\omega_0^{3}B_{21}/(\pi^{2}c^{3})$:
+Eliminate $B_{21}$ via $A_{21}=\hbar\omega_0^{3}B_{21}/(\pi^{2}c^{3})$, i.e.\ $B_{21}=\pi^{2}c^{3}A_{21}/(\hbar\omega_0^{3})$:
+\[
+\gamma(\omega)=\frac{\hbar\omega_0\,g(\omega-\omega_0)}{c}\,\frac{\pi^{2}c^{3}A_{21}}{\hbar\omega_0^{3}}\!\left[N_2-\frac{g_2}{g_1}N_1\right].
+\]
+Cancel $\hbar\omega_0$ and one factor of $c$:
 \begin{equation}
-\boxed{\;\gamma(\nu)=\frac{\pi^{2}c^{2}A_{21}}{\omega_0^{2}}\,g(\nu-\nu_0)\!\left[N_2-\frac{g_2}{g_1}N_1\right]=\sigma_{\rm em}(\nu)\,N^{*}.\;}
+\boxed{\;\gamma(\omega)=\frac{\pi^{2}c^{2}A_{21}}{\omega_0^{2}}\,g(\omega-\omega_0)\!\left[N_2-\frac{g_2}{g_1}N_1\right]=\sigma_{\rm em}(\omega)\,N^{*}.\;}
 \label{eq:gain-final}
 \end{equation}
 
 \subsection*{(c) Yb ion density}
 
-Beer absorption: $I(L)/I(0)=e^{-\sigma_{\rm abs}NL}=0.14$ ($86\%$ absorbed):
+Beer absorption with $86\%$ absorbed gives $I(L)/I(0)=0.14$:
+\[
+e^{-\sigma_{\rm abs}NL}=0.14.
+\]
+Take the log:
 \[
 \sigma_{\rm abs}\,N\,L=-\ln 0.14=1.97.
 \]
 Solve for $N$:
 \[
-N=\frac{1.97}{\SI{6e-25}{m^2}\cdot\SI{0.5}{m}}.
+N=\frac{1.97}{\sigma_{\rm abs} L}=\frac{1.97}{\SI{6e-25}{m^2}\cdot\SI{0.5}{m}}.
 \]
-Evaluate:
+Evaluate the denominator:
+\[
+N=\frac{1.97}{3\times 10^{-25}\,\si{m^{3}}}.
+\]
+Compute the quotient:
 \begin{equation}
 \boxed{\;N\simeq\SI{6.6e24}{m^{-3}}.\;}
 \label{eq:N-yb}
@@ -380,16 +552,34 @@ Evaluate:
 
 \subsection*{(d) Lower-band thermal populations at \SI{300}{K}}
 
-Boltzmann factors with $g_0=g_{1A}=g_{1B}=1$. At $T=\SI{300}{K}$, $k_{\rm B}T/hc\simeq\SI{2.084e4}{m^{-1}}$:
+Three lower-band sublevels $\{0,1A,1B\}$ in thermal equilibrium, all degeneracies $1$.
+
+Convert $k_{\rm B}T$ to wavenumber with $k_{\rm B}T=\SI{4.14e-21}{J}$ and $hc=\SI{1.99e-25}{J\,m}$:
 \[
-\frac{E_{1A}}{k_{\rm B}T}=\frac{60\,000}{2.084\!\times\!10^{4}}\simeq 2.88,\quad
-\frac{E_{1B}}{k_{\rm B}T}=\frac{106\,000}{2.084\!\times\!10^{4}}\simeq 5.09.
+\frac{k_{\rm B}T}{hc}=\frac{4.14\times 10^{-21}}{1.99\times 10^{-25}}\simeq\SI{2.084e4}{m^{-1}}.
 \]
-Partition sum:
+Form dimensionless exponents:
 \[
-Z_{\rm low}=1+e^{-2.88}+e^{-5.09}=1+0.0561+0.00614\simeq 1.062.
+\frac{E_{1A}}{k_{\rm B}T}=\frac{60\,000}{2.084\times 10^{4}}\simeq 2.88.
 \]
-Fractional populations $f_\alpha=e^{-E_\alpha/k_{\rm B}T}/Z_{\rm low}$:
+\[
+\frac{E_{1B}}{k_{\rm B}T}=\frac{106\,000}{2.084\times 10^{4}}\simeq 5.09.
+\]
+Form Boltzmann factors:
+\[
+e^{-2.88}\simeq 0.0561,\qquad e^{-5.09}\simeq 0.00614.
+\]
+Partition sum over $\{0,1A,1B\}$:
+\[
+Z_{\rm low}=1+0.0561+0.00614\simeq 1.062.
+\]
+Normalise to get fractional populations $f_\alpha=e^{-E_\alpha/k_{\rm B}T}/Z_{\rm low}$:
+\[
+f_{1A}=\frac{0.0561}{1.062}\simeq 5.3\times 10^{-2}.
+\]
+\[
+f_{1B}=\frac{0.00614}{1.062}\simeq 5.8\times 10^{-3}.
+\]
 \begin{equation}
 \boxed{\;f_{1A}\simeq 5.3\times 10^{-2},\qquad f_{1B}\simeq 5.8\times 10^{-3}.\;}
 \label{eq:frac-low}
@@ -397,28 +587,46 @@ Fractional populations $f_\alpha=e^{-E_\alpha/k_{\rm B}T}/Z_{\rm low}$:
 
 \subsection*{(e) Threshold pump energies}
 
-Threshold: $N_{2,\rm th}=N_{1\alpha}\simeq f_{1\alpha}(N-N_2)\simeq f_{1\alpha}N$ ($f_{1\alpha}\ll 1$).
-
-Pump-photon energy:
+Threshold condition $N_{2,\rm th}=N_{1\alpha,\rm th}$ with $g_{2}/g_{1\alpha}=1$. The lower-band ions thermalise, so $N_{1\alpha}=f_{1\alpha}(N-N_2)\simeq f_{1\alpha}N$ for $f_{1\alpha}\ll 1$:
 \[
-E_{\rm pump}=\frac{hc}{\SI{910e-9}{m}}\simeq\SI{2.18e-19}{J}\simeq\SI{1.36}{eV}.
+N_{2,\rm th}\simeq f_{1\alpha}N.
+\]
+Compute pump-photon energy at \SI{910}{nm}:
+\[
+E_{\rm pump}=\frac{hc}{\lambda_{\rm pump}}=\frac{6.626\times 10^{-34}\cdot 3\times 10^{8}}{910\times 10^{-9}}.
+\]
+Evaluate:
+\[
+E_{\rm pump}\simeq\SI{2.18e-19}{J}\simeq\SI{1.36}{eV}.
 \]
 Core volume:
 \[
-V=\pi r^{2}L=\pi(\SI{2e-6}{m})^{2}\cdot\SI{0.5}{m}\simeq\SI{6.28e-12}{m^{3}}.
+V=\pi r^{2}L=\pi(\SI{2e-6}{m})^{2}\cdot\SI{0.5}{m}.
 \]
-Total ions:
+Evaluate:
+\[
+V\simeq\SI{6.28e-12}{m^{3}}.
+\]
+Total ions in the core:
 \[
 NV\simeq\SI{6.6e24}{m^{-3}}\cdot\SI{6.28e-12}{m^{3}}\simeq 4.14\times 10^{13}.
 \]
-Threshold pump energy $E_{\alpha,\rm th}=f_{1\alpha}NV E_{\rm pump}$:
+Threshold pump energy $E_{\alpha,\rm th}=N_{2,\rm th}V E_{\rm pump}=f_{1\alpha}NV E_{\rm pump}$:
 \[
 E_{A,\rm th}=5.3\times 10^{-2}\cdot 4.14\times 10^{13}\cdot\SI{2.18e-19}{J}.
 \]
+Multiply factors for $A$:
+\[
+E_{A,\rm th}\simeq\SI{4.78e-7}{J}.
+\]
+Compute $B$:
 \[
 E_{B,\rm th}=5.8\times 10^{-3}\cdot 4.14\times 10^{13}\cdot\SI{2.18e-19}{J}.
 \]
-Evaluate:
+Multiply factors for $B$:
+\[
+E_{B,\rm th}\simeq\SI{5.23e-8}{J}.
+\]
 \begin{equation}
 \boxed{\;E_{A,\rm th}\simeq\SI{0.48}{\micro J},\qquad E_{B,\rm th}\simeq\SI{52}{nJ}.\;}
 \label{eq:Eth-results}
@@ -426,54 +634,79 @@ Evaluate:
 
 \subsection*{(f) Round-trip gain at $E=5E_{B,\rm th}$}
 
-Excited density:
+Pump $5\times$ threshold for $B$ excites $N_2=5 f_{1B}N$:
 \[
-N_2=5 f_{1B}N=5\cdot 5.8\times 10^{-3}\cdot\SI{6.6e24}{m^{-3}}\simeq\SI{1.9e23}{m^{-3}}.
+N_2=5\cdot 5.8\times 10^{-3}\cdot\SI{6.6e24}{m^{-3}}.
 \]
-Lower-band populations of remaining ions:
+Multiply factors:
 \[
-N_{1A}\simeq f_{1A}(N-N_2)\simeq\SI{3.4e23}{m^{-3}},\qquad N_{1B}\simeq f_{1B}(N-N_2)\simeq\SI{3.7e22}{m^{-3}}.
+N_2\simeq\SI{1.9e23}{m^{-3}}.
+\]
+Remaining ions in lower band:
+\[
+N-N_2=6.6\times 10^{24}-0.19\times 10^{24}\simeq\SI{6.41e24}{m^{-3}}.
+\]
+Thermal lower-band populations:
+\[
+N_{1A}=f_{1A}(N-N_2)\simeq 5.3\times 10^{-2}\cdot\SI{6.41e24}{m^{-3}}\simeq\SI{3.4e23}{m^{-3}}.
+\]
+\[
+N_{1B}=f_{1B}(N-N_2)\simeq 5.8\times 10^{-3}\cdot\SI{6.41e24}{m^{-3}}\simeq\SI{3.7e22}{m^{-3}}.
 \]
 Inversions ($g_2/g_{1\alpha}=1$):
 \[
-N^{*}_{A}=\SI{1.9e23}{m^{-3}}-\SI{3.4e23}{m^{-3}}\simeq -\SI{1.5e23}{m^{-3}}<0.
+N^{*}_{A}=N_2-N_{1A}=\SI{1.9e23}{m^{-3}}-\SI{3.4e23}{m^{-3}}\simeq -\SI{1.5e23}{m^{-3}}<0.
 \]
 \[
-N^{*}_{B}=\SI{1.9e23}{m^{-3}}-\SI{3.7e22}{m^{-3}}\simeq +\SI{1.5e23}{m^{-3}}.
+N^{*}_{B}=N_2-N_{1B}=\SI{1.9e23}{m^{-3}}-\SI{3.7e22}{m^{-3}}\simeq +\SI{1.5e23}{m^{-3}}.
 \]
 Round-trip gain on $2\to 1B$:
 \[
 G_{\rm rt}=\exp(2\sigma_{\rm em}N^{*}_{B}L)=\exp(2\cdot\SI{2.5e-25}{m^2}\cdot\SI{1.5e23}{m^{-3}}\cdot\SI{0.5}{m}).
 \]
-Evaluate the exponent:
+Multiply out the exponent:
 \[
-2\sigma_{\rm em}N^{*}_{B}L=3.75\times 10^{-2}.
+2\sigma_{\rm em}N^{*}_{B}L=2\cdot 0.5\cdot 2.5\cdot 1.5\times 10^{-2}=3.75\times 10^{-2}.
 \]
+Exponentiate:
 \begin{equation}
-\boxed{\;G_{\rm rt}\simeq e^{0.038}\simeq 1.04\;(\sim 4\%);\;\text{no gain on }2\!\to\!1A.\;}
+\boxed{\;G_{\rm rt}\simeq e^{0.0375}\simeq 1.04\;(\sim 4\%);\;\text{no gain on }2\!\to\!1A.\;}
 \label{eq:Grt-num}
 \end{equation}
 
 \subsection*{(g) Maximum efficiency and losses}
 
-Quantum-defect efficiency:
+Quantum-defect efficiency is the ratio of laser to pump photon energy:
 \[
-\eta_{\rm QD}=\frac{\lambda_{\rm pump}}{\lambda_{\rm laser}}=\frac{E_{\rm laser}}{E_{\rm pump}}.
+\eta_{\rm QD}=\frac{E_{\rm laser}}{E_{\rm pump}}=\frac{\lambda_{\rm pump}}{\lambda_{\rm laser}}.
 \]
-$2\to 1B$: $E_{\rm laser}/hc=(1\,026\,000-106\,000)\,\si{m^{-1}}=920\,000\,\si{m^{-1}}$, $E_{\rm pump}/hc=1\,099\,000\,\si{m^{-1}}$:
+Compute laser wavenumber $2\to 1B$:
 \[
-\eta_{\rm QD}^{B}=\frac{920}{1099}\simeq 0.837.
+\frac{E_{\rm laser}^{B}}{hc}=(1\,026\,000-106\,000)\,\si{m^{-1}}=920\,000\,\si{m^{-1}}.
 \]
-$2\to 1A$: $E_{\rm laser}/hc=966\,000\,\si{m^{-1}}$:
+Compute pump wavenumber at $\lambda_{\rm pump}=\SI{910}{nm}$:
 \[
-\eta_{\rm QD}^{A}=\frac{966}{1099}\simeq 0.879.
+\frac{E_{\rm pump}}{hc}=\frac{1}{\lambda_{\rm pump}}=\frac{1}{910\times 10^{-9}\,\si{m}}\simeq 1\,099\,000\,\si{m^{-1}}.
 \]
-Combine with $\eta_{\rm diode}=0.60$ and $\eta_{\rm abs}=0.86$:
+Form the ratio:
+\[
+\eta_{\rm QD}^{B}=\frac{920\,000}{1\,099\,000}\simeq 0.837.
+\]
+Compute laser wavenumber $2\to 1A$:
+\[
+\frac{E_{\rm laser}^{A}}{hc}=(1\,026\,000-60\,000)\,\si{m^{-1}}=966\,000\,\si{m^{-1}}.
+\]
+Form the ratio:
+\[
+\eta_{\rm QD}^{A}=\frac{966\,000}{1\,099\,000}\simeq 0.879.
+\]
+Multiply by $\eta_{\rm diode}=0.60$ and $\eta_{\rm abs}=0.86$ for $B$:
 \[
 \eta_{\rm max}^{B}=0.60\cdot 0.86\cdot 0.837\simeq 0.43.
 \]
+Repeat for $A$:
 \[
-\eta_{\rm max}^{A}\simeq 0.60\cdot 0.86\cdot 0.879\simeq 0.45.
+\eta_{\rm max}^{A}=0.60\cdot 0.86\cdot 0.879\simeq 0.45.
 \]
 \begin{equation}
 \boxed{\;\eta_{\rm max}\simeq 43\text{--}45\%.\;}
@@ -523,18 +756,26 @@ Subtract $I_C$ from $I_A$:
 \[
 I_A-I_C=I_B\,e^{-\tau_\nu}.
 \]
-Divide by $I_B$, set $X=I_A/I_B,Y=I_C/I_B$:
+Divide by $I_B$, set $X=I_A/I_B$, $Y=I_C/I_B$:
 \[
-e^{-\tau_\nu}=X-Y=0.85-0.15=0.70.
+e^{-\tau_\nu}=X-Y.
+\]
+Insert numerical values:
+\[
+e^{-\tau_\nu}=0.85-0.15=0.70.
 \]
 Take log:
 \begin{equation}
 \boxed{\;\tau_\nu=-\ln 0.70\simeq 0.357.\;}
 \label{eq:tau-num}
 \end{equation}
-Read $S_\nu/I_\nu(0)$ from $I_C$:
+Read $S_\nu/I_\nu(0)$ from $I_C/I_B$:
 \[
-\frac{S_\nu}{I_\nu(0)}=\frac{Y}{1-e^{-\tau_\nu}}=\frac{0.15}{1-0.70}.
+\frac{S_\nu}{I_\nu(0)}=\frac{Y}{1-e^{-\tau_\nu}}=\frac{Y}{1-(X-Y)}.
+\]
+Insert numerical values:
+\[
+\frac{S_\nu}{I_\nu(0)}=\frac{0.15}{1-0.70}=\frac{0.15}{0.30}.
 \]
 Evaluate:
 \begin{equation}
@@ -545,19 +786,31 @@ Optically thin flame; carbon emits with half the incoming black-body brightness 
 
 \subsection*{(c) Resonant cross section and the Li $2s\to 2p$ line}
 
-Lifetime-limited Lorentzian, $\Gamma=A_{21}$:
+Natural-width Lorentzian normalised in $\omega$, $\int g_L\,\de\omega=1$, with $\Gamma=A_{21}$:
 \[
 g_L(\omega-\omega_0)=\frac{1}{2\pi}\,\frac{\Gamma}{(\omega-\omega_0)^{2}+(\Gamma/2)^{2}}.
 \]
-Evaluate on resonance:
+Set $\omega=\omega_0$:
 \[
-g_L(0)=\frac{2}{\pi A_{21}}.
+g_L(0)=\frac{\Gamma/(2\pi)}{(\Gamma/2)^{2}}=\frac{\Gamma/(2\pi)}{\Gamma^{2}/4}.
+\]
+Simplify:
+\[
+g_L(0)=\frac{2}{\pi\Gamma}=\frac{2}{\pi A_{21}}.
 \]
 Insert in $\sigma_{\rm abs}=(g_2/g_1)(\pi^2 c^2 A_{21}/\omega_0^2)\,g_L$, take $g_2/g_1=1$:
 \[
-\sigma_{\rm abs}^{\rm res}=\frac{\pi^{2}c^{2}A_{21}}{\omega_0^{2}}\cdot\frac{2}{\pi A_{21}}=\frac{2\pi c^{2}}{\omega_0^{2}}.
+\sigma_{\rm abs}^{\rm res}=\frac{\pi^{2}c^{2}A_{21}}{\omega_0^{2}}\cdot\frac{2}{\pi A_{21}}.
 \]
-Use $\omega_0=2\pi c/\lambda_0$:
+Cancel $A_{21}$ and one $\pi$:
+\[
+\sigma_{\rm abs}^{\rm res}=\frac{2\pi c^{2}}{\omega_0^{2}}.
+\]
+Use $\omega_0=2\pi c/\lambda_0$, so $\omega_0^{2}=4\pi^{2}c^{2}/\lambda_0^{2}$:
+\[
+\sigma_{\rm abs}^{\rm res}=\frac{2\pi c^{2}\lambda_0^{2}}{4\pi^{2}c^{2}}.
+\]
+Cancel:
 \begin{equation}
 \boxed{\;\sigma_{\rm abs}^{\rm res}=\frac{\lambda_0^{2}}{2\pi}\;\;\text{(independent of }A_{21}).\;}
 \label{eq:sigma-res}
@@ -565,16 +818,21 @@ Use $\omega_0=2\pi c/\lambda_0$:
 
 For Li, $\lambda_0=\SI{671}{nm}$:
 \[
-\sigma_{\rm abs}^{\rm res}=\frac{(\SI{671e-9}{m})^{2}}{2\pi}\simeq\SI{7.2e-14}{m^{2}}.
+\sigma_{\rm abs}^{\rm res}=\frac{(\SI{671e-9}{m})^{2}}{2\pi}=\frac{4.50\times 10^{-13}\,\si{m^{2}}}{2\pi}.
 \]
+Divide:
 \begin{equation}
-\boxed{\;\sigma_{\rm abs}^{\rm res}\simeq\SI{7e-14}{m^{2}}.\;}
+\boxed{\;\sigma_{\rm abs}^{\rm res}\simeq\SI{7.2e-14}{m^{2}}.\;}
 \label{eq:sigma-Li}
 \end{equation}
 
 Column density for $\tau\sim 1$ at $L=\SI{1}{cm}$:
 \[
 N\sim\frac{1}{\sigma_{\rm abs}^{\rm res}L}=\frac{1}{\SI{7.2e-14}{m^2}\cdot\SI{e-2}{m}}.
+\]
+Compute the denominator:
+\[
+N\sim\frac{1}{7.2\times 10^{-16}\,\si{m^{3}}}.
 \]
 Evaluate:
 \begin{equation}

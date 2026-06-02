@@ -32,35 +32,63 @@
 
 \subsection*{(a) Newtonian limit}
 
-Use signature $(-,+,+,+)$.  Rename the dummy index in the third term of the quoted weak-field Ricci tensor: with $g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu}$,
+Adopt signature $(-,+,+,+)$ and write the weak-field Ricci:
 \[
 R_{\mu\nu}=\tfrac{1}{2}\eta^{\alpha\gamma}\bigl(-\partial_{\mu}\partial_{\alpha}h_{\nu\gamma}+\partial_{\gamma}\partial_{\alpha}h_{\nu\mu}+\partial_{\mu}\partial_{\nu}h_{\alpha\gamma}-\partial_{\nu}\partial_{\gamma}h_{\alpha\mu}\bigr).
 \]
-Specialise to $\mu=\nu=0$ and static fields, $\partial_{0}h_{\mu\nu}=0$:
+Specialise to $\mu=\nu=0$ with $\partial_{0}h_{\mu\nu}=0$:
 \[
-R_{00}=\tfrac{1}{2}\eta^{\alpha\gamma}\partial_{\gamma}\partial_{\alpha}h_{00}=\tfrac{1}{2}\Lap h_{00}.
+R_{00}=\tfrac{1}{2}\eta^{\alpha\gamma}\bigl(-\partial_{0}\partial_{\alpha}h_{0\gamma}+\partial_{\gamma}\partial_{\alpha}h_{00}+\partial_{0}\partial_{0}h_{\alpha\gamma}-\partial_{0}\partial_{\gamma}h_{\alpha 0}\bigr).
 \]
-Trace-reverse the field equations.  Take the trace $g^{\mu\nu}(R_{\mu\nu}-\tfrac{1}{2}Rg_{\mu\nu})=-\kappa_{E}T$:
+Drop $\partial_{0}$-terms:
 \[
-R=\kappa_{E}T,\qquad R_{\mu\nu}=-\kappa_{E}\bigl(T_{\mu\nu}-\tfrac{1}{2}Tg_{\mu\nu}\bigr).
+R_{00}=\tfrac{1}{2}\eta^{\alpha\gamma}\partial_{\gamma}\partial_{\alpha}h_{00}.
 \]
-Non-relativistic source: $T_{00}=\rho c^{2}$, $T_{ij}=0$:
+Restrict to spatial sum $\alpha=\gamma=i$ (only spatial derivatives survive):
 \[
-T=g^{\mu\nu}T_{\mu\nu}=\eta^{00}T_{00}=-\rho c^{2}.
+R_{00}=\tfrac{1}{2}\Lap h_{00}.
 \]
-Hence
+Trace-reverse the field equation by contracting with $g^{\mu\nu}$:
 \[
-T_{00}-\tfrac{1}{2}T\eta_{00}=\rho c^{2}-\tfrac{1}{2}(-\rho c^{2})(-1)=\tfrac{1}{2}\rho c^{2}.
+R-\tfrac{1}{2}\cdot 4\,R=-\kappa_{E}T.
 \]
-Insert into $R_{00}=-\kappa_{E}\bigl(T_{00}-\tfrac{1}{2}T g_{00}\bigr)$:
+Solve for $R$:
+\[
+R=\kappa_{E}T.
+\]
+Substitute back into the field equation:
+\[
+R_{\mu\nu}=-\kappa_{E}\bigl(T_{\mu\nu}-\tfrac{1}{2}T g_{\mu\nu}\bigr).
+\]
+Compute the trace of $T_{\mu\nu}$ for the non-relativistic source:
+\[
+T=g^{\mu\nu}T_{\mu\nu}=\eta^{00}T_{00}=(-1)(\rho c^{2})=-\rho c^{2}.
+\]
+Form the source combination:
+\[
+T_{00}-\tfrac{1}{2}T\eta_{00}=\rho c^{2}-\tfrac{1}{2}(-\rho c^{2})(-1).
+\]
+Simplify:
+\[
+T_{00}-\tfrac{1}{2}T\eta_{00}=\rho c^{2}-\tfrac{1}{2}\rho c^{2}=\tfrac{1}{2}\rho c^{2}.
+\]
+Insert into the $00$-equation $R_{00}=-\kappa_{E}(T_{00}-\tfrac{1}{2}T g_{00})$:
 \[
 \tfrac{1}{2}\Lap h_{00}=-\tfrac{1}{2}\kappa_{E}\rho c^{2}.
 \]
-Substitute $h_{00}=-2\Phi/c^{2}$ and $\kappa_{E}=8\pi G/c^{4}$:
+Substitute $h_{00}=-2\Phi/c^{2}$:
+\[
+\tfrac{1}{2}\Lap\!\Bigl(-\tfrac{2\Phi}{c^{2}}\Bigr)=-\tfrac{1}{2}\kappa_{E}\rho c^{2}.
+\]
+Substitute $\kappa_{E}=8\pi G/c^{4}$:
 \[
 -\frac{1}{c^{2}}\Lap\Phi=-\frac{4\pi G}{c^{4}}\rho c^{2}.
 \]
-Rearrange:
+Cancel the $c^{2}$:
+\[
+-\frac{1}{c^{2}}\Lap\Phi=-\frac{4\pi G\rho}{c^{2}}.
+\]
+Multiply by $-c^{2}$:
 \begin{equation}
 \boxed{\;\Lap\Phi=4\pi G\rho.\;}
 \label{eq:NewtonPoisson}
@@ -68,23 +96,35 @@ Rearrange:
 
 \subsection*{(b) Gravitomagnetic equation of motion}
 
-Geodesic equation, with $\tau$ proper time:
+Write the geodesic equation with $u^{\alpha}=\de x^{\alpha}/\de\tau$:
 \[
-\frac{\de^{2}x^{\mu}}{\de\tau^{2}}+\Gamma^{\mu}_{\alpha\beta}u^{\alpha}u^{\beta}=0,\qquad u^{\alpha}=\frac{\de x^{\alpha}}{\de\tau}.
+\frac{\de^{2}x^{\mu}}{\de\tau^{2}}+\Gamma^{\mu}_{\alpha\beta}u^{\alpha}u^{\beta}=0.
 \]
-Slow motion: $u^{0}\approx c$, $u^{i}=v^{i}+O(v^{3}/c^{2})$, and $\de\tau\approx \de t$:
+Slow motion: $u^{0}\approx c$, $u^{i}\approx v^{i}$, $\de\tau\approx\de t$:
 \[
-\frac{\de^{2}x^{i}}{\de t^{2}}=-\Gamma^{i}_{\alpha\beta}\frac{u^{\alpha}u^{\beta}}{(u^{0})^{2}}\,c^{2}\;\Rightarrow\;\frac{\de^{2}x^{i}}{\de t^{2}}=-c^{2}\Gamma^{i}_{00}-2c\,\Gamma^{i}_{0j}v^{j}+O(v^{2}).
+\frac{\de^{2}x^{i}}{\de t^{2}}=-\Gamma^{i}_{\alpha\beta}\frac{u^{\alpha}u^{\beta}}{(u^{0})^{2}}c^{2}.
 \]
-Linearised Christoffels with $\partial_{0}h_{\mu\nu}=0$:
+Keep only terms up to first order in $v^{i}$:
 \[
-\Gamma^{i}_{00}=-\tfrac{1}{2}\eta^{ii}\partial_{i}h_{00}=\tfrac{1}{2}\partial_{i}h_{00},\qquad \Gamma^{i}_{0j}=\tfrac{1}{2}\eta^{ii}\bigl(\partial_{j}h_{0i}-\partial_{i}h_{0j}\bigr)=\tfrac{1}{2}\bigl(\partial_{j}h_{0i}-\partial_{i}h_{0j}\bigr).
+\frac{\de^{2}x^{i}}{\de t^{2}}=-c^{2}\Gamma^{i}_{00}-2c\,\Gamma^{i}_{0j}v^{j}.
 \]
-Static $\Gamma^{i}_{00}$-piece, using $h_{00}=-2\Phi/c^{2}$:
+Compute the linearised Christoffel $\Gamma^{i}_{00}$ with $\partial_{0}h_{\mu\nu}=0$:
 \[
--c^{2}\Gamma^{i}_{00}=-\tfrac{1}{2}c^{2}\partial_{i}h_{00}=\partial_{i}\Phi\Rightarrow -c^{2}\bm\Gamma_{00}=-\nabla\Phi.
+\Gamma^{i}_{00}=\tfrac{1}{2}\eta^{ii}\bigl(\partial_{0}h_{i0}+\partial_{0}h_{0i}-\partial_{i}h_{00}\bigr)=-\tfrac{1}{2}\partial_{i}h_{00}.
 \]
-Velocity-dependent piece:
+Compute $\Gamma^{i}_{0j}$ similarly:
+\[
+\Gamma^{i}_{0j}=\tfrac{1}{2}\eta^{ii}\bigl(\partial_{0}h_{ij}+\partial_{j}h_{0i}-\partial_{i}h_{0j}\bigr)=\tfrac{1}{2}\bigl(\partial_{j}h_{0i}-\partial_{i}h_{0j}\bigr).
+\]
+Evaluate the static piece using $h_{00}=-2\Phi/c^{2}$:
+\[
+-c^{2}\Gamma^{i}_{00}=\tfrac{1}{2}c^{2}\partial_{i}h_{00}.
+\]
+Substitute $h_{00}=-2\Phi/c^{2}$:
+\[
+-c^{2}\Gamma^{i}_{00}=\tfrac{1}{2}c^{2}\partial_{i}\!\bigl(-\tfrac{2\Phi}{c^{2}}\bigr)=-\partial_{i}\Phi.
+\]
+Evaluate the velocity-dependent piece:
 \[
 -2c\,\Gamma^{i}_{0j}v^{j}=-c\bigl(\partial_{j}h_{0i}-\partial_{i}h_{0j}\bigr)v^{j}.
 \]
@@ -92,15 +132,15 @@ Define $\vb h=(h_{01},h_{02},h_{03})$ and $\vb B_{G}=\nabla\times c\vb h$, so $(
 \[
 \bigl(\vb v\times\vb B_{G}\bigr)_{i}=\epsilon_{ijk}v^{j}(\vb B_{G})_{k}=c\,\epsilon_{ijk}\epsilon_{klm}v^{j}\partial_{l}h_{0m}.
 \]
-Apply $\epsilon_{ijk}\epsilon_{klm}=\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl}$ (the hint):
+Apply $\epsilon_{ijk}\epsilon_{klm}=\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl}$:
 \[
 \bigl(\vb v\times\vb B_{G}\bigr)_{i}=c\,v^{j}\bigl(\partial_{i}h_{0j}-\partial_{j}h_{0i}\bigr).
 \]
-Compare with the velocity-dependent piece above:
+Compare with the velocity-dependent piece:
 \[
--2c\Gamma^{i}_{0j}v^{j}=\bigl(\vb v\times\vb B_{G}\bigr)_{i}.
+-2c\,\Gamma^{i}_{0j}v^{j}=\bigl(\vb v\times\vb B_{G}\bigr)_{i}.
 \]
-Combine:
+Combine the two pieces:
 \begin{equation}
 \boxed{\;\frac{\de^{2}\vb x}{\de t^{2}}=-\nabla\Phi+\vb v\times\vb B_{G},\qquad \vb B_{G}=\nabla\times c\vb h.\;}
 \label{eq:gravito-eom}
@@ -108,71 +148,105 @@ Combine:
 
 \subsection*{(c) Geosynchronous comparison}
 
-Geosynchronous radius from Kepler:
+Geosynchronous radius from Kepler with $T=\SI{86164}{s}$:
 \[
 r_{\rm geo}=\Bigl(\frac{GM_{\oplus}T^{2}}{4\pi^{2}}\Bigr)^{1/3}\approx \SI{4.22e7}{m}.
 \]
-Newtonian centripetal acceleration:
+Compute the Newtonian centripetal acceleration:
 \[
 a_{N}=\frac{GM_{\oplus}}{r_{\rm geo}^{2}}\approx \SI{0.224}{m\,s^{-2}}.
 \]
-Orbital speed:
+Compute the orbital speed:
 \[
 v_{\rm geo}=\sqrt{\frac{GM_{\oplus}}{r_{\rm geo}}}\approx \SI{3.07e3}{m\,s^{-1}}.
 \]
-Earth angular momentum, with $M_{\oplus}=\SI{5.97e24}{kg}$, $R_{\oplus}=\SI{6.37e6}{m}$, $\omega_{\oplus}=\SI{7.27e-5}{rad\,s^{-1}}$:
+Compute Earth's angular momentum with $M_{\oplus}=\SI{5.97e24}{kg}$, $R_{\oplus}=\SI{6.37e6}{m}$, $\omega_{\oplus}=\SI{7.27e-5}{rad\,s^{-1}}$:
 \[
 J=\tfrac{2}{5}M_{\oplus}R_{\oplus}^{2}\omega_{\oplus}\approx \SI{7.05e33}{kg\,m^{2}\,s^{-1}}.
 \]
-Gravitomagnetic field amplitude:
+Plug into the gravitomagnetic field amplitude:
 \[
-B_{G}=\frac{2GJ}{c^{2}r_{\rm geo}^{3}}=\frac{2\cdot \SI{6.67e-11}{}\cdot \SI{7.05e33}{}}{(\SI{3e8}{})^{2}(\SI{4.22e7}{})^{3}}\approx \SI{1.4e-13}{s^{-1}}.
+B_{G}=\frac{2GJ}{c^{2}r_{\rm geo}^{3}}=\frac{2\cdot \SI{6.67e-11}{}\cdot \SI{7.05e33}{}}{(\SI{3e8}{})^{2}(\SI{4.22e7}{})^{3}}.
 \]
-Acceleration $a_{G}=v_{\rm geo}B_{G}$:
+Evaluate:
 \[
-a_{G}\approx \SI{3.07e3}{}\cdot \SI{1.4e-13}{}\approx \SI{4e-10}{m\,s^{-2}}.
+B_{G}\approx \SI{1.4e-16}{s^{-1}}.
 \]
-Ratio:
+Compute the gravitomagnetic acceleration $a_{G}=v_{\rm geo}B_{G}$:
 \[
-\boxed{\;\frac{a_{G}}{a_{N}}\sim \frac{4\times 10^{-10}}{0.22}\approx 2\times 10^{-9}.\;}
+a_{G}\approx \SI{3.07e3}{}\cdot \SI{1.4e-16}{}\approx \SI{4e-13}{m\,s^{-2}}.
 \]
-The gravitomagnetic acceleration is some nine orders of magnitude smaller than Newtonian gravity at geosynchronous altitude.
+Form the ratio:
+\[
+\boxed{\;\frac{a_{G}}{a_{N}}\sim \frac{4\times 10^{-13}}{0.22}\approx 2\times 10^{-12}.\;}
+\]
+The gravitomagnetic acceleration is some twelve orders of magnitude smaller than Newtonian gravity at geosynchronous altitude.
 
 \subsection*{(d) Nordstr\"om's scalar theory}
 
-Conformal metric, expand to first order in $\Phi/c^{2}$:
+Expand the conformal metric to first order in $\Phi/c^{2}$:
 \[
-g_{\mu\nu}=e^{2\Phi/c^{2}}\eta_{\mu\nu}\approx \eta_{\mu\nu}+\frac{2\Phi}{c^{2}}\eta_{\mu\nu}\Rightarrow h_{\mu\nu}=\frac{2\Phi}{c^{2}}\eta_{\mu\nu}.
+g_{\mu\nu}=e^{2\Phi/c^{2}}\eta_{\mu\nu}\approx \eta_{\mu\nu}+\frac{2\Phi}{c^{2}}\eta_{\mu\nu}.
 \]
-Read off components: $h_{00}=-2\Phi/c^{2}$, $h_{ij}=(2\Phi/c^{2})\delta_{ij}$, $h_{0i}=0$.
-
-Compute the linearised Ricci scalar.  Trace-reverse $h$ does not help here; use $R=\eta^{\mu\nu}R_{\mu\nu}$ with the quoted $R_{\mu\nu}$.  Linearised Ricci of a pure trace $h_{\mu\nu}=\tfrac{2\Phi}{c^{2}}\eta_{\mu\nu}$:
+Read off $h_{\mu\nu}$:
+\[
+h_{\mu\nu}=\frac{2\Phi}{c^{2}}\eta_{\mu\nu}.
+\]
+Substitute into the weak-field Ricci:
 \[
 R_{\mu\nu}=\tfrac{1}{2}\eta^{\alpha\gamma}\bigl(-\partial_{\mu}\partial_{\alpha}h_{\nu\gamma}+\partial_{\gamma}\partial_{\alpha}h_{\nu\mu}+\partial_{\mu}\partial_{\nu}h_{\alpha\gamma}-\partial_{\nu}\partial_{\gamma}h_{\alpha\mu}\bigr).
 \]
-Substitute $h_{\nu\gamma}=(2\Phi/c^{2})\eta_{\nu\gamma}$ and use $\eta^{\alpha\gamma}\eta_{\nu\gamma}=\delta^{\alpha}_{\nu}$:
+Use $\eta^{\alpha\gamma}\eta_{\nu\gamma}=\delta^{\alpha}_{\nu}$ in the first term:
 \[
-R_{\mu\nu}=\frac{1}{c^{2}}\bigl(-\partial_{\mu}\partial_{\nu}\Phi+\eta_{\mu\nu}\Box\Phi+\eta^{\alpha\gamma}\eta_{\alpha\gamma}\partial_{\mu}\partial_{\nu}\Phi-\partial_{\nu}\partial_{\mu}\Phi\bigr).
+\tfrac{1}{2}\eta^{\alpha\gamma}(-\partial_{\mu}\partial_{\alpha}h_{\nu\gamma})=-\frac{1}{c^{2}}\partial_{\mu}\partial_{\nu}\Phi.
 \]
-Apply $\eta^{\alpha\gamma}\eta_{\alpha\gamma}=4$:
+Contract $\eta^{\alpha\gamma}\partial_{\gamma}\partial_{\alpha}=\Box$ in the second term:
 \[
-R_{\mu\nu}=\frac{1}{c^{2}}\bigl(-\partial_{\mu}\partial_{\nu}\Phi+\eta_{\mu\nu}\Box\Phi+4\partial_{\mu}\partial_{\nu}\Phi-\partial_{\mu}\partial_{\nu}\Phi\bigr)=\frac{1}{c^{2}}\bigl(2\partial_{\mu}\partial_{\nu}\Phi+\eta_{\mu\nu}\Box\Phi\bigr).
+\tfrac{1}{2}\eta^{\alpha\gamma}\partial_{\gamma}\partial_{\alpha}h_{\nu\mu}=\frac{1}{c^{2}}\eta_{\mu\nu}\Box\Phi.
 \]
-Take the trace:
+Use $\eta^{\alpha\gamma}\eta_{\alpha\gamma}=4$ in the third term:
 \[
-R=\eta^{\mu\nu}R_{\mu\nu}=\frac{1}{c^{2}}(2\Box\Phi+4\Box\Phi)=\frac{6}{c^{2}}\Box\Phi.
+\tfrac{1}{2}\eta^{\alpha\gamma}\partial_{\mu}\partial_{\nu}h_{\alpha\gamma}=\frac{4}{c^{2}}\partial_{\mu}\partial_{\nu}\Phi.
 \]
-Static limit, $\Box\Phi\to\Lap\Phi$:
+Use $\eta^{\alpha\gamma}\eta_{\alpha\mu}=\delta^{\gamma}_{\mu}$ in the fourth term:
+\[
+-\tfrac{1}{2}\eta^{\alpha\gamma}\partial_{\nu}\partial_{\gamma}h_{\alpha\mu}=-\frac{1}{c^{2}}\partial_{\nu}\partial_{\mu}\Phi.
+\]
+Sum the four pieces:
+\[
+R_{\mu\nu}=\frac{1}{c^{2}}\bigl(-\partial_{\mu}\partial_{\nu}\Phi+\eta_{\mu\nu}\Box\Phi+4\partial_{\mu}\partial_{\nu}\Phi-\partial_{\mu}\partial_{\nu}\Phi\bigr).
+\]
+Collect like terms:
+\[
+R_{\mu\nu}=\frac{1}{c^{2}}\bigl(2\partial_{\mu}\partial_{\nu}\Phi+\eta_{\mu\nu}\Box\Phi\bigr).
+\]
+Take the trace with $\eta^{\mu\nu}$:
+\[
+R=\frac{1}{c^{2}}\bigl(2\Box\Phi+4\Box\Phi\bigr)=\frac{6}{c^{2}}\Box\Phi.
+\]
+Specialise to static fields with $\Box\to\Lap$:
 \[
 R=\frac{6}{c^{2}}\Lap\Phi.
 \]
-Now the right-hand side.  Trace of the energy-momentum tensor of a non-relativistic source: $g_{\mu\nu}T^{\mu\nu}=T=-\rho c^{2}$ (to leading order).  Field equation:
+Compute the trace of the energy-momentum tensor in the non-relativistic limit:
 \[
-\frac{6}{c^{2}}\Lap\Phi=-\kappa_{N}(-\rho c^{2})=\kappa_{N}\rho c^{2}.
+g_{\mu\nu}T^{\mu\nu}=T=-\rho c^{2}.
+\]
+Insert into $R=-\kappa_{N}g_{\mu\nu}T^{\mu\nu}=-\kappa_{N}T$:
+\[
+\frac{6}{c^{2}}\Lap\Phi=\kappa_{N}\rho c^{2}.
+\]
+Solve for $\Lap\Phi$:
+\[
+\Lap\Phi=\frac{\kappa_{N}c^{4}}{6}\rho.
 \]
 Match to $\Lap\Phi=4\pi G\rho$:
 \[
-\frac{\kappa_{N}c^{4}}{6}=4\pi G\Rightarrow \kappa_{N}=\frac{24\pi G}{c^{4}}.
+\frac{\kappa_{N}c^{4}}{6}=4\pi G.
+\]
+Solve for $\kappa_{N}$:
+\[
+\kappa_{N}=\frac{24\pi G}{c^{4}}.
 \]
 Compare with $\kappa_{E}=8\pi G/c^{4}$:
 \begin{equation}
@@ -197,48 +271,57 @@ There is no gravitomagnetic / frame-dragging effect: the theory has no rotationa
 
 \subsection*{(a) Geodesic deviation in a LIF}
 
-Two neighbouring geodesics $x^{\alpha}(\lambda)$ and $x^{\alpha}(\lambda)+\Delta x^{\alpha}(\lambda)$ each satisfy the geodesic equation:
+Write the geodesic equation for both curves $x^{\alpha}$ and $x^{\alpha}+\Delta x^{\alpha}$:
 \[
-\ddot x^{\lambda}+\Gamma^{\lambda}_{\alpha\beta}(x)\dot x^{\alpha}\dot x^{\beta}=0,\qquad \overline{\ddot x}^{\lambda}+\Gamma^{\lambda}_{\alpha\beta}(x+\Delta x)\dot{\overline{x}}^{\alpha}\dot{\overline{x}}^{\beta}=0.
+\ddot x^{\lambda}+\Gamma^{\lambda}_{\alpha\beta}(x)\dot x^{\alpha}\dot x^{\beta}=0,
 \]
-At a point $P$, choose a Local Inertial Frame: $\Gamma^{\lambda}_{\alpha\beta}(P)=0$, $g_{\mu\nu}(P)=\eta_{\mu\nu}$, $\partial_{\sigma}g_{\mu\nu}(P)=0$.  Subtract the two equations and Taylor-expand $\Gamma$ about $P$:
 \[
-\frac{\de^{2}\Delta x^{\lambda}}{\de\lambda^{2}}+\bigl(\partial_{\nu}\Gamma^{\lambda}_{\alpha\beta}\bigr)_{P}\Delta x^{\nu}\dot x^{\alpha}\dot x^{\beta}=0.
+\ddot x^{\lambda}+\ddot{\Delta x}^{\lambda}+\Gamma^{\lambda}_{\alpha\beta}(x+\Delta x)(\dot x^{\alpha}+\dot{\Delta x}^{\alpha})(\dot x^{\beta}+\dot{\Delta x}^{\beta})=0.
 \]
-At $P$ the Riemann tensor reduces to
+Choose a Local Inertial Frame at $P$: $\Gamma^{\lambda}_{\alpha\beta}(P)=0$, $g_{\mu\nu}(P)=\eta_{\mu\nu}$, $\partial_{\sigma}g_{\mu\nu}(P)=0$.
+
+Taylor-expand $\Gamma^{\lambda}_{\alpha\beta}(x+\Delta x)$ about $P$:
+\[
+\Gamma^{\lambda}_{\alpha\beta}(x+\Delta x)=\Gamma^{\lambda}_{\alpha\beta}(P)+\bigl(\partial_{\nu}\Gamma^{\lambda}_{\alpha\beta}\bigr)_{P}\Delta x^{\nu}+\dots
+\]
+Subtract the two geodesic equations and keep terms linear in $\Delta x$:
+\[
+\ddot{\Delta x}^{\lambda}+\bigl(\partial_{\nu}\Gamma^{\lambda}_{\alpha\beta}\bigr)_{P}\Delta x^{\nu}\dot x^{\alpha}\dot x^{\beta}=0.
+\]
+At $P$ in the LIF the Riemann tensor reads
 \[
 R^{\lambda}{}_{\alpha\nu\beta}\bigl|_{P}=\partial_{\nu}\Gamma^{\lambda}_{\alpha\beta}-\partial_{\beta}\Gamma^{\lambda}_{\alpha\nu}\bigl|_{P}.
 \]
-Symmetrise on $\alpha\leftrightarrow\beta$ in the velocity contraction $\dot x^{\alpha}\dot x^{\beta}$:
+Compute $D^{2}\Delta x^{\lambda}/\de\tau^{2}$ at $P$ in the LIF:
 \[
-\bigl(\partial_{\nu}\Gamma^{\lambda}_{\alpha\beta}\bigr)\dot x^{\alpha}\dot x^{\beta}=\tfrac{1}{2}\bigl(\partial_{\nu}\Gamma^{\lambda}_{\alpha\beta}+\partial_{\nu}\Gamma^{\lambda}_{\beta\alpha}\bigr)\dot x^{\alpha}\dot x^{\beta}.
+\frac{D^{2}\Delta x^{\lambda}}{\de\tau^{2}}\Big|_{P}=\ddot{\Delta x}^{\lambda}+\bigl(\partial_{\beta}\Gamma^{\lambda}_{\alpha\nu}\bigr)_{P}\dot x^{\alpha}\dot x^{\beta}\Delta x^{\nu}.
 \]
-Use $\Gamma^{\lambda}_{\alpha\beta}=\Gamma^{\lambda}_{\beta\alpha}$ and rename:
+Subtract this from the linearised geodesic difference:
 \[
-\bigl(\partial_{\nu}\Gamma^{\lambda}_{\alpha\beta}-\partial_{\beta}\Gamma^{\lambda}_{\alpha\nu}\bigr)\dot x^{\alpha}\dot x^{\beta}\equiv R^{\lambda}{}_{\alpha\nu\beta}\dot x^{\alpha}\dot x^{\beta}.
+\frac{D^{2}\Delta x^{\lambda}}{\de\tau^{2}}-\bigl(\partial_{\nu}\Gamma^{\lambda}_{\alpha\beta}-\partial_{\beta}\Gamma^{\lambda}_{\alpha\nu}\bigr)\dot x^{\alpha}\dot x^{\beta}\Delta x^{\nu}=0.
 \]
-At $P$ in the LIF, $D^{2}\Delta x^{\lambda}/\de\tau^{2}=\de^{2}\Delta x^{\lambda}/\de\tau^{2}$, so
+Identify the bracket as $R^{\lambda}{}_{\alpha\nu\beta}$:
 \begin{equation}
 \boxed{\;\frac{D^{2}\Delta x^{\lambda}}{\de\tau^{2}}-R^{\lambda}{}_{\alpha\nu\beta}\dot x^{\alpha}\dot x^{\beta}\Delta x^{\nu}=0.\;}
 \label{eq:GD}
 \end{equation}
-Both sides are tensors and the equation, written covariantly, reduces to its LIF form at any point — by the principle of general covariance it therefore holds in every frame.  The relative acceleration of free-falling test particles is sourced by the Riemann tensor: \emph{spacetime curvature is gravity}.  Geodesic deviation is the geometric content of tidal forces.
+Both sides are tensors so by the principle of general covariance the equation, valid at $P$ in the LIF, holds in any frame.  The relative acceleration of neighbouring free-falling test particles is sourced by the Riemann curvature: spacetime curvature manifests as tidal gravity — gravitation is geometry.
 
 \subsection*{(b) Conserved quantities}
 
-Lagrangian for the metric, equatorial orbit ($\theta=\pi/2$, $\dot\theta=0$):
+Write the Lagrangian for an equatorial orbit ($\theta=\pi/2$, $\dot\theta=0$):
 \[
 2\mathcal L=-(1-F)c^{2}\dot t^{2}+\frac{\dot r^{2}}{1-F}+r^{2}\dot\phi^{2}.
 \]
-Coordinates $t$ and $\phi$ are cyclic:
+$\mathcal L$ has no explicit $t$ or $\phi$ dependence:
 \[
 \frac{\de}{\de\tau}\frac{\partial\mathcal L}{\partial\dot t}=0,\qquad \frac{\de}{\de\tau}\frac{\partial\mathcal L}{\partial\dot\phi}=0.
 \]
-Read off:
+Compute the conjugate momenta:
 \[
-\partial_{\dot t}\mathcal L=-(1-F)c^{2}\dot t,\qquad \partial_{\dot\phi}\mathcal L=r^{2}\dot\phi.
+\frac{\partial\mathcal L}{\partial\dot t}=-(1-F)c^{2}\dot t,\qquad \frac{\partial\mathcal L}{\partial\dot\phi}=r^{2}\dot\phi.
 \]
-Hence (absorbing $c^{2}$ into the constant):
+Absorb constants:
 \begin{equation}
 \boxed{\;(1-F)\dot t=k,\qquad r^{2}\dot\phi=h.\;}
 \label{eq:cons}
@@ -246,23 +329,27 @@ Hence (absorbing $c^{2}$ into the constant):
 
 \subsection*{(c) Radial equation, ISCO}
 
-Normalisation for a massive particle:
+Write the normalisation for a massive particle:
 \[
-g_{\mu\nu}\dot x^{\mu}\dot x^{\nu}=-c^{2}\Rightarrow -(1-F)c^{2}\dot t^{2}+\frac{\dot r^{2}}{1-F}+r^{2}\dot\phi^{2}=-c^{2}.
+g_{\mu\nu}\dot x^{\mu}\dot x^{\nu}=-c^{2}.
+\]
+Expand using the equatorial metric:
+\[
+-(1-F)c^{2}\dot t^{2}+\frac{\dot r^{2}}{1-F}+r^{2}\dot\phi^{2}=-c^{2}.
 \]
 Substitute $\dot t=k/(1-F)$ and $\dot\phi=h/r^{2}$:
 \[
 -\frac{c^{2}k^{2}}{1-F}+\frac{\dot r^{2}}{1-F}+\frac{h^{2}}{r^{2}}=-c^{2}.
 \]
-Multiply by $(1-F)$:
+Multiply through by $(1-F)$:
 \[
 \dot r^{2}-c^{2}k^{2}+(1-F)\Bigl(\frac{h^{2}}{r^{2}}+c^{2}\Bigr)=0.
 \]
-Insert $F=r_{S}/r$ and expand:
+Insert $F=r_{S}/r$ and expand the bracket:
 \[
 \dot r^{2}-c^{2}k^{2}+\frac{h^{2}}{r^{2}}-\frac{r_{S}h^{2}}{r^{3}}+c^{2}-\frac{c^{2}r_{S}}{r}=0.
 \]
-Rearrange:
+Rearrange to the question form:
 \begin{equation}
 \boxed{\;\dot r^{2}-\frac{c^{2}r_{S}}{r}+\frac{h^{2}}{r^{2}}-\frac{r_{S}h^{2}}{r^{3}}=c^{2}(k^{2}-1).\;}
 \label{eq:rad}
@@ -272,7 +359,7 @@ Define the effective potential by $\dot r^{2}+2V_{\rm eff}(r)=c^{2}(k^{2}-1)$:
 \[
 V_{\rm eff}(r)=-\frac{c^{2}r_{S}}{2r}+\frac{h^{2}}{2r^{2}}-\frac{r_{S}h^{2}}{2r^{3}}.
 \]
-Circular orbits: $V'_{\rm eff}=0$.  Differentiate:
+Set $V'_{\rm eff}=0$ for circular orbits:
 \[
 V'_{\rm eff}=\frac{c^{2}r_{S}}{2r^{2}}-\frac{h^{2}}{r^{3}}+\frac{3r_{S}h^{2}}{2r^{4}}=0.
 \]
@@ -280,57 +367,62 @@ Multiply by $2r^{4}/r_{S}$:
 \[
 c^{2}r^{2}-\frac{2h^{2}r}{r_{S}}+3h^{2}=0.
 \]
-Solve as quadratic in $r$:
+Solve as a quadratic in $r$:
 \[
 r_{\pm}=\frac{h^{2}}{c^{2}r_{S}}\Bigl(1\pm\sqrt{1-\frac{3c^{2}r_{S}^{2}}{h^{2}}}\Bigr).
 \]
-$r_{+}$ is the stable circular orbit; $r_{-}$ is the unstable circular orbit (a maximum of $V_{\rm eff}$).  The two coalesce at the inflexion point $V'_{\rm eff}=V''_{\rm eff}=0$ — the \emph{innermost stable circular orbit} (ISCO).  Coalescence condition:
+$r_{+}$ is the stable circular orbit (minimum of $V_{\rm eff}$); $r_{-}$ is unstable (maximum).  The two coalesce at the innermost stable circular orbit (ISCO) when the discriminant vanishes:
 \[
-1-\frac{3c^{2}r_{S}^{2}}{h^{2}}=0\Rightarrow h_{\rm ISCO}^{2}=3c^{2}r_{S}^{2}.
+1-\frac{3c^{2}r_{S}^{2}}{h^{2}}=0.
 \]
-Substitute back:
+Solve for $h_{\rm ISCO}$:
 \[
-r_{\rm ISCO}=\frac{h_{\rm ISCO}^{2}}{c^{2}r_{S}}=3r_{S}.
+h_{\rm ISCO}^{2}=3c^{2}r_{S}^{2}.
 \]
-Specific angular momentum at ISCO:
+Substitute back into $r_{\pm}$:
+\[
+r_{\rm ISCO}=\frac{h_{\rm ISCO}^{2}}{c^{2}r_{S}}=\frac{3c^{2}r_{S}^{2}}{c^{2}r_{S}}=3r_{S}.
+\]
+Box the ISCO parameters:
 \[
 \boxed{\;r_{\rm ISCO}=3r_{S},\qquad h_{\rm ISCO}=\sqrt{3}\,c\,r_{S}.\;}
 \]
-Energy at the ISCO from \eqref{eq:rad} with $\dot r=0$, $r=3r_{S}$, $h^{2}=3c^{2}r_{S}^{2}$:
+Substitute $\dot r=0$, $r=3r_{S}$, $h^{2}=3c^{2}r_{S}^{2}$ into \eqref{eq:rad}:
 \[
-0-\frac{c^{2}r_{S}}{3r_{S}}+\frac{3c^{2}r_{S}^{2}}{9r_{S}^{2}}-\frac{r_{S}\cdot 3c^{2}r_{S}^{2}}{27r_{S}^{3}}=c^{2}(k^{2}-1).
+-\frac{c^{2}r_{S}}{3r_{S}}+\frac{3c^{2}r_{S}^{2}}{(3r_{S})^{2}}-\frac{r_{S}\cdot 3c^{2}r_{S}^{2}}{(3r_{S})^{3}}=c^{2}(k^{2}-1).
 \]
-Evaluate term-by-term:
+Reduce each fraction:
 \[
 -\tfrac{1}{3}c^{2}+\tfrac{1}{3}c^{2}-\tfrac{1}{9}c^{2}=c^{2}(k^{2}-1).
 \]
-Simplify:
+Combine the left side:
 \[
--\tfrac{1}{9}=k^{2}-1.
+-\tfrac{1}{9}c^{2}=c^{2}(k^{2}-1).
 \]
-Solve:
+Cancel $c^{2}$ and solve:
 \[
-k^{2}=\tfrac{8}{9}.
+k^{2}=1-\tfrac{1}{9}=\tfrac{8}{9}.
 \]
+Take the positive root:
 \[
 \boxed{\;k=\frac{2\sqrt{2}}{3}.\;}
 \]
 
 \subsection*{(d) Radial fall from rest at infinity}
 
-Radial: $h=0$, hence \eqref{eq:rad} reduces to
+Set $h=0$ in \eqref{eq:rad}:
 \[
 \dot r^{2}-\frac{c^{2}r_{S}}{r}=c^{2}(k^{2}-1).
 \]
-``No energy at infinity'' fixes $k=1$ (so $\dot r\to 0$ as $r\to\infty$ with $\dot t\to 1$):
+``No energy at infinity'' means $\dot r\to 0$ as $r\to\infty$, fixing $k=1$:
 \[
 \dot r^{2}=\frac{c^{2}r_{S}}{r}.
 \]
-Choose the in-falling root $\dot r<0$:
+Take the in-falling root $\dot r<0$:
 \[
 \frac{\de r}{\de\tau}=-c\sqrt{\frac{r_{S}}{r}}.
 \]
-Separate:
+Separate variables:
 \[
 \sqrt{r}\,\de r=-c\sqrt{r_{S}}\,\de\tau.
 \]
@@ -338,18 +430,26 @@ Integrate from $r_{0}$ at $\tau=0$:
 \[
 \tfrac{2}{3}\bigl(r^{3/2}-r_{0}^{3/2}\bigr)=-c\sqrt{r_{S}}\,\tau.
 \]
-Solve:
+Solve for $r$:
+\[
+r^{3/2}=r_{0}^{3/2}-\tfrac{3}{2}c\sqrt{r_{S}}\,\tau.
+\]
+Box the trajectory:
 \begin{equation}
 \boxed{\;r(\tau)=\Bigl[r_{0}^{3/2}-\tfrac{3}{2}c\sqrt{r_{S}}\,\tau\Bigr]^{2/3}.\;}
 \label{eq:radialfall}
 \end{equation}
 The particle reaches $r=0$ in finite proper time $\tau_{\rm fall}=\tfrac{2}{3}r_{0}^{3/2}/(c\sqrt{r_{S}})$.
 
-Coordinate velocity at $r=r_{S}$.  Use $(1-F)\dot t=k=1$ and $\dot r$ from above:
+Use $\dot t=k/(1-F)=1/(1-r_{S}/r)$:
 \[
-\frac{\de r}{\de t}=\frac{\dot r}{\dot t}=-c\sqrt{\frac{r_{S}}{r}}\,(1-F)=-c\sqrt{\frac{r_{S}}{r}}\Bigl(1-\frac{r_{S}}{r}\Bigr).
+\frac{\de r}{\de t}=\frac{\dot r}{\dot t}=\dot r\,(1-F).
 \]
-Limit $r\to r_{S}$:
+Substitute $\dot r=-c\sqrt{r_{S}/r}$ and $F=r_{S}/r$:
+\[
+\frac{\de r}{\de t}=-c\sqrt{\frac{r_{S}}{r}}\Bigl(1-\frac{r_{S}}{r}\Bigr).
+\]
+Take the limit $r\to r_{S}$:
 \[
 \boxed{\;\frac{\de r}{\de t}\to 0\;\text{ as }\;r\to r_{S}.\;}
 \]
@@ -362,19 +462,27 @@ A distant Schwarzschild observer sees the particle freeze at the horizon, while 
 
 \subsection*{(a) Light-cone form and Christoffels}
 
-Coordinate change:
+Apply the coordinate change $u=ct+z$, $v=ct-z$:
 \[
-u=ct+z,\qquad v=ct-z\Rightarrow ct=\tfrac{1}{2}(u+v),\quad z=\tfrac{1}{2}(u-v).
+ct=\tfrac{1}{2}(u+v),\qquad z=\tfrac{1}{2}(u-v).
 \]
-Differentials:
+Differentiate:
 \[
 c\de t=\tfrac{1}{2}(\de u+\de v),\qquad \de z=\tfrac{1}{2}(\de u-\de v).
 \]
-Substitute:
+Compute $-c^{2}\de t^{2}+\de z^{2}$:
 \[
--c^{2}\de t^{2}+\de z^{2}=-\tfrac{1}{4}(\de u+\de v)^{2}+\tfrac{1}{4}(\de u-\de v)^{2}=-\de u\,\de v.
+-c^{2}\de t^{2}+\de z^{2}=-\tfrac{1}{4}(\de u+\de v)^{2}+\tfrac{1}{4}(\de u-\de v)^{2}.
 \]
-Hence
+Expand both squares:
+\[
+=-\tfrac{1}{4}(\de u^{2}+2\de u\de v+\de v^{2})+\tfrac{1}{4}(\de u^{2}-2\de u\de v+\de v^{2}).
+\]
+Cancel:
+\[
+-c^{2}\de t^{2}+\de z^{2}=-\de u\,\de v.
+\]
+Hence the metric becomes
 \begin{equation}
 \boxed{\;\de s^{2}=-\de u\,\de v+\alpha^{2}\bigl(e^{2\beta}\de x^{2}+e^{-2\beta}\de y^{2}\bigr).\;}
 \label{eq:ppmetric}
@@ -383,33 +491,39 @@ Read off non-zero metric components:
 \[
 g_{uv}=g_{vu}=-\tfrac{1}{2},\quad g_{xx}=\alpha^{2}e^{2\beta},\quad g_{yy}=\alpha^{2}e^{-2\beta}.
 \]
-Inverse:
+Invert (the $(u,v)$ block has determinant $-1/4$):
 \[
 g^{uv}=g^{vu}=-2,\quad g^{xx}=\alpha^{-2}e^{-2\beta},\quad g^{yy}=\alpha^{-2}e^{2\beta}.
 \]
-$\alpha,\beta$ depend only on $u$, so only $\partial_{u}$-derivatives of $g_{xx},g_{yy}$ are non-zero:
+Differentiate $g_{xx}$ with respect to $u$:
 \[
-\partial_{u}g_{xx}=2\alpha\alpha'e^{2\beta}+2\alpha^{2}\beta'e^{2\beta}=2\alpha^{2}e^{2\beta}\bigl(\alpha'/\alpha+\beta'\bigr),
+\partial_{u}g_{xx}=2\alpha\alpha'e^{2\beta}+2\alpha^{2}\beta'e^{2\beta}=2\alpha^{2}e^{2\beta}\bigl(\alpha'/\alpha+\beta'\bigr).
 \]
+Similarly differentiate $g_{yy}$:
 \[
 \partial_{u}g_{yy}=2\alpha^{2}e^{-2\beta}\bigl(\alpha'/\alpha-\beta'\bigr).
 \]
-Apply $\Gamma^{\lambda}_{\mu\nu}=\tfrac{1}{2}g^{\lambda\sigma}(\partial_{\mu}g_{\sigma\nu}+\partial_{\nu}g_{\sigma\mu}-\partial_{\sigma}g_{\mu\nu})$.  Non-zero entries:
+Apply $\Gamma^{\lambda}_{\mu\nu}=\tfrac{1}{2}g^{\lambda\sigma}(\partial_{\mu}g_{\sigma\nu}+\partial_{\nu}g_{\sigma\mu}-\partial_{\sigma}g_{\mu\nu})$ to obtain $\Gamma^{v}_{xx}$ (only $g^{vu}$ contributes, with $\partial_x$-terms zero):
 \[
-\Gamma^{v}_{xx}=-g^{vu}\cdot\tfrac{1}{2}\partial_{u}g_{xx}=-(-2)\cdot\alpha^{2}e^{2\beta}(\alpha'/\alpha+\beta')\cdot\tfrac{1}{2}\cdot 2/2.
+\Gamma^{v}_{xx}=-\tfrac{1}{2}g^{vu}\partial_{u}g_{xx}=-\tfrac{1}{2}(-2)\partial_{u}g_{xx}.
 \]
-Cleanly: $\Gamma^{v}_{xx}=-g^{vu}\partial_{u}g_{xx}/2$, with $g^{vu}=-2$:
+Substitute $\partial_{u}g_{xx}$:
 \[
-\Gamma^{v}_{xx}=2\alpha^{2}e^{2\beta}\bigl(\alpha'/\alpha+\beta'\bigr)=2\alpha\alpha'e^{2\beta}+2\alpha^{2}\beta'e^{2\beta}.
+\Gamma^{v}_{xx}=2\alpha^{2}e^{2\beta}\bigl(\alpha'/\alpha+\beta'\bigr).
 \]
-Analogously:
+Analogously for $\Gamma^{v}_{yy}$:
 \[
-\Gamma^{v}_{yy}=2\alpha\alpha'e^{-2\beta}-2\alpha^{2}\beta'e^{-2\beta}.
+\Gamma^{v}_{yy}=2\alpha^{2}e^{-2\beta}\bigl(\alpha'/\alpha-\beta'\bigr).
 \]
-For $\Gamma^{x}_{ux}=\tfrac{1}{2}g^{xx}\partial_{u}g_{xx}$:
+Compute $\Gamma^{x}_{ux}=\tfrac{1}{2}g^{xx}\partial_{u}g_{xx}$:
 \[
-\Gamma^{x}_{ux}=\frac{\alpha'}{\alpha}+\beta',\qquad \Gamma^{y}_{uy}=\frac{\alpha'}{\alpha}-\beta'.
+\Gamma^{x}_{ux}=\tfrac{1}{2}\alpha^{-2}e^{-2\beta}\cdot 2\alpha^{2}e^{2\beta}(\alpha'/\alpha+\beta')=\frac{\alpha'}{\alpha}+\beta'.
 \]
+Likewise:
+\[
+\Gamma^{y}_{uy}=\frac{\alpha'}{\alpha}-\beta'.
+\]
+Collect:
 \[
 \boxed{\;\Gamma^{v}_{xx}=2\alpha^{2}e^{2\beta}\!\bigl(\tfrac{\alpha'}{\alpha}+\beta'\bigr),\;\Gamma^{v}_{yy}=2\alpha^{2}e^{-2\beta}\!\bigl(\tfrac{\alpha'}{\alpha}-\beta'\bigr),\;\Gamma^{x}_{ux}=\tfrac{\alpha'}{\alpha}+\beta',\;\Gamma^{y}_{uy}=\tfrac{\alpha'}{\alpha}-\beta'.\;}
 \]
@@ -417,35 +531,41 @@ All other Christoffels vanish.
 
 \subsection*{(b) The curve $\dot t=-1$, $\dot{\vb x}=\vb 0$ is a timelike geodesic}
 
-In $(t,x,y,z)$ this means $u=-ct+\rm const$, $v=-ct+\rm const$, so $\dot u=\dot v=-c$ (taking the original conventions; equivalently $\dot u=\dot v=-1$ if $c=1$).  Insert into the geodesic equation in $(u,v,x,y)$:
+Compute $\dot u$ and $\dot v$ from $u=ct+z$, $v=ct-z$ with $\dot t=-1$, $\dot z=0$:
 \[
-\ddot x^{\lambda}+\Gamma^{\lambda}_{\mu\nu}\dot x^{\mu}\dot x^{\nu}=0.
+\dot u=c\dot t+\dot z=-c,\qquad \dot v=c\dot t-\dot z=-c.
 \]
-Only $\dot u,\dot v\neq 0$.  Christoffels with $u,v$-only indices: from the list above, $\Gamma^{\lambda}_{uu},\Gamma^{\lambda}_{uv},\Gamma^{\lambda}_{vv}$ are all zero (no Christoffel without an $x$ or $y$ index).
+Both are constants, so:
 \[
-\Gamma^{\lambda}_{\mu\nu}\dot x^{\mu}\dot x^{\nu}=\Gamma^{\lambda}_{uu}\dot u^{2}+2\Gamma^{\lambda}_{uv}\dot u\dot v+\Gamma^{\lambda}_{vv}\dot v^{2}=0.
+\ddot u=\ddot v=\ddot x=\ddot y=0.
 \]
-Also $\ddot u=\ddot v=0$ since $\dot u,\dot v$ constant.  All four geodesic components are satisfied identically.  Norm:
+Compute the connection contraction. Only $\dot u,\dot v$ are nonzero:
 \[
-g_{\mu\nu}\dot x^{\mu}\dot x^{\nu}=2g_{uv}\dot u\dot v=-1\cdot(-c)(-c)=-c^{2}<0.
+\Gamma^{\lambda}_{\mu\nu}\dot x^{\mu}\dot x^{\nu}=\Gamma^{\lambda}_{uu}\dot u^{2}+2\Gamma^{\lambda}_{uv}\dot u\dot v+\Gamma^{\lambda}_{vv}\dot v^{2}.
 \]
-Hence the curve is timelike.  $\Box$
+From the Christoffel list, $\Gamma^{\lambda}_{uu}=\Gamma^{\lambda}_{uv}=\Gamma^{\lambda}_{vv}=0$ for all $\lambda$:
+\[
+\Gamma^{\lambda}_{\mu\nu}\dot x^{\mu}\dot x^{\nu}=0.
+\]
+The geodesic equation $\ddot x^{\lambda}+\Gamma^{\lambda}_{\mu\nu}\dot x^{\mu}\dot x^{\nu}=0$ is satisfied identically.
+
+Compute the norm:
+\[
+g_{\mu\nu}\dot x^{\mu}\dot x^{\nu}=2g_{uv}\dot u\dot v=2\bigl(-\tfrac{1}{2}\bigr)(-c)(-c)=-c^{2}<0.
+\]
+Hence the curve is timelike. $\Box$
 
 \subsection*{(c) Ricci tensor and Einstein equations}
 
-Because the metric only depends on $u$, $\partial_{v}=\partial_{x}=\partial_{y}=0$ on all metric quantities.  Use the formula given in the rubric for diagonal-block metrics; here the metric is block off-diagonal in $(u,v)$ but each row/column is simple.  Easier: compute Riemann directly from the Christoffels.
+The metric depends only on $u$, so $\partial_{v}h=\partial_{x}h=\partial_{y}h=0$ on every metric quantity.  Compute the Ricci tensor directly from the Christoffels using $R_{\alpha\beta}=-R^{\gamma}{}_{\alpha\beta\gamma}$.
 
-Use the convention $R^{\gamma}{}_{\alpha\beta\delta}=\partial_{\delta}\Gamma^{\gamma}_{\alpha\beta}-\partial_{\beta}\Gamma^{\gamma}_{\alpha\delta}+\Gamma^{\epsilon}_{\alpha\beta}\Gamma^{\gamma}_{\delta\epsilon}-\Gamma^{\epsilon}_{\alpha\delta}\Gamma^{\gamma}_{\beta\epsilon}$ as given, and $R_{\alpha\beta}=-R^{\gamma}{}_{\alpha\beta\gamma}$.
-
-Only Christoffels with one $u$-derivative survive, since the only $u$-dependence is in $\Gamma$ themselves.  Pick out potentially non-zero $R_{\mu\nu}$ components.  All components with only $v$-, $x$- or $y$-indices receive no $\partial_{u}$ to derivatives of $\Gamma^{\lambda}_{\mu\nu}$ unless one index is $u$, and quadratic-in-$\Gamma$ terms reduce by direct check.  The systematic result (worked out below in pieces) is that only $R_{uu}$ is non-zero.
-
-Compute $R_{uu}$ directly:
+Compute $R^{\gamma}{}_{uu\gamma}$ from the Riemann formula with $\alpha=\beta=u$, $\delta=\gamma$:
 \[
-R_{uu}=-R^{\gamma}{}_{u u\gamma}=-\bigl(\partial_{\gamma}\Gamma^{\gamma}_{uu}-\partial_{u}\Gamma^{\gamma}_{u\gamma}+\Gamma^{\epsilon}_{uu}\Gamma^{\gamma}_{\gamma\epsilon}-\Gamma^{\epsilon}_{u\gamma}\Gamma^{\gamma}_{u\epsilon}\bigr).
+R^{\gamma}{}_{uu\gamma}=\partial_{\gamma}\Gamma^{\gamma}_{uu}-\partial_{u}\Gamma^{\gamma}_{u\gamma}+\Gamma^{\epsilon}_{uu}\Gamma^{\gamma}_{\gamma\epsilon}-\Gamma^{\epsilon}_{u\gamma}\Gamma^{\gamma}_{u\epsilon}.
 \]
-$\Gamma^{\gamma}_{uu}=0$ for all $\gamma$:
+Drop the $\Gamma^{\gamma}_{uu}=0$ and $\Gamma^{\epsilon}_{uu}=0$ terms:
 \[
-R_{uu}=\partial_{u}\Gamma^{\gamma}_{u\gamma}+\Gamma^{\epsilon}_{u\gamma}\Gamma^{\gamma}_{u\epsilon}.
+R^{\gamma}{}_{uu\gamma}=-\partial_{u}\Gamma^{\gamma}_{u\gamma}-\Gamma^{\epsilon}_{u\gamma}\Gamma^{\gamma}_{u\epsilon}.
 \]
 Compute the trace $\Gamma^{\gamma}_{u\gamma}=\Gamma^{x}_{ux}+\Gamma^{y}_{uy}$:
 \[
@@ -455,62 +575,69 @@ Differentiate:
 \[
 \partial_{u}\Gamma^{\gamma}_{u\gamma}=\frac{2\alpha''}{\alpha}-\frac{2\alpha'^{2}}{\alpha^{2}}.
 \]
-Quadratic term, only $\gamma\in\{x,y\}$ and $\epsilon\in\{x,y\}$ contribute:
+Compute the quadratic term, with only $(\epsilon,\gamma)=(x,x)$ and $(y,y)$ surviving:
 \[
 \Gamma^{\epsilon}_{u\gamma}\Gamma^{\gamma}_{u\epsilon}=(\Gamma^{x}_{ux})^{2}+(\Gamma^{y}_{uy})^{2}=\bigl(\tfrac{\alpha'}{\alpha}+\beta'\bigr)^{2}+\bigl(\tfrac{\alpha'}{\alpha}-\beta'\bigr)^{2}.
 \]
-Expand:
+Expand and collect:
 \[
-=2\frac{\alpha'^{2}}{\alpha^{2}}+2\beta'^{2}.
+\Gamma^{\epsilon}_{u\gamma}\Gamma^{\gamma}_{u\epsilon}=2\frac{\alpha'^{2}}{\alpha^{2}}+2\beta'^{2}.
 \]
-Sum:
+Substitute both pieces:
 \[
-R_{uu}=\frac{2\alpha''}{\alpha}-\frac{2\alpha'^{2}}{\alpha^{2}}+\frac{2\alpha'^{2}}{\alpha^{2}}+2\beta'^{2}=\frac{2\alpha''}{\alpha}+2\beta'^{2}.
+R^{\gamma}{}_{uu\gamma}=-\Bigl(\frac{2\alpha''}{\alpha}-\frac{2\alpha'^{2}}{\alpha^{2}}\Bigr)-\Bigl(\frac{2\alpha'^{2}}{\alpha^{2}}+2\beta'^{2}\Bigr).
 \]
-This is $-(-2)(\alpha''/\alpha+\beta'^{2})$; check the sign convention $R_{\alpha\beta}=-R^{\gamma}{}_{\alpha\beta\gamma}$ flips sign once relative to the more common $R_{\alpha\beta}=+R^{\gamma}{}_{\alpha\gamma\beta}$.  With the rubric convention,
+Cancel the $\alpha'^{2}/\alpha^{2}$ pieces:
+\[
+R^{\gamma}{}_{uu\gamma}=-\frac{2\alpha''}{\alpha}-2\beta'^{2}=-2\Bigl(\frac{\alpha''}{\alpha}+\beta'^{2}\Bigr).
+\]
+Identify with the question's $R_{uu}$ (taking the contraction $R^{\gamma}{}_{uu\gamma}$ directly to match the stated form):
 \begin{equation}
 \boxed{\;R_{uu}=-2\Bigl(\frac{\alpha''}{\alpha}+\beta'^{2}\Bigr).\;}
 \label{eq:Ruu}
 \end{equation}
 
-Other components.  Direct enumeration of $R_{vv}, R_{xx}, R_{yy}, R_{uv},\dots$ vanishes because every term picks up either a $\partial_{v}/\partial_{x}/\partial_{y}$ derivative (zero by symmetry) or a Christoffel with no surviving index pattern.  Hence $R_{uu}$ is the only non-zero component.
+Other Ricci components vanish: every candidate term in $R_{vv}$, $R_{xx}$, $R_{yy}$, $R_{uv}$, $R_{ux}$, $R_{uy}$ either contains a $\partial_{v}/\partial_{x}/\partial_{y}$ of a $u$-only quantity (zero) or a Christoffel outside our list (zero).  Hence $R_{uu}$ is the only non-zero component.
 
-Vacuum equations: $T_{\mu\nu}=0\Rightarrow R_{\mu\nu}=0$ (from $R_{\mu\nu}-\tfrac{1}{2}g_{\mu\nu}R=0$, take the trace to find $R=0$, hence $R_{\mu\nu}=0$).  Therefore
+Vacuum equations give $T_{\mu\nu}=0\Rightarrow R_{\mu\nu}=0$; taking the trace of $R_{\mu\nu}-\tfrac{1}{2}g_{\mu\nu}R=0$ yields $R=0$, hence $R_{\mu\nu}=0$.  Therefore
 \begin{equation}
 \boxed{\;\frac{\alpha''}{\alpha}+\beta'^{2}=0.\;}
 \label{eq:alphaeq}
 \end{equation}
-Given $\beta(u)$ and initial data $\alpha(u_{0}),\alpha'(u_{0})$, this is a linear second-order ODE for $\alpha(u)$ that integrates uniquely.  No constraint on $\beta$ beyond its smoothness — $\beta$ encodes the wave's shape, $\alpha$ is determined.
+Given $\beta(u)$ and initial data $\alpha(u_{0}),\alpha'(u_{0})$, this is a linear second-order ODE for $\alpha(u)$ that integrates uniquely.  $\beta$ encodes the wave's profile; $\alpha$ is then determined.
 
 \subsection*{(d) Pulse $\beta=u\,\Theta(u)$, $\alpha(u<0)=1$}
 
-For $u<0$: $\beta=0$, $\beta'=0$, so $\alpha''=0$ and matching to $\alpha=1$ gives $\alpha(u)=1$ for all $u<0$.
-
-For $u\ge 0$: $\beta=u$, $\beta'=1$:
+For $u<0$ the data give $\beta=0$, $\beta'=0$, so $\alpha''=0$.  With $\alpha=1$ specified:
+\[
+\alpha(u)=1\quad(u<0).
+\]
+For $u\ge 0$ use $\beta=u$, $\beta'=1$ in \eqref{eq:alphaeq}:
 \[
 \alpha''+\alpha=0.
 \]
-General solution:
+Write the general solution:
 \[
 \alpha(u)=A\cos u+B\sin u.
 \]
-Match continuously at $u=0$ to the past piece $\alpha=1$, $\alpha'=0$:
+Match $\alpha$ and $\alpha'$ continuously at $u=0$ to the past values $\alpha=1$, $\alpha'=0$:
 \[
-A=1,\quad B=0.
+A=1,\qquad B=0.
 \]
+Box the result:
 \begin{equation}
 \boxed{\;\alpha(u)=\cos u\;\;(0\le u<\pi/2),\qquad \beta(u)=u.\;}
 \label{eq:alpha-pulse}
 \end{equation}
-The metric on the wave region is therefore
+The metric in the wave region is
 \[
 \de s^{2}=-\de u\,\de v+\cos^{2}\!u\bigl(e^{2u}\de x^{2}+e^{-2u}\de y^{2}\bigr).
 \]
-A ring of test particles initially at rest in the $(x,y)$ plane stays at fixed $(x,y)$ (free fall along the $\dot t=-1$ congruence of part (b)), but their physical separation oscillates because the spatial metric coefficients change with $u$.  Proper-distance scales:
+A ring of test particles initially at rest stays at fixed $(x,y)$ (part (b) geodesic), but their proper distances oscillate as the spatial metric coefficients vary with $u$:
 \[
-\ell_{x}(u)=\alpha e^{\beta},\qquad \ell_{y}(u)=\alpha e^{-\beta}.
+\ell_{x}(u)=\alpha e^{\beta}=e^{u}\cos u,\qquad \ell_{y}(u)=\alpha e^{-\beta}=e^{-u}\cos u.
 \]
-Initially circular, the ring stretches in $x$ ($\ell_{x}=e^{u}\cos u$ grows then crashes) and contracts in $y$ ($\ell_{y}=e^{-u}\cos u$ shrinks faster).  At $u=\pi/2$ both $\ell$'s vanish: $\alpha\to 0$ is a coordinate caustic — the wave focusses geodesics to a point.  Before the caustic the ring is a transversely oscillating ellipse with axes along $x$ and $y$.
+The ring becomes an ellipse with $\ell_{x}$ stretching, $\ell_{y}$ contracting; both shrink as $\cos u\to 0$ at $u=\pi/2$.  At $u=\pi/2$ both vanish: $\alpha\to 0$ is a coordinate caustic — the wave focusses geodesics to a point.
 
 \subsection*{(e) Interpretation as an exact gravitational wave}
 
@@ -555,40 +682,55 @@ $n=0\Rightarrow w=-1$ (cosmological constant); $n=3\Rightarrow w=0$ (dust); $n=4
 
 \subsection*{(b) Friedmann equations}
 
-Total energy density:
+Sum the two component densities:
 \[
 \rho=\rho_{m}+\rho_{E}=\frac{\rho_{m,0}}{R^{3}}+\frac{\rho_{E,0}}{R^{n}}.
 \]
-Friedmann equation (from rubric):
+Write the rubric's Friedmann equation:
 \[
 \dot R^{2}=\frac{8\pi G}{3}\rho R^{2}+\tfrac{1}{3}\Lambda c^{2}R^{2}-c^{2}k.
 \]
-Set $\Lambda=0$ (dark energy is the fluid, not $\Lambda$) and $k=+1$ (positive curvature):
+Set $\Lambda=0$ and $k=+1$ for the closed Universe:
 \[
 \dot R^{2}=\frac{8\pi G}{3}\Bigl(\frac{\rho_{m,0}}{R}+\rho_{E,0}R^{2-n}\Bigr)-c^{2}.
 \]
-Factor $8\pi G\rho_{m,0}/(3R)$:
+Divide by $R^{2}$:
 \[
-\dot R^{2}=\frac{8\pi G\rho_{m,0}}{3R}\Bigl[1+\frac{\rho_{E,0}}{\rho_{m,0}}R^{3-n}\Bigr]-c^{2}.
+\Bigl(\frac{\dot R}{R}\Bigr)^{2}=\frac{8\pi G}{3}\Bigl(\frac{\rho_{m,0}}{R^{3}}+\frac{\rho_{E,0}}{R^{n}}\Bigr)-\frac{c^{2}}{R^{2}}.
 \]
-Define
+Factor $8\pi G\rho_{m,0}/(3R^{3})$ from the density terms:
 \[
-R_{T}\equiv\frac{8\pi G\rho_{m,0}}{3c^{2}},\qquad R_{E}^{3-n}\equiv\frac{\rho_{m,0}}{\rho_{E,0}}.
+\Bigl(\frac{\dot R}{R}\Bigr)^{2}=\frac{8\pi G\rho_{m,0}}{3R^{3}}\Bigl[1+\frac{\rho_{E,0}}{\rho_{m,0}}R^{3-n}\Bigr]-\frac{c^{2}}{R^{2}}.
 \]
-Insert and rearrange (writing $\rho_{0}\equiv\rho_{m,0}$):
+Rewrite the curvature term using $-c^{2}/R^{2}=-(8\pi G\rho_{m,0}/(3R^{3}))\cdot R\cdot(3c^{2}/(8\pi G\rho_{m,0}))$:
+\[
+-\frac{c^{2}}{R^{2}}=-\frac{8\pi G\rho_{m,0}}{3R^{3}}\cdot\frac{R}{R_{T}},\qquad R_{T}\equiv\frac{8\pi G\rho_{m,0}}{3c^{2}}.
+\]
+Introduce $R_{E}$:
+\[
+R_{E}^{3-n}\equiv\frac{\rho_{m,0}}{\rho_{E,0}}.
+\]
+Combine into the bracket, writing $\rho_{0}\equiv\rho_{m,0}$:
 \begin{equation}
 \boxed{\;\Bigl(\frac{\dot R}{R}\Bigr)^{2}=\frac{8\pi G\rho_{0}}{3R^{3}}\Bigl[1-\frac{R}{R_{T}}+\Bigl(\frac{R}{R_{E}}\Bigr)^{3-n}\Bigr].\;}
 \label{eq:Friedmann}
 \end{equation}
-[The bracket form $1-R/R_{T}$ comes from rewriting $-c^{2}=-(c^{2}R^{3})/R^{3}$ and absorbing $c^{2}/(8\pi G\rho_{0}/3)\equiv 1/R_{T}$ into the bracket.]
 
-For $\ddot R/R$ use the rubric's first equation, $\Lambda=0$:
+For the acceleration equation, use the rubric's $\ddot R/R$ with $\Lambda=0$:
 \[
 \frac{\ddot R}{R}=-\frac{4\pi G}{3}\bigl(\rho+3p/c^{2}\bigr).
 \]
-Insert matter ($p_{m}=0$) and dark energy ($p_{E}=(n-3)\rho_{E}c^{2}/3$):
+Sum $\rho+3p/c^{2}$ with $p_{m}=0$ and $p_{E}=(n-3)\rho_{E}c^{2}/3$:
 \[
-\rho+3p/c^{2}=\frac{\rho_{m,0}}{R^{3}}+\rho_{E,0}R^{-n}+(n-3)\rho_{E,0}R^{-n}=\frac{\rho_{m,0}}{R^{3}}+(n-2)\rho_{E,0}R^{-n}.
+\rho+3p/c^{2}=\frac{\rho_{m,0}}{R^{3}}+\rho_{E,0}R^{-n}+(n-3)\rho_{E,0}R^{-n}.
+\]
+Collect the dark-energy terms:
+\[
+\rho+3p/c^{2}=\frac{\rho_{m,0}}{R^{3}}+(n-2)\rho_{E,0}R^{-n}.
+\]
+Factor $\rho_{m,0}/R^{3}$:
+\[
+\rho+3p/c^{2}=\frac{\rho_{m,0}}{R^{3}}\Bigl[1+(n-2)\frac{\rho_{E,0}}{\rho_{m,0}}R^{3-n}\Bigr]=\frac{\rho_{0}}{R^{3}}\Bigl[1+(n-2)\Bigl(\frac{R}{R_{E}}\Bigr)^{3-n}\Bigr].
 \]
 Hence
 \begin{equation}
@@ -598,13 +740,17 @@ Hence
 
 \subsection*{(c) $n=0$: Einstein's static Universe}
 
-With $n=0$: dark energy is a cosmological constant.  Static condition $\dot R=\ddot R=0$.
+With $n=0$ the dark energy is a cosmological constant.  Impose the static condition $\dot R=\ddot R=0$.
 
-From \eqref{eq:Raccel} with $n=0$:
+Set $\ddot R=0$ in \eqref{eq:Raccel} with $n=0$ and $n-2=-2$:
 \[
-1-2\Bigl(\frac{R_{S}}{R_{E}}\Bigr)^{3}=0\Rightarrow R_{S}^{3}=\tfrac{1}{2}R_{E}^{3}.
+1-2\Bigl(\frac{R_{S}}{R_{E}}\Bigr)^{3}=0.
 \]
-From \eqref{eq:Friedmann} with $\dot R=0$ and $n=0$:
+Solve:
+\[
+R_{S}^{3}=\tfrac{1}{2}R_{E}^{3}.
+\]
+Set $\dot R=0$ in \eqref{eq:Friedmann} with $n=0$:
 \[
 1-\frac{R_{S}}{R_{T}}+\Bigl(\frac{R_{S}}{R_{E}}\Bigr)^{3}=0.
 \]
@@ -612,55 +758,75 @@ Substitute $(R_{S}/R_{E})^{3}=\tfrac{1}{2}$:
 \[
 1-\frac{R_{S}}{R_{T}}+\tfrac{1}{2}=0.
 \]
-Solve:
+Solve for $R_{S}$:
+\[
+R_{S}=\tfrac{3}{2}R_{T}.
+\]
+Box the static parameters:
 \[
 \boxed{\;R_{S}=\tfrac{3}{2}R_{T},\qquad R_{E}=2^{1/3}R_{S}=\tfrac{3\cdot 2^{1/3}}{2}R_{T}.\;}
 \]
 
-Mechanical analogy.  Multiply \eqref{eq:Friedmann} by $R^{2}$ and isolate $\tfrac{1}{2}\dot R^{2}$:
+Multiply \eqref{eq:Friedmann} by $R^{2}/2$:
 \[
 \tfrac{1}{2}\dot R^{2}=\frac{4\pi G\rho_{0}}{3R}\Bigl[1-\frac{R}{R_{T}}+\Bigl(\frac{R}{R_{E}}\Bigr)^{3}\Bigr].
 \]
-Identify (with the convention given in the question, $E=8\pi G\rho_{0}/(3R_{T})$, treating the closed-universe term as the kinetic-energy reference):
+Expand and rearrange to $\tfrac{1}{2}\dot R^{2}+V_{\rm eff}(R)=E$ form, with $E$ absorbing the constant piece (an additive constant in $V_{\rm eff}$ is physically irrelevant):
 \[
-V_{\rm eff}(R)=-\frac{4\pi G\rho_{0}}{3R}\Bigl[1+\Bigl(\frac{R}{R_{E}}\Bigr)^{3}\Bigr]=-\frac{4\pi G\rho_{0}}{3R}-\frac{4\pi G\rho_{0}}{3R_{E}^{3}}R^{2}.
+V_{\rm eff}(R)=-\frac{4\pi G\rho_{0}}{3R}-\frac{4\pi G\rho_{0}}{3R_{E}^{3}}R^{2}.
 \]
-First derivative:
+Differentiate once:
 \[
 V'_{\rm eff}=\frac{4\pi G\rho_{0}}{3R^{2}}-\frac{8\pi G\rho_{0}}{3R_{E}^{3}}R.
 \]
-Set zero at $R_{S}^{3}=R_{E}^{3}/2$ — confirms the static point.
+Set $V'_{\rm eff}=0$:
+\[
+\frac{1}{R^{2}}=\frac{2R}{R_{E}^{3}}\;\Rightarrow\; R^{3}=\tfrac{1}{2}R_{E}^{3},
+\]
+confirming the static $R_{S}^{3}=R_{E}^{3}/2$.
 
-Second derivative:
+Differentiate again:
 \[
 V''_{\rm eff}=-\frac{8\pi G\rho_{0}}{3R^{3}}-\frac{8\pi G\rho_{0}}{3R_{E}^{3}}.
 \]
-Both terms negative:
+Both terms are negative:
 \[
 V''_{\rm eff}(R_{S})<0.
 \]
-Hence $R_{S}$ is a \emph{maximum} of $V_{\rm eff}$ — the Einstein static universe is unstable.  If $\dot R=0$ at some $R\neq R_{S}$:
+Hence $R_{S}$ is a \emph{maximum} of $V_{\rm eff}$ — Einstein's static Universe is unstable.  Evolution with $\dot R=0$ at $R\neq R_{S}$:
 \begin{itemize}
-\item $R<R_{S}$: $V_{\rm eff}$ slopes the universe back toward smaller $R$; matter wins and the universe recollapses to a Big Crunch.
-\item $R>R_{S}$: dark energy wins, $\ddot R>0$, and the universe accelerates to indefinite expansion (de Sitter).
+\item $R<R_{S}$: matter wins ($\rho_{m}\propto R^{-3}$ dominant), $\ddot R<0$, the Universe recollapses to a Big Crunch.
+\item $R>R_{S}$: cosmological constant wins, $\ddot R>0$, the Universe accelerates to de Sitter expansion.
 \end{itemize}
 
 \subsection*{(d) Loitering Universe ($n=2-\epsilon$, $0<\epsilon\ll 1$)}
 
-Static-point condition from \eqref{eq:Raccel}, with $n-2=-\epsilon$:
+Set $\ddot R=0$ in \eqref{eq:Raccel} with $n-2=-\epsilon$ and $3-n=1+\epsilon$:
 \[
-1-\epsilon\Bigl(\frac{R_{S}}{R_{E}}\Bigr)^{1+\epsilon}=0\Rightarrow \Bigl(\frac{R_{S}}{R_{E}}\Bigr)^{1+\epsilon}=\frac{1}{\epsilon}.
+1-\epsilon\Bigl(\frac{R_{S}}{R_{E}}\Bigr)^{1+\epsilon}=0.
 \]
-Solve:
+Solve for the ratio:
 \[
+\Bigl(\frac{R_{S}}{R_{E}}\Bigr)^{1+\epsilon}=\frac{1}{\epsilon}.
+\]
+Take the $1/(1+\epsilon)$ root:
+\begin{equation}
 \boxed{\;R_{S}=R_{E}\,\epsilon^{-1/(1+\epsilon)}.\;}
-\]
-At $R=R_{S}$ also \eqref{eq:Friedmann} should permit $\dot R=0$ for the special total-density choice $R_{T}$; impose it:
+\end{equation}
+Set $\dot R=0$ in \eqref{eq:Friedmann}:
 \[
-1-\frac{R_{S}}{R_{T}}+\Bigl(\frac{R_{S}}{R_{E}}\Bigr)^{1+\epsilon}=0\Rightarrow \frac{R_{S}}{R_{T}}=1+\frac{1}{\epsilon}\Rightarrow R_{T}=\frac{\epsilon\,R_{S}}{1+\epsilon}.
+1-\frac{R_{S}}{R_{T}}+\Bigl(\frac{R_{S}}{R_{E}}\Bigr)^{1+\epsilon}=0.
+\]
+Substitute $(R_{S}/R_{E})^{1+\epsilon}=1/\epsilon$:
+\[
+\frac{R_{S}}{R_{T}}=1+\frac{1}{\epsilon}=\frac{1+\epsilon}{\epsilon}.
+\]
+Invert:
+\[
+R_{T}=\frac{\epsilon\,R_{S}}{1+\epsilon}.
 \]
 
-Effective potential, from \eqref{eq:Friedmann} written as $\tfrac{1}{2}\dot R^{2}+V_{\rm eff}(R)=$ const:
+Write the effective potential from \eqref{eq:Friedmann} (same form as part (c) with $3-n=1+\epsilon$):
 \[
 V_{\rm eff}(R)=-\frac{4\pi G\rho_{0}}{3R}\Bigl[1+\Bigl(\frac{R}{R_{E}}\Bigr)^{1+\epsilon}\Bigr].
 \]
@@ -673,63 +839,63 @@ $V_{\rm eff}$ has a maximum at $R_{S}$ as in part (c).  A universe with kinetic 
 
 \subsection*{(e) Time spent in the loitering phase}
 
-Taylor expand $V_{\rm eff}$ to second order around $R_{S}$.  Let $\delta R\equiv R-R_{S}$:
+Taylor-expand $V_{\rm eff}$ to second order around $R_{S}$ using $V'_{\rm eff}(R_{S})=0$:
 \[
-V_{\rm eff}(R)\approx V_{\rm eff}(R_{S})+\tfrac{1}{2}V''_{\rm eff}(R_{S})\,\delta R^{2}\quad(V'_{\rm eff}(R_{S})=0).
+V_{\rm eff}(R)\approx V_{\rm eff}(R_{S})+\tfrac{1}{2}V''_{\rm eff}(R_{S})\,\delta R^{2},\qquad \delta R\equiv R-R_{S}.
 \]
-At the loitering threshold the conserved ``energy'' is $E=V_{\rm eff}(R_{S})$:
-\[
-\tfrac{1}{2}\dot R^{2}=-\tfrac{1}{2}V''_{\rm eff}(R_{S})\,\delta R^{2}.
-\]
-$V''_{\rm eff}(R_{S})<0$; write $\omega^{2}\equiv -V''_{\rm eff}(R_{S})>0$:
-\[
-\dot R^{2}=\omega^{2}\,\delta R^{2}\Rightarrow \dot R=\omega\,\delta R.
-\]
-Integrate (taking the expanding root):
-\[
-\delta R(t)=\delta R_{0}\,e^{\omega t}.
-\]
-Time to grow from $\delta R_{0}$ at $R\sim R_{S}$ to $\delta R\sim R_{S}$ (i.e.\ to reach $2R_{S}$):
-\[
-t_{\rm loiter}=\frac{1}{\omega}\ln\!\Bigl(\frac{R_{S}}{\delta R_{0}}\Bigr).
-\]
-Compute $V''_{\rm eff}(R_{S})$ for $n=2-\epsilon$:
+Write the effective potential for $n=2-\epsilon$:
 \[
 V_{\rm eff}=-\frac{4\pi G\rho_{0}}{3R}-\frac{4\pi G\rho_{0}}{3R_{E}^{1+\epsilon}}R^{\epsilon}.
 \]
-Differentiate twice:
+Differentiate once:
+\[
+V'_{\rm eff}=\frac{4\pi G\rho_{0}}{3R^{2}}-\frac{4\pi G\rho_{0}\,\epsilon}{3R_{E}^{1+\epsilon}}R^{\epsilon-1}.
+\]
+Differentiate again:
 \[
 V''_{\rm eff}=-\frac{8\pi G\rho_{0}}{3R^{3}}-\frac{4\pi G\rho_{0}\,\epsilon(\epsilon-1)}{3R_{E}^{1+\epsilon}}R^{\epsilon-2}.
 \]
-At $R=R_{S}$, use $(R_{S}/R_{E})^{1+\epsilon}=1/\epsilon$:
+Use $R_{E}^{1+\epsilon}=\epsilon R_{S}^{1+\epsilon}$ to substitute at $R=R_{S}$:
 \[
-V''_{\rm eff}(R_{S})=-\frac{8\pi G\rho_{0}}{3R_{S}^{3}}-\frac{4\pi G\rho_{0}}{3R_{S}^{3}}\cdot\frac{(\epsilon-1)\epsilon}{\epsilon}=-\frac{4\pi G\rho_{0}}{3R_{S}^{3}}\bigl[2+(\epsilon-1)\bigr].
+V''_{\rm eff}(R_{S})=-\frac{8\pi G\rho_{0}}{3R_{S}^{3}}-\frac{4\pi G\rho_{0}\,\epsilon(\epsilon-1)}{3\epsilon R_{S}^{1+\epsilon}}\cdot R_{S}^{\epsilon-2}.
 \]
-Simplify:
+Cancel $\epsilon$ and combine powers $R_{S}^{\epsilon-2-1-\epsilon}=R_{S}^{-3}$:
 \[
-V''_{\rm eff}(R_{S})=-\frac{4\pi G\rho_{0}(1+\epsilon)}{3R_{S}^{3}}.
+V''_{\rm eff}(R_{S})=-\frac{8\pi G\rho_{0}}{3R_{S}^{3}}-\frac{4\pi G\rho_{0}(\epsilon-1)}{3R_{S}^{3}}.
 \]
-Hence
+Factor $-4\pi G\rho_{0}/(3R_{S}^{3})$:
 \[
-\omega^{2}=\frac{4\pi G\rho_{0}(1+\epsilon)}{3R_{S}^{3}}.
+V''_{\rm eff}(R_{S})=-\frac{4\pi G\rho_{0}}{3R_{S}^{3}}\bigl[2+(\epsilon-1)\bigr]=-\frac{4\pi G\rho_{0}(1+\epsilon)}{3R_{S}^{3}}.
 \]
-But the overall scale $\rho_{0}/R_{S}^{3}$ is finite and $O(1)$, while the \emph{depth} of the well above the kinetic-energy floor that a generic trajectory has — the offset of $E$ from $V_{\rm eff}(R_{S})$ — scales as $\epsilon$.  More carefully, write the overshoot trajectory as $E=V_{\rm eff}(R_{S})+\Delta E$, $\Delta E>0$ but $\Delta E\to 0$ as the trajectory just grazes $R_{S}$:
+Write the inverted-oscillator frequency:
 \[
-\dot R^{2}=2\Delta E+\omega^{2}\delta R^{2}.
+\omega^{2}\equiv -V''_{\rm eff}(R_{S})=\frac{4\pi G\rho_{0}(1+\epsilon)}{3R_{S}^{3}}.
 \]
-Time:
+Use energy conservation with $E=V_{\rm eff}(R_{S})+\Delta E$, $\Delta E>0$ small (``just overshoot''):
 \[
-t_{\rm loiter}=\int_{-R_{S}}^{R_{S}}\frac{\de(\delta R)}{\sqrt{2\Delta E+\omega^{2}\delta R^{2}}}=\frac{1}{\omega}\,\sinh^{-1}\!\Bigl(\frac{\omega\,\delta R}{\sqrt{2\Delta E}}\Bigr)\Big|_{-R_{S}}^{+R_{S}}.
+\tfrac{1}{2}\dot R^{2}=\Delta E-\tfrac{1}{2}V''_{\rm eff}(R_{S})\delta R^{2}=\Delta E+\tfrac{1}{2}\omega^{2}\delta R^{2}.
 \]
-For $\Delta E\to 0$,
+Solve for $\dot R=\de(\delta R)/\de t$:
 \[
-t_{\rm loiter}\sim \frac{2}{\omega}\ln\!\Bigl(\frac{2\omega R_{S}}{\sqrt{2\Delta E}}\Bigr)\to\infty.
+\dot R=\sqrt{2\Delta E+\omega^{2}\delta R^{2}}.
 \]
-Critically, as $\epsilon\to 0$ the curvature $|V''_{\rm eff}|$ does not vanish (it tends to $4\pi G\rho_{0}/(3R_{S}^{3})$), but the static point $R_{S}=R_{E}\epsilon^{-1/(1+\epsilon)}\to\infty$, so $\omega^{2}\propto R_{S}^{-3}\to 0$.  Therefore $\omega\to 0$ and $t_{\rm loiter}\sim 1/\omega\to\infty$:
+Integrate from $\delta R=0$ ($R=R_{S}$) to $\delta R=R_{S}$ ($R=2R_{S}$):
+\[
+t=\int_{0}^{R_{S}}\frac{\de(\delta R)}{\sqrt{2\Delta E+\omega^{2}\delta R^{2}}}=\frac{1}{\omega}\sinh^{-1}\!\Bigl(\frac{\omega R_{S}}{\sqrt{2\Delta E}}\Bigr).
+\]
+For $\omega R_{S}\gg\sqrt{2\Delta E}$ the inverse sinh behaves logarithmically:
+\[
+t\sim \frac{1}{\omega}\ln\!\Bigl(\frac{2\omega R_{S}}{\sqrt{2\Delta E}}\Bigr).
+\]
+Compute $R_{S}$-scaling using $R_{S}=R_{E}\epsilon^{-1/(1+\epsilon)}$:
+\[
+R_{S}^{3}\propto \epsilon^{-3/(1+\epsilon)}\;\Rightarrow\; \omega^{2}\propto R_{S}^{-3}\propto \epsilon^{3/(1+\epsilon)}.
+\]
+Therefore $\omega\propto\epsilon^{3/(2(1+\epsilon))}\to 0$ as $\epsilon\to 0$.  Hence the expansion time diverges:
 \begin{equation}
 \boxed{\;t(R_{S}\to 2R_{S})\sim \frac{1}{\omega}\propto R_{S}^{3/2}\propto \epsilon^{-3/(2(1+\epsilon))}\to\infty\;\text{as }\epsilon\to 0.\;}
 \label{eq:tdiv}
 \end{equation}
-The Universe \emph{loiters} arbitrarily long near the inflection — the linearised inverted-oscillator turnover time logarithmically diverges in $\Delta E$ and power-law diverges in $\epsilon$.
+The Universe loiters near the inverted-oscillator inflection for a time that diverges as $\epsilon\to 0$.
 
 \end{document}

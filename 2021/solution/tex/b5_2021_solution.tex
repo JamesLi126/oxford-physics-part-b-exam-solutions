@@ -36,19 +36,23 @@ In the apple's local inertial frame (LIF), $\xi^\alpha$ are Riemann normal coord
 \frac{\de^2 \xi^\alpha}{\de\tau^2}=0.
 \label{eq:LIF}
 \end{equation}
-Transform to a general chart $x^\mu(\xi)$:
+Apply the chain rule to $x^\mu(\xi)$:
 \[
 \frac{\de \xi^\alpha}{\de\tau} \;=\; \pd{\xi^\alpha}{x^\mu}\,\frac{\de x^\mu}{\de\tau}.
 \]
-Differentiate again:
+Differentiate once more in $\tau$:
 \[
 \frac{\de^2 \xi^\alpha}{\de\tau^2} \;=\; \pd{\xi^\alpha}{x^\mu}\,\frac{\de^2 x^\mu}{\de\tau^2} \;+\; \frac{\partial^2\xi^\alpha}{\partial x^\mu\partial x^\nu}\,\frac{\de x^\mu}{\de\tau}\,\frac{\de x^\nu}{\de\tau}.
 \]
-Set to zero and contract with $\partial x^\lambda/\partial\xi^\alpha$:
+Set the LHS to zero by \eqref{eq:LIF}:
+\[
+\pd{\xi^\alpha}{x^\mu}\,\frac{\de^2 x^\mu}{\de\tau^2} \;+\; \frac{\partial^2\xi^\alpha}{\partial x^\mu\partial x^\nu}\,\frac{\de x^\mu}{\de\tau}\,\frac{\de x^\nu}{\de\tau} \;=\;0.
+\]
+Contract with $\partial x^\lambda/\partial\xi^\alpha$ and use $(\partial x^\lambda/\partial\xi^\alpha)(\partial\xi^\alpha/\partial x^\mu)=\delta^\lambda_\mu$:
 \[
 \frac{\de^2 x^\lambda}{\de\tau^2} \;+\; \Gamma^{\lambda}_{\mu\nu}\,\frac{\de x^\mu}{\de\tau}\,\frac{\de x^\nu}{\de\tau} \;=\; 0,\qquad \Gamma^{\lambda}_{\mu\nu}\equiv\pd{x^\lambda}{\xi^\alpha}\,\frac{\partial^2\xi^\alpha}{\partial x^\mu\partial x^\nu}.
 \]
-Apple at rest in coordinates $x^i$: only $\de x^0/\de\tau = c\,\de t/\de\tau$ survives:
+Specialise to the instant the apple is at rest in $x^i$: only $\de x^0/\de\tau=c\,\de t/\de\tau$ survives the sum:
 \begin{equation}
 \boxed{\;\frac{\de^2 x^\mu}{\de\tau^2}+c^2\Gamma^{\mu}_{00}\!\left(\frac{\de t}{\de\tau}\right)^{2}=0.\;}
 \label{eq:geodapple}
@@ -76,23 +80,27 @@ Approximations for an apple near the Earth's surface:
 
 Schwarzschild metric is diagonal with $g_{00}=-c^2 A(r)$, $g_{rr}=1/A(r)$, $g_{\theta\theta}=r^2$, $g_{\phi\phi}=r^2\sin^2\theta$, where $A(r)=1-r_s/r$.
 
-Christoffel formula (diagonal metric):
+Use the static, diagonal-metric formula for $\Gamma^{\mu}_{00}$:
 \[
 \Gamma^{\mu}_{00} \;=\; -\tfrac{1}{2}g^{\mu\mu}\,\partial_\mu g_{00}\quad(\text{no sum}).
 \]
-Compute each component. Time:
+Time component (metric static, $\partial_t g_{00}=0$):
 \[
-\Gamma^{0}_{00} \;=\; -\tfrac{1}{2}g^{00}\partial_0 g_{00} \;=\; 0\quad(\text{static}).
+\Gamma^{0}_{00} \;=\; -\tfrac{1}{2}g^{00}\partial_0 g_{00} \;=\; 0.
 \]
-Radial:
+Radial component, expand $g_{00}=-c^2 A(r)$ and $g^{rr}=A(r)$:
 \[
-\Gamma^{r}_{00} \;=\; -\tfrac{1}{2}g^{rr}\partial_r g_{00} \;=\; -\tfrac{1}{2}A(r)\,\partial_r[-c^2 A(r)] \;=\; \tfrac{c^2}{2}A(r)A'(r).
+\Gamma^{r}_{00} \;=\; -\tfrac{1}{2}A(r)\,\partial_r[-c^2 A(r)].
 \]
-Substitute $A'(r)=r_s/r^2$:
+Pull out the minus sign and the constant $c^2$:
+\[
+\Gamma^{r}_{00} \;=\; \tfrac{c^2}{2}A(r)A'(r).
+\]
+Differentiate $A(r)=1-r_s/r$ to give $A'(r)=r_s/r^2$:
 \[
 \Gamma^{r}_{00} \;=\; \frac{c^2 r_s}{2 r^2}\!\left(1-\frac{r_s}{r}\right).
 \]
-Angular ($g_{00}$ is independent of $\theta,\phi$):
+Angular components ($g_{00}$ independent of $\theta,\phi$):
 \[
 \Gamma^{\theta}_{00} \;=\; 0,\qquad \Gamma^{\phi}_{00} \;=\; 0.
 \]
@@ -108,13 +116,21 @@ Nearby observer under the tree is essentially at rest at $r=R_E$ in the same Sch
 
 Weak-field, slow-motion limit of \eqref{eq:rgeod}: drop $r_s/r$ in the bracket and set $\de t/\de\tau\to 1$:
 \[
-\frac{\de^2 r}{\de t^2} \;\approx\; -\frac{c^2 r_s}{2 r^2} \;=\; -\frac{GM}{r^2}.
+\frac{\de^2 r}{\de t^2} \;\approx\; -\frac{c^2 r_s}{2 r^2}.
 \]
-Newtonian recovery on the surface, $r=R_E+z$, $z\ll R_E$:
+Substitute $r_s=2GM/c^2$:
+\[
+\frac{\de^2 r}{\de t^2} \;\approx\; -\frac{GM}{r^2}.
+\]
+Newtonian recovery near the surface, set $r=R_E+z$ with $z\ll R_E$:
 \[
 \frac{\de^2 z}{\de t^2} \;\approx\; -g,\qquad g\equiv GM/R_E^2.
 \]
-Integrate with $z(0)=h$, $\dot z(0)=0$:
+Integrate once with $\dot z(0)=0$:
+\[
+\dot z(t) \;=\; -g t.
+\]
+Integrate again with $z(0)=h$:
 \begin{equation}
 \boxed{\;r(t) \;=\; R_E + h - \tfrac{1}{2}g t^2.\;}
 \label{eq:rt}
@@ -128,27 +144,31 @@ Schwarzschild has Killing vector $\partial_t$; for unit mass the conserved energ
 E \;=\; -g_{0\mu}\,\frac{\de x^\mu}{\de\tau} \;=\; c^2 A(r)\,\frac{\de t}{\de\tau}.
 \label{eq:Edef}
 \end{equation}
-Initial condition: stem snaps at $r=R_E+h$ with $\de r/\de\tau=0$ (apple instantaneously at rest in the LIF of the tree). Normalisation $g_{\mu\nu}u^\mu u^\nu=-c^2$:
+Initial condition: stem snaps at $r=R_E+h$ with $\de r/\de\tau=0$. Apply the 4-velocity normalisation $g_{\mu\nu}u^\mu u^\nu=-c^2$ at $\tau=0$:
 \[
 -c^2 A(R_E+h)\!\left(\frac{\de t}{\de\tau}\right)^{2}_{\!\!0} \;=\; -c^2.
 \]
-Solve:
+Solve for the initial $\de t/\de\tau$:
 \[
 \!\left(\frac{\de t}{\de\tau}\right)_{\!\!0} \;=\; A(R_E+h)^{-1/2}.
 \]
 Substitute into \eqref{eq:Edef}:
 \[
+E \;=\; c^2 A(R_E+h)\cdot A(R_E+h)^{-1/2}.
+\]
+Simplify:
+\[
 E \;=\; c^2\,A(R_E+h)^{1/2}.
 \]
-Apply the normalisation at general $r$ along the worldline:
+Apply the normalisation at a general $r$ along the worldline ($\de r/\de\tau\neq 0$):
 \[
 -c^2 A(r)\!\left(\frac{\de t}{\de\tau}\right)^{2} \;+\; A(r)^{-1}\!\left(\frac{\de r}{\de\tau}\right)^{2} \;=\; -c^2.
 \]
-Eliminate $\de t/\de\tau$ via \eqref{eq:Edef}, $c^2 A\,\de t/\de\tau = E$:
+Eliminate $\de t/\de\tau$ using $c^2 A(r)\,\de t/\de\tau=E$:
 \[
 -\frac{E^2}{c^2 A(r)} \;+\; A(r)^{-1}\!\left(\frac{\de r}{\de\tau}\right)^{2} \;=\; -c^2.
 \]
-Multiply by $-A(r)/2$:
+Multiply through by $-A(r)/2$:
 \[
 \frac{1}{2}\!\left(\frac{\de r}{\de\tau}\right)^{2} \;=\; \frac{E^2}{2 c^2} - \frac{c^2 A(r)}{2}.
 \]
@@ -156,7 +176,11 @@ Insert $E^2=c^4 A(R_E+h)$:
 \[
 \frac{1}{2}\!\left(\frac{\de r}{\de\tau}\right)^{2} \;=\; \frac{c^2}{2}\bigl[A(R_E+h) - A(r)\bigr].
 \]
-Substitute $A(r)=1-r_s/r$:
+Substitute $A(r)=1-r_s/r$ and cancel the $1$'s:
+\[
+\frac{1}{2}\!\left(\frac{\de r}{\de\tau}\right)^{2} \;=\; \frac{c^2}{2}\!\left[\frac{r_s}{r} - \frac{r_s}{R_E+h}\right].
+\]
+Factor out $r_s$:
 \[
 \frac{1}{2}\!\left(\frac{\de r}{\de\tau}\right)^{2} \;=\; \frac{c^2 r_s}{2}\!\left(\frac{1}{r} - \frac{1}{R_E+h}\right).
 \]
@@ -169,7 +193,15 @@ Evaluate at impact, $r=R_E$:
 \boxed{\;\frac{1}{2}\!\left(\frac{\de r}{\de\tau}\right)^{2}_{\!\!R_E} \;=\; GM\!\left(\frac{1}{R_E} - \frac{1}{R_E+h}\right).\;}
 \label{eq:apple-result}
 \end{equation}
-Newtonian limit $h\ll R_E$: $\tfrac{1}{2}v^2 \approx GMh/R_E^2 = gh$. \boxed{\;v=\sqrt{2gh}.\;}
+Newtonian limit, expand to first order in $h/R_E$:
+\[
+\frac{1}{R_E}-\frac{1}{R_E+h} \;=\; \frac{h}{R_E(R_E+h)} \;\approx\; \frac{h}{R_E^2}.
+\]
+Insert into the boxed result:
+\[
+\tfrac{1}{2}v^2 \;\approx\; \frac{GMh}{R_E^2} \;=\; gh.
+\]
+Hence \boxed{\;v=\sqrt{2gh}.\;}
 
 %==============================================================
 \section*{Question 2 --- Gravitational wave emission and polarisation}
@@ -198,42 +230,48 @@ Two masses $M$ at separation $2l$ rotating in the $xy$-plane at $\omega$. Positi
 \[
 \bm x_{1,2}(t) \;=\; \pm l\bigl(\cos\omega t,\,\sin\omega t,\,0\bigr).
 \]
-Mass quadrupole (trace-included):
+Mass quadrupole (trace-included form):
 \[
-I_{ij}^{(\text{T})} \;=\; \sum_n M\,x_n^i x_n^j \;=\; 2M l^2\,\hat e_i(t)\,\hat e_j(t),\qquad \hat e=(\cos\omega t,\sin\omega t,0).
+I_{ij}(t) \;=\; \sum_{n=1,2} M\,x_n^i\,x_n^j \;=\; 2 M l^2\,\hat e_i(t)\,\hat e_j(t),\qquad \hat e=(\cos\omega t,\sin\omega t,0).
 \]
-Components:
+Compute $I_{xx}$ from $\hat e_x^2=\cos^2\omega t$:
 \[
-I_{xx} \;=\; 2M l^2 \cos^2\omega t \;=\; M l^2(1+\cos 2\omega t).
+I_{xx} \;=\; 2M l^2 \cos^2\omega t.
 \]
+Apply the double-angle identity $2\cos^2\theta=1+\cos 2\theta$:
 \[
-I_{yy} \;=\; 2M l^2 \sin^2\omega t \;=\; M l^2(1-\cos 2\omega t).
+I_{xx} \;=\; M l^2(1+\cos 2\omega t).
 \]
+Similarly $I_{yy}=2M l^2\sin^2\omega t$ and $2\sin^2\theta=1-\cos 2\theta$:
 \[
-I_{xy} \;=\; I_{yx} \;=\; 2M l^2 \cos\omega t\,\sin\omega t \;=\; M l^2 \sin 2\omega t.
+I_{yy} \;=\; M l^2(1-\cos 2\omega t).
 \]
-Trace-reversed quadrupole $\bar I_{ij}=I_{ij}-\tfrac13\delta_{ij}I^k{}_k$ is the radiating part; only the trace-free combinations contribute to $h_{ij}^{TT}$.
-
+Off-diagonal via $2\sin\theta\cos\theta=\sin 2\theta$:
+\[
+I_{xy} \;=\; I_{yx} \;=\; M l^2 \sin 2\omega t.
+\]
 Quadrupole formula (TT gauge), retarded at $\bm r$:
 \[
-h_{ij}^{TT}(\bm r,t) \;=\; \frac{2G}{c^4 r}\,\ddot{\bar I}_{ij}^{TT}\!\left(t-\frac{r}{c}\right).
+h_{ij}^{TT}(\bm r,t) \;=\; \frac{2G}{c^4 r}\,\ddot{I}_{ij}^{TT}\!\left(t-\frac{r}{c}\right).
 \]
-Evaluate at $\bm r=z\hat{\bm z}$ (observer directly above): the wave propagates along $\hat{\bm z}$, transverse plane is $xy$. The TT projector $P_{ij}{}^{kl}$ keeps the symmetric, traceless part of $I_{kl}$ in the $xy$-plane:
+Observer on the $+\hat{\bm z}$ axis at $\bm r=z\hat{\bm z}$: wave propagates along $\hat{\bm z}$, transverse plane is $xy$. The TT projector keeps the symmetric, traceless part of $I_{kl}$ in the $xy$-plane:
 \[
-\bar I_{xx}^{TT} \;=\; \tfrac{1}{2}(I_{xx}-I_{yy}) \;=\; M l^2 \cos 2\omega t.
+I_{xx}^{TT} \;=\; \tfrac{1}{2}(I_{xx}-I_{yy}).
+\]
+Insert the components:
+\[
+I_{xx}^{TT} \;=\; \tfrac{1}{2}[M l^2(1+\cos 2\omega t)-M l^2(1-\cos 2\omega t)] \;=\; M l^2 \cos 2\omega t.
+\]
+By symmetry $I_{yy}^{TT}=-I_{xx}^{TT}$ and $I_{xy}^{TT}=I_{xy}$:
+\[
+I_{yy}^{TT} \;=\; -M l^2 \cos 2\omega t,\qquad I_{xy}^{TT} \;=\; M l^2 \sin 2\omega t.
+\]
+Differentiate twice using $\de^2(\cos 2\omega t)/\de t^2=-4\omega^2\cos 2\omega t$:
+\[
+\ddot I_{xx}^{TT}(t_r) \;=\; -4 M l^2\omega^2 \cos[2\omega(t-z/c)].
 \]
 \[
-\bar I_{yy}^{TT} \;=\; -\bar I_{xx}^{TT} \;=\; -M l^2 \cos 2\omega t.
-\]
-\[
-\bar I_{xy}^{TT} \;=\; I_{xy} \;=\; M l^2 \sin 2\omega t.
-\]
-Differentiate twice ($\partial_t^2\cos 2\omega t = -4\omega^2\cos 2\omega t$):
-\[
-\ddot{\bar I}_{xx}^{TT}(t_r) \;=\; -4 M l^2\omega^2 \cos[2\omega(t-z/c)].
-\]
-\[
-\ddot{\bar I}_{xy}^{TT}(t_r) \;=\; -4 M l^2\omega^2 \sin[2\omega(t-z/c)].
+\ddot I_{xy}^{TT}(t_r) \;=\; -4 M l^2\omega^2 \sin[2\omega(t-z/c)].
 \]
 Substitute into the quadrupole formula at $r=z$:
 \begin{equation}
@@ -273,11 +311,11 @@ $h_{xx}=-h_{yy}$ (the $+$ amplitude) and $h_{xy}$ (the $\times$ amplitude) have 
 Initial square at $(a,0),(0,a),(-a,0),(0,-a)$. Phase $\Phi=2\omega t$:
 \begin{itemize}\itemsep0pt
 \item $\Phi=0$: $h_{xx}<0,\,h_{xy}=0$ $\Rightarrow$ vertical stretch, horizontal squeeze (square $\to$ tall ellipse).
-\item $\Phi=\pi/2$: $h_{xx}=0,\,h_{xy}<0$ $\Rightarrow$ along-diagonal squeeze (ellipse rotated $-45^\circ$).
+\item $\Phi=\pi/2$: $h_{xx}=0,\,h_{xy}<0$ $\Rightarrow$ stretch along NW--SE diagonal (ellipse rotated $+45^\circ$ from vertical).
 \item $\Phi=\pi$: $h_{xx}>0$ $\Rightarrow$ horizontal stretch (wide ellipse).
-\item $\Phi=3\pi/2$: $h_{xy}>0$ $\Rightarrow$ ellipse rotated $+45^\circ$.
+\item $\Phi=3\pi/2$: $h_{xy}>0$ $\Rightarrow$ stretch along NE--SW diagonal (ellipse rotated $+135^\circ$ from vertical).
 \end{itemize}
-The pattern is a single ellipse rotating uniformly clockwise (viewed from $+z$ looking down) at rate $2\omega$.
+The pattern is a single ellipse rotating uniformly counter-clockwise (viewed from $+z$ looking down) at rate $\omega$, following the source rotation.
 \begin{center}
 \begin{tikzpicture}[>=stealth, scale=0.85]
   % four phase snapshots
@@ -286,8 +324,8 @@ The pattern is a single ellipse rotating uniformly clockwise (viewed from $+z$ l
       \draw[->] (-1.7,0) -- (1.7,0) node[right]{$x$};
       \draw[->] (0,-1.7) -- (0,1.7) node[above]{$y$};
       \draw[gray, dashed] (0,0) circle (1);
-      % rotated ellipse: angle = -Phi/2 (deg)
-      \pgfmathsetmacro{\rot}{-\Phi/2}
+      % rotated ellipse: angle = +Phi/2 (deg), CCW
+      \pgfmathsetmacro{\rot}{\Phi/2}
       \draw[thick, rotate=\rot] (0,0) ellipse (0.6 and 1.4);
       \node[circle,fill,inner sep=1.2pt] at (1,0) {};
       \node[circle,fill,inner sep=1.2pt] at (0,1) {};
@@ -297,7 +335,7 @@ The pattern is a single ellipse rotating uniformly clockwise (viewed from $+z$ l
     \end{scope}
   }
 \end{tikzpicture}\\
-\footnotesize $\Phi_0=0,\ \Phi_1=\pi/2,\ \Phi_2=\pi,\ \Phi_3=3\pi/2$. Dashed circle: original positions. Ellipse rotates CW at $2\omega$.
+\footnotesize $\Phi_0=0,\ \Phi_1=\pi/2,\ \Phi_2=\pi,\ \Phi_3=3\pi/2$. Dashed circle: original positions. Ellipse rotates CCW at $\omega$ (one full $\pi$ of orientation per GW half-period $\pi/\omega$).
 \end{center}
 
 \subsection*{(d) GR vs EM: polarisation, interference, refraction, diffraction}
@@ -324,44 +362,52 @@ Standard wave phenomenon: GW of wavelength $\lambda_{\text{GW}}=c/f$ around an o
 
 \subsection*{(a) Time dilation factor on a circular orbit}
 
-Schwarzschild equatorial circular orbit: $\theta=\pi/2$, $r=$ const, $\dot r=\dot\theta=0$. Normalisation $g_{\mu\nu}u^\mu u^\nu = -c^2$:
+Schwarzschild equatorial circular orbit: $\theta=\pi/2$, $r=$ const, $\dot r=\dot\theta=0$. Apply normalisation $g_{\mu\nu}u^\mu u^\nu = -c^2$:
 \[
 -c^2 A(r)(u^0)^2 \;+\; r^2(u^\phi)^2 \;=\; -c^2,\qquad A(r)\equiv 1-\frac{r_s}{r}=1-\frac{2GM}{rc^2}.
 \]
-Geodesic equation $\Gamma^r_{\mu\nu}u^\mu u^\nu = 0$ (since $\dot r=0$ and $\ddot r=0$):
+Radial geodesic equation, with $\de u^r/\de\tau=0$:
 \[
 \Gamma^{r}_{00}(u^0)^2 \;+\; \Gamma^{r}_{\phi\phi}(u^\phi)^2 \;=\; 0.
 \]
-Connection coefficients (diagonal Schwarzschild):
+Relevant Christoffel symbols (Schwarzschild, $\theta=\pi/2$):
 \[
-\Gamma^{r}_{00} \;=\; \frac{c^2 r_s}{2 r^2}A(r),\qquad \Gamma^{r}_{\phi\phi} \;=\; -r A(r)\quad(\theta=\pi/2).
+\Gamma^{r}_{00} \;=\; \frac{c^2 r_s}{2 r^2}A(r),\qquad \Gamma^{r}_{\phi\phi} \;=\; -r A(r).
 \]
-Substitute and cancel $A(r)$:
+Substitute into the geodesic equation:
+\[
+\frac{c^2 r_s}{2 r^2}A(r)(u^0)^2 \;-\; r A(r)(u^\phi)^2 \;=\; 0.
+\]
+Cancel the common $A(r)$:
 \[
 \frac{c^2 r_s}{2 r^2}(u^0)^2 \;=\; r(u^\phi)^2.
 \]
 Solve for $(u^\phi/u^0)^2$:
 \[
-\Omega^2 \;\equiv\; \!\left(\frac{u^\phi}{u^0}\right)^{2} \;=\; \!\left(\frac{\de\phi}{\de t}\right)^{2} \;=\; \frac{c^2 r_s}{2 r^3} \;=\; \frac{GM}{r^3}.
+\!\left(\frac{u^\phi}{u^0}\right)^{2} \;=\; \frac{c^2 r_s}{2 r^3}.
 \]
-Kepler's third law in Schwarzschild coordinates:
+Insert $r_s=2GM/c^2$ to recover Kepler:
 \begin{equation}
-\Omega^2 \;=\; \frac{GM}{r^3}.
+\Omega^2 \;\equiv\; \!\left(\frac{\de\phi}{\de t}\right)^{2} \;=\; \frac{GM}{r^3}.
 \label{eq:kepler}
 \end{equation}
-Rewrite the normalisation using $r^2(u^\phi)^2 = r^2\Omega^2(u^0)^2$:
+Rewrite the normalisation using $u^\phi = \Omega\,u^0$:
 \[
 -c^2 A(r)(u^0)^2 \;+\; r^2\Omega^2 (u^0)^2 \;=\; -c^2.
 \]
-Solve:
+Factor $(u^0)^2$:
 \[
 (u^0)^2\bigl[c^2 A(r) - r^2\Omega^2\bigr] \;=\; c^2.
 \]
-Insert $A(r)=1-2GM/rc^2$ and $r^2\Omega^2 = GM/r$:
+Compute the bracket: expand $c^2 A(r)=c^2-2GM/r$ and substitute $r^2\Omega^2=GM/r$:
 \[
-c^2 A(r) - r^2\Omega^2 \;=\; c^2 - \frac{2GM}{r} - \frac{GM}{r} \;=\; c^2\!\left(1 - \frac{3GM}{rc^2}\right).
+c^2 A(r) - r^2\Omega^2 \;=\; c^2 - \frac{2GM}{r} - \frac{GM}{r}.
 \]
-Hence
+Combine the $1/r$ terms:
+\[
+c^2 A(r) - r^2\Omega^2 \;=\; c^2\!\left(1 - \frac{3GM}{rc^2}\right).
+\]
+Solve for $u^0$:
 \begin{equation}
 \boxed{\;u^0 \;=\; \frac{\de t}{\de\tau} \;=\; \!\left(1-\frac{3GM}{rc^2}\right)^{\!-1/2}.\;}
 \label{eq:u0}
@@ -369,7 +415,7 @@ Hence
 Symbols: $t$ Schwarzschild coordinate time (asymptotic observer); $\tau$ proper time of the orbiting body; $r$ areal radius; $M$ central mass; $G,c$ Newton/light constants; $u^0$ time-component of 4-velocity.
 
 \paragraph{Sanity check.}
-Innermost stable circular orbit / photon sphere ($r=3GM/c^2 = 1.5 r_s$): $u^0\to\infty$, recovering the photon-sphere limit.
+At the photon sphere $r=3GM/c^2 = 1.5 r_s$, $u^0\to\infty$ — timelike circular orbits cease to exist and become null (photon) geodesics.
 
 \subsection*{(b) Parallel transport of the spin}
 
@@ -414,34 +460,39 @@ With $u^r=0$:
 \frac{\de s^\phi}{\de t} \;=\; -\frac{\Omega}{r}\,s^r.
 \]
 
-Eliminate $s^t$ via the orthogonality $u_\mu s^\mu = 0$, i.e. $-c^2 A(r)\,u^0 s^t + r^2 u^\phi s^\phi = 0$:
+Eliminate $s^t$ via orthogonality $u_\mu s^\mu = 0$, i.e.\ $-c^2 A(r)\,u^0 s^t + r^2 u^\phi s^\phi = 0$:
 \[
 s^t \;=\; \frac{r^2\Omega}{c^2 A(r)}\,s^\phi.
 \]
-Substitute into the $\de s^r/\de t$ equation. Compute the prefactor of $s^\phi$:
+Substitute into the $\de s^r/\de t$ equation:
 \[
--\Gamma^{r}_{tt}\frac{r^2\Omega}{c^2 A(r)} - \Gamma^{r}_{\phi\phi}\Omega \;=\; -\frac{c^2 r_s}{2 r^2}A(r)\cdot\frac{r^2\Omega}{c^2 A(r)} - (-r A(r))\Omega.
+\frac{\de s^r}{\de t} \;=\; \!\left[-\Gamma^{r}_{tt}\frac{r^2\Omega}{c^2 A(r)} - \Gamma^{r}_{\phi\phi}\,\Omega\right] s^\phi.
 \]
-Simplify:
+Evaluate the first term using $\Gamma^r_{tt}=\tfrac{c^2 r_s}{2r^2}A(r)$:
 \[
-= -\frac{r_s\Omega}{2} + r A(r)\Omega \;=\; \Omega\!\left[r - r_s - \frac{r_s}{2}\right]\!\cdot\!\frac{1}{?}\quad\text{[redo]}.
+-\Gamma^{r}_{tt}\frac{r^2\Omega}{c^2 A(r)} \;=\; -\frac{c^2 r_s}{2 r^2}A(r)\cdot\frac{r^2\Omega}{c^2 A(r)} \;=\; -\frac{r_s\Omega}{2}.
 \]
-Re-evaluate cleanly:
+Evaluate the second term using $\Gamma^r_{\phi\phi}=-r A(r)$:
 \[
--\frac{c^2 r_s}{2 r^2}A(r)\cdot\frac{r^2\Omega}{c^2 A(r)} \;=\; -\frac{r_s\Omega}{2}.
+-\Gamma^{r}_{\phi\phi}\,\Omega \;=\; r A(r)\,\Omega \;=\; (r-r_s)\Omega.
 \]
+Sum the two contributions:
 \[
--(-r A(r))\Omega \;=\; r A(r)\Omega \;=\; r\Omega - r_s\Omega.
+\frac{\de s^r}{\de t} \;=\; \Omega\!\left(r - r_s - \frac{r_s}{2}\right) s^\phi.
 \]
-Sum:
+Combine the $r_s$ terms:
 \[
--\frac{r_s\Omega}{2} + r\Omega - r_s\Omega \;=\; \Omega\!\left(r - \frac{3 r_s}{2}\right).
+\frac{\de s^r}{\de t} \;=\; \Omega\!\left(r - \frac{3r_s}{2}\right) s^\phi.
 \]
-Use $r_s = 2GM/c^2$: $r - 3 r_s/2 = r(1 - 3GM/(rc^2))$. Therefore
+Factor $r$:
+\[
+\frac{\de s^r}{\de t} \;=\; \Omega\,r\!\left(1 - \frac{3 r_s}{2 r}\right) s^\phi.
+\]
+Substitute $r_s=2GM/c^2$ to recognise $(u^0)^{-2}$:
 \[
 \frac{\de s^r}{\de t} \;=\; \Omega\,r\!\left(1 - \frac{3GM}{rc^2}\right) s^\phi.
 \]
-Recall $(u^0)^{-2}=1-3GM/(rc^2)$, so $1 - 3GM/(rc^2) = 1/(u^0)^2$:
+Hence, using $(u^0)^{-2}=1-3GM/(rc^2)$:
 \begin{equation}
 \frac{\de s^r}{\de t} \;=\; \frac{\Omega\,r}{(u^0)^2}\,s^\phi.
 \label{eq:srdot}
@@ -451,11 +502,15 @@ Pair with $\de s^\phi/\de t = -(\Omega/r)\,s^r$:
 \frac{\de s^\phi}{\de t} \;=\; -\frac{\Omega}{r}\,s^r.
 \label{eq:sphidot}
 \end{equation}
-Differentiate \eqref{eq:srdot} and substitute \eqref{eq:sphidot}:
+Differentiate \eqref{eq:srdot} in $t$ (note $r,u^0,\Omega$ are constants on the orbit):
 \[
-\frac{\de^2 s^r}{\de t^2} \;=\; \frac{\Omega r}{(u^0)^2}\,\frac{\de s^\phi}{\de t} \;=\; -\frac{\Omega^2}{(u^0)^2}\,s^r.
+\frac{\de^2 s^r}{\de t^2} \;=\; \frac{\Omega r}{(u^0)^2}\,\frac{\de s^\phi}{\de t}.
 \]
-Identify the angular frequency:
+Substitute \eqref{eq:sphidot} for $\de s^\phi/\de t$:
+\[
+\frac{\de^2 s^r}{\de t^2} \;=\; \frac{\Omega r}{(u^0)^2}\!\left(-\frac{\Omega}{r}\,s^r\right) \;=\; -\frac{\Omega^2}{(u^0)^2}\,s^r.
+\]
+Identify the angular frequency of $s^r(t)$:
 \begin{equation}
 \boxed{\;\Omega_r \;=\; \frac{\Omega}{u^0} \;=\; \Omega\,\sqrt{1-\frac{3GM}{rc^2}}.\;}
 \label{eq:Or}
@@ -469,58 +524,66 @@ In one coordinate orbit the radial axis returns; the spin returns to a direction
 
 Data: $M=8.2\times 10^{36}$ kg, $R=200 R_s$.
 
-Schwarzschild radius:
+Schwarzschild radius from $R_s=2GM/c^2$:
 \[
-R_s \;=\; \frac{2GM}{c^2} \;=\; \frac{2\cdot 6.674\times 10^{-11}\cdot 8.2\times 10^{36}}{(3\times 10^{8})^2}\,\si{m}.
+R_s \;=\; \frac{2\cdot 6.674\times 10^{-11}\cdot 8.2\times 10^{36}}{(3\times 10^{8})^2}\,\si{m}.
 \]
-Numerator:
+Evaluate numerator:
 \[
 2\cdot 6.674\times 10^{-11}\cdot 8.2\times 10^{36} \;=\; 1.0945\times 10^{27}\,\si{m^3.s^{-2}}.
 \]
-Divide by $c^2=9\times 10^{16}$:
+Divide by $c^2=9\times 10^{16}\,\si{m^2.s^{-2}}$:
 \[
-R_s \;=\; 1.216\times 10^{10}\,\si{m} \;\approx\; \SI{1.22e10}{m}.
+R_s \;=\; 1.216\times 10^{10}\,\si{m}.
 \]
 Orbital radius:
 \[
-R \;=\; 200 R_s \;=\; 2.43\times 10^{12}\,\si{m}.
+R \;=\; 200 R_s \;=\; 2.432\times 10^{12}\,\si{m}.
 \]
-
-Coordinate angular frequency from \eqref{eq:kepler}:
+Coordinate angular frequency from Kepler \eqref{eq:kepler}:
 \[
 \Omega \;=\; \sqrt{\frac{GM}{R^3}}.
 \]
 Compute $R^3$:
 \[
-R^3 \;=\; (2.43\times 10^{12})^3 \;=\; 1.435\times 10^{37}\,\si{m^3}.
+R^3 \;=\; (2.432\times 10^{12})^3 \;=\; 1.439\times 10^{37}\,\si{m^3}.
 \]
-Compute $GM=6.674\times 10^{-11}\cdot 8.2\times 10^{36}=5.473\times 10^{26}$:
+Compute $GM$:
 \[
-\Omega \;=\; \sqrt{\frac{5.473\times 10^{26}}{1.435\times 10^{37}}}\,\si{rad.s^{-1}} \;=\; \sqrt{3.815\times 10^{-11}}\,\si{rad.s^{-1}}.
+GM \;=\; 6.674\times 10^{-11}\cdot 8.2\times 10^{36} \;=\; 5.473\times 10^{26}\,\si{m^3.s^{-2}}.
 \]
-Evaluate:
+Divide:
 \[
-\Omega \;=\; 6.18\times 10^{-6}\,\si{rad.s^{-1}}.
+\frac{GM}{R^3} \;=\; \frac{5.473\times 10^{26}}{1.439\times 10^{37}} \;=\; 3.804\times 10^{-11}\,\si{s^{-2}}.
+\]
+Take square root:
+\[
+\Omega \;=\; 6.17\times 10^{-6}\,\si{rad.s^{-1}}.
 \]
 Coordinate period (distant observer):
 \[
-T_\infty \;=\; \frac{2\pi}{\Omega} \;=\; \frac{6.283}{6.18\times 10^{-6}}\,\si{s} \;=\; 1.017\times 10^{6}\,\si{s}.
+T_\infty \;=\; \frac{2\pi}{\Omega} \;=\; \frac{6.283}{6.17\times 10^{-6}}\,\si{s}.
 \]
+Evaluate:
 \begin{equation}
-\boxed{\;T_\infty \;\approx\; \SI{1.02e6}{s} \;\approx\; \SI{11.8}{days}.\;}
+\boxed{\;T_\infty \;\approx\; 1.018\times 10^{6}\,\si{s} \;\approx\; \SI{11.8}{days}.\;}
 \label{eq:Tinf}
 \end{equation}
-
-Crew period (proper time per orbit). Since $r=200 R_s$, $3GM/(rc^2)=3 R_s/(2 r) = 3/(2\cdot 200)=7.5\times 10^{-3}$:
+Crew period (proper time per orbit) from $\de\tau=\de t/u^0$. Use $r=200 R_s$ so $3GM/(rc^2)=3 R_s/(2r)=3/(400)$:
 \[
-1/u^0 \;=\; \sqrt{1-7.5\times 10^{-3}} \;=\; 0.99624.
+\frac{3GM}{rc^2} \;=\; 7.5\times 10^{-3}.
+\]
+Compute $1/u^0$:
+\[
+\frac{1}{u^0} \;=\; \sqrt{1-7.5\times 10^{-3}} \;=\; 0.99624.
 \]
 Proper period:
 \[
-T_{\text{crew}} \;=\; T_\infty / u^0 \;=\; T_\infty\cdot 0.99624 \;\approx\; \SI{1.013e6}{s}.
+T_{\text{crew}} \;=\; \frac{T_\infty}{u^0} \;=\; 1.018\times 10^{6}\cdot 0.99624\,\si{s}.
 \]
+Evaluate:
 \begin{equation}
-\boxed{\;T_{\text{crew}} \;\approx\; \SI{1.013e6}{s},\quad T_\infty - T_{\text{crew}} \;\approx\; \SI{3.8e3}{s}.\;}
+\boxed{\;T_{\text{crew}} \;\approx\; 1.014\times 10^{6}\,\si{s},\quad T_\infty - T_{\text{crew}} \;\approx\; \SI{3.8e3}{s}.\;}
 \label{eq:Tcrew}
 \end{equation}
 
@@ -531,26 +594,30 @@ Two effects, both captured in $u^0$: gravitational time dilation ($\sqrt{A(r)}$)
 
 Initial spin direction: along the radial line to Earth at $t_0$. After one coordinate orbit ($\Delta t=T_\infty$), the radial direction returns, but $s$ rotates at $\Omega_r$ in the local frame.
 
-Geodetic angle per orbit:
+Geodetic angle per coordinate orbit:
 \[
-\Delta\phi_{\text{geo}} \;=\; 2\pi\!\left(1-\frac{1}{u^0}\right) \;=\; 2\pi\!\left(1-\sqrt{1-\frac{3GM}{Rc^2}}\right).
+\Delta\phi_{\text{geo}} \;=\; 2\pi\!\left(1-\frac{\Omega_r}{\Omega}\right) \;=\; 2\pi\!\left(1-\frac{1}{u^0}\right).
 \]
-Substitute the numerical $1/u^0$:
+Substitute $1/u^0=\sqrt{1-3GM/(Rc^2)}$:
+\[
+\Delta\phi_{\text{geo}} \;=\; 2\pi\!\left(1-\sqrt{1-\frac{3GM}{Rc^2}}\right).
+\]
+Insert the numerical value $1/u^0=0.99624$:
 \[
 \Delta\phi_{\text{geo}} \;=\; 2\pi(1-0.99624) \;=\; 2\pi\cdot 3.76\times 10^{-3}.
 \]
-Evaluate:
+Evaluate in radians:
 \[
-\Delta\phi_{\text{geo}} \;=\; 2.36\times 10^{-2}\,\si{rad} \;=\; 1.35\,\si{deg}.
+\Delta\phi_{\text{geo}} \;=\; 2.36\times 10^{-2}\,\si{rad}.
 \]
+Convert to degrees ($\times 180/\pi$):
 \begin{equation}
 \boxed{\;\Delta\phi_{\text{geo}}\;\approx\;1.35^\circ\,/\,\text{orbit}.\;}
 \label{eq:dphigeo}
 \end{equation}
-
-Compare to beam half-width $0.5^\circ$:
+Beam angular diameter $1^\circ$ gives a half-angle of $0.5^\circ$. Compare:
 \[
-1.35^\circ \;>\; 0.5^\circ.
+\Delta\phi_{\text{geo}} \;=\; 1.35^\circ \;>\; 0.5^\circ.
 \]
 \boxed{\;\text{The beam misses Earth: the gyroscope axis has precessed by more than the beam half-angle.}\;}
 
@@ -583,14 +650,15 @@ Symbols: $t$ cosmic (proper) time of comoving observers; $R(t)$ scale factor wit
 
 \subsection*{(b) Continuity equation and first law}
 
-Local energy--momentum conservation $\nabla^\mu T_{\mu\nu}=0$ for a perfect fluid $T^{\mu\nu}=(\rho+P/c^2)u^\mu u^\nu + P g^{\mu\nu}/c^2$ at rest in the FRW frame ($u^\mu=(1,\bm 0)$). The $\nu=0$ component:
+Local energy--momentum conservation $\nabla_\mu T^{\mu\nu}=0$ for a perfect fluid at rest in the FRW frame. The $\nu=0$ component reads
 \[
-\partial_t T^{00} + \Gamma^\mu_{\mu\alpha}T^{\alpha 0} + \Gamma^0_{\alpha\beta}T^{\alpha\beta} \;=\; 0.
+\partial_\mu T^{\mu 0} \;+\; \Gamma^\mu_{\mu\alpha}T^{\alpha 0} \;+\; \Gamma^0_{\alpha\beta}T^{\alpha\beta} \;=\; 0.
 \]
-Christoffel: $\Gamma^\mu_{\mu 0}=3\dot R/R$ (volume expansion). Evaluate:
+For flat FRW, $\Gamma^\mu_{\mu 0}=3\dot R/R$ (volume expansion of the spatial slice) and $\Gamma^0_{ij}\propto R\dot R\,\delta_{ij}$. Substituting the comoving $T^{\mu\nu}$ of a perfect fluid (energy density $\rho c^2$, isotropic pressure $P$):
 \[
-\dot\rho \;+\; 3\frac{\dot R}{R}(\rho + P/c^2) \;=\; 0.
+\dot\rho c^2 \;+\; 3\frac{\dot R}{R}\rho c^2 \;+\; 3\frac{\dot R}{R}P \;=\; 0.
 \]
+Divide through by $c^2$:
 \begin{equation}
 \boxed{\;\dot\rho \;+\; 3(\rho+P/c^2)\frac{\dot R}{R} \;=\; 0.\;}
 \label{eq:cont}
@@ -598,23 +666,31 @@ Christoffel: $\Gamma^\mu_{\mu 0}=3\dot R/R$ (volume expansion). Evaluate:
 Symbols: overdot $=\de/\de t$; $\rho$ rest-frame mass-energy density; $P$ rest-frame pressure; $R$ scale factor.
 
 \paragraph{First-law equivalence.}
-Comoving volume $V\propto R^3$, energy $E=\rho c^2 V$. Differentiate:
+Comoving volume $V\propto R^3$, energy $E=\rho c^2 V$. Differentiate in $t$ (product rule):
 \[
-\frac{\de E}{\de t} \;=\; \dot\rho c^2 V + \rho c^2 \dot V.
+\frac{\de E}{\de t} \;=\; \dot\rho\,c^2 V \;+\; \rho c^2\,\dot V.
 \]
-Use $\dot V = 3 V\,\dot R/R$:
+Differentiate $V\propto R^3$ to give $\dot V = 3 V\,\dot R/R$:
 \[
-\frac{\de E}{\de t} \;=\; \dot\rho c^2 V + 3\rho c^2 V\,\frac{\dot R}{R}.
+\frac{\de E}{\de t} \;=\; \dot\rho\,c^2 V \;+\; 3\rho c^2 V\,\frac{\dot R}{R}.
 \]
-Substitute \eqref{eq:cont} for $\dot\rho c^2$:
+Solve \eqref{eq:cont} for $\dot\rho c^2$:
 \[
-\dot\rho c^2 \;=\; -3(\rho c^2 + P)\frac{\dot R}{R}.
+\dot\rho\,c^2 \;=\; -3(\rho c^2 + P)\,\frac{\dot R}{R}.
 \]
-Insert:
+Substitute and expand:
 \[
-\frac{\de E}{\de t} \;=\; -3(\rho c^2 + P)V\frac{\dot R}{R} + 3\rho c^2 V\frac{\dot R}{R} \;=\; -3 P V\frac{\dot R}{R}.
+\frac{\de E}{\de t} \;=\; -3(\rho c^2 + P)V\,\frac{\dot R}{R} \;+\; 3\rho c^2 V\,\frac{\dot R}{R}.
+\]
+Cancel the $\rho c^2 V \dot R/R$ terms:
+\[
+\frac{\de E}{\de t} \;=\; -3 P V\,\frac{\dot R}{R}.
 \]
 Recognise $3 V\dot R/R = \dot V$:
+\[
+\frac{\de E}{\de t} \;=\; -P\,\frac{\de V}{\de t}.
+\]
+Multiply by $\de t$:
 \begin{equation}
 \boxed{\;\de E \;=\; -P\,\de V.\;}
 \label{eq:firstlaw}
@@ -624,15 +700,32 @@ First law of thermodynamics for an adiabatic ($\de Q=0$) expansion of a comoving
 \subsection*{(c) Three equations of state}
 
 \paragraph{S1: $P=-\rho c^2$.}
-Continuity $\Rightarrow \dot\rho=0$: density is constant during expansion.
-\boxed{\;\text{Cosmological constant / vacuum energy / dark energy ($\Lambda$); drives accelerated expansion.}\;}
+Substitute into \eqref{eq:cont} with $\rho+P/c^2=0$:
+\[
+\dot\rho \;=\; 0.
+\]
+Density is constant during expansion. \boxed{\;\text{Cosmological constant / vacuum energy / dark energy ($\Lambda$); drives accelerated expansion.}\;}
 
 \paragraph{S2: $P=\tfrac{1}{3}\rho c^2$.}
-Continuity gives $\dot\rho/\rho = -4\dot R/R$, so $\rho\propto R^{-4}$.
-\boxed{\;\text{Radiation-dominated era (photons, ultrarelativistic species). Trace-free $T^\mu{}_\mu=0$.}\;}
+Substitute $P/c^2=\rho/3$ into \eqref{eq:cont}:
+\[
+\dot\rho \;+\; 4\rho\,\frac{\dot R}{R} \;=\; 0.
+\]
+Separate variables:
+\[
+\frac{\dot\rho}{\rho} \;=\; -4\,\frac{\dot R}{R}.
+\]
+Integrate to obtain $\rho\propto R^{-4}$. \boxed{\;\text{Radiation-dominated era (photons, ultrarelativistic species). Trace-free $T^\mu{}_\mu=0$.}\;}
 
 \paragraph{S3: $P=0$.}
-Continuity gives $\rho\propto R^{-3}$.
+Substitute into \eqref{eq:cont}:
+\[
+\dot\rho \;+\; 3\rho\,\frac{\dot R}{R} \;=\; 0.
+\]
+Separate and integrate:
+\[
+\rho\;\propto\;R^{-3}.
+\]
 \boxed{\;\text{Matter-dominated era (cold pressureless dust: baryons + cold dark matter).}\;}
 
 \subsection*{(d) Age of the Universe and the effect of S1}
@@ -657,15 +750,23 @@ For matter $\rho_m = \rho_{m,0}(R_0/R)^3$ $\Rightarrow$ $H_m\propto R^{-3/2}$. F
 \paragraph{Universe \emph{without} S1.}
 Phases S2 then S3. Pick equality scale factor $R_{\text{eq}}$ at which radiation--matter densities cross, then today's $R_0$.
 
-Radiation phase contribution (from $0$ to $R_{\text{eq}}$): $H\propto R^{-2}$:
+Radiation phase contribution (from $0$ to $R_{\text{eq}}$). Use $H(R)=H_{\text{eq}}(R_{\text{eq}}/R)^2$:
 \[
-t_r \;=\; \int_0^{R_{\text{eq}}}\frac{\de R}{R}\,H_{\text{eq}}^{-1}\!\left(\frac{R}{R_{\text{eq}}}\right)^{2} \;=\; \frac{1}{H_{\text{eq}}}\int_0^{R_{\text{eq}}}\frac{R\,\de R}{R_{\text{eq}}^2} \;=\; \frac{1}{2 H_{\text{eq}}}.
+t_r \;=\; \int_0^{R_{\text{eq}}}\frac{\de R}{R\,H_{\text{eq}}(R_{\text{eq}}/R)^2} \;=\; \frac{1}{H_{\text{eq}}\,R_{\text{eq}}^2}\int_0^{R_{\text{eq}}}R\,\de R.
 \]
-Matter phase (from $R_{\text{eq}}$ to $R_0$): $H\propto R^{-3/2}$, $H(R)=H_{\text{eq}}(R_{\text{eq}}/R)^{3/2}$:
+Evaluate the integral:
 \[
-t_m \;=\; \int_{R_{\text{eq}}}^{R_0}\frac{\de R}{R\, H_{\text{eq}}(R_{\text{eq}}/R)^{3/2}} \;=\; \frac{1}{H_{\text{eq}}\,R_{\text{eq}}^{3/2}}\int_{R_{\text{eq}}}^{R_0}R^{1/2}\,\de R.
+t_r \;=\; \frac{1}{H_{\text{eq}}\,R_{\text{eq}}^2}\cdot\frac{R_{\text{eq}}^2}{2} \;=\; \frac{1}{2 H_{\text{eq}}}.
 \]
-Evaluate:
+Matter phase (from $R_{\text{eq}}$ to $R_0$). Use $H(R)=H_{\text{eq}}(R_{\text{eq}}/R)^{3/2}$:
+\[
+t_m \;=\; \int_{R_{\text{eq}}}^{R_0}\frac{\de R}{R\,H_{\text{eq}}(R_{\text{eq}}/R)^{3/2}} \;=\; \frac{1}{H_{\text{eq}}\,R_{\text{eq}}^{3/2}}\int_{R_{\text{eq}}}^{R_0}R^{1/2}\,\de R.
+\]
+Evaluate the power-law integral:
+\[
+t_m \;=\; \frac{1}{H_{\text{eq}}\,R_{\text{eq}}^{3/2}}\cdot\frac{2}{3}\!\left[R_0^{3/2}-R_{\text{eq}}^{3/2}\right].
+\]
+Simplify:
 \[
 t_m \;=\; \frac{2}{3 H_{\text{eq}}}\!\left[\!\left(\frac{R_0}{R_{\text{eq}}}\right)^{\!3/2}-1\right].
 \]
@@ -675,22 +776,24 @@ t_0^{\text{(no S1)}} \;=\; t_r + t_m \;=\; \frac{1}{2 H_{\text{eq}}} + \frac{2}{
 \]
 
 \paragraph{Universe \emph{with} S1.}
-Insert dark-energy phase first ($R\in[0,R_1]$) before S2 takes over at $R_1$. With $H_\Lambda$ constant, $H(R)=H_\Lambda$ on $[0,R_1]$:
+Insert dark-energy phase first ($R\in[0,R_1]$) before S2 takes over at $R_1$. With $\rho_\Lambda$ constant, the Friedmann equation gives $H(R)=H_\Lambda$ on $[0,R_1]$:
 \[
-t_\Lambda \;=\; \int_{0^+}^{R_1}\frac{\de R}{R\,H_\Lambda} \;=\; \frac{1}{H_\Lambda}\,\ln\!\left(\frac{R_1}{0^+}\right).
+t_\Lambda \;=\; \int_{R_{\min}}^{R_1}\frac{\de R}{R\,H_\Lambda}.
 \]
-Diverges as $R\to 0^+$:
+Evaluate the logarithmic integral:
 \[
-\lim_{R_{\min}\to 0}\frac{1}{H_\Lambda}\ln(R_1/R_{\min}) \;=\; +\infty.
+t_\Lambda \;=\; \frac{1}{H_\Lambda}\,\ln\!\left(\frac{R_1}{R_{\min}}\right).
 \]
-A finite-density vacuum phase that is allowed to extend to arbitrarily small $R$ contributes an arbitrarily long (de-Sitter / inflationary) prelude; even bounded by any positive $R_{\min}>0$ it adds a strictly positive interval to the age.
-
-For the strict question (initial size $\to 0$):
+Take the limit $R_{\min}\to 0^+$:
+\[
+\lim_{R_{\min}\to 0^+}\frac{1}{H_\Lambda}\ln\!\left(\frac{R_1}{R_{\min}}\right) \;=\; +\infty.
+\]
+The S1 phase is exponential expansion (de Sitter), $R(t)=R_1\,e^{H_\Lambda(t-t_1)}$, so reaching any $R_1>0$ from $R\to 0$ takes unbounded coordinate time. Subsequent S2 and S3 phases contribute exactly the same $t_r+t_m$ as in the no-S1 case. Therefore
 \begin{equation}
 \boxed{\;t_0^{(\text{with S1})} \;=\; t_\Lambda + t_r + t_m \;>\; t_0^{(\text{no S1})}.\;}
 \label{eq:older}
 \end{equation}
-The S1 phase is exponential expansion (de Sitter), $R(t)=R_1 e^{H_\Lambda(t-t_1)}$, so reaching any $R_1>0$ from $R\to 0$ takes unbounded coordinate time. \boxed{\;\text{A Universe with S1 is older than one without.}\;}
+\boxed{\;\text{A Universe with S1 is older than one without.}\;}
 
 \subsection*{(e) Real Universe versus model}
 

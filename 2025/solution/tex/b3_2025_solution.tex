@@ -45,7 +45,7 @@ Light atoms: term-splitting $\gg$ fine structure (LS coupling). Heavy atoms drif
 
 \subsection*{(c) Identification}
 
-Both have $(ns)^2$ ground giving $^1S_0$; lowest excited configurations are $ns(n-1)d$ and $nsnp$. In X, $ns(n-1)d$ lies \emph{below} $nsnp$; in Y the order is reversed and the inset shows $\sim 10^3\,\si{cm^{-1}}$ fine structure. In heavy atoms $(n-1)d$ is pulled in and fine structure $\sim Z^4\alpha^2$ is large, so
+Both have $(ns)^2$ ground giving $^1S_0$; lowest excited configurations are $ns(n-1)d$ and $nsnp$. In X, $ns(n-1)d$ lies \emph{below} $nsnp$ and the triplet fine structure ($\sim 10^3\,\si{cm^{-1}}$) is large enough to be visible directly; in Y the order is reversed and the fine structure is so small ($\sim 50\,\si{cm^{-1}}$) that a $\times 20$ inset is needed. In heavy atoms $(n-1)d$ is pulled in and fine structure $\sim Z^4\alpha^2$ is large, so
 \begin{equation}
 \boxed{\;\text{X = Ba}\,(Z=56),\qquad \text{Y = Ca}\,(Z=20).\;}
 \label{eq:identify}
@@ -136,16 +136,45 @@ High field ($2\mu_B B\gg A$): Zeeman dominates; field couples to $\vb s_e-\vb s_
 
 \subsection*{(d) Energies}
 
-\paragraph{Zero field.} $2\vb s_e\!\cdot\!\vb s_p=\vb S_{\rm tot}^2-\vb s_e^2-\vb s_p^2$ gives
+\paragraph{Zero field.} Square the total spin:
 \[
-\langle\vb s_e\!\cdot\!\vb s_p\rangle = \tfrac{\hbar^2}{2}[S_{\rm tot}(S_{\rm tot}+1)-\tfrac32]=\begin{cases}+\tfrac14\hbar^2,& S_{\rm tot}=1\\ -\tfrac34\hbar^2,& S_{\rm tot}=0\end{cases}
+\vb S_{\rm tot}^2 = (\vb s_e+\vb s_p)^2 = \vb s_e^2 + \vb s_p^2 + 2\,\vb s_e\!\cdot\!\vb s_p.
 \]
+Solve for the dot product:
+\[
+\vb s_e\!\cdot\!\vb s_p = \tfrac12\!\left(\vb S_{\rm tot}^2 - \vb s_e^2 - \vb s_p^2\right).
+\]
+Take expectation in $\ket{S_{\rm tot},M}$ with $s_e=s_p=\tfrac12$:
+\[
+\langle\vb s_e\!\cdot\!\vb s_p\rangle = \tfrac{\hbar^2}{2}\!\left[S_{\rm tot}(S_{\rm tot}+1) - \tfrac32\right].
+\]
+Evaluate the two cases:
+\[
+\langle\vb s_e\!\cdot\!\vb s_p\rangle = \begin{cases}+\tfrac14\hbar^2,& S_{\rm tot}=1\\ -\tfrac34\hbar^2,& S_{\rm tot}=0.\end{cases}
+\]
+Multiply by $A$:
 \begin{equation}
 \boxed{\;E^{(0)}_{S=1} = +\tfrac14 A\hbar^{2}\;\;(\times 3),\qquad E^{(0)}_{S=0} = -\tfrac34 A\hbar^{2};\quad \text{splitting } A\hbar^2.\;}
 \label{eq:zerofield}
 \end{equation}
 
-\paragraph{High field.} Product basis: $H_Z=2\mu_B B\hbar(m_{s_e}-m_{s_p})$; diagonal hyperfine $\langle\vb s_e\!\cdot\!\vb s_p\rangle\to\hbar^2 m_{s_e}m_{s_p}$ (drop off-diagonal $s_+s_-$):
+\paragraph{High field.} Choose $\vb B = B\hat{\vb z}$ and the product basis $\ket{m_{s_e},m_{s_p}}$. Expand the Zeeman term:
+\[
+H_Z = 2\mu_B B\,(s_{ez}-s_{pz}).
+\]
+Act on the product basis:
+\[
+H_Z\ket{m_{s_e},m_{s_p}} = 2\mu_B B\,\hbar(m_{s_e}-m_{s_p})\ket{m_{s_e},m_{s_p}}.
+\]
+Decompose the hyperfine operator into $z$ and ladder pieces:
+\[
+\vb s_e\!\cdot\!\vb s_p = s_{ez}s_{pz} + \tfrac12(s_{e+}s_{p-}+s_{e-}s_{p+}).
+\]
+Drop off-diagonal ladder terms (suppressed by large Zeeman gap):
+\[
+\langle\vb s_e\!\cdot\!\vb s_p\rangle \to \hbar^2 m_{s_e}m_{s_p}.
+\]
+Add the two contributions for each product state:
 \begin{equation}
 \boxed{\;\begin{aligned}
 \ket{\!\!\uparrow_e\uparrow_p}: &\;\; E = +\tfrac14 A\hbar^{2},\\
@@ -195,7 +224,7 @@ Stretched $\ket{\!\!\uparrow\uparrow},\ket{\!\!\downarrow\downarrow}$ unaffected
   % crossover marker
   \draw[dashed] (5.6,-2.8) -- (5.6,3.0);
   \fill (5.6,0) circle (1.4pt);
-  \node[above right=2pt] at (5.6,3.0) {$2\mu_B B \sim A\hbar^{2}$};
+  \node[above right=2pt] at (5.6,3.0) {$2\mu_B B\hbar \sim A\hbar^{2}$};
 \end{tikzpicture}
 \end{center}
 
@@ -266,12 +295,20 @@ $\delta=0$: $|c_2|^2=\sin^2(\Omega T/2)$, full inversion at $T=\pi/\Omega$. $\de
 
 \subsection*{(d) Short-time limit}
 
-For $\sqrt{\Omega^2+\delta^2}\,T\ll 1$, $\sin x\approx x$:
+For $\sqrt{\Omega^2+\delta^2}\,T\ll 1$, apply $\sin x\approx x$:
+\[
+\sin^{2}\!\left(\tfrac12\sqrt{\Omega^{2}+\delta^{2}}\,T\right) \approx \tfrac14(\Omega^{2}+\delta^{2})\,T^{2}.
+\]
+Multiply by the prefactor:
+\[
+|c_2(T)|^{2} \approx \frac{\Omega^{2}}{\Omega^{2}+\delta^{2}}\cdot\tfrac14(\Omega^{2}+\delta^{2})\,T^{2}.
+\]
+Cancel $(\Omega^2+\delta^2)$:
 \begin{equation}
 |c_2(T)|^{2} \approx \frac{(\Omega T)^{2}}{4},
 \label{eq:smallT}
 \end{equation}
-\emph{independent of $\delta$}: time--energy uncertainty $\sim 1/T$ exceeds $\delta$, so all detunings within the pulse bandwidth are excited equally.
+\emph{independent of $\delta$}: time--energy uncertainty $\sim 1/T$ exceeds $\delta$, so all detunings within the pulse bandwidth are excited equally. Condition: $T\ll 1/\sqrt{\Omega^2+\delta^2}$.
 
 \subsection*{(e) On-resonance $\pi$-pulse}
 
@@ -306,11 +343,19 @@ Cosine to second order:
 \[
 \cos\!\left(\tfrac{\pi\delta^{2}}{4\Omega^{2}}\right) \approx 1 - \tfrac{1}{2}\!\left(\tfrac{\pi\delta^{2}}{4\Omega^{2}}\right)^{2} = 1 + \mathcal O(\delta^{4}/\Omega^{4}).
 \]
-Hence $\cos^{2}(\cdots) = 1 + \mathcal O(\delta^{4}/\Omega^{4})$. Combine with the prefactor:
+Square it:
+\[
+\cos^{2}\!\left(\tfrac{\pi\delta^{2}}{4\Omega^{2}}\right) = 1 + \mathcal O(\delta^{4}/\Omega^{4}).
+\]
+Combine with the prefactor:
 \[
 P_2(\delta) \approx \left(1 - \tfrac{\delta^{2}}{\Omega^{2}}\right)\!\left(1 + \mathcal O(\delta^{4}/\Omega^{4})\right) = 1 - \frac{\delta^{2}}{\Omega^{2}}.
 \]
-Uniform $\delta\in[-\Delta/2,\Delta/2]$, $\langle\delta^2\rangle=\Delta^2/12$:
+Take the ensemble mean over uniform $\delta\in[-\Delta/2,\Delta/2]$:
+\[
+\langle\delta^2\rangle = \frac{1}{\Delta}\int_{-\Delta/2}^{\Delta/2}\!\delta^2\,\de\delta = \frac{\Delta^2}{12}.
+\]
+Insert into $\langle P_2\rangle$:
 \begin{equation}
 \boxed{\;\langle P_2\rangle = 1 - \frac{1}{12}\!\left(\frac{\Delta}{\Omega}\right)^{2}.\;}
 \label{eq:Pavg}
@@ -376,11 +421,23 @@ Define the dimensionless intensity $s=\sigma I\tau/(\hbar\omega)$:
 \[
 N_2 = (N_1-N_2)\,s.
 \]
+Expand and collect $N_2$:
+\[
+N_2(1+s) = N_1 s.
+\]
 Solve for $N_2$ in terms of $N_1$:
 \[
 N_2 = \frac{s}{1+s}\,N_1.
 \]
-Use total population $N_1+N_2=N_T$:
+Use total population $N_1+N_2=N_T$ with $N_1 = N_T - N_2$:
+\[
+N_2(1+s) = (N_T-N_2)\,s.
+\]
+Collect $N_2$ again:
+\[
+N_2(1+2s) = N_T s.
+\]
+Solve for the populations:
 \[
 N_1 = \frac{1+s}{1+2s}\,N_T,\qquad N_2 = \frac{s}{1+2s}\,N_T.
 \]
@@ -422,16 +479,20 @@ so $I(L)=I_0\exp[-N_T\sigma L]$.
 \[
 \Delta\nu_D = \frac{1}{\lambda_0}\sqrt{\frac{8 k_B T \ln 2}{m}}.
 \]
-At $T=\SI{10}{K}$:
+Plug in $T=\SI{10}{K}$:
 \[
-\Delta\nu_D(\SI{10}{K})\approx \SI{32}{MHz}.
+\Delta\nu_D(\SI{10}{K}) = \frac{1}{\SI{780e-9}{m}}\sqrt{\frac{8\times\SI{1.38e-23}{J/K}\times \SI{10}{K}\times \ln 2}{\SI{1.41e-25}{kg}}}.
 \]
-At $T=\SI{1}{mK}$ (scales as $\sqrt T$, factor $10^{-2}$):
+Reduce the radical:
 \[
-\Delta\nu_D(\SI{1}{mK})\approx \SI{0.32}{MHz}.
+\Delta\nu_D(\SI{10}{K}) \approx \frac{\SI{73.7}{m/s}}{\SI{780e-9}{m}} \approx \SI{94}{MHz}.
+\]
+Scale by $\sqrt{T}$ (factor $10^{-2}$) to get $T=\SI{1}{mK}$:
+\[
+\Delta\nu_D(\SI{1}{mK})\approx \SI{0.94}{MHz}.
 \]
 
-At $\SI{1}{mK}$: natural-dominated Lorentzian, FWHM $\approx \SI{5.9}{MHz}$, $\sigma\approx\sigma_{\rm peak}$. Compute optical depth:
+At $\SI{1}{mK}$: Doppler ($\SI{0.94}{MHz}$) $\ll$ natural ($\SI{5.9}{MHz}$), so the line is natural-dominated Lorentzian, FWHM $\approx \SI{5.9}{MHz}$, $\sigma\approx\sigma_{\rm peak}$. Compute optical depth:
 \[
 N_T\sigma L \approx 10^{8}\,\si{cm^{-3}}\times 3\times 10^{-9}\,\si{cm^{2}}\times 10\,\si{cm} = 3.
 \]
@@ -440,13 +501,17 @@ On-resonance transmission:
 e^{-3}\approx 5\%.
 \]
 
-At $\SI{10}{K}$: Doppler-dominated Gaussian, FWHM $\approx \SI{32}{MHz}$. Peak $\sigma$ reduced by $\Gamma_{\rm nat}/\Delta\omega_D\approx 0.18$:
+At $\SI{10}{K}$: Doppler ($\SI{94}{MHz}$) $\gg$ natural ($\SI{5.9}{MHz}$), so the line is Doppler-dominated Gaussian, FWHM $\approx \SI{94}{MHz}$. Peak $\sigma$ reduced by $\Gamma_{\rm nat}/\Delta\omega_D$:
 \[
-N_T\sigma L \approx 3\times 0.18 \approx 0.54.
+\sigma_{\rm peak}^{\rm eff}/\sigma_{\rm peak} \approx \SI{5.9}{MHz}/\SI{94}{MHz} \approx 0.063.
 \]
-Transmission:
+Compute optical depth:
 \[
-e^{-0.54}\approx 58\%.
+N_T\sigma L \approx 3\times 0.063 \approx 0.19.
+\]
+On-resonance transmission:
+\[
+e^{-0.19}\approx 83\%.
 \]
 
 \begin{center}
@@ -459,23 +524,23 @@ e^{-0.54}\approx 58\%.
   \draw[dashed,gray] (0,3.0)--(10.0,3.0);
   \node[left=4pt] at (0,3.0) {$1$};
 
-  % T = 1 mK : narrow Lorentz, deep dip
-  \draw[thick,blue,domain=0:10,samples=240]
-       plot (\x, {3 - 2.85/(1+((\x-5)/0.4)^2)});
+  % T = 1 mK : narrow Lorentz, deep dip (FWHM ~6 MHz = 0.24 tikz units)
+  \draw[thick,blue,domain=0:10,samples=600]
+       plot (\x, {3 - 2.85/(1+((\x-5)/0.12)^2)});
 
   % T = 10 K : broad Gauss, shallow dip
   \draw[thick,red,domain=0:10,samples=240]
-       plot (\x, {3 - 1.26*exp(-((\x-5)/2)^2*ln(2)*4)});
+       plot (\x, {3 - 0.51*exp(-((\x-5)/3.76)^2*ln(2)*4)});
 
   % anchor markers + labels OUTSIDE the curves (above the trace, parked right)
   \fill[blue] (5,0.15) circle (1.6pt);
   \node[blue, above right=2pt] at (6.6,3.05) {\small $\SI{1}{mK}$ (Lorentz, $\sim\!\SI{6}{MHz}$)};
 
-  \fill[red] (5,1.74) circle (1.6pt);
-  \node[red, above right=2pt] at (6.6,1.78) {\small $\SI{10}{K}$ (Gauss, $\sim\!\SI{32}{MHz}$)};
+  \fill[red] (5,2.49) circle (1.6pt);
+  \node[red, above right=2pt] at (6.6,2.55) {\small $\SI{10}{K}$ (Gauss, $\sim\!\SI{94}{MHz}$)};
 
   % x-axis tick marks; numeric labels BELOW the axis (outside)
-  \foreach \x/\v in {1/-40,3/-20,5/0,7/20,9/40} {
+  \foreach \x/\v in {1/-100,3/-50,5/0,7/50,9/100} {
     \draw (\x,0.08)--(\x,-0.08);
     \node[below=2pt] at (\x,-0.05) {\small \v};
   }
@@ -498,24 +563,24 @@ Counter-propagating pump at $\omega_0$, $I_p\sim I_s$. Atom of velocity $v_z$ se
 
   % broad Doppler dip (probe alone)
   \draw[thick,red,domain=0:10,samples=240]
-       plot (\x, {3 - 1.26*exp(-((\x-5)/2)^2*ln(2)*4)});
+       plot (\x, {3 - 0.51*exp(-((\x-5)/3.76)^2*ln(2)*4)});
 
-  % broad dip + narrow Lamb peak at line centre (with counter-pump)
-  \draw[thick,green!55!black,domain=0:10,samples=320]
-       plot (\x, {3 - 1.26*exp(-((\x-5)/2)^2*ln(2)*4)
-                    + 0.6/(1+((\x-5)/0.35)^2)});
+  % broad dip + narrow Lamb peak at line centre (FWHM ~6 MHz)
+  \draw[thick,green!55!black,domain=0:10,samples=600]
+       plot (\x, {3 - 0.51*exp(-((\x-5)/3.76)^2*ln(2)*4)
+                    + 0.35/(1+((\x-5)/0.12)^2)});
 
   % anchor markers and labels — both parked OUTSIDE their curves
-  \fill[green!55!black] (5,2.34) circle (1.6pt);
+  \fill[green!55!black] (5,2.84) circle (1.6pt);
   \node[green!55!black, above right=2pt] at (6.0,3.05)
        {\small with pump (Lamb dip)};
 
-  \fill[red] (5,1.74) circle (1.6pt);
-  \node[red, above right=2pt] at (6.0,1.55)
+  \fill[red] (5,2.49) circle (1.6pt);
+  \node[red, above right=2pt] at (6.0,2.20)
        {\small without pump};
 
   % x-axis tick marks with numeric labels parked BELOW
-  \foreach \x/\v in {1/-40,3/-20,5/0,7/20,9/40} {
+  \foreach \x/\v in {1/-100,3/-50,5/0,7/50,9/100} {
     \draw (\x,0.08)--(\x,-0.08);
     \node[below=2pt] at (\x,-0.05) {\small \v};
   }

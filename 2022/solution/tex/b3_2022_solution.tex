@@ -48,16 +48,25 @@ Label $g={}^1S_0$ ($5s^2$), $a={}^1P_1$, $b={}^3P_0$, $c={}^3P_1$, $d={}^3P_2$, 
 Remaining four lines connect $5s5p\leftrightarrow 5s6s$. Triplet--triplet allowed: ${}^3P_J\to{}^3S_1$ ($J=0,1,2$). Singlet--singlet allowed: ${}^1P_1\to{}^1S_0$. Land\'e interval rule on ${}^3P$ orders $J=0<1<2$:
 \[ {}^3P_0\to{}^3S_1\;(\SI{679}{nm}),\;{}^3P_1\to{}^3S_1\;(\SI{688}{nm}),\;{}^3P_2\to{}^3S_1\;(\SI{707}{nm}),\;{}^1P_1\to{}^1S_0\;(\SI{1.12}{\micro m}). \]
 
-Convert via $\tilde\nu=1/\lambda$:
-\[ \tilde\nu_a=1/\SI{461e-9}{m}=\SI{2.169e6}{m^{-1}}. \]
-\[ \tilde\nu_c=1/\SI{689e-9}{m}=\SI{1.451e6}{m^{-1}}. \]
-Add \SI{688}{nm} interval to $\tilde\nu_c$:
+Convert via $\tilde\nu=1/\lambda$ for $g\to a$:
+\[ \tilde\nu_a=1/(461\times 10^{-9}\,\si{m})=\SI{2.169e6}{m^{-1}}. \]
+For $g\to c$ (689 nm):
+\[ \tilde\nu_c=1/(689\times 10^{-9}\,\si{m})=\SI{1.451e6}{m^{-1}}. \]
+Convert 688 nm interval:
+\[ 1/(688\times 10^{-9}\,\si{m})=\SI{1.453e6}{m^{-1}}. \]
+Add 688 nm interval to $\tilde\nu_c$ to reach $e$:
 \[ \tilde\nu_e=1.451\times 10^6+1.453\times 10^6=\SI{2.904e6}{m^{-1}}. \]
-Subtract \SI{679}{nm} from $\tilde\nu_e$:
+Convert 679 nm interval:
+\[ 1/(679\times 10^{-9}\,\si{m})=\SI{1.473e6}{m^{-1}}. \]
+Subtract from $\tilde\nu_e$ to reach $b$:
 \[ \tilde\nu_b=2.904\times 10^6-1.473\times 10^6=\SI{1.431e6}{m^{-1}}. \]
-Subtract \SI{707}{nm} from $\tilde\nu_e$:
+Convert 707 nm interval:
+\[ 1/(707\times 10^{-9}\,\si{m})=\SI{1.414e6}{m^{-1}}. \]
+Subtract from $\tilde\nu_e$ to reach $d$:
 \[ \tilde\nu_d=2.904\times 10^6-1.414\times 10^6=\SI{1.490e6}{m^{-1}}. \]
-Add \SI{1.12}{\micro m} to $\tilde\nu_a$:
+Convert 1.12 \si{\micro m} interval:
+\[ 1/(1.12\times 10^{-6}\,\si{m})=\SI{0.893e6}{m^{-1}}. \]
+Add to $\tilde\nu_a$ to reach $f$:
 \[ \tilde\nu_f=2.169\times 10^6+0.893\times 10^6=\SI{3.062e6}{m^{-1}}. \]
 
 \begin{center}
@@ -129,75 +138,20 @@ Land\'e factors (use $g_J=1+[J(J+1)+S(S+1)-L(L+1)]/[2J(J+1)]$):
 \[ g({}^3P_2)=1+\frac{6+2-2}{12}=\tfrac{3}{2}. \]
 \[ g({}^1D_2)=g({}^1P_1)=1. \]
 
-Transition energies in field: $\hbar\omega=\hbar\omega_0+(g'M'-gM)\mu_B B$. For 6 distinct components require $J,J'\geq 1$ and $g'\neq g$ producing the right number of inequivalent shifts.
+Transition shifts in field: $\hbar\omega=\hbar\omega_0+(g'M'-gM)\mu_B B$, with selection $\Delta M=0,\pm 1$ (and $0\to0$ forbidden when $\Delta J=0$). Transverse view shows all $\Delta M$ values; count distinct shifts.
 
-Try ${}^3D_1\to{}^3P_0$ ($J'=1\to J=0$): only 3 lines.
-
-Try ${}^3D_2\to{}^3P_1$ ($J'=2\to J=1$, $g'=7/6,g=3/2$). Allowed pairs $(M',M)$ with $|M'-M|\le1$: 9 pairs. Shifts $g'M'-gM$:
-\[ M'=2: \;7/3,\;7/3-3/2=5/6. \]
-\[ M'=1: \;7/6+3/2=8/3,\;7/6,\;7/6-3/2=-1/3. \]
-\[ M'=0: \;3/2,\;0,\;-3/2. \]
-\[ M'=-1: \;1/3,\;-7/6,\;-8/3. \]
-\[ M'=-2: \;-5/6,\;-7/3. \]
-9 distinct values, not 6.
-
-Try ${}^3D_1\to{}^3P_2$ ($J'=1\to J=2$, $g'=1/2,g=3/2$). Pairs with $|M'-M|\le1$: 7 pairs. Shifts $g'M'-gM$:
-\[ M'=1:\; 1/2-3/2=-1,\;1/2,\;1/2+3/2=2. \]
-\[ M'=0:\; -3/2,\;0,\;3/2. \]
-\[ M'=-1:\; -2,\;-1/2,\;1. \]
-9 shifts but 7 pairs allowed (drop $M'=\pm1\to M=\mp2$); leaves $\{-2,-1,-1/2,1/2,1,2\}$ plus $\{-3/2,0,3/2\}$. Distinct: 9 still too many.
-
-Try ${}^3D_1\to{}^3P_1$ ($J'=1\to J=1$, $g'=1/2,g=3/2$). Pairs $|M'-M|\le1$: 9 minus the forbidden $0\to0$ ($\Delta J=0,\Delta M=0$ with $M'=M=0$): 8 pairs. Shifts $g'M'-gM$:
-\[ M'=1:\;1/2-3/2=-1,\;1/2,\;1/2+3/2=2. \]
-\[ M'=0:\;-3/2,\;\text{(forbidden)},\;3/2. \]
-\[ M'=-1:\;-2,\;-1/2,\;1. \]
-Distinct shifts: $\{\pm 2,\pm 3/2,\pm 1,\pm 1/2\}=8$ values; not 6.
-
-Try ${}^3D_2\to{}^3P_2$ ($J'=2\to J=2$, $g'=7/6,g=3/2$). $\Delta J=0$, $0\to0$ forbidden. Pairs: $5\times3-1$ no---count $|M'-M|\le1$: $M'=\pm2$ give 2 each, $M'=\pm1$ give 3 each, $M'=0$ gives 3 minus 1 (the $0\to0$); total $2+3+3+3+2-1=12$. Shifts $7M'/6-3M/2$:
-\[ M'=2:\;7/3,\;7/3-3/2=5/6. \]
-\[ M'=1:\;7/6+3/2=8/3,\;7/6,\;7/6-3/2=-1/3. \]
-\[ M'=0:\;3/2,\;-3/2. \]
-\[ M'=-1:\;1/3,\;-7/6,\;-8/3. \]
-\[ M'=-2:\;-5/6,\;-7/3. \]
-12 distinct; not 6.
-
-Try ${}^3D_3\to{}^3P_2$ ($J'=3\to J=2$, $g'=4/3,g=3/2$). Pairs: $M'\in\{-3..3\}$, $M\in\{-2..2\}$, $|M'-M|\le1$. Count: $M'=\pm3$ give 1 each ($M=\pm2$); $M'=\pm2$ give 2 each; $M'=\pm1,0$ give 3 each; total $2+4+9=15$. Shifts $4M'/3-3M/2$. Unique count likely 15. Not 6.
-
-The 6-component case is ${}^1D_2\to{}^1P_1$? No---that is Normal Zeeman: $g=g'=1$, shifts $M'-M\in\{-1,0,1\}$, 3 lines.
-
-Reconsider: ${}^3D_1\to{}^3P_2$ with both transverse polarisations giving 9 distinct shifts as above. Recount: $\{-2,-1,-1/2,1/2,1,2,-3/2,0,3/2\}$. Is $0$ allowed? $M'=0\to M=0$ with $J'\ne J$ is allowed. 9 distinct. Not 6.
-
-Now ${}^3D_2\to{}^3P_1$ ($J'=2\to J=1$). Pairs: $5\times 3$ with $|M'-M|\le1$: $M'=\pm2$ give 1 each ($M=\pm1$); $M'=\pm1$ give 3 each; $M'=0$ gives 3 (no forbidden, $\Delta J\ne 0$); total $1+3+3+3+1+1+1=$ recount: $M'=2$: $M=1$ (1); $M'=1$: $M=0,\pm1$ (3); $M'=0$: $M=0,\pm1$ (3); $M'=-1$: $M=0,\pm1$ (3); $M'=-2$: $M=-1$ (1); total $11$. Shifts $7M'/6-3M/2$ enumerated above: $\{5/6,8/3,7/6,-1/3,3/2,0,-3/2,1/3,-7/6,-8/3,-5/6\}=11$ distinct. Not 6.
-
-The textbook answer (line that splits into 6 transverse components) is the singlet $\boxed{{}^1D_2\to{}^1P_1}$ in the special case where one tracks $\sigma+\pi$ separately---actually for any $\Delta J=-1$ with both $g=1$, transverse view shows 3 components (Normal). The transition giving exactly 6 in transverse view is the one where $g'=g$ but $J'=J\ge 1$, giving anomalous patterns; equivalently with $g'-g=0$ for $J=J'$ all $\sigma$ shifts collapse to $\pm g$, $\pi$ to 0 (forbidden $0\to0$); giving 2 components only. So we look for $J'\to J$ where the count of distinct $g'M'-gM$ values equals 6.
-
-Direct enumeration shows ${}^3D_1\to{}^3P_2$ produces 9; ${}^3D_2\to{}^3P_2$ ($g'=7/6,g=3/2$, $\Delta J=0$): with $0\to0$ forbidden, 12 pairs. ${}^3D_3\to{}^3P_2$ ($g'=4/3,g=3/2$, difference $-1/6$): pairs as counted (15). Coincidences arise when $g'M'-gM$ repeats. With $g'=4/3,g=3/2$, write shifts as $(8M'-9M)/6$. Integer numerators $8M'-9M$ for allowed pairs:
-\[ M'=3,M=2:\;8\cdot3-9\cdot2=6. \]
-\[ M'=2,M=1:\;7;\;M'=2,M=2:\;-2. \]
-\[ M'=1,M=0:\;8;\;M'=1,M=1:\;-1;\;M'=1,M=2:\;-10. \]
-\[ M'=0,M=-1:\;9;\;M'=0,M=0:\;0;\;M'=0,M=1:\;-9. \]
-\[ M'=-1,M=-2:\;10;\;M'=-1,M=-1:\;1;\;M'=-1,M=0:\;-8. \]
-\[ M'=-2,M=-1:\;-7;\;M'=-2,M=-2:\;2. \]
-\[ M'=-3,M=-2:\;-6. \]
-Numerators: $\{\pm 6,\pm 7,\pm 2,\pm 8,\pm 1,\pm 10,\pm 9,0\}$, 15 distinct. Not 6.
-
-The intended answer (standard B3 mark scheme) is $\boxed{{}^3D_1\to{}^3P_0}$: $J'=1,J=0$, 3 components (Normal-like). Not 6 either.
-
-Reconsidering: ``6 components in transverse'' commonly counts $\pi$-$\sigma$ together; for a singlet--triplet allowed pair this would be ${}^1D_2\to{}^1P_1$ with shifts $g'M'-gM$, $g'=g=1$: 3 components only. The classic 6-component case occurs for $J'=1\to J=1$ with $g'\ne g$ giving 8 distinct, or for $J'=2\to J=2$ with one coincidence pattern. Take ${}^3D_2\to{}^3P_2$: $g'=7/6,g=3/2$, write $7M'/6-3M/2=(7M'-9M)/6$. Numerators allowed (with $|M'-M|\le1$, $0\to0$ forbidden):
-\[ M'=2: M=1,2 \to 5,-4. \]
-\[ M'=1: M=0,1,2 \to 7,-2,-11. \]
-\[ M'=0: M=-1,1 \to 9,-9. \]
-\[ M'=-1: M=-2,-1,0 \to 11,2,-7. \]
-\[ M'=-2: M=-1,-2 \to 4,-5. \]
-Distinct: $\{\pm 4,\pm 5,\pm 7,\pm 2,\pm 11,\pm 9\}$, 12. Not 6.
-
-Mark-scheme answer is ${}^3D_3\to{}^3P_2$ giving 6 components: this transition has $\Delta J=-1$ with both $g'=4/3,g=3/2$ unequal but the geometry gives selection limited to 6 lines under transverse $\pi$-only or $\sigma$-only viewing. Six is the count of $\pi$-components ($\Delta M=0$): $M'=M\in\{-2,-1,0,1,2\}\to 5$, but $M'=\pm3\to M=\pm2$ are $\sigma$, not $\pi$. So $\pi$-count for ${}^3D_3\to{}^3P_2$ is 5 from $M=-2..2$: shifts $(4/3)M-(3/2)M=-M/6$, distinct values 5.
-
-The transition splitting into 6 components in transverse view is identified by requiring exactly 6 distinct frequency shifts. From the enumerations above, ${}^3D_1\to{}^3P_2$ gives 9, ${}^3D_2\to{}^3P_1$ gives 11, ${}^3D_3\to{}^3P_2$ gives 15, ${}^1D_2\to{}^1P_1$ gives 3, ${}^3D_1\to{}^3P_0$ gives 3, ${}^3D_1\to{}^3P_1$ gives 8, ${}^3D_2\to{}^3P_2$ gives 12. None gives 6 cleanly.
-
-Reinterpret ``6 components'' as 3 $\pi$ + 3 $\sigma$ \emph{positions} (paired by $\pm$). For $J'=2\to J=1$ with $g'-g=-1/3$ (e.g.\ ${}^3D_2\to{}^3P_1$), $\sigma^\pm$ at $\pm(g'+g)=\pm 8/3$ etc.\ may give pairs collapsing to 6 distinct paired centroids. The standard B3 answer is:
-\[ \boxed{\;{}^3D_2\to{}^3P_1:\;\text{splits into 6 components transversely.}\;} \]
-\textit{Reasoning.} For $J'=2\to J=1$ with $g'\ne g$, transverse view shows $\pi$ ($\Delta M=0$, 3 lines from $M=0,\pm 1$) and $\sigma^\pm$ ($\Delta M=\pm 1$, count limited by $|M'|\le 2$). Counting pairs gives 3 $\pi$ + 6 $\sigma$ but the $\sigma^+$ and $\sigma^-$ patterns are mirror images, leaving 3 unique magnitudes per polarisation. The total of distinct \emph{transverse} components observed is 6 when the $\pi$-positions coincide with $\sigma$-positions or with $\omega_0$.
+Consider ${}^3D_1\to{}^3P_1$ ($J'=1\to J=1$, $g'=1/2$, $g=3/2$): pairs $(M',M)$ with $|M'-M|\le1$ excluding $0\to 0$. Enumerate shifts $g'M'-gM$:
+\[ M'=1,M=1:\;1/2-3/2=-1. \]
+\[ M'=1,M=0:\;1/2. \]
+\[ M'=0,M=1:\;-3/2. \]
+\[ M'=0,M=-1:\;3/2. \]
+\[ M'=-1,M=0:\;-1/2. \]
+\[ M'=-1,M=-1:\;-1/2+3/2=1. \]
+Collect distinct shifts:
+\[ \{\,-3/2,\,-1,\,-1/2,\,+1/2,\,+1,\,+3/2\,\}. \]
+Exactly six distinct components:
+\[ \boxed{\;{}^3D_1\to{}^3P_1:\text{ splits into 6 components in transverse view.}\;} \]
+Reasoning: $0\to 0$ removal of the central $\pi$ line at $\Delta=0$ together with $g'\ne g$ giving paired $\pm$ shifts produces 6 distinct frequencies (no coincidences).
 
 \subsection*{(d)}
 
@@ -225,9 +179,11 @@ Eigenvalue in $\ket{IJFM_F}$:
 E_F=\tfrac{1}{2}A\hbar^2\big[F(F+1)-I(I+1)-J(J+1)\big].
 \label{eq:EF}
 \end{equation}
-Adjacent-level spacing:
-\[ E_F-E_{F-1}=\tfrac{1}{2}A\hbar^2[F(F+1)-(F-1)F]. \]
-Simplify:
+Adjacent-level spacing from \eqref{eq:EF}:
+\[ E_F-E_{F-1}=\tfrac{1}{2}A\hbar^2\big[F(F+1)-(F-1)F\big]. \]
+Expand inside the bracket:
+\[ F(F+1)-(F-1)F=F^2+F-F^2+F=2F. \]
+Substitute back:
 \begin{equation}
 E_F-E_{F-1}=A\hbar^2 F.
 \label{eq:interval}
@@ -252,43 +208,51 @@ Combined effect makes $A$ unusually large.
 
 \subsection*{(c)}
 
-Lower level has negligible hfs, so transition frequencies map to upper-level $E_F$ via \eqref{eq:EF}. Differences along peaks $a,b,c,e$:
+Lower level has negligible hfs, so transition frequencies map to upper-level $E_F$ via \eqref{eq:EF}. Compute pairwise differences along $a,b,c,e$:
 \[ \nu_a-\nu_b=21.19-18.37=\SI{2.82}{GHz}. \]
 \[ \nu_b-\nu_c=18.37-14.84=\SI{3.53}{GHz}. \]
 \[ \nu_c-\nu_e=14.84-10.60=\SI{4.24}{GHz}. \]
-Ratios:
+Form ratios with smallest:
 \[ 2.82:3.53:4.24=4:5:6. \]
-Matches \eqref{eq:interval} with $A'\equiv A\hbar^2/h$:
+Matches \eqref{eq:interval} with $A'\equiv A\hbar^2/h$ (smallest spacing labelled by lower $F$ of the pair):
 \[ A'=2.82/4=\SI{0.705}{GHz}. \]
-Upper-$F$ values for $a,b,c,e$ are $4,5,6,7$ (so $F_a-F_b$ pairings are $4\!\to\!3$, $5\!\to\!4$, $6\!\to\!5$, $7\!\to\!6$).
+Three consecutive spacings of magnitudes $4A',5A',6A'$ correspond to four adjacent $F$ levels (the $F$ in $E_F-E_{F-1}=A'F$ takes values $4,5,6$). The four peaks $a,b,c,e$ therefore correspond to $F\in\{3,4,5,6\}$ in the upper level (ordered with the larger spacings at lower frequency since $A<0$ here, giving $F_a=3,F_b=4,F_c=5,F_e=6$).
 
-Predict next interval ($F=7\to 6$ gives spacing $A'\cdot 7$):
-\[ \Delta=7\times 0.705=\SI{4.94}{GHz}. \]
-Next peak at:
-\[ \nu_e-\Delta=10.60-4.94=\SI{5.66}{GHz}\;\rightarrow\;i\;(5.63). \]
-Next ($F=8\to 7$):
-\[ \Delta=8\times 0.705=\SI{5.64}{GHz};\;\nu_i-\Delta=5.63-5.64\approx 0.0\;\rightarrow\;l. \]
+Predict next interval ($F=7$ gives spacing $7A'$):
+\[ \Delta_{67}=7\times 0.705=\SI{4.94}{GHz}. \]
+Position of $F=7$ peak:
+\[ \nu_e-\Delta_{67}=10.60-4.94=\SI{5.66}{GHz}\;\rightarrow\;i\;(5.63). \]
+Predict next ($F=8$, spacing $8A'$):
+\[ \Delta_{78}=8\times 0.705=\SI{5.64}{GHz}. \]
+Position of $F=8$ peak:
+\[ \nu_i-\Delta_{78}=5.63-5.64\approx 0.0\;\rightarrow\;l. \]
 ${}^{151}$Eu peaks therefore:
 \[ \boxed{\;\{a,b,c,e,i,l\}.\;} \]
-Six adjacent $F$ values (3 to 8) require:
-\[ 2I+1=6\;\Longrightarrow\;\boxed{\;I({}^{151}\text{Eu})=\tfrac{5}{2}.\;} \]
-Check: $F_\text{max}=J+I=11/2+5/2=8$, $F_\text{min}=|J-I|=3$, consistent.
+Six adjacent $F$ values ($F=3$ to $F=8$) require:
+\[ 2I+1=6. \]
+Solve for $I$:
+\[ \boxed{\;I({}^{151}\text{Eu})=\tfrac{5}{2}.\;} \]
+Check: $F_\text{max}=J+I=11/2+5/2=8$, $F_\text{min}=|J-I|=11/2-5/2=3$, consistent.
 
 \subsection*{(d)}
 
-Remaining peaks: $\{d,f,g,h,j,k\}$ at $10.99,9.74,8.17,6.29,4.09,1.58\,\si{GHz}$. Differences:
-\[ d-f=10.99-9.74=1.25. \]
-\[ f-g=9.74-8.17=1.57. \]
-\[ g-h=8.17-6.29=1.88. \]
-\[ h-j=6.29-4.09=2.20. \]
-\[ j-k=4.09-1.58=2.51. \]
-Ratios:
+Remaining peaks $\{d,f,g,h,j,k\}$ at $10.99,9.74,8.17,6.29,4.09,1.58\,\si{GHz}$. Compute consecutive differences:
+\[ \nu_d-\nu_f=10.99-9.74=\SI{1.25}{GHz}. \]
+\[ \nu_f-\nu_g=9.74-8.17=\SI{1.57}{GHz}. \]
+\[ \nu_g-\nu_h=8.17-6.29=\SI{1.88}{GHz}. \]
+\[ \nu_h-\nu_j=6.29-4.09=\SI{2.20}{GHz}. \]
+\[ \nu_j-\nu_k=4.09-1.58=\SI{2.51}{GHz}. \]
+Form ratios:
 \[ 1.25:1.57:1.88:2.20:2.51=4:5:6:7:8. \]
-Six peaks $\Rightarrow 2I+1=6$:
+Five spacings labelled $4,5,6,7,8$ imply six adjacent $F$ levels ($F=3$ to $F=8$):
+\[ 2I+1=6. \]
+Solve for $I$:
 \[ \boxed{\;I({}^{153}\text{Eu})=\tfrac{5}{2}.\;} \]
 Identify $A'_{153}$ from the smallest spacing ($F=4$):
 \[ A'_{153}=1.25/4=\SI{0.3125}{GHz}. \]
-Same electronic state, same $I$, so $A\propto \mu_I/I$ gives $A_{151}/A_{153}=\mu_I(151)/\mu_I(153)$:
+Same $J$ and same $I$ for both isotopes, so $A\propto \mu_I/I$ with identical $I$:
+\[ \frac{A_{151}}{A_{153}}=\frac{\mu_I({}^{151}\text{Eu})}{\mu_I({}^{153}\text{Eu})}. \]
+Substitute the two $A'$ values:
 \[ \frac{\mu_I({}^{151}\text{Eu})}{\mu_I({}^{153}\text{Eu})}=\frac{0.705}{0.3125}. \]
 Evaluate:
 \[ \boxed{\;\frac{\mu_I({}^{151}\text{Eu})}{\mu_I({}^{153}\text{Eu})}\approx 2.26.\;} \]
@@ -302,28 +266,46 @@ Evaluate:
 Project TDSE onto $\psi_{1,2}$ using $\bra{\psi_i}\hat D_0\ket{\psi_i}=0$:
 \[ i\hbar\dot c_2=D_{21}\cos(\omega t)\,e^{i\omega_0 t}\,c_1. \]
 \[ i\hbar\dot c_1=D_{12}\cos(\omega t)\,e^{-i\omega_0 t}\,c_2. \]
-Expand $\cos\omega t=\tfrac{1}{2}(e^{i\omega t}+e^{-i\omega t})$ and drop $e^{\pm i(\omega+\omega_0)t}$ (RWA, valid for $|\omega-\omega_0|\ll\omega_0$):
+Expand the cosine:
+\[ \cos\omega t=\tfrac{1}{2}\big(e^{i\omega t}+e^{-i\omega t}\big). \]
+Apply RWA (drop $e^{\pm i(\omega+\omega_0)t}$, valid for $|\omega-\omega_0|\ll\omega_0$):
 \begin{equation}
 i\hbar\dot c_2=\tfrac{1}{2}D_{21}\,e^{-i\delta t}c_1,\qquad i\hbar\dot c_1=\tfrac{1}{2}D_{12}\,e^{i\delta t}c_2,\qquad \delta=\omega-\omega_0.
 \label{eq:RWA}
 \end{equation}
 Define on-resonance Rabi frequency:
 \[ \Omega_0\equiv|D_{21}|/\hbar. \]
-Differentiate the $c_2$ equation and eliminate $c_1$:
+Differentiate the $c_2$ equation in time:
+\[ i\hbar\ddot c_2=\tfrac{1}{2}D_{21}\big(-i\delta\big)e^{-i\delta t}c_1+\tfrac{1}{2}D_{21}e^{-i\delta t}\dot c_1. \]
+Substitute $\dot c_1$ from \eqref{eq:RWA}:
+\[ i\hbar\ddot c_2=-i\delta\,i\hbar\dot c_2+\tfrac{1}{2}D_{21}e^{-i\delta t}\cdot\frac{D_{12}e^{i\delta t}c_2}{2i\hbar}. \]
+Simplify the second term using $|D_{21}|^2=\hbar^2\Omega_0^2$:
+\[ i\hbar\ddot c_2=-i\delta\,i\hbar\dot c_2-\frac{i\hbar\Omega_0^2}{4}c_2. \]
+Divide through by $i\hbar$:
 \[ \ddot c_2+i\delta\,\dot c_2+\tfrac{1}{4}\Omega_0^2 c_2=0. \]
-Initial conditions $c_2(0)=0$, $\dot c_2(0)=-i\Omega_0/2$. Solve (taking $D_{21}$ real):
+Initial conditions: $c_2(0)=0$ and $\dot c_2(0)=-i\Omega_0/2$ from \eqref{eq:RWA} with $c_1(0)=1$. Try $c_2(t)=e^{-i\delta t/2}f(t)$:
+\[ \ddot f+\tfrac{1}{4}(\Omega_0^2+\delta^2)f=0. \]
+Define generalised Rabi frequency:
+\[ \Omega\equiv\sqrt{\Omega_0^2+\delta^2}. \]
+General solution $f=A\cos(\Omega t/2)+B\sin(\Omega t/2)$; impose $f(0)=0$:
+\[ A=0. \]
+Impose $\dot f(0)=\dot c_2(0)=-i\Omega_0/2$ (since $f(0)=0$):
+\[ B\Omega/2=-i\Omega_0/2\;\Longrightarrow\;B=-i\Omega_0/\Omega. \]
+Combine:
 \begin{equation}
-c_2(t)=-\frac{i\Omega_0}{\Omega}\,e^{-i\delta t/2}\sin(\tfrac{1}{2}\Omega t),\qquad \Omega=\sqrt{\Omega_0^2+\delta^2}.
+c_2(t)=-\frac{i\Omega_0}{\Omega}\,e^{-i\delta t/2}\sin(\tfrac{1}{2}\Omega t).
 \label{eq:c2}
 \end{equation}
 Take modulus squared:
 \[ |c_2(t)|^2=\frac{\Omega_0^2}{\Omega_0^2+\delta^2}\sin^2(\tfrac{1}{2}\Omega t). \]
-Read off:
+Read off $U$ and $\alpha$:
 \[ \boxed{\;U=\frac{\Omega_0^2}{\Omega_0^2+\delta^2},\qquad \alpha=\tfrac{1}{2}\sqrt{\Omega_0^2+(\omega-\omega_0)^2}.\;} \]
 
-Time-average over $\tau$ using $\sin^2=\tfrac{1}{2}(1-\cos 2\alpha t)$:
-\[ \overline{|c_2|^2}=\frac{U}{\tau}\int_0^\tau\sin^2(\alpha t)\de t=\frac{U}{2}\left[1-\frac{\sin(2\alpha\tau)}{2\alpha\tau}\right]. \]
-Take $\tau\to\infty$:
+Use $\sin^2(\alpha t)=\tfrac{1}{2}(1-\cos 2\alpha t)$:
+\[ \overline{|c_2|^2}=\frac{U}{\tau}\int_0^\tau\sin^2(\alpha t)\,\de t. \]
+Evaluate the integral:
+\[ \overline{|c_2|^2}=\frac{U}{2}\left[1-\frac{\sin(2\alpha\tau)}{2\alpha\tau}\right]. \]
+Take $\tau\to\infty$ (oscillatory term vanishes):
 \[ \boxed{\;\lim_{\tau\to\infty}\overline{|c_2|^2}=\frac{U}{2}=\frac{\Omega_0^2}{2(\Omega_0^2+\delta^2)}.\;} \]
 
 \subsection*{(b)}
@@ -346,42 +328,52 @@ Einstein rate equations apply when:
 Decaying upper-state amplitude:
 \[ \psi(t)=\psi_0\,e^{-i\omega_0 t}\,e^{-\Gamma t/2}\,\Theta(t),\qquad \Gamma=1/\tau. \]
 Fourier transform:
-\[ \tilde\psi(\omega)=\int_0^\infty \psi_0\,e^{i(\omega-\omega_0)t}e^{-\Gamma t/2}\de t. \]
+\[ \tilde\psi(\omega)=\int_0^\infty \psi_0\,e^{i\omega t}e^{-i\omega_0 t}e^{-\Gamma t/2}\,\de t. \]
+Combine exponents:
+\[ \tilde\psi(\omega)=\psi_0\int_0^\infty e^{[i(\omega-\omega_0)-\Gamma/2]t}\,\de t. \]
 Evaluate the integral:
 \[ \tilde\psi(\omega)=\frac{\psi_0}{\Gamma/2-i(\omega-\omega_0)}. \]
-Take $|\tilde\psi|^2$:
+Take modulus squared:
+\[ |\tilde\psi(\omega)|^2=\frac{|\psi_0|^2}{(\Gamma/2)^2+(\omega-\omega_0)^2}. \]
+Read off Lorentzian profile:
 \[ \boxed{\;I(\omega)\propto\frac{1}{(\omega-\omega_0)^2+(\Gamma/2)^2}\;\text{(Lorentzian, FWHM }=\Gamma).\;} \]
 
 Another Lorentzian mechanism: \textbf{collisional (pressure) broadening}. Random phase-interrupting collisions truncate the radiating dipole at exponential intervals; the autocorrelation decays as $e^{-\Gamma_\text{coll}t}$, giving a Lorentzian of width $\Gamma_\text{coll}=2/\tau_\text{coll}$.
 
 \subsection*{(d)}
 
-First-order perturbation, $c_1\approx 1$, $c_2(-\infty)=0$:
-\[ c_2(t)=\frac{1}{i\hbar}\int_{-\infty}^t D_{21}\,e^{-b|t'|}\cos(\omega t')\,e^{i\omega_0 t'}\de t'. \]
-Apply RWA (keep $e^{-i\delta t'}$ only):
-\[ c_2(t)=\frac{D_{21}}{2i\hbar}\int_{-\infty}^t e^{-b|t'|}e^{-i\delta t'}\de t',\qquad \delta=\omega-\omega_0. \]
-Split at $t'=0$ for $t>0$:
-\[ c_2(t)=\frac{D_{21}}{2i\hbar}\left[\int_{-\infty}^0 e^{(b-i\delta)t'}\de t'+\int_0^t e^{-(b+i\delta)t'}\de t'\right]. \]
-Evaluate each piece:
+First-order perturbation with $c_1\approx 1$ and $c_2(-\infty)=0$:
+\[ c_2(t)=\frac{1}{i\hbar}\int_{-\infty}^t D_{21}\,e^{-b|t'|}\cos(\omega t')\,e^{i\omega_0 t'}\,\de t'. \]
+Apply RWA (keep $e^{-i\omega t'}$ piece of the cosine):
+\[ c_2(t)=\frac{D_{21}}{2i\hbar}\int_{-\infty}^t e^{-b|t'|}e^{i(\omega_0-\omega) t'}\,\de t'. \]
+Define detuning $\delta=\omega-\omega_0$:
+\[ c_2(t)=\frac{D_{21}}{2i\hbar}\int_{-\infty}^t e^{-b|t'|}e^{-i\delta t'}\,\de t'. \]
+Split the integral at $t'=0$ for $t>0$:
+\[ c_2(t)=\frac{D_{21}}{2i\hbar}\left[\int_{-\infty}^0 e^{(b-i\delta)t'}\,\de t'+\int_0^t e^{-(b+i\delta)t'}\,\de t'\right]. \]
+Evaluate each integral:
 \begin{equation}
 c_2(t)=\frac{D_{21}}{2i\hbar}\left[\frac{1}{b-i\delta}+\frac{1-e^{-(b+i\delta)t}}{b+i\delta}\right].
 \label{eq:c2-finite}
 \end{equation}
-Take $t\to\infty$ (second exponential vanishes):
+Take $t\to\infty$ (second exponential vanishes since $b>0$):
 \[ c_2(\infty)=\frac{D_{21}}{2i\hbar}\left[\frac{1}{b-i\delta}+\frac{1}{b+i\delta}\right]. \]
-Combine fractions:
+Add the fractions:
+\[ c_2(\infty)=\frac{D_{21}}{2i\hbar}\cdot\frac{(b+i\delta)+(b-i\delta)}{b^2+\delta^2}. \]
+Simplify the numerator:
 \[ c_2(\infty)=\frac{D_{21}}{2i\hbar}\cdot\frac{2b}{b^2+\delta^2}=\frac{D_{21}}{i\hbar}\cdot\frac{b}{b^2+\delta^2}. \]
-Square the modulus:
+Take modulus squared:
 \[ \boxed{\;|c_2(\infty)|^2=\frac{|D_{21}|^2}{\hbar^2}\cdot\frac{b^2}{(b^2+\delta^2)^2}.\;} \]
 This is a squared Lorentzian in $\delta$.
 
-FWHM: maximum at $\delta=0$ equals $|D_{21}|^2/(\hbar^2 b^2)$. Half-max condition:
+Maximum at $\delta=0$:
+\[ |c_2(\infty)|^2_{\max}=\frac{|D_{21}|^2}{\hbar^2 b^2}. \]
+Half-max condition $|c_2|^2=\tfrac{1}{2}|c_2|^2_{\max}$:
 \[ \frac{b^2}{(b^2+\delta_{1/2}^2)^2}=\frac{1}{2 b^2}. \]
 Rearrange:
 \[ (b^2+\delta_{1/2}^2)^2=2 b^4. \]
-Take square root:
+Take positive square root:
 \[ b^2+\delta_{1/2}^2=b^2\sqrt 2. \]
-Solve for $\delta_{1/2}$:
+Solve for $\delta_{1/2}^2$:
 \[ \delta_{1/2}^2=b^2(\sqrt 2-1). \]
 FWHM is $2|\delta_{1/2}|$:
 \[ \boxed{\;\text{FWHM}=2b\sqrt{\sqrt 2-1}\approx 1.287\,b.\;} \]
@@ -392,30 +384,38 @@ FWHM is $2|\delta_{1/2}|$:
 
 \subsection*{(a)}
 
-Photon flux $I/(\hbar\omega)$. Population inversion $\Delta N\equiv N_2-(g_2/g_1)N_1$. Rate equations:
+Photon flux $I/(\hbar\omega)$; population inversion $\Delta N\equiv N_2-(g_2/g_1)N_1$. Rate equations:
 \begin{align}
 \dot N_2&=R_2-A_{21}N_2-\sigma\frac{I}{\hbar\omega}\Delta N,\label{eq:N2}\\
 \dot N_1&=A_{21}N_2-\frac{N_1}{\tau_1}+\sigma\frac{I}{\hbar\omega}\Delta N.\label{eq:N1}
 \end{align}
 Add \eqref{eq:N2}+\eqref{eq:N1} in steady state:
-\[ R_2=N_1/\tau_1\;\Longrightarrow\;N_1=R_2\tau_1. \]
-Substitute into \eqref{eq:N2} at steady state:
+\[ 0=R_2-N_1/\tau_1. \]
+Solve for $N_1$:
+\[ N_1=R_2\tau_1. \]
+Set $\dot N_2=0$ in \eqref{eq:N2} and substitute $N_1=R_2\tau_1$ into $\Delta N$:
 \[ 0=R_2-A_{21}N_2-\sigma\frac{I}{\hbar\omega}\big(N_2-(g_2/g_1)R_2\tau_1\big). \]
+Group $N_2$ terms:
+\[ \big(A_{21}+\sigma I/(\hbar\omega)\big)N_2=R_2+(g_2/g_1)R_2\tau_1\sigma I/(\hbar\omega). \]
 Solve for $N_2$:
 \[ N_2=\frac{R_2+(g_2/g_1)R_2\tau_1\sigma I/(\hbar\omega)}{A_{21}+\sigma I/(\hbar\omega)}. \]
 Form $\Delta N=N_2-(g_2/g_1)R_2\tau_1$:
+\[ \Delta N=\frac{R_2+(g_2/g_1)R_2\tau_1\sigma I/(\hbar\omega)-(g_2/g_1)R_2\tau_1\big(A_{21}+\sigma I/(\hbar\omega)\big)}{A_{21}+\sigma I/(\hbar\omega)}. \]
+Cancel the $\sigma I/(\hbar\omega)$ pieces in the numerator:
 \[ \Delta N=\frac{R_2-(g_2/g_1)R_2\tau_1 A_{21}}{A_{21}+\sigma I/(\hbar\omega)}. \]
 Factor $A_{21}$ in the denominator:
 \[ \Delta N=\frac{(R_2/A_{21})\big[1-(g_2/g_1)A_{21}\tau_1\big]}{1+\sigma I/(\hbar\omega A_{21})}. \]
 Identify $\alpha=\sigma\Delta N$:
 \[ \boxed{\;\alpha=\frac{\alpha_0}{1+I/I_s},\quad \alpha_0=\frac{\sigma R_2}{A_{21}}\!\left[1-\frac{g_2}{g_1}A_{21}\tau_1\right],\quad I_s=\frac{\hbar\omega A_{21}}{\sigma}.\;} \]
-$\alpha_0$: small-signal gain. $I_s$: stimulated rate equals spontaneous rate; gain halved.
+$\alpha_0$: small-signal gain. $I_s$: stimulated rate equals spontaneous rate; gain halved at $I=I_s$.
 
 \subsection*{(b)}
 
-Beer--Lambert with saturation:
+Beer--Lambert with saturated gain:
 \[ \frac{\de I}{\de z}=\alpha I=\frac{\alpha_0 I}{1+I/I_s}. \]
-Separate variables:
+Rearrange to separate variables:
+\[ \frac{1+I/I_s}{I}\,\de I=\alpha_0\,\de z. \]
+Split the fraction:
 \[ \left(\frac{1}{I}+\frac{1}{I_s}\right)\de I=\alpha_0\,\de z. \]
 Integrate $z\in[0,L]$, $I\in[I_\text{in},I_\text{out}]$:
 \[ \boxed{\;\ln\!\left(\frac{I_\text{out}}{I_\text{in}}\right)+\frac{I_\text{out}-I_\text{in}}{I_s}=\alpha_0 L.\;} \]
@@ -424,63 +424,72 @@ Integrate $z\in[0,L]$, $I\in[I_\text{in},I_\text{out}]$:
 
 Let $x=I_0/I_s$. Stage 1 ($I_0\to 70I_0$):
 \[ \ln 70+(70-1)x=\alpha_0 L. \]
+Simplify the coefficient:
+\[ \ln 70+69 x=\alpha_0 L. \]
 Stage 2 ($70I_0\to 150I_0$):
 \[ \ln(150/70)+(150-70)x=\alpha_0 L. \]
-Subtract:
-\[ \ln(150/70)-\ln 70+(80-69)x=0. \]
-Combine logs:
-\[ \ln(150/4900)+11x=0. \]
-Evaluate $\ln(150/4900)$:
-\[ \ln(0.030612)=-3.487. \]
+Simplify the coefficient:
+\[ \ln(15/7)+80 x=\alpha_0 L. \]
+Set the two RHS equal (both equal $\alpha_0 L$):
+\[ \ln 70+69 x=\ln(15/7)+80 x. \]
+Collect $x$ on the right and logs on the left:
+\[ \ln 70-\ln(15/7)=11 x. \]
+Combine logs using $\ln 70-\ln(15/7)=\ln(70\cdot 7/15)$:
+\[ \ln(490/15)=11 x. \]
+Evaluate the log:
+\[ \ln(32.667)=3.487. \]
 Solve for $x$:
-\[ 11x=3.487. \]
 \[ \boxed{\;\frac{I_0}{I_s}=\frac{3.487}{11}\approx 0.317.\;} \]
 
 \subsection*{(d)}
 
-Two-level absorber: drop pump $R_2$, keep $N_1+N_2=N_0$. Steady state:
+Two-level absorber: drop pump $R_2$, keep $N_1+N_2=N_0$. Steady-state rate equation:
 \[ \dot N_2=-A_{21}N_2+\sigma_\text{abs}\frac{I}{\hbar\omega}\!\left(N_1-\frac{g_2}{g_1}N_2\right)=0. \]
-Absorption coefficient:
-\[ \alpha_\text{abs}=\sigma_\text{abs}\!\left(N_1-\frac{g_2}{g_1}N_2\right)=\frac{\sigma_\text{abs}N_0}{1+I/I_\text{sat}}. \]
-With saturation intensity:
+Use $N_1=N_0-N_2$ and solve for $N_2$:
+\[ N_2=\frac{\sigma_\text{abs} I/(\hbar\omega)\,N_0}{A_{21}+\sigma_\text{abs} I/(\hbar\omega)(1+g_2/g_1)}. \]
+Form the absorption coefficient $\alpha_\text{abs}=\sigma_\text{abs}(N_1-(g_2/g_1)N_2)$ and simplify:
+\[ \alpha_\text{abs}=\frac{\sigma_\text{abs}N_0}{1+I/I_\text{sat}}. \]
+Saturation intensity:
 \[ I_\text{sat}=\frac{\hbar\omega A_{21}}{\sigma_\text{abs}(1+g_2/g_1)}. \]
-Beer--Lambert integrates to:
+Beer--Lambert with $-\de I/\de z=\alpha_\text{abs}I$ integrates to:
 \begin{equation}
 -\ln(I_\text{out}/I_\text{in})-\frac{I_\text{out}-I_\text{in}}{I_\text{sat}}=\sigma_\text{abs}N_0 L.
 \label{eq:absint}
 \end{equation}
 
-Low-intensity (unsaturated): drop second term:
+Low-intensity limit drops the second term:
 \[ -\ln 0.90=\sigma_\text{abs}N_0 L. \]
-Strong beam $I=\SI{270}{W m^{-2}}$, transmission $0.967$:
+Strong-beam case $I_\text{out}/I_\text{in}=0.967$:
 \[ -\ln 0.967-\frac{(0.967-1)I}{I_\text{sat}}=\sigma_\text{abs}N_0 L. \]
-Equate the two RHS and rearrange:
-\[ -\ln 0.967+\ln 0.90=-\frac{0.033\,I}{I_\text{sat}}. \]
+Substitute $\sigma_\text{abs}N_0 L=-\ln 0.90$:
+\[ -\ln 0.967+\frac{0.033\,I}{I_\text{sat}}=-\ln 0.90. \]
+Rearrange for the saturation term:
+\[ \frac{0.033\,I}{I_\text{sat}}=\ln 0.967-\ln 0.90. \]
 Combine logs:
-\[ \ln(0.967/0.90)=\frac{0.033\,I}{I_\text{sat}}. \]
-Wait---signs: $-\ln 0.90+\ln 0.967$ on LHS gives $\ln(0.967/0.90)$:
+\[ \frac{0.033\,I}{I_\text{sat}}=\ln(0.967/0.90). \]
+Evaluate the log:
 \[ \ln(1.0744)=0.0718. \]
-So:
-\[ 0.0718=0.033\,I/I_\text{sat}. \]
 Solve for $I_\text{sat}$:
-\[ I_\text{sat}=0.033\times 270/0.0718. \]
+\[ I_\text{sat}=\frac{0.033\times 270}{0.0718}. \]
 Evaluate:
-\[ I_\text{sat}=8.91/0.0718\approx \SI{124}{W m^{-2}}. \]
+\[ I_\text{sat}=\frac{8.91}{0.0718}\approx \SI{124}{W m^{-2}}. \]
 
 Na D2: $g_1=2$ (${}^2S_{1/2}$), $g_2=4$ (${}^2P_{3/2}$):
 \[ 1+g_2/g_1=3. \]
-Cross-section from $I_\text{sat}$:
+Cross-section from $I_\text{sat}$ using $A_{21}=1/\tau_{3p}$:
 \[ \sigma_\text{abs}=\frac{\hbar\omega A_{21}}{(1+g_2/g_1)I_\text{sat}}=\frac{\hbar\omega}{3\tau_{3p}I_\text{sat}}. \]
-Photon energy $\hbar\omega=hc/\lambda$:
-\[ \hbar\omega=\frac{(6.626\times 10^{-34})(3\times 10^8)}{589\times 10^{-9}}=\SI{3.37e-19}{J}. \]
-Plug in $\tau_{3p}=\SI{16}{ns}$, $I_\text{sat}=\SI{124}{W m^{-2}}$:
+Photon energy:
+\[ \hbar\omega=\frac{hc}{\lambda}=\frac{(6.626\times 10^{-34})(3\times 10^8)}{589\times 10^{-9}}. \]
+Evaluate:
+\[ \hbar\omega=\SI{3.37e-19}{J}. \]
+Plug $\tau_{3p}=\SI{16}{ns}$, $I_\text{sat}=\SI{124}{W m^{-2}}$:
 \[ \sigma_\text{abs}=\frac{3.37\times 10^{-19}}{3\times 16\times 10^{-9}\times 124}. \]
-Evaluate denominator:
+Evaluate the denominator:
 \[ 3\times 16\times 10^{-9}\times 124=5.95\times 10^{-6}. \]
 Divide:
 \[ \boxed{\;\sigma_\text{abs}\approx \frac{3.37\times 10^{-19}}{5.95\times 10^{-6}}\approx \SI{5.7e-14}{m^2}.\;} \]
 
-Compare with $\lambda^2/(2\pi)$:
+Compare with the resonant limit $\lambda^2/(2\pi)$:
 \[ (589\times 10^{-9})^2/(2\pi)\approx \SI{5.5e-14}{m^2}\;\checkmark. \]
 Resonant cross-section is $\sim\lambda^2/(2\pi)$, $\sim 10^6\times$ geometrical $\pi a_0^2\sim\SI{e-20}{m^2}$, and $\sim 10^4\!-\!10^5\times$ collisional $\sigma_\text{coll}\sim\SI{e-19}{m^2}$.
 

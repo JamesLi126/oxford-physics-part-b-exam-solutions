@@ -38,9 +38,21 @@ Fcc Bravais factor:
 F_{\text{fcc}}(hkl) \;=\; 1 + e^{\,i\pi(h+k)} + e^{\,i\pi(k+l)} + e^{\,i\pi(h+l)},
 \label{eq:Ffcc}
 \end{equation}
-which is $4$ for $h,k,l$ all-even or all-odd, else $0$. With basis at $(0,0,0)$ and $\tfrac14(1,1,1),\tfrac34(1,1,1)$, $\mathbf G\cdot\tfrac14(1,1,1)a=\tfrac\pi 2(h+k+l)$, so the basis sum is
+which is $4$ for $h,k,l$ all-even or all-odd, else $0$. With basis at $(0,0,0)$ and $\tfrac14(1,1,1),\tfrac34(1,1,1)$, compute the phase at the F sites:
 \[
-f_{\text{Ca}}+f_{\text{F}}\!\left[e^{i\pi(h+k+l)/2}+e^{i3\pi(h+k+l)/2}\right]=f_{\text{Ca}}+2f_{\text{F}}\cos\!\left[\tfrac\pi 2(h+k+l)\right].
+\mathbf{G}\cdot\tfrac14(1,1,1)a \;=\; \tfrac\pi 2(h+k+l).
+\]
+Write the basis sum:
+\[
+S_{\text{basis}} \;=\; f_{\text{Ca}} + f_{\text{F}}\!\left[e^{i\pi(h+k+l)/2}+e^{i3\pi(h+k+l)/2}\right].
+\]
+Factor $e^{i\pi(h+k+l)}$ out of the F terms:
+\[
+e^{i\pi(h+k+l)/2}+e^{i3\pi(h+k+l)/2} \;=\; e^{i\pi(h+k+l)}\left[e^{-i\pi(h+k+l)/2}+e^{i\pi(h+k+l)/2}\right].
+\]
+Apply $e^{i\theta}+e^{-i\theta}=2\cos\theta$ and note that allowed reflections (all-even or all-odd $hkl$) have $e^{i\pi(h+k+l)}\cos[\pi(h+k+l)/2] = \cos[\pi(h+k+l)/2]$ (the prefactor is $\pm1$ but cosine vanishes for all-odd):
+\[
+S_{\text{basis}} \;=\; f_{\text{Ca}} + 2f_{\text{F}}\cos\!\left[\tfrac\pi 2(h+k+l)\right].
 \]
 Hence
 \begin{equation}
@@ -60,10 +72,31 @@ Bragg + cubic:
 \sin^2\theta \;=\; \frac{\lambda^2}{4 a^2}\,(h^2+k^2+l^2).
 \label{eq:Bragg}
 \end{equation}
-$\theta_1=\ang{14.135}$, $\theta_2=\ang{23.50}$: $\sin^2\theta_1=0.05963$, $\sin^2\theta_2=0.15903$, ratio $2.667\approx 8/3$. Assign $111$ ($h^2+k^2+l^2=3$) and $220$ ($=8$); $200$ skipped (weak, same argument as $002$).
-
+Half the scattering angles:
 \[
-a \;=\; \frac{\lambda \sqrt{3}}{2\sin\theta_{111}} \;=\; \frac{0.15406\times 1.7321}{2\times 0.24417}\,\si{nm}\;\approx\;\SI{0.5466}{nm}.
+\theta_1 \;=\; \ang{14.135},\qquad \theta_2 \;=\; \ang{23.50}.
+\]
+Compute $\sin^2\theta$:
+\[
+\sin^2\theta_1 \;=\; 0.05963,\qquad \sin^2\theta_2 \;=\; 0.15903.
+\]
+Form the ratio:
+\[
+\frac{\sin^2\theta_2}{\sin^2\theta_1} \;=\; \frac{0.15903}{0.05963} \;\approx\; 2.667 \;\approx\; \frac{8}{3}.
+\]
+Assign $111$ ($h^2+k^2+l^2=3$) and $220$ ($h^2+k^2+l^2=8$); the $200$ ($h^2+k^2+l^2=4$) line is skipped because $h+k+l=2$ gives the near-extinct $f_{\text{Ca}}-2f_{\text{F}}$.
+
+Solve Bragg for $a$ at $111$:
+\[
+a \;=\; \frac{\lambda \sqrt{3}}{2\sin\theta_{111}}.
+\]
+Substitute numbers:
+\[
+a \;=\; \frac{0.15406\times 1.7321}{2\times 0.24417}\,\si{nm}.
+\]
+Reduce:
+\[
+a \;\approx\; \SI{0.5466}{nm}.
 \]
 Cross-check from $220$: $a\approx\SI{0.5464}{nm}$.
 \begin{equation}
@@ -80,12 +113,33 @@ At $a=\SI{5.466}{\angstrom}$:
 G_{111}=\frac{2\pi\sqrt 3}{a}\approx \SI{1.99}{\angstrom^{-1}},\qquad G_{220}=\frac{2\pi\sqrt 8}{a}\approx \SI{3.25}{\angstrom^{-1}}.
 \label{eq:Gnums}
 \end{equation}
-Reading off: $f_{\text{Ca}}(G_{111})\approx 14$, $f_{\text{F}}(G_{111})\approx 7$; $f_{\text{Ca}}(G_{220})\approx 11.5$, $f_{\text{F}}(G_{220})\approx 5.5$. Drop the common $F_{\text{fcc}}=4$:
+Read off from the graphs at $G_{111}\approx \SI{1.99}{\angstrom^{-1}}$ and $G_{220}\approx \SI{3.25}{\angstrom^{-1}}$:
 \[
-S_{111}=f_{\text{Ca}}+2f_{\text{F}}\cos(3\pi/2)=f_{\text{Ca}}\approx 14,\qquad S_{220}=f_{\text{Ca}}+2f_{\text{F}}\approx 22.5.
+f_{\text{Ca}}(G_{111})\approx 14,\quad f_{\text{F}}(G_{111})\approx 7;\qquad f_{\text{Ca}}(G_{220})\approx 11.5,\quad f_{\text{F}}(G_{220})\approx 5.5.
 \]
+Drop the common $F_{\text{fcc}}=4$. For $111$, $h+k+l=3$:
 \[
-\frac{I_{111}}{I_{220}}=\frac{14^2}{22.5^2}\approx 0.39.
+\cos\!\left(\tfrac{\pi}{2}\cdot 3\right) \;=\; \cos\!\left(\tfrac{3\pi}{2}\right) \;=\; 0.
+\]
+Hence:
+\[
+S_{111} \;=\; f_{\text{Ca}}(G_{111}) \;\approx\; 14.
+\]
+For $220$, $h+k+l=4$:
+\[
+\cos\!\left(\tfrac{\pi}{2}\cdot 4\right) \;=\; \cos(2\pi) \;=\; 1.
+\]
+Hence:
+\[
+S_{220} \;=\; f_{\text{Ca}}(G_{220}) + 2 f_{\text{F}}(G_{220}) \;\approx\; 11.5 + 11 \;=\; 22.5.
+\]
+Form the intensity ratio:
+\[
+\frac{I_{111}}{I_{220}} \;=\; \left(\frac{S_{111}}{S_{220}}\right)^2 \;=\; \frac{14^2}{22.5^2}.
+\]
+Reduce:
+\[
+\frac{I_{111}}{I_{220}} \;=\; \frac{196}{506.25} \;\approx\; 0.39.
 \]
 \begin{equation}
 \boxed{\;\; I_{111}/I_{220} \;\approx\; 0.4. \;\;}
@@ -100,9 +154,17 @@ At 220 all three ions add coherently; at 111 the two F ions cancel and only Ca c
 
 \subsection*{(a) Band $E(k)$, bandwidth, and density of states}
 
-Bloch ansatz $\ket k=N^{-1/2}\sum_n e^{ikna}\ket n$, PBC fixes $k=2\pi m/(Na)$, $N$ values in $(-\pi/a,\pi/a]$. Acting with $\hat H$:
+Bloch ansatz $\ket k=N^{-1/2}\sum_n e^{ikna}\ket n$, PBC fixes $k=2\pi m/(Na)$, $N$ values in $(-\pi/a,\pi/a]$. Apply $\hat H$ to a single site, using only the three non-zero matrix elements:
 \[
-\hat H\ket k=\frac{1}{\sqrt N}\sum_n(\mathcal E_0-te^{-ika}-te^{ika})e^{ikna}\ket n=(\mathcal E_0-2t\cos ka)\ket k.
+\hat H\ket n \;=\; \mathcal{E}_0\ket n - t\ket{n+1} - t\ket{n-1}.
+\]
+Apply $\hat H$ to $\ket k$ and relabel the shifted sums:
+\[
+\hat H\ket k \;=\; \frac{1}{\sqrt N}\sum_n e^{ikna}\bigl(\mathcal{E}_0 - t e^{-ika} - t e^{ika}\bigr)\ket n.
+\]
+Combine the two phases via $e^{ika}+e^{-ika}=2\cos ka$:
+\[
+\hat H\ket k \;=\; (\mathcal{E}_0 - 2t\cos ka)\ket k.
 \]
 \begin{equation}
 \boxed{\;E(k) \;=\; \mathcal{E}_0 - 2t \cos ka, \qquad A = \mathcal{E}_0,\quad B = -2t.\;}
@@ -204,11 +266,15 @@ C \;=\; \frac{\pi}{3}\,R\,\frac{k_B T}{t},\qquad
 \label{eq:xibox}
 \end{equation}
 
-Pauli susceptibility:
+Pauli (volume) susceptibility:
 \[
-\chi_P=\mu_0\mu_B^2 g(E_F)/V.
+\chi_P \;=\; \frac{\mu_0\mu_B^2\, g(E_F)}{V}.
 \]
-Per mole:
+Substitute $g(E_F)=N/(\pi t)$ and write the molar form ($N\to N_A$):
+\[
+\chi \;=\; \mu_0\mu_B^2\cdot\frac{N_A}{\pi t}.
+\]
+Use $N_A = R/k_B$:
 \begin{equation}
 \boxed{\;\chi \;=\; \mu_0 \mu_B^{2}\,\frac{N_A}{\pi t}\;=\;\frac{\mu_0\mu_B^{2} R}{\pi t k_B}.\;}
 \label{eq:chiPauli}
@@ -219,12 +285,39 @@ Temperature-independent.
 
 \subsection*{(c) Adding second-neighbour hopping}
 
-Second-neighbour adds $-(t/2)(e^{-2ika}+e^{2ika})=-t\cos 2ka$:
+Acting on $\ket k$, the second-neighbour terms contribute $-(t/2)(e^{-2ika}+e^{2ika})$. Combine into a cosine:
+\[
+-\tfrac{t}{2}(e^{-2ika}+e^{2ika}) \;=\; -t\cos(2ka).
+\]
+Add to the first-neighbour dispersion:
 \begin{equation}
 \boxed{\;E(k) \;=\; \mathcal{E}_0 - 2 t \cos ka - t \cos(2ka).\;}
 \label{eq:Ek2}
 \end{equation}
-Extrema: $\de E/\de k=2ta\sin ka(1+2\cos ka)=0\Rightarrow ka=0,\pm 2\pi/3,\pm\pi/a$. Values: $E(0)=\mathcal E_0-3t$ (global min), $E(\pm 2\pi/3a)=\mathcal E_0+3t/2$ (global max), $E(\pm\pi/a)=\mathcal E_0+t$ (local min).
+Differentiate:
+\[
+\frac{\de E}{\de k} \;=\; 2ta\sin ka + 2ta\sin(2ka).
+\]
+Factor using $\sin(2ka)=2\sin ka\cos ka$:
+\[
+\frac{\de E}{\de k} \;=\; 2ta\sin ka\,(1+2\cos ka).
+\]
+Set to zero:
+\[
+\sin ka=0\;\;\text{or}\;\;\cos ka=-\tfrac12 \;\;\Rightarrow\;\; ka \;=\; 0,\,\pm\tfrac{2\pi}{3},\,\pm\pi.
+\]
+Evaluate at $ka=0$:
+\[
+E(0) \;=\; \mathcal{E}_0 - 2t - t \;=\; \mathcal{E}_0 - 3t\quad\text{(global min)}.
+\]
+Evaluate at $ka=\pm 2\pi/3$, using $\cos(2\pi/3)=-1/2$ and $\cos(4\pi/3)=-1/2$:
+\[
+E\!\left(\pm\tfrac{2\pi}{3a}\right) \;=\; \mathcal{E}_0 - 2t(-\tfrac12) - t(-\tfrac12) \;=\; \mathcal{E}_0 + \tfrac{3t}{2}\quad\text{(global max)}.
+\]
+Evaluate at $ka=\pm\pi$:
+\[
+E\!\left(\pm\tfrac{\pi}{a}\right) \;=\; \mathcal{E}_0 + 2t - t \;=\; \mathcal{E}_0 + t\quad\text{(local min)}.
+\]
 
 \begin{center}
 \begin{tikzpicture}[>=stealth, scale=1.0]
@@ -299,9 +392,21 @@ Analogously for holes:
 p(T) \;=\; N_v(T)\,e^{-(\mu-E_v)/k_B T},\qquad N_v(T)=2\!\left(\frac{m_h^{*} k_B T}{2\pi\hbar^{2}}\right)^{3/2}.
 \label{eq:pNv}
 \end{equation}
-Mass action: $np=N_cN_v e^{-E_g/k_BT}\propto T^3 e^{-E_g/k_BT}$. Intrinsic neutrality $n=p$:
+Multiply $n$ and $p$:
 \[
-n(T)=p(T)=\sqrt{N_cN_v}\,e^{-E_g/(2k_BT)}\propto T^{3/2}e^{-E_g/(2k_BT)}.
+np \;=\; N_c N_v\,e^{-(E_c-E_v)/k_BT}.
+\]
+Use $E_c - E_v = E_g$ and $N_c N_v \propto T^3$:
+\[
+np \;=\; N_c N_v\,e^{-E_g/k_BT} \;\propto\; T^3\,e^{-E_g/k_BT}.
+\]
+Impose intrinsic neutrality $n=p$:
+\[
+n^2 \;=\; N_c N_v\,e^{-E_g/k_BT}.
+\]
+Take square root:
+\[
+n(T) \;=\; p(T) \;=\; \sqrt{N_c N_v}\,e^{-E_g/(2k_BT)} \;\propto\; T^{3/2}\,e^{-E_g/(2k_BT)}.
 \]
 \begin{equation}
 \boxed{\;\alpha = 3/2, \qquad \eta = 1/2.\;}
@@ -368,13 +473,21 @@ Hydrogenic in dielectric medium with effective mass: $\epsilon_0\to\epsilon_0\ep
 a^{*} = \epsilon_r\frac{m_e}{m_e^{*}}a_0,\qquad E^{*}_R = \frac{1}{\epsilon_r^{2}}\frac{m_e^{*}}{m_e}E_R.
 \label{eq:donscale}
 \end{equation}
-With $\epsilon_r=11.7$, $m_e^*/m_e=1.09$, $a_0=\SI{0.529}{\angstrom}$, $E_R=\SI{13.6}{eV}$, evaluate the Bohr radius:
+With $\epsilon_r=11.7$, $m_e^*/m_e=1.09$, $a_0=\SI{0.529}{\angstrom}$, $E_R=\SI{13.6}{eV}$, substitute into $a^*$:
 \[
-a^* \;=\; \frac{11.7}{1.09}\times 0.529\,\si{\angstrom} \;\approx\; \SI{5.68}{\angstrom}.
+a^* \;=\; \frac{11.7}{1.09}\times 0.529\,\si{\angstrom}.
 \]
-Evaluate the Rydberg:
+Reduce the fraction:
 \[
-E^*_R \;=\; \frac{1.09\times 13.6}{11.7^2}\,\si{eV} \;\approx\; \SI{0.108}{eV}.
+a^* \;=\; 10.73\times 0.529\,\si{\angstrom} \;\approx\; \SI{5.68}{\angstrom}.
+\]
+Substitute into $E^*_R$:
+\[
+E^*_R \;=\; \frac{1.09}{11.7^2}\times 13.6\,\si{eV}.
+\]
+Reduce:
+\[
+E^*_R \;=\; \frac{1.09}{136.89}\times 13.6\,\si{eV} \;\approx\; \SI{0.108}{eV}.
 \]
 \begin{equation}
 \boxed{\;a^{*} \approx \SI{0.57}{nm},\qquad E_d \approx \SI{0.11}{eV}.\;}
@@ -485,21 +598,33 @@ Free energy:
 \[
 F \;=\; -N k_B T\,\ln(2\cosh z).
 \]
-Magnetisation:
+Differentiate w.r.t.\ $B$ using $\partial z/\partial B = \mu_B/(k_BT)$:
+\[
+\pd{F}{B} \;=\; -N k_B T\,\tanh z\cdot\frac{\mu_B}{k_BT} \;=\; -N\mu_B\tanh z.
+\]
+Magnetisation per unit volume:
 \[
 M \;=\; -\frac{1}{V}\pd{F}{B} \;=\; \frac{N\mu_B}{V}\,\tanh z.
 \]
 Curie limit $z\ll 1$, expand $\tanh z \approx z$:
 \[
-M \;\approx\; \frac{N\mu_B}{V}\,z \;=\; \frac{N\mu_B^{2} B}{V k_B T}.
+M \;\approx\; \frac{N\mu_B}{V}\,z.
 \]
-Differentiate:
+Substitute $z = \mu_B B/(k_BT)$:
+\[
+M \;\approx\; \frac{N\mu_B^{2} B}{V k_B T}.
+\]
+Differentiate w.r.t.\ $B$ at $B=0$:
 \begin{equation}
 \chi(T) \;=\; \mu_0\,\pd{M}{B}\bigg|_{B=0} \;=\; \frac{\mu_0 N \mu_B^{2}}{V k_B T}.
 \label{eq:chiCurie}
 \end{equation}
 
-Internal energy:
+Internal energy from $U = -\partial \ln Z/\partial \beta$ with $\beta = 1/(k_BT)$:
+\[
+U_{\text{mag}} \;=\; -N\,\frac{\partial}{\partial\beta}\ln[2\cosh(\mu_BB\beta)] \;=\; -N\mu_B B\,\tanh(\mu_B B \beta).
+\]
+Rewrite in terms of $z = \mu_B B\beta$:
 \[
 U_{\text{mag}} \;=\; -N\mu_B B\,\tanh z.
 \]
@@ -507,11 +632,15 @@ Use $\de z/\de T = -z/T$ and $\de(\tanh z)/\de z = \sech^2 z$:
 \[
 \frac{\de U_{\text{mag}}}{\de T} \;=\; -N\mu_B B\,\sech^2 z\cdot\left(-\frac{z}{T}\right).
 \]
-Simplify with $\mu_B B = z k_B T$:
+Cancel the two minus signs:
 \[
-C_{\text{mag}} \;=\; N\mu_B B\,\sech^2 z\cdot\frac{z}{T} \;=\; N k_B\, z^2 \sech^2 z.
+C_{\text{mag}} \;=\; \frac{\de U_{\text{mag}}}{\de T} \;=\; N\mu_B B\,\sech^2 z\cdot\frac{z}{T}.
 \]
-Per mole of spins:
+Substitute $\mu_B B = z k_B T$:
+\[
+C_{\text{mag}} \;=\; N k_B\, z^2 \sech^2 z.
+\]
+Rewrite $\sech^2 z = 1/\cosh^2 z$ and pass to a mole of spins:
 \begin{equation}
 \boxed{\;C_{\text{mag}}(T,B) \;=\; R\,[f(z)]^{2}, \qquad f(z) = \frac{z}{\cosh z}, \qquad z = \frac{\mu_B B}{k_B T}.\;}
 \label{eq:Cmagbox}
@@ -520,17 +649,25 @@ Schottky form: $\propto z^2$ for $z\ll 1$, exponentially suppressed for $z\gg 1$
 
 \subsection*{(d) Numerical comparison and effect of strong interactions}
 
-At $T=\SI{10}{K}$, evaluate the Debye prefactor:
+At $T=\SI{10}{K}$, write the Debye contribution:
+\[
+C_{\text{Debye}} \;=\; \frac{12\pi^4}{5}\cdot p\cdot R\!\left(\frac{T}{T_D}\right)^3.
+\]
+Substitute $p=10$, $T=\SI{10}{K}$, $T_D=\SI{200}{K}$:
 \[
 C_{\text{Debye}} \;=\; \frac{12\pi^4}{5}\cdot 10\cdot R\!\left(\frac{10}{200}\right)^3.
 \]
-Numerically:
+Evaluate the prefactor:
 \[
-\frac{12\pi^4}{5}\cdot 10 \;\approx\; 233.78,\qquad \left(\frac{10}{200}\right)^3 \;=\; \frac{1}{8000}.
+\frac{12\pi^4}{5} \;\approx\; 233.78.
 \]
-Combine:
+Evaluate the cube:
 \[
-C_{\text{Debye}} \;\approx\; \frac{233.78}{8000}\,R \;\approx\; 0.02923\,R.
+\left(\frac{10}{200}\right)^3 \;=\; \frac{1}{8000} \;=\; 1.25\times 10^{-4}.
+\]
+Multiply:
+\[
+C_{\text{Debye}} \;\approx\; 233.78\times 10\times 1.25\times 10^{-4}\,R \;\approx\; 0.2922\,R.
 \]
 One mole of spins per mole of formula unit. With $\mu_B/k_B=\SI{0.6717}{K\,T^{-1}}$:
 
@@ -538,13 +675,20 @@ One mole of spins per mole of formula unit. With $\mu_B/k_B=\SI{0.6717}{K\,T^{-1
 \[
 z \;=\; \frac{\mu_B B}{k_B T} \;=\; \frac{0.6717\times 0.1}{10} \;\approx\; 6.72\times 10^{-3}.
 \]
-In the Curie limit $z\ll 1$:
+In the Curie limit $z\ll 1$, $\cosh z\approx 1$:
 \[
-C_{\text{mag}} \;\approx\; R z^2 \;\approx\; 4.51\times 10^{-5}\,R.
+C_{\text{mag}} \;\approx\; R z^2.
 \]
-Ratio:
+Square $z$:
+\[
+C_{\text{mag}} \;\approx\; R\times(6.72\times 10^{-3})^2 \;\approx\; 4.51\times 10^{-5}\,R.
+\]
+Divide by $C_{\text{Debye}}=0.2922\,R$:
+\[
+\frac{C_{\text{mag}}}{C_{\text{Debye}}} \;\approx\; \frac{4.51\times 10^{-5}}{0.2922} \;\approx\; 1.54\times 10^{-4}.
+\]
 \begin{equation}
-\boxed{\;\frac{C_{\text{mag}}}{C_{\text{Debye}}}\bigg|_{0.1\,\mathrm{T}} \;\approx\; 1.5\times 10^{-3}.\;}
+\boxed{\;\frac{C_{\text{mag}}}{C_{\text{Debye}}}\bigg|_{0.1\,\mathrm{T}} \;\approx\; 1.5\times 10^{-4}.\;}
 \label{eq:rat1}
 \end{equation}
 
@@ -552,19 +696,27 @@ Ratio:
 \[
 z \;=\; \frac{0.6717\times 10}{10} \;=\; 0.6717.
 \]
-Evaluate $\cosh z$ and $f(z)=z/\cosh z$:
+Evaluate $\cosh z$:
 \[
-\cosh z \;\approx\; 1.232,\qquad f(z) \;\approx\; \frac{0.6717}{1.232} \;\approx\; 0.5453.
+\cosh z \;\approx\; 1.232.
 \]
-Hence:
+Form $f(z) = z/\cosh z$:
+\[
+f(z) \;\approx\; \frac{0.6717}{1.232} \;\approx\; 0.5453.
+\]
+Square and multiply by $R$:
 \[
 C_{\text{mag}} \;=\; R\,[f(z)]^2 \;\approx\; 0.2974\,R.
 \]
+Divide by $C_{\text{Debye}}=0.2922\,R$:
+\[
+\frac{C_{\text{mag}}}{C_{\text{Debye}}} \;\approx\; \frac{0.2974}{0.2922} \;\approx\; 1.02.
+\]
 \begin{equation}
-\boxed{\;\frac{C_{\text{mag}}}{C_{\text{Debye}}}\bigg|_{10\,\mathrm{T}} \;\approx\; 10.\;}
+\boxed{\;\frac{C_{\text{mag}}}{C_{\text{Debye}}}\bigg|_{10\,\mathrm{T}} \;\approx\; 1.\;}
 \label{eq:rat2box}
 \end{equation}
-At \SI{10}{T} the Schottky term exceeds the phonon background by an order of magnitude --- the basis of adiabatic-demagnetisation cooling.
+At \SI{10}{T} the Schottky term is comparable to the phonon background; cooling a magnetic compound by adiabatic demagnetisation exploits exactly this competition.
 
 \emph{Strongly interacting spins at $B=0$.} Exchange $J$ generates an internal field; below $T_c\sim J/k_B$ the spins order. Expect:
 \begin{itemize}

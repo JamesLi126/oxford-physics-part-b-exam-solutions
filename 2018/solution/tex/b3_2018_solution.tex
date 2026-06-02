@@ -26,7 +26,7 @@
 
 \textbf{Problem.} Explain the physical origin of fine structure in hydrogenic atoms; derive $\Delta E_\text{so}=\tfrac{\beta}{2}[j(j+1)-l(l+1)-s(s+1)]$ and find $\beta$.
 
-Physical origin: in the electron's rest frame the proton orbits, generating a magnetic field $\vb B$; the electron spin magnetic moment $\bm\mu_s=-g_s\mu_B\vb s/\hbar$ couples to $\vb B$, giving the spin--orbit interaction (a relativistic correction $\sim\alpha^2$).
+Physical origin: in the electron rest frame the proton orbits, generating a magnetic field $\vb B$; the electron spin magnetic moment $\bm\mu_s=-g_s\mu_B\vb S/\hbar$ couples to $\vb B$, giving the spin--orbit interaction (a relativistic correction of order $\alpha^2$).
 
 Spin--orbit Hamiltonian (Thomas-corrected):
 \[
@@ -35,13 +35,17 @@ H_\text{so} = \frac{1}{2m_e^2 c^2}\,\frac{1}{r}\frac{\de V}{\de r}\,\vb L\cdot\v
 \]
 Differentiate $V$:
 \[
+\frac{\de V}{\de r} = \frac{Ze^2}{4\pi\epsilon_0}\,\frac{1}{r^2}.
+\]
+Divide by $r$:
+\[
 \frac{1}{r}\frac{\de V}{\de r} = \frac{Ze^2}{4\pi\epsilon_0}\,\frac{1}{r^3}.
 \]
 Define $\xi(r)=(2m_e^2 c^2)^{-1}(1/r)(\de V/\de r)$:
 \[
 H_\text{so} = \xi(r)\,\vb L\cdot\vb S.
 \]
-Use $\vb J=\vb L+\vb S$ to eliminate $\vb L\cdot\vb S$:
+Use $\vb J=\vb L+\vb S$:
 \[
 \vb J^2 = \vb L^2 + \vb S^2 + 2\vb L\cdot\vb S.
 \]
@@ -49,62 +53,134 @@ Solve for $\vb L\cdot\vb S$:
 \[
 \vb L\cdot\vb S = \tfrac{1}{2}\bigl(\vb J^2 - \vb L^2 - \vb S^2\bigr).
 \]
-Eigenvalues in $\ket{n\,l\,s\,j\,m_j}$:
+Take eigenvalues in $\ket{n\,l\,s\,j\,m_j}$:
 \[
 \langle\vb L\cdot\vb S\rangle = \tfrac{\hbar^2}{2}\bigl[j(j+1)-l(l+1)-s(s+1)\bigr].
 \]
-Take the radial expectation $\langle\xi(r)\rangle$:
+Take the radial expectation:
 \[
-\Delta E_\text{so} = \langle\xi\rangle\,\tfrac{\hbar^2}{2}\bigl[j(j+1)-l(l+1)-s(s+1)\bigr].
+\Delta E_\text{so} = \langle\xi(r)\rangle\,\tfrac{\hbar^2}{2}\bigl[j(j+1)-l(l+1)-s(s+1)\bigr].
 \]
-Hence $\beta = \hbar^2\langle\xi(r)\rangle$. Insert $\langle 1/r^3\rangle$ from the hint:
+Identify $\beta = \hbar^2\langle\xi(r)\rangle$:
+\[
+\beta = \frac{\hbar^2}{2m_e^2 c^2}\,\frac{Ze^2}{4\pi\epsilon_0}\,\left\langle\frac{1}{r^3}\right\rangle.
+\]
+Insert the hint for $\langle 1/r^3\rangle$:
 \[
 \beta = \frac{\hbar^2}{2m_e^2 c^2}\,\frac{Ze^2}{4\pi\epsilon_0}\,\Bigl(\frac{Z}{na_0}\Bigr)^3\frac{1}{l(l+\tfrac12)(l+1)}.
 \]
-Use $a_0=4\pi\epsilon_0\hbar^2/(m_e e^2)$ and $\alpha=e^2/(4\pi\epsilon_0\hbar c)$:
+Collect powers of $Z$:
 \[
-\boxed{\;\beta = \frac{Z^4 \alpha^2}{n^3 l(l+\tfrac12)(l+1)}\,\frac{|E_n|}{1}\cdot\frac{1}{1}
-= m_e c^2\,\frac{Z^4\alpha^4}{2 n^3 l(l+\tfrac12)(l+1)}\;}
+\beta = \frac{\hbar^2 Z^4 e^2}{8\pi\epsilon_0 m_e^2 c^2\, n^3 a_0^3\, l(l+\tfrac12)(l+1)}.
 \]
-(equivalently $\beta = -E_n\,Z^2\alpha^2/[n l(l+\tfrac12)(l+1)]$ with $E_n=-\tfrac{1}{2}m_ec^2 Z^2\alpha^2/n^2$).
+Substitute $a_0=4\pi\epsilon_0\hbar^2/(m_e e^2)$:
+\[
+a_0^3 = \frac{(4\pi\epsilon_0)^3\hbar^6}{m_e^3 e^6}.
+\]
+Insert into $\beta$:
+\[
+\beta = \frac{\hbar^2 Z^4 e^2}{8\pi\epsilon_0 m_e^2 c^2\, n^3 l(l+\tfrac12)(l+1)}\cdot\frac{m_e^3 e^6}{(4\pi\epsilon_0)^3\hbar^6}.
+\]
+Collect factors:
+\[
+\beta = \frac{Z^4 m_e e^8}{2(4\pi\epsilon_0)^4\hbar^4 c^2\, n^3 l(l+\tfrac12)(l+1)}.
+\]
+Identify $\alpha=e^2/(4\pi\epsilon_0\hbar c)$:
+\[
+\alpha^4 = \frac{e^8}{(4\pi\epsilon_0)^4\hbar^4 c^4}.
+\]
+Multiply top and bottom by $c^2$:
+\[
+m_e\cdot\frac{e^8}{(4\pi\epsilon_0)^4\hbar^4 c^2} = m_e c^2\cdot\frac{e^8}{(4\pi\epsilon_0)^4\hbar^4 c^4}.
+\]
+Identify the right-hand factor as $\alpha^4$:
+\[
+m_e\cdot\frac{e^8}{(4\pi\epsilon_0)^4\hbar^4 c^2} = \alpha^4\,m_e c^2.
+\]
+Substitute and simplify:
+\[
+\boxed{\;\beta = \frac{Z^4\alpha^4\, m_e c^2}{2 n^3 l(l+\tfrac12)(l+1)}\;}
+\]
+(equivalently $\beta = -E_n\,Z^2\alpha^2/[n\,l(l+\tfrac12)(l+1)]$ with $E_n=-\tfrac{1}{2}m_ec^2 Z^2\alpha^2/n^2$).
 
 \subsection*{(b) Fine structure of $n=2,3$ in He$^+$}
 
-He$^+$: $Z=2$, $s=1/2$. Fine-structure constant prefactor:
+He$^+$: $Z=2$, $s=1/2$. Combine $\Delta E_{\text{so}}=(\beta/2)[\dots]$ with $\beta$ from (a):
 \[
-E_h = m_e c^2\alpha^2/2 = \SI{27.211}{eV}.
+\Delta E_\text{so} = \frac{Z^4 m_e c^2\alpha^4}{4 n^3\,l(l+\tfrac12)(l+1)}\,\bigl[j(j+1)-l(l+1)-s(s+1)\bigr].
 \]
-General level shift in units of $m_e c^2\alpha^4$:
+Evaluate $\alpha^4$ with $\alpha=1/137.036$:
 \[
-\Delta E_\text{so} = \frac{Z^4}{2 n^3}\,\frac{j(j+1)-l(l+1)-s(s+1)}{l(l+\tfrac12)(l+1)}\,m_e c^2\alpha^4.
+\alpha^4 = (1/137.036)^4 = 2.834\times 10^{-9}.
 \]
-Tabulate (with $Z^4 m_ec^2\alpha^4 = 16\times\SI{0.7251}{meV}=\SI{11.60}{meV}$ for the overall scale; $m_ec^2\alpha^4/2 = \SI{0.3625}{meV}$):
+Multiply by $m_ec^2=\SI{0.5110e6}{eV}$:
+\[
+m_e c^2\alpha^4 = \SI{0.5110e6}{eV}\times 2.834\times 10^{-9} = \SI{1.449}{meV}.
+\]
 
 \medskip
 $n=2$: levels $2s_{1/2}$, $2p_{1/2}$, $2p_{3/2}$.
 \begin{itemize}
 \item $2s_{1/2}$: $l=0$ (no SO shift; included for completeness).
-\item $2p_{1/2}$: $j(j+1)-l(l+1)-s(s+1) = 3/4-2-3/4 = -2$; $l(l+\tfrac12)(l+1)=3$.
-\[ \Delta E(2p_{1/2}) = \tfrac{Z^4}{2 n^3}\cdot\tfrac{-2}{3}\cdot m_ec^2\alpha^4 = -\tfrac{16}{16}\cdot\tfrac{2}{3}\cdot\SI{0.3625}{meV}\cdot 2 \]
-Insert numbers: $\Delta E(2p_{1/2}) = -\SI{0.483}{meV}$.
-\item $2p_{3/2}$: factor $= 15/4-2-3/4 = 1$; shift $\Delta E(2p_{3/2}) = +\SI{0.242}{meV}$.
+\item $2p_{1/2}$: $l=1,\;s=1/2,\;j=1/2$.
+
+Compute the angular bracket:
+\[
+j(j+1)-l(l+1)-s(s+1) = \tfrac{3}{4}-2-\tfrac{3}{4} = -2.
+\]
+Compute the orbital denominator:
+\[
+l(l+\tfrac12)(l+1) = 1\cdot\tfrac32\cdot 2 = 3.
+\]
+Insert into $\Delta E_\text{so}$ with $Z^4=16$, $n^3=8$:
+\[
+\Delta E(2p_{1/2}) = \frac{16}{4\cdot 8\cdot 3}\cdot(-2)\cdot\SI{1.449}{meV}.
+\]
+Simplify the prefactor:
+\[
+\Delta E(2p_{1/2}) = -\tfrac{1}{3}\cdot\SI{1.449}{meV} = -\SI{0.483}{meV}.
+\]
+\item $2p_{3/2}$: $l=1,\;s=1/2,\;j=3/2$.
+
+Compute the angular bracket:
+\[
+j(j+1)-l(l+1)-s(s+1) = \tfrac{15}{4}-2-\tfrac{3}{4} = +1.
+\]
+Insert into $\Delta E_\text{so}$:
+\[
+\Delta E(2p_{3/2}) = \frac{16}{4\cdot 8\cdot 3}\cdot(+1)\cdot\SI{1.449}{meV} = +\SI{0.242}{meV}.
+\]
 \end{itemize}
 
 $n=3$: levels $3s_{1/2},\,3p_{1/2},\,3p_{3/2},\,3d_{3/2},\,3d_{5/2}$.
 
-For $n=3$ the prefactor $Z^4/(2n^3) = 16/54$. Compute angular factors:
+Compute overall prefactor for $n=3$, $Z=2$:
 \[
-3p_{1/2}:\;\frac{-2}{3},\quad 3p_{3/2}:\;\frac{1}{3},\quad
-3d_{3/2}:\;\frac{-3}{15/2}\!=\!\frac{-2}{5},\quad 3d_{5/2}:\;\frac{2}{15/2}\!=\!\frac{4}{15}.
+\frac{Z^4 m_ec^2\alpha^4}{4n^3} = \frac{16}{4\cdot 27}\cdot\SI{1.449}{meV}.
 \]
-Multiply by $16/54\cdot m_ec^2\alpha^4 = \SI{0.215}{meV}$:
+Simplify:
 \[
-\Delta E(3p_{1/2})\!=\!-\SI{0.143}{meV},\;
-\Delta E(3p_{3/2})\!=\!+\SI{0.0716}{meV},
+\frac{Z^4 m_ec^2\alpha^4}{4n^3} = \frac{16}{108}\cdot\SI{1.449}{meV} = \SI{0.2147}{meV}.
+\]
+Compute angular ratios $[j(j+1)-l(l+1)-s(s+1)]/[l(l+\tfrac12)(l+1)]$:
+\[
+3p_{1/2}:\;\frac{-2}{3},\quad 3p_{3/2}:\;\frac{1}{3},
 \]
 \[
-\Delta E(3d_{3/2})\!=\!-\SI{0.0859}{meV},\;
-\Delta E(3d_{5/2})\!=\!+\SI{0.0573}{meV}.
+3d_{3/2}:\;\frac{-3}{15}=-\frac{1}{5},\quad 3d_{5/2}:\;\frac{2}{15}.
+\]
+Multiply each ratio by \SI{0.2147}{meV}:
+\[
+\Delta E(3p_{1/2}) = -\tfrac{2}{3}\cdot 0.2147\;\text{meV} = -\SI{0.143}{meV},
+\]
+\[
+\Delta E(3p_{3/2}) = +\tfrac{1}{3}\cdot 0.2147\;\text{meV} = +\SI{0.0716}{meV},
+\]
+\[
+\Delta E(3d_{3/2}) = -\tfrac{1}{5}\cdot 0.2147\;\text{meV} = -\SI{0.0429}{meV},
+\]
+\[
+\Delta E(3d_{5/2}) = +\tfrac{2}{15}\cdot 0.2147\;\text{meV} = +\SI{0.0286}{meV}.
 \]
 
 \textit{Energy-level diagram:}
@@ -144,17 +220,36 @@ Allowed transitions ($\Delta l=\pm 1$, $\Delta j=0,\pm 1$, $j=0\not\to 0$):
 
 \subsection*{(c) $\Omega^-$ bound to bare Pb (Z=82), $n=10$, $l=9$}
 
-Splitting into 4 levels means $2s+1=4$, hence $\boxed{\;s_\Omega = 3/2\;}$ (so $j=l-s,\dots,l+s = 15/2,17/2,19/2,21/2$).
+Splitting into 4 levels means $2s+1=4$:
+\[
+\boxed{\;s_\Omega = 3/2\;}
+\]
+Possible $j$ values $j=l-s,\dots,l+s$:
+\[
+j = 15/2,\;17/2,\;19/2,\;21/2.
+\]
 
-Reduced mass effect: replace $m_e\to\mu = m_\Omega m_\text{Pb}/(m_\Omega+m_\text{Pb})\approx m_\Omega$ (Pb nucleus much heavier). The Bohr-like formula gives, with $m_\Omega c^2=\SI{1672}{MeV}$:
+Reduced-mass effect: replace $m_e\to\mu = m_\Omega m_\text{Pb}/(m_\Omega+m_\text{Pb})\approx m_\Omega$ since the Pb nucleus is much heavier. Apply formula from (a) with $m_e\to m_\Omega$:
 \[
 \beta = \frac{Z^4\alpha^4 m_\Omega c^2}{2 n^3 l(l+\tfrac12)(l+1)}.
 \]
-Insert $Z^4=82^4=\num{4.5212e7}$, $\alpha^4 = (1/137.036)^4 = \num{2.834e-9}$:
+Evaluate $Z^4$:
+\[
+Z^4 = 82^4 = \num{4.5212e7}.
+\]
+Evaluate $\alpha^4$:
+\[
+\alpha^4 = (1/137.036)^4 = \num{2.834e-9}.
+\]
+Multiply:
 \[
 Z^4\alpha^4 = 0.1281.
 \]
-Insert $n^3=1000$, $l(l+\tfrac12)(l+1) = 9\cdot 9.5\cdot 10 = 855$:
+Evaluate angular denominator $l(l+\tfrac12)(l+1)$:
+\[
+9\cdot 9.5\cdot 10 = 855.
+\]
+Combine with $n^3 = 1000$:
 \[
 \frac{Z^4\alpha^4}{2 n^3 l(l+\tfrac12)(l+1)} = \frac{0.1281}{2\cdot 1000\cdot 855} = \num{7.49e-8}.
 \]
@@ -162,17 +257,43 @@ Multiply by $m_\Omega c^2 = \SI{1.672e9}{eV}$:
 \[
 \beta = \num{7.49e-8}\times\SI{1.672e9}{eV} = \SI{125.2}{eV}.
 \]
-Energy of level $j$:
+Write the energy of level $j$:
 \[
-E_j = \tfrac{\beta}{2}\bigl[j(j+1)-l(l+1)-s(s+1)\bigr] = \tfrac{\beta}{2}\bigl[j(j+1)-90-\tfrac{15}{4}\bigr].
+E_j = \tfrac{\beta}{2}\bigl[j(j+1)-l(l+1)-s(s+1)\bigr].
 \]
-Successive separations $E_{j+1}-E_j = \beta(j+1)$:
+Insert $l(l+1)=90$ and $s(s+1)=15/4$:
+\[
+E_j = \tfrac{\beta}{2}\bigl[j(j+1)-90-\tfrac{15}{4}\bigr].
+\]
+Take the difference $E_{j+1}-E_j$:
+\[
+E_{j+1}-E_j = \tfrac{\beta}{2}\bigl[(j+1)(j+2)-j(j+1)\bigr].
+\]
+Factor out $(j+1)$:
+\[
+(j+1)(j+2)-j(j+1) = (j+1)[(j+2)-j] = 2(j+1).
+\]
+Substitute back:
+\[
+E_{j+1}-E_j = \beta(j+1).
+\]
+Insert $j=15/2,17/2,19/2$:
 \[
 E_{17/2}-E_{15/2}=\tfrac{17}{2}\beta,\quad
 E_{19/2}-E_{17/2}=\tfrac{19}{2}\beta,\quad
 E_{21/2}-E_{19/2}=\tfrac{21}{2}\beta.
 \]
-Insert $\beta=\SI{125.2}{eV}$:
+Multiply by $\beta=\SI{125.2}{eV}$:
+\[
+\Delta E_{15/2\to 17/2} = \tfrac{17}{2}\cdot 125.2\;\text{eV} = \SI{1064}{eV},
+\]
+\[
+\Delta E_{17/2\to 19/2} = \tfrac{19}{2}\cdot 125.2\;\text{eV} = \SI{1189}{eV},
+\]
+\[
+\Delta E_{19/2\to 21/2} = \tfrac{21}{2}\cdot 125.2\;\text{eV} = \SI{1315}{eV}.
+\]
+Convert to keV:
 \[
 \boxed{\;\Delta E_{15/2\to 17/2} = \SI{1.06}{keV},\;\;
 \Delta E_{17/2\to 19/2} = \SI{1.19}{keV},\;\;
@@ -181,36 +302,50 @@ Insert $\beta=\SI{125.2}{eV}$:
 
 \subsection*{(d) Two $\Omega^-$ bound to Pb: configurations $1s2l$ and ground}
 
-The $\Omega^-$ has $s=3/2$, hence is a fermion (half-integer spin). Pauli exclusion still applies between identical fermions: total wavefunction antisymmetric under exchange.
+The $\Omega^-$ has $s=3/2$ (half-integer), so it is a fermion. Pauli exclusion demands total wavefunction antisymmetric under exchange.
 
-\textit{Excited $1s\,2l$ configurations} ($l=0$ or $1$): the two particles are in different spatial orbitals so spatial part can be either symmetric or antisymmetric --- both allowed. The two spin-3/2 particles couple as $S=0,1,2,3$.
-Spin states with given exchange symmetry ($s_1=s_2=3/2$, total $S$):
+Couple two spin-$3/2$ particles:
+\[
+3/2\otimes 3/2 = 3\oplus 2\oplus 1\oplus 0.
+\]
+Identify exchange symmetry (standard result for two identical spin-$s$):
 \begin{itemize}
-\item $S=0,2$: spin antisymmetric;
-\item $S=1,3$: spin symmetric.
+\item $S=3,1$: spin symmetric;
+\item $S=2,0$: spin antisymmetric.
 \end{itemize}
-(Standard result: combining two identical spin-$s$ particles, $S=2s,2s-2,\dots$ are symmetric and $S=2s-1,2s-3,\dots$ antisymmetric.)
 
-Thus for $1s\,2s$ ($L=0$): require overall antisymmetry. Spatial $\pm$ paired with spin $\mp$:
+\textit{Excited $1s\,2l$ configurations} ($l=0,1$): two particles in different spatial orbitals; spatial part can be either symmetric or antisymmetric.
+
+For $1s\,2s$ ($L=0$), pair spatial $\pm$ with spin $\mp$:
 \[
-\text{spatial sym, spin antisym}: \;{}^1S_0,\;{}^5S_2,
+\text{spatial sym}\otimes\text{spin antisym}: \;{}^1S_0,\;{}^5S_2,
 \]
 \[
-\text{spatial antisym, spin sym}: \;{}^3S_1,\;{}^7S_3.
+\text{spatial antisym}\otimes\text{spin sym}: \;{}^3S_1,\;{}^7S_3.
 \]
-Levels: $\boxed{\;{}^1S_0,\,{}^3S_1,\,{}^5S_2,\,{}^7S_3\;}$ for $1s2s$.
-
-For $1s\,2p$ ($L=1$): same eight $S$-values combined, gives all of
+Collect levels for $1s2s$:
 \[
-\boxed{\;{}^1P_1,\;{}^3P_{0,1,2},\;{}^5P_{1,2,3},\;{}^7P_{2,3,4}\;}\,.
+\boxed{\;{}^1S_0,\,{}^3S_1,\,{}^5S_2,\,{}^7S_3\;}.
 \]
 
-\textit{Ground configuration $1s^2$}: both particles in same spatial state, spatial wavefunction symmetric, so spin part must be antisymmetric. Antisymmetric spin states are $S=0,2$:
+For $1s\,2p$ ($L=1$), repeat the pairing:
 \[
-\boxed{\;\text{ground configuration: }{}^1S_0\;\text{and}\;{}^5S_2\;}.
+\text{spatial sym}\otimes\text{spin antisym}: \;{}^1P_1,\;{}^5P_{1,2,3},
+\]
+\[
+\text{spatial antisym}\otimes\text{spin sym}: \;{}^3P_{0,1,2},\;{}^7P_{2,3,4}.
+\]
+Collect levels for $1s2p$:
+\[
+\boxed{\;{}^1P_1,\;{}^3P_{0,1,2},\;{}^5P_{1,2,3},\;{}^7P_{2,3,4}\;}.
 \]
 
-\textit{Comparison with He}: in He, two electrons ($s=1/2$) in $1s^2$ allow only the antisymmetric singlet $S=0$, giving uniquely ${}^1S_0$. With two spin-3/2 $\Omega^-$, two antisymmetric spin states ($S=0,2$) survive, so the ground configuration contains both ${}^1S_0$ and ${}^5S_2$ --- a richer multiplet structure than helium.
+\textit{Ground configuration $1s^2$}: both particles in the same spatial orbital, so spatial part is necessarily symmetric. Spin must therefore be antisymmetric:
+\[
+S=0,2 \;\Rightarrow\; \boxed{\;\text{ground: }{}^1S_0\;\text{and}\;{}^5S_2\;}.
+\]
+
+\textit{Comparison with He}: two spin-$1/2$ electrons in $1s^2$ admit only the antisymmetric singlet $S=0$, giving uniquely ${}^1S_0$. Two spin-$3/2$ $\Omega^-$ admit \emph{two} antisymmetric spin states ($S=0,2$), so the ground configuration contains both ${}^1S_0$ and ${}^5S_2$ --- a richer multiplet structure than helium.
 
 %==================================================================
 \section*{Question 2 --- Helium, Zeeman effect, positronium}
@@ -252,9 +387,9 @@ allowed E1 transitions are $1s2p\,{}^1P_1\!\to\!1s^2\,{}^1S_0$, $1s2p\,{}^1P_1\!
 
 \subsection*{(b) Weak-field Zeeman effect in $LS$ coupling}
 
-Weak field: $H_\text{Zeeman}\ll H_\text{so}$, so $\vb J$ is a good quantum number; $\vb L$, $\vb S$ precess about $\vb J$.
+Weak field: $H_\text{Zeeman}\ll H_\text{so}$, so $\vb J$ is a good quantum number; $\vb L$ and $\vb S$ precess about $\vb J$, while $\vb J$ precesses slowly about $\vb B$.
 
-Zeeman Hamiltonian:
+Write the Zeeman Hamiltonian:
 \[
 H_Z = \frac{\mu_B}{\hbar}(\vb L + g_s\vb S)\cdot\vb B,\qquad g_s\approx 2.
 \]
@@ -262,42 +397,95 @@ Take $\vb B = B\hat{\vb z}$:
 \[
 H_Z = \frac{\mu_B B}{\hbar}(L_z + 2 S_z).
 \]
-Project onto $\vb J$ (Wigner--Eckart / Landé):
+Apply the projection theorem for $\vb V = \vb L + 2\vb S$ within an $\ket{LSJM_J}$ manifold:
 \[
-\langle\vb L+2\vb S\rangle = g_J\,\langle\vb J\rangle.
+\langle\vb V\rangle = \frac{\langle\vb V\cdot\vb J\rangle}{\langle\vb J^2\rangle}\,\langle\vb J\rangle \equiv g_J\,\langle\vb J\rangle.
 \]
-Compute $g_J$ via projection identity $\langle\vb V\cdot\vb J\rangle/\langle\vb J^2\rangle$:
+Expand $\vb V\cdot\vb J = (\vb L+2\vb S)\cdot(\vb L+\vb S)$:
+\[
+\vb V\cdot\vb J = \vb L^2 + \vb L\cdot\vb S + 2\vb S\cdot\vb L + 2\vb S^2 = \vb L^2 + 3\,\vb L\cdot\vb S + 2\vb S^2.
+\]
+Solve $\vb J^2=\vb L^2+\vb S^2+2\vb L\cdot\vb S$ for $\vb L\cdot\vb S$:
+\[
+\vb L\cdot\vb S = \tfrac{1}{2}(\vb J^2 - \vb L^2 - \vb S^2).
+\]
+Substitute into $\vb V\cdot\vb J$:
+\[
+\vb V\cdot\vb J = \vb L^2 + \tfrac{3}{2}(\vb J^2 - \vb L^2 - \vb S^2) + 2\vb S^2.
+\]
+Collect terms:
+\[
+\vb V\cdot\vb J = \tfrac{3}{2}\vb J^2 - \tfrac{1}{2}\vb L^2 + \tfrac{1}{2}\vb S^2.
+\]
+Take expectation in $\ket{LSJM_J}$ and divide by $\langle\vb J^2\rangle=J(J+1)\hbar^2$:
+\[
+g_J = \frac{\tfrac{3}{2}J(J+1) - \tfrac{1}{2}L(L+1) + \tfrac{1}{2}S(S+1)}{J(J+1)}.
+\]
+Rewrite $3/2 = 1 + 1/2$:
 \[
 g_J = 1 + \frac{J(J+1)+S(S+1)-L(L+1)}{2J(J+1)}.
 \]
-Energy shift:
+Energy shift in eigenstate $\ket{LSJM_J}$:
 \[
 \boxed{\;\Delta E_Z = g_J\,\mu_B B\,M_J,\quad M_J=-J,\dots,J.\;}
 \]
 
 \subsection*{(c) Zeeman patterns for the two transitions}
 
-\textit{$1s3s\,{}^1S_0\!\to\!1s2p\,{}^1P_1$ (singlet)}: $S=0$ everywhere, so $g_J=1$ for both --- \textbf{normal Zeeman effect}.
-Upper $J=0$ ($M_J=0$, no splitting); lower $J=1$ splits into $M_J=-1,0,+1$ with shifts $-\mu_B B,0,+\mu_B B$.
-Three emission lines at $\nu_0-\mu_B B/h,\,\nu_0,\,\nu_0+\mu_B B/h$:
-\begin{itemize}
-\item $\Delta M_J = -1$: $\sigma^+$ (right-circular if observed along $\vb B$); linear $\perp \vb B$ if observed transverse.
-\item $\Delta M_J = 0$: $\pi$ (linear $\parallel\vb B$, only seen transverse).
-\item $\Delta M_J = +1$: $\sigma^-$.
-\end{itemize}
+\textit{$1s3s\,{}^1S_0\!\to\!1s2p\,{}^1P_1$ (singlet)}: $S=0$ in both terms, so $g_J=1$ for both --- \textbf{normal Zeeman effect}.
 
-\textit{$1s3s\,{}^3S_1\!\to\!1s2p\,{}^3P_1$ (triplet)}: \textbf{anomalous Zeeman effect}.
-Landé:
-\[
-g({}^3S_1) = 1+\tfrac{2+2-0}{4} = 2,\qquad
-g({}^3P_1) = 1+\tfrac{2+2-2}{4} = \tfrac{3}{2}.
-\]
-Splittings (in units of $\mu_B B/\hbar$): upper $\pm 2,0$; lower $\pm 3/2,0$.
-Allowed transitions ($\Delta M_J = 0,\pm 1$): nine components in general, with frequencies:
+Upper $J=0$: $M_J=0$ only, no splitting.
+Lower $J=1$: $M_J=-1,0,+1$, shifts $-\mu_B B,\,0,\,+\mu_B B$.
+
+Write the emission frequency for $u\to l$:
 \[
 \nu = \nu_0 + (g_u M_u - g_l M_l)\mu_B B/h.
 \]
-Components ($\Delta M$ groups): $\sigma^-$ ($\Delta M=+1$), $\pi$ ($\Delta M=0$), $\sigma^+$ ($\Delta M=-1$), three each.
+Set $g_u=g_l=1$ and $M_u=0$:
+\[
+\nu = \nu_0 - M_l\,\mu_B B/h.
+\]
+Insert $M_l=-1,0,+1$:
+\[
+\nu = \nu_0+\mu_B B/h,\quad \nu_0,\quad \nu_0-\mu_B B/h.
+\]
+Polarisations:
+\begin{itemize}
+\item $\Delta M_J = M_u-M_l = \pm 1$: $\sigma^\pm$ (circular along $\vb B$; linear $\perp\vb B$ transverse).
+\item $\Delta M_J = 0$: $\pi$ (linear $\parallel\vb B$; visible only in transverse observation).
+\end{itemize}
+
+\textit{$1s3s\,{}^3S_1\!\to\!1s2p\,{}^3P_1$ (triplet)}: \textbf{anomalous Zeeman effect}.
+
+Compute Landé for upper ${}^3S_1$ ($L=0,S=1,J=1$):
+\[
+g({}^3S_1) = 1+\frac{1\cdot 2+1\cdot 2-0}{2\cdot 1\cdot 2} = 1+\frac{4}{4} = 2.
+\]
+Compute Landé for lower ${}^3P_1$ ($L=1,S=1,J=1$):
+\[
+g({}^3P_1) = 1+\frac{1\cdot 2+1\cdot 2-1\cdot 2}{2\cdot 1\cdot 2} = 1+\frac{2}{4} = \tfrac{3}{2}.
+\]
+Sub-level shifts in units of $\mu_B B$: upper $\{-2,0,+2\}$; lower $\{-3/2,0,+3/2\}$.
+
+Write the emission frequency:
+\[
+\nu = \nu_0 + (g_u M_u - g_l M_l)\mu_B B/h = \nu_0 + (2 M_u - \tfrac{3}{2}M_l)\mu_B B/h.
+\]
+Apply selection rules $\Delta M=0,\pm 1$ with $M=0\not\to M=0$ for $\Delta J=0$.
+
+Enumerate $\sigma^+$ ($M_u-M_l=+1$): $(M_u,M_l)=(+1,0)$ and $(0,-1)$:
+\[
+(2\cdot 1 - 0) = +2,\qquad (0 - \tfrac{3}{2}(-1)) = +\tfrac{3}{2}.
+\]
+Enumerate $\sigma^-$ ($M_u-M_l=-1$): $(M_u,M_l)=(-1,0)$ and $(0,+1)$:
+\[
+(2\cdot(-1)-0) = -2,\qquad (0-\tfrac{3}{2}\cdot 1) = -\tfrac{3}{2}.
+\]
+Enumerate allowed $\pi$ ($\Delta M=0$, $M\ne 0$): $(M_u,M_l)=(\pm 1,\pm 1)$:
+\[
+(2-\tfrac{3}{2}) = +\tfrac{1}{2},\qquad (-2+\tfrac{3}{2}) = -\tfrac{1}{2}.
+\]
+Total: 4 $\sigma$ and 2 $\pi$ components, so 6 triplet lines.
 
 \begin{center}
 \begin{tikzpicture}[>=stealth, scale=0.9]
@@ -333,60 +521,122 @@ Components ($\Delta M$ groups): $\sigma^-$ ($\Delta M=+1$), $\pi$ ($\Delta M=0$)
 
 \subsection*{(d) Six lines $\Rightarrow$ orientation; minimum $B$}
 
-The triplet transition gives 9 components, the singlet transition gives 3, total 12. Observing only \textbf{6} means $\pi$ components ($\Delta M=0$) are absent. $\pi$-light has electric vector along $\vb B$, hence radiates only \textbf{transverse} to $\vb B$; absent in longitudinal observation. Therefore the observer is \textbf{along the magnetic field} ($\vb k\parallel\vb B$); only $\sigma^\pm$ visible: $3+3=6$ lines.
+Total components: triplet gives $4\sigma + 2\pi = 6$; singlet gives $2\sigma+1\pi=3$; total 9. Observing only 6 means all 3 $\pi$ components are absent. $\pi$-light has $\vb E\parallel\vb B$ and so radiates only transverse to $\vb B$; it vanishes in longitudinal observation. Conclude:
+\[
+\boxed{\;\text{Observer is along the magnetic field, }\vb k\parallel\vb B;\;\text{only }\sigma^\pm\text{ visible: }4+2=6\text{ lines.}\;}
+\]
 
-Collisional (pressure-broadening) linewidth: $\Delta\nu = 1/(2\pi\tau_\text{coll})$, with $\tau_\text{coll}=1/(n\sigma\bar v)$, $\sigma=\pi(2r)^2$ (cross-section for two spheres of radius $r$).
-
-Number density (ideal gas):
+Write the pressure-broadened linewidth (FWHM):
 \[
-n = \frac{P}{k_B T} = \frac{0.1}{1.381\times 10^{-23}\times 10} = \SI{7.24e20}{m^{-3}}.
+\Delta\nu = \frac{1}{2\pi\tau_\text{coll}},\qquad \tau_\text{coll}^{-1} = n\sigma\bar v,\qquad \sigma=\pi(2r)^2.
 \]
-Mean speed:
+Compute the number density from the ideal-gas law:
 \[
-\bar v = \sqrt{\frac{8k_B T}{\pi m_\text{He}}}
-= \sqrt{\frac{8\cdot 1.381\!\times\!10^{-23}\!\cdot 10}{\pi\cdot 4\cdot 1.66\!\times\!10^{-27}}}
-= \SI{230}{m/s}.
-\]
-Cross-section:
-\[
-\sigma = \pi (2r)^2 = \pi(0.2\!\times\!10^{-9})^2 = \SI{1.26e-19}{m^2}.
-\]
-Collision rate:
-\[
-1/\tau_\text{coll} = n\sigma\bar v = 7.24\!\times\!10^{20}\!\cdot 1.26\!\times\!10^{-19}\!\cdot 230 = \SI{2.10e4}{s^{-1}}.
-\]
-Linewidth:
-\[
-\Delta\nu = \frac{1}{2\pi\tau_\text{coll}} = \frac{2.10\!\times\!10^{4}}{2\pi} = \SI{3.34e3}{Hz}.
-\]
-The smallest splitting between adjacent $\sigma$ components in the anomalous pattern:
-\[
-\Delta\nu_\text{min} = (g_u-g_l)\mu_B B/h\cdot\text{(smallest factor)}.
-\]
-Adjacent $\sigma^+$ frequencies in triplet: differences $|g_u-g_l|=1/2$, also between triplet-$\sigma$ and singlet-$\sigma$ at $\mu_B B/h$: smallest is $\mu_B B/(2h)$. Set $\Delta\nu = \mu_B B/(2h)$:
-\[
-B_\text{min} = \frac{2h\Delta\nu}{\mu_B} = \frac{2\cdot 6.626\!\times\!10^{-34}\cdot 3.34\!\times\!10^{3}}{9.274\!\times\!10^{-24}}.
+n = \frac{P}{k_B T} = \frac{0.1}{1.381\times 10^{-23}\times 10}.
 \]
 Evaluate:
 \[
-\boxed{\;B_\text{min} \approx \SI{4.8e-7}{T} \sim \SI{0.5}{\micro T}.\;}
+n = \SI{7.24e20}{m^{-3}}.
+\]
+Write the Maxwell--Boltzmann mean speed:
+\[
+\bar v = \sqrt{\frac{8k_B T}{\pi m_\text{He}}}.
+\]
+Insert $m_\text{He}=4\times\SI{1.66e-27}{kg}=\SI{6.64e-27}{kg}$ and $T=\SI{10}{K}$:
+\[
+\bar v = \sqrt{\frac{8\cdot 1.381\times 10^{-23}\cdot 10}{\pi\cdot 6.64\times 10^{-27}}}.
+\]
+Simplify the radicand:
+\[
+\bar v = \sqrt{5.30\times 10^{4}\;\text{m}^2/\text{s}^2}.
+\]
+Evaluate:
+\[
+\bar v = \SI{230}{m/s}.
+\]
+Compute the hard-sphere cross-section with $r=\SI{0.1}{nm}$:
+\[
+\sigma = \pi(2r)^2 = \pi(0.2\times 10^{-9}\;\text{m})^2 = \SI{1.26e-19}{m^2}.
+\]
+Compute the collision rate:
+\[
+\tau_\text{coll}^{-1} = n\sigma\bar v = 7.24\times 10^{20}\cdot 1.26\times 10^{-19}\cdot 230.
+\]
+Evaluate:
+\[
+\tau_\text{coll}^{-1} = \SI{2.10e4}{s^{-1}}.
+\]
+Divide by $2\pi$ to get the linewidth:
+\[
+\Delta\nu = \frac{2.10\times 10^{4}}{2\pi} = \SI{3.34e3}{Hz}.
+\]
+List $\sigma$-shifts about each line centre (units $\mu_B B/h$): singlet $\{-1,+1\}$ and triplet $\{-2,-\tfrac{3}{2},+\tfrac{3}{2},+2\}$.
+
+Identify the smallest adjacent gap (between triplet shifts $-2$ and $-3/2$, or between $+3/2$ and $+2$):
+\[
+\Delta\nu_\text{min} = \tfrac{1}{2}\,\mu_B B/h.
+\]
+Equate $\Delta\nu_\text{min}=\Delta\nu$ and solve for $B$:
+\[
+B_\text{min} = \frac{2 h\,\Delta\nu}{\mu_B}.
+\]
+Insert numbers:
+\[
+B_\text{min} = \frac{2\cdot 6.626\times 10^{-34}\cdot 3.34\times 10^{3}}{9.274\times 10^{-24}}.
+\]
+Evaluate the numerator:
+\[
+2\cdot 6.626\times 10^{-34}\cdot 3.34\times 10^{3} = 4.43\times 10^{-30}\;\text{J s Hz}.
+\]
+Divide by $\mu_B$:
+\[
+\boxed{\;B_\text{min}\approx\SI{4.8e-7}{T}\sim\SI{0.5}{\micro T}.\;}
 \]
 
 \subsection*{(e) Positronium ground configuration}
 
-Electron and positron are spin-1/2: total spin $S=0$ (para-positronium, ${}^1S_0$) or $S=1$ (ortho-positronium, ${}^3S_1$). $\boxed{\;S=0,1.\;}$
-
-In a magnetic field $\vb B = B\hat{\vb z}$:
+Electron and positron are both spin-$1/2$. Couple $1/2\otimes 1/2 = 0\oplus 1$:
 \[
-H_Z = -(\bm\mu_{e^-}+\bm\mu_{e^+})\cdot\vb B = -g_s\mu_B(S^{e^-}_z - S^{e^+}_z)B/\hbar,
+\boxed{\;S=0\;(\text{para-positronium, }{}^1S_0),\quad S=1\;(\text{ortho-positronium, }{}^3S_1).\;}
 \]
-since the positron has opposite-sign $g$-factor (and opposite charge) makes its magnetic moment have the same sign as its spin (cf. electron's opposite). The combination acts on the \textbf{difference} of spin projections, not the total. Consequence:
-\[
-\langle S=0,M=0|H_Z|S=1,M=0\rangle = g_s\mu_B B,
-\]
-mixing the singlet $S=0,M=0$ with triplet $S=1,M=0$. The $S=1,M=\pm 1$ states have $\langle S^{e^-}_z-S^{e^+}_z\rangle=0$ and are unshifted to first order.
 
-\textit{Effect}: the ground configuration shows a Zeeman-induced \textbf{mixing of singlet and $M=0$ triplet} (rather than the usual linear shift of triplet sublevels), giving the well-known ortho--para mixing in positronium hyperfine spectroscopy. The two extreme triplet states $M=\pm 1$ are unshifted to leading order; the two $M=0$ states repel each other quadratically in $B$ (avoided crossing).
+Apply $\vb B = B\hat{\vb z}$. Electron moment $\bm\mu_{e^-}=-g_s\mu_B\vb S_{e^-}/\hbar$; positron has opposite-sign $g$-factor, so $\bm\mu_{e^+}=+g_s\mu_B\vb S_{e^+}/\hbar$.
+
+Sum the moments:
+\[
+\bm\mu_{e^-}+\bm\mu_{e^+} = -\frac{g_s\mu_B}{\hbar}\bigl(\vb S_{e^-}-\vb S_{e^+}\bigr).
+\]
+Form the Zeeman Hamiltonian $H_Z=-(\bm\mu_{e^-}+\bm\mu_{e^+})\cdot\vb B$:
+\[
+H_Z = \frac{g_s\mu_B B}{\hbar}\bigl(S^{e^-}_z - S^{e^+}_z\bigr).
+\]
+Write the singlet and triplet $M=0$ kets:
+\[
+\ket{1,0} = \tfrac{1}{\sqrt 2}(\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow}),\qquad
+\ket{0,0} = \tfrac{1}{\sqrt 2}(\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow}).
+\]
+Act with $S^{e^-}_z-S^{e^+}_z$ on each product ket:
+\[
+(S^{e^-}_z-S^{e^+}_z)\ket{\uparrow\downarrow} = \tfrac{\hbar}{2}\ket{\uparrow\downarrow} - (-\tfrac{\hbar}{2})\ket{\uparrow\downarrow} = \hbar\ket{\uparrow\downarrow},
+\]
+\[
+(S^{e^-}_z-S^{e^+}_z)\ket{\downarrow\uparrow} = -\tfrac{\hbar}{2}\ket{\downarrow\uparrow} - \tfrac{\hbar}{2}\ket{\downarrow\uparrow} = -\hbar\ket{\downarrow\uparrow}.
+\]
+Apply to $\ket{1,0}$:
+\[
+(S^{e^-}_z-S^{e^+}_z)\ket{1,0} = \tfrac{\hbar}{\sqrt 2}(\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow}) = \hbar\ket{0,0}.
+\]
+Take the inner product with $\bra{0,0}$:
+\[
+\bra{0,0}(S^{e^-}_z-S^{e^+}_z)\ket{1,0} = \hbar.
+\]
+Multiply by the prefactor of $H_Z$:
+\[
+\bra{0,0} H_Z \ket{1,0} = g_s\mu_B B.
+\]
+The triplet $M=\pm 1$ states $\ket{\uparrow\uparrow}$, $\ket{\downarrow\downarrow}$ satisfy $(S^{e^-}_z-S^{e^+}_z)\ket{\pm\pm}=0$, so they are unshifted to first order.
+
+\textit{Effect}: the field \textbf{mixes the singlet $\ket{0,0}$ with the triplet $\ket{1,0}$} rather than producing the usual linear Zeeman splitting. The two extreme triplet sublevels $M=\pm 1$ are unshifted to leading order; the two $M=0$ states repel each other quadratically in $B$ (an avoided crossing). This is the textbook Breit--Rabi ortho--para mixing in positronium hyperfine spectroscopy.
 
 %==================================================================
 \section*{Question 3 --- Rabi oscillations and three-level dynamics}
@@ -401,51 +651,83 @@ Semiclassical dipole interaction: $H_\text{int}=-\bm{d}\cdot\vb E_0\cos\omega t$
 
 \subsection*{(b) Rotating wave approximation; weak-light solution}
 
-Differentiate $\dot c_2$:
-\[
-\ddot c_2 = -i\Omega_R\bigl[-\omega\sin\omega t\,e^{i\omega_0 t}c_1 + i\omega_0\cos\omega t\,e^{i\omega_0 t}c_1 + \cos\omega t\,e^{i\omega_0 t}\dot c_1\bigr].
-\]
-Cleaner: write $\cos\omega t = (e^{i\omega t}+e^{-i\omega t})/2$:
+Write $\cos\omega t = (e^{i\omega t}+e^{-i\omega t})/2$ in $\dot c_2$:
 \[
 \dot c_2 = -i\tfrac{\Omega_R}{2}\bigl[e^{i(\omega_0+\omega)t} + e^{i(\omega_0-\omega)t}\bigr]c_1.
 \]
-RWA: drop the rapidly-oscillating counter-rotating term $e^{i(\omega_0+\omega)t}$:
+RWA: drop the rapidly oscillating term $e^{i(\omega_0+\omega)t}$:
 \[
 \dot c_2 = -i\tfrac{\Omega_R}{2}\,e^{-i\delta\omega\, t} c_1,\qquad \delta\omega \equiv \omega-\omega_0.
 \]
-Similarly:
+Similarly for $\dot c_1$:
 \[
 \dot c_1 = -i\tfrac{\Omega_R}{2}\,e^{i\delta\omega\, t} c_2.
 \]
-Differentiate the first:
+Differentiate the $\dot c_2$ equation:
 \[
 \ddot c_2 = -i\tfrac{\Omega_R}{2}\bigl[-i\delta\omega\, e^{-i\delta\omega t}c_1 + e^{-i\delta\omega t}\dot c_1\bigr].
 \]
-Substitute $\dot c_1$:
+Identify $-i(\Omega_R/2)e^{-i\delta\omega t}c_1 = \dot c_2$:
 \[
-\ddot c_2 = -\delta\omega\,\dot c_2 - \tfrac{\Omega_R^2}{4} c_2 \cdot e^{-i\delta\omega t}\,e^{i\delta\omega t}.
+\ddot c_2 = -i\delta\omega\,\dot c_2 -i\tfrac{\Omega_R}{2}e^{-i\delta\omega t}\dot c_1.
 \]
-Simplify:
+Substitute $\dot c_1 = -i(\Omega_R/2)e^{i\delta\omega t}c_2$:
+\[
+\ddot c_2 = -i\delta\omega\,\dot c_2 + (-i)^2\tfrac{\Omega_R^2}{4}e^{-i\delta\omega t}e^{i\delta\omega t}c_2.
+\]
+Cancel the exponentials and use $(-i)^2=-1$:
+\[
+\ddot c_2 = -i\delta\omega\,\dot c_2 - \tfrac{\Omega_R^2}{4}c_2.
+\]
+Rearrange to standard form:
 \[
 \ddot c_2 + i\delta\omega\,\dot c_2 + \tfrac{\Omega_R^2}{4}c_2 = 0.
 \]
-Try $c_2 = A e^{i\lambda t}$:
+Try $c_2 = A e^{i\lambda t}$, which gives $\ddot c_2=-\lambda^2 c_2$ and $\dot c_2=i\lambda c_2$:
+\[
+-\lambda^2 + i\delta\omega(i\lambda) + \tfrac{\Omega_R^2}{4} = 0.
+\]
+Simplify:
 \[
 -\lambda^2 - \delta\omega\,\lambda + \tfrac{\Omega_R^2}{4} = 0.
 \]
-Solve quadratic:
+Multiply by $-1$:
+\[
+\lambda^2 + \delta\omega\,\lambda - \tfrac{\Omega_R^2}{4} = 0.
+\]
+Solve the quadratic:
 \[
 \lambda = \tfrac{1}{2}\bigl[-\delta\omega \pm\sqrt{\delta\omega^2+\Omega_R^2}\bigr].
 \]
-Define generalised Rabi frequency:
+Define the generalised Rabi frequency:
 \[
 \alpha \equiv \sqrt{\Omega_R^2 + \delta\omega^2}.
 \]
-Apply ICs $c_2(0)=0$, $\dot c_2(0)=-i\Omega_R/2$:
+Write the general solution:
 \[
-c_2(t) = -\tfrac{i\Omega_R}{\alpha}\,e^{-i\delta\omega t/2}\sin(\alpha t/2).
+c_2(t) = e^{-i\delta\omega t/2}\bigl(A_+ e^{i\alpha t/2} + A_- e^{-i\alpha t/2}\bigr).
 \]
-Modulus squared:
+Apply $c_2(0)=0$, giving $A_+ + A_- = 0$, hence $A_- = -A_+ \equiv -A$:
+\[
+c_2(t) = A\,e^{-i\delta\omega t/2}\bigl(e^{i\alpha t/2} - e^{-i\alpha t/2}\bigr).
+\]
+Use $e^{ix}-e^{-ix}=2i\sin x$:
+\[
+c_2(t) = 2iA\,e^{-i\delta\omega t/2}\sin(\alpha t/2).
+\]
+Differentiate and evaluate at $t=0$:
+\[
+\dot c_2(0) = 2iA\cdot(\alpha/2) = iA\alpha.
+\]
+Match to the EOM at $t=0$ with $c_1(0)=1$: $\dot c_2(0)=-i\Omega_R/2$:
+\[
+iA\alpha = -i\Omega_R/2 \;\Longrightarrow\; A = -\frac{\Omega_R}{2\alpha}.
+\]
+Substitute back:
+\[
+c_2(t) = -\frac{i\Omega_R}{\alpha}\,e^{-i\delta\omega t/2}\sin(\alpha t/2).
+\]
+Take modulus squared:
 \[
 \boxed{\;|c_2(t)|^2 = \frac{\Omega_R^2}{\alpha^2}\sin^2(\alpha t/2),\qquad \alpha = \sqrt{\Omega_R^2 + (\omega-\omega_0)^2}.\;}
 \]
@@ -471,64 +753,102 @@ Central peak height 1 (full transfer at resonance, fixed $t$ chosen so $\sin^2(\
 
 \subsection*{(d) Three-level: $c_2(t)$ to leading order}
 
-Weak light, $c_1\approx 1$, $c_3\approx 0$ initially:
+Take initial conditions $c_1(0)=1$, $c_2(0)=c_3(0)=0$; in weak light keep $c_1\approx 1$ and $c_3\approx 0$:
 \[
 \dot c_2 \approx -i\Omega_R\cos\omega t\,e^{i\omega_0 t}.
 \]
-Use RWA on the $\Omega_R$ term:
+Expand $\cos\omega t$:
 \[
-\dot c_2 \approx -i\tfrac{\Omega_R}{2}\,e^{i(\omega_0-\omega)t} = -i\tfrac{\Omega_R}{2}\,e^{-i\delta\omega t}.
+\dot c_2 \approx -i\tfrac{\Omega_R}{2}\bigl[e^{i(\omega_0+\omega)t}+e^{i(\omega_0-\omega)t}\bigr].
 \]
-Integrate with $c_2(0)=0$:
+Apply RWA (drop $e^{i(\omega_0+\omega)t}$, keep $e^{-i\delta\omega t}$):
 \[
-\boxed{\;c_2(t) \approx -\frac{\Omega_R}{2\delta\omega}\bigl(e^{-i\delta\omega t}-1\bigr) = \frac{\Omega_R}{2\delta\omega}\bigl(1-e^{-i\delta\omega t}\bigr).\;}
+\dot c_2 \approx -i\tfrac{\Omega_R}{2}\,e^{-i\delta\omega t}.
 \]
-Equivalently $c_2(t)\approx \tfrac{\Omega_R}{2\delta\omega}\cdot 2i\sin(\delta\omega t/2)\,e^{-i\delta\omega t/2}\cdot(-1)\cdot\dots$ --- amplitude $\sim\Omega_R/\delta\omega$ when $\delta\omega\gg\Omega_R$ (off-resonant intermediate level, small admixture).
+Integrate from $0$ to $t$ with $c_2(0)=0$:
+\[
+c_2(t) = -i\tfrac{\Omega_R}{2}\int_0^t e^{-i\delta\omega t'}\,\de t'.
+\]
+Evaluate the integral:
+\[
+c_2(t) = -i\tfrac{\Omega_R}{2}\cdot\frac{1-e^{-i\delta\omega t}}{i\delta\omega}.
+\]
+Cancel the $i$'s:
+\[
+\boxed{\;c_2(t) \approx -\frac{\Omega_R}{2\delta\omega}\bigl(1-e^{-i\delta\omega t}\bigr).\;}
+\]
+Amplitude $\sim\Omega_R/\delta\omega\ll 1$ when $\delta\omega\gg\Omega_R$: the off-resonant intermediate level is only weakly admixed.
 
 \subsection*{(e) Effective two-photon Rabi flopping for $c_3$}
 
-Near two-photon resonance $\Delta\omega = \omega_0+\phi_0-2\omega \to 0$, single-photon detuning $\delta = \omega-\omega_0 = (\phi_0-\omega_0)/2 + \dots$ is large. Approximate $c_2$ adiabatically by setting $\dot c_2 = 0$ in the equation
+Define single-photon detunings $\delta\omega\equiv\omega-\omega_0$ and $\omega-\phi_0$; the two-photon detuning is $\Delta\omega = \omega_0+\phi_0-2\omega$. Near two-photon resonance $\Delta\omega\to 0$, so $\delta\omega\approx \phi_0-\omega$; both intermediate detunings are large compared to $\Omega_R,\Phi_R$.
+
+Expand $\cos\omega t$ in the $\dot c_2$ equation:
 \[
-\dot c_2 = -i\tfrac{\Omega_R}{2}e^{-i\delta\omega t}c_1 - i\tfrac{\Phi_R}{2}e^{i(\omega-\phi_0)t}c_3.
+\dot c_2 = -i\tfrac{\Omega_R}{2}\bigl[e^{i(\omega_0+\omega)t}+e^{i(\omega_0-\omega)t}\bigr]c_1 -i\tfrac{\Phi_R}{2}\bigl[e^{-i(\phi_0-\omega)t}+e^{-i(\phi_0+\omega)t}\bigr]c_3.
 \]
-Equivalently solve algebraically (large detuning $\delta$):
+Drop the fast-rotating terms $e^{\pm i(\omega_0+\omega)t}$, $e^{-i(\phi_0+\omega)t}$:
 \[
-c_2 \approx \frac{\Omega_R}{2\delta\omega}\,c_1\,e^{-i\delta\omega t} - \frac{\Phi_R}{2(\omega-\phi_0)}\,c_3\,e^{i(\omega-\phi_0)t}.
+\dot c_2 = -i\tfrac{\Omega_R}{2}e^{-i\delta\omega t}c_1 - i\tfrac{\Phi_R}{2}e^{-i(\phi_0-\omega)t}c_3.
 \]
-Substitute into $\dot c_3$:
+Adiabatically eliminate $c_2$: with $c_1, c_3$ slow, $c_2$ follows the driving. Take the ansatz $c_2 = a\,e^{-i\delta\omega t}c_1 + b\,e^{-i(\phi_0-\omega)t}c_3$ and demand $\dot c_2$ match:
 \[
-\dot c_3 = -i\Phi_R\cos\omega t\,e^{i\phi_0 t}c_2.
+-i\delta\omega\,a\,e^{-i\delta\omega t}c_1 -i(\phi_0-\omega)\,b\,e^{-i(\phi_0-\omega)t}c_3 = -i\tfrac{\Omega_R}{2}e^{-i\delta\omega t}c_1 - i\tfrac{\Phi_R}{2}e^{-i(\phi_0-\omega)t}c_3.
 \]
-Apply RWA (keep $e^{i(\phi_0-\omega)t}$):
+Match coefficients of $e^{-i\delta\omega t}c_1$:
+\[
+a = \frac{\Omega_R}{2\delta\omega}.
+\]
+Match coefficients of $e^{-i(\phi_0-\omega)t}c_3$:
+\[
+b = \frac{\Phi_R}{2(\phi_0-\omega)}.
+\]
+Assemble $c_2$:
+\[
+c_2 \approx \frac{\Omega_R}{2\delta\omega}\,e^{-i\delta\omega t}c_1 + \frac{\Phi_R}{2(\phi_0-\omega)}\,e^{-i(\phi_0-\omega)t}c_3.
+\]
+Take the RWA $\dot c_3$ equation:
 \[
 \dot c_3 = -i\tfrac{\Phi_R}{2}\,e^{i(\phi_0-\omega)t}c_2.
 \]
-Insert adiabatic $c_2$:
+Substitute $c_2$:
 \[
-\dot c_3 = -i\tfrac{\Phi_R}{2}\bigl[\tfrac{\Omega_R}{2\delta\omega}e^{i(\phi_0-\omega)t-i\delta\omega t}c_1 - \tfrac{\Phi_R}{2(\omega-\phi_0)}c_3\bigr].
+\dot c_3 = -i\tfrac{\Phi_R}{2}\Bigl[\tfrac{\Omega_R}{2\delta\omega}e^{i(\phi_0-\omega-\delta\omega)t}c_1 + \tfrac{\Phi_R}{2(\phi_0-\omega)}c_3\Bigr].
 \]
-Combine exponentials in the cross term: $(\phi_0-\omega) - \delta\omega = \phi_0-\omega - (\omega-\omega_0) = \phi_0+\omega_0-2\omega = \Delta\omega$:
+Combine exponents using $(\phi_0-\omega)-\delta\omega = \omega_0+\phi_0-2\omega = \Delta\omega$:
 \[
-\dot c_3 = -i\tfrac{\Omega_R\Phi_R}{4\delta\omega}\,e^{i\Delta\omega\, t}\,c_1 + i\tfrac{\Phi_R^2}{4(\omega-\phi_0)}\,c_3.
+\dot c_3 = -i\,\tfrac{\Omega_R\Phi_R}{4\delta\omega}\,e^{i\Delta\omega t}\,c_1 - i\,\tfrac{\Phi_R^2}{4(\phi_0-\omega)}\,c_3.
 \]
-Identify the AC-Stark shift on level 3: $\delta_3 = \Phi_R^2/[4(\omega-\phi_0)]$. Similarly, level 1 picks up $\delta_1 = \Omega_R^2/(4\delta\omega)$. Define effective two-photon Rabi:
+Identify the AC-Stark light shift on level 3:
 \[
-\Omega_\text{eff} \equiv \frac{\Omega_R\Phi_R}{2\delta\omega}.
+\delta_3 = \frac{\Phi_R^2}{4(\phi_0-\omega)}.
 \]
-Two-level effective equations for $(c_1,c_3)$ at two-photon detuning $\Delta\omega$:
+Repeat the elimination for $\dot c_1 = -i(\Omega_R/2)e^{i\delta\omega t}c_2$:
+\[
+\dot c_1 = -i\,\tfrac{\Omega_R^2}{4\delta\omega}\,c_1 - i\,\tfrac{\Omega_R\Phi_R}{4(\phi_0-\omega)}\,e^{-i\Delta\omega t}c_3.
+\]
+Identify the AC-Stark shift on level 1:
+\[
+\delta_1 = \frac{\Omega_R^2}{4\delta\omega}.
+\]
+Near two-photon resonance set $\delta\omega\approx \phi_0-\omega$ in the off-diagonal terms and define the effective two-photon Rabi frequency:
+\[
+\Omega_\text{eff} \equiv \frac{\Omega_R\Phi_R}{2\,\delta\omega}.
+\]
+The reduced two-level system reads:
 \[
 \dot c_1 = -i\delta_1 c_1 - i\tfrac{\Omega_\text{eff}}{2}e^{-i\Delta\omega t}c_3,
 \]
 \[
 \dot c_3 = -i\delta_3 c_3 - i\tfrac{\Omega_\text{eff}}{2}e^{i\Delta\omega t}c_1.
 \]
-Effective detuning $\Delta\omega' = \Delta\omega + \delta_3 - \delta_1$ (light shifts). Standard Rabi solution:
+Absorb the diagonal shifts into a modified detuning $\Delta\omega' = \Delta\omega + \delta_3 - \delta_1$, then apply the result of part (b):
 \[
 \boxed{\;|c_3(t)|^2 = \frac{\Omega_\text{eff}^2}{\beta^2}\sin^2(\beta t/2),\quad
 \Omega_\text{eff}=\frac{\Omega_R\Phi_R}{2\,\delta\omega},\quad
 \beta = \sqrt{\Omega_\text{eff}^2 + (\Delta\omega + \delta_3-\delta_1)^2}.\;}
 \]
-(Often the AC-Stark corrections are absorbed into a redefined $\Delta\omega$, leaving $\beta=\sqrt{\Omega_\text{eff}^2+\Delta\omega^2}$.)
+(Often the AC-Stark shifts are absorbed into a redefined two-photon detuning, leaving $\beta=\sqrt{\Omega_\text{eff}^2+\Delta\omega^2}$.)
 
 %==================================================================
 \section*{Question 4 --- Einstein coefficients and astrophysical lasers}
@@ -545,97 +865,115 @@ Detailed balance (thermal, Planck): $g_l B_{lu}=g_u B_{ul}$ and $A_{ul}/B_{ul}=8
 
 \subsection*{(b) $I_S\propto\nu_0^3$ for radiative-only upper level}
 
-Optical gain cross section (homogeneous Lorentzian at line centre, $\nu_L\approx\nu_0$):
+Write the gain cross section at line centre (Lorentzian, $\nu_L\approx\nu_0$):
 \[
-\sigma_{ul}(\nu_0) = \frac{\lambda_0^2}{8\pi}\,A_{ul}\,g(\nu_0),\qquad
-g(\nu_0)=\frac{2}{\pi\Delta\nu}.
+\sigma_{ul}(\nu_0) = \frac{\lambda_0^2}{8\pi}\,A_{ul}\,\phi(\nu_0),\qquad \phi(\nu_0)=\frac{2}{\pi\Delta\nu}.
 \]
-Insert $g(\nu_0)$:
+Insert $\phi(\nu_0)$:
 \[
-\sigma_{ul}(\nu_0) = \frac{\lambda_0^2}{8\pi}\,A_{ul}\,\frac{2}{\pi\Delta\nu}
-= \frac{\lambda_0^2 A_{ul}}{4\pi^2\Delta\nu}.
+\sigma_{ul}(\nu_0) = \frac{\lambda_0^2 A_{ul}}{4\pi^2\Delta\nu}.
 \]
-Upper level radiative-only: $\tau_u = 1/A_{ul}$. Assume $\tau_l\to 0$ (or ignore $\tau_l$ term). Saturation-intensity bracket simplifies:
+Upper level radiatively dominated: $\tau_u = 1/A_{ul}$, equivalently $\tau_u A_{ul} = 1$.
+
+Factor $(g_u/g_l)\tau_l$ in the bracket of $I_S$:
 \[
-\tau_u + \tfrac{g_u}{g_l}\tau_l - \tfrac{g_u}{g_l}\tau_u\tau_l A_{ul} = \tau_u(1 - \tfrac{g_u}{g_l}\tau_l A_{ul})+\tfrac{g_u}{g_l}\tau_l \to \tau_u = 1/A_{ul}.
+\tau_u + \tfrac{g_u}{g_l}\tau_l - \tfrac{g_u}{g_l}\tau_u\tau_l A_{ul}
+= \tau_u + \tfrac{g_u}{g_l}\tau_l(1-\tau_u A_{ul}).
 \]
-Therefore:
+Apply $\tau_u A_{ul}=1$:
 \[
-I_S = \frac{h\nu_L}{\sigma_{ul}}\cdot A_{ul}.
+\tau_u + \tfrac{g_u}{g_l}\tau_l(1-1) = \tau_u = \frac{1}{A_{ul}}.
 \]
-Substitute $\sigma_{ul}$:
+Insert into the saturation formula:
 \[
-I_S = h\nu_L\,A_{ul}\cdot\frac{4\pi^2\Delta\nu}{\lambda_0^2 A_{ul}}
-= \frac{4\pi^2 h\nu_L\Delta\nu}{\lambda_0^2}.
+I_S = \frac{h\nu_L}{\sigma_{ul}}\bigl(1/A_{ul}\bigr)^{-1} = \frac{h\nu_L A_{ul}}{\sigma_{ul}}.
 \]
-Use $\lambda_0 = c/\nu_0$:
+Substitute $\sigma_{ul}=\lambda_0^2 A_{ul}/(4\pi^2\Delta\nu)$:
+\[
+I_S = h\nu_L A_{ul}\cdot\frac{4\pi^2\Delta\nu}{\lambda_0^2 A_{ul}}.
+\]
+Cancel $A_{ul}$:
+\[
+I_S = \frac{4\pi^2 h\nu_L\Delta\nu}{\lambda_0^2}.
+\]
+Use $\lambda_0 = c/\nu_0$, so $\lambda_0^2 = c^2/\nu_0^2$:
 \[
 I_S = \frac{4\pi^2 h\nu_L\nu_0^2\Delta\nu}{c^2}.
 \]
-With $\nu_L\approx\nu_0$:
+Set $\nu_L\approx\nu_0$:
 \[
 \boxed{\;I_S = \frac{4\pi^2 h\,\nu_0^3\,\Delta\nu}{c^2}\propto \nu_0^3.\;}
 \]
 
 \subsection*{(c) Spontaneous-emission photon rate from the seed region}
 
-Photons spontaneously emitted from a small cylinder of length $\ell$, diameter $d$, with population inversion $N^*$:
+Compute the total spontaneous rate from the cylinder (volume $\pi d^2\ell/4$, density $N_u$):
 \[
-\dot N_\gamma^\text{spon} = \tfrac{\pi d^2}{4}\ell\,N_u A_{ul}.
+\dot N_\gamma^\text{spon} = \frac{\pi d^2}{4}\,\ell\,N_u\,A_{ul}.
 \]
-Use $N_u\approx N^*$ (large initial inversion: $N_l$ small) and $\sigma_{ul}N^*\ell = 1$, hence $N^*\ell = 1/\sigma_{ul}$:
+Use $N_u\approx N^*$ for a large initial inversion ($N_l\ll N_u$):
 \[
-\dot N_\gamma^\text{spon} = \tfrac{\pi d^2}{4}\,\frac{A_{ul}}{\sigma_{ul}}.
+\dot N_\gamma^\text{spon} = \frac{\pi d^2}{4}\,N^*\ell\,A_{ul}.
 \]
-Insert $A_{ul}/\sigma_{ul}=I_S/(h\nu_0)$ from the saturation formula (radiative-only limit):
+Insert the gain-length condition $\sigma_{ul}N^*\ell = 1$ as $N^*\ell = 1/\sigma_{ul}$:
+\[
+\dot N_\gamma^\text{spon} = \frac{\pi d^2}{4}\,\frac{A_{ul}}{\sigma_{ul}}.
+\]
+From part (b), $I_S = h\nu_L A_{ul}/\sigma_{ul}$, hence $A_{ul}/\sigma_{ul} = I_S/(h\nu_0)$:
 \[
 \boxed{\;\dot N_\gamma^\text{spon} = \frac{\pi d^2 I_S}{4 h\nu_0}.\;}
 \]
 
 \subsection*{(d) Minimum length to reach saturation}
 
-Beam intensity grows as $\de I/\de z = \sigma_{ul}N^* I = I/\ell$ in the unsaturated regime (constant inversion). Solve:
+In the unsaturated regime $N^*$ is constant. Write the gain equation:
+\[
+\frac{\de I}{\de z} = \sigma_{ul}N^*\,I.
+\]
+Use $\sigma_{ul}N^*\ell = 1$:
+\[
+\frac{\de I}{\de z} = \frac{I}{\ell}.
+\]
+Integrate with seed intensity $I_0$ at $z=0$:
 \[
 I(z) = I_0\,e^{z/\ell}.
 \]
-Initial intensity (fraction $\eta$ of spontaneous flux directed toward the far end, divided by cross-sectional area):
+Estimate the seed intensity: spontaneous power forward $=\eta\cdot h\nu_0 A_{ul}N_u\cdot(\pi d^2\ell/4)$ over beam area $\pi d^2/4$:
 \[
-I_0 = \eta\,\frac{\dot N_\gamma^\text{spon}\,h\nu_0}{\pi d^2/4}
-= \eta\,\frac{(\pi d^2 I_S)/(4 h\nu_0)\cdot h\nu_0}{\pi d^2/4}
-= \eta\,I_S.
+I_0 = \eta\,h\nu_0\,A_{ul}\,N_u\,\ell.
 \]
-Wait --- redo: substitute $\dot N_\gamma^\text{spon} = \pi d^2 I_S/(4h\nu_0)$:
-\[
-I_0 = \eta\,\frac{(\pi d^2 I_S)/(4h\nu_0)\cdot h\nu_0}{\pi d^2/4} = \eta I_S.
-\]
-Hmm, that's too clean; the question wants a specific form. Use instead the more careful definition: spontaneous power per unit area entering the lasing solid angle is (with $N_u$ and gain length $\ell=1/(\sigma_{ul}N^*)$):
-\[
-I_0 = \eta\,h\nu_0\,A_{ul}N_u\,\ell.
-\]
-Saturation reached when $I(L_S)=I_S$:
+Saturation occurs when $I(L_S)=I_S$:
 \[
 I_S = I_0\,e^{L_S/\ell}.
 \]
-Take logarithm:
+Take the logarithm:
 \[
-L_S/\ell = \ln(I_S/I_0).
+\frac{L_S}{\ell} = \ln\!\left(\frac{I_S}{I_0}\right).
 \]
-Substitute $I_0 = \eta\,h\nu_0 A_{ul} N_u\ell$:
+Substitute $I_0$ and split the log:
 \[
-L_S = \ell\,\ln\!\left(\frac{I_S}{\eta\,h\nu_0 A_{ul}N_u\ell}\right).
+\frac{L_S}{\ell} = \ln(1/\eta) + \ln\!\left(\frac{I_S}{h\nu_0 A_{ul}N_u\ell}\right).
 \]
-Note $\ell\propto 1/\sigma_{ul}N^*$ small; the slowly varying logarithm dominates only to $\ln(1/\eta)$ at leading order; the prefactor outside the log: substitute $\ell = 1/(\sigma_{ul}N^*)$ and use $I_S\sigma_{ul}/( h\nu_0)=A_{ul}\cdot[\dots]$ ... Cleanest form, keeping only the dominant $\ln(1/\eta)$ inside the log:
+Use $I_S = h\nu_0 A_{ul}/\sigma_{ul}$ (part b) in the second log:
 \[
-L_S \simeq \ell\,\ln(1/\eta) + \ell\,\ln\!\Bigl(\frac{I_S}{h\nu_0 A_{ul}N_u\ell}\Bigr).
+\frac{I_S}{h\nu_0 A_{ul}N_u\ell} = \frac{1}{\sigma_{ul}N_u\ell}.
 \]
-Take $\ell$ such that $h\nu_0 A_{ul}N_u\ell\sim I_S$ generically; the residual logarithm is order unity, so dominant length is $\ell\,\ln(1/\eta)$. With $\ell = I_S/(h\nu_0 A_{ul}N_u)$ (gain-length definition consistent with $\sigma_{ul}N^*\ell=1$ recast in pump terms):
+Apply $\sigma_{ul} N^*\ell=1$ with $N^*\approx N_u$:
+\[
+\frac{1}{\sigma_{ul}N_u\ell} = 1.
+\]
+The second logarithm vanishes:
+\[
+\frac{L_S}{\ell} = \ln(1/\eta).
+\]
+Use $\ell = 1/(\sigma_{ul}N_u) = I_S/(h\nu_0 A_{ul}N_u)$:
 \[
 \boxed{\;L_S \simeq \frac{I_S}{h\nu_0\,A_{ul}\,N_u}\,\ln(1/\eta).\;}
 \]
 
 \subsection*{(e) Estimate of $\eta$}
 
-Photons are emitted isotropically; fraction emitted into the solid angle subtended by the far end of the cloud (cross-section area $\pi d^2/4$ at distance $\sim L$):
+Photons are emitted isotropically from the seed region. The fraction reaching the far end is the geometric ratio of its solid angle:
 \[
 \eta \sim \frac{\Delta\Omega}{4\pi} = \frac{\pi d^2/4}{4\pi L^2}.
 \]
@@ -643,6 +981,6 @@ Simplify:
 \[
 \boxed{\;\eta \sim \frac{d^2}{16\,L^2}.\;}
 \]
-(For $d\ll L$ this is very small; $\ln(1/\eta)\sim 2\ln(L/d)$ enters $L_S$ only logarithmically.)
+For $d\ll L$ this is small but enters $L_S$ only logarithmically: $\ln(1/\eta)\sim 2\ln(4L/d)$.
 
 \end{document}

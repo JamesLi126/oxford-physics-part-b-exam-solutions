@@ -34,11 +34,15 @@ Apply identity $(\vb u\cdot\nabla)\vb u = \nabla(|\vb u|^2/2) - \vb u\times(\nab
 \[
 \nabla\!\left(\tfrac{|\vb u|^2}{2}\right) - \vb u\times\bm\omega + \tfrac{1}{\rho}\nabla p + g\hat{\vb k} = 0,\qquad \bm\omega = \nabla\times\vb u.
 \]
-Irrotational flow: $\bm\omega = 0$:
+Irrotational flow, $\bm\omega = 0$:
+\[
+\nabla\!\left(\tfrac{|\vb u|^2}{2}\right) + \tfrac{1}{\rho}\nabla p + g\hat{\vb k} = 0.
+\]
+Write $g\hat{\vb k} = \nabla(gz)$ and incompressibility $\rho=\text{const}$ allows $\nabla p/\rho = \nabla(p/\rho)$:
 \[
 \nabla\!\left(\tfrac{|\vb u|^2}{2} + \tfrac{p}{\rho} + g z\right) = 0.
 \]
-Integrate:
+Integrate (since the gradient of a scalar is zero implies the scalar is constant):
 \[
 \boxed{\;\tfrac{1}{2}|\vb u|^2 + \tfrac{p}{\rho} + g z = \text{const everywhere}\;}
 \]
@@ -53,7 +57,7 @@ Compressible interpretation: with $\rho = \rho(p)$, $\nabla p/\rho$ is no longer
 
 Irrotationality: at $x<0$ the flow is uniform, hence $\bm\omega=0$. With $\nu_\text{air}\to 0$, the vorticity equation $\D\bm\omega/\D t = (\bm\omega\cdot\nabla)\vb u$ has no source, so $\bm\omega = 0$ is preserved along streamlines downstream of $x=0$.
 
-Let $k = 2\pi/\lambda$. Incompressibility:
+Let $k = 2\pi/\lambda$. Incompressibility in 2D:
 \[
 \partial_x u + \partial_z w = 0.
 \]
@@ -61,39 +65,71 @@ Compute $\partial_x u$:
 \[
 \partial_x u = U_0 a k \cos(kx)\,e^{-bz}.
 \]
-Integrate $-\partial_x u$ in $z$ for $w$:
+Rearrange for $\partial_z w$:
 \[
-w = -\int \partial_x u\,\de z = \tfrac{U_0 a k}{b}\cos(kx)\,e^{-bz} + C(x).
+\partial_z w = -U_0 a k \cos(kx)\,e^{-bz}.
 \]
-Far-field BC $w\to 0$ as $z\to\infty$: $C(x) = 0$:
+Integrate in $z$:
+\[
+w = \tfrac{U_0 a k}{b}\cos(kx)\,e^{-bz} + C(x).
+\]
+Far-field BC $w\to 0$ as $z\to\infty$ forces $C(x) = 0$:
 \[
 w(x,z) = \tfrac{U_0 a k}{b}\cos(kx)\,e^{-bz}.
 \]
-Kinematic BC at $z=0$ (linearised, since $\eta\ll\lambda$ and phase speed $\ll U_0$, hence steady):
+Kinematic BC at $z=0$ (linearised, since $\eta\ll\lambda$ and phase speed $\ll U_0$, hence quasi-steady):
 \[
-w(x,0) = U_0\,\partial_x h = U_0\,\eta k\,\cos(kx).
+w(x,0) = U_0\,\partial_x h.
 \]
-Match coefficients:
+Compute $\partial_x h$:
+\[
+\partial_x h = \eta k\,\cos(kx).
+\]
+Substitute:
+\[
+w(x,0) = U_0\,\eta k\,\cos(kx).
+\]
+Equate to expression above evaluated at $z=0$:
 \[
 \tfrac{U_0 a k}{b}\cos(kx) = U_0\,\eta k\,\cos(kx).
 \]
+Cancel $U_0 k\cos(kx)$:
+\[
+\tfrac{a}{b} = \eta.
+\]
 Solve for $a$:
 \[
-a = \tfrac{\eta b}{1} \cdot \tfrac{1}{1} \;\Rightarrow\; a = \eta b. \tag{i}
+a = \eta b. \tag{i}
 \]
-Irrotationality $\partial_z u - \partial_x w = 0$:
+Compute $\partial_z u$:
 \[
--U_0 a b\sin(kx)e^{-bz} - \bigl(-\tfrac{U_0 a k^2}{b}\sin(kx)e^{-bz}\bigr) = 0.
+\partial_z u = -U_0 a b\sin(kx)\,e^{-bz}.
 \]
-Cancel common factor:
+Compute $\partial_x w$:
 \[
--a b + \tfrac{a k^2}{b} = 0.
+\partial_x w = -\tfrac{U_0 a k^2}{b}\sin(kx)\,e^{-bz}.
 \]
-Solve for $b$:
+Impose irrotationality $\partial_z u - \partial_x w = 0$:
 \[
-b^2 = k^2 \;\Rightarrow\; b = k = \tfrac{2\pi}{\lambda}.
+-U_0 a b\sin(kx)e^{-bz} + \tfrac{U_0 a k^2}{b}\sin(kx)e^{-bz} = 0.
+\]
+Cancel common factor $U_0 a\sin(kx)e^{-bz}$:
+\[
+-b + \tfrac{k^2}{b} = 0.
+\]
+Multiply through by $b$:
+\[
+b^2 = k^2.
+\]
+Take positive root (decay as $z\to\infty$):
+\[
+b = k = \tfrac{2\pi}{\lambda}.
 \]
 Substitute into (i):
+\[
+a = \eta k.
+\]
+Boxed:
 \[
 \boxed{\;a = \eta k = \tfrac{2\pi\eta}{\lambda},\qquad b = k = \tfrac{2\pi}{\lambda}\;}
 \]
@@ -125,19 +161,39 @@ Streamlines mirror the surface near $z=0$ and flatten exponentially with decay l
 
 \textbf{Problem.} Find $p$ at $z=0$; explain how a steady wind grows ripples even with inviscid air; does the mechanism depend on direction of propagation; two amplitude-limiting processes.
 
-Bernoulli on surface streamline ($z\approx 0$, drop $gz$ since linearisation is in air, the $g$ term is the same constant on the surface):
+Bernoulli on surface streamline ($z\approx 0$, drop $gz$ since gravitational term is constant along the surface to linear order):
 \[
 p + \tfrac{1}{2}\rho_a |\vb u|^2 = p_\infty + \tfrac{1}{2}\rho_a U_0^2.
 \]
-At $z=0$, $u = U_0[1 + a\sin(kx)]$, $w = (U_0 a k/b)\cos(kx) = U_0 a\cos(kx)$:
+Evaluate $u$ at $z=0$ (with $b=k$, $a=\eta k$):
+\[
+u(x,0) = U_0[1 + a\sin(kx)].
+\]
+Evaluate $w$ at $z=0$ (with $b=k$):
+\[
+w(x,0) = \tfrac{U_0 a k}{k}\cos(kx) = U_0 a\cos(kx).
+\]
+Form $|\vb u|^2 = u^2 + w^2$ on the surface:
 \[
 |\vb u|^2 = U_0^2\bigl[(1 + a\sin kx)^2 + a^2\cos^2 kx\bigr].
 \]
-Linearise in $a = \eta k \ll 1$:
+Expand the square:
+\[
+|\vb u|^2 = U_0^2\bigl[1 + 2a\sin(kx) + a^2\sin^2(kx) + a^2\cos^2(kx)\bigr].
+\]
+Apply $\sin^2+\cos^2 = 1$:
+\[
+|\vb u|^2 = U_0^2\bigl[1 + 2a\sin(kx) + a^2\bigr].
+\]
+Linearise in $a = \eta k \ll 1$, drop $O(a^2)$:
 \[
 |\vb u|^2 \approx U_0^2\bigl[1 + 2a\sin(kx)\bigr].
 \]
-Substitute:
+Substitute into Bernoulli:
+\[
+p(x,0) = p_\infty + \tfrac{1}{2}\rho_a U_0^2 - \tfrac{1}{2}\rho_a U_0^2[1 + 2a\sin(kx)].
+\]
+Cancel the $\tfrac{1}{2}\rho_a U_0^2$ terms:
 \[
 p(x,0) = p_\infty - \rho_a U_0^2\,a\sin(kx).
 \]
@@ -169,25 +225,27 @@ Steady: $\partial_t\vb u = 0$. Axisymmetric: $\partial_\Theta\vb u = 0$, with $u
 
 Conditions: incompressible, Newtonian, steady, axisymmetric, fully-developed flow with no swirl and no body force in $z$. Then the $z$ component of N--S reduces to the cited equation, with $\partial_z p$ a constant (since LHS depends only on $r$).
 
-Multiply by $r/\nu$:
+Multiply both sides by $r/\nu$:
 \[
 \tfrac{r}{\rho\nu}\,\partial_z p = \pd{}{r}\!\left(r\,\partial_r u_z\right).
 \]
-Integrate once:
+Integrate once in $r$ (treating $\partial_z p$ as constant):
 \[
-\tfrac{r^2}{2\rho\nu}\,\partial_z p = r\,\partial_r u_z + B'.
+r\,\partial_r u_z = \tfrac{r^2}{2\rho\nu}\,\partial_z p + B.
 \]
 Divide by $r$:
 \[
-\partial_r u_z = \tfrac{r}{2\rho\nu}\,\partial_z p + \tfrac{B'}{r} \;\;\text{(define } B'=B\text{)}.
+\partial_r u_z = \tfrac{r}{2\rho\nu}\,\partial_z p + \tfrac{B}{r}.
 \]
-Integrate again:
+Integrate again in $r$:
 \[
-u_z = \tfrac{1}{4\rho\nu}\,\partial_z p\,r^2 + B\ln r + C.
+u_z = \tfrac{r^2}{4\rho\nu}\,\partial_z p + B\ln r + C.
 \]
-Read off: $A = 1/(4\rho\nu) = 1/(4\mu)$.
-
-BC1 (regularity at $r=0$): $u_z$ finite $\Rightarrow B = 0$.
+Read off the prefactor:
+\[
+A = \tfrac{1}{4\rho\nu} = \tfrac{1}{4\mu}.
+\]
+BC1 (regularity at $r=0$): $u_z$ finite forces $B = 0$.
 
 BC2 (no-slip at $r=R$): $u_z(R) = 0$:
 \[
@@ -197,26 +255,35 @@ Solve for $C$:
 \[
 C = -A\,\partial_z p\,R^2.
 \]
-Therefore:
+Substitute $A$, $B$, $C$ back:
 \[
 \boxed{\;u_z(r) = \tfrac{1}{4\mu}\,\partial_z p\,(r^2 - R^2)\;}
 \]
-With $\partial_z p = -\Delta P/L$ (pressure drops along $+z$):
+Use $\partial_z p = -\Delta P/L$ (pressure drops along $+z$):
+\[
+u_z(r) = -\tfrac{\Delta P}{4\mu L}(r^2-R^2).
+\]
+Flip sign:
 \[
 u_z(r) = \tfrac{\Delta P}{4\mu L}(R^2 - r^2).
 \]
-Flow rate:
+Volumetric flow rate through annulus $2\pi r\,\de r$:
 \[
 Q = \int_0^R u_z(r)\,2\pi r\,\de r.
 \]
-Evaluate:
+Substitute $u_z$:
 \[
 Q = \tfrac{2\pi\Delta P}{4\mu L}\int_0^R (R^2 r - r^3)\,\de r.
 \]
-Integrate:
+Evaluate the integral:
 \[
-Q = \tfrac{\pi\Delta P}{2\mu L}\left[\tfrac{R^2 r^2}{2} - \tfrac{r^4}{4}\right]_0^R = \tfrac{\pi\Delta P}{2\mu L}\cdot\tfrac{R^4}{4}.
+\int_0^R (R^2 r - r^3)\,\de r = \left[\tfrac{R^2 r^2}{2} - \tfrac{r^4}{4}\right]_0^R = \tfrac{R^4}{2} - \tfrac{R^4}{4} = \tfrac{R^4}{4}.
 \]
+Substitute back:
+\[
+Q = \tfrac{\pi\Delta P}{2\mu L}\cdot\tfrac{R^4}{4}.
+\]
+Simplify:
 \[
 \boxed{\;Q = \tfrac{\pi R^4\,\Delta P}{8\mu L}\;}
 \]
@@ -225,27 +292,47 @@ Q = \tfrac{\pi\Delta P}{2\mu L}\left[\tfrac{R^2 r^2}{2} - \tfrac{r^4}{4}\right]_
 
 \textbf{Problem.} Sketch $\log Q$ vs $\log\Delta P$ for oil through $L=\SI{1}{m}$, $R=\SI{1}{cm}$, $\nu_o = \SI{e-5}{m^2 s^{-1}}$, $\rho_o = \SI{e3}{kg m^{-3}}$, over $\Delta P \in [\SI{0.1}{Pa},\SI{e6}{Pa}]$; show $u_z(r)$ shapes for each regime.
 
-Laminar (Hagen--Poiseuille): $\mu = \rho\nu = \SI{e-2}{Pa.s}$:
+Compute dynamic viscosity:
 \[
-Q = \tfrac{\pi (10^{-2})^4}{8(10^{-2})(1)}\,\Delta P = \tfrac{\pi}{8}\times 10^{-6}\,\Delta P\;\;[\si{m^3 s^{-1}}].
+\mu = \rho\nu = (10^3)(10^{-5}) = 10^{-2}\;\si{Pa.s}.
+\]
+Substitute into Hagen--Poiseuille with $R=10^{-2}$ m, $L=1$ m:
+\[
+Q = \tfrac{\pi (10^{-2})^4}{8(10^{-2})(1)}\,\Delta P.
+\]
+Simplify the prefactor:
+\[
+Q = \tfrac{\pi}{8}\times 10^{-6}\,\Delta P\;\;[\si{m^3 s^{-1}}].
 \]
 Numerically:
 \[
 Q_\text{lam} \approx 3.93\times 10^{-7}\,\Delta P.
 \]
-Mean speed $\bar u = Q/\pi R^2$. Reynolds number $Re = 2R\bar u/\nu$:
+Define mean speed $\bar u = Q/(\pi R^2)$. Reynolds number:
 \[
-Re = \tfrac{2R}{\nu}\cdot\tfrac{Q}{\pi R^2} = \tfrac{2 Q}{\pi R\nu}.
+Re = \tfrac{2R\bar u}{\nu} = \tfrac{2 Q}{\pi R\nu}.
 \]
-Critical $Re_c \approx 2300$:
+Set $Re = Re_c \approx 2300$ and solve for critical flow rate:
 \[
-Q_c = \tfrac{\pi R\nu Re_c}{2} = \tfrac{\pi(10^{-2})(10^{-5})(2300)}{2} \approx 3.6\times 10^{-4}\,\si{m^3 s^{-1}}.
+Q_c = \tfrac{\pi R\nu\,Re_c}{2}.
 \]
-Corresponding $\Delta P_c$:
+Insert numbers:
 \[
-\Delta P_c \approx \tfrac{Q_c}{3.93\times 10^{-7}} \approx \SI{920}{Pa}.
+Q_c = \tfrac{\pi(10^{-2})(10^{-5})(2300)}{2}.
 \]
-Above $\Delta P_c$, flow turbulent; empirically (Blasius) $Q \propto \Delta P^{4/7}$, so the slope on log--log drops from $1$ to $\approx 4/7$.
+Evaluate:
+\[
+Q_c \approx 3.6\times 10^{-4}\,\si{m^3 s^{-1}}.
+\]
+Critical pressure drop from laminar relation:
+\[
+\Delta P_c \approx \tfrac{Q_c}{3.93\times 10^{-7}}.
+\]
+Evaluate:
+\[
+\Delta P_c \approx \SI{920}{Pa}.
+\]
+Above $\Delta P_c$ flow becomes turbulent; empirically (Blasius friction $f\sim Re^{-1/4}$) $Q \propto \Delta P^{4/7}$, so the log--log slope drops from $1$ to $\approx 4/7$.
 
 \begin{center}
 \begin{tikzpicture}[>=stealth, scale=0.9]
@@ -311,25 +398,41 @@ Conservation of angular momentum of the parcel during slow radial displacement:
 \[
 L = m\,u_\Theta\,r = \text{const}.
 \]
-At $r$, $L = m\omega r^2$. After $r\to r+\delta r$:
+Initial value at radius $r$:
 \[
-u_\Theta'(r+\delta r) = \tfrac{\omega r^2}{r+\delta r}.
+L_0 = m\,\omega r\cdot r = m\omega r^2.
 \]
-Linearise:
+After displacement $r\to r+\delta r$:
 \[
-u_\Theta' \approx \omega r\bigl(1 - \tfrac{\delta r}{r}\bigr) = \omega r - \omega\,\delta r.
+u_\Theta'(r+\delta r) = \tfrac{L_0/m}{r+\delta r} = \tfrac{\omega r^2}{r+\delta r}.
+\]
+Linearise using $1/(1+\delta r/r)\approx 1-\delta r/r$:
+\[
+u_\Theta' \approx \omega r\bigl(1 - \tfrac{\delta r}{r}\bigr).
+\]
+Simplify:
+\[
+u_\Theta' \approx \omega r - \omega\,\delta r.
 \]
 Background fluid at $r+\delta r$ moves at:
 \[
 u_\Theta^\text{bg} = \omega(r+\delta r) = \omega r + \omega\,\delta r.
 \]
-Centripetal acceleration required to hold parcel on the new streamline is $u_\Theta^{\text{bg}\,2}/(r+\delta r)$, but the parcel only has $u_\Theta^{\prime\,2}/(r+\delta r)$. Difference (per unit mass), to leading order in $\delta r$:
+Required centripetal acceleration to remain on the new streamline is $(u_\Theta^\text{bg})^2/(r+\delta r)$; parcel can only supply $(u_\Theta')^2/(r+\delta r)$. Take the difference:
 \[
-\Delta a_r = \tfrac{(u_\Theta^\text{bg})^2 - (u_\Theta')^2}{r+\delta r} \approx \tfrac{(\omega r+\omega\delta r)^2 - (\omega r - \omega\delta r)^2}{r}.
+\Delta a_r = \tfrac{(u_\Theta^\text{bg})^2 - (u_\Theta')^2}{r+\delta r}.
 \]
-Expand:
+Substitute and keep $r+\delta r\approx r$ in the denominator:
 \[
-\Delta a_r \approx \tfrac{4\omega^2 r\,\delta r}{r} = 4\omega^2\,\delta r.
+\Delta a_r \approx \tfrac{(\omega r+\omega\delta r)^2 - (\omega r - \omega\delta r)^2}{r}.
+\]
+Apply difference of squares $A^2-B^2 = (A+B)(A-B)$ with $A=\omega r+\omega\delta r$, $B=\omega r-\omega\delta r$:
+\[
+\Delta a_r \approx \tfrac{(2\omega r)(2\omega\delta r)}{r}.
+\]
+Simplify:
+\[
+\Delta a_r \approx 4\omega^2\,\delta r.
 \]
 Hence the parcel experiences a net \emph{inward} restoring acceleration $4\omega^2\,\delta r$ per unit mass: solid-body rotation is centrifugally stable (Rayleigh criterion: $\de(r u_\Theta)^2/\de r > 0$).
 
@@ -356,25 +459,41 @@ Fixed point condition: set $\dot x = \dot y = \dot z = 0$:
 \[
 -y - z = 0,\qquad x + ay = 0,\qquad a + z(x-c) = 0.
 \]
-From first: $z = -y$. From second: $x = -ay$. Substitute in third:
+From the first equation:
+\[
+z = -y.
+\]
+From the second equation:
+\[
+x = -ay.
+\]
+Substitute both into the third:
 \[
 a + (-y)(-ay - c) = 0.
 \]
-Expand:
+Expand the product:
 \[
 a + a y^2 + c y = 0.
 \]
-Solve quadratic for $y$:
+Rewrite as a quadratic in $y$:
+\[
+a y^2 + c y + a = 0.
+\]
+Apply the quadratic formula:
 \[
 y = \tfrac{-c\pm\sqrt{c^2 - 4a^2}}{2a}.
 \]
-Take $c^2\gg a^2$:
+Expand $\sqrt{c^2-4a^2}$ for $c^2\gg a^2$:
 \[
 \sqrt{c^2 - 4a^2}\approx c\bigl(1 - \tfrac{2a^2}{c^2}\bigr).
 \]
-Two roots:
+Inner root ($+$ branch, cancellation):
 \[
-y_+ \approx -\tfrac{a}{c} \;\;\text{(near origin)},\qquad y_- \approx -\tfrac{c}{a}\;\;\text{(far)}.
+y_+ \approx \tfrac{-c + c(1-2a^2/c^2)}{2a} = \tfrac{-2a^2/c}{2a} = -\tfrac{a}{c}.
+\]
+Outer root ($-$ branch):
+\[
+y_- \approx \tfrac{-c - c}{2a} = -\tfrac{c}{a}.
 \]
 Inner fixed point coordinates:
 \[
@@ -397,23 +516,31 @@ At inner fixed point, $z = a/c$, $x-c \approx -c$:
 \[
 \vb J_+ \approx \begin{pmatrix} 0 & -1 & -1 \\ 1 & a & 0 \\ a/c & 0 & -c \end{pmatrix}.
 \]
-Characteristic polynomial $\det(\vb J_+ - \lambda\vb I) = 0$:
+Characteristic polynomial $\det(\vb J_+ - \lambda\vb I) = 0$, expanded along the first row:
 \[
--\lambda\bigl[(a-\lambda)(-c-\lambda)\bigr] + 1\bigl[(-c-\lambda)(1)\bigr] + (-1)\bigl[-\tfrac{a}{c}(a-\lambda)\bigr] = 0.
+-\lambda\bigl[(a-\lambda)(-c-\lambda)-0\bigr] + 1\bigl[1\cdot(-c-\lambda) - 0\bigr] + (-1)\bigl[0 - \tfrac{a}{c}(a-\lambda)\bigr] = 0.
 \]
-Expand the first bracket:
+Expand the first inner bracket:
 \[
-(a-\lambda)(-c-\lambda) = -ac - a\lambda + c\lambda + \lambda^2.
+(a-\lambda)(-c-\lambda) = \lambda^2 + (c-a)\lambda - ac.
 \]
 Multiply by $-\lambda$:
 \[
 -\lambda(\lambda^2 + (c-a)\lambda - ac) = -\lambda^3 - (c-a)\lambda^2 + ac\lambda.
 \]
-Combine all terms:
+Combine all three cofactor contributions:
 \[
--\lambda^3 - (c-a)\lambda^2 + ac\lambda - c - \lambda + \tfrac{a}{c}(a-\lambda) = 0.
+-\lambda^3 - (c-a)\lambda^2 + ac\lambda + (-c-\lambda) + \tfrac{a}{c}(a-\lambda) = 0.
 \]
-Group $a/c$ as small (order $1/c$) and drop:
+Expand the last bracket:
+\[
+-\lambda^3 - (c-a)\lambda^2 + ac\lambda - c - \lambda + \tfrac{a^2}{c} - \tfrac{a\lambda}{c} = 0.
+\]
+Drop $O(1/c)$ terms ($a^2/c$ and $a\lambda/c$) since $c\gg 1$:
+\[
+-\lambda^3 - (c-a)\lambda^2 + ac\lambda - c - \lambda = 0.
+\]
+Collect $\lambda$ terms:
 \[
 -\lambda^3 - (c-a)\lambda^2 + (ac-1)\lambda - c = 0.
 \]
@@ -421,15 +548,13 @@ Multiply by $-1$:
 \[
 \lambda^3 + (c-a)\lambda^2 - (ac-1)\lambda + c = 0. \tag{$\ast$}
 \]
-For $c\gg 1$, look for one large real root $\lambda_3 \approx -c$ (dominated by $c\lambda^2 + c$):
+Anticipate one large real root $\lambda_3 \approx -c$ from leading $c\lambda^2 + c$ balance. Factor $(\ast)$ exactly:
 \[
-\lambda_3\approx -c\quad\text{(strongly contracting along $z$-like direction).}
+\lambda^3 + (c-a)\lambda^2 - (ac-1)\lambda + c = (\lambda+c)(\lambda^2 - a\lambda + 1).
 \]
-Factor out $(\lambda + c)$ approximately from $(\ast)$:
-\[
-\lambda^3 + c\lambda^2 - a\lambda^2 - ac\lambda + \lambda + c \approx (\lambda+c)(\lambda^2 - a\lambda + 1).
-\]
-Remaining quadratic governs the in-plane (xy-like) eigenvalues:
+Check by expansion: $(\lambda+c)(\lambda^2-a\lambda+1) = \lambda^3 -a\lambda^2 + \lambda + c\lambda^2 -ac\lambda + c = \lambda^3 + (c-a)\lambda^2 + (1-ac)\lambda + c$. \checkmark
+
+Set the quadratic factor to zero for in-plane eigenvalues:
 \[
 \lambda^2 - a\lambda + 1 = 0.
 \]
@@ -437,13 +562,16 @@ Solve:
 \[
 \lambda_{1,2} = \tfrac{a\pm\sqrt{a^2 - 4}}{2}.
 \]
+The third eigenvalue is $\lambda_3 \approx -c$ (strongly contracting along $z$-like direction).
 
-Behaviour as a function of $a$:
+Behaviour as a function of $a$ (with $\lambda_3\approx -c<0$ always strongly stable):
 \begin{itemize}
-\item $a < 0$: $\Re\lambda_{1,2} = a/2 < 0$. Complex pair (since $a^2<4$): \emph{stable spiral} in xy-plane combined with strongly stable z-direction $\Rightarrow$ stable focus.
-\item $0 < a < 2$: $\Re\lambda_{1,2} = a/2 > 0$, complex conjugate pair: \emph{unstable spiral} in xy-plane $\Rightarrow$ saddle-focus (one stable real, two unstable spiral).
-\item $a > 2$: real positive eigenvalues: unstable node in xy combined with stable z $\Rightarrow$ saddle.
-\item $a = 0$: marginally stable (centre); $a=2$: degenerate.
+\item $-2<a<0$: discriminant $a^2-4<0$, $\Re\lambda_{1,2} = a/2 < 0$, complex pair: \emph{stable spiral} in xy-plane $\Rightarrow$ stable focus overall.
+\item $a < -2$: real negative eigenvalues: stable node in xy $\Rightarrow$ stable node overall.
+\item $a = 0$: $\Re\lambda_{1,2}=0$ (centre in xy-plane): Hopf bifurcation marginally.
+\item $0 < a < 2$: $\Re\lambda_{1,2} = a/2 > 0$, complex conjugate pair: \emph{unstable spiral} in xy-plane $\Rightarrow$ saddle-focus (two unstable spiral directions, one stable real).
+\item $a > 2$: real positive eigenvalues, unstable node in xy combined with stable z $\Rightarrow$ saddle.
+\item $a=\pm 2$: degenerate (repeated real eigenvalue).
 \end{itemize}
 \[
 \boxed{\;\lambda^2 - a\lambda + 1 = 0,\;\lambda_3\approx -c;\;\text{Hopf bifurcation at }a=0.\;}
@@ -465,31 +593,43 @@ Energy of a perturbation $\delta\vb x$:
 \[
 E = \tfrac{1}{2}|\delta\vb x|^2.
 \]
-Time derivative:
+Take time derivative:
 \[
-\dot E = \delta\vb x\cdot\delta\dot{\vb x} = \delta\vb x\cdot\vb J\,\delta\vb x.
+\dot E = \delta\vb x\cdot\delta\dot{\vb x}.
 \]
-Symmetrise (only the symmetric part contributes to a quadratic form):
+Linearise $\delta\dot{\vb x} = \vb J\,\delta\vb x$:
+\[
+\dot E = \delta\vb x\cdot\vb J\,\delta\vb x.
+\]
+Symmetrise (only the symmetric part contributes to the quadratic form $\vb v\cdot M\vb v$):
 \[
 \dot E = \tfrac{1}{2}\,\delta\vb x\cdot(\vb J + \vb J^T)\,\delta\vb x.
 \]
-Define $\vb S = \tfrac{1}{2}(\vb J+\vb J^T)$ (symmetric, diagonalisable with real eigenvalues $\sigma_i$ and orthonormal eigenvectors $\hat{\vb e}_i$). Decompose $\delta\vb x = \sum_i c_i\hat{\vb e}_i$:
+The symmetric matrix $\vb J + \vb J^T$ is diagonalisable with real eigenvalues $\mu_i$ and orthonormal eigenvectors $\hat{\vb e}_i$. Decompose $\delta\vb x = \sum_i c_i\hat{\vb e}_i$:
 \[
-\dot E = \sum_i \sigma_i c_i^2.
+\dot E = \tfrac{1}{2}\sum_i \mu_i c_i^2.
 \]
-Thus along $\hat{\vb e}_i$ with $\sigma_i>0$, $|\delta\vb x|$ grows; with $\sigma_i<0$, it shrinks. \hfill$\square$
+Along $\hat{\vb e}_i$ with $\mu_i>0$, $|\delta\vb x|^2$ grows; with $\mu_i<0$, it shrinks. \hfill$\square$
 
-For the R\"ossler system:
+Compute $\vb J + \vb J^T$ for the R\"ossler system:
 \[
 \vb J + \vb J^T = \begin{pmatrix} 0 & 0 & z-1 \\ 0 & 2a & 0 \\ z-1 & 0 & 2(x-c) \end{pmatrix}.
 \]
-The $y$-axis is an eigenvector with eigenvalue $\sigma_y = 2a > 0$: at every phase-space point, perturbations along $\hat{\vb y}$ grow.
+The $y$-axis decouples: $\hat{\vb y}$ is an eigenvector with eigenvalue $\mu_y = 2a$. For $a > 0$, $\mu_y>0$, so perturbations along $\hat{\vb y}$ grow at every phase-space point. \hfill$\square_1$
 
-Trace of $\vb S$ equals trace of $\vb J$:
+The remaining $xz$-block of $\vb J+\vb J^T$ is
 \[
-\tau(\vb S) = 2a + 2(x-c).
+M_{xz} = \begin{pmatrix} 0 & z-1 \\ z-1 & 2(x-c) \end{pmatrix}.
 \]
-Sum of three real eigenvalues equals the trace, so if one eigenvalue $=2a>0$, the remaining two sum to $2(x-c)$. For $x<c$ (which holds on most of the attractor), this sum is negative, hence \emph{at least one} of those two eigenvalues is negative: there is at least one shrinking direction. \hfill$\square$
+Compute its determinant:
+\[
+\det M_{xz} = 0\cdot 2(x-c) - (z-1)^2 = -(z-1)^2.
+\]
+Product of the two eigenvalues equals the determinant:
+\[
+\mu_x\,\mu_z = -(z-1)^2 \le 0.
+\]
+Therefore, generically (whenever $z\ne 1$), one of $\mu_x,\mu_z$ is positive and the other negative: there is at least one shrinking direction at every such phase-space point. \hfill$\square_2$
 
 Geometric meaning of $\overline{\tau(\vb J)}<0$: by Liouville's theorem, the local rate of phase-space volume change along a trajectory is $\nabla\cdot\dot{\vb x} = \tau(\vb J)$. Averaging:
 \[
@@ -504,31 +644,35 @@ Phase-space volumes contract on average. Combined with stretching in at least on
 
 \textbf{Problem.} Use the overdamped Langevin equation to derive $\alpha = 2D\gamma^2$ from the noise correlator.
 
-Drop $m\ddot{\vb r}$:
+Take $m/\gamma\to 0$, i.e. drop the $m\ddot{\vb r}$ term:
 \[
 \gamma\,\dot{\vb r}(t) = \vb F(t).
 \]
-Solve formally:
+Integrate from $0$ to $t$:
 \[
 \vb r(t) - \vb r(0) = \tfrac{1}{\gamma}\int_0^t \vb F(t')\,\de t'.
 \]
-Compute mean-square displacement (one cartesian component, $i$):
+Square one Cartesian component and take ensemble average:
 \[
 \langle [r_i(t)-r_i(0)]^2\rangle = \tfrac{1}{\gamma^2}\int_0^t\!\!\int_0^t \langle F_i(t_1)F_i(t_2)\rangle\,\de t_1\,\de t_2.
 \]
-Insert correlator $\langle F_iF_i\rangle = \alpha\,\delta(t_2-t_1)$:
+Insert correlator $\langle F_i(t_1)F_i(t_2)\rangle = \alpha\,\delta(t_2-t_1)$:
 \[
-\langle [r_i(t)-r_i(0)]^2\rangle = \tfrac{\alpha}{\gamma^2}\int_0^t\,\de t_1 = \tfrac{\alpha t}{\gamma^2}.
+\langle [r_i(t)-r_i(0)]^2\rangle = \tfrac{\alpha}{\gamma^2}\int_0^t\!\!\int_0^t \delta(t_2-t_1)\,\de t_1\,\de t_2.
 \]
-Sum over three dimensions for $\langle |\Delta\vb r|^2\rangle$:
+Perform the $t_2$ integral (delta picks $t_2=t_1$):
+\[
+\langle [r_i(t)-r_i(0)]^2\rangle = \tfrac{\alpha}{\gamma^2}\int_0^t \de t_1 = \tfrac{\alpha t}{\gamma^2}.
+\]
+Sum over $i=x,y,z$ for the full 3D displacement:
 \[
 \langle |\Delta\vb r|^2\rangle = \tfrac{3\alpha t}{\gamma^2}.
 \]
-Compare to Einstein: $\langle|\Delta\vb r|^2\rangle = 6Dt$:
+Equate to Einstein $\langle|\Delta\vb r|^2\rangle = 6Dt$:
 \[
 \tfrac{3\alpha t}{\gamma^2} = 6Dt.
 \]
-Solve:
+Cancel $t$ and solve for $\alpha$:
 \[
 \boxed{\;\alpha = 2D\gamma^2\;}
 \]
@@ -537,81 +681,101 @@ Solve:
 
 \textbf{Problem.} From the full Langevin equation derive $D\gamma = k_B T$; for a $\SI{6}{nm}$ protein of mass $\SI{166e-24}{kg}$ in water $\eta = \SI{e-3}{Pa.s}$ at \SI{293}{K}, find $D$, $v_\text{rms}$, and time to diffuse $\sim\SI{1}{\micro m}$.
 
-Take inner product of the full Langevin equation with $\vb r$:
+Take dot product of the Langevin equation with $\vb r$:
 \[
 m\,\vb r\cdot\ddot{\vb r} + \gamma\,\vb r\cdot\dot{\vb r} = \vb r\cdot\vb F.
 \]
-Use $\vb r\cdot\ddot{\vb r} = \tfrac{1}{2}\tfrac{\de^2}{\de t^2}|\vb r|^2 - |\dot{\vb r}|^2$ and $\vb r\cdot\dot{\vb r} = \tfrac{1}{2}\tfrac{\de}{\de t}|\vb r|^2$:
+Apply identities $\vb r\cdot\ddot{\vb r} = \tfrac{1}{2}\tfrac{\de^2}{\de t^2}|\vb r|^2 - |\dot{\vb r}|^2$ and $\vb r\cdot\dot{\vb r} = \tfrac{1}{2}\tfrac{\de}{\de t}|\vb r|^2$:
+\[
+\tfrac{m}{2}\tfrac{\de^2}{\de t^2}|\vb r|^2 - m|\dot{\vb r}|^2 + \tfrac{\gamma}{2}\tfrac{\de}{\de t}|\vb r|^2 = \vb r\cdot\vb F.
+\]
+Take ensemble average:
 \[
 \tfrac{m}{2}\tfrac{\de^2}{\de t^2}\langle|\vb r|^2\rangle - m\langle|\dot{\vb r}|^2\rangle + \tfrac{\gamma}{2}\tfrac{\de}{\de t}\langle|\vb r|^2\rangle = \langle\vb r\cdot\vb F\rangle.
 \]
-At equal time, $\langle\vb r(t)\cdot\vb F(t)\rangle = 0$ (causality):
+At equal time $\langle\vb r(t)\cdot\vb F(t)\rangle = 0$ (causality: $\vb r(t)$ depends on $\vb F$ only at earlier times):
 \[
 \tfrac{m}{2}\tfrac{\de^2}{\de t^2}\langle|\vb r|^2\rangle - m\langle|\dot{\vb r}|^2\rangle + \tfrac{\gamma}{2}\tfrac{\de}{\de t}\langle|\vb r|^2\rangle = 0.
 \]
-Equipartition (3 dof):
+Apply equipartition (3 translational dof):
 \[
 m\langle|\dot{\vb r}|^2\rangle = 3k_B T.
 \]
-Steady-state diffusive regime: $\tfrac{\de}{\de t}\langle|\vb r|^2\rangle = 6D$ (constant) so the second derivative vanishes:
+In steady-state diffusion, $\tfrac{\de}{\de t}\langle|\vb r|^2\rangle = 6D$ (constant), so the second derivative vanishes:
 \[
-- 3k_B T + \tfrac{\gamma}{2}(6D) = 0.
+0 - 3k_B T + \tfrac{\gamma}{2}(6D) = 0.
 \]
-Solve:
+Simplify:
+\[
+3\gamma D = 3 k_B T.
+\]
+Divide by 3:
 \[
 \boxed{\;D\gamma = k_B T\;}
 \]
 (Einstein relation.)
 
-Numerical evaluation. Stokes drag for a sphere of radius $a = \SI{3e-9}{m}$:
+Numerical evaluation. Stokes drag for a sphere of radius $a = \SI{3e-9}{m}$ (half the diameter):
 \[
 \gamma = 6\pi\eta a.
 \]
-Insert numbers:
+Insert $\eta = 10^{-3}$ Pa$\cdot$s and $a = 3\times 10^{-9}$ m:
 \[
-\gamma = 6\pi(10^{-3})(3\times 10^{-9}) \;\si{kg s^{-1}}.
-\]
-Multiply:
-\[
-\gamma \approx 5.65\times 10^{-11}\;\si{kg s^{-1}}.
-\]
-Diffusion coefficient:
-\[
-D = \tfrac{k_B T}{\gamma}.
-\]
-Insert $k_B T = (1.38\times 10^{-23})(293) = 4.04\times 10^{-21}\;\si{J}$:
-\[
-D = \tfrac{4.04\times 10^{-21}}{5.65\times 10^{-11}}\;\si{m^2 s^{-1}}.
+\gamma = 6\pi(10^{-3})(3\times 10^{-9}) \;\si{kg.s^{-1}}.
 \]
 Evaluate:
 \[
-\boxed{\;D \approx \SI{7.2e-11}{m^2 s^{-1}}\;}
+\gamma \approx 5.65\times 10^{-11}\;\si{kg.s^{-1}}.
+\]
+Compute $k_B T$ at $T=293$ K:
+\[
+k_B T = (1.38\times 10^{-23})(293) \approx 4.04\times 10^{-21}\;\si{J}.
+\]
+Diffusion coefficient from Einstein relation:
+\[
+D = \tfrac{k_B T}{\gamma}.
+\]
+Substitute:
+\[
+D = \tfrac{4.04\times 10^{-21}}{5.65\times 10^{-11}}\;\si{m^2.s^{-1}}.
+\]
+Evaluate:
+\[
+\boxed{\;D \approx \SI{7.2e-11}{m^2.s^{-1}}\;}
 \]
 
-RMS speed (3D equipartition):
+RMS speed from 3D equipartition $\tfrac{1}{2}m\langle v^2\rangle = \tfrac{3}{2}k_BT$:
 \[
 v_\text{rms} = \sqrt{\tfrac{3 k_B T}{m}}.
 \]
-Insert:
+Substitute $m = 1.66\times 10^{-22}$ kg and $k_BT = 4.04\times 10^{-21}$ J:
 \[
-v_\text{rms} = \sqrt{\tfrac{3(4.04\times 10^{-21})}{166\times 10^{-24}}}\;\si{m s^{-1}}.
+v_\text{rms} = \sqrt{\tfrac{3(4.04\times 10^{-21})}{1.66\times 10^{-22}}}\;\si{m.s^{-1}}.
 \]
-Evaluate inside the root:
+Compute the numerator:
 \[
-\tfrac{3(4.04\times 10^{-21})}{166\times 10^{-24}} = 7.30\times 10^{4}\;\si{m^2 s^{-2}}.
+3(4.04\times 10^{-21}) = 1.212\times 10^{-20}\;\si{J}.
 \]
-Square-root:
+Divide:
 \[
-\boxed{\;v_\text{rms} \approx \SI{270}{m s^{-1}}\;}
+\tfrac{1.212\times 10^{-20}}{1.66\times 10^{-22}} = 73.0\;\si{m^2.s^{-2}}.
+\]
+Take the square root:
+\[
+\boxed{\;v_\text{rms} \approx \SI{8.5}{m.s^{-1}}\;}
 \]
 
-\textit{E. coli} length $L \sim \SI{2}{\micro m}$. Diffusion time in 3D (using $\langle r^2\rangle = 6 D t$):
+\textit{E. coli} typical length $L \sim \SI{2}{\micro m}$. Diffusion time from $\langle|\Delta\vb r|^2\rangle = 6Dt$:
 \[
 t \sim \tfrac{L^2}{6D}.
 \]
-Insert:
+Substitute $L = 2\times 10^{-6}$ m and $D = 7.2\times 10^{-11}$ m$^2$/s:
 \[
-t \sim \tfrac{(2\times 10^{-6})^2}{6(7.2\times 10^{-11})} = \tfrac{4\times 10^{-12}}{4.3\times 10^{-10}}\;\si{s}.
+t \sim \tfrac{(2\times 10^{-6})^2}{6(7.2\times 10^{-11})}\;\si{s}.
+\]
+Simplify numerator and denominator:
+\[
+t \sim \tfrac{4\times 10^{-12}}{4.32\times 10^{-10}}\;\si{s}.
 \]
 Evaluate:
 \[
@@ -622,27 +786,37 @@ Evaluate:
 
 \textbf{Problem.} For a bead in a 1D harmonic trap of stiffness $\kappa$, compute $\langle x^2\rangle$ from the partition function, then the position power spectrum from the Langevin equation; explain how it determines $\kappa$.
 
-Trap potential $U(x) = \tfrac{1}{2}\kappa x^2$. Boltzmann partition (1D classical):
+Trap potential:
 \[
-Z = \int_{-\infty}^\infty e^{-\kappa x^2/(2 k_B T)}\,\de x = \sqrt{\tfrac{2\pi k_B T}{\kappa}}.
+U(x) = \tfrac{1}{2}\kappa x^2.
 \]
-$\langle x^2\rangle$ from Gaussian moment:
+1D classical partition function:
 \[
-\langle x^2\rangle = \tfrac{1}{Z}\int x^2 e^{-\kappa x^2/(2k_BT)}\,\de x.
+Z = \int_{-\infty}^\infty e^{-U(x)/(k_BT)}\,\de x = \int_{-\infty}^\infty e^{-\kappa x^2/(2 k_B T)}\,\de x.
+\]
+Use Gaussian integral $\int e^{-ax^2}\de x = \sqrt{\pi/a}$ with $a = \kappa/(2k_BT)$:
+\[
+Z = \sqrt{\tfrac{2\pi k_B T}{\kappa}}.
+\]
+Mean-squared displacement:
+\[
+\langle x^2\rangle = \tfrac{1}{Z}\int_{-\infty}^\infty x^2 e^{-\kappa x^2/(2k_BT)}\,\de x.
 \]
 Use $\int x^2 e^{-ax^2}\de x = \tfrac{1}{2a}\sqrt{\pi/a}$ with $a = \kappa/(2k_BT)$:
+\[
+\int x^2 e^{-\kappa x^2/(2k_BT)}\,\de x = \tfrac{k_B T}{\kappa}\sqrt{\tfrac{2\pi k_BT}{\kappa}}.
+\]
+Divide by $Z$:
 \[
 \boxed{\;\langle x^2\rangle = \tfrac{k_B T}{\kappa}\;}
 \]
 (equipartition).
 
-Overdamped 1D Langevin in the trap:
+Overdamped 1D Langevin equation in the trap:
 \[
-\gamma\,\dot x + \kappa x = F(t),\qquad \langle F(t_1)F(t_2)\rangle = 4 k_B T\gamma\,\delta(t_2-t_1)/2.
+\gamma\,\dot x + \kappa x = F(t),\qquad \langle F(t_1)F(t_2)\rangle = 4 k_B T\gamma\,\delta(t_2-t_1).
 \]
-(Note: the question specifies $4k_BT\gamma$ as the noise magnitude; we keep the convention $\alpha = 2k_B T\gamma$ in the symmetric two-sided PSD; the algebra is identical.)
-
-Fourier-transform with convention $x(t) = \int e^{-i\omega t}\tilde x(\omega)\de\omega/(2\pi)$:
+Fourier-transform with convention $x(t) = \int e^{-i\omega t}\tilde x(\omega)\,\de\omega/(2\pi)$, so $\partial_t \to -i\omega$:
 \[
 (-i\omega\gamma + \kappa)\tilde x(\omega) = \tilde F(\omega).
 \]
@@ -650,7 +824,15 @@ Solve for $\tilde x$:
 \[
 \tilde x(\omega) = \tfrac{\tilde F(\omega)}{\kappa - i\omega\gamma}.
 \]
-Power spectrum from $\langle\tilde x(\omega)\tilde x^\ast(\omega')\rangle = 2\pi S_x(\omega)\delta(\omega-\omega')$ and the white noise PSD $S_F = 2\alpha = 4k_BT\gamma$:
+PSD of $F$ from Wiener--Khinchin (FT of $\delta$-correlator):
+\[
+S_F(\omega) = \int\langle F(t)F(0)\rangle e^{i\omega t}\,\de t = 4 k_B T\gamma.
+\]
+Apply $S_x(\omega) = |H(\omega)|^2 S_F(\omega)$ with transfer function $H(\omega) = 1/(\kappa - i\omega\gamma)$:
+\[
+|H(\omega)|^2 = \tfrac{1}{\kappa^2 + \omega^2\gamma^2}.
+\]
+Substitute:
 \[
 S_x(\omega) = \tfrac{S_F}{\kappa^2 + \omega^2\gamma^2}.
 \]
@@ -658,11 +840,14 @@ Insert $S_F = 4 k_B T\gamma$:
 \[
 \boxed{\;S_x(\omega) = \tfrac{4 k_B T\gamma}{\kappa^2 + \gamma^2\omega^2}\;}
 \]
-This is a Lorentzian. The corner (half-power) frequency
+This is a Lorentzian. Define the corner (half-power) frequency:
 \[
-\omega_c = \kappa/\gamma
+\omega_c = \kappa/\gamma.
 \]
-is read off from the knee in $\log S_x$ vs $\log\omega$. With $\gamma = 6\pi\eta a$ known independently, $\kappa = \gamma\omega_c$. Equivalently the integral $\int S_x\,\de\omega/(2\pi) = k_BT/\kappa = \langle x^2\rangle$ gives $\kappa$ directly.
+$\omega_c$ is read off from the knee in $\log S_x$ vs $\log\omega$. With $\gamma = 6\pi\eta a$ known independently:
+\[
+\kappa = \gamma\,\omega_c.
+\]
 
 \subsection*{(d) Autocorrelation ODE}
 
@@ -672,7 +857,11 @@ Definition (1D component $x$):
 \[
 G_x(\tau) = \langle x(t)\,x(t-\tau)\rangle.
 \]
-Multiply the overdamped Langevin equation evaluated at time $t$ by $x(t-\tau)$:
+Take the overdamped Langevin equation evaluated at time $t$:
+\[
+\gamma\,\dot x(t) + \kappa\,x(t) = F(t).
+\]
+Multiply through by $x(t-\tau)$:
 \[
 \gamma\,\dot x(t)\,x(t-\tau) + \kappa\,x(t)\,x(t-\tau) = F(t)\,x(t-\tau).
 \]
@@ -680,18 +869,26 @@ Take ensemble average:
 \[
 \gamma\,\langle\dot x(t)\,x(t-\tau)\rangle + \kappa\,\langle x(t)\,x(t-\tau)\rangle = \langle F(t)\,x(t-\tau)\rangle.
 \]
-Causality: $x(t-\tau)$ depends only on $F(t')$ for $t'\le t-\tau$, while $\langle F(t)F(t')\rangle\propto\delta(t-t')$ vanishes for $t'<t$. For $\tau>0$:
+For $\tau>0$, $x(t-\tau)$ depends only on $F(t')$ with $t'\le t-\tau<t$; the delta-correlator $\langle F(t)F(t')\rangle\propto\delta(t-t')$ vanishes for $t'<t$. Hence:
 \[
 \langle F(t)\,x(t-\tau)\rangle = 0.
 \]
-Use stationarity $\langle\dot x(t)x(t-\tau)\rangle = \tfrac{\de}{\de t}\langle x(t)x(t-\tau)\rangle$. Stationarity also gives $\langle x(t)x(t-\tau)\rangle = G_x(\tau)$, depending only on $\tau$:
+Apply stationarity $\langle x(s_1)x(s_2)\rangle = G_x(s_1-s_2)$ and differentiate in the first slot:
+\[
+\langle \dot x(s_1)\,x(s_2)\rangle = G_x'(s_1-s_2).
+\]
+Set $s_1=t$, $s_2=t-\tau$:
 \[
 \langle\dot x(t)\,x(t-\tau)\rangle = \tfrac{\de G_x(\tau)}{\de\tau}.
 \]
-Substitute:
+Identify $\langle x(t)\,x(t-\tau)\rangle = G_x(\tau)$ in the second term. Substitute both back:
 \[
 \boxed{\;\gamma\,\tfrac{\de G_x(\tau)}{\de\tau} + \kappa\,G_x(\tau) = 0\quad(\tau>0)\;}
 \]
-Solution: $G_x(\tau) = (k_BT/\kappa)e^{-\kappa\tau/\gamma}$ --- exponential decay with timescale $\gamma/\kappa = 1/\omega_c$, consistent with the Lorentzian PSD.
+Solve: $G_x(\tau) = G_x(0)\,e^{-\kappa\tau/\gamma}$. Initial value $G_x(0) = \langle x^2\rangle = k_BT/\kappa$:
+\[
+G_x(\tau) = \tfrac{k_BT}{\kappa}\,e^{-\kappa\tau/\gamma}.
+\]
+Exponential decay with timescale $\gamma/\kappa = 1/\omega_c$, consistent with the Lorentzian PSD (Wiener--Khinchin).
 
 \end{document}

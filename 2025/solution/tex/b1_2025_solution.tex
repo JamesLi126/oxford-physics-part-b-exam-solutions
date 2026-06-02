@@ -29,36 +29,44 @@ Continuity for a compressible fluid:
 Incompressibility ($\D\rho/\D t=0$) reduces this to
 \[ \nabla\cdot\vb v = 0. \]
 In 2D, $\partial_x v_x + \partial_y v_y = 0$ is the integrability condition for $\psi(x,y)$ with
-\[ v_x = -\pd{\psi}{y},\qquad v_y = \pd{\psi}{x}, \]
-i.e.\ $\vb v = -\hat{\vb z}\times\nabla\psi$. The vorticity $\bm\omega = \omega\hat{\vb z}$ has
+\[ v_x = \pd{\psi}{y},\qquad v_y = -\pd{\psi}{x}, \]
+i.e.\ $\vb v = -\hat{\vb z}\times\nabla\psi$. Compute the vorticity $\bm\omega = \omega\hat{\vb z}$:
+\[ \omega = \pd{v_y}{x} - \pd{v_x}{y} = -\pdd{\psi}{x} - \pdd{\psi}{y}. \]
+Hence
 \begin{equation}
-\boxed{\;\omega = \pdd{\psi}{x} + \pdd{\psi}{y} = \nabla^{2}\psi.\;}
+\boxed{\;\omega = -\nabla^{2}\psi.\;}
 \end{equation}
-Lines of constant $\psi$ are streamlines since $\vb v\cdot\nabla\psi = 0$.
+Lines of constant $\psi$ are streamlines since $\vb v\cdot\nabla\psi = (\partial_y\psi)(\partial_x\psi)+(-\partial_x\psi)(\partial_y\psi) = 0$.
 
 \subsection*{(b) Bernoulli--vorticity theorem for steady 2D inviscid flow}
 
-Euler:
+Euler (gravity absorbed into $p$):
 \begin{equation}
-\pd{\vb v}{t} + (\vb v\cdot\nabla)\vb v = -\frac{1}{\rho}\nabla p - g\hat{\vb z}.
+\pd{\vb v}{t} + (\vb v\cdot\nabla)\vb v = -\frac{1}{\rho}\nabla p.
 \label{eq:euler}
 \end{equation}
-Using $(\vb v\cdot\nabla)\vb v = \nabla(\tfrac12 v^2) - \vb v\times(\nabla\times\vb v)$, steady flow in a horizontal plane (gravity absorbed into $p$):
-\[ \nabla\!\left(\frac{p}{\rho}+\frac{v^2}{2}\right) = \vb v\times(\omega\hat{\vb z}) = \omega\nabla\psi, \]
-since $\vb v\times\hat{\vb z} = \nabla\psi$. With $B\equiv p/\rho + \tfrac12 v^2$,
+Apply $(\vb v\cdot\nabla)\vb v = \nabla(\tfrac12 v^2) - \vb v\times(\nabla\times\vb v)$ for steady flow:
+\[ \nabla\!\left(\frac{p}{\rho}+\frac{v^2}{2}\right) = \vb v\times(\omega\hat{\vb z}). \]
+Compute $\vb v\times\hat{\vb z}$ in components:
+\[ \vb v\times\hat{\vb z} = (v_y,-v_x,0) = (-\partial_x\psi,-\partial_y\psi,0) = -\nabla\psi. \]
+Hence with $B\equiv p/\rho + \tfrac12 v^2$,
 \begin{equation}
-\nabla B = \omega\nabla\psi.
+\nabla B = -\omega\nabla\psi.
 \label{eq:nablaB}
 \end{equation}
-Dotting with $\vb v\perp\nabla\psi$ gives $\vb v\cdot\nabla B=0$, so
+Dot with $\vb v$ (using $\vb v\cdot\nabla\psi = 0$):
+\[ \vb v\cdot\nabla B = 0. \]
+So $B$ is constant along streamlines:
 \begin{equation}
 \boxed{\;B = B(\psi).\;}
 \end{equation}
-Curl of \eqref{eq:euler} kills both gradient terms, so $\D\omega/\D t=0$; in steady flow,
+Take the curl of \eqref{eq:euler}; both gradient terms vanish, leaving $\D\omega/\D t=0$. In steady flow $\vb v\cdot\nabla\omega = 0$, so $\omega$ is constant along streamlines:
 \begin{equation}
 \boxed{\;\omega = \omega(\psi).\;}
 \end{equation}
-Substituting $\nabla B = (\de B/\de\psi)\nabla\psi$ in \eqref{eq:nablaB} and fixing the sign by the rigid-rotation check ($\psi=-\tfrac12\Omega r^2$, $\omega=2\Omega$):
+Substitute $\nabla B = (\de B/\de\psi)\nabla\psi$ into \eqref{eq:nablaB}:
+\[ \frac{\de B}{\de\psi}\nabla\psi = -\omega\nabla\psi. \]
+Cancel $\nabla\psi$:
 \begin{equation}
 \boxed{\;\omega = -\frac{\de B}{\de\psi}.\;}
 \end{equation}
@@ -79,14 +87,16 @@ Radial Euler (centripetal balance):
 Outside, substitute $v_\theta = \omega_0 r_0^2/(2r)$:
 \[ \frac{v_\theta^2}{r} = \frac{\omega_0^2 r_0^4}{4 r^3}. \]
 Integrate from $r$ to $\infty$ with $p(\infty)=p_\infty$:
-\[ p_\infty - p(r) = \int_r^\infty \frac{\rho\omega_0^2 r_0^4}{4 r'^3}\,\de r' = \frac{\rho\omega_0^2 r_0^4}{8 r^2}. \]
+\[ p_\infty - p(r) = \int_r^\infty \frac{\rho\omega_0^2 r_0^4}{4 r'^3}\,\de r'. \]
+Evaluate the integral:
+\[ p_\infty - p(r) = \frac{\rho\omega_0^2 r_0^4}{4}\!\left[-\frac{1}{2r'^2}\right]_r^\infty = \frac{\rho\omega_0^2 r_0^4}{8 r^2}. \]
 Hence outside,
 \[ p(r) = p_\infty - \frac{\rho\omega_0^2 r_0^4}{8 r^2}. \]
 Inside, substitute $v_\theta = \tfrac12\omega_0 r$:
 \[ \frac{v_\theta^2}{r} = \tfrac14\omega_0^2 r. \]
-Integrate:
+Integrate $\partial_r p = \tfrac14\rho\omega_0^2 r$:
 \[ p(r) = \tfrac18\rho\omega_0^2 r^2 + C. \]
-Apply continuity at $r=r_0$:
+Match $p$ across $r=r_0$:
 \[ \tfrac18\rho\omega_0^2 r_0^2 + C = p_\infty - \tfrac18\rho\omega_0^2 r_0^2. \]
 Solve for $C$:
 \[ C = p_\infty - \tfrac14\rho\omega_0^2 r_0^2. \]
@@ -97,20 +107,27 @@ Therefore
 
 \subsection*{(d) Two point vortices}
 
-Each vortex moves only in the field of the other. With separation $\vb d=\vb x_2-\vb x_1$, $L=|\vb d|$:
+Each vortex moves only in the field of the other. A point vortex of strength $\Gamma$ induces $v_\theta = \Gamma/(2\pi r)$ at distance $r$. With separation $\vb d=\vb x_2-\vb x_1$, $L=|\vb d|$:
 \begin{equation}
-\dot{\vb x}_1 = \frac{B}{2\pi L^2}\hat{\vb z}\times\vb d,\qquad \dot{\vb x}_2 = -\frac{A}{2\pi L^2}\hat{\vb z}\times\vb d.
+\dot{\vb x}_1 = -\frac{B}{2\pi L^2}\hat{\vb z}\times\vb d,\qquad \dot{\vb x}_2 = \frac{A}{2\pi L^2}\hat{\vb z}\times\vb d.
 \end{equation}
-Hence
+Subtract to get the separation evolution:
 \begin{equation}
-\dot{\vb d} = -\frac{A+B}{2\pi L^2}\hat{\vb z}\times\vb d,\qquad A\vb x_1 + B\vb x_2 = \text{const}.
+\dot{\vb d} = \frac{A+B}{2\pi L^2}\hat{\vb z}\times\vb d.
+\label{eq:d-evolve}
+\end{equation}
+Form the weighted centroid:
+\begin{equation}
+A\dot{\vb x}_1 + B\dot{\vb x}_2 = \frac{-AB+AB}{2\pi L^2}\hat{\vb z}\times\vb d = 0,\qquad\text{so}\quad A\vb x_1 + B\vb x_2 = \text{const}.
 \label{eq:com-conserved}
 \end{equation}
-Since $\dot{\vb d}\perp\vb d$, $L$ is constant.
+Since $\dot{\vb d}\perp\vb d$, $|\vb d|=L$ is constant.
 
 \paragraph{Case $A=B$.} Centroid fixed; both vortices co-rotate about the midpoint on circles of radius $L/2$.
 
-\paragraph{Case $A=-B$.} $\dot{\vb d}=0$; \eqref{eq:com-conserved} gives equal translational velocity $\dot{\vb x}_1=\dot{\vb x}_2 = (B/2\pi L^2)\hat{\vb z}\times\vb d$. Pair propagates as two parallel straight lines.
+\paragraph{Case $A=-B$.} From \eqref{eq:d-evolve}, $\dot{\vb d}=0$. Substitute $A=-B$:
+\[ \dot{\vb x}_1 = -\frac{B}{2\pi L^2}\hat{\vb z}\times\vb d,\qquad \dot{\vb x}_2 = -\frac{B}{2\pi L^2}\hat{\vb z}\times\vb d. \]
+Both vortices have equal velocity, so the pair translates along parallel straight lines perpendicular to $\vb d$.
 
 \paragraph{Sketch.}
 \begin{center}
@@ -121,9 +138,9 @@ Since $\dot{\vb d}\perp\vb d$, $L$ is constant.
   \node[circle,fill,inner sep=1.5pt,label=above right:{$\vb x_2$}] (V2) at ( 1.2,0) {};
   \node[circle,fill,inner sep=1.0pt,label=below:{$O$}] at (0,0) {};
   \draw[<->,dotted] (V1) -- (V2) node[midway,below=4pt] {$L$};
-  \draw[->,thick] (-1.2,0) -- (-1.2,0.7) node[left] {$\dot{\vb x}_1$};
-  \draw[->,thick] ( 1.2,0) -- ( 1.2,-0.7) node[right] {$\dot{\vb x}_2$};
-  \node[above=1.0cm] at (0,1.2) {$A=B$ (co-rotating)};
+  \draw[->,thick] (-1.2,0) -- (-1.2,-0.7) node[left] {$\dot{\vb x}_1$};
+  \draw[->,thick] ( 1.2,0) -- ( 1.2, 0.7) node[right] {$\dot{\vb x}_2$};
+  \node[above=1.0cm] at (0,1.2) {$A=B>0$ (co-rotating CCW)};
 
   % Case A = -B: translating pair
   \begin{scope}[xshift=6.5cm]
@@ -137,7 +154,9 @@ Since $\dot{\vb d}\perp\vb d$, $L$ is constant.
 \end{tikzpicture}
 \end{center}
 
-\paragraph{Frequency (periodic case $A=B$).} From \eqref{eq:com-conserved}, $|\dot{\vb d}|=\Omega L$ with $\Omega = (A+B)/(2\pi L^2)$:
+\paragraph{Frequency (periodic case $A=B$).} From \eqref{eq:d-evolve}, $\vb d$ rotates uniformly with angular speed
+\[ \Omega = \frac{A+B}{2\pi L^2}. \]
+Set $A=B$:
 \begin{equation}
 \boxed{\;\omega_{\text{orb}} = \frac{A+B}{2\pi L^2} = \frac{A}{\pi L^2}\quad(A=B).\;}
 \end{equation}
@@ -149,17 +168,21 @@ Since $\dot{\vb d}\perp\vb d$, $L$ is constant.
 
 \subsection*{(a) Analytic functions and Cauchy--Riemann}
 
-Analytic $w$: $w'(z)$ direction-independent. Equating $\Delta z=\Delta x$ and $\Delta z=\mathrm{i}\Delta y$ limits,
-\[ w'(z) = \pd{\phi}{x}+\mathrm{i}\pd{\psi}{x} = -\mathrm{i}\pd{\phi}{y}+\pd{\psi}{y}. \]
-Real/imaginary parts:
+Analytic $w$: $w'(z)$ exists independently of the direction of $\Delta z\to 0$. Take $\Delta z=\Delta x$:
+\[ w'(z) = \pd{\phi}{x}+\mathrm{i}\pd{\psi}{x}. \]
+Take $\Delta z=\mathrm{i}\Delta y$:
+\[ w'(z) = -\mathrm{i}\pd{\phi}{y}+\pd{\psi}{y}. \]
+Equate real and imaginary parts:
 \begin{equation}
 \boxed{\;\pd{\phi}{x}=\pd{\psi}{y},\qquad \pd{\phi}{y}=-\pd{\psi}{x}.\;}
 \label{eq:CR}
 \end{equation}
-Cross-differentiating \eqref{eq:CR},
-\[ \Lap\phi = 0,\qquad \Lap\psi = 0. \]
-Orthogonality:
-\[ \nabla\phi\cdot\nabla\psi = (\partial_y\psi)(\partial_x\psi) + (-\partial_x\psi)(\partial_y\psi) = 0. \]
+Differentiate the first of \eqref{eq:CR} in $x$ and the second in $y$:
+\[ \pdd{\phi}{x} = \pd{}{x}\pd{\psi}{y},\qquad \pdd{\phi}{y} = -\pd{}{y}\pd{\psi}{x}. \]
+Add the two:
+\[ \Lap\phi = 0. \]
+Symmetrically, $\Lap\psi = 0$. Compute the dot product using \eqref{eq:CR}:
+\[ \nabla\phi\cdot\nabla\psi = (\partial_x\phi)(\partial_x\psi) + (\partial_y\phi)(\partial_y\psi) = (\partial_y\psi)(\partial_x\psi) + (-\partial_x\psi)(\partial_y\psi) = 0. \]
 For 2D incompressible irrotational inviscid flow, $\phi$ is the velocity potential ($\vb v=\nabla\phi$) and $\psi$ the streamfunction; \eqref{eq:CR} reproduces $v_x=\partial_x\phi=\partial_y\psi$, $v_y=\partial_y\phi=-\partial_x\psi$.
 
 \subsection*{(b) The flow $w(z)=Bz^2$}
@@ -214,16 +237,22 @@ Divide by $Z$:
 \boxed{\;z = F(Z) = Z + \frac{c^2}{Z}.\;}
 \end{equation}
 On $|Z|=c$, write $Z=c\mathrm{e}^{\mathrm{i}\theta}$:
-\[ z = c\mathrm{e}^{\mathrm{i}\theta} + c\mathrm{e}^{-\mathrm{i}\theta} = 2c\cos\theta \in [-2c,2c]. \]
+\[ z = c\mathrm{e}^{\mathrm{i}\theta} + \frac{c^2}{c\mathrm{e}^{\mathrm{i}\theta}} = c\mathrm{e}^{\mathrm{i}\theta} + c\mathrm{e}^{-\mathrm{i}\theta}. \]
+Apply $\mathrm{e}^{\mathrm{i}\theta}+\mathrm{e}^{-\mathrm{i}\theta}=2\cos\theta$:
+\[ z = 2c\cos\theta \in [-2c,2c]. \]
 
-For $w(z)=Az$ (uniform stream of speed $A$),
+For $w(z)=Az$ (uniform stream of speed $A$), compose with $z=F(Z)$:
 \[ W(Z) = A\!\left(Z + \frac{c^2}{Z}\right). \]
-With $Z=R\mathrm{e}^{\mathrm{i}\Theta}$,
+Write $Z=R\mathrm{e}^{\mathrm{i}\Theta}$:
+\[ W = A\!\left(R\mathrm{e}^{\mathrm{i}\Theta} + \frac{c^2}{R}\mathrm{e}^{-\mathrm{i}\Theta}\right). \]
+Expand using Euler:
+\[ W = A\!\left(R+\frac{c^2}{R}\right)\cos\Theta + \mathrm{i}A\!\left(R-\frac{c^2}{R}\right)\sin\Theta. \]
+Real and imaginary parts:
 \begin{equation}
 \boxed{\;\Phi = A\!\left(R+\frac{c^2}{R}\right)\cos\Theta,\qquad \Psi = A\!\left(R-\frac{c^2}{R}\right)\sin\Theta.\;}
 \label{eq:Phi-Psi}
 \end{equation}
-$\Psi=0$ on the real axis or on $R=c$: \eqref{eq:Phi-Psi} is uniform flow past a rigid cylinder of radius $c$. In the $z$-plane the cylinder collapses to the flat plate $z\in[-2c,2c]$, so $w=Az$ in $z$ is uniform flow past a horizontal flat plate of length $4c$.
+Identify the $\Psi=0$ streamlines: the real axis $\Theta=0,\pi$ \emph{and} the circle $R=c$. Hence \eqref{eq:Phi-Psi} represents uniform flow of speed $A$ past a rigid cylinder of radius $c$ in the $Z$-plane. Under $z=Z+c^2/Z$ the cylinder $|Z|=c$ maps to the segment $z\in[-2c,2c]$, so the same physical flow appears in the $z$-plane as $w=Az$, i.e.\ uniform flow past a horizontal flat plate of length $4c$.
 
 \paragraph{Real fluid.} Viscosity enforces no-slip, generating a boundary layer that separates on the rear half at large Re, producing a wake and finite drag (resolving d'Alembert's paradox). The wake is unsteady (von K\'arm\'an street), so the symmetric streamlines of \eqref{eq:Phi-Psi} are never observed near the body; the conformal result describes only the outer irrotational flow.
 
@@ -258,7 +287,7 @@ Substitute into \eqref{eq:NS-lub}$_1$:
 
 \subsection*{(b) Boundary conditions and velocity profile}
 
-No-slip at belt; no tangential stress at the free surface:
+Two boundary conditions: no-slip on the belt ($v_x$ matches the belt speed), and zero tangential viscous stress at the free surface (the air above exerts negligible drag):
 \[ v_x(0) = U_0,\qquad \eval{\pd{v_x}{y}}_{y=h} = 0. \]
 Write $G \equiv g\cos\theta\,\partial h/\partial x + g\sin\theta$, so \eqref{eq:lubrication} reads $\nu\,\partial^2 v_x/\partial y^2 = G$. Integrate once in $y$:
 \[ \nu\pd{v_x}{y} = Gy + C_1. \]
@@ -298,9 +327,11 @@ Solve for $h_{\text{eq}}$:
 \boxed{\;h_{\text{eq}} = \sqrt{\frac{3\nu U_0}{g\sin\theta}}.\;}
 \label{eq:heq}
 \end{equation}
-At $y=h_{\text{eq}}$, using $g\sin\theta\,h_{\text{eq}}^2/\nu = 3U_0$:
-\[ v_x(h_{\text{eq}}) = U_0 + 3U_0\!\left(\tfrac12 - 1\right) = U_0 - \tfrac32 U_0 = -\tfrac12 U_0. \]
-Zero-crossing $v_x=0$ at $y_* = h_{\text{eq}}(1-1/\sqrt 3)\approx 0.42\,h_{\text{eq}}$.
+At $y=h_{\text{eq}}$, evaluate $v_x$ from \eqref{eq:vx-eq}:
+\[ v_x(h_{\text{eq}}) = U_0 + \frac{g\sin\theta}{\nu}\!\left(\tfrac12 h_{\text{eq}}^2 - h_{\text{eq}}^2\right) = U_0 - \frac{g\sin\theta\,h_{\text{eq}}^2}{2\nu}. \]
+Use $g\sin\theta\,h_{\text{eq}}^2/\nu = 3U_0$:
+\[ v_x(h_{\text{eq}}) = U_0 - \tfrac32 U_0 = -\tfrac12 U_0. \]
+Solve $v_x(y_*)=0$ to find the zero crossing $y_* = h_{\text{eq}}(1-1/\sqrt 3)\approx 0.42\,h_{\text{eq}}$.
 \begin{center}
 \begin{tikzpicture}[>=stealth, scale=1.0]
   \draw[->] (0,0) -- (0,4.2) node[above] {$y$};
@@ -392,13 +423,17 @@ $\tau_{\text{drain}}/\tau_{\text{diff}} \sim L/h_{\text{eq}}\gg 1$ (lubrication 
 
 \subsection*{(a) Brunt--V\"ais\"al\"a frequency}
 
-A parcel displaced by $\zeta$ keeps density $\rho(z_0)$; surroundings have $\rho(z_0+\zeta)\approx\rho(z_0)+\zeta\,\de\rho/\de z$. Buoyancy force per unit volume:
-\[ F_b = g\zeta\,\dv{\rho}{z}. \]
-Newton, $\rho(z_0)\ddot\zeta = F_b$, gives $\ddot\zeta = -\omega^2\zeta$ with
+A parcel displaced by $\zeta$ keeps density $\rho(z_0)$; surroundings have
+\[ \rho(z_0+\zeta) \approx \rho(z_0)+\zeta\,\dv{\rho}{z}. \]
+Buoyancy force per unit volume (upward = displaced minus parcel times $g$):
+\[ F_b = \big(\rho_{\text{surr}}-\rho_{\text{parcel}}\big)g = g\zeta\,\dv{\rho}{z}. \]
+Apply Newton's second law $\rho\ddot\zeta = F_b$:
+\[ \ddot\zeta = \frac{g}{\rho}\dv{\rho}{z}\zeta. \]
+Identify with $\ddot\zeta = -\omega^2\zeta$:
 \begin{equation}
 \boxed{\;\omega^2 = -\frac{g}{\rho}\dv{\rho}{z}.\;}
 \end{equation}
-Stable ($\de\rho/\de z<0$): oscillation. Unstable ($\de\rho/\de z>0$): $\omega^2<0$, exponential growth $\zeta\propto\mathrm{e}^{|\omega|t}$ (Rayleigh--Taylor).
+Stable ($\de\rho/\de z<0$): oscillation at this frequency. Unstable ($\de\rho/\de z>0$): $\omega^2<0$, exponential growth $\zeta\propto\mathrm{e}^{|\omega|t}$ (Rayleigh--Taylor instability).
 
 \subsection*{(b) Equilibrium and perturbation equations}
 
@@ -415,14 +450,22 @@ Linearising $\vb v=(v_x',v_z')$, $T=T_{\text{eq}}+T'$, $p=p_{\text{eq}}+p'$:
 \pd{T'}{t} - \frac{\Delta T}{H}v_z' &= \kappa\Lap T',\label{eq:pert-T}\\
 \pd{v_x'}{x} + \pd{v_z'}{z} &= 0.\label{eq:pert-cont}
 \end{align}
-$\partial_z$\eqref{eq:pert-x}$-\partial_x$\eqref{eq:pert-z} eliminates $p'$:
+Take $\partial_z$\eqref{eq:pert-x}$-\partial_x$\eqref{eq:pert-z} to eliminate $p'$:
 \begin{equation}
 \boxed{\;\!\!\left(\pd{}{t} - \nu\Lap\right)\!\!\left(\pd{v_x'}{z} - \pd{v_z'}{x}\right) = -g\alpha\pd{T'}{x}.\;}
 \label{eq:vort-final}
 \end{equation}
-Apply $\partial_x$ and use \eqref{eq:pert-cont} to write $\partial_x(\partial_z v_x'-\partial_x v_z') = -\Lap v_z'$:
+The bracket on the left is the (negative of the) perturbation vorticity; the LHS is its viscous advection rate and the RHS is the baroclinic buoyancy torque.
+
+Apply $\partial_x$ to \eqref{eq:vort-final}:
+\[ \!\!\left(\pd{}{t}-\nu\Lap\right)\!\!\left(\partial_{xz} v_x' - \partial_{x}^2 v_z'\right) = -g\alpha\pdd{T'}{x}. \]
+Use \eqref{eq:pert-cont} as $\partial_x v_x' = -\partial_z v_z'$, so $\partial_{xz}v_x' = -\partial_z^2 v_z'$:
+\[ \partial_{xz}v_x' - \partial_x^2 v_z' = -\partial_z^2 v_z' - \partial_x^2 v_z' = -\Lap v_z'. \]
+Substitute:
 \[ \!\!\left(\pd{}{t}-\nu\Lap\right)\Lap v_z' = g\alpha\pdd{T'}{x}. \]
-Apply $(\partial_t-\kappa\Lap)$ and use \eqref{eq:pert-T} as $(\partial_t-\kappa\Lap)T' = (\Delta T/H)v_z'$:
+Apply $(\partial_t-\kappa\Lap)$ to both sides:
+\[ \!\!\left(\pd{}{t}-\nu\Lap\right)\!\!\left(\pd{}{t}-\kappa\Lap\right)\Lap v_z' = g\alpha\pdd{}{x}\!\!\left(\pd{}{t}-\kappa\Lap\right)T'. \]
+Use \eqref{eq:pert-T} rearranged as $(\partial_t-\kappa\Lap)T' = (\Delta T/H)v_z'$:
 \begin{equation}
 \boxed{\;\!\!\left(\pd{}{t}-\nu\Lap\right)\!\!\left(\pd{}{t}-\kappa\Lap\right)\Lap v_z' = \frac{g\alpha\Delta T}{H}\pdd{v_z'}{x}.\;}
 \label{eq:RB-master}
@@ -430,38 +473,42 @@ Apply $(\partial_t-\kappa\Lap)$ and use \eqref{eq:pert-T} as $(\partial_t-\kappa
 
 \subsection*{(c) Normal modes and Rayleigh criterion}
 
-For $v_z' = A\sin(kx)\sin(\pi z/H)\mathrm{e}^{\sigma t}$, $\Lap\to -K^2$ with $K^2 = k^2+(\pi/H)^2$, $\partial_t\to\sigma$, $\partial_x^2\to -k^2$. Substitute into \eqref{eq:RB-master}:
+For $v_z' = A\sin(kx)\sin(\pi z/H)\mathrm{e}^{\sigma t}$, the substitutions are $\Lap\to -K^2$ with $K^2 = k^2+(\pi/H)^2$, $\partial_t\to\sigma$, $\partial_x^2\to -k^2$. Substitute into \eqref{eq:RB-master}:
 \[ (\sigma+\nu K^2)(\sigma+\kappa K^2)(-K^2)\,v_z' = -\frac{g\alpha\Delta T}{H}\,k^2\,v_z'. \]
-Cancel $v_z'$ and a factor of $-1$:
+Cancel $v_z'$ and the overall sign:
 \[ (\sigma+\nu K^2)(\sigma+\kappa K^2)K^2 = \frac{g\alpha\Delta T}{H}k^2. \]
 Divide by $K^2$:
 \[ (\sigma+\nu K^2)(\sigma+\kappa K^2) = \frac{g\alpha\Delta T}{H}\frac{k^2}{K^2}. \]
-Expand as a quadratic in $\sigma$:
+Expand the product on the left:
+\[ \sigma^2 + (\nu+\kappa)K^2\sigma + \nu\kappa K^4 = \frac{g\alpha\Delta T}{H}\frac{k^2}{K^2}. \]
+Rearrange as a quadratic in $\sigma$:
 \[ \sigma^2 + (\nu+\kappa)K^2\sigma + \nu\kappa K^4 - \frac{g\alpha\Delta T}{H}\frac{k^2}{K^2} = 0. \]
-Solve:
+Apply the quadratic formula:
 \begin{equation}
 \boxed{\;\sigma = -\tfrac{1}{2}(\nu+\kappa)K^2 \pm \sqrt{\tfrac{1}{4}(\nu-\kappa)^2 K^4 + \frac{g\alpha\Delta T}{H}\frac{k^2}{K^2}}.\;}
 \end{equation}
-Instability ($\sigma>0$) requires the constant term of the quadratic to be negative:
+Instability $\sigma>0$ requires the product of roots (constant term) to be negative:
 \[ \nu\kappa K^4 - \frac{g\alpha\Delta T}{H}\frac{k^2}{K^2} < 0. \]
 Rearrange:
 \begin{equation}
 \frac{g\alpha\Delta T}{\nu\kappa H} > \frac{K^6}{k^2}.
 \label{eq:instab-cond}
 \end{equation}
-Minimise $f(k) = (k^2+\pi^2/H^2)^3/k^2$. Differentiate:
+Minimise $f(k) = (k^2+\pi^2/H^2)^3/k^2$ over $k$. Differentiate using the quotient rule:
 \[ \dv{f}{k} = \frac{3(k^2+\pi^2/H^2)^2\cdot 2k\cdot k^2 - (k^2+\pi^2/H^2)^3\cdot 2k}{k^4}. \]
-Factor:
+Factor out $2k(k^2+\pi^2/H^2)^2/k^4$:
 \[ \dv{f}{k} = \frac{2(k^2+\pi^2/H^2)^2}{k^3}\!\left[3k^2 - (k^2+\pi^2/H^2)\right]. \]
-Set bracket to zero:
-\[ 3k^2 = k^2 + \pi^2/H^2. \]
+Set the bracket to zero:
+\[ 3k^2 - k^2 - \pi^2/H^2 = 0. \]
 Solve:
 \[ k_c^2 = \frac{\pi^2}{2H^2}. \]
-Hence
-\[ K_c^2 = k_c^2 + \frac{\pi^2}{H^2} = \frac{3\pi^2}{2H^2}. \]
-Compute the threshold:
-\[ \frac{K_c^6}{k_c^2} = \frac{(3\pi^2/2H^2)^3}{\pi^2/2H^2} = \frac{27\pi^6/8H^6}{\pi^2/2H^2} = \frac{27\pi^4}{4H^4}. \]
-Hence
+Compute $K_c^2$:
+\[ K_c^2 = k_c^2 + \frac{\pi^2}{H^2} = \frac{\pi^2}{2H^2} + \frac{2\pi^2}{2H^2} = \frac{3\pi^2}{2H^2}. \]
+Compute $K_c^6$:
+\[ K_c^6 = \left(\frac{3\pi^2}{2H^2}\right)^3 = \frac{27\pi^6}{8H^6}. \]
+Form the threshold ratio:
+\[ \frac{K_c^6}{k_c^2} = \frac{27\pi^6/(8H^6)}{\pi^2/(2H^2)} = \frac{27\pi^6}{8H^6}\cdot\frac{2H^2}{\pi^2} = \frac{27\pi^4}{4H^4}. \]
+Substitute into the instability condition $g\alpha\Delta T/(\nu\kappa H) > K_c^6/k_c^2$ and multiply by $H^4$:
 \begin{equation}
 \boxed{\;\mathrm{Ra} \equiv \frac{g\alpha\Delta T\,H^3}{\nu\kappa} > \frac{27\pi^4}{4} \approx 657.5.\;}
 \end{equation}

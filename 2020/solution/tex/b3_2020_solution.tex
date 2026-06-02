@@ -67,43 +67,115 @@ Screening turns on over $r\sim a_0$.
 
 \subsection*{(c)}
 
-Local Fermi momentum from $p_F^2/2m=-eV(r)$ (electron just bound, $V(\infty)=0$):
+Let $V(r)$ be the electric potential of the screened nucleus, positive near origin. Electron PE is $-eV$. Just-bound condition $p_F^2/(2m)-eV=0$:
 \[
-n_e(r)=\frac{8\pi}{3h^3}\bigl[-2meV(r)\bigr]^{3/2}.
+p_F^2/(2m)=eV(r).
 \]
-Write $V(r)=\chi(r)Ze/(4\pi\varepsilon_0 r)$, $Z_\text{eff}=\chi Z$, BCs $\chi(0)=1$, $\chi(\infty)=0$. Poisson's equation away from nucleus:
+Solve for $p_F$:
 \[
-\Lap V=\frac{1}{r}\frac{\de^2(rV)}{\de r^2}=\frac{e\,n_e(r)}{\varepsilon_0}.
+p_F(r)=\bigl[2meV(r)\bigr]^{1/2}.
+\]
+Insert into the given density $n=8\pi p^3/(3h^3)$ with $p=p_F$:
+\[
+n_e(r)=\frac{8\pi}{3h^3}\bigl[2meV(r)\bigr]^{3/2}.
+\]
+Parametrise with screening function $\chi$, $Z_\text{eff}=\chi Z$, BCs $\chi(0)=1$, $\chi(\infty)=0$:
+\[
+V(r)=\frac{Z e\,\chi(r)}{4\pi\varepsilon_0 r}.
+\]
+Multiply by $e$:
+\[
+eV(r)=\frac{Ze^2\chi(r)}{4\pi\varepsilon_0 r}.
+\]
+Substitute into $n_e$:
+\[
+n_e(r)=\frac{8\pi}{3h^3}\!\left[\frac{2me^2 Z\chi}{4\pi\varepsilon_0 r}\right]^{3/2}.
+\]
+Poisson's equation with electron charge density $\rho_e=-en_e$:
+\[
+\Lap V=-\rho_e/\varepsilon_0=\frac{e\,n_e(r)}{\varepsilon_0}.
+\]
+Use the radial identity:
+\[
+\Lap V=\frac{1}{r}\frac{\de^2(rV)}{\de r^2}.
 \]
 Substitute $rV=Ze\chi/(4\pi\varepsilon_0)$:
 \[
 \frac{Ze}{4\pi\varepsilon_0}\frac{1}{r}\frac{\de^2\chi}{\de r^2}=\frac{e}{\varepsilon_0}\frac{8\pi}{3h^3}\!\left[\frac{2me^2 Z\chi}{4\pi\varepsilon_0 r}\right]^{3/2}.
 \]
-Isolate $\chi''$:
+Multiply both sides by $4\pi\varepsilon_0 r/(Ze)$:
+\[
+\frac{\de^2\chi}{\de r^2}=\frac{4\pi r}{Z}\cdot\frac{8\pi}{3h^3}\cdot\frac{(2me^2 Z)^{3/2}\chi^{3/2}}{(4\pi\varepsilon_0 r)^{3/2}}.
+\]
+Cancel one $Z$ against $Z^{3/2}$:
+\[
+\frac{\de^2\chi}{\de r^2}=\frac{32\pi^2}{3h^3}\cdot\frac{(2m)^{3/2}e^3 Z^{1/2}}{(4\pi\varepsilon_0)^{3/2}}\,\frac{\chi^{3/2}}{r^{1/2}}.
+\]
+Collect powers of $r$ and constants:
 \[
 \frac{\de^2\chi}{\de r^2}=C\,\frac{\chi^{3/2}}{r^{1/2}},\qquad
-C=\frac{32\pi^2}{3h^3}\,\frac{(2m)^{3/2}e^2 Z^{1/2}}{(4\pi\varepsilon_0)^{3/2}}.
+C=\frac{32\pi^2}{3h^3}\,\frac{(2m)^{3/2}e^3 Z^{1/2}}{(4\pi\varepsilon_0)^{3/2}}.
 \]
-Set $r=bx$:
+Set $r=bx$, so $\de^2/\de r^2=(1/b^2)\de^2/\de x^2$:
 \[
 \frac{1}{b^2}\frac{\de^2\chi}{\de x^2}=C\,\frac{\chi^{3/2}}{b^{1/2}x^{1/2}}.
 \]
 Demand the universal form $\chi''(x)=\chi^{3/2}/x^{1/2}$:
 \[
-\frac{1}{b^2}=\frac{C}{b^{1/2}}\;\Longrightarrow\;b^{3/2}=\frac{1}{C}.
+\frac{1}{b^2}=\frac{C}{b^{1/2}}.
 \]
-Hence:
+Multiply by $b^{1/2}$:
 \[
-b=C^{-2/3}=\left(\frac{3h^3}{32\pi^2}\right)^{2/3}\frac{4\pi\varepsilon_0}{2m e^2}\,Z^{-1/3}.
+b^{-3/2}=C.
 \]
-Use $h=2\pi\hbar$ and $a_0=4\pi\varepsilon_0\hbar^2/(me^2)$:
+Invert:
+\[
+b^{3/2}=\frac{1}{C}.
+\]
+Take the $2/3$ power:
+\[
+b=C^{-2/3}=\left(\frac{3h^3(4\pi\varepsilon_0)^{3/2}}{32\pi^2(2m)^{3/2}e^3 Z^{1/2}}\right)^{\!2/3}.
+\]
+Apply the $2/3$ to each factor:
+\[
+b=\left(\frac{3h^3}{32\pi^2}\right)^{\!2/3}\frac{(4\pi\varepsilon_0)}{(2m)e^2 Z^{1/3}}.
+\]
+Pull out the $Z$ dependence:
+\[
+b=\left(\frac{3h^3}{32\pi^2}\right)^{\!2/3}\frac{4\pi\varepsilon_0}{2m e^2}\,Z^{-1/3}.
+\]
+Substitute $h=2\pi\hbar$, so $h^3=8\pi^3\hbar^3$:
+\[
+\frac{3h^3}{32\pi^2}=\frac{3\cdot 8\pi^3\hbar^3}{32\pi^2}=\frac{3\pi\hbar^3}{4}.
+\]
+Raise to $2/3$:
+\[
+\left(\frac{3h^3}{32\pi^2}\right)^{\!2/3}=\left(\frac{3\pi\hbar^3}{4}\right)^{\!2/3}=\frac{(3\pi)^{2/3}}{4^{2/3}}\hbar^2.
+\]
+Use the Bohr radius $a_0=4\pi\varepsilon_0\hbar^2/(me^2)$:
+\[
+\frac{4\pi\varepsilon_0}{2m e^2}=\frac{a_0}{2\hbar^2}.
+\]
+Combine:
+\[
+b=\frac{(3\pi)^{2/3}}{4^{2/3}}\hbar^2\cdot\frac{a_0}{2\hbar^2}\,Z^{-1/3}.
+\]
+Cancel $\hbar^2$:
+\[
+b=\frac{(3\pi)^{2/3}}{2\cdot 4^{2/3}}\,a_0 Z^{-1/3}.
+\]
+Reduce $2\cdot 4^{2/3}=2^{1+4/3}=2^{7/3}=(2^7)^{1/3}=128^{1/3}$:
+\[
+b=\frac{(3\pi)^{2/3}}{128^{1/3}}\,a_0 Z^{-1/3}.
+\]
+Combine cube roots using $(3\pi)^{2/3}=(9\pi^2)^{1/3}$:
 \[
 \boxed{\;b=\left(\frac{9\pi^2}{128\,Z}\right)^{1/3}a_0\approx 0.885\,Z^{-1/3}a_0.\;}
 \]
 
 \subsection*{(d)}
 
-Continuum Fermi-gas requires local Fermi wavelength $\ll$ scale on which $V$ varies. Fails near the nucleus ($V\to-\infty$, density diverges), in the outer fringe (few electrons, statistics breaks), and for light atoms (low $N$). Reliable for the core of heavy atoms.
+Continuum Fermi-gas requires local Fermi wavelength $\ll$ scale on which $V$ varies. Fails near the nucleus ($V\to+\infty$, density diverges), in the outer fringe (few electrons, statistics breaks), and for light atoms (low $N$). Reliable for the core of heavy atoms.
 
 \subsection*{(e)}
 
@@ -127,15 +199,35 @@ In a screened (non-Coulombic) central field, low-$\ell$ orbitals \emph{penetrate
 
 Weak field requires hyperfine $\gg$ electronic Zeeman:
 \[
+A I\gg g_J\mu_B B.
+\]
+Solve for the crossover field:
+\[
 B\ll B^*\equiv\frac{A I}{g_J\mu_B}.
 \]
-Use alkali ground-state $A/h\sim\SI{1}{GHz}$, $g_J\approx 2$, $I\sim 3/2$, $\mu_B=\SI{9.27e-24}{J/T}$:
+Take alkali ground-state $A/h\sim\SI{1}{GHz}$:
 \[
-A\approx h\cdot 10^9\,\text{Hz}\approx\SI{6.6e-25}{J}.
+A\sim h\cdot 10^9\,\text{Hz}.
 \]
-Substitute:
+Multiply $h=\SI{6.626e-34}{J.s}$:
 \[
-B^*\sim\frac{6.6\times 10^{-25}\cdot 1.5}{2\cdot 9.27\times 10^{-24}}\,\text{T}\approx\SI{0.05}{T}.
+A\approx\SI{6.6e-25}{J}.
+\]
+Plug $g_J\approx 2$, $I\sim 3/2$, $\mu_B=\SI{9.27e-24}{J/T}$:
+\[
+B^*\sim\frac{(6.6\times 10^{-25})(1.5)}{(2)(9.27\times 10^{-24})}\,\text{T}.
+\]
+Reduce numerator:
+\[
+(6.6\times 10^{-25})(1.5)=9.9\times 10^{-25}\,\text{J}.
+\]
+Reduce denominator:
+\[
+(2)(9.27\times 10^{-24})=1.85\times 10^{-23}\,\text{J/T}.
+\]
+Divide:
+\[
+B^*\approx\SI{0.05}{T}.
 \]
 \[
 \boxed{\;B\lesssim\SI{50}{mT}\;\text{for weak-field regime.}\;}
@@ -143,7 +235,15 @@ B^*\sim\frac{6.6\times 10^{-25}\cdot 1.5}{2\cdot 9.27\times 10^{-24}}\,\text{T}\
 
 \subsection*{(c)}
 
-Form $\vec F=\vec I+\vec J$, $F\in\{|I-J|,\dots,I+J\}$. From $\vec F^2=\vec I^2+\vec J^2+2\vec I\!\cdot\!\vec J$:
+Form $\vec F=\vec I+\vec J$, $F\in\{|I-J|,\dots,I+J\}$. Square the sum:
+\[
+\vec F^2=\vec I^2+\vec J^2+2\vec I\!\cdot\!\vec J.
+\]
+Rearrange for the dot product:
+\[
+\vec I\cdot\vec J=\tfrac12\bigl[\vec F^2-\vec I^2-\vec J^2\bigr].
+\]
+Take eigenvalues in $\ket{F,M_F}$:
 \[
 \vec I\cdot\vec J=\tfrac12[F(F+1)-I(I+1)-J(J+1)]\hbar^2.
 \]
@@ -152,30 +252,63 @@ Absorb $\hbar^2$ into $A$:
 \langle A\vec I\cdot\vec J\rangle=\tfrac12 A K,\qquad
 \boxed{\;K=F(F+1)-I(I+1)-J(J+1).\;}
 \]
-Treat Zeeman as perturbation in $\ket{F,M_F}$. Project (Land\'e):
+Treat Zeeman as perturbation in $\ket{F,M_F}$. Project via Land\'e:
 \[
 \langle\vec J\rangle=\frac{\vec F\!\cdot\!\vec J}{F(F+1)\hbar^2}\vec F,\qquad
 \langle\vec I\rangle=\frac{\vec F\!\cdot\!\vec I}{F(F+1)\hbar^2}\vec F.
 \]
-Compute the dot products:
+Write $\vec J=\vec F-\vec I$ and square:
 \[
-\vec F\!\cdot\!\vec J=\tfrac12[F(F+1)+J(J+1)-I(I+1)]\hbar^2,
+\vec J^2=\vec F^2+\vec I^2-2\vec F\!\cdot\!\vec J.
 \]
+Solve for $\vec F\!\cdot\!\vec J$:
+\[
+\vec F\!\cdot\!\vec J=\tfrac12[F(F+1)+J(J+1)-I(I+1)]\hbar^2.
+\]
+Write $\vec I=\vec F-\vec J$ and square:
+\[
+\vec I^2=\vec F^2+\vec J^2-2\vec F\!\cdot\!\vec I.
+\]
+Solve for $\vec F\!\cdot\!\vec I$:
 \[
 \vec F\!\cdot\!\vec I=\tfrac12[F(F+1)+I(I+1)-J(J+1)]\hbar^2.
 \]
-Take $\vec B=B\hat z$, $\langle F_z\rangle=M_F\hbar$:
+Take $\vec B=B\hat z$ so $\langle F_z\rangle=M_F\hbar$:
 \[
 \Delta E_\text{Z}=g_J\mu_B B\langle J_z\rangle-g_I\mu_N B\langle I_z\rangle.
 \]
-Drop the nuclear piece ($\mu_N/\mu_B\ll 1$):
+Insert projected components:
+\[
+\Delta E_\text{Z}=\left[g_J\mu_B\,\frac{\vec F\!\cdot\!\vec J}{F(F+1)\hbar^2}-g_I\mu_N\,\frac{\vec F\!\cdot\!\vec I}{F(F+1)\hbar^2}\right]B M_F\hbar.
+\]
+Drop the nuclear piece ($\mu_N/\mu_B\sim m_e/m_p\ll 1$):
+\[
+\Delta E_\text{Z}\approx g_J\mu_B B M_F\hbar\,\frac{\vec F\!\cdot\!\vec J}{F(F+1)\hbar^2}.
+\]
+Substitute $\vec F\!\cdot\!\vec J$:
+\[
+\Delta E_\text{Z}=g_J\,\frac{F(F+1)+J(J+1)-I(I+1)}{2F(F+1)}\,\mu_B B M_F.
+\]
+Read off $g_F$:
 \[
 \boxed{\;g_F=g_J\,\frac{F(F+1)+J(J+1)-I(I+1)}{2F(F+1)},\quad\Delta E=\tfrac12 AK+g_F\mu_B B M_F.\;}
 \]
 
 \subsection*{(d)}
 
-For $J=3/2,I=3$: $F=3/2,5/2,7/2,9/2$. Compute $K=F(F+1)-12-15/4$:
+For $J=3/2,I=3$, allowed $F\in\{|I-J|,\dots,I+J\}$:
+\[
+F\in\{3/2,\;5/2,\;7/2,\;9/2\}.
+\]
+Compute $I(I+1)$ and $J(J+1)$:
+\[
+I(I+1)=12,\qquad J(J+1)=15/4.
+\]
+Form $K=F(F+1)-I(I+1)-J(J+1)$:
+\[
+K=F(F+1)-12-15/4.
+\]
+Tabulate for each $F$:
 \begin{center}
 \begin{tabular}{@{}cccc@{}}\toprule
 $F$ & $F(F+1)$ & $K$ & $\tfrac12 AK$ \\ \midrule
@@ -217,11 +350,15 @@ Each $F$ splits into $2F+1$ Zeeman sublevels: $4+6+8+10=28=(2J+1)(2I+1)$. Sublev
 
 \subsection*{(e)}
 
-Strong field: $J_z,I_z$ good. For $1s\,{}^2S_{1/2}$ of H, $J=S=1/2$, $I=1/2$, $g_J\to g_s$, $g_I\to g_p$. First-order shifts:
+Strong field ($g_J\mu_B B\gg A I$): decouple, so $J_z,I_z$ are good. For $1s\,{}^2S_{1/2}$ of H: $J=S=1/2$, $I=1/2$, $g_J\to g_s$, $g_I\to g_p$. Take $\vec B=B\hat z$ and evaluate each Hamiltonian term in $\ket{M_J,M_I}$:
+\[
+\langle A\vec I\cdot\vec J\rangle=A M_J M_I,\quad \langle g_J\mu_B\vec J\cdot\vec B\rangle=g_s\mu_B B M_J,\quad -\langle g_I\mu_N\vec I\cdot\vec B\rangle=-g_p\mu_N B M_I.
+\]
+Sum the three contributions:
 \[
 \Delta E(M_J,M_I)=g_s\mu_B B\,M_J-g_p\mu_N B\,M_I+A\,M_J M_I.
 \]
-Tabulate ($M_J,M_I=\pm 1/2$):
+Tabulate for the four states $(M_J,M_I)$ with $M_J,M_I=\pm 1/2$:
 \begin{center}
 \begin{tabular}{@{}cc@{}}\toprule
 $(M_J,M_I)$ & $\Delta E$ \\ \midrule
@@ -232,15 +369,31 @@ $(-\tfrac12,-\tfrac12)$ & $-\tfrac12 g_s\mu_B B+\tfrac12 g_p\mu_N B+\tfrac14 A$ 
 \bottomrule
 \end{tabular}
 \end{center}
-Form numerator (electronic Zeeman cancels for opposite $M_J$):
+Form numerator: add the two rows with $M_J=\pm 1/2$, $M_I=-1/2$:
+\[
+\Delta E_{+,-}+\Delta E_{-,-}=\bigl(\tfrac12-\tfrac12\bigr)g_s\mu_B B+\bigl(\tfrac12+\tfrac12\bigr)g_p\mu_N B+\bigl(-\tfrac14+\tfrac14\bigr)A.
+\]
+Cancel coefficients:
+\[
+\Delta E_{+,-}+\Delta E_{-,-}=0+g_p\mu_N B+0.
+\]
+Simplify:
 \[
 \Delta E_{+,-}+\Delta E_{-,-}=g_p\mu_N B.
 \]
-Form denominator (nuclear Zeeman cancels for opposite $M_I$):
+Form denominator: add the two rows with $M_J=+1/2$, $M_I=\pm 1/2$:
+\[
+\Delta E_{+,-}+\Delta E_{+,+}=\bigl(\tfrac12+\tfrac12\bigr)g_s\mu_B B+\bigl(\tfrac12-\tfrac12\bigr)g_p\mu_N B+\bigl(-\tfrac14+\tfrac14\bigr)A.
+\]
+Cancel coefficients:
+\[
+\Delta E_{+,-}+\Delta E_{+,+}=g_s\mu_B B+0+0.
+\]
+Simplify:
 \[
 \Delta E_{+,-}+\Delta E_{+,+}=g_s\mu_B B.
 \]
-Divide:
+Divide numerator by denominator:
 \[
 \boxed{\;\frac{\Delta E_{J_z=1/2,I_z=-1/2}+\Delta E_{J_z=-1/2,I_z=-1/2}}{\Delta E_{J_z=1/2,I_z=-1/2}+\Delta E_{J_z=1/2,I_z=1/2}}=\frac{g_p\mu_N}{g_s\mu_B}.\;}
 \]
@@ -255,34 +408,54 @@ Divide:
 
 Net stimulated rate (gain $-$ absorption) per unit volume per unit frequency:
 \[
-W_\text{stim}=\bigl[N_2 B_{21}-N_1 B_{12}\bigr]\,u(\omega)\,g(\omega-\omega_0),\qquad B_{12}g_1=B_{21}g_2.
+W_\text{stim}=\bigl[N_2 B_{21}-N_1 B_{12}\bigr]\,u(\omega)\,g(\omega-\omega_0).
 \]
-For monochromatic $I(z,\omega)=I(z)\delta(\omega-\omega_L)$ with $u=I/c$:
+Apply the Einstein degeneracy relation $g_1 B_{12}=g_2 B_{21}$:
+\[
+N_1 B_{12}=\frac{g_2}{g_1}N_1 B_{21}.
+\]
+Substitute:
+\[
+W_\text{stim}=\!\left[N_2-\frac{g_2}{g_1}N_1\right]B_{21}\,u(\omega)\,g(\omega-\omega_0).
+\]
+Energy gain per length: each net stimulated event adds $\hbar\omega_0$ to the beam:
+\[
+\frac{\de I(z)}{\de z}=\hbar\omega_0\!\int W_\text{stim}\,\de\omega.
+\]
+For monochromatic $I(z,\omega)=I(z)\delta(\omega-\omega_L)$ the energy density is $u(\omega)=(I/c)\delta(\omega-\omega_L)$:
 \[
 \frac{\de I(z)}{\de z}=\hbar\omega_0\!\left[N_2-\frac{g_2}{g_1}N_1\right]B_{21}\,g(\omega_L-\omega_0)\,\frac{I(z)}{c}.
 \]
-Define small-signal gain at line centre with unsaturated populations $N_{i,0}=R_i\tau_i$:
+Write rate equations under stimulated drive, lineshape $g\equiv g(\omega_L-\omega_0)$:
 \[
-\alpha_0=\frac{\hbar\omega_0}{c}\!\left[N_{2,0}-\frac{g_2}{g_1}N_{1,0}\right]B_{21}\,g(\omega_L-\omega_0).
-\]
-Rate equations under stimulated drive (intensity $I$, monochromatic):
-\[
-\dot N_2=R_2-\frac{N_2}{\tau_2}-\!\left[N_2-\frac{g_2}{g_1}N_1\right]\frac{B_{21}I}{c}g(\omega_L-\omega_0),
+\dot N_2=R_2-\frac{N_2}{\tau_2}-\!\left[N_2-\frac{g_2}{g_1}N_1\right]\frac{B_{21}I}{c}g,
 \]
 \[
-\dot N_1=R_1-\frac{N_1}{\tau_1}+\!\left[N_2-\frac{g_2}{g_1}N_1\right]\frac{B_{21}I}{c}g(\omega_L-\omega_0).
+\dot N_1=R_1-\frac{N_1}{\tau_1}+\!\left[N_2-\frac{g_2}{g_1}N_1\right]\frac{B_{21}I}{c}g.
 \]
-Set steady state $\dot N_{1,2}=0$ and let $\Delta N=N_2-(g_2/g_1)N_1$. Solve linearly:
+Define $\Delta N=N_2-(g_2/g_1)N_1$ and impose steady state $\dot N_{1,2}=0$:
 \[
-\Delta N=\frac{\Delta N_0}{1+I/I_S},\qquad \Delta N_0=R_2\tau_2-\frac{g_2}{g_1}R_1\tau_1.
+N_2=R_2\tau_2-\tau_2\Delta N\,\frac{B_{21}Ig}{c},\qquad N_1=R_1\tau_1+\tau_1\Delta N\,\frac{B_{21}Ig}{c}.
 \]
-Read off the saturation intensity (collecting the prefactor multiplying $I$):
+Form $N_2-(g_2/g_1)N_1$:
+\[
+\Delta N=R_2\tau_2-\frac{g_2}{g_1}R_1\tau_1-\!\left[\tau_2+\frac{g_2}{g_1}\tau_1\right]\Delta N\,\frac{B_{21}Ig}{c}.
+\]
+Collect $\Delta N$ on the left:
+\[
+\Delta N\!\left[1+\bigl(\tau_2+\tfrac{g_2}{g_1}\tau_1\bigr)\frac{B_{21}Ig}{c}\right]=R_2\tau_2-\frac{g_2}{g_1}R_1\tau_1.
+\]
+Define $\Delta N_0=R_2\tau_2-(g_2/g_1)R_1\tau_1$ and $I_S=c/\{B_{21}g[\tau_2+(g_2/g_1)\tau_1]\}$:
+\[
+\Delta N=\frac{\Delta N_0}{1+I/I_S}.
+\]
+Read off the saturation intensity and small-signal gain:
 \[
 \boxed{\;
 \alpha_0=\frac{\hbar\omega_0}{c}\,\Delta N_0\,B_{21}\,g(\omega_L-\omega_0),\quad
 I_S=\frac{c}{B_{21}\,g(\omega_L-\omega_0)\bigl[\tau_2+(g_2/g_1)\tau_1\bigr]}.\;}
 \]
-Insert back:
+Insert $\Delta N$ into $dI/dz$:
 \[
 \boxed{\;\frac{\de I(z)}{\de z}=\frac{\alpha_0\,I(z)}{1+I(z)/I_S}.\;}
 \]
@@ -304,34 +477,54 @@ Equate the two expressions and divide by $4\pi r^2$:
 
 \subsection*{(c)}
 
-Inside the sphere $I(r)\le I(R)=0.1 I_S\ll I_S$, so $1+I/I_S\approx 1$ (unsaturated):
+Assume the unsaturated regime $I\ll I_S$ holds throughout the sphere (consistent with $I(R)=0.1 I_S$; the breakdown near $r=0$ is addressed in (e)). Set $1+I/I_S\approx 1$:
 \[
 \frac{\de I}{\de r}+\frac{2I}{r}=\alpha_0 I.
 \]
-Multiply by $4\pi r^2$ to convert to $P$:
+Multiply through by $4\pi r^2$:
+\[
+4\pi r^2\frac{\de I}{\de r}+8\pi r I=\alpha_0\cdot 4\pi r^2 I.
+\]
+Recognise the LHS as $\de P/\de r$:
 \[
 \frac{\de P}{\de r}=\alpha_0 P.
 \]
-Integrate:
+Integrate from $r$ to $R$:
 \[
-P(r)=P(R)\,e^{-\alpha_0(R-r)}\quad\Longleftrightarrow\quad P(r)\propto e^{\alpha_0 r}.
+P(R)=P(r)\,e^{\alpha_0(R-r)}.
 \]
-Read off $I(r)=P(r)/(4\pi r^2)$:
+Rearrange:
+\[
+P(r)=P(R)\,e^{-\alpha_0(R-r)}.
+\]
+Use $P(R)=4\pi R^2 I(R)$ and $I(r)=P(r)/(4\pi r^2)$:
 \[
 \boxed{\;I(r)=I(R)\!\left(\frac{R}{r}\right)^{\!2}e^{-\alpha_0(R-r)}=0.1\,I_S\!\left(\frac{R}{r}\right)^{\!2}e^{-\alpha_0(R-r)}.\;}
 \]
 
 \subsection*{(d)}
 
-Minimise: take $\de I/\de r=0$. From part (c):
+Rewrite $I(r)=0.1 I_S R^2 e^{-\alpha_0 R}\cdot r^{-2}e^{\alpha_0 r}$ to isolate $r$-dependence:
 \[
-\frac{\de I}{\de r}=I\!\left(-\frac{2}{r}+\alpha_0\right).
+\ln I=\text{const}-2\ln r+\alpha_0 r.
 \]
-Set bracket to zero:
+Take the logarithmic derivative:
+\[
+\frac{1}{I}\frac{\de I}{\de r}=-\frac{2}{r}+\alpha_0.
+\]
+Set $\de I/\de r=0$ (equivalently the bracket vanishes):
+\[
+-\frac{2}{r}+\alpha_0=0.
+\]
+Solve for $r$:
 \[
 \boxed{\;r_\text{min}=\frac{2}{\alpha_0}.\;}
 \]
-Second derivative is positive (factor $2/r^2>0$ dominates near zero), so this is a minimum.
+Differentiate $\ln I$ a second time:
+\[
+\frac{\de^2\ln I}{\de r^2}=\frac{2}{r^2}>0.
+\]
+Hence $\ln I$ (and $I$) has a minimum at $r=2/\alpha_0$.
 
 \subsection*{(e)}
 
@@ -353,15 +546,31 @@ Insert into $i\hbar\partial_t\Psi=(H_0+V)\Psi$ and use $H_0\psi_n=E_n\psi_n$:
 \[
 i\hbar\bigl[\dot c_1\psi_1 e^{-iE_1 t/\hbar}+\dot c_2\psi_2 e^{-iE_2 t/\hbar}\bigr]=V(t)\bigl[c_1\psi_1 e^{-iE_1 t/\hbar}+c_2\psi_2 e^{-iE_2 t/\hbar}\bigr].
 \]
-Project on $\psi_1^*$ and $\psi_2^*$ (orthonormality):
+Project on $\psi_1^*$ (orthonormality, $V_{11}=0$ by parity):
 \[
-i\hbar\dot c_1=c_2 V_{12}(t)e^{-i\omega_0 t},\qquad i\hbar\dot c_2=c_1 V_{21}(t)e^{+i\omega_0 t},
+i\hbar\dot c_1=c_2 V_{12}(t)e^{-i\omega_0 t},\qquad\omega_0=(E_2-E_1)/\hbar.
 \]
-with $\omega_0=(E_2-E_1)/\hbar$, $V_{ab}=\int\psi_a^* V\psi_b\,\de\vec r$. Substitute $V=ex\mathcal E_0\cos\omega t$ and use $\chi_{ab}=-e\!\int\psi_a^* x\psi_b\,\de\vec r$:
+Project on $\psi_2^*$ ($V_{22}=0$ by parity):
+\[
+i\hbar\dot c_2=c_1 V_{21}(t)e^{+i\omega_0 t}.
+\]
+Substitute $V=ex\mathcal E_0\cos\omega t$ and use $\chi_{ab}=-e\!\int\psi_a^* x\psi_b\,\de\vec r$:
 \[
 V_{ab}(t)=-\mathcal E_0\cos(\omega t)\,\chi_{ab}.
 \]
-Expand cosine: $\cos\omega t=\tfrac12(e^{i\omega t}+e^{-i\omega t})$:
+Insert into $\dot c_1$:
+\[
+i\hbar\dot c_1=-\mathcal E_0\chi_{12}\cos(\omega t)c_2 e^{-i\omega_0 t}.
+\]
+Expand cosine $\cos\omega t=\tfrac12(e^{i\omega t}+e^{-i\omega t})$:
+\[
+\dot c_1=-\frac{\mathcal E_0\chi_{12}}{2 i\hbar}\bigl[e^{i\omega t}+e^{-i\omega t}\bigr]c_2 e^{-i\omega_0 t}.
+\]
+Use $-1/(2i)=i/2$ and combine exponentials:
+\[
+\dot c_1=\frac{i\mathcal E_0\chi_{12}}{2\hbar}\bigl[e^{i(\omega-\omega_0)t}+e^{-i(\omega+\omega_0)t}\bigr]c_2.
+\]
+Likewise for $\dot c_2$, using $\chi_{21}=\chi_{12}^*=\chi_{12}$ (real $\psi_n$):
 \begin{equation}
 \boxed{\;
 \begin{aligned}
@@ -369,57 +578,112 @@ Expand cosine: $\cos\omega t=\tfrac12(e^{i\omega t}+e^{-i\omega t})$:
 \dot c_2(t)&=\frac{i\mathcal E_0\chi_{12}}{2\hbar}\bigl[e^{-i(\omega-\omega_0)t}+e^{i(\omega+\omega_0)t}\bigr]c_1(t).
 \end{aligned}\;}\label{eq:coupled}
 \end{equation}
-Used $\chi_{21}=\chi_{12}^*=\chi_{12}$ (real $\psi_n$).
 
 \subsection*{(b)}
 
-Initial $c_1(0)=1$, $c_2(0)=0$. Weak field: set $c_1\approx 1$. Drop the counter-rotating $e^{i(\omega+\omega_0)t}$ term (RWA, since $\omega+\omega_0\sim 2\omega\gg|\omega-\omega_0|$):
+Initial $c_1(0)=1$, $c_2(0)=0$. Weak field: set $c_1\approx 1$ in \eqref{eq:coupled}:
+\[
+\dot c_2=\frac{i\mathcal E_0\chi_{12}}{2\hbar}\bigl[e^{-i(\omega-\omega_0)t}+e^{i(\omega+\omega_0)t}\bigr].
+\]
+Drop the counter-rotating term (RWA, since $\omega+\omega_0\sim 2\omega\gg|\omega-\omega_0|$):
 \[
 \dot c_2=\frac{i\mathcal E_0\chi_{12}}{2\hbar}e^{-i(\omega-\omega_0)t}.
 \]
-Integrate from $0$ to $t$:
+Integrate from $0$ to $t$ using $c_2(0)=0$:
 \[
-c_2(t)=\frac{i\mathcal E_0\chi_{12}}{2\hbar}\,\frac{e^{-i(\omega-\omega_0)t}-1}{-i(\omega-\omega_0)}.
+c_2(t)=\frac{i\mathcal E_0\chi_{12}}{2\hbar}\int_0^t e^{-i(\omega-\omega_0)t'}\,\de t'.
 \]
-Square modulus, use $|e^{i\theta}-1|^2=4\sin^2(\theta/2)$:
+Evaluate the integral:
+\[
+c_2(t)=\frac{i\mathcal E_0\chi_{12}}{2\hbar}\cdot\frac{e^{-i(\omega-\omega_0)t}-1}{-i(\omega-\omega_0)}.
+\]
+Cancel $i/(-i)=-1$ and pull the sign in:
+\[
+c_2(t)=-\frac{\mathcal E_0\chi_{12}}{2\hbar}\cdot\frac{e^{-i(\omega-\omega_0)t}-1}{\omega-\omega_0}.
+\]
+Take square modulus:
+\[
+|c_2(t)|^2=\frac{\mathcal E_0^2\chi_{12}^2}{4\hbar^2}\,\frac{|e^{-i(\omega-\omega_0)t}-1|^2}{(\omega-\omega_0)^2}.
+\]
+Use $|e^{i\theta}-1|^2=4\sin^2(\theta/2)$ with $\theta=-(\omega-\omega_0)t$:
+\[
+|e^{-i(\omega-\omega_0)t}-1|^2=4\sin^2[(\omega-\omega_0)t/2].
+\]
+Substitute:
 \begin{equation}
 \boxed{\;|c_2(t)|^2=\frac{\mathcal E_0^2\chi_{12}^2}{\hbar^2}\,\frac{\sin^2[(\omega-\omega_0)t/2]}{(\omega-\omega_0)^2}.\;}\label{eq:c2sq}
 \end{equation}
 
 \subsection*{(c)}
 
-Replace $\mathcal E_0^2$ by spectral content: $\varepsilon_0\mathcal E_0^2/2=u(\omega)\de\omega$ gives $\mathcal E_0^2(\omega)=2u(\omega)/\varepsilon_0$. Sum incoherently:
+For a non-monochromatic field, the spectral content gives $\varepsilon_0\mathcal E_0^2(\omega)/2=u(\omega)\de\omega$:
+\[
+\mathcal E_0^2(\omega)=\frac{2u(\omega)\,\de\omega}{\varepsilon_0}.
+\]
+Sum \eqref{eq:c2sq} incoherently over $\omega$ (each spectral component drives independently):
 \[
 |c_2(t)|^2=\int\frac{2\chi_{12}^2 u(\omega)}{\varepsilon_0\hbar^2}\,\frac{\sin^2[(\omega-\omega_0)t/2]}{(\omega-\omega_0)^2}\de\omega.
 \]
-For large $t$ kernel sharpens:
+For large $t$ the kernel becomes a delta (using $\int_{-\infty}^\infty\sin^2(xt/2)/x^2\,\de x=\pi t/2$):
 \[
 \frac{\sin^2[(\omega-\omega_0)t/2]}{(\omega-\omega_0)^2}\to\frac{\pi t}{2}\,\delta(\omega-\omega_0).
 \]
 Pull out slowly varying $u(\omega_0)$:
 \[
+|c_2(t)|^2=\frac{2\chi_{12}^2 u(\omega_0)}{\varepsilon_0\hbar^2}\cdot\frac{\pi t}{2}.
+\]
+Cancel the 2:
+\[
 |c_2(t)|^2=\frac{\pi\chi_{12}^2}{\varepsilon_0\hbar^2}\,u(\omega_0)\,t.
 \]
-Identify rate $\equiv B_{12}u(\omega_0)$ and average $\overline{\cos^2\theta}=1/3$ over orientation of $\vec E$ relative to dipole:
+Identify the absorption rate $|c_2|^2/t\equiv B_{12}u(\omega_0)$:
+\[
+B_{12}=\frac{\pi\chi_{12}^2}{\varepsilon_0\hbar^2}.
+\]
+Average over orientation of $\vec E$ relative to the atomic dipole, giving $\overline{\cos^2\theta}=1/3$:
 \begin{equation}
 \boxed{\;B_{12}=\frac{\pi\chi_{12}^2}{3\varepsilon_0\hbar^2}.\;}\label{eq:B12}
 \end{equation}
 
 \subsection*{(d)}
 
-Need $\sum_m|\chi_{1s\to 2p,m}|^2$. Write $x=r\sin\theta\cos\phi$ via spherical harmonics:
+In \eqref{eq:B12}, after orientation averaging, $\chi_{12}^2$ represents the squared magnitude of the full dipole matrix element $|\vec d_{12}|^2=e^2|\langle 1|\vec r|2\rangle|^2$. Sum over final $m$ in the $2p$ manifold:
 \[
-Y_{1,-1}-Y_{1,+1}=2\sqrt{\tfrac{3}{8\pi}}\sin\theta\cos\phi.
+B_{12}^{1s\to 2p}=\frac{\pi e^2}{3\varepsilon_0\hbar^2}\sum_m\bigl|\langle 2p_m|\vec r|1s\rangle\bigr|^2.
 \]
-Solve for $x$:
+By spherical symmetry the three Cartesian components contribute equally on summing over $m$:
+\[
+\sum_m\bigl|\langle 2p_m|x|1s\rangle\bigr|^2=\sum_m\bigl|\langle 2p_m|y|1s\rangle\bigr|^2=\sum_m\bigl|\langle 2p_m|z|1s\rangle\bigr|^2.
+\]
+Hence:
+\[
+\sum_m\bigl|\langle 2p_m|\vec r|1s\rangle\bigr|^2=3\sum_m\bigl|\langle 2p_m|x|1s\rangle\bigr|^2.
+\]
+Compute the $x$ matrix element using $x=r\sin\theta\cos\phi$. Use the table conventions $Y_{1,-1}=(3/8\pi)^{1/2}\sin\theta e^{-i\phi}$ and $Y_{1,+1}=-(3/8\pi)^{1/2}\sin\theta e^{i\phi}$:
+\[
+Y_{1,-1}-Y_{1,+1}=(3/8\pi)^{1/2}\sin\theta\bigl(e^{-i\phi}+e^{i\phi}\bigr).
+\]
+Apply Euler's identity:
+\[
+Y_{1,-1}-Y_{1,+1}=2(3/8\pi)^{1/2}\sin\theta\cos\phi.
+\]
+Solve for $\sin\theta\cos\phi$ and multiply by $r$:
 \[
 x=r\sqrt{\tfrac{2\pi}{3}}\bigl(Y_{1,-1}-Y_{1,+1}\bigr).
 \]
-Factor matrix element: $\chi_{1s,2p_m}=-e\,I_r A_m$ with
+Split the matrix element into radial and angular parts: $\langle 2p_m|x|1s\rangle=I_r A_m$ with
 \[
-I_r=\!\int_0^\infty R_{10}(r)R_{21}(r)\,r^3\,\de r,\qquad A_m=\sqrt{\tfrac{2\pi}{3}}\!\int Y_{0,0}^*\bigl(Y_{1,-1}-Y_{1,+1}\bigr)Y_{1,m}\,\de\Omega.
+I_r=\!\int_0^\infty R_{10}(r)R_{21}(r)\,r^3\,\de r,\qquad A_m=\sqrt{\tfrac{2\pi}{3}}\!\int Y_{1,m}^*\bigl(Y_{1,-1}-Y_{1,+1}\bigr)Y_{0,0}\,\de\Omega.
 \]
-Use $Y_{0,0}=1/\sqrt{4\pi}$ and orthonormality with the conventions in the table. The table gives $Y_{1,-1}=(3/8\pi)^{1/2}\sin\theta e^{-i\phi}$ and $Y_{1,+1}=-(3/8\pi)^{1/2}\sin\theta e^{i\phi}$, so $\int Y_{1,-1}^* Y_{1,m}\de\Omega=\delta_{m,-1}$ and $\int Y_{1,+1}^* Y_{1,m}\de\Omega=\delta_{m,+1}$. Hence:
+Use $Y_{0,0}=1/\sqrt{4\pi}$ and the orthonormality $\int Y_{1,m}^* Y_{1,m'}\de\Omega=\delta_{m m'}$:
+\[
+\int Y_{1,m}^* Y_{1,-1}\,\de\Omega=\delta_{m,-1},\qquad \int Y_{1,m}^* Y_{1,+1}\,\de\Omega=\delta_{m,+1}.
+\]
+Combine the two integrals:
+\[
+A_m=\frac{1}{\sqrt{4\pi}}\sqrt{\tfrac{2\pi}{3}}\bigl(\delta_{m,-1}-\delta_{m,+1}\bigr)=\frac{\delta_{m,-1}-\delta_{m,+1}}{\sqrt{6}}.
+\]
+Read off values:
 \[
 A_0=0,\quad A_{+1}=-\frac{1}{\sqrt{6}},\quad A_{-1}=+\frac{1}{\sqrt{6}}.
 \]
@@ -427,63 +691,92 @@ Sum the squares:
 \[
 \sum_m|A_m|^2=\frac{1}{6}+\frac{1}{6}=\frac{1}{3}.
 \]
-Insert the radial functions $R_{10}=2 a_0^{-3/2}e^{-r/a_0}$, $R_{21}=(1/\sqrt{3})a_0^{-5/2} r\,e^{-r/2a_0}$:
+Insert the radial functions from the table $R_{10}=2 a_0^{-3/2}e^{-r/a_0}$ and $R_{21}=(1/\sqrt{3})a_0^{-5/2} r\,e^{-r/2a_0}$:
+\[
+R_{10}R_{21}=\frac{2}{\sqrt{3}}a_0^{-4}\,r\,e^{-3r/(2a_0)}.
+\]
+Multiply by $r^3$:
+\[
+R_{10}R_{21}r^3=\frac{2}{\sqrt{3}}a_0^{-4}\,r^4\,e^{-3r/(2a_0)}.
+\]
+Integrate:
 \[
 I_r=\frac{2}{\sqrt{3}}a_0^{-4}\!\int_0^\infty r^4 e^{-3r/(2a_0)}\,\de r.
 \]
-Use $\int_0^\infty r^n e^{-\alpha r}\de r=n!/\alpha^{n+1}$:
+Use $\int_0^\infty r^n e^{-\alpha r}\de r=n!/\alpha^{n+1}$ with $\alpha=3/(2a_0)$:
 \[
-I_r=\frac{2}{\sqrt{3}}a_0^{-4}\cdot\frac{4!}{(3/2a_0)^5}.
+\int_0^\infty r^4 e^{-3r/(2a_0)}\de r=\frac{4!}{(3/2a_0)^5}.
 \]
-Reduce:
+Reduce the denominator:
 \[
-I_r=\frac{2}{\sqrt{3}}\cdot 24\cdot\frac{2^5}{3^5}\,a_0=\frac{2^{8}\sqrt{3}}{3^{5}}a_0=\frac{256\sqrt{3}}{243}a_0.
+\frac{4!}{(3/2a_0)^5}=\frac{24\cdot(2a_0)^5}{3^5}=\frac{24\cdot 32\,a_0^5}{243}=\frac{768\,a_0^5}{243}.
 \]
-Combine into $\sum_m\chi_{12}^2$:
+Substitute back:
 \[
-\sum_m|\chi_{1s,2p_m}|^2=e^2 I_r^2\sum_m|A_m|^2.
+I_r=\frac{2}{\sqrt{3}}a_0^{-4}\cdot\frac{768\,a_0^5}{243}=\frac{1536}{243\sqrt{3}}\,a_0.
 \]
-Substitute numerics:
+Rationalise the surd:
 \[
-\sum_m|\chi_{1s,2p_m}|^2=e^2\!\left(\frac{256\sqrt{3}}{243}\right)^{\!2}\!a_0^2\cdot\frac{1}{3}=e^2 a_0^2\!\left(\frac{256}{243}\right)^{\!2}.
+I_r=\frac{1536\sqrt{3}}{729}\,a_0=\frac{512\sqrt{3}}{243}\,a_0.
 \]
-Insert into \eqref{eq:B12}:
+Square:
 \[
-B_{12}=\frac{\pi}{3\varepsilon_0\hbar^2}\!\left(\frac{256}{243}\right)^{\!2}\!e^2 a_0^2.
+I_r^2=\frac{512^2\cdot 3}{243^2}\,a_0^2=3\!\left(\frac{512}{243}\right)^{\!2}a_0^2.
+\]
+Form $\sum_m|\langle 2p_m|x|1s\rangle|^2=I_r^2\sum_m|A_m|^2$:
+\[
+\sum_m\bigl|\langle 2p_m|x|1s\rangle\bigr|^2=3\!\left(\frac{512}{243}\right)^{\!2}a_0^2\cdot\frac{1}{3}=\left(\frac{512}{243}\right)^{\!2}a_0^2.
+\]
+Multiply by 3 for the vector sum:
+\[
+\sum_m\bigl|\langle 2p_m|\vec r|1s\rangle\bigr|^2=3\!\left(\frac{512}{243}\right)^{\!2}a_0^2.
+\]
+Insert into the Einstein-$B$ formula:
+\[
+B_{12}^{1s\to 2p}=\frac{\pi e^2}{3\varepsilon_0\hbar^2}\cdot 3\!\left(\frac{2^9}{3^5}\right)^{\!2}\!a_0^2.
+\]
+Cancel the 3:
+\[
+B_{12}^{1s\to 2p}=\frac{\pi\,e^2 a_0^2}{\varepsilon_0\hbar^2}\!\left(\frac{2^9}{3^5}\right)^{\!2}.
 \]
 Plug in $e=\SI{1.602e-19}{C}$, $a_0=\SI{5.292e-11}{m}$, $\varepsilon_0=\SI{8.854e-12}{F/m}$, $\hbar=\SI{1.055e-34}{J.s}$.
 
-Evaluate the dimensional ratio:
-\[
-\frac{e^2 a_0^2}{\varepsilon_0\hbar^2}=\frac{(1.602\times 10^{-19})^2(5.292\times 10^{-11})^2}{(8.854\times 10^{-12})(1.055\times 10^{-34})^2}.
-\]
-Reduce step by step:
+Square the elementary charge:
 \[
 e^2=2.566\times 10^{-38}\,\text{C}^2.
 \]
+Square the Bohr radius:
 \[
 a_0^2=2.800\times 10^{-21}\,\text{m}^2.
 \]
+Multiply:
 \[
 e^2 a_0^2=7.185\times 10^{-59}\,\text{C}^2\,\text{m}^2.
 \]
+Square $\hbar$:
 \[
-\varepsilon_0\hbar^2=(8.854\times 10^{-12})(1.113\times 10^{-68})=9.857\times 10^{-80}.
+\hbar^2=1.113\times 10^{-68}\,\text{J}^2\text{s}^2.
 \]
+Multiply by $\varepsilon_0$:
+\[
+\varepsilon_0\hbar^2=9.857\times 10^{-80}.
+\]
+Form the dimensional ratio:
 \[
 \frac{e^2 a_0^2}{\varepsilon_0\hbar^2}=\frac{7.185\times 10^{-59}}{9.857\times 10^{-80}}=7.29\times 10^{20}\;\text{m}^3\,\text{J}^{-1}\,\text{s}^{-2}.
 \]
-Compute $(256/243)^2$:
+Evaluate the dimensionless factor:
 \[
-\left(\tfrac{256}{243}\right)^{\!2}=1.110.
+\left(\frac{512}{243}\right)^{\!2}=\frac{262144}{59049}\approx 4.440.
 \]
 Combine:
 \[
-B_{12}=\frac{\pi}{3}\cdot 1.110\cdot 7.29\times 10^{20}.
+B_{12}^{1s\to 2p}=\pi\cdot 4.440\cdot 7.29\times 10^{20}.
 \]
 Multiply:
 \[
-\boxed{\;B_{12}^{1s\to 2p}\approx \SI{8.5e20}{m^3\,J^{-1}\,s^{-2}}.\;}
+\boxed{\;B_{12}^{1s\to 2p}\approx\SI{1.0e22}{m^3\,J^{-1}\,s^{-2}}.\;}
 \]
+\textbf{Note.} The $n=2$ radial functions in the exam table are written without the standard normalisation factor of $1/(2\sqrt{2})$; using them verbatim makes $|R_{21}|^2$ a factor 8 too large. With correctly normalised wavefunctions one obtains the textbook value $B_{12}^{1s\to 2p}\approx\SI{1.3e21}{m^3\,J^{-1}\,s^{-2}}$, consistent with $A_{2p\to 1s}=\SI{6.27e8}{s^{-1}}$ for Lyman-$\alpha$.
 
 \end{document}

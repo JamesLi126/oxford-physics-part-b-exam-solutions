@@ -39,7 +39,7 @@ Christoffel contraction:
 \[
 \Gamma^\mu_{\mu\lambda} \;=\; \tfrac12 g^{\mu\nu}\bigl(\partial_\mu g_{\nu\lambda}+\partial_\lambda g_{\mu\nu}-\partial_\nu g_{\mu\lambda}\bigr).
 \]
-Antisymmetry of the first and last terms in $(\mu,\nu)$ kills them:
+First and third terms are equal under $\mu\leftrightarrow\nu$ via $g^{\mu\nu}=g^{\nu\mu}$, so they cancel:
 \[
 \Gamma^\mu_{\mu\lambda} \;=\; \tfrac12 g^{\mu\nu}\partial_\lambda g_{\mu\nu}.
 \]
@@ -47,9 +47,17 @@ Apply Jacobi $\partial_\lambda g=g\,g^{\mu\nu}\partial_\lambda g_{\mu\nu}$:
 \[
 \Gamma^\mu_{\mu\lambda} \;=\; \frac{1}{2g}\partial_\lambda g.
 \]
-Lorentzian signature: $g<0$, so $g=-|g|$ and $\partial_\lambda g=-\partial_\lambda|g|$:
+Rewrite as a logarithmic derivative (with $-g>0$ for Lorentzian signature):
 \[
-\Gamma^\mu_{\mu\lambda} \;=\; \frac{1}{2|g|}\partial_\lambda|g| \;=\; \frac{1}{\sqrt{-g}}\,\partial_\lambda\sqrt{-g}.
+\Gamma^\mu_{\mu\lambda} \;=\; \tfrac12\,\partial_\lambda\ln|g| \;=\; \tfrac12\,\partial_\lambda\ln(-g).
+\]
+Use $\ln(-g)=2\ln\sqrt{-g}$:
+\[
+\Gamma^\mu_{\mu\lambda} \;=\; \partial_\lambda\ln\sqrt{-g}.
+\]
+Expand the logarithmic derivative:
+\[
+\Gamma^\mu_{\mu\lambda} \;=\; \frac{1}{\sqrt{-g}}\,\partial_\lambda\sqrt{-g}.
 \]
 \begin{equation}
 \boxed{\;\Gamma^\mu_{\mu\lambda} \;=\; \frac{1}{\sqrt{-g}}\,\partial_\lambda\sqrt{-g}.\;}
@@ -82,39 +90,55 @@ Substitute $V^\mu=g^{\mu\nu}\partial_\nu f$:
 
 \subsection*{(d)}
 
-Definition: $U_{\mu\nu}=\nabla_\mu\nabla_\nu f - g_{\mu\nu}\,\Box f$, where $\Box f\equiv\nabla^\lambda\nabla_\lambda f$. Take divergence; metric compatibility $\nabla_\mu g_{\alpha\beta}=0$:
+Definition $U_{\mu\nu}=\nabla_\mu\nabla_\nu f - g_{\mu\nu}\Box f$ with $\Box f\equiv\nabla^\lambda\nabla_\lambda f$. Take divergence using $\nabla_\mu g_{\alpha\beta}=0$:
 \[
 \nabla^\mu U_{\mu\nu} \;=\; \nabla^\mu\nabla_\mu\nabla_\nu f - \nabla_\nu\Box f.
 \]
-Commute $\nabla^\mu\nabla_\nu=\nabla_\nu\nabla^\mu+[\nabla^\mu,\nabla_\nu]$ on the one-form $\nabla_\mu f$. The given Riemann identity on a vector $V^\alpha$,
+Use symmetry $\nabla_\mu\nabla_\nu f=\nabla_\nu\nabla_\mu f$ from \eqref{eq:Q1a}:
 \[
-(\nabla_\mu\nabla_\nu-\nabla_\nu\nabla_\mu)V^\alpha \;=\; R^\alpha{}_{\beta\mu\nu}V^\beta,
+\nabla^\mu\nabla_\mu\nabla_\nu f \;=\; \nabla^\mu\nabla_\nu\nabla_\mu f.
 \]
-gives, on a one-form $\omega_\alpha$ (sign flip):
+Insert the commutator $[\nabla^\mu,\nabla_\nu]\nabla_\mu f$:
 \[
-(\nabla_\mu\nabla_\nu-\nabla_\nu\nabla_\mu)\omega_\alpha \;=\; -R^\beta{}_{\alpha\mu\nu}\omega_\beta.
+\nabla^\mu\nabla_\nu\nabla_\mu f \;=\; \nabla_\nu\nabla^\mu\nabla_\mu f + [\nabla^\mu,\nabla_\nu]\nabla_\mu f.
 \]
-Apply with $\omega_\alpha=\nabla_\alpha f$:
+Apply the Riemann identity on the one-form $\omega_\alpha=\nabla_\alpha f$ (sign flip from vector form):
 \[
-\nabla^\mu\nabla_\mu\nabla_\nu f \;=\; \nabla^\mu\nabla_\nu\nabla_\mu f - g^{\mu\sigma}R^\beta{}_{\mu\sigma\nu}\nabla_\beta f.
+[\nabla_\mu,\nabla_\nu]\nabla_\alpha f \;=\; -R^\beta{}_{\alpha\mu\nu}\nabla_\beta f.
 \]
-Symmetry $\nabla_\mu\nabla_\nu f=\nabla_\nu\nabla_\mu f$ from \eqref{eq:Q1a}:
-\[
-\nabla^\mu\nabla_\nu\nabla_\mu f \;=\; \nabla^\mu\nabla_\mu\nabla_\nu f \;=\; \nabla_\nu\Box f + g^{\mu\sigma}R^\beta{}_{\mu\sigma\nu}\nabla_\beta f.
-\]
-Wait --- restart the commutator on the right object. Use directly $\nabla^\mu\nabla_\mu(\nabla_\nu f)=\nabla^\mu\nabla_\nu(\nabla_\mu f)$:
-\[
-\nabla^\mu\nabla_\mu\nabla_\nu f \;=\; \nabla_\nu\nabla^\mu\nabla_\mu f + [\nabla^\mu,\nabla_\nu]\nabla_\mu f.
-\]
-Commutator on the one-form $\omega_\mu=\nabla_\mu f$:
+Raise the first index with $g^{\mu\sigma}$ and contract $\alpha\to\mu$:
 \[
 [\nabla^\mu,\nabla_\nu]\nabla_\mu f \;=\; -g^{\mu\sigma}R^\beta{}_{\mu\sigma\nu}\nabla_\beta f.
 \]
-Convention $R_{\alpha\beta}\equiv -R^\gamma{}_{\alpha\beta\gamma}$ from the problem; index gymnastics give $g^{\mu\sigma}R^\beta{}_{\mu\sigma\nu}=-R^\beta{}_\nu$ in this convention, so
+Use antisymmetry of Riemann on last two indices, $R^\beta{}_{\mu\sigma\nu}=-R^\beta{}_{\mu\nu\sigma}$:
+\[
+g^{\mu\sigma}R^\beta{}_{\mu\sigma\nu} \;=\; -g^{\mu\sigma}R^\beta{}_{\mu\nu\sigma}.
+\]
+Raise $\mu$ on the right:
+\[
+g^{\mu\sigma}R^\beta{}_{\mu\sigma\nu} \;=\; -R^{\beta\sigma}{}_{\nu\sigma}.
+\]
+Swap the two lower indices (Riemann antisymmetry), $R^{\beta\sigma}{}_{\nu\sigma}=-R^{\beta\sigma}{}_{\sigma\nu}$:
+\[
+g^{\mu\sigma}R^\beta{}_{\mu\sigma\nu} \;=\; R^{\beta\sigma}{}_{\sigma\nu}.
+\]
+Apply first-pair antisymmetry of Riemann, $R^{\beta\sigma}{}_{\sigma\nu}=-R^{\sigma\beta}{}_{\sigma\nu}$:
+\[
+g^{\mu\sigma}R^\beta{}_{\mu\sigma\nu} \;=\; -R^{\sigma\beta}{}_{\sigma\nu}.
+\]
+Apply paper's Ricci convention $R_{\alpha\nu}\equiv-R^\sigma{}_{\alpha\nu\sigma}=R^\sigma{}_{\alpha\sigma\nu}$:
+\[
+R^{\sigma\beta}{}_{\sigma\nu} \;=\; R^\beta{}_\nu.
+\]
+Combine:
+\[
+g^{\mu\sigma}R^\beta{}_{\mu\sigma\nu} \;=\; -R^\beta{}_\nu.
+\]
+Substitute back:
 \[
 [\nabla^\mu,\nabla_\nu]\nabla_\mu f \;=\; R^\beta{}_\nu\nabla_\beta f.
 \]
-Combine:
+Substitute into $\nabla^\mu U_{\mu\nu}$:
 \[
 \nabla^\mu U_{\mu\nu} \;=\; \nabla_\nu\Box f + R^\beta{}_\nu\nabla_\beta f - \nabla_\nu\Box f.
 \]
@@ -124,48 +148,87 @@ Cancel $\nabla_\nu\Box f$:
 \label{eq:Q1d1}
 \end{equation}
 
-Now take a second divergence:
+Take a second divergence:
 \[
 \nabla^\nu\nabla^\mu U_{\mu\nu} \;=\; \nabla^\nu\!\left(R_\nu{}^\sigma\nabla_\sigma f\right).
 \]
-Product rule:
+Apply the product rule:
 \[
 \nabla^\nu\nabla^\mu U_{\mu\nu} \;=\; (\nabla^\nu R_\nu{}^\sigma)\nabla_\sigma f + R_\nu{}^\sigma\nabla^\nu\nabla_\sigma f.
 \]
-Contracted Bianchi $\nabla^\nu R_\nu{}^\sigma=\tfrac12\nabla^\sigma R$ (derived below):
+Start from the Bianchi identity:
+\[
+\nabla_\gamma R^\mu{}_{\nu\alpha\beta}+\nabla_\beta R^\mu{}_{\nu\gamma\alpha}+\nabla_\alpha R^\mu{}_{\nu\beta\gamma} \;=\; 0.
+\]
+Contract first by setting $\beta=\mu$ (sum):
+\[
+\nabla_\gamma R^\mu{}_{\nu\alpha\mu}+\nabla_\mu R^\mu{}_{\nu\gamma\alpha}+\nabla_\alpha R^\mu{}_{\nu\mu\gamma} \;=\; 0.
+\]
+Apply paper's Ricci convention $R_{\nu\alpha}=-R^\mu{}_{\nu\alpha\mu}$ and antisymmetry of last two indices, $R^\mu{}_{\nu\mu\gamma}=-R^\mu{}_{\nu\gamma\mu}=R_{\nu\gamma}$:
+\[
+-\nabla_\gamma R_{\nu\alpha}+\nabla_\mu R^\mu{}_{\nu\gamma\alpha}+\nabla_\alpha R_{\nu\gamma} \;=\; 0.
+\]
+Contract with $g^{\nu\alpha}$ to bring out the Ricci scalar:
+\[
+-\nabla_\gamma R+\nabla^\mu R_{\mu\gamma}+\nabla^\mu R_{\mu\gamma} \;=\; 0.
+\]
+Combine the divergence terms:
+\[
+\nabla_\gamma R - 2\nabla^\mu R_{\mu\gamma} \;=\; 0.
+\]
+Solve for the divergence of Ricci:
+\[
+\nabla^\nu R_\nu{}^\sigma \;=\; \tfrac12\nabla^\sigma R.
+\]
+Insert into the second divergence:
 \begin{equation}
 \boxed{\;\nabla^\nu\nabla^\mu U_{\mu\nu} \;=\; \tfrac12\,\nabla^\sigma R\,\nabla_\sigma f + R^{\nu\mu}\nabla_\nu\nabla_\mu f.\;}
 \label{eq:Q1d2}
 \end{equation}
 
-Bianchi check. Contract $\nabla_\gamma R_{\mu\nu\alpha\beta}+\nabla_\beta R_{\mu\nu\gamma\alpha}+\nabla_\alpha R_{\mu\nu\beta\gamma}=0$ with $g^{\mu\alpha}g^{\nu\beta}$. The first term gives $\nabla_\gamma R$. The second gives $-\nabla^\beta R_{\beta\gamma}$. The third gives $-\nabla^\alpha R_{\alpha\gamma}$:
-\[
-\nabla_\gamma R - 2\nabla^\beta R_{\beta\gamma} \;=\; 0 \;\;\Rightarrow\;\; \nabla^\beta R_{\beta\gamma}=\tfrac12\nabla_\gamma R.
-\]
-
 \subsection*{(e)}
 
-Vacuum Einstein with $\Lambda$: $T_{\alpha\beta}=0$ gives
+Vacuum Einstein with $\Lambda$ and $T_{\alpha\beta}=0$:
 \[
 R_{\alpha\beta}-\tfrac12 g_{\alpha\beta}R-\Lambda g_{\alpha\beta} \;=\; 0.
 \]
-Trace ($g^{\alpha\beta}$ contraction in 4D):
+Trace with $g^{\alpha\beta}$ in 4D:
 \[
-R - 2R - 4\Lambda \;=\; 0 \;\;\Rightarrow\;\; R=-4\Lambda.
+R - 2R - 4\Lambda \;=\; 0.
 \]
-Substitute back:
+Solve for $R$:
 \[
-R_{\alpha\beta} \;=\; \Lambda g_{\alpha\beta}.
+R \;=\; -4\Lambda.
 \]
-Hence $\nabla R=0$ and $R^{\nu\mu}=\Lambda g^{\nu\mu}$. Insert into \eqref{eq:Q1d2}:
+Substitute $R=-4\Lambda$ back into the field equation:
 \[
-\nabla^\nu\nabla^\mu U_{\mu\nu} \;=\; 0 + \Lambda g^{\nu\mu}\nabla_\nu\nabla_\mu f \;=\; \Lambda\Box f.
+R_{\alpha\beta} \;=\; \tfrac12 g_{\alpha\beta}(-4\Lambda) + \Lambda g_{\alpha\beta}.
 \]
-Trace $U_{\mu\nu}$ in 4D:
+Simplify:
 \[
-g^{\mu\nu}U_{\mu\nu} \;=\; \Box f - 4\Box f \;=\; -3\Box f.
+R_{\alpha\beta} \;=\; -\Lambda g_{\alpha\beta}.
 \]
-Hence $\Box f=-\tfrac13 g^{\mu\nu}U_{\mu\nu}$, so $\Lambda\Box f=-\tfrac{\Lambda}{3}g^{\mu\nu}U_{\mu\nu}$. Sign conventions on $U$: re-trace with care --- the problem defines $U_{\mu\nu}=\nabla_\mu\nabla_\nu f-g_{\mu\nu}\Box f$, so $g^{\mu\nu}U_{\mu\nu}=\Box f-4\Box f=-3\Box f$, i.e.\ $\Box f=-\tfrac13 g^{\mu\nu}U_{\mu\nu}$. Therefore $\nabla^\nu\nabla^\mu U_{\mu\nu}=\Lambda\Box f=-\tfrac{\Lambda}{3}g^{\mu\nu}U_{\mu\nu}$. Reading the question's stated identity with the opposite sign of $U$ (a common alternative convention, $U=g\Box f-\nabla\nabla f$) recovers the quoted form:
+Constant $R$ gives $\nabla^\sigma R=0$; the first term of \eqref{eq:Q1d2} drops:
+\[
+\nabla^\nu\nabla^\mu U_{\mu\nu} \;=\; R^{\nu\mu}\nabla_\nu\nabla_\mu f.
+\]
+Insert $R^{\nu\mu}=-\Lambda g^{\nu\mu}$:
+\[
+\nabla^\nu\nabla^\mu U_{\mu\nu} \;=\; -\Lambda g^{\nu\mu}\nabla_\nu\nabla_\mu f \;=\; -\Lambda\Box f.
+\]
+Trace $U_{\mu\nu}$ with $g^{\mu\nu}$ in 4D:
+\[
+g^{\mu\nu}U_{\mu\nu} \;=\; \Box f - 4\Box f.
+\]
+Combine:
+\[
+g^{\mu\nu}U_{\mu\nu} \;=\; -3\Box f.
+\]
+Solve for $\Box f$:
+\[
+\Box f \;=\; -\tfrac{1}{3}g^{\mu\nu}U_{\mu\nu}.
+\]
+Substitute into $\nabla^\nu\nabla^\mu U_{\mu\nu}=-\Lambda\Box f$:
 \begin{equation}
 \boxed{\;\nabla^\mu\nabla^\nu U_{\mu\nu} \;=\; \tfrac{1}{3}\Lambda\,g^{\mu\nu}U_{\mu\nu}.\;}
 \label{eq:Q1e}
@@ -189,46 +252,70 @@ E/m &\;\equiv\; \left(1-\tfrac{r_S}{r}\right)c^2\dot t \;=\; \text{const},
 L/m &\;\equiv\; r^2\sin^2\theta\,\dot\phi \;=\; \text{const}.
 \label{eq:L}
 \end{align}
-$\theta$-equation has $\theta=\pi/2$ as a solution (confine to equator). Normalisation $g_{\mu\nu}\dot x^\mu\dot x^\nu=-c^2$:
+The $\theta$-equation admits $\theta=\pi/2$; confine to the equator. Normalisation $g_{\mu\nu}\dot x^\mu\dot x^\nu=-c^2$:
 \begin{equation}
 -\!\left(1-\tfrac{r_S}{r}\right)c^2\dot t^2 + \left(1-\tfrac{r_S}{r}\right)^{-1}\dot r^2 + r^2\dot\phi^2 \;=\; -c^2.
 \label{eq:norm}
 \end{equation}
-Solve \eqref{eq:E} for $\dot t$, \eqref{eq:L} for $\dot\phi$, and substitute into \eqref{eq:norm}:
+Solve \eqref{eq:E} for $\dot t$ and \eqref{eq:L} for $\dot\phi$:
+\[
+\dot t \;=\; \frac{E}{mc^2(1-r_S/r)},\qquad \dot\phi \;=\; \frac{L}{mr^2}.
+\]
+Substitute into \eqref{eq:norm}:
+\[
+-\frac{E^2/(m^2 c^2)}{1-r_S/r} + \frac{\dot r^2}{1-r_S/r} + \frac{L^2}{m^2 r^2} \;=\; -c^2.
+\]
+Multiply through by $(1-r_S/r)$:
+\[
+-\frac{E^2}{m^2 c^2} + \dot r^2 + \left(1-\tfrac{r_S}{r}\right)\!\frac{L^2}{m^2 r^2} \;=\; -c^2\!\left(1-\tfrac{r_S}{r}\right).
+\]
+Solve for $\dot r^2$:
 \[
 \dot r^2 \;=\; \left(\tfrac{E}{mc}\right)^2 - \left(1-\tfrac{r_S}{r}\right)\!\left(c^2 + \tfrac{L^2}{m^2 r^2}\right).
 \]
 
-Redshift. For a static emitter / observer the proper-time intervals satisfy $\de\tau=\sqrt{1-r_S/r}\,\de t$. A photon's frequency is $\nu=1/\de\tau$, with $\de t$ common:
+Redshift derivation. For a static emitter/observer $\de r=\de\theta=\de\phi=0$, so $\de s^2=-c^2\de\tau^2$ gives $\de\tau=\sqrt{1-r_S/r}\,\de t$. A photon's frequency satisfies $\nu\propto 1/\de\tau$, and the coordinate time $\de t$ between successive wave crests is common at $r_\text{em}$ and $r_\text{ob}$ (static metric):
 \[
 \frac{\nu_\text{ob}}{\nu_\text{em}} \;=\; \frac{\de\tau_\text{em}}{\de\tau_\text{ob}}.
 \]
-Substitute $\de\tau=\sqrt{1-r_S/r}\,\de t$:
+Substitute $\de\tau=\sqrt{1-r_S/r}\,\de t$ at each point:
 \begin{equation}
 \boxed{\;\frac{\nu_\text{ob}}{\nu_\text{em}} \;=\; \sqrt{\frac{1-r_S/r_\text{em}}{1-r_S/r_\text{ob}}}.\;}
 \label{eq:redshift}
 \end{equation}
-Limit $r_\text{em}\to r_S$: $\nu_\text{ob}/\nu_\text{em}\to 0$, infinite redshift --- the signal is frozen at the horizon.
+In the limit $r_\text{em}\to r_S$: $\nu_\text{ob}/\nu_\text{em}\to 0$, infinite redshift --- the signal is frozen at the horizon.
 
 \subsection*{(b) Proper time to the singularity}
 
-Inside the horizon the Schwarzschild $r$ is timelike. For an object released from rest at $r=r_S$ the conserved energy gives $E/(mc^2)=\sqrt{1-r_S/r_S}=0$, so \eqref{eq:E}-\eqref{eq:norm} with $L=0$ reduce to
+Object released from rest at $r=r_S$: $L=0$ and the energy is fixed by $\dot r=0$ at $r=r_S$. Radial geodesic energy equation from (a) with $L=0$:
 \[
-\dot r^2 \;=\; \frac{r_S}{r}c^2 - c^2\!\left(1-\tfrac{r_S}{r}\right) \;=\; c^2\!\left(\tfrac{r_S}{r}-1\right)\!\cdot\!(-1) + c^2\tfrac{r_S}{r}.
+\dot r^2 \;=\; \left(\tfrac{E}{mc}\right)^2 - c^2\!\left(1-\tfrac{r_S}{r}\right).
 \]
-Cleaner: with $E=0$, $\dot r^2=(E/mc)^2-(1-r_S/r)c^2= -c^2(1-r_S/r)$. Inside the horizon $r<r_S$, this is positive. Equivalently:
+Apply $\dot r=0$ at $r=r_S$:
+\[
+\left(\tfrac{E}{mc}\right)^2 \;=\; 0.
+\]
+Substitute back into the energy equation:
+\[
+\dot r^2 \;=\; -c^2\!\left(1-\tfrac{r_S}{r}\right).
+\]
+Rearrange (valid for $r<r_S$):
 \[
 \dot r^2 \;=\; c^2\!\left(\tfrac{r_S}{r}-1\right).
 \]
-Take the negative root (infalling):
+Take the negative (infalling) root:
 \[
-\frac{\de r}{\de\tau} \;=\; -c\sqrt{\frac{r_S}{r}-1} \;=\; -c\sqrt{\frac{r_S-r}{r}}.
+\frac{\de r}{\de\tau} \;=\; -c\sqrt{\frac{r_S-r}{r}}.
 \]
-Separate:
+Separate variables:
 \[
 \de\tau \;=\; -\frac{1}{c}\sqrt{\frac{r}{r_S-r}}\,\de r.
 \]
-Integrate from $r_S$ to $0$; substitute $x=r/r_S$, $\de r=r_S\,\de x$:
+Substitute $x=r/r_S$, $\de r=r_S\,\de x$:
+\[
+\de\tau \;=\; -\frac{r_S}{c}\sqrt{\frac{x}{1-x}}\,\de x.
+\]
+Integrate from $r=r_S$ ($x=1$) to $r=0$ ($x=0$):
 \[
 \Delta\tau \;=\; \frac{r_S}{c}\!\int_0^1\!\sqrt{\frac{x}{1-x}}\,\de x.
 \]
@@ -263,7 +350,7 @@ Substitute $\dot t,\dot\phi$:
 \label{eq:A}
 \end{equation}
 
-\textit{Photon $B$.} Turning point at $r=R$: $\dot r(R)=0$ in \eqref{eq:rphoton}:
+\textit{Photon $B$.} Turning point at $r=R$ gives $\dot r(R)=0$ in \eqref{eq:rphoton}:
 \[
 \mathcal E^2 \;=\; \left(1-\tfrac{r_S}{R}\right)\frac{\mathcal L^2}{R^2}.
 \]
@@ -271,51 +358,63 @@ Solve for $\mathcal L$:
 \[
 \mathcal L \;=\; \mathcal E\,R\,\Bigl(1-\tfrac{r_S}{R}\Bigr)^{-1/2}.
 \]
-At $r=r_0$, $\dot\phi=\mathcal L/r_0^2$:
+Evaluate $\dot\phi=\mathcal L/r_0^2$ at $r=r_0$:
 \[
-\dot\phi \;=\; \frac{\mathcal E}{r_0^2}\,R\,\Bigl(1-\tfrac{r_S}{R}\Bigr)^{-1/2} \;=\; ck\,\Bigl(1-\tfrac{r_S}{R}\Bigr)^{-1/2}\frac{R}{r_0^2}.
+\dot\phi \;=\; \frac{\mathcal E\,R}{r_0^2}\Bigl(1-\tfrac{r_S}{R}\Bigr)^{-1/2}.
 \]
-At $r=r_0$, \eqref{eq:rphoton}:
+Substitute $\mathcal E=ck$:
 \[
-\dot r^2 \;=\; \mathcal E^2\!\left[1 - \left(1-\tfrac{r_S}{r_0}\right)\!\frac{R^2}{r_0^2}\!\left(1-\tfrac{r_S}{R}\right)^{-1}\right].
+\dot\phi \;=\; ck\,\Bigl(1-\tfrac{r_S}{R}\Bigr)^{-1/2}\frac{R}{r_0^2}.
 \]
-Take the inward root and factor:
+Evaluate \eqref{eq:rphoton} at $r=r_0$ with $\mathcal L=\mathcal ER(1-r_S/R)^{-1/2}$:
 \[
-\dot r \;=\; -ck\!\left[1 - \tfrac{R^2}{r_0^2}\!\cdot\!\frac{1-r_S/r_0}{1-r_S/R}\right]^{1/2}.
+\dot r^2 \;=\; \mathcal E^2 - \left(1-\tfrac{r_S}{r_0}\right)\frac{\mathcal E^2 R^2}{r_0^2(1-r_S/R)}.
 \]
-Pull $(1-r_S/R)^{-1/2}$ outside:
+Factor $\mathcal E^2(1-r_S/R)^{-1}$:
 \[
-\dot r \;=\; -ck\,\Bigl(1-\tfrac{r_S}{R}\Bigr)^{-1/2}\!\left[\Bigl(1-\tfrac{r_S}{R}\Bigr)\Bigl(1-\tfrac{R^2}{r_0^2}\Bigr) + \tfrac{r_S}{R}\Bigl(1-\tfrac{R}{r_0}\Bigr)\!\cdot\!\text{(...)}\right]^{1/2}.
+\dot r^2 \;=\; \frac{\mathcal E^2}{1-r_S/R}\!\left[\Bigl(1-\tfrac{r_S}{R}\Bigr) - \tfrac{R^2}{r_0^2}\Bigl(1-\tfrac{r_S}{r_0}\Bigr)\right].
 \]
-Simpler regrouping --- factor inside the bracket as quoted in the question:
+Reorganise the bracket into the form requested by the question (the exact bracket equals the factored form only at zeroth order in $r_S/r$; the difference $r_S(1/R-1/r_0)$ is dropped):
 \[
-\dot r \;=\; -ck\,\Bigl(1-\tfrac{r_S}{R}\Bigr)^{-1/2}\!\left[\Bigl(1-\tfrac{R^2}{r_0^2}\Bigr)\!\left(1-\tfrac{r_S}{r_0}\!\cdot\!\tfrac{R}{r_0}\Bigr)\right]^{1/2}.
+\Bigl(1-\tfrac{r_S}{R}\Bigr) - \tfrac{R^2}{r_0^2}\Bigl(1-\tfrac{r_S}{r_0}\Bigr) \;\simeq\; \Bigl(1-\tfrac{R^2}{r_0^2}\Bigr)\Bigl(1-\tfrac{r_S}{r_0}\Bigr).
 \]
-Match the requested form ($r_0\gg R$ so the inner bracket reduces consistent with question wording):
+Insert:
+\[
+\dot r^2 \;=\; \frac{\mathcal E^2}{1-r_S/R}\!\left(1-\tfrac{R^2}{r_0^2}\right)\!\left(1-\tfrac{r_S}{r_0}\right).
+\]
+Take the inward root and substitute $\mathcal E=ck$:
 \begin{equation}
-\boxed{\;(\dot r,\dot\phi)_B \;=\; ck\!\left(-\Bigl(1-\tfrac{r_S}{R}\Bigr)^{-1/2}\!\Bigl(1-\tfrac{R^2}{r_0^2}\Bigr)^{1/2}\Bigl(1-\tfrac{r_S}{r_0}\Bigr)^{1/2},\;\Bigl(1-\tfrac{r_S}{R}\Bigr)^{-1/2}\tfrac{R}{r_0^2}\right).\;}
+\boxed{\;(\dot r,\dot\phi)_B \;=\; ck\Bigl(1-\tfrac{r_S}{R}\Bigr)^{-1/2}\!\left(-\Bigl(1-\tfrac{R^2}{r_0^2}\Bigr)^{1/2}\Bigl(1-\tfrac{r_S}{r_0}\Bigr)^{1/2},\;\tfrac{R}{r_0^2}\right).\;}
 \label{eq:B}
 \end{equation}
 
 \subsection*{(d) Angular size of the star}
 
-Local orthonormal frame of a static observer at $r_0$. Tetrad components of a 4-velocity $\dot x^\mu$:
+Static observer at $r_0$ uses orthonormal tetrad with $e_{\hat t}=(1-r_S/r_0)^{-1/2}\partial_t$, $e_{\hat r}=(1-r_S/r_0)^{1/2}\partial_r$, $e_{\hat\phi}=r_0^{-1}\partial_\phi$. Tetrad components of a 4-velocity $\dot x^\mu$:
 \[
-\hat v^{\hat r} \;=\; \Bigl(1-\tfrac{r_S}{r_0}\Bigr)^{-1/2}\dot r,\qquad \hat v^{\hat\phi} \;=\; r_0\,\dot\phi.
+\hat v^{\hat t} \;=\; \Bigl(1-\tfrac{r_S}{r_0}\Bigr)^{1/2} c\dot t,\quad \hat v^{\hat r} \;=\; \Bigl(1-\tfrac{r_S}{r_0}\Bigr)^{-1/2}\dot r,\quad \hat v^{\hat\phi} \;=\; r_0\dot\phi.
 \]
-For a null vector $|\hat{\mathbf v}|=\hat v^{\hat t}$; the spatial unit direction $\hat{\mathbf n}=\hat{\mathbf v}/\hat v^{\hat t}$. Photon $A$ is purely radial, $\hat{\mathbf n}_A=(-1,0)$. Photon $B$:
+Compute $c\dot t_B$ from conservation $\mathcal E=(1-r_S/r_0)c\dot t$:
 \[
-\hat n_B^{\hat r} \;=\; \frac{(1-r_S/r_0)^{-1/2}\dot r_B}{c\dot t_B},\qquad \hat n_B^{\hat\phi} \;=\; \frac{r_0\dot\phi_B}{c\dot t_B}.
+c\dot t_B \;=\; \frac{\mathcal E}{1-r_S/r_0} \;=\; \frac{ck}{1-r_S/r_0}.
 \]
-Compute $c\dot t_B=\mathcal E/(1-r_S/r_0)=ck/(1-r_S/r_0)$. Substitute $\dot r_B,\dot\phi_B$ from \eqref{eq:B}:
+Hence $\hat v^{\hat t}_B$ for photon $B$:
 \[
-\hat n_B^{\hat\phi} \;=\; \frac{r_0\cdot ck(1-r_S/R)^{-1/2}R/r_0^2}{ck/(1-r_S/r_0)} \;=\; \frac{R}{r_0}\,(1-r_S/R)^{-1/2}(1-r_S/r_0).
+\hat v^{\hat t}_B \;=\; \Bigl(1-\tfrac{r_S}{r_0}\Bigr)^{1/2}\frac{ck}{1-r_S/r_0} \;=\; \frac{ck}{(1-r_S/r_0)^{1/2}}.
 \]
-Half-angle from the radial direction:
+For a null 4-velocity $\hat v^{\hat t}=|\hat{\mathbf v}|$; the spatial unit direction is $\hat{\mathbf n}=\hat{\mathbf v}/\hat v^{\hat t}$. Photon $A$ is purely radial, so $\hat{\mathbf n}_A=(-1,0)$. For photon $B$ the tangential component:
 \[
-\sin(\phi/2) \;=\; \hat n_B^{\hat\phi}.
+\hat n_B^{\hat\phi} \;=\; \frac{\hat v^{\hat\phi}_B}{\hat v^{\hat t}_B} \;=\; \frac{r_0\dot\phi_B}{ck/(1-r_S/r_0)^{1/2}}.
 \]
-Substitute and simplify $(1-r_S/r_0)\,\bigl[(1-r_S/r_0)/(1-r_S/R)\bigr]^{1/2}$ contributions: a careful tetrad calculation reduces $\sin(\phi/2)$ to
+Substitute $\dot\phi_B=ck(1-r_S/R)^{-1/2}R/r_0^2$:
+\[
+\hat n_B^{\hat\phi} \;=\; \frac{r_0\cdot ck(1-r_S/R)^{-1/2}R/r_0^2}{ck/(1-r_S/r_0)^{1/2}}.
+\]
+Simplify:
+\[
+\hat n_B^{\hat\phi} \;=\; \frac{R}{r_0}\frac{(1-r_S/r_0)^{1/2}}{(1-r_S/R)^{1/2}}.
+\]
+The half angle from the radial direction satisfies $\sin(\phi/2)=\hat n_B^{\hat\phi}$:
 \[
 \sin\!\left(\tfrac{\phi}{2}\right) \;=\; \frac{R}{r_0}\sqrt{\frac{1-r_S/r_0}{1-r_S/R}}.
 \]
@@ -323,13 +422,13 @@ Substitute and simplify $(1-r_S/r_0)\,\bigl[(1-r_S/r_0)/(1-r_S/R)\bigr]^{1/2}$ c
 \boxed{\;\phi \;=\; 2\arcsin\!\left[\frac{R}{r_0}\sqrt{\frac{1-r_S/r_0}{1-r_S/R}}\,\right].\;}
 \label{eq:phidiam}
 \end{equation}
-Newtonian limit $r_S\to 0$: $\phi\to 2\arcsin(R/r_0)\approx 2R/r_0$, as required.
+Newtonian limit $r_S\to 0$ gives $\phi\to 2\arcsin(R/r_0)\approx 2R/r_0$, as required.
 
 \subsection*{(e) Angular size of Sgr A$^*$}
 
 Data: $M_1=4.3\times 10^6 M_\odot$, $r_{S\odot}=9.5\times 10^{-17}\,\text{kpc}$, $r_1=8\,\text{kpc}$, $R=r_L=\tfrac32 r_S$.
 
-Schwarzschild radius:
+Compute the Schwarzschild radius:
 \[
 r_S \;=\; 4.3\times 10^6 \cdot 9.5\times 10^{-17}\,\text{kpc}.
 \]
@@ -337,35 +436,40 @@ Multiply:
 \[
 r_S \;=\; 4.085\times 10^{-10}\,\text{kpc}.
 \]
-Light radius:
+Compute the light radius:
 \[
 r_L \;=\; 1.5\,r_S \;=\; 6.13\times 10^{-10}\,\text{kpc}.
 \]
-Insert into \eqref{eq:phidiam} with $R=r_L$, $r_0=r_1=8\,\text{kpc}$:
+Evaluate the redshift factors with $R=r_L$, $r_0=r_1=8\,\text{kpc}$:
 \[
-1-\tfrac{r_S}{r_0} \;\approx\; 1 - 5.1\times 10^{-11} \;\approx\; 1.
+1-\tfrac{r_S}{r_0} \;\approx\; 1.
 \]
 \[
 1-\tfrac{r_S}{r_L} \;=\; 1-\tfrac{2}{3} \;=\; \tfrac13.
 \]
+Insert into \eqref{eq:phidiam}:
 \[
-\frac{R}{r_0}\sqrt{\frac{1-r_S/r_0}{1-r_S/R}} \;=\; \frac{6.13\times 10^{-10}}{8}\sqrt{\frac{1}{1/3}}.
+\frac{R}{r_0}\sqrt{\frac{1-r_S/r_0}{1-r_S/R}} \;=\; \frac{6.13\times 10^{-10}}{8}\sqrt{3}.
 \]
-Evaluate the square root:
+Evaluate the prefactor:
 \[
-\sqrt{3} \;\approx\; 1.732.
+\frac{R}{r_0} \;=\; 7.66\times 10^{-11}.
 \]
-Multiply:
+Multiply by $\sqrt{3}\approx 1.732$:
 \[
 \sin(\phi/2) \;\approx\; 7.66\times 10^{-11}\cdot 1.732 \;\approx\; 1.33\times 10^{-10}.
 \]
-Small-angle:
+Small-angle approximation $\phi\approx 2\sin(\phi/2)$:
 \[
-\phi \;\approx\; 2\cdot 1.33\times 10^{-10}\,\text{rad} \;=\; 2.66\times 10^{-10}\,\text{rad}.
+\phi \;\approx\; 2.66\times 10^{-10}\,\text{rad}.
 \]
-Convert to microarcseconds ($1\,\text{rad}=2.063\times 10^{11}\,\mu\text{as}$):
+Convert using $1\,\text{rad}=2.063\times 10^{11}\,\mu\text{as}$:
 \[
-\phi \;\approx\; 2.66\times 10^{-10}\cdot 2.063\times 10^{11}\,\mu\text{as} \;\approx\; 55\,\mu\text{as}.
+\phi \;\approx\; 2.66\times 10^{-10}\cdot 2.063\times 10^{11}\,\mu\text{as}.
+\]
+Multiply:
+\[
+\phi \;\approx\; 55\,\mu\text{as}.
 \]
 \begin{equation}
 \boxed{\;\phi_{\text{Sgr A}^*} \;\approx\; 2.7\times 10^{-10}\,\text{rad} \;\approx\; 55\,\mu\text{as}.\;}
@@ -444,7 +548,7 @@ Two asymptotic flat regions ($r\to\pm\infty$) joined by a finite-radius throat a
 
 \subsection*{(c) Geodesics and transit time}
 
-Lagrangian (massive, radial, $\theta=\pi/2$, $\dot\phi=0$):
+Equatorial geodesic Lagrangian (massive, $\theta=\pi/2$):
 \[
 2\mathcal L \;=\; -c^2\dot t^2 + \dot r^2 + (R^2+r^2)\dot\phi^2.
 \]
@@ -464,13 +568,21 @@ Radial geodesic ($\dot\phi=\dot\theta=0$). Normalisation $g_{\mu\nu}\dot x^\mu\d
 \[
 -c^2\dot t^2 + \dot r^2 \;=\; -c^2.
 \]
-Asymptotic boundary condition $\dot r=V$ at $r=r_0$, where the metric is asymptotically flat. Set $V=\de r/\de\tau$ constant (no radial Christoffel acts in this metric --- $g_{rr}=1$ everywhere, so the radial geodesic equation reduces to $\ddot r=0$):
+Inspect radial Christoffels: $\Gamma^r_{tt}=-\tfrac12 g^{rr}\partial_r g_{tt}=0$ (since $g_{tt}=-c^2$ constant), $\Gamma^r_{rr}=\tfrac12 g^{rr}\partial_r g_{rr}=0$ (since $g_{rr}=1$). Radial geodesic equation:
 \[
-\ddot r \;=\; 0 \;\Rightarrow\; \dot r \;=\; V.
+\ddot r \;=\; 0.
 \]
-Proper time to traverse $r_0\to-r_0$:
+Integrate: $\dot r$ constant. Initial condition $|\dot r|=V$ at $r=r_0$ (infalling):
 \[
-\Delta\tau \;=\; \int_{-r_0}^{r_0}\!\frac{\de r}{V} \;=\; \frac{2r_0}{V}.
+\dot r \;=\; -V.
+\]
+Proper time element:
+\[
+\de\tau \;=\; \frac{\de r}{\dot r} \;=\; -\frac{\de r}{V}.
+\]
+Integrate from $r=r_0$ to $r=-r_0$:
+\[
+\Delta\tau \;=\; -\frac{1}{V}\!\int_{r_0}^{-r_0}\!\de r \;=\; \frac{2r_0}{V}.
 \]
 \begin{equation}
 \boxed{\;\Delta\tau \;=\; \frac{2r_0}{V}.\;}
@@ -511,32 +623,31 @@ Multiply through by $u^4$:
 \[
 \Bigl(\tfrac{\de u}{\de\phi}\Bigr)^{\!2} \;=\; \alpha^2\!\left(R^2 u^2+1\right)^{\!2} - u^2\!\left(R^2 u^2+1\right).
 \]
-Differentiate w.r.t.\ $\phi$, divide by $2\,\de u/\de\phi$:
+Differentiate both sides w.r.t.\ $\phi$:
 \[
-\frac{\de^2 u}{\de\phi^2} \;=\; \alpha^2\cdot 2(R^2 u^2+1)\cdot 2R^2 u - \tfrac12\!\left[2u(R^2 u^2+1) + u^2\cdot 2R^2 u\right].
+2\frac{\de u}{\de\phi}\frac{\de^2 u}{\de\phi^2} \;=\; \alpha^2\cdot 2(R^2 u^2+1)\cdot 2R^2 u\,\frac{\de u}{\de\phi} - 2u(R^2 u^2+1)\frac{\de u}{\de\phi} - u^2\cdot 2R^2 u\,\frac{\de u}{\de\phi}.
 \]
-Expand:
+Divide both sides by $2\,\de u/\de\phi$:
 \[
-\frac{\de^2 u}{\de\phi^2} \;=\; 4\alpha^2 R^2 u(R^2 u^2+1) - u(R^2 u^2+1) - R^2 u^3.
+\frac{\de^2 u}{\de\phi^2} \;=\; 2\alpha^2 R^2 u(R^2 u^2+1) - u(R^2 u^2+1) - R^2 u^3.
 \]
-Group $u$ terms:
+Expand each product:
 \[
-\frac{\de^2 u}{\de\phi^2} \;=\; u\!\left[4\alpha^2 R^2(R^2 u^2+1) - (R^2 u^2+1) - R^2 u^2\right].
+\frac{\de^2 u}{\de\phi^2} \;=\; 2\alpha^2 R^4 u^3 + 2\alpha^2 R^2 u - R^2 u^3 - u - R^2 u^3.
 \]
-Expand inner bracket and isolate $+u$ on the LHS:
+Collect like terms:
 \[
-\frac{\de^2 u}{\de\phi^2} + u \;=\; u\!\left[4\alpha^2 R^4 u^2 + 4\alpha^2 R^2 - R^2 u^2 - 1 - R^2 u^2 + 1\right].
+\frac{\de^2 u}{\de\phi^2} \;=\; 2\alpha^2 R^4 u^3 + 2\alpha^2 R^2 u - 2R^2 u^3 - u.
 \]
-Simplify:
+Add $u$ to both sides:
 \[
-\frac{\de^2 u}{\de\phi^2} + u \;=\; u\!\left[4\alpha^2 R^2 + (4\alpha^2 R^4 - 2R^2)u^2\right].
+\frac{\de^2 u}{\de\phi^2} + u \;=\; 2\alpha^2 R^4 u^3 - 2R^2 u^3 + 2\alpha^2 R^2 u.
 \]
-Factor $2R^2$:
+Factor $2R^2$ from the cubic terms:
 \begin{equation}
 \boxed{\;\frac{\de^2 u}{\de\phi^2}+u \;=\; 2R^2\!\left[(\alpha R)^2-1\right]u^3 + 2(\alpha R)^2 u.\;}
 \label{eq:orbitu}
 \end{equation}
-(Coefficient of the linear term differs from the question by a factor 2 unless $\alpha R$ is small; we proceed taking the form quoted in the paper.)
 
 \subsection*{(e) Perturbative solution and lensing}
 
@@ -591,7 +702,7 @@ b_1 \;=\; b.
 \label{eq:bcoefs}
 \end{equation}
 
-\textit{No lensing.} A deflection angle is $\Delta\phi$ between the two asymptotes $u\to 0^+$. Setting $u=0$ in $u_0=\sin\phi/b$ gives $\phi=0$ and $\phi=\pi$: total trajectory spans $\pi$, i.e.\ a straight line. The $\phi\cos\phi$ correction shifts both asymptotes \emph{by the same amount} (the secular term is symmetric about $\phi=\pi/2$), so the angular separation between in- and out-going asymptotes remains $\pi$ to first order in $R^2/b^2$. Equivalently, the wormhole metric has positive ``effective mass'' on one side cancelled by negative on the other (no monopole gravitational field): no net deflection. Hence \emph{no} lensing.
+\textit{No lensing.} The flat-space asymptotes are $u\to 0$ at $\phi=0$ and $\phi=\pi$: a straight line of span $\pi$. The metric carries \emph{no} mass parameter --- there is no $1/r$ Newtonian potential and no Schwarzschild-radius analog. The $\sin 3\phi$ harmonic also vanishes at $\phi=0$ and $\phi=\pi$, so the harmonic correction does not shift the zeros. The remaining secular $\phi\cos\phi$ piece is itself only the perturbative form of a small $\mathcal O(R^2/b^2)$ frequency shift, with no Newtonian mass scale entering. Physically: the bending is purely geometric (a topology effect of the throat), not gravitational --- there is no monopole gravitational source, so no Newtonian-type light deflection.
 
 %======================================================================
 \section*{Question 4 --- FRW cosmology}
@@ -627,22 +738,57 @@ read off $\Gamma^t_{ij}=\tfrac{1}{2c^2}\partial_t g_{ij}$, etc.
 
 \subsection*{(b) Friedmann equations}
 
-Use FRW Ricci tensor (standard):
+FRW Ricci tensor (under the paper's Ricci convention $R_{\alpha\beta}\equiv -R^\gamma{}_{\alpha\beta\gamma}$):
 \[
-R_{tt} \;=\; -\frac{3\ddot a}{a},\qquad R_{ij} \;=\; \!\left[\frac{a\ddot a + 2\dot a^2 + 2kc^2}{c^2}\right]\!\frac{g_{ij}}{a^2}.
+R_{tt} \;=\; \frac{3\ddot a}{a},\qquad R_{ij} \;=\; -\!\left[\frac{a\ddot a + 2\dot a^2 + 2kc^2}{c^2}\right]\!\frac{g_{ij}}{a^2}.
 \]
-Wait --- factor signs. With our $g_{tt}=-c^2$ convention the Ricci scalar is
+Take the trace $R=g^{\mu\nu}R_{\mu\nu}$ with $g^{tt}=-1/c^2$ and $g^{ij}g_{ij}=3$:
 \[
-R \;=\; \frac{6}{c^2}\!\left[\frac{\ddot a}{a} + \frac{\dot a^2}{a^2} + \frac{kc^2}{a^2}\right].
+R \;=\; -\frac{6}{c^2}\!\left[\frac{\ddot a}{a} + \frac{\dot a^2}{a^2} + \frac{kc^2}{a^2}\right].
 \]
-Perfect fluid stress-energy in comoving frame: $T^t{}_t=-\rho c^2$, $T^i{}_j=p\,\delta^i_j$. Trace and $tt$ component of Einstein with $\Lambda$ give the two Friedmann equations as quoted:
-\begin{equation}
-\boxed{\;\ddot a \;=\; -\tfrac{4\pi G}{3}\!\left(\rho+\tfrac{3p}{c^2}\right)\!a + \tfrac{1}{3}\Lambda c^2 a.\;}
-\label{eq:Fdd}
-\end{equation}
+Perfect fluid stress-energy in the comoving frame:
+\[
+T^t{}_t=-\rho c^2,\qquad T^i{}_j=p\,\delta^i_j.
+\]
+Lower with metric: $T_{tt}=g_{tt}T^t{}_t=(-c^2)(-\rho c^2)=\rho c^4$, $T_{ij}=p\,g_{ij}$.
+
+$tt$ component of Einstein equation $R_{tt}-\tfrac12 g_{tt}R-\Lambda g_{tt}=-(8\pi G/c^4)T_{tt}$:
+\[
+\frac{3\ddot a}{a}+\frac{c^2}{2}R+\Lambda c^2 \;=\; -8\pi G\rho.
+\]
+Insert $R$ (the $\ddot a/a$ terms cancel):
+\[
+\frac{3\ddot a}{a}-3\!\left[\frac{\ddot a}{a}+\frac{\dot a^2}{a^2}+\frac{kc^2}{a^2}\right]+\Lambda c^2 \;=\; -8\pi G\rho.
+\]
+Simplify:
+\[
+-\frac{3\dot a^2}{a^2}-\frac{3kc^2}{a^2}+\Lambda c^2 \;=\; -8\pi G\rho.
+\]
+Multiply by $-a^2/3$ and rearrange:
 \begin{equation}
 \boxed{\;\dot a^2 \;=\; \tfrac{8\pi G}{3}\rho a^2 + \tfrac{1}{3}\Lambda c^2 a^2 - kc^2.\;}
 \label{eq:Fd}
+\end{equation}
+Spatial-trace Einstein equation, contract with $g^{ij}$ (using $g^{ij}g_{ij}=3$, $g^{ij}T_{ij}=3p$):
+\[
+-3\!\left[\frac{a\ddot a+2\dot a^2+2kc^2}{c^2 a^2}\right]-\frac{3R}{2}-3\Lambda \;=\; -\frac{24\pi G p}{c^4}.
+\]
+Insert $R$ and simplify:
+\[
+\frac{2\ddot a}{a c^2}+\frac{\dot a^2}{a^2 c^2}+\frac{k}{a^2}-\Lambda \;=\; -\frac{8\pi G p}{c^4}.
+\]
+Use \eqref{eq:Fd} to eliminate $\dot a^2/a^2$:
+\[
+\frac{2\ddot a}{a c^2}+\frac{8\pi G\rho}{3c^2}+\frac{\Lambda}{3}-\frac{k}{a^2}+\frac{k}{a^2}-\Lambda \;=\; -\frac{8\pi G p}{c^4}.
+\]
+Cancel $k/a^2$, collect $\Lambda$:
+\[
+\frac{2\ddot a}{a c^2}+\frac{8\pi G\rho}{3c^2}-\frac{2\Lambda}{3} \;=\; -\frac{8\pi G p}{c^4}.
+\]
+Multiply by $a c^2/2$ and rearrange:
+\begin{equation}
+\boxed{\;\ddot a \;=\; -\tfrac{4\pi G}{3}\!\left(\rho+\tfrac{3p}{c^2}\right)\!a + \tfrac{1}{3}\Lambda c^2 a.\;}
+\label{eq:Fdd}
 \end{equation}
 (Identifying $a\leftrightarrow R$ in the paper.)
 
@@ -702,11 +848,31 @@ Diverges:
 
 \subsection*{(e) Angular size in spatially curved FRW}
 
-Comoving distance fixed:
+Comoving radial distance from null geodesic ($\de s=0$, radial):
 \[
-D_c \;=\; \int_0^z\!\frac{c\,\de z'}{H(z')}\quad(\text{same in both universes}).
+D_c \;=\; \int_0^z\!\frac{c\,\de z'}{H(z')}\quad(\text{same in both universes by assumption}).
 \]
-Transverse comoving distance:
+The spatial 3-slice has $\de\Sigma^2=a^2[\de r^2/(1-kr^2)+r^2\de\Omega^2]$. Relate the FRW radial coordinate $r$ to comoving distance $\chi=D_c/a_0$ via the radial proper-distance integral:
+\[
+\chi \;=\; \int_0^r\!\frac{\de r'}{\sqrt{1-k r'^2}}.
+\]
+For $k>0$, apply hint $\int\!\de x/\sqrt{1-x^2}=\arcsin x$ with $x=\sqrt{k}r'$:
+\[
+\sqrt{k}\,\chi \;=\; \arcsin(\sqrt{k}\,r).
+\]
+Invert:
+\[
+r \;=\; \tfrac{1}{\sqrt{k}}\sin(\sqrt{k}\,\chi).
+\]
+For $k<0$, apply hint $\int\!\de x/\sqrt{1+x^2}=\arcsinh x$ with $x=\sqrt{|k|}r'$:
+\[
+\sqrt{|k|}\,\chi \;=\; \arcsinh(\sqrt{|k|}\,r).
+\]
+Invert:
+\[
+r \;=\; \tfrac{1}{\sqrt{|k|}}\sinh(\sqrt{|k|}\,\chi).
+\]
+Transverse physical size at the source is $R = a(t_e)r\,\theta$, giving angular size $\theta = R/D_A$ with $D_A=a_0 r/(1+z)$. Define transverse comoving distance $D_M=a_0 r$. Using $\Omega_k = -kc^2/(a_0 H_0)^2$, so $\sqrt{|k|}\chi=|\Omega_k|^{1/2}H_0 D_c/c$ and $a_0/\sqrt{|k|}=(c/H_0)|\Omega_k|^{-1/2}$:
 \[
 D_M \;=\; \begin{cases}
 (c/H_0)|\Omega_k|^{-1/2}\sin\!\left[|\Omega_k|^{1/2}H_0 D_c/c\right], & k>0,\\
@@ -714,19 +880,19 @@ D_c, & k=0,\\
 (c/H_0)|\Omega_k|^{-1/2}\sinh\!\left[|\Omega_k|^{1/2}H_0 D_c/c\right], & k<0.
 \end{cases}
 \]
-Angular-diameter distance $D_A=D_M/(1+z)$ and angular size:
+Angular size:
 \[
 \theta \;=\; \frac{R}{D_A} \;=\; \frac{R(1+z)}{D_M}.
 \]
-Compare $D_M$ for fixed $D_c$ at small curvature. Expand to first order in the small argument $x=|\Omega_k|^{1/2}H_0 D_c/c$:
+Expand for small $x=|\Omega_k|^{1/2}H_0 D_c/c\ll 1$:
 \[
 \sin x \;\approx\; x - \tfrac{x^3}{6},\qquad \sinh x \;\approx\; x + \tfrac{x^3}{6}.
 \]
-Hence
+Hence to first order in curvature:
 \[
 D_M^{(k>0)} \;<\; D_c \;<\; D_M^{(k<0)}.
 \]
-Therefore
+Invert via $\theta\propto 1/D_M$:
 \[
 \theta^{(k<0)} \;<\; \theta^{(k=0)} \;<\; \theta^{(k>0)}.
 \]

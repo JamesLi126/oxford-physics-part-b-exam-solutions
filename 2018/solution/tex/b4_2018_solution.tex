@@ -48,8 +48,14 @@ Process: $\bar\nu_e + p \to e^+ + n$. At quark level, $\bar\nu_e + u \to e^+ + d
 \end{tikzpicture}
 \end{center}
 
-Cross-section: in the reactor regime ($E_{\bar\nu}\sim$ few MeV $\ll M_W c^2$), the $W$ propagator is point-like, so $\sigma$ is set by phase space. With $E_{\bar\nu}\gg (m_n-m_p)c^2$, both outgoing particles are relativistic and
-\[ \sigma_{\bar\nu} \propto p_e E_e \approx E_{\bar\nu}^2. \]
+Cross-section: in the reactor regime ($E_{\bar\nu}\sim$ few MeV $\ll M_W c^2$), the $W$ propagator is point-like, so $\sigma$ is set by phase space. Energy conservation:
+\[ E_e = E_{\bar\nu} - (m_n - m_p)c^2. \]
+For $E_{\bar\nu}\gg (m_n-m_p)c^2$ the positron is relativistic:
+\[ p_e c \approx E_e \approx E_{\bar\nu}. \]
+Fermi golden-rule phase-space factor for two-body final state with one heavy spectator $n$:
+\[ \frac{\de\sigma}{\de\Omega}\propto p_e E_e. \]
+Substitute the relativistic limit:
+\[ \sigma_{\bar\nu}\propto p_e E_e \approx E_{\bar\nu}^2. \]
 Hence $\sigma_{\bar\nu}$ rises rapidly with $E_{\bar\nu}$.
 
 \subsection*{(c) Why rate $\propto I$}
@@ -59,41 +65,64 @@ Per target proton, the rate from $\bar\nu$ in $[E,E+\de E]$ is $\Phi(E)\sigma(E)
 
 \subsection*{(d) Numerical evaluation}
 
-\textbf{(i) Fission rate.} Thermal power $P=\SI{100}{MW}=10^8\,\si{J\,s^{-1}}$; energy per fission $E_f=\SI{210}{MeV}=210\times1.602\times10^{-13}\,\si{J}$.
+\textbf{(i) Fission rate.} Thermal power $P=\SI{100}{MW}=10^8\,\si{J\,s^{-1}}$; energy per fission $E_f=\SI{210}{MeV}$.
 
-Compute $E_f$ in joules:
-\[ E_f = 210 \times 1.602\times 10^{-13}\,\si{J} = 3.364\times 10^{-11}\,\si{J}. \]
-Divide:
-\[ R_f = \frac{P}{E_f} = \frac{10^{8}}{3.364\times 10^{-11}}\,\si{s^{-1}}. \]
+Convert $E_f$ to joules using $\SI{1}{MeV}=1.602\times 10^{-13}\,\si{J}$:
+\[ E_f = 210 \times 1.602\times 10^{-13}\,\si{J}. \]
+Evaluate:
+\[ E_f = 3.364\times 10^{-11}\,\si{J}. \]
+Fission rate $R_f = P/E_f$:
+\[ R_f = \frac{10^{8}}{3.364\times 10^{-11}}\,\si{s^{-1}}. \]
 Evaluate:
 \[ \boxed{\;R_f \approx 2.97\times 10^{18}\,\si{fissions\,s^{-1}}.\;} \]
 
-\textbf{(ii) Integral $I$.} Trapezoidal rule, $\Delta E=\SI{1}{MeV}$, with $\sigma\,\de N/\de E$ from the table $\{0.04,0.23,0.30,0.23,0.04\}$ in $10^{-42}\,\si{cm^2}\,\text{fission}^{-1}\,\si{MeV^{-1}}$:
-\[ I = \tfrac{1}{2}(0.04 + 0.04) + (0.23 + 0.30 + 0.23). \]
-Sum:
+\textbf{(ii) Integral $I$.} Trapezoidal rule with $\Delta E=\SI{1}{MeV}$, integrand $f=\sigma_{\bar\nu}\de N_{\bar\nu}/\de E_{\bar\nu}$ taken from the table $\{0.04,0.23,0.30,0.23,0.04\}$ in $10^{-42}\,\si{cm^2}\,\text{fission}^{-1}\,\si{MeV^{-1}}$:
+\[ I = \Delta E\,\big[\tfrac{1}{2}(f_0+f_4) + f_1+f_2+f_3\big]. \]
+Substitute values with $\Delta E=1$\,MeV:
+\[ I = 1\cdot\big[\tfrac{1}{2}(0.04 + 0.04) + (0.23 + 0.30 + 0.23)\big]. \]
+Sum endpoints:
+\[ \tfrac{1}{2}(0.04+0.04) = 0.04. \]
+Sum interior:
+\[ 0.23+0.30+0.23 = 0.76. \]
+Add:
 \[ I = 0.04 + 0.76 = 0.80 \;\;[10^{-42}\,\si{cm^2}\,\text{fission}^{-1}]. \]
-Convert to SI:
+Convert cm$^2\to$m$^2$ via $1\,\si{cm^2}=10^{-4}\,\si{m^2}$:
+\[ I = 0.80\times 10^{-42}\times 10^{-4}\,\si{m^2}\,\text{fission}^{-1}. \]
 \[ \boxed{\;I \approx 8.0\times 10^{-47}\,\si{m^2}\,\text{fission}^{-1}.\;} \]
 
-\textbf{(iii) Mass of scintillator.} Required detection rate: $R_{\rm det}=90/\si{hr}=90/3600=\SI{0.025}{s^{-1}}$.
-
-Antineutrinos per unit area at distance $d=\SI{7}{m}$: per fission, integrating gives $\int\!\de N/\de E\,\de E$ but the relevant flux-weighted integral is already absorbed into $I$. The detected rate is
+\textbf{(iii) Mass of scintillator.} Convert detection rate:
+\[ R_{\rm det} = \frac{90}{\SI{1}{hr}} = \frac{90}{3600\,\si{s}}. \]
+Evaluate:
+\[ R_{\rm det} = \SI{0.025}{s^{-1}}. \]
+At distance $d$ the antineutrino flux per fission is $1/(4\pi d^2)$, so:
 \[ R_{\rm det} = \frac{R_f}{4\pi d^2}\,N_p\,I, \]
-where $N_p$ is the number of free protons in the scintillator.
+where $N_p$ is the number of free protons (H atoms) in the scintillator.
 
 Solve for $N_p$:
 \[ N_p = \frac{4\pi d^2\,R_{\rm det}}{R_f\,I}. \]
+Geometric factor:
+\[ 4\pi d^2 = 4\pi (7)^2\,\si{m^2}. \]
+Evaluate:
+\[ 4\pi d^2 = 4\pi(49) = 615.8\,\si{m^2}. \]
 Numerator:
-\[ 4\pi d^2 R_{\rm det} = 4\pi(7)^2(0.025) = 4\pi(1.225) = 15.39\,\si{m^2\,s^{-1}}. \]
+\[ 4\pi d^2\,R_{\rm det} = 615.8\times 0.025 = 15.39\,\si{m^2\,s^{-1}}. \]
 Denominator:
-\[ R_f\,I = (2.97\times 10^{18})(8.0\times 10^{-47}) = 2.38\times 10^{-28}\,\si{m^2\,s^{-1}}. \]
+\[ R_f\,I = (2.97\times 10^{18})(8.0\times 10^{-47})\,\si{m^2\,s^{-1}}. \]
+Evaluate:
+\[ R_f\,I = 2.38\times 10^{-28}\,\si{m^2\,s^{-1}}. \]
 Divide:
-\[ N_p = \frac{15.39}{2.38\times 10^{-28}} = 6.47\times 10^{28}\,\text{free protons}. \]
+\[ N_p = \frac{15.39}{2.38\times 10^{-28}}. \]
+Evaluate:
+\[ N_p = 6.47\times 10^{28}\,\text{free protons}. \]
 
-Free protons per C$_9$H$_{10}$ monomer: 10 (the H atoms; C-bound protons are not free, but for IBD on hydrogen only H atoms count). Molar mass:
-\[ M = 9(12) + 10(1) = 118\,\si{g\,mol^{-1}}. \]
+Free protons per C$_9$H$_{10}$ monomer: 10 (only H atoms; C-bound protons would be in nuclei with $Z>1$ and so are not free targets for IBD). Molar mass of the monomer:
+\[ M = 9(12) + 10(1)\,\si{g\,mol^{-1}}. \]
+Evaluate:
+\[ M = 118\,\si{g\,mol^{-1}} = 0.118\,\si{kg\,mol^{-1}}. \]
 Free protons per kg:
-\[ n_p = \frac{10\,N_A}{M} = \frac{10\times 6.022\times 10^{23}}{0.118}\,\si{kg^{-1}} = 5.10\times 10^{25}\,\si{kg^{-1}}. \]
+\[ n_p = \frac{10\,N_A}{M} = \frac{10\times 6.022\times 10^{23}}{0.118}\,\si{kg^{-1}}. \]
+Evaluate:
+\[ n_p = 5.10\times 10^{25}\,\si{kg^{-1}}. \]
 Mass needed:
 \[ m = \frac{N_p}{n_p} = \frac{6.47\times 10^{28}}{5.10\times 10^{25}}\,\si{kg}. \]
 Evaluate:
@@ -174,37 +203,60 @@ Hence $X$ is a meson with $S=+1$, $Q=+1$: $X=K^+$ ($u\bar s$).
 
 \subsection*{(c) Mass prediction; threshold momentum}
 
-Differences along the decuplet (each step adds one $s$):
+Each step along the decuplet adds one $s$ quark. Compute the first mass step:
 \[ M(\Sigma^*)-M(\Delta) = 1385-1238 = 147\,\si{MeV/c^2}. \]
+Compute the second mass step:
 \[ M(\Xi^*)-M(\Sigma^*) = 1532-1385 = 147\,\si{MeV/c^2}. \]
 Linear extrapolation:
+\[ M(\Omega^-) \approx M(\Xi^*) + 147\,\si{MeV/c^2}. \]
+Evaluate:
 \[ M(\Omega^-) \approx 1532+147 = 1679\,\si{MeV/c^2}. \]
 \[ \boxed{\;M(\Omega^-)\approx \SI{1679}{MeV/c^2}.\;} \]
 
-\textit{Threshold.} Lab frame: $K^-$ on stationary $p$. Threshold = all final-state particles at rest in CM. Total final mass:
+\textit{Threshold.} Lab frame: $K^-$ on stationary $p$. Threshold = all final-state particles at rest in CM. Total final invariant mass:
 \[ M_f = M(\Omega^-) + M(K^0) + M(K^+). \]
 Use $M(K^0)\approx M(K^+)\approx \SI{494}{MeV/c^2}$:
-\[ M_f \approx 1679 + 494 + 494 = 2667\,\si{MeV/c^2}. \]
-Mandelstam $s$ at threshold:
-\[ s = M_f^2 c^4. \]
-Lab expression:
-\[ s = (E_K + m_p c^2)^2 - (p_K c)^2. \]
-Use $E_K^2 = (p_K c)^2 + m_K^2 c^4$ and expand:
-\[ s = m_K^2 c^4 + m_p^2 c^4 + 2 m_p c^2 E_K. \]
-Solve for $E_K$:
-\[ E_K = \frac{M_f^2 c^4 - m_K^2 c^4 - m_p^2 c^4}{2 m_p c^2}. \]
-Insert $m_K=494$, $m_p=938$, $M_f=2667$ (all in MeV/$c^2$):
-\[ M_f^2 - m_K^2 - m_p^2 = 2667^2 - 494^2 - 938^2 \,[\si{MeV^2/c^4}]. \]
-Compute:
-\[ 2667^2 = 7.113\times 10^{6};\quad 494^2 = 2.440\times 10^{5};\quad 938^2 = 8.798\times 10^{5}. \]
-Sum:
-\[ 7.113\times 10^{6} - 2.440\times 10^{5} - 8.798\times 10^{5} = 5.989\times 10^{6}\,\si{MeV^2/c^4}. \]
-Divide by $2 m_p c^2 = 1876\,\si{MeV}$:
-\[ E_K = \frac{5.989\times 10^{6}}{1876}\,\si{MeV} = 3192\,\si{MeV}. \]
-Threshold momentum:
-\[ p_K c = \sqrt{E_K^2 - m_K^2 c^4} = \sqrt{3192^2 - 494^2}\,\si{MeV}. \]
+\[ M_f \approx 1679 + 494 + 494\,\si{MeV/c^2}. \]
 Evaluate:
-\[ p_K c = \sqrt{1.019\times 10^{7} - 2.44\times 10^{5}} = \sqrt{9.945\times 10^{6}} = 3154\,\si{MeV}. \]
+\[ M_f \approx 2667\,\si{MeV/c^2}. \]
+Mandelstam invariant at threshold:
+\[ s_{\rm th} = M_f^2 c^4. \]
+Lab expression for $s$:
+\[ s = (E_K + m_p c^2)^2 - (p_K c)^2. \]
+Expand the square:
+\[ s = E_K^2 + 2 E_K\, m_p c^2 + m_p^2 c^4 - (p_K c)^2. \]
+Apply $E_K^2 - (p_K c)^2 = m_K^2 c^4$:
+\[ s = m_K^2 c^4 + m_p^2 c^4 + 2 m_p c^2\, E_K. \]
+Equate to threshold value:
+\[ M_f^2 c^4 = m_K^2 c^4 + m_p^2 c^4 + 2 m_p c^2\, E_K. \]
+Solve for $E_K$:
+\[ E_K = \frac{(M_f^2 - m_K^2 - m_p^2)\,c^4}{2 m_p c^2}. \]
+Insert $m_K=494$, $m_p=938$, $M_f=2667$ (all in MeV/$c^2$):
+\[ M_f^2 - m_K^2 - m_p^2 = 2667^2 - 494^2 - 938^2\,\si{(MeV/c^2)^2}. \]
+Compute $M_f^2$:
+\[ 2667^2 = 7.113\times 10^{6}. \]
+Compute $m_K^2$:
+\[ 494^2 = 2.440\times 10^{5}. \]
+Compute $m_p^2$:
+\[ 938^2 = 8.798\times 10^{5}. \]
+Combine:
+\[ 7.113\times 10^{6} - 2.440\times 10^{5} - 8.798\times 10^{5} = 5.989\times 10^{6}. \]
+Denominator:
+\[ 2 m_p c^2 = 2(938) = 1876\,\si{MeV}. \]
+Divide:
+\[ E_K = \frac{5.989\times 10^{6}}{1876}\,\si{MeV}. \]
+Evaluate:
+\[ E_K = 3192\,\si{MeV}. \]
+Threshold momentum from $E_K^2 = (p_K c)^2 + m_K^2 c^4$:
+\[ p_K c = \sqrt{E_K^2 - m_K^2 c^4}. \]
+Substitute numbers:
+\[ p_K c = \sqrt{3192^2 - 494^2}\,\si{MeV}. \]
+Compute the squares:
+\[ 3192^2 = 1.019\times 10^{7},\quad 494^2 = 2.44\times 10^{5}. \]
+Subtract:
+\[ 3192^2 - 494^2 = 9.945\times 10^{6}. \]
+Take square root:
+\[ p_K c = \sqrt{9.945\times 10^{6}} = 3154\,\si{MeV}. \]
 \[ \boxed{\;p_{K^-}^{\rm min} \approx \SI{3.15}{GeV/c}.\;} \]
 
 \subsection*{(d) Decay $\Omega^-\to \Xi^0 + \pi^-$}
@@ -243,21 +295,43 @@ Strangeness changes by $|\Delta S|=1$ ($\Omega^-:S=-3 \to \Xi^0:S=-2$): weak dec
 
 \subsection*{(e) Lifetime estimate}
 
-Boost factor:
-\[ E_\Omega = \sqrt{(p_\Omega c)^2 + (M_\Omega c^2)^2} = \sqrt{2015^2 + 1672^2}\,\si{MeV}. \]
-Compute:
-\[ E_\Omega = \sqrt{4.060\times 10^{6} + 2.795\times 10^{6}} = \sqrt{6.856\times 10^{6}} = 2618\,\si{MeV}. \]
-Lorentz factors:
-\[ \gamma = E_\Omega/(M_\Omega c^2) = 2618/1672 = 1.566. \]
-\[ \beta\gamma = p_\Omega c/(M_\Omega c^2) = 2015/1672 = 1.205. \]
-Lab-frame velocity:
-\[ \beta = (\beta\gamma)/\gamma = 1.205/1.566 = 0.770. \]
+Use measured $M_\Omega \approx \SI{1672}{MeV/c^2}$ (PDG) and $p_\Omega = \SI{2015}{MeV/c}$.
+
+Total energy from $E^2 = (pc)^2 + (mc^2)^2$:
+\[ E_\Omega = \sqrt{(p_\Omega c)^2 + (M_\Omega c^2)^2}. \]
+Substitute:
+\[ E_\Omega = \sqrt{2015^2 + 1672^2}\,\si{MeV}. \]
+Compute $p_\Omega^2 c^2$:
+\[ 2015^2 = 4.060\times 10^{6}. \]
+Compute $M_\Omega^2 c^4$:
+\[ 1672^2 = 2.795\times 10^{6}. \]
+Sum:
+\[ 4.060\times 10^{6} + 2.795\times 10^{6} = 6.856\times 10^{6}. \]
+Take square root:
+\[ E_\Omega = \sqrt{6.856\times 10^{6}} = 2618\,\si{MeV}. \]
+Lorentz factor:
+\[ \gamma = \frac{E_\Omega}{M_\Omega c^2} = \frac{2618}{1672}. \]
+Evaluate:
+\[ \gamma = 1.566. \]
+Compute $\beta\gamma$ from momentum:
+\[ \beta\gamma = \frac{p_\Omega c}{M_\Omega c^2} = \frac{2015}{1672}. \]
+Evaluate:
+\[ \beta\gamma = 1.205. \]
+Solve for $\beta$:
+\[ \beta = \frac{\beta\gamma}{\gamma} = \frac{1.205}{1.566}. \]
+Evaluate:
+\[ \beta = 0.770. \]
 Lab speed:
-\[ v = \beta c = 0.770\times 3.00\times 10^{8} = 2.31\times 10^{8}\,\si{m\,s^{-1}}. \]
-Lab time of flight:
-\[ t_{\rm lab} = L/v = 0.025/2.31\times 10^{8} = 1.08\times 10^{-10}\,\si{s}. \]
-Proper lifetime:
-\[ \tau = t_{\rm lab}/\gamma = 1.08\times 10^{-10}/1.566. \]
+\[ v = \beta c = 0.770\times 3.00\times 10^{8}\,\si{m\,s^{-1}}. \]
+Evaluate:
+\[ v = 2.31\times 10^{8}\,\si{m\,s^{-1}}. \]
+Lab time of flight ($L = \SI{2.5}{cm} = \SI{0.025}{m}$):
+\[ t_{\rm lab} = \frac{L}{v} = \frac{0.025}{2.31\times 10^{8}}\,\si{s}. \]
+Evaluate:
+\[ t_{\rm lab} = 1.08\times 10^{-10}\,\si{s}. \]
+Apply time dilation $t_{\rm lab} = \gamma\tau$:
+\[ \tau = \frac{t_{\rm lab}}{\gamma} = \frac{1.08\times 10^{-10}}{1.566}\,\si{s}. \]
+Evaluate:
 \[ \boxed{\;\tau(\Omega^-) \approx 6.9\times 10^{-11}\,\si{s}.\;} \]
 (Cf.\ PDG $\tau\approx \SI{8.2e-11}{s}$ — consistent with weak decay.)
 
@@ -296,11 +370,13 @@ $L_e$: $0\to 1+0-1=0$. \checkmark\;
 
 \textbf{(iv) $\nu_e + e^+ \to d + \bar u$.}
 $\mathbb{Q}$: $0+1=1\to -\tfrac13 -\tfrac23 = -1$. $\boldsymbol{\times}$\;
-\textbf{Forbidden.}
+$\mathbb{B}$: $0+0=0\to \tfrac13 -\tfrac13 = 0$. \checkmark\;
+$L_e$: $1-1=0\to 0$. \checkmark\;
+\textbf{Forbidden} (charge non-conservation suffices).
 
 \textit{Diagrams for allowed reactions:}
 
-\textbf{(i) Quark-flow for $pp\to npp\pi^+$:} a $u\bar u$ pair is created from a gluon between the protons; the new $\bar u$ joins one $d$ from a proton converting that proton into $\pi^+(u\bar d)$? — corrected: one $u$ in proton-1 emits a gluon producing $u\bar d$; rearrangement gives $n(udd)+p(uud)+\pi^+(u\bar d)$ from $p(uud)+p(uud)$.
+\textbf{(i) Quark-flow for $pp\to npp\pi^+$:} Counting quarks, LHS $= 4u+2d$, RHS $= 4u+3d+\bar d$ so a $d\bar d$ pair must be created from a gluon. The new $d$ converts one $p(uud)\to n(udd)$ by replacing a $u$ which combines with the $\bar d$ to form $\pi^+(u\bar d)$; the second proton is a spectator.
 
 \begin{center}
 \begin{tikzpicture}[>=stealth, scale=0.85]
@@ -337,9 +413,13 @@ $\mathbb{Q}$: $0+1=1\to -\tfrac13 -\tfrac23 = -1$. $\boldsymbol{\times}$\;
 
 \subsection*{(c) GUT diagrams for $p\to e^+\pi^0$ and $n\to e^+\pi^-$}
 
-$X$ has charge $-\tfrac13$ ($e^+\bar u$ vertex implies $Q(X) = +1 + \tfrac23 = -? $; from $X\to ud$, $Q(X)=\tfrac23-\tfrac13=\tfrac13$; problem states $|Q|=\tfrac13$, so $X$ has $Q=+\tfrac13$). The two vertices $X\to ud$ ($\lambda_q$) and $X\to e^+\bar u$ ($\lambda_\ell$) (and conjugates) allow $uu\to X^*\to \bar d\,e^+$ — equivalently $u+u \to e^+ + \bar d$ inside the proton.
+Charge of $X$ from the vertex $X\to u+d$ using $Q_u=+\tfrac23$, $Q_d=-\tfrac13$:
+\[ Q(X) = \tfrac{2}{3} + (-\tfrac{1}{3}) = +\tfrac{1}{3}. \]
+Cross-check from $X\to e^+ + \bar u$ using $Q_{e^+}=+1$, $Q_{\bar u}=-\tfrac23$:
+\[ Q(X) = (+1) + (-\tfrac{2}{3}) = +\tfrac{1}{3}. \]
+Consistent with the stated $|Q(X)|=\tfrac{1}{3}$.
 
-\textbf{$p(uud)\to e^+ \pi^0$:} two of the $u$ quarks in $p$ exchange an $X$, converting to $e^+ + \bar d$. The remaining $u$ pairs with $\bar d$? — corrected vertex reading: $X\to u+d$ and $X\to e^+ + \bar u$. Combining: $u + \bar d\to X \to e^+ + \bar u$? rearrange: $uu\to \bar X \to \bar d\,e^+$ via $\bar X\to \bar u\bar d$ and $\bar X\to e^- u$ — equivalently $u+u\to e^+ + \bar d$ (crossing).
+\textbf{$p(uud)\to e^+ \pi^0$:} Two of the $u$ quarks exchange an $\bar X$ propagator. By crossing the given vertices: $u\to e^+ + \bar X$ (from $X\to e^+\bar u$) and $u + \bar X\to \bar d$ (from $X\to u+d$). The spectator $d$ pairs with the produced $\bar d$ to form $\pi^0\sim d\bar d$.
 
 \begin{center}
 \begin{tikzpicture}[>=stealth, scale=0.95]
@@ -362,7 +442,7 @@ $X$ has charge $-\tfrac13$ ($e^+\bar u$ vertex implies $Q(X) = +1 + \tfrac23 = -
 \end{tikzpicture}
 \end{center}
 
-\textbf{$n(udd)\to e^+ \pi^-$:} the $u$ and one $d$ exchange $X$, becoming $e^+$ and $\bar d$; remaining $d$ pairs with $\bar d$ for $\pi^-$? — note $\pi^-=d\bar u$. Re-route: $u+d\to X^*\to e^+\bar u$ leaves spectator $d$; $\bar u + d \to \pi^-(d\bar u)$.
+\textbf{$n(udd)\to e^+ \pi^-$:} Since $\pi^-=d\bar u$, route the $u$ and one $d$ through $X$. From $X\to u+d$ (reversed): $u+d\to X$. From $X\to e^+\bar u$: $X\to e^+ + \bar u$. Combining: $u + d \to X \to e^+ + \bar u$. The spectator $d$ pairs with the produced $\bar u$ to form $\pi^-(d\bar u)$.
 
 \begin{center}
 \begin{tikzpicture}[>=stealth, scale=0.95]
@@ -381,18 +461,24 @@ $X$ has charge $-\tfrac13$ ($e^+\bar u$ vertex implies $Q(X) = +1 + \tfrac23 = -
 
 \subsection*{(d) Justification of $\tau_p\propto m_X^4\hbar/(\lambda_q^2\lambda_\ell^2 m_p^5 c^2)$}
 
-The decay amplitude has two vertices, one $\lambda_q$ and one $\lambda_\ell$, joined by an $X$ propagator at momentum transfer $q^2$ small compared with $m_X^2 c^2$:
-\[ \mathcal{M} \sim \frac{\lambda_q\lambda_\ell}{q^2 - m_X^2 c^2} \approx -\frac{\lambda_q\lambda_\ell}{m_X^2 c^2}. \]
-Squared matrix element:
-\[ |\mathcal M|^2 \propto \frac{\lambda_q^2 \lambda_\ell^2}{m_X^4 c^4}. \]
-The decay rate must be a rate (dimensions $T^{-1}$). Only mass scale available below the GUT scale is $m_p$. Phase space and energy release saturate at $m_p$, so by dimensional counting (Fermi-like effective theory):
-\[ \Gamma_p \sim \frac{1}{\hbar}|\mathcal M|^2\,(m_p c^2)^5 / (\hbar c)^? . \]
-Insert powers of $\hbar,c$ to make $[\Gamma]=T^{-1}$:
-\[ \Gamma_p = \frac{1}{A}\,\frac{\lambda_q^2\lambda_\ell^2\,m_p^5 c^2}{m_X^4\,\hbar}. \]
-Invert:
-\[ \boxed{\;\tau_p = \Gamma_p^{-1} = A\,\frac{m_X^4\,\hbar}{\lambda_q^2\lambda_\ell^2\,m_p^5\,c^2}.\;} \]
+The decay amplitude has two vertices ($\lambda_q$ and $\lambda_\ell$) joined by an $X$ propagator at $|q^2|\ll m_X^2 c^2$:
+\[ \mathcal{M} \sim \frac{\lambda_q\,\lambda_\ell}{q^2 - m_X^2 c^2}. \]
+Take the low-momentum limit:
+\[ \mathcal{M} \approx -\frac{\lambda_q\,\lambda_\ell}{m_X^2 c^2}. \]
+Square the matrix element:
+\[ |\mathcal M|^2 \propto \frac{\lambda_q^2\,\lambda_\ell^2}{m_X^4 c^4}. \]
+By analogy with Fermi theory of muon decay, the three-body decay rate is $\Gamma \sim G^2 E^5$ where $G$ is the effective four-fermion coupling. Identify:
+\[ G_{\rm eff} \sim \frac{\lambda_q\,\lambda_\ell}{m_X^2 c^2}. \]
+Saturate $E$ at the only available scale $m_p c^2$:
+\[ \Gamma_p \sim G_{\rm eff}^2\,(m_p c^2)^5. \]
+Substitute $G_{\rm eff}$:
+\[ \Gamma_p \sim \frac{\lambda_q^2\,\lambda_\ell^2\,(m_p c^2)^5}{m_X^4 c^4}. \]
+Restore $\hbar$ so that $[\Gamma]=T^{-1}$ (i.e.\ divide by $\hbar$ to convert energy to inverse time):
+\[ \Gamma_p = \frac{1}{A}\,\frac{\lambda_q^2\,\lambda_\ell^2\,m_p^5\,c^2}{m_X^4\,\hbar}. \]
+Invert to obtain the lifetime:
+\[ \boxed{\;\tau_p = \Gamma_p^{-1} = A\,\frac{m_X^4\,\hbar}{\lambda_q^2\,\lambda_\ell^2\,m_p^5\,c^2}.\;} \]
 
-\textit{Reading the powers.} The $m_X^4$ comes from the squared heavy-boson propagator ($\sim 1/m_X^2$ in amplitude). $\lambda_q^2\lambda_\ell^2$ from amplitude squared, two vertex factors per $\mathcal M$. $m_p^5$ comes from the three-body phase space ($\propto E^2$) times $|\mathcal M|^2$'s remaining mass dimension at energies $\sim m_p$ — Fermi-like rate $\propto E^5$. $\hbar/c^2$ provides the correct units.
+\textit{Power counting.} The $m_X^4$ comes from $|1/\text{propagator}|^2$, with each $1/m_X^2$ in $\mathcal{M}$. $\lambda_q^2\lambda_\ell^2$ from the two squared vertices. $m_p^5$ comes from the Fermi $E^5$ scaling of a three-body phase space when the only available energy scale is $m_p$. The factor $\hbar/c^2$ supplies the correct dimensions of time.
 
 %==============================================================
 \section*{Question 4 --- Born scattering and Higgs exchange}
@@ -412,28 +498,41 @@ In the given Born formula:
 Compute the Fourier transform:
 \[ \tilde V(\bm q) = \int e^{i\bm q\cdot\bm x}\,V_0\frac{e^{-\mu r}}{r}\,\de^3 x. \]
 Use spherical coordinates with $\hat z\parallel\bm q$:
-\[ \tilde V(\bm q) = V_0 \int_0^\infty \!\!\!\de r\,r^2\,\frac{e^{-\mu r}}{r}\int_0^\pi\!\!\de\theta\,\sin\theta\,e^{iqr\cos\theta}\int_0^{2\pi}\!\!\de\phi. \]
-$\phi$-integral gives $2\pi$:
-\[ \tilde V(\bm q) = 2\pi V_0\int_0^\infty\!\!\de r\,r\,e^{-\mu r}\int_{-1}^{1}\!\!\de u\,e^{iqru}. \]
-Do the $u$-integral:
-\[ \int_{-1}^{1}\!\!\de u\,e^{iqru} = \frac{2\sin(qr)}{qr}. \]
-Insert:
-\[ \tilde V(\bm q) = \frac{4\pi V_0}{q}\int_0^\infty\!\!\de r\,e^{-\mu r}\sin(qr). \]
-Use $\int_0^\infty e^{-\mu r}\sin(qr)\de r = q/(\mu^2+q^2)$:
+\[ \tilde V(\bm q) = V_0 \int_0^\infty\!\de r\,r^2\,\frac{e^{-\mu r}}{r}\int_0^\pi\!\de\theta\,\sin\theta\,e^{iqr\cos\theta}\int_0^{2\pi}\!\de\phi. \]
+Do the $\phi$-integral:
+\[ \int_0^{2\pi}\de\phi = 2\pi. \]
+Cancel the $1/r$ and substitute $u=\cos\theta$:
+\[ \tilde V(\bm q) = 2\pi V_0\int_0^\infty\!\de r\,r\,e^{-\mu r}\int_{-1}^{1}\!\de u\,e^{iqru}. \]
+Evaluate the $u$-integral:
+\[ \int_{-1}^{1}\!\de u\,e^{iqru} = \frac{e^{iqr}-e^{-iqr}}{iqr}. \]
+Apply Euler's formula:
+\[ \int_{-1}^{1}\!\de u\,e^{iqru} = \frac{2\sin(qr)}{qr}. \]
+Insert into the radial integrand:
+\[ \tilde V(\bm q) = \frac{4\pi V_0}{q}\int_0^\infty\!\de r\,e^{-\mu r}\sin(qr). \]
+Use the standard Laplace-type integral $\int_0^\infty e^{-\mu r}\sin(qr)\,\de r = q/(\mu^2+q^2)$:
+\[ \tilde V(\bm q) = \frac{4\pi V_0}{q}\cdot\frac{q}{\mu^2+q^2}. \]
+Cancel the $q$:
 \[ \tilde V(\bm q) = \frac{4\pi V_0}{q^2 + \mu^2}. \]
-Substitute into Born formula:
+Substitute into the Born formula:
+\[ \frac{\de\sigma}{\de\Omega} = \left(\frac{m}{2\pi\hbar^2}\right)^2\,|\tilde V(\bm q)|^2. \]
+Insert $\tilde V$:
 \[ \frac{\de\sigma}{\de\Omega} = \left(\frac{m}{2\pi\hbar^2}\right)^2\,\frac{(4\pi V_0)^2}{(q^2+\mu^2)^2}. \]
-Simplify constants:
+Combine the prefactors:
+\[ \left(\frac{m}{2\pi\hbar^2}\right)^2(4\pi V_0)^2 = \frac{m^2\cdot 16\pi^2 V_0^2}{4\pi^2\hbar^4}. \]
+Cancel $\pi^2$:
+\[ \left(\frac{m}{2\pi\hbar^2}\right)^2(4\pi V_0)^2 = \frac{4 m^2 V_0^2}{\hbar^4}. \]
 \[ \boxed{\;\frac{\de\sigma}{\de\Omega} = \frac{A}{(q^2+\mu^2)^2},\qquad A = \frac{4 m^2 V_0^2}{\hbar^4}.\;} \]
 
-\textit{Coulomb limit.} Coulomb potential $V(r)=Z_1Z_2 e^2/(4\pi\epsilon_0 r)$ is the $\mu\to 0$ limit with $V_0 = Z_1 Z_2 e^2/(4\pi\epsilon_0)$:
+\textit{Coulomb limit.} Coulomb potential $V(r)=Z_1Z_2 e^2/(4\pi\epsilon_0 r)$ is the $\mu\to 0$ limit with $V_0 = Z_1 Z_2 e^2/(4\pi\epsilon_0)$. Take $\mu\to 0$:
 \[ \frac{\de\sigma}{\de\Omega} = \frac{A}{q^4}. \]
-Elastic kinematics give $|\bm q|=2k\sin(\Theta/2)$:
+Apply elastic kinematics $|\bm q|=2k\sin(\Theta/2)$:
 \[ q^2 = 4 k^2 \sin^2(\Theta/2). \]
 Square:
 \[ q^4 = 16 k^4 \sin^4(\Theta/2). \]
-Insert:
-\[ \frac{\de\sigma}{\de\Omega} = \frac{A}{16 k^4}\,\frac{1}{\sin^4(\Theta/2)} = \frac{A}{16 k^4}\,\mathrm{cosec}^4(\Theta/2). \]
+Insert into $A/q^4$:
+\[ \frac{\de\sigma}{\de\Omega} = \frac{A}{16 k^4 \sin^4(\Theta/2)}. \]
+Rewrite using cosec:
+\[ \frac{\de\sigma}{\de\Omega} = \frac{A}{16 k^4}\,\mathrm{cosec}^4(\Theta/2). \]
 \[ \boxed{\;\frac{\de\sigma}{\de\Omega}\propto \mathrm{cosec}^4(\Theta/2)\;\;\text{(Rutherford)}.\;} \]
 
 \subsection*{(c) $H$ vs.\ $\gamma$ exchange}
@@ -450,31 +549,42 @@ Insert:
 \end{tikzpicture}
 \end{center}
 
-In Born/perturbation theory, a single-boson exchange amplitude has matrix element of the Yukawa form $\propto g^2/(q^2+\mu^2)$ for a massive scalar; for a massless photon, $\propto g_\gamma^2/q^2$.
+In Born/perturbation theory each single-boson exchange amplitude is (vertex)$^2 \times$ propagator. For a massive scalar of mass $\mu$ the Yukawa propagator gives an amplitude $\propto g^2/(q^2+\mu^2)$; for a massless photon $\propto g_\gamma^2/q^2$.
 
-For the Higgs ($e\,e\,H$ coupling $\lambda_e$):
+Higgs exchange amplitude with $eeH$ coupling $\lambda_e$:
 \[ \mathcal M_H \propto \frac{\lambda_e^2}{q^2 + \mu_H^2}. \]
-For the photon (QED coupling $g_\gamma^2 = 4\pi\alpha$ in Heaviside--Lorentz natural units):
+Photon exchange amplitude with QED coupling $g_\gamma^2 = 4\pi\alpha$ (Heaviside--Lorentz):
 \[ \mathcal M_\gamma \propto \frac{4\pi\alpha}{q^2}. \]
-Take ratio:
-\[ R_H = \frac{\mathcal M_H}{\mathcal M_\gamma} = \frac{\lambda_e^2}{4\pi\alpha}\,\frac{q^2}{q^2+\mu_H^2}. \]
+Take the ratio:
+\[ R_H = \frac{\mathcal M_H}{\mathcal M_\gamma} = \frac{\lambda_e^2}{q^2 + \mu_H^2}\cdot\frac{q^2}{4\pi\alpha}. \]
+Rearrange:
 \[ \boxed{\;R_H = \frac{\lambda_e^2}{4\pi\alpha}\,\frac{q^2}{q^2+\mu_H^2}.\;} \]
 
-\textit{Maximum value at $\sqrt s = \SI{200}{GeV}$.} Maximum $|\bm q|$ at fixed $\sqrt s$: backscattering gives $q^2=s$ for elastic massless beams (in fact $q^2_{\max}=s$ when $\Theta=\pi$, neglecting $m_e$):
-\[ q^2_{\max} = s = (\SI{200}{GeV})^2 = 4\times 10^4\,\si{GeV^2}. \]
-$\mu_H^2$:
-\[ \mu_H^2 = (125)^2 = 1.5625\times 10^4\,\si{GeV^2}. \]
-Ratio of $q$-factors:
-\[ \frac{q^2}{q^2+\mu_H^2} = \frac{4\times 10^4}{4\times 10^4 + 1.5625\times 10^4} = \frac{4}{5.5625} = 0.719. \]
-Coupling factor:
-\[ \frac{\lambda_e^2}{4\pi\alpha} = \frac{(2.9\times 10^{-6})^2}{4\pi\cdot (1/137)}. \]
-Compute numerator:
-\[ \lambda_e^2 = 8.41\times 10^{-12}. \]
-Denominator:
-\[ 4\pi\alpha = 4\pi/137 = 0.0917. \]
+\textit{Maximum value at $\sqrt s = \SI{200}{GeV}$.} Maximum 3-momentum transfer at backscattering $\Theta=\pi$ (neglect $m_e$):
+\[ |\bm q|^2_{\max} = (2p)^2 = 4p^2. \]
+For elastic massless beams in CM, $p = \sqrt s/2$:
+\[ q^2_{\max} = s = (\SI{200}{GeV})^2. \]
+Evaluate:
+\[ q^2_{\max} = 4\times 10^4\,\si{GeV^2}. \]
+Higgs mass squared:
+\[ \mu_H^2 = (125)^2\,\si{GeV^2}. \]
+Evaluate:
+\[ \mu_H^2 = 1.5625\times 10^4\,\si{GeV^2}. \]
+Compute the propagator ratio:
+\[ \frac{q^2_{\max}}{q^2_{\max}+\mu_H^2} = \frac{4\times 10^4}{4\times 10^4 + 1.5625\times 10^4}. \]
+Simplify:
+\[ \frac{q^2_{\max}}{q^2_{\max}+\mu_H^2} = \frac{4}{5.5625} = 0.719. \]
+Coupling-factor numerator:
+\[ \lambda_e^2 = (2.9\times 10^{-6})^2 = 8.41\times 10^{-12}. \]
+Coupling-factor denominator (with $\alpha\approx 1/137$):
+\[ 4\pi\alpha = 4\pi/137. \]
+Evaluate:
+\[ 4\pi\alpha = 0.0917. \]
 Divide:
-\[ \frac{\lambda_e^2}{4\pi\alpha} = \frac{8.41\times 10^{-12}}{0.0917} = 9.17\times 10^{-11}. \]
-Multiply:
+\[ \frac{\lambda_e^2}{4\pi\alpha} = \frac{8.41\times 10^{-12}}{0.0917}. \]
+Evaluate:
+\[ \frac{\lambda_e^2}{4\pi\alpha} = 9.17\times 10^{-11}. \]
+Multiply by the propagator ratio:
 \[ R_H^{\max} = 9.17\times 10^{-11} \times 0.719. \]
 \[ \boxed{\;R_H^{\max} \approx 6.6\times 10^{-11}.\;} \]
 

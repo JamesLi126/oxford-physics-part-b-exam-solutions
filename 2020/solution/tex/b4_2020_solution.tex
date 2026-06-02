@@ -61,11 +61,15 @@ Charge on a shell at $r=R$:
 \[
 \rho_{\rm sh}(r)=\frac{Ze}{4\pi R^{2}}\,\delta(r-R).
 \]
-Insert into \eqref{eq:FFsph}; delta picks $r=R$:
+Insert into \eqref{eq:FFsph}:
+\[
+F_{\rm sh}(q)=\frac{4\pi}{Ze\,q}\int_{0}^{\infty}r\cdot\frac{Ze}{4\pi R^{2}}\delta(r-R)\sin(qr)\,\de r.
+\]
+Delta picks $r=R$:
 \[
 F_{\rm sh}(q)=\frac{4\pi}{Ze\,q}\cdot\frac{Ze}{4\pi R^{2}}\cdot R\sin(qR).
 \]
-Simplify:
+Cancel common factors:
 \begin{equation}
 \boxed{\;F_{\rm sh}(q)=\frac{\sin(qR)}{qR}.\;}
 \label{eq:Fsh}
@@ -74,15 +78,27 @@ Zeros at $qR=n\pi$; envelope $\propto (qR)^{-1}$.
 
 \subsection*{(b)(ii) Uniform ball}
 
-Density $\rho_{\rm v}(r)=3Ze/(4\pi R^{3})$ for $r\le R$. From \eqref{eq:FFsph}:
+Density $\rho_{\rm v}(r)=3Ze/(4\pi R^{3})$ for $r\le R$. Insert into \eqref{eq:FFsph}:
+\[
+F_{\rm v}(q)=\frac{4\pi}{Ze\,q}\cdot\frac{3Ze}{4\pi R^{3}}\int_{0}^{R}r\sin(qr)\,\de r.
+\]
+Cancel $4\pi/(Ze)$:
 \[
 F_{\rm v}(q)=\frac{3}{qR^{3}}\int_{0}^{R}r\sin(qr)\,\de r.
 \]
-Integrate by parts:
+Integrate by parts ($u=r$, $\de v=\sin(qr)\de r$):
+\[
+\int_{0}^{R}r\sin(qr)\,\de r=\left[-\frac{r\cos(qr)}{q}\right]_{0}^{R}+\frac{1}{q}\int_{0}^{R}\cos(qr)\,\de r.
+\]
+Evaluate boundary and remaining integral:
 \[
 \int_{0}^{R}r\sin(qr)\,\de r=-\frac{R\cos(qR)}{q}+\frac{\sin(qR)}{q^{2}}.
 \]
 Substitute:
+\[
+F_{\rm v}(q)=\frac{3}{qR^{3}}\cdot\frac{1}{q^{2}}\bigl[\sin(qR)-qR\cos(qR)\bigr].
+\]
+Collect powers of $qR$:
 \begin{equation}
 \boxed{\;F_{\rm v}(q)=\frac{3}{(qR)^{3}}\bigl[\sin(qR)-qR\cos(qR)\bigr].\;}
 \label{eq:Fv}
@@ -135,19 +151,31 @@ Three-body lepton phase space (recoil ignored):
 \[
 \de\rho\propto p_{e}^{2}\de p_{e}\,p_{\nu}^{2}\de p_{\nu}\,\delta(E_{e}+E_{\nu}-Q).
 \]
-Massless neutrino: $p_\nu = E_\nu/c = (Q-T_e)/c$; eliminate $\de p_\nu$ via the delta:
+Massless neutrino: $E_\nu=p_\nu c=Q-T_e$:
+\[
+p_\nu^{2}=(Q-T_e)^{2}/c^{2}.
+\]
+Eliminate $\de p_\nu$ via the delta ($\de p_\nu=\de E_\nu/c$):
 \[
 \frac{\de\Gamma}{\de p_e}\propto p_{e}^{2}(Q-T_{e})^{2}.
 \]
 Ultra-relativistic limit $T_e\to E_e=p_e c$:
 \[
+\frac{\de\Gamma}{\de p_e}\propto p_{e}^{2}(Q-p_{e}c)^{2}.
+\]
+Integrate over allowed range $0\le p_e c\le Q$:
+\[
 \Gamma\propto \int_{0}^{Q/c}p_{e}^{2}(Q-p_{e}c)^{2}\de p_{e}.
 \]
-Rescale $x=p_e c/Q$:
+Rescale $x=p_e c/Q$, $\de p_e=(Q/c)\de x$:
+\[
+\Gamma\propto \frac{Q^{2}}{c^{2}}\cdot Q^{2}\cdot \frac{Q}{c}\int_{0}^{1}x^{2}(1-x)^{2}\,\de x.
+\]
+Collect powers of $Q$:
 \[
 \Gamma\propto Q^{5}\int_{0}^{1}x^{2}(1-x)^{2}\,\de x.
 \]
-The integral is a pure number ($1/30$):
+The integral evaluates to $1/30$, a pure number:
 \begin{equation}
 \boxed{\;\Gamma\propto Q^{5}.\;}
 \label{eq:Sargent}
@@ -250,20 +278,38 @@ Take ratio (eliminate $K$):
 \[
 \tan^{2}\theta_{C}=\frac{\Gamma_\Lambda}{\Gamma_n}\left(\frac{Q_n}{Q_\Lambda}\right)^{\!5}.
 \]
-Compute partial widths from $\Gamma_i=\mathrm{BR}_i\hbar/\tau_i$ with $\hbar=\SI{6.582e-22}{MeV.s}$:
+Compute partial widths from $\Gamma_i=\mathrm{BR}_i\hbar/\tau_i$ with $\hbar=\SI{6.582e-22}{MeV.s}$.
+
+Neutron (BR$=1$):
 \[
-\Gamma_n=\frac{\hbar}{\tau_n}=\frac{6.58\times 10^{-22}}{879.4}\,\si{MeV}=\SI{7.49e-25}{MeV}.
+\Gamma_n=\frac{\hbar}{\tau_n}=\frac{6.582\times 10^{-22}}{879.4}\,\si{MeV}.
 \]
+Evaluate:
 \[
-\Gamma_\Lambda=\frac{8.3\times 10^{-4}\,\hbar}{2.63\times 10^{-10}\,\si{s}}=\SI{2.08e-15}{MeV}.
+\Gamma_n=\SI{7.49e-25}{MeV}.
+\]
+$\Lambda^{0}$ (BR$=8.3\times 10^{-4}$):
+\[
+\Gamma_\Lambda=\frac{8.3\times 10^{-4}\cdot 6.582\times 10^{-22}}{2.63\times 10^{-10}}\,\si{MeV}.
+\]
+Evaluate:
+\[
+\Gamma_\Lambda=\SI{2.08e-15}{MeV}.
 \]
 $Q$-values from $Q\simeq m_B-m_p-m_e$ ($m_p=938.3$, $m_e=0.51$, $m_n=939.6$, $m_\Lambda=1115.7$ MeV):
 \[
-Q_n=\SI{0.78}{MeV},\qquad Q_\Lambda=\SI{176.9}{MeV}.
+Q_n=939.6-938.3-0.51=\SI{0.78}{MeV}.
 \]
-Compute $(Q_n/Q_\Lambda)^5$:
 \[
-\frac{Q_n}{Q_\Lambda}=4.41\times 10^{-3},\qquad (4.41\times 10^{-3})^{5}=1.66\times 10^{-12}.
+Q_\Lambda=1115.7-938.3-0.51=\SI{176.9}{MeV}.
+\]
+Compute $Q$-ratio:
+\[
+\frac{Q_n}{Q_\Lambda}=\frac{0.78}{176.9}=4.41\times 10^{-3}.
+\]
+Raise to fifth power:
+\[
+(4.41\times 10^{-3})^{5}=1.66\times 10^{-12}.
 \]
 Compute width ratio:
 \[
@@ -271,15 +317,19 @@ Compute width ratio:
 \]
 Multiply:
 \[
-\tan^{2}\theta_{C}=2.78\times 10^{9}\cdot 1.66\times 10^{-12}=4.6\times 10^{-3}.
+\tan^{2}\theta_{C}=2.78\times 10^{9}\cdot 1.66\times 10^{-12}=4.61\times 10^{-3}.
 \]
-Take square root and arctangent:
+Take square root:
+\[
+\tan\theta_{C}=\sqrt{4.61\times 10^{-3}}=0.0679.
+\]
+Take arctangent:
 \begin{equation}
-\boxed{\;\tan\theta_{C}\approx 0.068\;\Longrightarrow\;\theta_{C}\approx 3.9^{\circ}.\;}
+\boxed{\;\theta_{C}\approx \arctan(0.068)\approx 3.9^{\circ}.\;}
 \label{eq:thetaC-naive}
 \end{equation}
 
-\textbf{Sanity check (re-examined).} The accepted value is $\theta_{C}\approx 13^{\circ}$, so the simple $Q^{5}$ rule under-estimates $\theta_C$ by a factor $\sim 3$. The cause is the breakdown of the relativistic phase-space approximation for the neutron, where $Q_n=\SI{0.78}{MeV}\sim m_e$, so the electron is non-relativistic and the integrated phase-space factor $f_n$ deviates strongly from $Q_n^{5}/30$. Tabulated Fermi integrals give $f_n\approx 1.6$ vs.\ a naive $Q_n^5/(30 m_e^5)\approx 0.18$ in $m_e$ units, raising the inferred $\sin^2\theta_C$ by $\sim 9$ and recovering $\theta_C\approx 13^{\circ}$. The discrepancy is therefore a known shortcoming of the leading-order Sargent rule, not of the assumptions; the order-of-magnitude estimate \eqref{eq:thetaC-naive} stands as the answer obtainable from the table alone.
+\textbf{Comment.} Accepted value $\theta_C\approx 13^\circ$; the simple $Q^5$ rule under-estimates by $\sim 3$ because $Q_n\sim m_e$ violates the ultra-relativistic limit. Exact Fermi-integral $f_n$ exceeds $Q_n^5/30$ by $\sim 9$, restoring $\theta_C\approx 13^\circ$. The naive estimate \eqref{eq:thetaC-naive} is the answer extractable from the table alone.
 
 \subsection*{(e) Inter-generation mixing}
 
@@ -324,17 +374,25 @@ W\approx \SI{1.22}{GeV}.
 
 Read FWHM in $E_\gamma$: peak $\sigma\approx \SI{0.55}{mb}$, half-max $\approx \SI{0.27}{mb}$ between $E_\gamma\sim 0.22$ and $\sim\SI{0.42}{GeV}$, so $\Gamma_{\rm lab}\approx \SI{0.20}{GeV}$.
 
-Convert to width in $W$ using $\de W/\de E_\gamma=m_p/W$:
+Differentiate $s=m_p^{2}+2m_pE_\gamma$:
 \[
-\Gamma=\frac{m_p}{W}\Gamma_{\rm lab}=\frac{0.938}{1.22}\cdot 0.20\,\si{GeV}\approx \SI{0.15}{GeV}.
+2W\,\de W=2m_p\,\de E_\gamma\;\Longrightarrow\;\frac{\de W}{\de E_\gamma}=\frac{m_p}{W}.
 \]
-Lifetime from $\tau=\hbar/\Gamma$:
+Convert FWHM to width in $W$:
 \[
-\tau=\frac{\hbar c}{\Gamma c}=\frac{\SI{1.97e-7}{eV.m}}{\SI{1.5e8}{eV}\cdot c}=\frac{\SI{197}{MeV.fm}/c}{\SI{150}{MeV}}.
+\Gamma=\frac{m_p}{W}\Gamma_{\rm lab}=\frac{0.938}{1.22}\cdot 0.20\,\si{GeV}.
 \]
-Evaluate ($c=\SI{3e23}{fm/s}$):
+Evaluate:
 \[
-\tau\approx \frac{1.31\,\si{fm}}{3\times 10^{23}\,\si{fm/s}}\approx \SI{4.4e-24}{s}.
+\Gamma\approx \SI{0.15}{GeV}=\SI{150}{MeV}.
+\]
+Lifetime from $\tau=\hbar/\Gamma$ with $\hbar=\SI{6.582e-22}{MeV.s}$:
+\[
+\tau=\frac{6.582\times 10^{-22}\,\si{MeV.s}}{150\,\si{MeV}}.
+\]
+Evaluate:
+\[
+\tau\approx \SI{4.4e-24}{s}.
 \]
 \begin{equation}
 \boxed{\;\tau_\Delta\approx \SI{4e-24}{s}.\;}
@@ -348,9 +406,13 @@ The $\Delta$ couples to $\gamma p$, so its quark content is $uud$ (photon does n
 
 \subsection*{(c) Branching ratio $\Gamma_{\gamma p}/\Gamma$}
 
-Peak Breit--Wigner cross section at $E=E_0$, summed over final states ($\sum_f\Gamma_f=\Gamma$):
+Breit--Wigner at $E=E_0$ gives factor $4\Gamma_i\Gamma_f/\Gamma^{2}$; sum over final states ($\sum_f\Gamma_f=\Gamma$):
 \[
-\sigma_{\max}=\frac{2J+1}{(2s_1+1)(2s_2+1)}\frac{4\pi}{k^{2}}\,\frac{\Gamma_i}{\Gamma}.
+\sigma_{\max}=\frac{2J+1}{(2s_1+1)(2s_2+1)}\frac{\pi}{k^{2}}\,\frac{4\Gamma_i\Gamma}{\Gamma^{2}}.
+\]
+Simplify:
+\[
+\sigma_{\max}=\frac{2J+1}{(2s_1+1)(2s_2+1)}\frac{4\pi}{k^{2}}\,\frac{\Gamma_i}{\Gamma},\qquad \Gamma_i=\Gamma_{\gamma p}.
 \]
 Spin counting: $J=\tfrac32$ gives $2J+1=4$; photon has 2 physical helicities, proton $2s_2+1=2$:
 \[
@@ -388,11 +450,11 @@ B_{\gamma p}\approx \frac{0.40}{78.5}\approx 5\times 10^{-3}.
 \boxed{\;\frac{\Gamma_{\gamma p}}{\Gamma}\approx 0.5\%.\;}
 \label{eq:Bgammap}
 \end{equation}
-Consistent with PDG value $\sim 0.6\%$ for $\Delta\to N\gamma$. (Earlier sanity-check resolved: previous note flagged a units error; the correct evaluation $4\pi/k^{2}=\SI{78.5}{mb}$, not $\SI{0.785}{mb}$, gives the expected $\sim 1\%$ branching ratio.)
+Consistent with PDG value $\sim 0.6\%$ for $\Delta\to N\gamma$.
 
 \subsection*{(d) Flat plateau above $\SI{2}{GeV}$}
 
-Photon wavelength $\lambda=hc/E_\gamma\lesssim \SI{0.1}{fm}$ resolves individual quarks/gluons; cross section becomes the incoherent sum of pointlike parton-level scatters. No further resonance peaks because the photon couples to free partons rather than exciting collective $qqq$ states. The constant $\sigma\sim\SI{0.13}{mb}$ is the Bjorken-scaling/Pomeron-dominated total cross section, characteristic of incoherent point-like scattering.
+Reduced wavelength $\bar\lambda=\hbar c/E_\gamma\lesssim \SI{0.1}{fm}$ at $E_\gamma\gtrsim\SI{2}{GeV}$ resolves individual quarks/gluons; cross section becomes the incoherent sum of pointlike parton-level scatters. No further resonance peaks because the photon couples to free partons rather than exciting collective $qqq$ states. The constant $\sigma\sim\SI{0.13}{mb}$ is the Bjorken-scaling/Pomeron-dominated total cross section, characteristic of incoherent point-like scattering.
 
 \subsection*{(e) Switch to liquid deuterium}
 
@@ -546,14 +608,23 @@ Taylor expand to first order in $\Delta A=4$, $\Delta Z=2$:
 \[
 B(A-4,Z-2)-B(A,Z)\approx -4\,\partial_A B-2\,\partial_Z B.
 \]
-Compute partial derivatives of $B$:
+Compute $\partial_A B$ ($\partial_A$ of each term of $B$):
 \[
 \partial_A B=\alpha-\frac{2\beta}{3A^{1/3}}+\gamma\frac{(A-2Z)^{2}}{A^{2}}-2\gamma\frac{A-2Z}{A}+\frac{\epsilon Z^{2}}{3A^{4/3}}.
 \]
+Compute $\partial_Z B$:
 \[
 \partial_Z B=4\gamma\frac{A-2Z}{A}-\frac{2\epsilon Z}{A^{1/3}}.
 \]
-Combine:
+Form $-4\partial_A B$:
+\[
+-4\partial_A B=-4\alpha+\frac{8\beta}{3A^{1/3}}-\frac{4\gamma(A-2Z)^{2}}{A^{2}}+\frac{8\gamma(A-2Z)}{A}-\frac{4\epsilon Z^{2}}{3A^{4/3}}.
+\]
+Form $-2\partial_Z B$:
+\[
+-2\partial_Z B=-\frac{8\gamma(A-2Z)}{A}+\frac{4\epsilon Z}{A^{1/3}}.
+\]
+Add; the $\pm 8\gamma(A-2Z)/A$ terms cancel:
 \[
 -4\partial_A B-2\partial_Z B=-4\alpha+\frac{8\beta}{3A^{1/3}}-\frac{4\gamma(A-2Z)^{2}}{A^{2}}-\frac{4\epsilon Z^{2}}{3A^{4/3}}+\frac{4\epsilon Z}{A^{1/3}}.
 \]
@@ -567,9 +638,17 @@ Q_\alpha=B_\alpha-4\alpha+\frac{8\beta}{3}A^{-1/3}+\frac{4\epsilon Z}{A^{1/3}}-\
 
 \textbf{Threshold along $\beta$-stability.} Minimise SEMF in $Z$ at fixed $A$:
 \[
-0=(m_p-m_n)-4\gamma\frac{A-2Z}{A}+\frac{2\epsilon Z}{A^{1/3}}.
+0=\pd{M}{Z}=(m_p-m_n)-4\gamma\frac{A-2Z}{A}+\frac{2\epsilon Z}{A^{1/3}}.
 \]
-Solve (neglect $m_p-m_n\ll \gamma$):
+Neglect $m_p-m_n\ll \gamma$, rearrange:
+\[
+4\gamma\frac{A-2Z}{A}=\frac{2\epsilon Z}{A^{1/3}}.
+\]
+Multiply by $A$ and isolate $Z$:
+\[
+4\gamma A=Z\bigl(8\gamma+2\epsilon A^{2/3}\bigr).
+\]
+Divide:
 \[
 Z(A)\approx \frac{A/2}{1+\epsilon A^{2/3}/(4\gamma)}.
 \]
@@ -586,7 +665,7 @@ Q_\alpha\,\text{(MeV)} & -1.8 & -0.8 & -0.2 & +0.4 & +2.8 & +4.9
 \label{eq:Aalpha}
 \end{equation}
 
-\textbf{Sanity check (re-examined).} The $A=148$ threshold is reproduced cleanly by the linearised expansion when $Z(A)$ tracks $\beta$-stability; the term-by-term expansion sums to $\approx 0$ at $A=148$ as in the table. (Earlier ambiguity in the Taylor expansion is resolved: the four contributions $-34.9+9.2+33.5-4.7-2.5\approx 0.5$ MeV at $A=148$ correctly straddles zero.)
+\textbf{Sanity check.} At $A=148$, $Z=61$, $A-2Z=26$: contributions $-34.9+9.2-2.9+32.9-4.5\approx -0.2$ MeV. Sign change at $A\sim 148$ confirmed.
 
 \textbf{Physical mechanism.} Coulomb self-energy $\propto Z^{2}/A^{1/3}\sim A^{5/3}$ along $\beta$-stability; on emitting an $\alpha$ the fractional change $\sim 4/A$ liberates Coulomb energy growing as $A^{2/3}$. Combined with the unusually large $\alpha$ binding ($B_\alpha\approx\SI{28}{MeV}$, doubly magic), it overcomes the volume cost of four nucleons at $A\sim 148$.
 

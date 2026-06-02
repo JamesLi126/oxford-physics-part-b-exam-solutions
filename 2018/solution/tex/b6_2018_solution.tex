@@ -38,25 +38,45 @@ For $\alpha$-W, the two atoms at $[0,0,0]$ and $[\tfrac12,\tfrac12,\tfrac12]$ ar
 
 \subsection*{(b) Lattice constant and density}
 
-Selection rule (BCC): reflections allowed for $h+k+l$ even; lowest-$\sin\theta$ ring is $(110)$.
+Selection rule for BCC: reflections allowed when $h+k+l$ is even.
 
+Identify the lowest-$\sin\theta$ ring:
+\[
+\text{lowest-angle ring} = (110),\quad h^2+k^2+l^2 = 2.
+\]
 Bragg's law:
 \[
 \lambda = 2 d_{110}\sin\theta.
 \]
 Solve for $d_{110}$:
 \[
-d_{110} = \frac{\lambda}{2\sin\theta} = \frac{\SI{0.1542}{nm}}{2\sin(20.13^\circ)}.
+d_{110} = \frac{\lambda}{2\sin\theta}.
 \]
-Evaluate denominator: $2\sin(20.13^\circ) = 0.6884$:
+Halve the scattering angle $2\theta=40.26^\circ$:
+\[
+\theta = 20.13^\circ.
+\]
+Evaluate $\sin\theta$:
+\[
+\sin(20.13^\circ) = 0.3441.
+\]
+Substitute the numerical values:
+\[
+d_{110} = \frac{\SI{0.1542}{nm}}{2\times 0.3441}.
+\]
+Evaluate:
 \[
 d_{110} = \SI{0.2240}{nm}.
 \]
-Cubic spacing $d_{hkl}=a/\sqrt{h^2+k^2+l^2}$:
+Cubic spacing $d_{hkl}=a/\sqrt{h^2+k^2+l^2}$ gives:
 \[
 a = d_{110}\sqrt{2}.
 \]
-Numerical:
+Substitute:
+\[
+a = (\SI{0.2240}{nm})\sqrt{2}.
+\]
+Evaluate:
 \[
 \boxed{\;a = \SI{0.3168}{nm}.\;}
 \]
@@ -65,15 +85,19 @@ BCC conventional cell contains 2 atoms. Mass density:
 \[
 \rho = \frac{2 M}{N_A a^3}.
 \]
-Insert numbers:
+Substitute the numerical values:
 \[
 \rho = \frac{2 \times \SI{0.1838}{kg\,mol^{-1}}}{(\SI{6.022e23}{mol^{-1}})\,(\SI{3.168e-10}{m})^3}.
 \]
-Evaluate $a^3$: $a^3 = \SI{3.179e-29}{m^3}$:
+Evaluate $a^3$:
+\[
+a^3 = \SI{3.179e-29}{m^3}.
+\]
+Combine numerator and denominator:
 \[
 \rho = \frac{\SI{0.3676}{kg\,mol^{-1}}}{\SI{1.914e-5}{m^3\,mol^{-1}}}.
 \]
-Final:
+Evaluate:
 \[
 \boxed{\;\rho \approx \SI{1.92e4}{kg\,m^{-3}} = \SI{19.2}{g\,cm^{-3}}.\;}
 \]
@@ -97,22 +121,56 @@ All eight atoms have the same form factor $f$. Structure factor:
 \[
 S_{hkl} = f\sum_{j=1}^{8} e^{2\pi i(h x_j + k y_j + l z_j)}.
 \]
-Group corner/centre pair $\times$ face-pair triplet:
+Corner pair $[0,0,0],[\tfrac12,\tfrac12,\tfrac12]$:
 \[
-S_{hkl} = f\bigl[1+(-1)^{h+k+l}\bigr]\Bigl\{1 + 2\cos\tfrac{\pi h}{2}\cos\pi k + 2\cos\tfrac{\pi l}{2}\cos\pi h + 2\cos\tfrac{\pi k}{2}\cos\pi l\Bigr\}.
+S_c/f = 1 + e^{i\pi(h+k+l)}.
 \]
-First bracket vanishes for $h+k+l$ odd: $(100),(110),(111)$ absent.
+Use $e^{i\pi n}=(-1)^n$:
+\[
+S_c/f = 1 + (-1)^{h+k+l}.
+\]
+Face pair on the $z=0$ face, $[\tfrac14,\tfrac12,0]+[\tfrac34,\tfrac12,0]$:
+\[
+S_{f,z}/f = e^{2\pi i(h/4+k/2)}+e^{2\pi i(3h/4+k/2)}.
+\]
+Factor out $e^{i\pi k}$:
+\[
+S_{f,z}/f = e^{i\pi k}\bigl(e^{i\pi h/2}+e^{i3\pi h/2}\bigr).
+\]
+Factor $e^{i\pi h}$ from the bracket:
+\[
+e^{i\pi h/2}+e^{i3\pi h/2} = e^{i\pi h}\bigl(e^{-i\pi h/2}+e^{i\pi h/2}\bigr).
+\]
+Apply $e^{i\theta}+e^{-i\theta}=2\cos\theta$:
+\[
+e^{i\pi h/2}+e^{i3\pi h/2} = 2 e^{i\pi h}\cos(\pi h/2).
+\]
+Substitute back:
+\[
+S_{f,z}/f = 2(-1)^{h+k}\cos(\pi h/2).
+\]
+Repeat the same factorisation for the pairs on the $y=0$ face ($[\tfrac12,0,\tfrac14],[\tfrac12,0,\tfrac34]$) and on the $x=0$ face ($[0,\tfrac14,\tfrac12],[0,\tfrac34,\tfrac12]$). Sum the three face-pair contributions:
+\[
+S_f/f = 2(-1)^{h+k}\cos\tfrac{\pi h}{2} + 2(-1)^{h+l}\cos\tfrac{\pi l}{2} + 2(-1)^{k+l}\cos\tfrac{\pi k}{2}.
+\]
+Combine corner and face contributions:
+\[
+S/f = \bigl[1+(-1)^{h+k+l}\bigr] + 2\bigl[(-1)^{h+k}\cos\tfrac{\pi h}{2} + (-1)^{h+l}\cos\tfrac{\pi l}{2} + (-1)^{k+l}\cos\tfrac{\pi k}{2}\bigr].
+\]
 
-Tabulate $|S/f|^2$ and multiplicity $m$:
+Evaluate for low $(hkl)$:
 \begin{center}
 \begin{tabular}{cccc}
 \toprule
-$(hkl)$ & $h^2+k^2+l^2$ & $|S/f|^2$ & $m$ \\
+$(hkl)$ & $h^2+k^2+l^2$ & $S/f$ & $m$ \\
 \midrule
-(200) & 4 & 16 & 6 \\
-(210) & 5 & 16 & 24 \\
-(211) & 6 & 16 & 24 \\
-(220) & 8 & 0 & --- \\
+(100) & 1 & $0+2[0-1+1]=0$ & --- \\
+(110) & 2 & $2+2[0-1+0]=0$ & --- \\
+(111) & 3 & $0+2[0+0+0]=0$ & --- \\
+(200) & 4 & $2+2[-1+1+1]=4$ & 6 \\
+(210) & 5 & $0+2[1+1+0]=4$ & 24 \\
+(211) & 6 & $2+2[1+0+0]=4$ & 24 \\
+(220) & 8 & $2+2[-1+1-1]=0$ & --- \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -132,11 +190,15 @@ Both have $|S|^2 = 16 f^2$, so the ratio is set by multiplicity (Lorentz-polaris
 
 \subsection*{(e) Additional weak ring at lower angle}
 
-The cancellations producing $|S|=0$ for $h+k+l$ odd assumed all 8 sites have identical scattering. The two Wyckoff sites are chemically inequivalent: corner/centre atoms vibrate differently from face-pair atoms, giving distinct anisotropic Debye--Waller factors and slightly different effective form factors, $f_1\neq f_2$.
+The cancellations producing $|S|=0$ assumed all 8 sites scatter identically. The two Wyckoff sites are crystallographically distinct (corner sublattice vs.\ face-pair sublattice): they vibrate differently, giving distinct anisotropic Debye--Waller factors and slightly different effective form factors, $f_1\neq f_2$.
 
-With $f_1\neq f_2$ the structure factor becomes $S = (f_1-f_2)\times[\text{previously-vanishing prefactor}]$, so previously forbidden rings reappear with intensity $\propto (f_1-f_2)^2 \ll (f_1+f_2)^2$.
+Write $S = f_1 S_c + f_2 S_f$ with $S_c = 1+(-1)^{h+k+l}$ and $S_f$ the face-pair sum. Tabulating $(S_c, S_f)$ for the previously forbidden rings:
+\[
+(100):\ (0,0),\qquad (110):\ (2,-2),\qquad (111):\ (0,0),\qquad (220):\ (2,-2).
+\]
+Rings with $S_c=S_f=0$ remain extinct; rings with $S_c\ne 0$ and $S_f\ne 0$ acquire weight $\propto (f_1-f_2)^2$.
 
-Lowest forbidden ring (smallest $h^2+k^2+l^2$): $(100)$. However $(100)$ also vanishes from the second bracket on the corner/centre sublattice; the lowest ring with non-zero contrast between the two sublattices is
+Lowest such ring (smallest $h^2+k^2+l^2$):
 \[
 \boxed{\;(110),\;}
 \]
@@ -158,23 +220,39 @@ Expand a single-particle eigenstate $\ket{\psi}=\sum_n \psi_n\ket{n}$. Apply $H$
 \[
 H\ket{\psi} = \sum_n \psi_n\bigl(\epsilon_0\ket{n} - t\ket{n+1} - t\ket{n-1}\bigr).
 \]
-Project onto $\bra{m}$:
+Project onto $\bra{m}$ (use $\braket{m|n}=\delta_{mn}$):
 \[
 E\,\psi_m = \epsilon_0\,\psi_m - t\,\psi_{m-1} - t\,\psi_{m+1}.
 \]
-Bloch ansatz $\psi_n = e^{ikna}$:
+Substitute Bloch ansatz $\psi_n = e^{ikna}$:
+\[
+E\,e^{ikma} = \epsilon_0\,e^{ikma} - t\,e^{ik(m-1)a} - t\,e^{ik(m+1)a}.
+\]
+Divide both sides by $e^{ikma}$:
 \[
 E = \epsilon_0 - t\,e^{-ika} - t\,e^{ika}.
 \]
-Combine exponentials:
+Combine exponentials with $e^{i\theta}+e^{-i\theta}=2\cos\theta$:
 \[
 \boxed{\;E(k) = \epsilon_0 - 2t\cos(ka),\qquad k\in(-\pi/a,\pi/a].\;}
 \label{eq:tb1d}
 \]
 
-DOS in 1D follows from $g(E)\,\de E = (L/\pi)\de k$ (factor 2 for spin already absorbed by per-atom counting):
+DOS per spin in 1D: states in length $L$ between $k$ and $k+\de k$ number $(L/2\pi)\de k$. With two $k$ branches ($\pm k$) at each $E$:
 \[
-g(E) = \frac{L}{\pi}\frac{1}{|\de E/\de k|} = \frac{L}{\pi a}\frac{1}{\sqrt{(2t)^2 - (E-\epsilon_0)^2}}.
+g(E)\,\de E = 2\cdot\frac{L}{2\pi}|\de k| = \frac{L}{\pi}\frac{\de E}{|\de E/\de k|}.
+\]
+Compute $|\de E/\de k|$ from the dispersion:
+\[
+\Bigl|\frac{\de E}{\de k}\Bigr| = 2ta|\sin(ka)|.
+\]
+Use $\sin^2(ka) = 1 - \cos^2(ka)$ with $\cos(ka) = (\epsilon_0-E)/(2t)$:
+\[
+|\sin(ka)| = \frac{1}{2t}\sqrt{(2t)^2 - (E-\epsilon_0)^2}.
+\]
+Substitute and invert:
+\[
+g(E) = \frac{L}{\pi a}\frac{1}{\sqrt{(2t)^2 - (E-\epsilon_0)^2}}.
 \]
 Van Hove singularities at $E=\epsilon_0\pm 2t$.
 
@@ -216,19 +294,31 @@ At $T=0$, fill the lower half of the band:
 \boxed{\;E_F = \epsilon_0.\;}
 \]
 
-Particle number constraint at any $T$:
+Particle-number constraint per spin at temperature $T$:
 \[
-N_e = \int g(E)\,n_F(E,\mu,T)\,\de E = \tfrac12\int g(E)\,\de E.
+N_e^{(\sigma)} = \int g(E)\,n_F(E,\mu,T)\,\de E.
 \]
-Apply hint $n_F(E,\mu) = 1 - n_F(2\mu - E,\mu)$:
+Half-filling sets the per-spin filling to half the band:
+\[
+N_e^{(\sigma)} = \tfrac12\int g(E)\,\de E.
+\]
+Apply the hint $n_F(E,\mu) = 1 - n_F(2\mu - E,\mu)$:
 \[
 \int g(E)\,n_F(E,\mu)\,\de E = \int g(E)\,\de E - \int g(E)\,n_F(2\mu - E,\mu)\,\de E.
 \]
-Substitute $E\to 2\mu - E$ in the second integral, with $g(2\mu-E)$ appearing:
+Change variables $E' = 2\mu - E$ in the second integral:
+\[
+\int g(E)\,n_F(2\mu-E)\,\de E = \int g(2\mu-E')\,n_F(E')\,\de E'.
+\]
+Substitute back (rename $E'\to E$):
 \[
 \tfrac12\int g(E)\,\de E = \int g(E)\,\de E - \int g(2\mu-E)\,n_F(E,\mu)\,\de E.
 \]
-Demand consistency with $g(2\epsilon_0 - E) = g(E)$: the equation collapses to an identity iff $\mu=\epsilon_0$:
+The DOS satisfies $g(2\epsilon_0 - E) = g(E)$ by the $E\to 2\epsilon_0 - E$ symmetry of the cosine band. Demand consistency by setting $\mu = \epsilon_0$:
+\[
+\int g(2\epsilon_0-E)\,n_F(E,\epsilon_0)\,\de E = \int g(E)\,n_F(E,\epsilon_0)\,\de E = N_e = \tfrac12\int g\,\de E.
+\]
+The constraint is then identically satisfied, fixing:
 \[
 \boxed{\;\mu(T) = \epsilon_0 = E_F\quad\text{for all }T.\;}
 \]
@@ -265,28 +355,50 @@ Nesting $E(\bm k+\bm Q)+E(\bm k) = 2\epsilon_0$ with $\bm Q=(\pi/a,\pi/a)$ gives
 
 \subsection*{(e) Squeezed rectangular lattice, $a_x < a_y$}
 
-Brillouin zone is rectangular and longer along $k_x$ (since $\pi/a_x>\pi/a_y$). Hopping anisotropy: shorter bond $a_x$ has larger overlap, so $t_x > t_y$; dispersion $E = \epsilon_0 - 2t_x\cos(k_x a_x) - 2t_y\cos(k_y a_y)$.
-
-Half-filling locus passes through fixed points $(\pm\pi/a_x,0)$ and $(0,\pm\pi/a_y)$ (band-centre by symmetry); curvature distorts the diamond to a closed convex curve, bulging outward in $k_y$ (slow dispersion, narrow band) and pinched inward along $k_x$.
+Brillouin zone is rectangular: $-\pi/a_i < k_i \le \pi/a_i$, wider along $k_x$ since $\pi/a_x>\pi/a_y$. Anisotropic dispersion:
+\[
+E(k_x,k_y) = \epsilon_0 - 2t_x\cos(k_x a_x) - 2t_y\cos(k_y a_y).
+\]
+Shorter bond gives stronger overlap so $t_x > t_y$. Half-filling sits at $E = \epsilon_0$:
+\[
+t_x\cos(k_x a_x) + t_y\cos(k_y a_y) = 0.
+\]
+On the $k_y=0$ line, solve $\cos(k_x a_x) = -t_y/t_x$. Since $|t_y/t_x|<1$:
+\[
+k_x = \frac{1}{a_x}\arccos\!\Bigl(-\frac{t_y}{t_x}\Bigr) < \frac{\pi}{a_x}.
+\]
+On the $k_x=0$ line, $\cos(k_ya_y) = -t_x/t_y$. Since $|t_x/t_y|>1$ there is no real solution: the Fermi surface does not cross the $k_y$ axis. Instead it reaches the BZ edge $k_y=\pi/a_y$ at:
+\[
+k_x = \frac{1}{a_x}\arccos\!\Bigl(\frac{t_y}{t_x}\Bigr).
+\]
+Consequently the Fermi surface is \emph{open}: it runs across the BZ in the $k_x$ sense, exiting at $k_y=\pm\pi/a_y$ and reconnecting by zone-boundary periodicity.
 
 \begin{center}
 \begin{tikzpicture}[>=stealth, scale=1.4]
   \draw[->] (-3.0,0) -- (3.0,0) node[right] {$k_x$};
   \draw[->] (0,-2.0) -- (0,2.0) node[above] {$k_y$};
   \draw[thick] (-2.6,-1.4) rectangle (2.6,1.4);
-  % Approximate distorted Fermi surface: ellipse-like through (\pm 2.6,0) and (0,\pm 1.4)
-  \draw[thick, red, smooth, samples=120, domain=0:360] plot ({2.6*cos(\x)}, {1.4*sin(\x)});
-  \node[circle,fill,inner sep=1.2pt] at ( 2.6,0) {};
-  \node[circle,fill,inner sep=1.2pt] at (-2.6,0) {};
-  \node[circle,fill,inner sep=1.2pt] at (0, 1.4) {};
-  \node[circle,fill,inner sep=1.2pt] at (0,-1.4) {};
+  % Open Fermi surface: crosses k_x axis at \pm 2.0, reaches top edge at k_x=\pm 0.9
+  \draw[thick, red, smooth, samples=60, domain=-1.4:1.4]
+    plot ({2.0 - 1.1*(\x*\x)/(1.4*1.4)}, {\x});
+  \draw[thick, red, smooth, samples=60, domain=-1.4:1.4]
+    plot ({-2.0 + 1.1*(\x*\x)/(1.4*1.4)}, {\x});
+  \node[circle,fill,inner sep=1.2pt] at ( 2.0,0) {};
+  \node[circle,fill,inner sep=1.2pt] at (-2.0,0) {};
+  \node[circle,fill,inner sep=1.2pt] at ( 0.9, 1.4) {};
+  \node[circle,fill,inner sep=1.2pt] at (-0.9, 1.4) {};
+  \node[circle,fill,inner sep=1.2pt] at ( 0.9,-1.4) {};
+  \node[circle,fill,inner sep=1.2pt] at (-0.9,-1.4) {};
   \node[below right] at ( 2.6,0) {$\pi/a_x$};
   \node[above left]  at (0, 1.4) {$\pi/a_y$};
-  \node[red, above right] at (1.7, 0.9) {Fermi surface};
+  \node[red, above right] at (1.5, 0.6) {open FS};
 \end{tikzpicture}
 \end{center}
 
-Nesting at $\bm Q=(\pi/a_x,\pi/a_y)$ is preserved, hence again $\mu(T)=\epsilon_0$.
+Nesting at $\bm Q=(\pi/a_x,\pi/a_y)$ still gives $E(\bm k+\bm Q)+E(\bm k)=2\epsilon_0$, so the particle--hole argument of (c) survives:
+\[
+\boxed{\;\mu(T) = \epsilon_0\quad\text{for all }T.\;}
+\]
 
 \section*{Question 3 --- Phonons in lead}
 
@@ -304,11 +416,19 @@ Set $u\equiv e^{-r/\xi}$:
 \[
 V = A u^2 - B u.
 \]
-Differentiate w.r.t.\ $r$ via $\de u/\de r = -u/\xi$:
+Apply chain rule with $\de u/\de r = -u/\xi$:
+\[
+V'(r) = (2Au - B)\frac{\de u}{\de r}.
+\]
+Substitute $\de u/\de r$:
 \[
 V'(r) = -\frac{u}{\xi}(2A u - B).
 \]
-Equilibrium $V'(a)=0$:
+Equilibrium condition $V'(a)=0$ with $u_a\neq 0$:
+\[
+2A u_a - B = 0.
+\]
+Solve for $u_a$:
 \[
 u_a = \frac{B}{2A}.
 \]
@@ -316,33 +436,57 @@ Invert $u_a = e^{-a/\xi}$:
 \[
 a = \xi\ln\frac{2A}{B}.
 \]
-Numerical: $2A/B = 80$, $\ln 80 = 4.382$:
+Substitute numbers, $2A/B = 80$:
 \[
-\boxed{\;a = \SI{0.084}{nm}\times 4.382 = \SI{0.368}{nm}.\;}
+a = (\SI{0.084}{nm})\ln 80.
+\]
+Evaluate $\ln 80 = 4.382$:
+\[
+\boxed{\;a = \SI{0.368}{nm}.\;}
 \]
 
 Binding energy: insert $u_a=B/(2A)$ into $V$:
 \[
-V(a) = A\left(\frac{B}{2A}\right)^2 - B\cdot\frac{B}{2A} = \frac{B^2}{4A} - \frac{B^2}{2A}.
+V(a) = A\left(\frac{B}{2A}\right)^2 - B\cdot\frac{B}{2A}.
 \]
-Simplify:
+Simplify each term:
 \[
-\boxed{\;V(a) = -\frac{B^2}{4A} = -\frac{(40)^2}{4\cdot 1600}\,\si{eV} = \SI{-0.250}{eV}.\;}
+V(a) = \frac{B^2}{4A} - \frac{B^2}{2A}.
+\]
+Combine:
+\[
+V(a) = -\frac{B^2}{4A}.
+\]
+Substitute numbers:
+\[
+\boxed{\;V(a) = -\frac{(40)^2}{4\cdot 1600}\,\si{eV} = \SI{-0.250}{eV}.\;}
 \]
 
-Second derivative. Differentiate $V'(r) = -(u/\xi)(2Au-B)$ once more:
+Second derivative. Differentiate $V'(r) = -(u/\xi)(2Au-B)$:
 \[
-V''(r) = \frac{1}{\xi^2}(4A u^2 - B u).
+V''(r) = -\frac{1}{\xi}\left[\frac{\de u}{\de r}(2Au-B) + 2Au\frac{\de u}{\de r}\right].
 \]
-Evaluate at $u=u_a$:
+Substitute $\de u/\de r=-u/\xi$:
 \[
-\kappa \equiv V''(a) = \frac{1}{\xi^2}\left(4A\cdot\frac{B^2}{4A^2} - B\cdot\frac{B}{2A}\right) = \frac{B^2}{2A\xi^2}.
+V''(r) = \frac{u}{\xi^2}(4Au - B).
 \]
-Numerical (in eV per nm$^2$):
+Evaluate at $u=u_a=B/(2A)$:
 \[
-\kappa = \frac{40^2}{2\cdot 1600\cdot(0.084)^2}\,\si{eV\,nm^{-2}} = 70.9\,\si{eV\,nm^{-2}}.
+\kappa \equiv V''(a) = \frac{B}{2A\xi^2}\bigl(4A\cdot\tfrac{B}{2A} - B\bigr).
 \]
-Convert to SI: $1\,\si{eV\,nm^{-2}} = \SI{1.602e-19}{J}/\SI{e-18}{m^2} = \SI{0.1602}{N\,m^{-1}}$:
+Simplify the bracket:
+\[
+\kappa = \frac{B}{2A\xi^2}\,B = \frac{B^2}{2A\xi^2}.
+\]
+Substitute numbers (in eV per nm$^2$):
+\[
+\kappa = \frac{40^2}{2\cdot 1600\cdot(0.084)^2}\,\si{eV\,nm^{-2}}.
+\]
+Evaluate:
+\[
+\kappa = 70.9\,\si{eV\,nm^{-2}}.
+\]
+Convert to SI via $1\,\si{eV\,nm^{-2}} = \SI{0.1602}{N\,m^{-1}}$:
 \[
 \boxed{\;\kappa \approx \SI{11.4}{N\,m^{-1}}.\;}
 \]
@@ -353,27 +497,39 @@ Monatomic chain dispersion:
 \[
 \omega(k) = 2\sqrt{\kappa/m}\,|\sin(ka/2)|.
 \]
-Long-wavelength group velocity $v_s = \de\omega/\de k|_{k\to 0}$:
+Long-wavelength group velocity:
+\[
+v_s = \frac{\de\omega}{\de k}\bigg|_{k\to 0} = 2\sqrt{\kappa/m}\cdot\frac{a}{2}.
+\]
+Simplify:
 \[
 v_s = a\sqrt{\kappa/m}.
 \]
 Atomic mass:
 \[
-m = \frac{M}{N_A} = \frac{\SI{0.207}{kg\,mol^{-1}}}{\SI{6.022e23}{mol^{-1}}} = \SI{3.44e-25}{kg}.
+m = \frac{M}{N_A} = \frac{\SI{0.207}{kg\,mol^{-1}}}{\SI{6.022e23}{mol^{-1}}}.
+\]
+Evaluate:
+\[
+m = \SI{3.44e-25}{kg}.
 \]
 Compute $\kappa/m$:
 \[
 \frac{\kappa}{m} = \frac{11.4}{3.44\times 10^{-25}}\,\si{s^{-2}} = \SI{3.31e25}{s^{-2}}.
 \]
-Square root:
+Take the square root:
 \[
 \sqrt{\kappa/m} = \SI{5.76e12}{s^{-1}}.
 \]
 Multiply by $a$:
 \[
-\boxed{\;v_s = (\SI{0.368e-9}{m})\times(\SI{5.76e12}{s^{-1}}) \approx \SI{2.1e3}{m\,s^{-1}}.\;}
+v_s = (\SI{0.368e-9}{m})\times(\SI{5.76e12}{s^{-1}}).
 \]
-Compare measured Pb longitudinal speed $\sim\SI{2000}{m\,s^{-1}}$: agreement.
+Evaluate:
+\[
+\boxed{\;v_s \approx \SI{2.12e3}{m\,s^{-1}}.\;}
+\]
+Compare to measured Pb longitudinal speed $\sim\SI{2000}{m\,s^{-1}}$: agreement.
 
 \subsection*{(d) Thermal expansion from cubic anharmonicity}
 
@@ -390,30 +546,56 @@ Insert $u_a=B/(2A)$:
 \kappa_3 = -\frac{1}{\xi^3}\left(\frac{2B^2}{A} - \frac{B^2}{2A}\right) = -\frac{3B^2}{2A\xi^3} < 0.
 \]
 
-Treat cubic term as perturbation; harmonic averages $\langle x\rangle_0 = 0$, $\langle x^2\rangle_0 = k_B T/\kappa$, $\langle x^3\rangle_0 = 0$, $\langle x^4\rangle_0 = 3(k_B T/\kappa)^2$.
-
-First-order in $\kappa_3$:
+Treat cubic term as perturbation; harmonic averages:
+\[
+\langle x\rangle_0 = 0,\quad \langle x^2\rangle_0 = \tfrac{k_B T}{\kappa},\quad \langle x^3\rangle_0 = 0,\quad \langle x^4\rangle_0 = 3\bigl(\tfrac{k_B T}{\kappa}\bigr)^2.
+\]
+First-order shift from the cubic term:
 \[
 \langle x\rangle \approx -\frac{\kappa_3}{6 k_B T}\langle x^4\rangle_0.
 \]
 Substitute $\langle x^4\rangle_0$:
 \[
-\langle x\rangle = -\frac{\kappa_3}{6 k_B T}\cdot 3\left(\frac{k_B T}{\kappa}\right)^2 = -\frac{\kappa_3 k_B T}{2\kappa^2}.
+\langle x\rangle = -\frac{\kappa_3}{6 k_B T}\cdot 3\left(\frac{k_B T}{\kappa}\right)^2.
+\]
+Simplify:
+\[
+\langle x\rangle = -\frac{\kappa_3 k_B T}{2\kappa^2}.
 \]
 Differentiate w.r.t.\ $T$ and divide by $a$:
 \[
 \boxed{\;\alpha = \frac{1}{a}\frac{\de\langle r\rangle}{\de T} \sim \frac{|\kappa_3|\,k_B}{\kappa^2 a}.\;}
 \]
 
-Numerical sanity check: $|\kappa_3| = 3B^2/(2A\xi^3)$. Convert to SI: $\kappa_3 \sim \SI{4e-9}{J\,m^{-3}}$ (i.e.\ $\sim\SI{4e9}{N\,m^{-2}}$ in spring units). With $\kappa=\SI{11.4}{N\,m^{-1}}$, $a=\SI{0.368}{nm}$, $k_B = \SI{1.38e-23}{J\,K^{-1}}$:
+Numerical sanity check: $|\kappa_3| = 3B^2/(2A\xi^3)$. Compute in eV/nm$^3$:
 \[
-\alpha \sim \frac{(\SI{4e9}{N\,m^{-2}})(\SI{1.38e-23}{J\,K^{-1}})}{(\SI{11.4}{N\,m^{-1}})^2(\SI{3.68e-10}{m})} \sim \SI{e-4}{K^{-1}}.
+|\kappa_3| = \frac{3\cdot 40^2}{2\cdot 1600\cdot(0.084)^3}\,\si{eV\,nm^{-3}} = 2.53\times 10^{3}\,\si{eV\,nm^{-3}}.
 \]
-Order-of-magnitude correct (measured $\alpha_{\text{Pb}}\approx\SI{2.9e-5}{K^{-1}}$); positive sign because $\kappa_3<0$ widens the well asymmetrically outwards.
+Convert to SI (multiply by $1.602\times 10^{-19}/10^{-27} = 1.602\times 10^{8}$):
+\[
+|\kappa_3| \approx \SI{4.1e11}{J\,m^{-3}} = \SI{4.1e11}{N\,m^{-2}}.
+\]
+Substitute with $\kappa=\SI{11.4}{N\,m^{-1}}$, $a=\SI{0.368}{nm}$, $k_B = \SI{1.381e-23}{J\,K^{-1}}$:
+\[
+\alpha \sim \frac{(\SI{4.1e11}{N\,m^{-2}})(\SI{1.381e-23}{J\,K^{-1}})}{(\SI{11.4}{N\,m^{-1}})^2(\SI{3.68e-10}{m})}.
+\]
+Evaluate:
+\[
+\alpha \sim \SI{1.2e-4}{K^{-1}}.
+\]
+Order-of-magnitude correct (measured $\alpha_{\text{Pb}}\approx\SI{2.9e-5}{K^{-1}}$); positive sign follows because $\kappa_3<0$ widens the well outwards.
 
 \subsection*{(e) Validity ranges}
 
-\textbf{(i) Cubic-only expansion.} Require harmonic $\gg$ cubic energy scale, $\langle\tfrac12\kappa x^2\rangle\gg\langle\tfrac16|\kappa_3|x^3\rangle$ at thermal amplitude $|x|\sim\sqrt{k_B T/\kappa}$:
+\textbf{(i) Cubic-only expansion.} Require harmonic $\gg$ cubic energy at thermal amplitude $|x|\sim\sqrt{k_B T/\kappa}$:
+\[
+\tfrac12\kappa\,x^2 \gg \tfrac16|\kappa_3|\,x^3.
+\]
+Cancel one $x^2$ and reorganise:
+\[
+\kappa \gg \tfrac{1}{3}|\kappa_3|\,x.
+\]
+Substitute $|x|\sim\sqrt{k_BT/\kappa}$:
 \[
 \kappa \gg \frac{|\kappa_3|}{3}\sqrt{k_B T/\kappa}.
 \]
@@ -421,22 +603,34 @@ Square and rearrange:
 \[
 k_B T \ll \frac{9\kappa^3}{\kappa_3^2}.
 \]
-Numerically this gives $T\ll\SI{e3}{K}$; the physical upper bound is set by the well depth $|V(a)|/k_B \approx \SI{2900}{K}$ (or in practice the lead melting point $T_m\approx\SI{600}{K}$):
+Substitute numerical values:
+\[
+\frac{9\kappa^3}{\kappa_3^2} = \frac{9\cdot (11.4)^3}{(\SI{4.1e11}{})^2}\,\si{J} \sim \SI{8e-20}{J}.
+\]
+Divide by $k_B$:
+\[
+T \ll \SI{8e-20}{J}/(\SI{1.38e-23}{J\,K^{-1}}) \sim \SI{6e3}{K}.
+\]
+The physical bound is set well below this by the lead melting point $T_m\approx\SI{600}{K}$:
 \[
 \boxed{\;T \lesssim T_m \approx \SI{600}{K}.\;}
 \]
 
-\textbf{(ii) Quantum mechanics important.} Compare $\hbar\omega$ to $k_B T$ with $\omega = \sqrt{\kappa/m} = \SI{5.76e12}{s^{-1}}$:
+\textbf{(ii) Quantum mechanics important.} Define crossover $k_BT_Q\sim\hbar\omega$ with $\omega = \sqrt{\kappa/m} = \SI{5.76e12}{s^{-1}}$:
 \[
-T_Q \sim \frac{\hbar\omega}{k_B} = \frac{(\SI{1.055e-34}{J\,s})(\SI{5.76e12}{s^{-1}})}{\SI{1.381e-23}{J\,K^{-1}}}.
+T_Q \sim \frac{\hbar\omega}{k_B}.
+\]
+Substitute numerical values:
+\[
+T_Q \sim \frac{(\SI{1.055e-34}{J\,s})(\SI{5.76e12}{s^{-1}})}{\SI{1.381e-23}{J\,K^{-1}}}.
 \]
 Evaluate:
 \[
-\boxed{\;T_Q \approx \SI{40}{K}.\;}
+\boxed{\;T_Q \approx \SI{44}{K}.\;}
 \]
-For $T\lesssim T_Q$ zero-point motion dominates ($\langle x^2\rangle\to\hbar/(2m\omega)$), heat capacity drops below $k_B$/mode (Debye/Einstein freeze-out), and $\alpha\propto T^3$ at low $T$ (Gr\"uneisen).
+For $T\lesssim T_Q$ zero-point motion dominates ($\langle x^2\rangle\to\hbar/(2m\omega)$), the harmonic equipartition $\langle x^2\rangle=k_BT/\kappa$ fails, the heat capacity drops below $k_B$/mode (Debye/Einstein freeze-out), and $\alpha\propto T^3$ at low $T$ (Gr\"uneisen).
 
-Classical cubic-only treatment is therefore valid in $T_Q \lesssim T \lesssim T_m$, i.e.\ roughly $\SI{40}{K}\lesssim T\lesssim\SI{600}{K}$.
+The classical cubic-only treatment is therefore valid for $T_Q \lesssim T \lesssim T_m$, i.e.\ roughly $\SI{44}{K}\lesssim T\lesssim\SI{600}{K}$.
 
 \section*{Question 4 --- Magnetism of GdN}
 
@@ -460,40 +654,60 @@ Configuration $4f^7$: half-filled shell. Hund's first rule maximises $S$, all 7 
 
 \subsection*{(c) Curie constant}
 
-Ising along $\hat z$ with $S=7/2$ and $g=2$: each ion is a two-level system with moment
+Ising along $\hat z$ with $S=7/2$ and $g=2$: each ion is a two-level system. Moment per ion:
 \[
-m = g\,S\,\mu_B = 2\cdot\tfrac72\,\mu_B = 7\mu_B.
+m = g\,S\,\mu_B = 2\cdot\tfrac72\,\mu_B.
 \]
-Energies $\mp m B$ in field $B=\mu_0 H_z$. Two-level partition function:
+Simplify:
 \[
-Z = 2\cosh(\beta m B),\qquad \langle m_z\rangle = m\tanh(\beta m B).
+m = 7\mu_B.
 \]
-Linearise for $\beta m B\ll 1$:
+Zeeman energies in field $B=\mu_0 H_z$ with $m_z=\pm m$:
 \[
-\langle m_z\rangle \approx \frac{m^2 B}{k_B T} = \frac{m^2 \mu_0 H_z}{k_B T}.
+E_\pm = \mp m B.
+\]
+Two-level partition function:
+\[
+Z = e^{\beta m B}+e^{-\beta m B} = 2\cosh(\beta m B).
+\]
+Thermal-average moment:
+\[
+\langle m_z\rangle = m\tanh(\beta m B).
+\]
+Linearise for $\beta m B\ll 1$ using $\tanh x\approx x$:
+\[
+\langle m_z\rangle \approx \beta m^2 B = \frac{m^2 \mu_0 H_z}{k_B T}.
 \]
 Multiply by number density:
 \[
 M_z = n\langle m_z\rangle = \frac{n m^2 \mu_0}{k_B T} H_z.
 \]
-Read off:
+Read off $\chi=M_z/H_z$ and $C$:
 \[
 \chi = \frac{n m^2 \mu_0}{k_B T} = \frac{C}{T},\qquad C = \frac{n m^2 \mu_0}{k_B}.
 \]
 
-Number density: GdN is FCC with one formula unit per primitive cell, equivalently 4 Gd$^{3+}$ per conventional cell of side $a$:
+Number density of Gd$^{3+}$: FCC conventional cell contains 4 formula units:
 \[
-n = \frac{4}{a^3} = \frac{4}{(\SI{0.50e-9}{m})^3} = \SI{3.20e28}{m^{-3}}.
+n = \frac{4}{a^3} = \frac{4}{(\SI{0.50e-9}{m})^3}.
 \]
-Insert numbers (with $\mu_B = \SI{9.274e-24}{J\,T^{-1}}$, $\mu_0=4\pi\times\SI{e-7}{T\,m\,A^{-1}}$):
+Evaluate:
 \[
-C = \frac{(\SI{3.20e28}{m^{-3}})(7\cdot\SI{9.274e-24}{J\,T^{-1}})^2(4\pi\times\SI{e-7}{T\,m\,A^{-1}})}{\SI{1.381e-23}{J\,K^{-1}}}.
+n = \SI{3.20e28}{m^{-3}}.
 \]
-Evaluate $(7\mu_B)^2 = (\SI{6.49e-23}{J\,T^{-1}})^2 = \SI{4.21e-45}{J^2\,T^{-2}}$:
+Compute $(7\mu_B)^2$ with $\mu_B = \SI{9.274e-24}{J\,T^{-1}}$:
 \[
-C = \frac{(\SI{3.20e28}{})(\SI{4.21e-45}{})(\SI{1.257e-6}{})}{\SI{1.381e-23}{}}\,\si{K}.
+m^2 = (\SI{6.492e-23}{J\,T^{-1}})^2 = \SI{4.215e-45}{J^2\,T^{-2}}.
 \]
-Multiply numerator: $\SI{1.69e-22}{}$:
+Substitute numerical values into $C$ (with $\mu_0 = \SI{1.257e-6}{T\,m\,A^{-1}}$):
+\[
+C = \frac{(\SI{3.20e28}{m^{-3}})(\SI{4.215e-45}{J^2\,T^{-2}})(\SI{1.257e-6}{T\,m\,A^{-1}})}{\SI{1.381e-23}{J\,K^{-1}}}.
+\]
+Evaluate the numerator:
+\[
+n m^2 \mu_0 = \SI{1.696e-22}{J}.
+\]
+Divide by $k_B$:
 \[
 \boxed{\;C \approx \SI{12.3}{K}.\;}
 \]
@@ -506,13 +720,17 @@ Mean-field treatment of exchange: replace $T$ by $T-T_c$:
 \]
 Denominator vanishes at $T_c$, signalling spontaneous order.
 
-At $T=0$ Ising spins fully align: $M(0) = n m$. Insert:
+At $T=0$ all Ising spins align with the field:
+\[
+M(0) = n m = 7 n \mu_B.
+\]
+Substitute numbers:
 \[
 M(0) = (\SI{3.20e28}{m^{-3}})\times 7\times(\SI{9.274e-24}{J\,T^{-1}}).
 \]
 Evaluate:
 \[
-\boxed{\;M(0) \approx \SI{2.1e6}{A\,m^{-1}}.\;}
+\boxed{\;M(0) \approx \SI{2.08e6}{A\,m^{-1}}.\;}
 \]
 
 \subsection*{(e) $M(T)$ sketch}

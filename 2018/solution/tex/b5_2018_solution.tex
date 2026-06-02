@@ -144,21 +144,33 @@ Eliminate $a^0$ using (ii) in (i):
 \[
 -f\left(\frac{a^r u^r}{f^2 u^0}\right)^{2} + f^{-1}(a^r)^2 = g^2.
 \]
+Expand the first term:
+\[
+-\frac{(a^r)^2 (u^r)^2}{f^3 (u^0)^2} + \frac{(a^r)^2}{f} = g^2.
+\]
 Factor $f^{-1}(a^r)^2$:
 \[
-(a^r)^2 f^{-1}\left[1 - \frac{(u^r)^2}{f\,(u^0)^2}\right] = g^2.
+\frac{(a^r)^2}{f}\left[1 - \frac{(u^r)^2}{f^2\,(u^0)^2}\right] = g^2.
 \]
-Insert $f(u^0)^2 = c^2 + f^{-1}(u^r)^2$ from (d):
+Multiply numerator and denominator inside the bracket by $f$, and insert $f(u^0)^2 = c^2 + f^{-1}(u^r)^2$ from (d):
 \[
-1 - \frac{(u^r)^2}{c^2 + f^{-1}(u^r)^2} = \frac{c^2}{c^2 + f^{-1}(u^r)^2}.
+f^2 (u^0)^2 = f\bigl[c^2 + f^{-1}(u^r)^2\bigr] = f c^2 + (u^r)^2.
+\]
+Simplify the bracket:
+\[
+1 - \frac{(u^r)^2}{f c^2 + (u^r)^2} = \frac{f c^2}{f c^2 + (u^r)^2}.
 \]
 Substitute back:
 \[
-(a^r)^2 f^{-1}\,\frac{c^2}{c^2 + f^{-1}(u^r)^2} = g^2.
+\frac{(a^r)^2}{f}\cdot \frac{f c^2}{f c^2 + (u^r)^2} = g^2.
+\]
+Cancel $f$:
+\[
+\frac{(a^r)^2 c^2}{f c^2 + (u^r)^2} = g^2.
 \]
 Solve for $(a^r)^2$:
 \[
-(a^r)^2 = g^2\,f\,\left[1 + \frac{(u^r)^2}{f c^2}\right] = g^2\left[f + \frac{(u^r)^2}{c^2}\right].
+(a^r)^2 = g^2\,\frac{f c^2 + (u^r)^2}{c^2} = g^2\left[f + \frac{(u^r)^2}{c^2}\right].
 \]
 Take the square root:
 \[
@@ -176,19 +188,19 @@ Outward escape requires the right-hand side to be $\ge 0$ at the turning point:
 \[
 g\sqrt{1 - \frac{2GM}{c^2 r}} \ge \frac{GM}{r^2}.
 \]
-Square and rearrange:
+Evaluate the Newtonian term at Isaac's radius $r^2 = GM/g$:
 \[
-g^2 r^2\left(1 - \frac{2GM}{c^2 r}\right) \ge \frac{(GM)^2}{r^2}.
+\frac{GM}{r^2} = \frac{GM}{GM/g} = g.
 \]
-At Isaac's radius $r^2 = GM/g$:
+Plug into the escape inequality:
 \[
-g^2\,\frac{GM}{g}\left(1 - \frac{2GM\sqrt{g}}{c^2\sqrt{GM}}\right) \ge \frac{(GM)^2 g}{GM}.
+g\sqrt{1 - \frac{2GM}{c^2 r}} \ge g.
 \]
-Simplify both sides (left: $gGM[1 - 2\sqrt{g GM}/c^2\cdot\text{etc.}]$; right: $gGM$):
+Cancel $g$ and require the square root to be $\ge 1$:
 \[
-1 - \frac{2GM}{c^2\sqrt{GM/g}} \ge 1\quad\Longleftrightarrow\quad \frac{2GM}{c^2\sqrt{GM/g}} \le 0.
+\sqrt{1 - \frac{2GM}{c^2 r}} \ge 1.
 \]
-The left side is strictly positive. Hence at $r=\sqrt{GM/g}$ the engine cannot overcome gravity:
+Since $2GM/(c^2 r)>0$ for finite $r$, the left-hand side is strictly less than $1$:
 \[
 \boxed{\;\text{No --- Albert cannot return; he is already past the point of no return.}\;}
 \]
@@ -297,64 +309,61 @@ Einstein equation $G_{\alpha\beta} = -8\pi G\,T_{\alpha\beta}/c^4$:
 \[
 T_{\alpha\beta} = -\frac{c^4}{8\pi G}\,G_{\alpha\beta}.
 \]
-Raise both indices using $g^{\alpha\alpha}$:
-\[
-T^{tt} = (g^{tt})^2 T_{tt} = c^{-4}\cdot\left(-\frac{c^4}{8\pi G}\right)\frac{c^2 f''}{f} = -\frac{c^2 f''}{8\pi G f}\cdot c^{-2}\cdot c^2.
-\]
-Cleaner: compute $T^{\alpha}{}_{\beta} = g^{\alpha\gamma}T_{\gamma\beta}$, diagonal, then $T^{\alpha\beta}=g^{\beta\beta}T^{\alpha}{}_{\beta}$. Equivalently, since $G_{\alpha\beta}$ is diagonal,
+Raise both indices via $T^{\alpha\beta} = g^{\alpha\gamma}g^{\beta\delta}T_{\gamma\delta}$ (diagonal):
 \[
 T^{\alpha\beta} = -\frac{c^4}{8\pi G}\,G^{\alpha\beta},\qquad G^{\alpha\beta} = g^{\alpha\alpha}g^{\beta\beta}G_{\alpha\beta}.
 \]
-Evaluate component by component:
+Work in the basis $x^0 = ct$, so $g_{00}=-1$, $g^{00}=-1$, and $G_{00}=G_{tt}/c^2 = f''/f$:
 \[
-G^{tt} = c^{-4}\cdot\frac{c^2 f''}{f} = \frac{f''}{c^2 f},\quad G^{rr}=0,\quad G^{\phi\phi}=0,\quad G^{zz} = -\frac{f''}{f}.
+G^{00} = (g^{00})^2 G_{00} = \frac{f''}{f},\quad G^{rr}=0,\quad G^{\phi\phi}=0,\quad G^{zz} = -\frac{f''}{f}.
 \]
 Substitute:
 \[
-T^{tt} = -\frac{c^4}{8\pi G}\cdot\frac{f''}{c^2 f} = -\frac{c^2 f''}{8\pi G f},\qquad T^{zz} = +\frac{c^4 f''}{8\pi G f}.
+T^{00} = -\frac{c^4}{8\pi G}\cdot\frac{f''}{f} = -\frac{c^4 f''}{8\pi G f},\qquad T^{zz} = +\frac{c^4 f''}{8\pi G f}.
 \]
-Factor out $c^4 f''/(8\pi G f)$ and note $T^{tt}\cdot c^2$ has the units to match:
+Collect with all four components:
 \[
 \boxed{\;T^{\alpha\beta} = \frac{c^4 f''}{8\pi G f}\,\text{diag}(-1,0,0,1).\;}
 \label{eq:Tab}
 \]
-(In the $(ct,r,\phi,z)$ basis: $T^{(ct)(ct)}$ has the same numerical value as the displayed quantity --- the factor $c^2$ is absorbed by using $x^0 = ct$.)
 
 \textbf{Physical content:} energy density $\rho c^2 = c^4 f''/(8\pi G f)$ and equal-magnitude tension $-p_z = \rho c^2$ along $z$; transverse pressures vanish. This is exactly a cosmic-string-like source.
 
 \subsection*{(b) Mass per unit length of a deficit-angle string}
 
-Energy per unit length $\mu$ is the integral of the energy density over the transverse cross-section. Proper transverse area element is $\de A = f(r)\,\de r\,\de\phi$:
+Energy per unit length $\mu$ is the integral of the energy density over the proper transverse cross-section. Proper area element on a $t,z=$ const slice is $\de A = f(r)\,\de r\,\de\phi$. The energy density (component $T^{00}$ in the orthonormal frame $x^0=ct$) is $\rho c^2 = c^4 f''/(8\pi G f)$:
 \[
-\mu c^2 = \int_0^{2\pi}\de\phi\int_0^{R} T^{tt}\,g_{tt}^2\cdot\text{(volume factor)}\,\de r,
+\mu c^2 = \int_0^{2\pi}\!\de\phi\int_0^{R}\!\rho c^2\,f(r)\,\de r.
 \]
-or, more cleanly, integrate the energy density $\rho c^2$ in proper area:
+Substitute $\rho c^2$:
 \[
-\mu c^2 = \int_0^{2\pi}\!\de\phi\int_0^{R}\!\rho c^2\,f(r)\,\de r = \int_0^{2\pi}\!\de\phi\int_0^{R}\!\frac{c^4 f''(r)}{8\pi G f(r)}\,f(r)\,\de r.
+\mu c^2 = \int_0^{2\pi}\!\de\phi\int_0^{R}\!\frac{c^4 f''(r)}{8\pi G f(r)}\,f(r)\,\de r.
 \]
-Cancel $f$ and integrate trivially in $\phi$:
+Cancel $f$ in the integrand:
 \[
-\mu c^2 = \frac{c^4}{8\pi G}\cdot 2\pi\int_0^{R} f''(r)\,\de r = \frac{c^4}{4G}\bigl[f'(R) - f'(0)\bigr].
+\mu c^2 = \frac{c^4}{8\pi G}\int_0^{2\pi}\!\de\phi\int_0^{R}\! f''(r)\,\de r.
 \]
+Integrate trivially in $\phi$ and once in $r$:
+\[
+\mu c^2 = \frac{c^4}{8\pi G}\cdot 2\pi\bigl[f'(R) - f'(0)\bigr] = \frac{c^4}{4G}\bigl[f'(R) - f'(0)\bigr].
+\]
+Divide by $c^2$:
 \[
 \boxed{\;\mu = \frac{c^2}{4G}\bigl[f'(R) - f'(0)\bigr].\;}
 \label{eq:mu-general}
 \]
 
-\textbf{Boundary values.} At $r=0$: regularity (the axis is a coordinate singularity, with $\phi$ angular and circumference $2\pi f$) demands $f(r)\to r$ as $r\to 0$, giving $f'(0)=1$. Stated more weakly, the problem gives $f'(r)\to 0$; but a flat axis with proper angular geometry needs $f(r)\sim r$ near $r=0$, hence $f'(0)\to 1$.
+\textbf{Boundary values.} The problem states $f'(r)\to 0$ as $r\to 0$, so $f'(0)=0$.
 
-We adopt the matching condition that $f$ and $f'$ are continuous at $r=R$. At $r>R$ the line element is $\de s^2 = -c^2\de t^2 + \de r^2 + (1-\lambda)^2 r^2\de\phi^2 + \de z^2$, so $f(r) = (1-\lambda)r$ and $f'(r) = 1-\lambda$ for $r>R$. Continuity gives $f'(R^-) = f'(R^+) = 1 - \lambda$.
-
-For the regular axis interpretation ($f'(0)=1$):
+\textbf{Matching at $r=R$.} Both $f$ and $f'$ are assumed continuous at $r=R$ (so that the metric and its first derivatives, hence the Christoffels, are continuous). For $r>R$ the line element gives $f(r) = (1-\lambda)r$, hence $f'(r) = 1-\lambda$:
 \[
-\boxed{\;\mu = \frac{c^2}{4G}\bigl[(1-\lambda) - 1\bigr] = -\frac{\lambda c^2}{4G}.\;}
+f'(R) = 1-\lambda.
+\]
+Substitute into \eqref{eq:mu-general}:
+\[
+\boxed{\;\mu = \frac{c^2}{4G}(1-\lambda).\;}
 \label{eq:mu-cosmic}
 \]
-Mass per unit length is positive when $\lambda > 0$ corresponds to a \emph{deficit} angle, i.e.\ the geometric convention $\de s^2 = (1-\lambda)^2 r^2 \de\phi^2$ with $\lambda<0$ meaning angular deficit; with the question's sign convention, $\mu = \lambda c^2/(4G)$ up to an overall sign chosen so that $\mu>0$ for a physical source.
-
-(If instead one uses the literal hint $f'(0)\to 0$, the result is $\mu = (1-\lambda)c^2/(4G)$, which is finite and positive for $\lambda<1$.)
-
-\textbf{Numerical scale.} For grand-unified-scale strings, $\mu\sim\SI{e22}{kg\,m^{-1}}$, $G\mu/c^2\sim 10^{-6}$.
 
 \subsection*{(c) Why difficult to detect; observational signatures}
 
@@ -443,50 +452,61 @@ R(t) \propto t^{2/3},\qquad H = \dot R/R = \frac{2}{3 t}.
 \]
 Today: $H_0 = 2/(3 t_0)$, so $t_0 = 2/(3 H_0)$.
 
-For $z=1$: $R(t_e)/R(t_0) = 1/(1+z) = 1/2$. With $R\propto t^{2/3}$:
+The scenario: we send a message now at $t_0$; it reaches them at $t_1$; they reply immediately; their reply reaches us at $t_2$. We want the wait $t_2 - t_0$.
+
+The galaxy currently appears at $z=1$, so light reaching us now was emitted at $t_e$ with $R(t_e)/R(t_0) = 1/(1+z) = 1/2$. With $R\propto t^{2/3}$:
 \[
-t_e = t_0\,(1/2)^{3/2} = t_0/2\sqrt{2}.
+t_e = t_0\,(1/2)^{3/2} = \frac{t_0}{2\sqrt{2}}.
 \]
 
-\textbf{Light travel time from $t_e$ to today.} The signal arrives now at $t_0$ with $z=1$. The travel time is
+The galaxy's fixed comoving distance from us is set by this past-light null geodesic:
 \[
-\Delta t_1 = t_0 - t_e = t_0\left(1 - \tfrac{1}{2\sqrt 2}\right).
+\chi = \int_{t_e}^{t_0}\frac{c\,\de t}{R(t)} = \frac{c}{R_0}\int_{t_e}^{t_0}\!\left(\frac{t_0}{t}\right)^{2/3}\!\de t.
 \]
-
-\textbf{Reply travel time (forward).} Their reply leaves at $t_0$ and arrives at us at some $t_r$. Comoving distance to a source at scale factor $a_e$ (in units $a_0=1$) is
+Integrate $t^{-2/3}$:
 \[
-\chi = \int_{t_e}^{t_0}\frac{c\,\de t}{R(t)} = \frac{c}{R_0}\int_{t_e}^{t_0}\frac{\de t}{(t/t_0)^{2/3}} = \frac{3 c\, t_0}{R_0}\bigl[1 - (t_e/t_0)^{1/3}\bigr].
+\chi = \frac{c\, t_0^{2/3}}{R_0}\cdot 3\bigl[t_0^{1/3} - t_e^{1/3}\bigr] = \frac{3 c\, t_0}{R_0}\bigl[1 - (t_e/t_0)^{1/3}\bigr].
 \]
-With $t_e/t_0 = 1/(2\sqrt 2)$, $(t_e/t_0)^{1/3} = 1/\sqrt 2$:
+Plug $(t_e/t_0)^{1/3} = (2^{-3/2})^{1/3} = 1/\sqrt 2$:
 \[
 \chi = \frac{3 c\, t_0}{R_0}\left(1 - \tfrac{1}{\sqrt 2}\right).
 \]
 
-For the return trip (light leaving at $t_0$ to reach the same comoving source --- here we want the reply to come \emph{back to us} from the source after they've received our message; by symmetry of the comoving distance, the reply travels the same comoving $\chi$ but at later cosmic time):
+Define $\tau\equiv(t/t_0)^{1/3}$; the comoving distance covered between times $t_a, t_b$ ($t_a<t_b$) is $(3ct_0/R_0)(\tau_b - \tau_a)$.
+
+\textbf{Outgoing leg: $t_0 \to t_1$.} Same $\chi$:
 \[
-\chi = \int_{t_0}^{t_r}\frac{c\,\de t}{R(t)} = \frac{3 c\, t_0}{R_0}\bigl[(t_r/t_0)^{1/3} - 1\bigr].
-\]
-Equate the two expressions for $\chi$:
-\[
-(t_r/t_0)^{1/3} - 1 = 1 - 1/\sqrt 2.
-\]
-Solve:
-\[
-(t_r/t_0)^{1/3} = 2 - 1/\sqrt 2 \approx 1.293.
+\tau_1 - 1 = 1 - \frac{1}{\sqrt 2}\quad\Longrightarrow\quad \tau_1 = 2 - \frac{1}{\sqrt 2}\approx 1.293.
 \]
 Cube:
 \[
-t_r/t_0 \approx 2.16.
+t_1/t_0 \approx 2.161.
 \]
-Reply arrives at $t_r \approx 2.16\,t_0$.
 
-\textbf{Total round trip:} the original message left them at $t_e \approx 0.354\,t_0$, our reply leaves at $t_r$, etc. Wait between sending our message (now, $t_0$) and receiving the reply is
+\textbf{Return leg: $t_1 \to t_2$.} Same $\chi$ again:
 \[
-\boxed{\;\Delta t_{\text{round}} = t_r - t_0 \approx 1.16\,t_0 = 1.16 \times \tfrac{2}{3 H_0}.\;}
+\tau_2 - \tau_1 = 1 - \frac{1}{\sqrt 2}\quad\Longrightarrow\quad \tau_2 = \tau_1 + 1 - \frac{1}{\sqrt 2}.
 \]
-With $H_0 = \SI{72}{km\,s^{-1}\,Mpc^{-1}}$, $H_0^{-1} = \SI{1.36e10}{yr}$:
+Substitute $\tau_1$:
 \[
-\Delta t_{\text{round}} \approx \tfrac{2}{3}\cdot 1.16 \times \SI{1.36e10}{yr} \approx \SI{1.05e10}{yr}.
+\tau_2 = 3 - \frac{2}{\sqrt 2} = 3 - \sqrt 2\approx 1.586.
+\]
+Cube:
+\[
+t_2/t_0 \approx 3.99.
+\]
+
+Round-trip wait:
+\[
+\Delta t_{\text{round}} = t_2 - t_0 \approx 2.99\,t_0.
+\]
+Insert $t_0 = 2/(3H_0)$:
+\[
+\boxed{\;\Delta t_{\text{round}} \approx 2.99 \times \tfrac{2}{3 H_0} \approx \frac{1.99}{H_0}.\;}
+\]
+With $H_0 = \SI{72}{km\,s^{-1}\,Mpc^{-1}}$, $H_0^{-1} \approx \SI{1.36e10}{yr}$:
+\[
+\Delta t_{\text{round}} \approx 1.99 \times \SI{1.36e10}{yr} \approx \SI{2.7e10}{yr}.
 \]
 
 \textbf{Fundamental limit?} In EdS the comoving particle horizon is
@@ -546,9 +566,13 @@ Evaluate the dimensionless integrals:
 \[
 \int_0^\infty\frac{x^2\,\de x}{e^x + 1} = \tfrac34\cdot 2\zeta(3) = \tfrac32\zeta(3)\quad\text{(fermion, using the hint)}.
 \]
+Simplify the prefactor $g_i \cdot 4\pi/(2\pi\hbar)^3 = g_i/(2\pi^2\hbar^3)$:
+\[
+N_i = V\,\frac{g_i}{2\pi^2}\left(\frac{k_B T}{\hbar c}\right)^3\!\!\int_0^\infty\frac{x^2\,\de x}{e^x \pm 1}.
+\]
 Collect:
 \[
-\boxed{\;\frac{N_i}{V} = \frac{g_i}{2\pi^2}\left(\frac{k_B T}{\hbar c}\right)^3\,\zeta(3)\times\begin{cases}1 & \text{boson}\\ 3/4 & \text{fermion}\end{cases}.\;}
+\boxed{\;\frac{N_i}{V} = \frac{g_i\,\zeta(3)}{\pi^2}\left(\frac{k_B T}{\hbar c}\right)^3\times\begin{cases}1 & \text{boson}\\ 3/4 & \text{fermion}\end{cases}.\;}
 \label{eq:Ni}
 \]
 
@@ -629,18 +653,20 @@ Numerical:
 \boxed{\;T_{\nu,0} \approx 0.7138\times \SI{2.725}{K} \approx \SI{1.95}{K}.\;}
 \]
 
-\textbf{Number density per neutrino species (today).} Use the relativistic-fermion form of \eqref{eq:Ni} with $g_\nu = 1$ per chirality, plus antineutrino, so $g_{\nu+\bar\nu} = 2$ per flavour. The standard CNB result (per flavour, neutrinos $+$ antineutrinos):
+\textbf{Number density per neutrino species (today).} Apply the fermion form of \eqref{eq:Ni}. Per flavour, count one helicity of $\nu$ and one of $\bar\nu$, giving $g_{\nu+\bar\nu} = 2$:
 \[
-n_\nu^{\rm flavour} = \frac{3}{4}\cdot\frac{2\zeta(3)}{2\pi^2}\,g_{\nu+\bar\nu}\left(\frac{k_B T_{\nu,0}}{\hbar c}\right)^3.
+n_\nu^{\rm flavour} = \frac{g_{\nu+\bar\nu}\,\zeta(3)}{\pi^2}\cdot\frac{3}{4}\left(\frac{k_B T_{\nu,0}}{\hbar c}\right)^3 = \frac{3\zeta(3)}{2\pi^2}\left(\frac{k_B T_{\nu,0}}{\hbar c}\right)^3.
 \]
 
-Compute $(k_B T_{\nu,0}/\hbar c)^3$:
+Compute $k_B T_{\nu,0}$:
 \[
 k_B T_{\nu,0} = \SI{1.381e-23}{J\,K^{-1}}\times \SI{1.95}{K} = \SI{2.69e-23}{J}.
 \]
+Recall $\hbar c$:
 \[
 \hbar c = \SI{3.16e-26}{J\,m}.
 \]
+Divide:
 \[
 \frac{k_B T_{\nu,0}}{\hbar c} = \frac{2.69\times 10^{-23}}{3.16\times 10^{-26}}\,\si{m^{-1}} = \SI{8.51e2}{m^{-1}}.
 \]
@@ -648,14 +674,13 @@ Cube:
 \[
 \left(\frac{k_B T_{\nu,0}}{\hbar c}\right)^3 = \SI{6.16e8}{m^{-3}}.
 \]
-
-Insert into number density (per flavour, both helicities of $\nu$ and $\bar\nu$, $g=2$):
+Compute the prefactor:
 \[
-n_\nu^{\rm flavour} = \frac{3}{4}\cdot\frac{2\cdot 1.202}{2\pi^2}\cdot 2\cdot \SI{6.16e8}{m^{-3}} = \frac{3}{4}\cdot 0.2436\cdot \SI{1.232e9}{m^{-3}}.
+\frac{3\zeta(3)}{2\pi^2} = \frac{3\times 1.202}{2\pi^2} = \frac{3.606}{19.74} = 0.1827.
 \]
-Evaluate:
+Multiply:
 \[
-n_\nu^{\rm flavour} \approx \SI{2.25e8}{m^{-3}}\quad\Longleftrightarrow\quad \SI{112}{cm^{-3}}.
+n_\nu^{\rm flavour} = 0.1827 \times \SI{6.16e8}{m^{-3}} \approx \SI{1.12e8}{m^{-3}} \approx \SI{112}{cm^{-3}}.
 \]
 Three flavours:
 \[

@@ -26,11 +26,17 @@
 
 \subsection*{(a) Affine connection from local inertial frame}
 
-At event $P$ erect locally free-falling (LIF) coordinates $\xi^\alpha$. Free particles obey
+Erect locally free-falling (LIF) coordinates $\xi^\alpha$ at event $P$. Free particles obey:
 \[ \frac{\de^2 \xi^\alpha}{\de\tau^2} = 0. \]
-Change to general coordinates $x^\mu$ via chain rule:
-\[ \frac{\de^2 \xi^\alpha}{\de\tau^2} = \pd{\xi^\alpha}{x^\mu}\frac{\de^2 x^\mu}{\de\tau^2} + \frac{\partial^2 \xi^\alpha}{\partial x^\mu \partial x^\nu}\frac{\de x^\mu}{\de\tau}\frac{\de x^\nu}{\de\tau}=0. \]
-Multiply by $\partial x^\lambda/\partial \xi^\alpha$ and define
+Apply the chain rule to $\xi^\alpha(x^\mu)$:
+\[ \frac{\de \xi^\alpha}{\de\tau} = \pd{\xi^\alpha}{x^\mu}\frac{\de x^\mu}{\de\tau}. \]
+Differentiate once more using the product rule:
+\[ \frac{\de^2 \xi^\alpha}{\de\tau^2} = \pd{\xi^\alpha}{x^\mu}\frac{\de^2 x^\mu}{\de\tau^2} + \frac{\partial^2 \xi^\alpha}{\partial x^\mu \partial x^\nu}\frac{\de x^\mu}{\de\tau}\frac{\de x^\nu}{\de\tau}. \]
+Set the left side to zero:
+\[ \pd{\xi^\alpha}{x^\mu}\frac{\de^2 x^\mu}{\de\tau^2} + \frac{\partial^2 \xi^\alpha}{\partial x^\mu \partial x^\nu}\frac{\de x^\mu}{\de\tau}\frac{\de x^\nu}{\de\tau} = 0. \]
+Multiply through by $\partial x^\lambda/\partial \xi^\alpha$ and use $(\partial x^\lambda/\partial\xi^\alpha)(\partial\xi^\alpha/\partial x^\mu) = \delta^\lambda_\mu$:
+\[ \frac{\de^2 x^\lambda}{\de\tau^2} + \pd{x^\lambda}{\xi^\alpha}\frac{\partial^2 \xi^\alpha}{\partial x^\mu\partial x^\nu}\frac{\de x^\mu}{\de\tau}\frac{\de x^\nu}{\de\tau} = 0. \]
+Define the affine connection:
 \begin{equation}
 \boxed{\;\Gamma^\lambda_{\mu\nu} \equiv \pd{x^\lambda}{\xi^\alpha}\,\frac{\partial^2 \xi^\alpha}{\partial x^\mu\,\partial x^\nu}.\;}
 \label{eq:gamma-def}
@@ -46,11 +52,17 @@ The added $\Gamma$-term cancels the non-tensorial piece of $\partial_\nu V^\mu$ 
 
 \subsection*{(b) $\Gamma^\lambda_{\mu\nu}$ is not a tensor}
 
-Transform $\xi^\alpha \to \xi^\alpha$ (kept) but $x^\mu \to x'^{\mu}$. Apply chain rule to \eqref{eq:gamma-def}:
+Keep the LIF $\xi^\alpha$ but change chart $x^\mu \to x'^{\mu}$. Apply definition \eqref{eq:gamma-def} in primed coordinates:
 \[ \Gamma'^\lambda_{\mu\nu} = \pd{x'^\lambda}{\xi^\alpha}\,\frac{\partial^2 \xi^\alpha}{\partial x'^\mu \partial x'^\nu}. \]
-Expand $\partial \xi^\alpha/\partial x'^\nu = (\partial x^\rho/\partial x'^\nu)(\partial \xi^\alpha/\partial x^\rho)$, then differentiate w.r.t.\ $x'^\mu$:
+Expand the first derivative by chain rule:
+\[ \pd{\xi^\alpha}{x'^\nu} = \pd{x^\rho}{x'^\nu}\pd{\xi^\alpha}{x^\rho}. \]
+Differentiate w.r.t.\ $x'^\mu$ using the product rule:
 \[ \frac{\partial^2 \xi^\alpha}{\partial x'^\mu \partial x'^\nu} = \pd{x^\sigma}{x'^\mu}\pd{x^\rho}{x'^\nu}\frac{\partial^2 \xi^\alpha}{\partial x^\sigma\partial x^\rho} + \frac{\partial^2 x^\rho}{\partial x'^\mu \partial x'^\nu}\pd{\xi^\alpha}{x^\rho}. \]
-Substitute back, use $(\partial x'^\lambda/\partial \xi^\alpha)(\partial \xi^\alpha/\partial x^\rho) = \partial x'^\lambda/\partial x^\rho$, and $(\partial x'^\lambda/\partial \xi^\alpha)(\partial^2\xi^\alpha/\partial x^\sigma\partial x^\rho) = (\partial x'^\lambda/\partial x^\kappa)\Gamma^\kappa_{\sigma\rho}$:
+Contract with $\partial x'^\lambda/\partial\xi^\alpha$ and apply the chain rule on the inhomogeneous piece:
+\[ \pd{x'^\lambda}{\xi^\alpha}\pd{\xi^\alpha}{x^\rho} = \pd{x'^\lambda}{x^\rho}. \]
+Insert an intermediate $\partial x^\kappa/\partial\xi^\alpha\cdot\partial x'^\lambda/\partial x^\kappa$ in the homogeneous piece to recognise $\Gamma^\kappa_{\sigma\rho}$:
+\[ \pd{x'^\lambda}{\xi^\alpha}\frac{\partial^2\xi^\alpha}{\partial x^\sigma\partial x^\rho} = \pd{x'^\lambda}{x^\kappa}\,\pd{x^\kappa}{\xi^\alpha}\frac{\partial^2\xi^\alpha}{\partial x^\sigma\partial x^\rho} = \pd{x'^\lambda}{x^\kappa}\,\Gamma^\kappa_{\sigma\rho}. \]
+Combine:
 \begin{equation}
 \boxed{\;\Gamma'^\lambda_{\mu\nu} = \pd{x'^\lambda}{x^\kappa}\pd{x^\sigma}{x'^\mu}\pd{x^\rho}{x'^\nu}\,\Gamma^\kappa_{\sigma\rho} + \pd{x'^\lambda}{x^\rho}\frac{\partial^2 x^\rho}{\partial x'^\mu\partial x'^\nu}.\;}
 \label{eq:gamma-transf}
@@ -61,13 +73,23 @@ First term is the tensor transformation; the second (inhomogeneous) piece is non
 
 Apply \eqref{eq:covderiv} once on $V^\mu$:
 \[ V^\mu_{\;;\sigma} = \partial_\sigma V^\mu + \Gamma^\mu_{\lambda\sigma} V^\lambda. \]
-Differentiate covariantly again, treating $V^\mu_{\;;\sigma}$ as a $(1,1)$ tensor:
+Treat $V^\mu_{\;;\sigma}$ as a $(1,1)$ tensor and apply the rule on covariant derivatives of mixed tensors:
 \[ V^\mu_{\;;\sigma;\tau} = \partial_\tau V^\mu_{\;;\sigma} + \Gamma^\mu_{\nu\tau} V^\nu_{\;;\sigma} - \Gamma^\nu_{\sigma\tau} V^\mu_{\;;\nu}. \]
-Substitute the expression for $V^\mu_{\;;\sigma}$:
+Substitute $V^\mu_{\;;\sigma} = \partial_\sigma V^\mu + \Gamma^\mu_{\lambda\sigma}V^\lambda$:
+\[ V^\mu_{\;;\sigma;\tau} = \partial_\tau\bigl(\partial_\sigma V^\mu + \Gamma^\mu_{\lambda\sigma}V^\lambda\bigr) + \Gamma^\mu_{\nu\tau}\bigl(\partial_\sigma V^\nu + \Gamma^\nu_{\lambda\sigma}V^\lambda\bigr) - \Gamma^\nu_{\sigma\tau}\bigl(\partial_\nu V^\mu + \Gamma^\mu_{\lambda\nu}V^\lambda\bigr). \]
+Expand the first parenthesis via the product rule:
 \[ V^\mu_{\;;\sigma;\tau} = \partial_\tau\partial_\sigma V^\mu + (\partial_\tau \Gamma^\mu_{\lambda\sigma}) V^\lambda + \Gamma^\mu_{\lambda\sigma}\partial_\tau V^\lambda + \Gamma^\mu_{\nu\tau}(\partial_\sigma V^\nu + \Gamma^\nu_{\lambda\sigma} V^\lambda) - \Gamma^\nu_{\sigma\tau}(\partial_\nu V^\mu + \Gamma^\mu_{\lambda\nu}V^\lambda). \]
-Swap $\sigma \leftrightarrow \tau$:
+Swap $\sigma \leftrightarrow \tau$ to obtain the partner:
 \[ V^\mu_{\;;\tau;\sigma} = \partial_\sigma\partial_\tau V^\mu + (\partial_\sigma \Gamma^\mu_{\lambda\tau}) V^\lambda + \Gamma^\mu_{\lambda\tau}\partial_\sigma V^\lambda + \Gamma^\mu_{\nu\sigma}(\partial_\tau V^\nu + \Gamma^\nu_{\lambda\tau} V^\lambda) - \Gamma^\nu_{\tau\sigma}(\partial_\nu V^\mu + \Gamma^\mu_{\lambda\nu}V^\lambda). \]
-Subtract: $\partial_\tau\partial_\sigma V^\mu = \partial_\sigma\partial_\tau V^\mu$ cancels; $\Gamma^\nu_{\sigma\tau} = \Gamma^\nu_{\tau\sigma}$ (torsion-free) cancels the last bracket; the $\Gamma\cdot\partial V$ cross-terms cancel by symmetry. Surviving terms:
+Commute the second partials so they cancel in the difference:
+\[ \partial_\tau\partial_\sigma V^\mu - \partial_\sigma\partial_\tau V^\mu = 0. \]
+Apply torsion-free symmetry $\Gamma^\nu_{\sigma\tau}=\Gamma^\nu_{\tau\sigma}$ to kill the last bracket of each line:
+\[ \Gamma^\nu_{\sigma\tau}(\partial_\nu V^\mu+\Gamma^\mu_{\lambda\nu}V^\lambda) - \Gamma^\nu_{\tau\sigma}(\partial_\nu V^\mu+\Gamma^\mu_{\lambda\nu}V^\lambda) = 0. \]
+Collect the $\Gamma\cdot\partial V$ cross-terms from the two expressions:
+\[ \bigl(\Gamma^\mu_{\lambda\sigma}\partial_\tau V^\lambda + \Gamma^\mu_{\nu\tau}\partial_\sigma V^\nu\bigr) - \bigl(\Gamma^\mu_{\lambda\tau}\partial_\sigma V^\lambda + \Gamma^\mu_{\nu\sigma}\partial_\tau V^\nu\bigr). \]
+Relabel dummies $\nu\to\lambda$ in both inner brackets:
+\[ \Gamma^\mu_{\lambda\sigma}\partial_\tau V^\lambda + \Gamma^\mu_{\lambda\tau}\partial_\sigma V^\lambda - \Gamma^\mu_{\lambda\tau}\partial_\sigma V^\lambda - \Gamma^\mu_{\lambda\sigma}\partial_\tau V^\lambda = 0. \]
+Only the $\partial\Gamma$ and $\Gamma\Gamma$ brackets remain:
 \[ V^\mu_{\;;\sigma;\tau} - V^\mu_{\;;\tau;\sigma} = \bigl[\partial_\tau \Gamma^\mu_{\lambda\sigma} - \partial_\sigma \Gamma^\mu_{\lambda\tau} + \Gamma^\mu_{\nu\tau}\Gamma^\nu_{\lambda\sigma} - \Gamma^\mu_{\nu\sigma}\Gamma^\nu_{\lambda\tau}\bigr] V^\lambda. \]
 Identify the bracket with the Riemann tensor (formula on the cover sheet):
 \begin{equation}
@@ -83,8 +105,8 @@ LHS of \eqref{eq:commutator} is a $(1,3)$ tensor: each covariant derivative prod
 
 Lower the upper index with $g_{\mu\lambda}$:
 \[ R_{\mu\lambda\sigma\tau} = g_{\mu\nu} R^\nu_{\;\lambda\sigma\tau}. \]
-Ricci tensor (contraction of first and third indices):
-\[ R_{\mu\nu} \equiv R^\lambda_{\;\mu\lambda\nu} = g^{\lambda\sigma} R_{\sigma\mu\lambda\nu}. \]
+Ricci tensor (contract first upper with last lower, per cover-sheet convention):
+\[ R_{\mu\nu} \equiv R^\lambda_{\;\mu\nu\lambda} = g^{\lambda\sigma} R_{\sigma\mu\nu\lambda}. \]
 Ricci scalar:
 \[ R \equiv g^{\mu\nu} R_{\mu\nu}. \]
 Symmetries of $R_{\lambda\mu\sigma\tau}$:
@@ -98,12 +120,18 @@ The first three are the algebraic (anti)symmetries; the cyclic identity (first B
 
 \subsection*{(a) Rindler line element}
 
-Differentiate the given transformation:
-\[ c\,\de t = \left(\tfrac{c^2}{g} + z'\right)\frac{g}{c}\cosh(gt'/c)\,\de(t'/1) + \sinh(gt'/c)\,\de z'. \]
-Cleaner form:
+Differentiate $ct$ in the given transformation:
+\[ c\,\de t = \left(\tfrac{c^2}{g} + z'\right)\frac{g}{c}\cosh(gt'/c)\,\de t' + \sinh(gt'/c)\,\de z'. \]
+Factor $c^2/g$ out of the bracket:
 \[ c\,\de t = \left(1 + \tfrac{gz'}{c^2}\right) c\cosh(gt'/c)\,\de t' + \sinh(gt'/c)\,\de z'. \]
+Differentiate $z$ analogously:
 \[ \de z = \left(1 + \tfrac{gz'}{c^2}\right) c\sinh(gt'/c)\,\de t' + \cosh(gt'/c)\,\de z'. \]
-Square each, use $\cosh^2-\sinh^2=1$:
+Square $c\,\de t$ and $\de z$ separately:
+\[ c^2\de t^2 = \left(1+\tfrac{gz'}{c^2}\right)^{\!2}c^2\cosh^2\!\de t'^2 + 2\left(1+\tfrac{gz'}{c^2}\right)c\cosh\sinh\,\de t'\de z' + \sinh^2\!\de z'^2, \]
+\[ \de z^2 = \left(1+\tfrac{gz'}{c^2}\right)^{\!2}c^2\sinh^2\!\de t'^2 + 2\left(1+\tfrac{gz'}{c^2}\right)c\sinh\cosh\,\de t'\de z' + \cosh^2\!\de z'^2. \]
+Subtract; the cross-terms cancel and combine the $\de t'^2,\de z'^2$ coefficients:
+\[ -c^2\de t^2 + \de z^2 = -\left(1+\tfrac{gz'}{c^2}\right)^{\!2}c^2\bigl(\cosh^2-\sinh^2\bigr)\de t'^2 + \bigl(\cosh^2-\sinh^2\bigr)\de z'^2. \]
+Apply $\cosh^2-\sinh^2=1$:
 \[ -c^2\de t^2 + \de z^2 = -\left(1+\tfrac{gz'}{c^2}\right)^{\!2} c^2\,\de t'^2 + \de z'^2. \]
 Add the unchanged $\de x^2 + \de y^2 = \de x'^2+\de y'^2$:
 \begin{equation}
@@ -123,9 +151,15 @@ A constant uniform acceleration in $-\hat z'$, identifiable with a uniformly acc
 
 \subsection*{(c) Proper-time ratio}
 
-At rest at $z' = z_0'$ ($\de x' = \de y' = \de z' = 0$):
+Clock at rest at $z' = z_0'$ means $\de x' = \de y' = \de z' = 0$. From \eqref{eq:rindler} the proper-time element is $\de\tau^2 = -\de s^2/c^2$:
+\[ \de\tau^2 = \left(1+\tfrac{gz_0'}{c^2}\right)^{\!2}\de t'^2. \]
+Take the positive square root:
 \[ \de\tau = \left(1+\tfrac{gz_0'}{c^2}\right)\de t'. \]
-At $z' = 0$: $\de\tau_0 = \de t'$. At $z' = h$: $\de\tau_h = (1+gh/c^2)\,\de t'$.
+At $z' = 0$:
+\[ \de\tau_0 = \de t'. \]
+At $z' = h$:
+\[ \de\tau_h = \left(1+\tfrac{gh}{c^2}\right)\de t'. \]
+Take the ratio:
 \begin{equation}
 \boxed{\;\frac{\de\tau_h}{\de\tau_0} = 1 + \tfrac{gh}{c^2}.\;}
 \label{eq:rindler-shift}
@@ -134,25 +168,51 @@ A clock at higher $z'$ ticks faster: it accumulates more proper time per unit co
 
 \subsection*{(d) Gravitational time dilation}
 
-In a static gravitational field with weak-field metric $g_{00} = -(1+2\Phi/c^2)$, a clock at rest measures
-\[ \de\tau = \sqrt{-g_{00}}\,\de t = \left(1+\tfrac{\Phi}{c^2}\right)\de t. \]
-For two clocks at potentials $\Phi_A$, $\Phi_B$ ($\Phi_B > \Phi_A$):
-\[ \frac{\de\tau_B}{\de\tau_A} = 1 + \tfrac{\Phi_B - \Phi_A}{c^2}. \]
-Clocks at higher gravitational potential run \textbf{faster}. By the equivalence principle, a uniformly accelerated frame is locally indistinguishable from a uniform Newtonian field $\Phi = gz'$; substituting $\Phi_h - \Phi_0 = gh$ recovers \eqref{eq:rindler-shift}. The two effects are the \textbf{same physical phenomenon}: the rate of an ideal clock depends on the gravitational potential at its location, equivalently on the position in an accelerated frame.
+In the weak-field static metric write $g_{tt} = -(1+2\Phi/c^2)c^2$. For a clock at rest $\de x^i=0$, so $-c^2\de\tau^2 = g_{tt}\de t^2$:
+\[ \de\tau^2 = -\tfrac{g_{tt}}{c^2}\de t^2. \]
+Substitute the weak-field form:
+\[ \de\tau^2 = \left(1+\tfrac{2\Phi}{c^2}\right)\de t^2. \]
+Take the positive square root:
+\[ \de\tau = \sqrt{1+2\Phi/c^2}\,\de t. \]
+Expand to first order in $\Phi/c^2$:
+\[ \de\tau \approx \left(1+\tfrac{\Phi}{c^2}\right)\de t. \]
+Take ratio of two clocks at $\Phi_A$ and $\Phi_B$ (assuming $\Phi_B > \Phi_A$):
+\[ \frac{\de\tau_B}{\de\tau_A} = \frac{1+\Phi_B/c^2}{1+\Phi_A/c^2} \approx 1 + \tfrac{\Phi_B-\Phi_A}{c^2}. \]
+Clocks at higher gravitational potential run \textbf{faster}. By the equivalence principle, a uniformly accelerated frame is locally indistinguishable from a uniform Newtonian field $\Phi = gz'$. Substitute $\Phi_h - \Phi_0 = gh$:
+\[ \frac{\de\tau_h}{\de\tau_0} = 1 + \tfrac{gh}{c^2}, \]
+recovering \eqref{eq:rindler-shift}. The two effects are the \textbf{same physical phenomenon}: the rate of an ideal clock depends on the gravitational potential at its location, equivalently on the position in an accelerated frame.
 
 \subsection*{(e) Invariant 4-acceleration}
 
-Static observer at $z'$ has 4-velocity with only $U^{t'}$ non-zero. From $g_{\mu\nu}U^\mu U^\nu = -c^2$:
-\[ \left(1+\tfrac{gz'}{c^2}\right)^{\!2}\!c^2 (U^{t'})^2 = c^2\;\Rightarrow\; U^{t'} = \frac{1}{1+gz'/c^2}. \]
-Define $\alpha\equiv 1+gz'/c^2$, so $U^\mu = (\alpha^{-1}, 0,0,0)$ and the only non-trivial Christoffel symbols are $\Gamma^{t'}_{t'z'}$ and $\Gamma^{z'}_{t't'}$. Compute from $g_{t't'} = -\alpha^2 c^2$, $g_{z'z'}=1$:
-\[ \Gamma^{z'}_{t't'} = -\tfrac12 g^{z'z'}\partial_{z'}g_{t't'} = -\tfrac12\,(1)\,\partial_{z'}(-\alpha^2 c^2) = \alpha c^2 \cdot \tfrac{g}{c^2} = \alpha g. \]
-\[ \Gamma^{t'}_{t'z'} = \tfrac12 g^{t't'}\partial_{z'}g_{t't'} = \tfrac12\frac{-1}{\alpha^2 c^2}\cdot(-2\alpha c^2)\cdot\tfrac{g}{c^2} = \frac{g/c^2}{\alpha}. \]
-Geodesic-style 4-acceleration: $A^\mu = U^\nu \nabla_\nu U^\mu = U^{t'}\partial_{t'}U^\mu + \Gamma^\mu_{\nu\lambda}U^\nu U^\lambda$. Static $\Rightarrow \partial_{t'}U^\mu = 0$, only $\Gamma^\mu_{t't'}$ contributes:
-\[ A^{z'} = \Gamma^{z'}_{t't'}(U^{t'})^2 = \alpha g \cdot \alpha^{-2} = \tfrac{g}{\alpha},\qquad A^{t'} = 0. \]
-Invariant magnitude:
-\[ a^2 = g_{\mu\nu}A^\mu A^\nu = g_{z'z'}(A^{z'})^2 = \tfrac{g^2}{\alpha^2}. \]
+In curved coordinates $a^\mu \equiv \D^2 x^\mu/\D\tau^2$ denotes the absolute derivative $U^\nu\nabla_\nu U^\mu$. A static observer at fixed $z'$ has 4-velocity with only $U^{t'}$ non-zero. Apply normalisation $g_{\mu\nu}U^\mu U^\nu = -c^2$:
+\[ -\left(1+\tfrac{gz'}{c^2}\right)^{\!2}\!c^2 (U^{t'})^2 = -c^2. \]
+Solve for $U^{t'}$ (positive root):
+\[ U^{t'} = \frac{1}{1+gz'/c^2}. \]
+Define $\alpha\equiv 1+gz'/c^2$, so $U^\mu = (\alpha^{-1},0,0,0)$.
+
+Write the metric components $g_{t't'} = -\alpha^2 c^2$, $g_{z'z'}=1$:
+\[ g^{z'z'}=1,\qquad g^{t't'} = -\frac{1}{\alpha^2 c^2}. \]
+Differentiate $g_{t't'}$ with respect to $z'$:
+\[ \partial_{z'}g_{t't'} = -2\alpha c^2\cdot \pd{\alpha}{z'}. \]
+Substitute $\partial\alpha/\partial z' = g/c^2$:
+\[ \partial_{z'}g_{t't'} = -2\alpha c^2\cdot \tfrac{g}{c^2} = -2\alpha g. \]
+Compute $\Gamma^{z'}_{t't'}$ from the Christoffel formula $\Gamma^\lambda_{\mu\nu} = \tfrac12 g^{\lambda\rho}(\partial_\mu g_{\rho\nu}+\partial_\nu g_{\rho\mu}-\partial_\rho g_{\mu\nu})$:
+\[ \Gamma^{z'}_{t't'} = -\tfrac12 g^{z'z'}\partial_{z'}g_{t't'}. \]
+Substitute $g^{z'z'}=1$ and the previous result:
+\[ \Gamma^{z'}_{t't'} = -\tfrac12 (1)(-2\alpha g) = \alpha g. \]
+Expand the absolute derivative:
+\[ a^\mu = U^\nu\partial_\nu U^\mu + \Gamma^\mu_{\nu\lambda}U^\nu U^\lambda. \]
+Static observer $\Rightarrow U^\mu$ depends only on $z'$ and $\partial_{t'}U^\mu=0$; only $\Gamma^\mu_{t't'}(U^{t'})^2$ survives:
+\[ a^{z'} = \Gamma^{z'}_{t't'}(U^{t'})^2. \]
+Substitute the Christoffel and 4-velocity:
+\[ a^{z'} = \alpha g\cdot \alpha^{-2} = \tfrac{g}{\alpha},\qquad a^{t'}=0. \]
+Compute the invariant magnitude squared:
+\[ a^2 = g_{\mu\nu}a^\mu a^\nu = g_{z'z'}(a^{z'})^2. \]
+Substitute $g_{z'z'}=1$:
+\[ a^2 = \tfrac{g^2}{\alpha^2}. \]
+Take the positive square root:
 \[ \boxed{\;a(z') = \frac{g}{1 + gz'/c^2}.\;} \]
-At $z'=0$: $a_0 = g$. At $z'=h$: $a_h = g/(1+gh/c^2) < g$. The proper acceleration required to remain static \textbf{decreases with height}: a Rindler family of accelerated observers is rigid only in the sense of constant Born rigidity, not constant proper acceleration. Equivalently, by the equivalence principle, the local "gravitational" acceleration is redshifted by the same factor $1+gh/c^2$ as the clock-rate ratio in (c).
+At $z'=0$: $a_0 = g$. At $z'=h$: $a_h = g/(1+gh/c^2) < g$. The proper acceleration to remain static \textbf{decreases with height}: the Rindler family is rigid (Born) but not of constant proper acceleration. Equivalently, by the equivalence principle, the local "gravitational" acceleration is redshifted by the same factor $1+gh/c^2$ as the clock rate in (c).
 
 %==================================================================
 \section*{Question 3 --- Schwarzschild circular orbit and binary GW emission}
@@ -161,23 +221,42 @@ At $z'=0$: $a_0 = g$. At $z'=h$: $a_h = g/(1+gh/c^2) < g$. The proper accelerati
 
 \subsection*{(a) Angular velocity at the spaceship}
 
-Equatorial circular orbit ($\theta=\pi/2$, $\de r=0$). Radial geodesic equation reduces to the Newtonian-Kepler form for the Schwarzschild $t$-coordinate angular velocity:
+Equatorial circular orbit: $\theta = \pi/2$, $\de r/\de\tau = \de^2 r/\de\tau^2 = 0$. The radial geodesic equation reduces to
+\[ \Gamma^r_{tt}\!\left(\tfrac{\de t}{\de\tau}\right)^{\!2} + \Gamma^r_{\phi\phi}\!\left(\tfrac{\de\phi}{\de\tau}\right)^{\!2} = 0. \]
+Compute the relevant Christoffels (at $\theta=\pi/2$):
+\[ \Gamma^r_{tt} = \tfrac{GM_{\rm bh}}{r^2}\!\left(1-\tfrac{2GM_{\rm bh}}{c^2 r}\right),\qquad \Gamma^r_{\phi\phi} = -r\!\left(1-\tfrac{2GM_{\rm bh}}{c^2 r}\right). \]
+Substitute into the geodesic and cancel the common factor $(1-2GM_{\rm bh}/c^2 r)$:
+\[ \tfrac{GM_{\rm bh}}{r^2}\!\left(\tfrac{\de t}{\de\tau}\right)^{\!2} = r\!\left(\tfrac{\de\phi}{\de\tau}\right)^{\!2}. \]
+Divide both sides by $(\de t/\de\tau)^2$ and use $\de\phi/\de t = (\de\phi/\de\tau)/(\de t/\de\tau)$:
+\[ \tfrac{GM_{\rm bh}}{r^2} = r\!\left(\tfrac{\de\phi}{\de t}\right)^{\!2}. \]
+Solve for $(\de\phi/\de t)^2$:
 \[ \left(\frac{\de\phi}{\de t}\right)^{\!2} = \frac{GM_{\rm bh}}{r^3}. \]
 Substitute $r = R_o = 11 GM_{\rm bh}/c^2$:
-\[ \left(\frac{\de\phi}{\de t}\right)^{\!2} = \frac{GM_{\rm bh} c^6}{(11 GM_{\rm bh})^3} = \frac{c^6}{11^3 G^2 M_{\rm bh}^2}. \]
+\[ \left(\frac{\de\phi}{\de t}\right)^{\!2} = \frac{GM_{\rm bh} c^6}{(11 GM_{\rm bh})^3}. \]
+Simplify:
+\[ \left(\frac{\de\phi}{\de t}\right)^{\!2} = \frac{c^6}{11^3 G^2 M_{\rm bh}^2}. \]
+Take the positive root:
 \begin{equation}
 \frac{\de\phi}{\de t} = \frac{c^3}{11^{3/2}\,GM_{\rm bh}}.
 \label{eq:dphi-dt}
 \end{equation}
-Use the metric to relate $\de\tau$ to $\de t$ along the orbit:
+Use the metric on the orbit ($\de r = 0$, $\theta = \pi/2$, divide $\de s^2 = -c^2\de\tau^2$ by $\de\tau^2$):
 \[ -c^2 = -\left(1-\tfrac{2GM_{\rm bh}}{c^2 r}\right)\!c^2\!\left(\tfrac{\de t}{\de\tau}\right)^{\!2} + r^2\!\left(\tfrac{\de\phi}{\de\tau}\right)^{\!2}. \]
-Insert $r = 11GM_{\rm bh}/c^2$, $1-2/11 = 9/11$, and $r^2(\de\phi/\de\tau)^2 = r^2(\de\phi/\de t)^2(\de t/\de\tau)^2 = (GM_{\rm bh}/r)(\de t/\de\tau)^2 = (c^2/11)(\de t/\de\tau)^2$:
-\[ -c^2 = -\tfrac{9}{11}c^2 \left(\tfrac{\de t}{\de\tau}\right)^{\!2} + \tfrac{c^2}{11}\!\left(\tfrac{\de t}{\de\tau}\right)^{\!2}. \]
-Combine:
+Rewrite $r^2(\de\phi/\de\tau)^2 = r^2(\de\phi/\de t)^2(\de t/\de\tau)^2$ using $(\de\phi/\de t)^2 = GM_{\rm bh}/r^3$:
+\[ r^2\!\left(\tfrac{\de\phi}{\de\tau}\right)^{\!2} = \tfrac{GM_{\rm bh}}{r}\!\left(\tfrac{\de t}{\de\tau}\right)^{\!2}. \]
+Insert $r = 11GM_{\rm bh}/c^2$, giving $GM_{\rm bh}/r = c^2/11$ and $1-2GM_{\rm bh}/(c^2 r) = 9/11$:
+\[ -c^2 = -\tfrac{9}{11}c^2\!\left(\tfrac{\de t}{\de\tau}\right)^{\!2} + \tfrac{c^2}{11}\!\left(\tfrac{\de t}{\de\tau}\right)^{\!2}. \]
+Combine on the right:
+\[ -c^2 = -\tfrac{8}{11}c^2\!\left(\tfrac{\de t}{\de\tau}\right)^{\!2}. \]
+Solve for $(\de t/\de\tau)^2$:
 \[ \left(\tfrac{\de t}{\de\tau}\right)^{\!2} = \tfrac{11}{8}. \]
 Multiply \eqref{eq:dphi-dt} by $\de t/\de\tau = \sqrt{11/8}$:
+\[ \frac{\de\phi}{\de\tau} = \frac{c^3}{11^{3/2}\,GM_{\rm bh}}\sqrt{\tfrac{11}{8}}. \]
+Combine the powers of $11$ in the denominator: $11^{3/2}/\sqrt{11/8} = 11^{3/2}\sqrt{8/11}$.
+\[ 11^{3/2}\sqrt{8/11} = \sqrt{11^3}\cdot\sqrt{8/11} = \sqrt{11^3\cdot 8/11} = \sqrt{8\cdot 11^2} = 11\sqrt 8 = 22\sqrt 2. \]
+Therefore:
 \begin{equation}
-\boxed{\;\frac{\de\phi}{\de\tau} = \frac{c^3}{11^{3/2}\,GM_{\rm bh}}\sqrt{\tfrac{11}{8}} = \frac{c^3}{22\sqrt{2}\,GM_{\rm bh}}.\;}
+\boxed{\;\frac{\de\phi}{\de\tau} = \frac{c^3}{22\sqrt{2}\,GM_{\rm bh}}.\;}
 \label{eq:dphi-dtau}
 \end{equation}
 
@@ -191,23 +270,35 @@ Coordinate time $t$ is the proper time of an observer at infinity. From \eqref{e
 
 \subsection*{(c) Period on the spaceship}
 
-Use \eqref{eq:dphi-dtau}:
-\[ T_{\rm ship} = \frac{2\pi}{\de\phi/\de\tau} = 22\sqrt{2}\,\pi\,\frac{GM_{\rm bh}}{c^3}. \]
-Equivalently, $T_{\rm ship} = T_\infty\sqrt{8/11}$:
-\[ \boxed{\;T_{\rm ship} = 22\sqrt{2}\,\pi\,\frac{GM_{\rm bh}}{c^3} = T_\infty\sqrt{\tfrac{8}{11}}.\;} \]
+Apply \eqref{eq:dphi-dtau}:
+\[ T_{\rm ship} = \frac{2\pi}{\de\phi/\de\tau} = \frac{2\pi\cdot 22\sqrt 2\,GM_{\rm bh}}{c^3}. \]
+Combine the numerical constants:
+\[ T_{\rm ship} = 44\sqrt 2\,\pi\,\frac{GM_{\rm bh}}{c^3}. \]
+Cross-check using the time-dilation factor $T_{\rm ship}/T_\infty = (\de\tau/\de t) = \sqrt{8/11}$:
+\[ T_\infty\sqrt{8/11} = 2\pi\cdot 11^{3/2}\sqrt{8/11}\,\frac{GM_{\rm bh}}{c^3} = 22\sqrt 2\cdot 2\pi\,\frac{GM_{\rm bh}}{c^3} = 44\sqrt 2\,\pi\,\frac{GM_{\rm bh}}{c^3}. \]
+Final answer:
+\[ \boxed{\;T_{\rm ship} = 44\sqrt 2\,\pi\,\frac{GM_{\rm bh}}{c^3} = T_\infty\sqrt{\tfrac{8}{11}}.\;} \]
 The orbiting clock runs slow relative to infinity by the standard Schwarzschild factor for circular orbits.
 
 \subsection*{(d) Binary separation in Schwarzschild radii}
 
-Two equal masses $M_{\rm bh}$ at distance $D$ apart, each in a circular orbit. Treat the orbital dynamics with the Newtonian Kepler form (consistent with the printed result, in which $M_{\rm bh}$ is used as the dynamical mass scale of the binary):
+Two equal masses $M_{\rm bh}$ separated by distance $D$. Adopt the Kepler form for a test particle in the field of $M_{\rm bh}$ at distance $D$ (this convention matches the printed answer; physically each mass orbits the common centre at radius $D/2$, but the printed formula uses the test-particle scaling):
 \[ \Omega^2 = \frac{G M_{\rm bh}}{D^3}. \]
-Period:
-\[ T = \frac{2\pi}{\Omega}\;\Rightarrow\; T^2 = \frac{4\pi^2 D^3}{GM_{\rm bh}}. \]
-Define $R_s \equiv D / R_{\rm Sch}$ with one black hole's Schwarzschild radius $R_{\rm Sch} = 2GM_{\rm bh}/c^2$:
-\[ D = R_s\,\frac{2 G M_{\rm bh}}{c^2}\;\Rightarrow\; D^3 = R_s^3\,\frac{8 G^3 M_{\rm bh}^3}{c^6}. \]
-Substitute and isolate $R_s^3$:
-\[ T^2 = \frac{4\pi^2}{G M_{\rm bh}}\,R_s^3\,\frac{8 G^3 M_{\rm bh}^3}{c^6} = \frac{32\pi^2 G^2 M_{\rm bh}^2}{c^6}\,R_s^3. \]
+Use $T = 2\pi/\Omega$:
+\[ T^2 = \frac{4\pi^2}{\Omega^2}. \]
+Substitute $\Omega^2$:
+\[ T^2 = \frac{4\pi^2 D^3}{GM_{\rm bh}}. \]
+Define $R_s \equiv D / R_{\rm Sch}$ with $R_{\rm Sch} = 2GM_{\rm bh}/c^2$:
+\[ D = R_s\,\frac{2 G M_{\rm bh}}{c^2}. \]
+Cube:
+\[ D^3 = R_s^3\,\frac{8 G^3 M_{\rm bh}^3}{c^6}. \]
+Substitute into $T^2$:
+\[ T^2 = \frac{4\pi^2}{G M_{\rm bh}}\cdot R_s^3\,\frac{8 G^3 M_{\rm bh}^3}{c^6}. \]
+Collect constants:
+\[ T^2 = \frac{32\pi^2 G^2 M_{\rm bh}^2}{c^6}\,R_s^3. \]
+Solve for $R_s^3$:
 \[ R_s^3 = \frac{T^2 c^6}{32\pi^2 G^2 M_{\rm bh}^2}. \]
+Take the cube root:
 \begin{equation}
 \boxed{\;R_s = \left(\frac{T^2 c^6}{32\pi^2 G^2 M_{\rm bh}^2}\right)^{\!1/3}.\;}
 \label{eq:Rs}
@@ -217,23 +308,28 @@ Substitute and isolate $R_s^3$:
 
 Place the orbit in the $xy$-plane with the centre of mass at the origin. Each black hole sits at $\pm \vb r(t)$ with $|\vb r| = D/2$:
 \[ \vb x_1 = \tfrac{D}{2}(\cos\Omega t,\,\sin\Omega t,\,0),\qquad \vb x_2 = -\vb x_1. \]
-Quadrupole tensor (definition given):
-\[ I^{ij} = M_{\rm bh}c^2\bigl(x_1^i x_1^j + x_2^i x_2^j\bigr) = 2 M_{\rm bh}c^2\,x_1^i x_1^j. \]
-Component $I^{xx}$:
-\[ I^{xx} = 2 M_{\rm bh}c^2 \cdot \tfrac{D^2}{4}\cos^2\Omega t = \tfrac{M_{\rm bh}c^2 D^2}{2}\cos^2\Omega t. \]
+Insert into the quadrupole definition $I^{ij} = M_{\rm bh}c^2(x_1^i x_1^j + x_2^i x_2^j)$:
+\[ I^{ij} = M_{\rm bh}c^2\bigl(x_1^i x_1^j + (-x_1^i)(-x_1^j)\bigr) = 2 M_{\rm bh}c^2\,x_1^i x_1^j. \]
+Compute the $xx$ component:
+\[ I^{xx} = 2 M_{\rm bh}c^2\cdot \tfrac{D^2}{4}\cos^2(\Omega t). \]
+Simplify:
+\[ I^{xx} = \tfrac{M_{\rm bh}c^2 D^2}{2}\cos^2(\Omega t). \]
 Apply $\cos^2\theta = \tfrac12(1+\cos 2\theta)$:
 \[ I^{xx} = \tfrac{M_{\rm bh}c^2 D^2}{4}\bigl[1 + \cos(2\Omega t)\bigr]. \]
-Differentiate twice in $t$ (drop the constant):
-\[ \ddot I^{xx} = -M_{\rm bh}c^2 D^2\,\Omega^2 \cos(2\Omega t). \]
-The radiated metric perturbation $\bar h^{ij} \propto \ddot I^{ij}$ oscillates at $2\Omega$. Hence
+Differentiate once in $t$:
+\[ \dot I^{xx} = -\tfrac{M_{\rm bh}c^2 D^2}{4}\cdot 2\Omega\sin(2\Omega t). \]
+Differentiate again:
+\[ \ddot I^{xx} = -\tfrac{M_{\rm bh}c^2 D^2}{4}\cdot 4\Omega^2\cos(2\Omega t) = -M_{\rm bh}c^2 D^2\,\Omega^2 \cos(2\Omega t). \]
+The radiated metric perturbation $\bar h^{ij} \propto \ddot I^{ij}$ oscillates at $2\Omega$. Read off the frequency:
 \begin{equation}
-\boxed{\;f_{\rm GW} = \frac{2\Omega}{2\pi} = \frac{2}{T}.\;}
+\boxed{\;f_{\rm GW} = \frac{2\Omega}{2\pi} = \frac{\Omega}{\pi} = \frac{2}{T}.\;}
 \label{eq:fGW}
 \end{equation}
-Numerically with $T = 5\times 10^4\,$s:
-\[ f_{\rm GW} = \frac{2}{5\times 10^4\,\rm s} = 4\times 10^{-5}\,\rm Hz. \]
-\[ \boxed{\;f_{\rm GW} \approx \SI{4e-5}{Hz}.\;} \]
-This is in the LISA band, characteristic of supermassive-binary inspirals.
+Plug in $T = 5\times 10^4\,$s:
+\[ f_{\rm GW} = \frac{2}{5\times 10^4\,\rm s}. \]
+Evaluate:
+\[ \boxed{\;f_{\rm GW} = 4\times 10^{-5}\,\rm Hz.\;} \]
+This sits in the LISA band, characteristic of supermassive-binary inspirals.
 
 %==================================================================
 \section*{Question 4 --- Stress-energy tensor of an ideal fluid}
@@ -242,11 +338,15 @@ This is in the LISA band, characteristic of supermassive-binary inspirals.
 
 \subsection*{(a) Why a rank-2 tensor}
 
-In the rest frame $S$ of dust at $A$, the matter density is the scalar $\rho = n_0 m_0$, where $n_0$ is the rest-frame number density. Boost to a frame $S'$ in which the fluid moves with velocity $\vb u$, Lorentz factor $\gamma$:
-\[ n' = \gamma n_0\quad\text{(length contraction along }\vb u\text{)},\qquad m'_0 = m_0\;\text{(invariant)},\qquad m'_{\rm rel} = \gamma m_0. \]
-Hence the energy density transforms as
-\[ \rho' c^2 = n' m'_{\rm rel} c^2 = \gamma^2\,\rho c^2. \]
-Two factors of $\gamma$ appear: \textbf{one each} from length contraction (volume) and from energy/mass increase. A scalar would only carry one factor; a 4-vector would carry one boost transformation. Two factors of $\gamma$ require \textbf{two factors} of $\partial x'^\mu/\partial x^\nu$, i.e.\ a rank-2 (contravariant) tensor:
+In the rest frame $S$ of dust at $A$, the matter density is the scalar $\rho = n_0 m_0$, where $n_0$ is the rest-frame number density. Boost to a frame $S'$ in which the fluid moves with velocity $\vb u$, Lorentz factor $\gamma$. Number density transforms by length contraction along $\vb u$:
+\[ n' = \gamma n_0. \]
+Rest mass is invariant, but the relativistic mass picks up $\gamma$:
+\[ m_0' = m_0,\qquad m'_{\rm rel} = \gamma m_0. \]
+Combine into the energy density:
+\[ \rho' c^2 = n'\,m'_{\rm rel}\,c^2 = (\gamma n_0)(\gamma m_0)c^2. \]
+Simplify:
+\[ \rho' c^2 = \gamma^2\,\rho c^2. \]
+Two factors of $\gamma$ appear: \textbf{one each} from length contraction (volume) and from energy/mass increase. A scalar carries no boost factor; a 4-vector carries one. Two factors of $\gamma$ require \textbf{two factors} of $\partial x'^\mu/\partial x^\nu$, i.e.\ a rank-2 (contravariant) tensor:
 \[ \boxed{\;T'^{\mu\nu} = \pd{x'^\mu}{x^\alpha}\pd{x'^\nu}{x^\beta}\,T^{\alpha\beta}.\;} \]
 
 \subsection*{(b) Dust stress-energy tensor}
@@ -256,9 +356,11 @@ Bilinear in the only available rank-1 object, the 4-velocity $U^\mu$, and propor
 \boxed{\;T^{\mu\nu} = \rho\,U^\mu U^\nu.\;}
 \label{eq:dust-T}
 \end{equation}
-With $U^\mu = \gamma(c,\vb u)$ in $S'$, the diagonal entries are
-\[ T^{00} = \rho\gamma^2 c^2,\qquad T^{ii} = \rho\gamma^2 u_i^2\quad(i=1,2,3). \]
-Mass-energy density is $T^{00}/c^2 = \gamma^2 \rho$, recovering the result of (a).
+Write the boosted 4-velocity:
+\[ U^\mu = \gamma(c,\vb u),\qquad U^0 = \gamma c,\qquad U^i = \gamma u^i. \]
+Insert into $T^{\mu\nu} = \rho U^\mu U^\nu$:
+\[ T^{00} = \rho(\gamma c)^2 = \rho\gamma^2 c^2,\qquad T^{ii} = \rho(\gamma u^i)^2 = \rho\gamma^2 (u^i)^2. \]
+Energy density: $T^{00}/c^2 = \gamma^2\rho$, recovering the result of (a).
 
 \subsection*{(c) Pressure and off-diagonal entries}
 
@@ -266,17 +368,21 @@ In the instantaneous rest frame, momentum-flux $T^{ij}$ is the rate at which the
 
 \subsection*{(d) Boost to general frame}
 
-Decompose the rest-frame tensor in a manifestly covariant way. Introduce two tensorial building blocks: the metric $\eta^{\mu\nu} = \text{diag}(-1,+1,+1,+1)$ (signature $-+++$) and $U^\mu U^\nu/c^2$, with rest-frame $U^\mu = (c,0,0,0)$ giving $U^\mu U^\nu/c^2 = \text{diag}(-1,0,0,0)$ in our signature (we use the cover-sheet convention $-c^2 \de t^2 + \dots$, hence $U_\mu U^\mu = -c^2$).
+Use signature $(-,+,+,+)$ (cover-sheet convention $-c^2\de t^2+\cdots$, so $U_\mu U^\mu = -c^2$). In the rest frame $U^\mu = (c,0,0,0)$, hence the raised $U^\mu U^\nu = c^2\,\text{diag}(1,0,0,0)$ and $\eta^{\mu\nu} = \text{diag}(-1,1,1,1)$.
 
 Try the ansatz with two unknown scalars $A,B$:
 \[ T^{\mu\nu} = A\,U^\mu U^\nu + B\,\eta^{\mu\nu}. \]
-Match in the rest frame using the given matrix:
-\[ T^{00} = -A c^2 \cdot(-1) + B(-1)?\;\text{(mind signs)}. \]
-Cleaner: in rest frame $U^\mu U^\nu/c^2 = \text{diag}(1,0,0,0)$ if we use $+---$, or $\text{diag}(-1,0,0,0)$ for $-+++$. Use $-+++$ throughout. Then $U^\mu U^\nu = c^2\,\text{diag}(1,0,0,0)$ (raised) and $\eta^{\mu\nu} = \text{diag}(-1,1,1,1)$:
-\[ T^{00} = A c^2 - B = \rho c^2,\qquad T^{ii} = 0 + B = P. \]
-Solve for $A,B$:
-\[ B = P,\qquad A c^2 = \rho c^2 + P\;\Rightarrow\; A = \rho + P/c^2. \]
-Substitute back:
+Read off the $00$ component in the rest frame:
+\[ T^{00} = A c^2 + B(-1) = \rho c^2. \]
+Read off the $ii$ component:
+\[ T^{ii} = A\cdot 0 + B\cdot 1 = P. \]
+Identify $B$:
+\[ B = P. \]
+Substitute into the $00$ equation:
+\[ A c^2 - P = \rho c^2. \]
+Solve for $A$:
+\[ A = \rho + \tfrac{P}{c^2}. \]
+Substitute back into the ansatz:
 \begin{equation}
 \boxed{\;T^{\mu\nu} = \left(\rho + \tfrac{P}{c^2}\right) U^\mu U^\nu + P\,\eta^{\mu\nu}.\;}
 \label{eq:perfect-T}
@@ -291,16 +397,20 @@ This is the unique tensorial extension reducing to \eqref{eq:perfect-T} in the l
 
 \subsection*{(f) $A^\mu \perp U^\mu$}
 
-Normalisation of the 4-velocity:
-\[ U^\mu U_\mu = -c^2 \quad(\text{constant scalar}). \]
-Take the covariant derivative along the worldline ($U^\nu\nabla_\nu$):
+State the normalisation of the 4-velocity:
+\[ U^\mu U_\mu = -c^2. \]
+Differentiate covariantly along the worldline ($U^\nu\nabla_\nu$):
 \[ U^\nu\nabla_\nu (U^\mu U_\mu) = 0. \]
-Compatibility of the connection with the metric ($\nabla_\nu g_{\mu\rho}=0$) makes index lowering commute with covariant differentiation, and the Leibniz rule gives
-\[ U^\nu\bigl[(\nabla_\nu U^\mu) U_\mu + U^\mu (\nabla_\nu U_\mu)\bigr] = 0. \]
-Rename dummy indices in the second term ($\mu\leftrightarrow$ the contracted pair):
-\[ 2\,U_\mu\,U^\nu \nabla_\nu U^\mu = 0. \]
-Identify $A^\mu = U^\nu \nabla_\nu U^\mu = U^\nu U^\mu_{\;;\nu}$:
+Apply the Leibniz rule:
+\[ U^\nu(\nabla_\nu U^\mu)U_\mu + U^\nu U^\mu(\nabla_\nu U_\mu) = 0. \]
+Use metric compatibility $\nabla_\nu g_{\mu\rho}=0$ to write $\nabla_\nu U_\mu = g_{\mu\rho}\nabla_\nu U^\rho$:
+\[ U^\nu U^\mu \nabla_\nu U_\mu = U^\nu U^\mu g_{\mu\rho}\nabla_\nu U^\rho = U^\nu U_\rho \nabla_\nu U^\rho. \]
+Relabel $\rho\to\mu$ in this second term:
+\[ U^\nu U^\mu \nabla_\nu U_\mu = U^\nu U_\mu \nabla_\nu U^\mu. \]
+Combine the two identical contributions:
+\[ 2\,U_\mu\,U^\nu\nabla_\nu U^\mu = 0. \]
+Identify $A^\mu = U^\nu\nabla_\nu U^\mu = U^\nu U^\mu_{\;;\nu}$:
 \[ \boxed{\;U_\mu A^\mu = 0.\;} \]
-The 4-acceleration is always orthogonal (in the Minkowski/Lorentzian sense) to the 4-velocity. Geometrically, $U^\mu$ has fixed Minkowski length $-c^2$, so any change must be perpendicular to it.
+The 4-acceleration is always orthogonal (Minkowski sense) to the 4-velocity. Geometrically $U^\mu$ has fixed length $-c^2$, so any change must be perpendicular.
 
 \end{document}

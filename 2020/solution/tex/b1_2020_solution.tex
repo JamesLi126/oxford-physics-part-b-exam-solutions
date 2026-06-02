@@ -65,11 +65,31 @@ Rearrange:
 \[
 u_0''=\frac{i\omega}{\nu}u_0.
 \]
-Roots $\pm k$ with $k=\sqrt{i\omega/\nu}=(1+i)\sqrt{\omega/(2\nu)}$. Decay as $z\to\infty$ kills $e^{+kz}$:
+Characteristic roots $\pm k$ with $k^2=i\omega/\nu$:
+\[
+k=\sqrt{i\omega/\nu}.
+\]
+Apply $\sqrt{i}=(1+i)/\sqrt{2}$:
+\[
+k=(1+i)\sqrt{\omega/(2\nu)}.
+\]
+Define $\delta=\sqrt{2\nu/\omega}$:
+\[
+k=\frac{1+i}{\delta}.
+\]
+Decay as $z\to\infty$ kills $e^{+kz}$:
 \[
 u_0(z)=U e^{-kz}.
 \]
-Apply $u_x(0,t)=U\cos\omega t$, fixing the amplitude. Define $\delta=\sqrt{2\nu/\omega}$:
+Apply $u_x(0,t)=U\cos\omega t$, fixing the amplitude $U$ real:
+\[
+u_x(z,t)=\Re\!\left[U e^{-(1+i)z/\delta}e^{i\omega t}\right].
+\]
+Combine exponentials in the bracket:
+\[
+u_x(z,t)=\Re\!\left[U e^{-z/\delta}e^{i(\omega t-z/\delta)}\right].
+\]
+Take the real part:
 \begin{equation}
 \boxed{\;u_x(z,t)=U e^{-z/\delta}\cos\!\left(\omega t-\frac{z}{\delta}\right),\qquad u_z=0\;}
 \label{eq:ux}
@@ -89,7 +109,15 @@ Off-diagonal:
 \[
 \sigma_{xz}=\sigma_{zx}=\mu\pd{u_x}{z}.
 \]
-Differentiate \eqref{eq:ux}:
+Differentiate the exponential prefactor:
+\[
+\pd{}{z}\!\left[Ue^{-z/\delta}\right]=-\frac{U}{\delta}e^{-z/\delta}.
+\]
+Differentiate the phase using $\partial_z\cos(\omega t-z/\delta)=(1/\delta)\sin(\omega t-z/\delta)$:
+\[
+\pd{u_x}{z}=-\frac{U}{\delta}e^{-z/\delta}\cos\!\left(\omega t-\tfrac{z}{\delta}\right)+\frac{U}{\delta}e^{-z/\delta}\sin\!\left(\omega t-\tfrac{z}{\delta}\right).
+\]
+Factor $-Ue^{-z/\delta}/\delta$:
 \[
 \pd{u_x}{z}=-\frac{U}{\delta}e^{-z/\delta}\!\left[\cos\!\left(\omega t-\tfrac{z}{\delta}\right)-\sin\!\left(\omega t-\tfrac{z}{\delta}\right)\right].
 \]
@@ -137,7 +165,7 @@ Boundary-layer thickness from $\delta=\sqrt{2\nu/\omega}$:
 \]
 Independent of $U$. Physical reading: in one forcing period $T=2\pi/\omega$ vorticity diffuses a distance $\sqrt{\nu T}\sim\delta$ before the surface reverses, halting further penetration.
 
-Tidal-flow application: by Galilean change of frame to one in which the fluid oscillates at $-U\cos\omega t$ and the plate is fixed, the same equation governs flow over a stationary bed with oscillatory far-field velocity. So an oscillatory Stokes layer of thickness $\delta=\sqrt{2\nu/\omega}$ does form near a tidal bed. Numerical estimate ($\nu=\SI{e-6}{m^2.s^{-1}}$, $\omega=\SI{1.4e-4}{s^{-1}}$ semi-diurnal): $\delta\sim\SI{4}{mm}$. Caveats: real tidal flow is turbulent (large $\mathrm{Re}$), so the laminar Stokes layer is replaced by a thicker turbulent boundary layer; the laminar solution describes only the viscous sub-layer.
+Tidal-flow application: by Galilean change of frame to one in which the fluid oscillates at $-U\cos\omega t$ and the plate is fixed, the same equation governs flow over a stationary bed with oscillatory far-field velocity. So an oscillatory Stokes layer of thickness $\delta=\sqrt{2\nu/\omega}$ does form near a tidal bed. Numerical estimate ($\nu=\SI{e-6}{m^2.s^{-1}}$, $\omega=\SI{1.4e-4}{s^{-1}}$ semi-diurnal): $\delta\sim\SI{10}{cm}$. Caveats: real tidal flow is turbulent (large $\mathrm{Re}$), so the laminar Stokes layer is replaced by a thicker turbulent boundary layer; the laminar solution describes only the viscous sub-layer.
 
 %==================================================================
 \section*{Question 2 --- Active cylinder, potential flow}
@@ -158,7 +186,15 @@ Vector identity:
 \[
 (\vb u\cdot\nabla)\vb u=\nabla(\tfrac12 |\vb u|^2)-\vb u\times(\nabla\times\vb u).
 \]
-Apply $\nabla\times\vb u=0$ and $\vb u=\nabla\phi$:
+Apply $\nabla\times\vb u=0$:
+\[
+(\vb u\cdot\nabla)\vb u=\nabla(\tfrac12|\vb u|^2).
+\]
+Apply $\vb u=\nabla\phi$ in the local-acceleration term:
+\[
+\pd{\vb u}{t}=\pd{}{t}\nabla\phi=\nabla\!\left(\pd{\phi}{t}\right).
+\]
+Write $-g\hat{\vb z}=-\nabla(gz)$ and $-\nabla p/\rho=-\nabla(p/\rho)$ (constant $\rho$):
 \[
 \nabla\!\left(\pd{\phi}{t}+\tfrac12|\nabla\phi|^2+\frac{p}{\rho}+gz\right)=0.
 \]
@@ -179,15 +215,23 @@ Resolve $-U\hat{\vb x}=-U\cos\theta\,\hat{\vb r}+U\sin\theta\,\hat{\bm\theta}$:
 \[
 \phi\to -Ur\cos\theta\quad (r\to\infty).
 \]
-From the general expansion keep $n=1$ modes only:
+From the general expansion keep $n=1$ modes only (BCs only excite $\sin\theta,\cos\theta$):
 \[
 \phi=\left(A_1 r+\frac{B_1}{r}\right)\cos\theta+\left(C_1 r+\frac{D_1}{r}\right)\sin\theta.
 \]
-Match far field:
+Take $r\to\infty$, where $B_1/r,D_1/r\to 0$:
+\[
+\phi\to A_1 r\cos\theta+C_1 r\sin\theta.
+\]
+Match to $-Ur\cos\theta$:
 \[
 A_1=-U,\qquad C_1=0.
 \]
-Apply $\partial_r\phi|_a=A\sin\theta$:
+Differentiate $\phi$ in $r$:
+\[
+\pd{\phi}{r}=\left(A_1-\frac{B_1}{r^2}\right)\cos\theta+\left(C_1-\frac{D_1}{r^2}\right)\sin\theta.
+\]
+Evaluate at $r=a$ with $A_1=-U,C_1=0$:
 \[
 \left(-U-\frac{B_1}{a^2}\right)\cos\theta+\left(-\frac{D_1}{a^2}\right)\sin\theta=A\sin\theta.
 \]
@@ -215,27 +259,47 @@ Surface speed squared:
 \[
 |\vb u(a,\theta)|^2=A^2\sin^2\theta+(2U\sin\theta-A\cos\theta)^2.
 \]
-Expand:
+Expand the square:
+\[
+(2U\sin\theta-A\cos\theta)^2=4U^2\sin^2\theta-4UA\sin\theta\cos\theta+A^2\cos^2\theta.
+\]
+Insert into $|\vb u|^2$:
 \[
 |\vb u|^2=A^2\sin^2\theta+4U^2\sin^2\theta-4UA\sin\theta\cos\theta+A^2\cos^2\theta.
 \]
-Combine $A^2\sin^2\theta+A^2\cos^2\theta=A^2$ and $2\sin\theta\cos\theta=\sin 2\theta$:
+Apply $\sin^2\theta+\cos^2\theta=1$ to combine the $A^2$ terms:
+\[
+|\vb u|^2=A^2+4U^2\sin^2\theta-4UA\sin\theta\cos\theta.
+\]
+Apply $2\sin\theta\cos\theta=\sin 2\theta$:
 \[
 |\vb u|^2=A^2+4U^2\sin^2\theta-2UA\sin 2\theta.
 \]
-Steady Bernoulli on the level $z=$const around the cylinder (axis vertical, gravity drops):
+Apply steady Bernoulli between far-field and the cylinder surface (same horizontal level, $gz$ cancels):
 \[
-p+\tfrac12\rho|\vb u|^2=p_0+\tfrac12\rho U^2.
+p_0+\tfrac12\rho U^2=p(a,\theta)+\tfrac12\rho|\vb u(a,\theta)|^2.
 \]
 Solve for $p(a,\theta)$:
 \[
 p(a,\theta)=p_0+\tfrac12\rho U^2-\tfrac12\rho\!\left[A^2+4U^2\sin^2\theta-2UA\sin 2\theta\right].
 \]
-Use $\sin^2\theta=\tfrac12(1-\cos 2\theta)$:
+Apply $\sin^2\theta=\tfrac12(1-\cos 2\theta)$ to $4U^2\sin^2\theta$:
 \[
-p(a,\theta)=p_0+\tfrac12\rho U^2-\tfrac12\rho A^2-\rho U^2(1-\cos 2\theta)+\rho UA\sin 2\theta.
+4U^2\sin^2\theta=2U^2-2U^2\cos 2\theta.
+\]
+Substitute into $-\tfrac12\rho[A^2+4U^2\sin^2\theta-2UA\sin 2\theta]$:
+\[
+-\tfrac12\rho[\,\cdots\,]=-\tfrac12\rho A^2-\rho U^2+\rho U^2\cos 2\theta+\rho UA\sin 2\theta.
+\]
+Add the $p_0+\tfrac12\rho U^2$ outside:
+\[
+p(a,\theta)=p_0+\tfrac12\rho U^2-\tfrac12\rho A^2-\rho U^2+\rho U^2\cos 2\theta+\rho UA\sin 2\theta.
 \]
 Combine $\tfrac12\rho U^2-\rho U^2=-\tfrac12\rho U^2$:
+\[
+p(a,\theta)=p_0-\tfrac12\rho U^2-\tfrac12\rho A^2+\rho U^2\cos 2\theta+\rho UA\sin 2\theta.
+\]
+Factor $\tfrac12\rho U^2$:
 \begin{equation}
 \boxed{\;p(a,\theta)=p_0+\tfrac12\rho U^2\!\left[2\cos 2\theta-1-\frac{A^2}{U^2}+2\frac{A}{U}\sin 2\theta\right]\;}
 \label{eq:psurf}
@@ -296,11 +360,15 @@ Inert case $A=0$. Inviscid surface speed $u_\theta=2U\sin\theta$, so a no-slip b
 \]
 Adverse on the rear half, $\pi/2<\theta<\pi$ (and mirror $\pi<\theta<3\pi/2$). Separation occurs shortly after $\theta=\pi/2$ on top and shortly after $\theta=3\pi/2$ on the bottom (rear shoulders).
 
-Active case $A=U$, upper surface $\theta>0$. Pressure gradient:
+Active case $A=U$, upper surface $0<\theta<\pi$. Differentiate \eqref{eq:psurf}:
 \[
-\frac{1}{a}\pd{p}{\theta}=\rho U^2\!\left[-2\sin 2\theta+2\cos 2\theta\right]\frac{1}{a}.
+\frac{1}{a}\pd{p}{\theta}=\frac{\rho U^2}{a}\!\left[-2\sin 2\theta+2\cos 2\theta\right].
 \]
-Adverse where $\cos 2\theta<\sin 2\theta$, i.e.\ $\theta>\pi/8$. Compared with $A=0$ the adverse-pressure region begins later in the inviscid pressure pattern \emph{but} the new minimum is at $5\pi/8$, past the top. More importantly the imposed $u_r=A\sin\theta>0$ blows fluid \emph{outward} from the wall on $\theta>0$, energising the boundary layer (analogous to suction-blowing control). The active blowing therefore \emph{inhibits} separation on the upper surface relative to $A=0$.
+Locate the surface pressure extrema by $\partial_\theta p=0$:
+\[
+\tan 2\theta=1\;\Rightarrow\;\theta=\pi/8\;\text{(maximum)},\;\theta=5\pi/8\;\text{(minimum)}.
+\]
+Inviscid surface tangential velocity $u_\theta(a,\theta)=2U\sin\theta-U\cos\theta$, vanishing at the shifted stagnation $\tan\theta=1/2$ ($\theta\approx 0.46$). Downstream of that stagnation on $\theta>0$, flow runs in $+\theta$ and pressure minimum is reached at $\theta=5\pi/8$; adverse region is $5\pi/8<\theta<\pi$. Compared with $A=0$ (adverse from $\theta=\pi/2$) the adverse-pressure region starts later, pushing the would-be separation point further back. The imposed $u_r=A\sin\theta>0$ also blows fluid \emph{outward} from the wall on $\theta>0$, energising the boundary layer (analogous to suction--blowing control). Both effects \emph{inhibit} separation on the upper surface relative to $A=0$.
 
 %==================================================================
 \section*{Question 3 --- Vorticity dynamics and shear-layer mode}
@@ -386,6 +454,14 @@ Substitute mode form $u_x'=\hat\psi' e^{i(kx-\omega t)}$, $u_y'=-ik\hat\psi e^{i
 \[
 (-i\omega+ik\overline U)\hat\psi'+(-ik\hat\psi)\,\overline U'=-\frac{ik}{\rho}\hat p.
 \]
+Factor $i$ on the left:
+\[
+i(k\overline U-\omega)\hat\psi'-ik\hat\psi\,\overline U'=-\frac{ik}{\rho}\hat p.
+\]
+Divide both sides by $-ik$:
+\[
+\frac{\omega-k\overline U}{k}\hat\psi'+\hat\psi\,\overline U'=\frac{\hat p}{\rho}.
+\]
 Solve for $\hat p$:
 \begin{equation}
 \boxed{\;\hat p=\rho\!\left[\frac{\omega-k\overline U}{k}\,\pd{\hat\psi}{y}+\hat\psi\,\pd{\overline U}{y}\right]\;}
@@ -397,23 +473,31 @@ Interface matching at $y=\eta$. Continuity of normal velocity / displacement giv
 \left[\frac{\omega}{k}\pd{\hat\psi}{y}+\hat\psi\,\pd{\overline U}{y}\right]_-^+=0\quad\text{at }y=0.
 \]
 
-Apply continuity of $\hat\psi$:
+Apply continuity of $\hat\psi$ at $y=0$:
 \[
 C_+=C_-\equiv C.
 \]
-Evaluate the derivative jump. At $y=0^+$: $\hat\psi'=-kC$, $\overline U'=-\alpha$. At $y=0^-$: $\hat\psi'=+kC$, $\overline U'=0$. Insert into the second condition:
+Differentiate the layer solutions:
 \[
-\left[\frac{\omega}{k}(-kC)+C(-\alpha)\right]-\left[\frac{\omega}{k}(+kC)+0\right]=0.
+\hat\psi'(0^+)=-kC,\qquad \hat\psi'(0^-)=+kC.
 \]
-Collect terms:
+Read off base shear from $\overline U(y)=-\alpha y\,(y>0)$, $\overline U(y)=0\,(y<0)$:
+\[
+\overline U'(0^+)=-\alpha,\qquad \overline U'(0^-)=0.
+\]
+Insert into the second matching condition:
+\[
+\left[\frac{\omega}{k}(-kC)+C(-\alpha)\right]-\left[\frac{\omega}{k}(+kC)+C(0)\right]=0.
+\]
+Expand:
 \[
 -\omega C-\alpha C-\omega C=0.
 \]
-Simplify:
+Collect:
 \[
--2\omega C=\alpha C.
+-2\omega C-\alpha C=0.
 \]
-Therefore (with $C\ne 0$):
+Factor $C\ne 0$ and solve for $\omega$:
 \begin{equation}
 \boxed{\;\omega=-\frac{\alpha}{2}\;}
 \label{eq:omega-result}
@@ -462,15 +546,22 @@ Position of contact-region surface point relative to axis:
 \[
 \vb r_{\text{from axis}}=x\hat{\vb x}-(\sqrt{a^2-x^2})\hat{\vb z}.
 \]
-Cross product:
+Apply $\hat{\vb y}\times\hat{\vb x}=-\hat{\vb z}$, $\hat{\vb y}\times\hat{\vb z}=\hat{\vb x}$:
 \[
-\Omega\hat{\vb y}\times\vb r_{\text{from axis}}=\Omega\!\left[\sqrt{a^2-x^2}\,\hat{\vb x}+x\,\hat{\vb z}\right].
+\Omega\hat{\vb y}\times\vb r_{\text{from axis}}=\Omega x(-\hat{\vb z})-\Omega\sqrt{a^2-x^2}\,\hat{\vb x}.
 \]
-Apply $x\ll a$:
+Collect:
 \[
-\boxed{\;\vb u(x,z=h(x))\approx U\hat{\vb x},\qquad U=\Omega a\;}
+\Omega\hat{\vb y}\times\vb r_{\text{from axis}}=-\Omega\sqrt{a^2-x^2}\,\hat{\vb x}-\Omega x\,\hat{\vb z}.
 \]
-($\hat{\vb z}$ component is $O(\Omega x)\ll U$).
+Apply $x\ll a$ in $\sqrt{a^2-x^2}\approx a$:
+\[
+\Omega\hat{\vb y}\times\vb r_{\text{from axis}}\approx -\Omega a\,\hat{\vb x}-\Omega x\,\hat{\vb z}.
+\]
+Drop $\hat{\vb z}$-component as $O(\Omega x)\ll |\Omega a|$:
+\[
+\boxed{\;\vb u(x,z=h(x))\approx U\hat{\vb x},\qquad U=-\Omega a\;}
+\]
 
 \subsection*{(b)(ii) Lubrication equation}
 
@@ -504,28 +595,36 @@ Apply $u_x(z=0)=0$:
 \[
 C(x)=0.
 \]
-Apply $u_x(z=h)=\Omega a$:
+Apply $u_x(z=h)=U=-\Omega a$:
 \[
-B(x)=\frac{\Omega a}{h(x)}.
+B(x)=\frac{U}{h(x)}=-\frac{\Omega a}{h(x)}.
 \]
 Therefore
 \begin{equation}
-\boxed{\;u_x(x,z)\approx \frac{\Omega a\,z}{h(x)}\;}
+\boxed{\;u_x(x,z)\approx \frac{U\,z}{h(x)}=-\frac{\Omega a\,z}{h(x)}\;}
 \label{eq:lub-ux}
 \end{equation}
-(linear Couette across the gap, shear rate $\Omega a/h(x)$).
+(linear Couette across the gap, shear rate $U/h(x)$).
 
 \subsection*{(c) Force and torque}
 
-Viscous shear stress on the cylinder (in $\hat{\vb x}$):
+Viscous shear stress in the fluid:
 \[
-\tau_{xz}\big|_{z=h}=\mu\pd{u_x}{z}\bigg|_{z=h}=\frac{\mu\Omega a}{h(x)}.
+\sigma_{xz}\big|_{z=h}=\mu\pd{u_x}{z}\bigg|_{z=h}=\frac{\mu U}{h(x)}=-\frac{\mu\Omega a}{h(x)}.
 \]
-Net horizontal force on the cylinder (length $L$, integrated over the thin-gap strip $|x|<b$, sign such that the fluid drags the cylinder in $-\hat{\vb x}$):
+Traction on cylinder from fluid (outward normal from cylinder is $-\hat{\vb z}$ at the bottom):
 \[
-F\approx -\int_{-b}^{b}\frac{\mu\Omega a}{h(x)}L\,\de x=\int_{-b}^{b}\frac{A}{h}\de x,\qquad A=-\mu\Omega a L.
+t_x=-\sigma_{xz}\big|_{z=h}=\frac{\mu\Omega a}{h(x)}.
 \]
-Torque about the axis (lever arm $\approx a$):
+Net horizontal force on the cylinder (length $L$, integrated over the thin-gap strip $|x|<b$):
+\[
+F\approx \int_{-b}^{b}\frac{\mu\Omega a}{h(x)}L\,\de x=\int_{-b}^{b}\frac{A}{h}\de x,\qquad A=\mu\Omega a L.
+\]
+Torque about the axis (lever arm $\vb r=-a\hat{\vb z}$, force $\de\vb F=t_x L\,\de x\,\hat{\vb x}$):
+\[
+\de\bm\Gamma=(-a\hat{\vb z})\times(t_x L\,\de x)\hat{\vb x}=-a t_x L\,\de x\,(\hat{\vb z}\times\hat{\vb x}).
+\]
+Apply $\hat{\vb z}\times\hat{\vb x}=\hat{\vb y}$:
 \[
 \Gamma\approx -\int_{-b}^{b}\frac{\mu\Omega a^2 L}{h(x)}\,\de x=\int_{-b}^{b}\frac{B'}{h}\,\de x,\qquad B'=-\mu\Omega a^2 L.
 \]
@@ -533,26 +632,38 @@ Evaluate the integral with \eqref{eq:h-paraboloid} extended to $b\to\infty$:
 \[
 \int_{-\infty}^{\infty}\frac{\de x}{h_0+x^2/(2a)}.
 \]
-Substitute $x=\sqrt{2ah_0}\,\tan\theta$, $\de x=\sqrt{2ah_0}\sec^2\theta\,\de\theta$, $h=h_0\sec^2\theta$:
+Substitute $x=\sqrt{2ah_0}\,\tan\theta$:
 \[
-\int_{-\infty}^{\infty}\frac{\de x}{h(x)}=\frac{\sqrt{2ah_0}}{h_0}\int_{-\pi/2}^{\pi/2}\de\theta=\sqrt{\frac{2a}{h_0}}\,\pi.
+\de x=\sqrt{2ah_0}\sec^2\theta\,\de\theta,\qquad h=h_0\sec^2\theta.
+\]
+Insert into the integral:
+\[
+\int_{-\infty}^{\infty}\frac{\de x}{h(x)}=\frac{\sqrt{2ah_0}}{h_0}\int_{-\pi/2}^{\pi/2}\de\theta.
+\]
+Evaluate:
+\[
+\int_{-\infty}^{\infty}\frac{\de x}{h(x)}=\sqrt{\frac{2a}{h_0}}\,\pi.
 \]
 Therefore
 \begin{equation}
-\boxed{\;F\approx -\pi\mu\Omega aL\sqrt{\frac{2a}{h_0}},\qquad \Gamma\approx -\pi\mu\Omega a^2 L\sqrt{\frac{2a}{h_0}}\;}
+\boxed{\;F\approx \pi\mu\Omega aL\sqrt{\frac{2a}{h_0}},\qquad \Gamma\approx -\pi\mu\Omega a^2 L\sqrt{\frac{2a}{h_0}}\;}
 \label{eq:F-Gamma}
 \end{equation}
-Both diverge as $h_0\to 0$ --- characteristic lubrication amplification.
+$|F|$ and $|\Gamma|$ both diverge as $h_0\to 0$ --- characteristic lubrication amplification. Signs: $F>0$ (fluid drag opposes the $-\hat{\vb x}$ surface motion at the bottom), $\Gamma<0$ (viscous torque opposes rotation).
 
 \subsection*{(d) Free roll-and-slide}
 
 If the cylinder also translates with $V(t)\hat{\vb x}$, the surface point at the bottom moves at
 \[
-\vb v_{\text{surf}}=V\hat{\vb x}+\Omega\hat{\vb y}\times(-a\hat{\vb z})=(V-\Omega a)\hat{\vb x}.
+\vb v_{\text{surf}}=V\hat{\vb x}+\Omega\hat{\vb y}\times(-a\hat{\vb z}).
 \]
-The plate is fixed: top BC becomes $u_x(z=h)=V-\Omega a$. The lubrication analysis is linear, so replace $\Omega a\to \Omega a-V$ in (c):
+Apply $\hat{\vb y}\times\hat{\vb z}=\hat{\vb x}$:
 \[
-F\approx -\pi\mu L\sqrt{\frac{2a}{h_0}}\,(\Omega a-V),
+\vb v_{\text{surf}}=(V-\Omega a)\hat{\vb x}.
+\]
+The plate is fixed: top BC becomes $u_x(z=h)=V-\Omega a$. The lubrication analysis is linear in $U$, so replace $-\Omega a\to V-\Omega a$, equivalently $\Omega a\to \Omega a-V$, in (c):
+\[
+F\approx \pi\mu L\sqrt{\frac{2a}{h_0}}\,(\Omega a-V),
 \]
 \[
 \Gamma\approx -\pi\mu L a\sqrt{\frac{2a}{h_0}}\,(\Omega a-V).
@@ -563,7 +674,7 @@ Define
 \]
 Equations of motion (slowly varying, no fluid inertia):
 \[
-M\dv{V}{t}=F=-\lambda(\Omega a-V),\qquad I\dv{\Omega}{t}=\Gamma=-\lambda a(\Omega a-V).
+M\dv{V}{t}=F=\lambda(\Omega a-V),\qquad I\dv{\Omega}{t}=\Gamma=-\lambda a(\Omega a-V).
 \]
 Track the slip $s\equiv\Omega a-V$:
 \[
@@ -585,6 +696,6 @@ Therefore
 \[
 \boxed{\;V(t\to\infty)=\Omega(t\to\infty)\,a\;}
 \]
-Pure rolling. Combination $MV+I\Omega/a$ is a conserved Casimir of the dynamics (no torque about the contact line from the lubrication shear when $s=0$).
+Pure rolling. The combination $MV+I\Omega/a$ is conserved by the dynamics: $\dv{}{t}(MV+I\Omega/a)=F+\Gamma/a=\lambda(\Omega a-V)-\lambda(\Omega a-V)=0$.
 
 \end{document}

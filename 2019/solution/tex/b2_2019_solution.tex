@@ -28,11 +28,17 @@ Proper time is the invariant interval along a timelike worldline:
 4-velocity is the proper-time derivative of position:
 \[ U^\mu = \frac{\de X^\mu}{\de\tau} = \gamma(c,\bm v). \]
 4-acceleration is the proper-time derivative of 4-velocity:
-\[ A^\mu = \frac{\de U^\mu}{\de\tau}. \]
-Magnitude of $\bm U$ is fixed:
-\[ U\cdot U = -\gamma^2 c^2 + \gamma^2 v^2 = -c^2. \]
+\[ A^\mu = \frac{\de U^\mu}{\de\tau} = \gamma\frac{\de}{\de t}(\gamma c,\gamma\bm v). \]
+Compute $U\cdot U$ with metric $(-,+,+,+)$:
+\[ U\cdot U = -\gamma^2 c^2 + \gamma^2 v^2. \]
+Factor $\gamma^2$:
+\[ U\cdot U = \gamma^2(v^2 - c^2). \]
+Use $\gamma^2 = 1/(1-v^2/c^2)$:
+\[ U\cdot U = -c^2. \]
 Differentiate with respect to $\tau$:
-\[ \frac{\de}{\de\tau}(U\cdot U) = 2\,U\cdot A = 0. \]
+\[ \frac{\de}{\de\tau}(U\cdot U) = 2\,U\cdot A. \]
+Set equal to zero since the right-hand side is constant:
+\[ 2\,U\cdot A = 0. \]
 Hence
 \begin{equation}
 \boxed{\bm U\cdot\bm A = 0.}
@@ -44,11 +50,29 @@ Newton-II in relativistic form, with $\bm p=\gamma m\bm v$:
 \[ \frac{\de p_x}{\de t} = f_x. \]
 Integrate with $p_x(0)=0$:
 \[ p_x = f_x t. \]
-Use $\gamma m v_x = p_x$ and $\gamma^2=1+(p/mc)^2$:
-\[ \dot x = v_x = \frac{p_x/m}{\sqrt{1+(p_x/mc)^2}} = \frac{f_x t/m}{\sqrt{1+(f_x t/mc)^2}}. \]
-Integrate $\dot x$ with $x(0)=0$. Let $a\equiv f_x/m$:
-\[ x(t) = \int_0^t\frac{a t'\,\de t'}{\sqrt{1+(a t'/c)^2}} = \frac{c^2}{a}\left[\sqrt{1+(at/c)^2}-1\right]. \]
-Differentiate $\dot x$ once more for $\ddot x$:
+Relate momentum to velocity via $p_x = \gamma m v_x$:
+\[ \gamma m v_x = f_x t. \]
+Use the identity $\gamma^2 = 1 + (p/mc)^2$:
+\[ \gamma = \sqrt{1 + (f_x t/mc)^2}. \]
+Divide $p_x = \gamma m v_x$ by $\gamma m$:
+\[ v_x = \frac{f_x t/m}{\sqrt{1+(f_x t/mc)^2}}. \]
+Define $a \equiv f_x/m$ so $\dot x$ becomes:
+\[ \dot x = \frac{at}{\sqrt{1+(at/c)^2}}. \]
+Integrate $\dot x$ with $x(0)=0$:
+\[ x(t) = \int_0^t\frac{a t'\,\de t'}{\sqrt{1+(a t'/c)^2}}. \]
+Substitute $w=at'/c$, $\de w=(a/c)\,\de t'$:
+\[ x(t) = \frac{c^2}{a}\int_0^{at/c}\frac{w\,\de w}{\sqrt{1+w^2}}. \]
+Use $\de(\sqrt{1+w^2}) = w\,\de w/\sqrt{1+w^2}$:
+\[ x(t) = \frac{c^2}{a}\left[\sqrt{1+w^2}\right]_0^{at/c}. \]
+Evaluate at the limits:
+\[ x(t) = \frac{c^2}{a}\left[\sqrt{1+(at/c)^2}-1\right]. \]
+Differentiate $\dot x = at/\sqrt{1+(at/c)^2}$ by the quotient rule:
+\[ \ddot x = \frac{a\sqrt{1+(at/c)^2} - at\cdot\frac{a^2 t/c^2}{\sqrt{1+(at/c)^2}}}{1+(at/c)^2}. \]
+Combine numerator over the common surd $\sqrt{1+(at/c)^2}$:
+\[ \ddot x = \frac{a[1+(at/c)^2] - a^3 t^2/c^2}{[1+(at/c)^2]^{3/2}}. \]
+Expand the bracket $a[1+(at/c)^2]$:
+\[ \ddot x = \frac{a + a^3 t^2/c^2 - a^3 t^2/c^2}{[1+(at/c)^2]^{3/2}}. \]
+Cancel the $a^3 t^2/c^2$ terms:
 \[ \ddot x = \frac{a}{[1+(at/c)^2]^{3/2}}. \]
 Hence
 \begin{equation}
@@ -62,7 +86,9 @@ Future light-cone of $O$: $|x|<ct,\ t>0$ (region I, can be affected by $O$). Pas
 
 Charged particle from rest in $(E_x,0,0)$: $f_x=qE_x$ constant, hyperbolic worldline from (b)
 \[ x(t) = \frac{c^2}{a}\left[\sqrt{1+(at/c)^2}-1\right],\qquad a=qE_x/m. \]
-Asymptote: $x\to ct - c^2/a$ (parallel to the light-cone, never crossing it).
+Take $t\to+\infty$ so $\sqrt{1+(at/c)^2}\sim at/c$:
+\[ x \to \frac{c^2}{a}\left(\frac{at}{c}-1\right) = ct - \frac{c^2}{a}. \]
+The worldline asymptotes to the light-cone but never crosses it.
 
 \begin{center}
 \begin{tikzpicture}[>=stealth, scale=1.0]
@@ -184,14 +210,18 @@ This is inconsistent with causality: the grandfather paradox renders any local f
 
 \subsection*{(a) Apparent angle of the moving rod}
 
-Take simultaneous endpoints in $S$ at time $t$. In $S'$ they have $x'_1=x'(t),\ x'_2=x'(t)+L_0$, where $L_0=L$ is the proper length, and both endpoints share the same $y'$-coordinate at that $S'$-time. To compare in $S$ we need simultaneous events in $S$.
-
-Use the inverse Lorentz transform $x'=\gamma(x-vt)$, $y'=y$, $t'=\gamma(t-vx/c^2)$ for endpoints simultaneous in $S$ (same $t$). Endpoint 1 at $x_1$ has $S'$-time $t'_1=\gamma(t-vx_1/c^2)$; endpoint 2 at $x_2=x_1+\Delta x$ has $t'_2=\gamma(t-vx_2/c^2)$. Time-difference between the two events in $S'$:
+Take the rod endpoints simultaneously in $S$ at time $t$, separated by $\Delta x$, $\Delta y$ in $S$. By length contraction along the boost direction:
+\[ \Delta x = L/\gamma. \]
+Apply the inverse Lorentz transform for time, $t' = \gamma(t - vx/c^2)$, at fixed $t$:
 \[ \Delta t' = -\gamma v\,\Delta x/c^2. \]
-Rod is contracted along $x$, so $\Delta x=L/\gamma$; in this $\Delta t'$ the endpoint moved by $u\Delta t'$ in $y'$ (i.e.\ in $y$). Compute $\Delta y$:
-\[ \Delta y = u\,\Delta t' = -\frac{\gamma v u L}{\gamma c^2} = -\frac{v u L}{c^2}. \]
-The rod-vector in $S$ at fixed $t$ has components $(\Delta x,\Delta y) = (L/\gamma,\, -vuL/c^2)$. Angle to the $x$-axis:
-\[ \tan\alpha = \frac{\Delta y}{\Delta x} = -\frac{vuL/c^2}{L/\gamma} = -\frac{\gamma v u}{c^2}. \]
+Substitute $\Delta x = L/\gamma$:
+\[ \Delta t' = -vL/c^2. \]
+In $S'$ both endpoints move with $u\hat{\bm y}'$, so in this $\Delta t'$ the rightward endpoint shifts by $u\Delta t'$ in $y'$. Use $\Delta y = \Delta y'$ (no boost in $y$):
+\[ \Delta y = u\,\Delta t' = -\frac{vuL}{c^2}. \]
+Form the rod-vector $(\Delta x,\Delta y) = (L/\gamma,\,-vuL/c^2)$ and compute the angle:
+\[ \tan\alpha = \frac{\Delta y}{\Delta x} = -\frac{vuL/c^2}{L/\gamma}. \]
+Simplify the ratio:
+\[ \tan\alpha = -\frac{\gamma v u}{c^2}. \]
 Hence
 \begin{equation}
 \boxed{\tan\alpha = -\frac{\gamma v u}{c^2}.}
@@ -199,89 +229,106 @@ Hence
 
 \subsection*{(b) Doppler shift along the observer's path}
 
-Observer position in $S$: $(L,vt,0)$. Source at origin emits a photon toward the observer; the photon arrives along the unit vector
+Observer position in $S$ at time $t$: $(L,vt,0)$. Photon emitted from the origin reaches it along
 \[ \hat{\bm n}(t) = \frac{(L,vt,0)}{\sqrt{L^2+v^2t^2}}. \]
-Angle $\theta$ between source-to-observer direction $\hat{\bm n}$ and observer's velocity $v\hat{\bm y}$:
+Define $\theta$ as the angle between $\hat{\bm n}$ and the observer velocity $v\hat{\bm y}$:
 \[ \cos\theta = \hat{\bm n}\cdot\hat{\bm y} = \frac{vt}{\sqrt{L^2+v^2 t^2}}. \]
-Use the relativistic Doppler formula (frequency received by observer moving with $\bm v$ when the source is at rest):
-\[ f_{\rm obs} = f_0\,\frac{\sqrt{1-v^2/c^2}}{1-(v/c)\cos\theta_{\rm s}}, \]
-where $\theta_{\rm s}$ is the angle in the \emph{source frame} between source-to-observer direction and observer's velocity, which here equals $\theta$. Substitute $\cos\theta$:
-\[ f_{\rm obs}(t) = \frac{f_0\sqrt{1-v^2/c^2}}{1-(v/c)\cdot\frac{vt}{\sqrt{L^2+v^2t^2}}}. \]
-Simplify the denominator:
-\[ 1-\frac{v^2 t}{c\sqrt{L^2+v^2 t^2}} = \frac{c\sqrt{L^2+v^2 t^2}-v^2 t/c\cdot c}{c\sqrt{L^2+v^2 t^2}}, \]
-giving the compact form
+Photon 4-momentum: $P^\mu = (hf_0/c)(1,\hat{\bm n})$; observer 4-velocity: $U^\mu_{\rm obs} = \gamma(c,0,v,0)$. Observed energy is $-P_\mu U^\mu_{\rm obs}$:
+\[ hf_{\rm obs} = -P_\mu U^\mu_{\rm obs} = \gamma hf_0(1 - \bm v\cdot\hat{\bm n}/c). \]
+Divide through by $h$:
+\[ f_{\rm obs} = \gamma f_0\bigl(1 - v\cos\theta/c\bigr). \]
+Substitute $\cos\theta = vt/\sqrt{L^2+v^2t^2}$:
+\[ f_{\rm obs}(t) = \frac{f_0}{\sqrt{1-v^2/c^2}}\left(1 - \frac{v^2 t}{c\sqrt{L^2+v^2 t^2}}\right). \]
+Combine the bracket over a common denominator:
+\[ f_{\rm obs}(t) = \frac{f_0\,(c\sqrt{L^2+v^2 t^2} - v^2 t)}{c\sqrt{L^2+v^2 t^2}\,\sqrt{1-v^2/c^2}}. \]
+Hence
 \begin{equation}
-\boxed{f_{\rm obs}(t) = f_0\,\frac{\sqrt{1-v^2/c^2}\,\sqrt{L^2+v^2 t^2}}{\sqrt{L^2+v^2 t^2}-v^2 t/c}.}
+\boxed{f_{\rm obs}(t) = \frac{f_0}{\sqrt{1-v^2/c^2}}\left(1 - \frac{v^2 t}{c\sqrt{L^2+v^2 t^2}}\right).}
 \label{eq:Q2b-fobs}
 \end{equation}
-Limits: $t\to-\infty\Rightarrow\cos\theta\to-1$, $f_{\rm obs}\to f_0\sqrt{(1-v/c)/(1+v/c)}$ (red-shift). $t\to+\infty\Rightarrow\cos\theta\to+1$, $f_{\rm obs}\to f_0\sqrt{(1+v/c)/(1-v/c)}$ (blue-shift). At $t=0$ (transverse passage), $\cos\theta=0$:
-\[ f_{\rm obs}(0) = f_0\sqrt{1-v^2/c^2}. \]
+Take $t\to-\infty$ so $\cos\theta\to-1$:
+\[ f_{\rm obs}\to \gamma f_0(1+v/c). \]
+Simplify with $\gamma(1+v/c) = \sqrt{(1+v/c)/(1-v/c)}$:
+\[ f_{\rm obs}(-\infty) = f_0\sqrt{\frac{1+v/c}{1-v/c}}. \]
+Take $t\to+\infty$ so $\cos\theta\to+1$:
+\[ f_{\rm obs}\to \gamma f_0(1-v/c). \]
+Apply the same identity:
+\[ f_{\rm obs}(+\infty) = f_0\sqrt{\frac{1-v/c}{1+v/c}}. \]
+At $t=0$ (transverse passage in $S$), $\cos\theta=0$:
+\[ f_{\rm obs}(0) = \gamma f_0. \]
+The observer approaches from $-y$ (blueshift) and recedes toward $+y$ (redshift); $f_{\rm obs}$ decreases monotonically through the transverse value $\gamma f_0$ at $t=0$.
 
 \begin{center}
 \begin{tikzpicture}[>=stealth, scale=1.0]
   \draw[->, thick] (-4.5,0) -- (4.5,0) node[right] {$t$};
   \draw[->, thick] (0,-0.4) -- (0,3.0) node[above] {$f_{\rm obs}/f_0$};
-  % blue and red asymptotes
+  % blue (approach, t<<0) and red (recede, t>>0) asymptotes
   \draw[dashed, gray] (-4.5,2.2) -- (4.5,2.2);
   \draw[dashed, gray] (-4.5,0.6) -- (4.5,0.6);
-  \draw[dashed, gray] (-4.5,1.0) -- (4.5,1.0);
-  \node[gray] at (4.6,2.2) {$\sqrt{\tfrac{1+v/c}{1-v/c}}$};
-  \node[gray,left] at (-4.5,0.6) {$\sqrt{\tfrac{1-v/c}{1+v/c}}$};
-  \node[gray,right] at (4.6,1.0) {$1$};
-  % monotone-increasing S-curve through (0, sqrt(1-v^2/c^2))
+  \draw[dashed, gray] (-4.5,1.4) -- (4.5,1.4);
+  \node[gray,right] at (4.6,2.2) {$\sqrt{\tfrac{1+v/c}{1-v/c}}$};
+  \node[gray,right] at (4.6,0.6) {$\sqrt{\tfrac{1-v/c}{1+v/c}}$};
+  \node[gray,right] at (4.6,1.4) {$\gamma=1/\sqrt{1-v^2/c^2}$};
+  % monotone-decreasing S-curve through (0, gamma)
   \draw[domain=-4.0:4.0,smooth,variable=\t,thick,blue]
-    plot ({\t},{1.0+1.2*\t/sqrt(1+\t*\t)});
-  \node[circle,fill,inner sep=1.2pt] at (0,1.0) {};
-  \node at (-0.6,1.05) {$f_0\sqrt{1-v^2/c^2}$};
-  \node[blue] at (-3.5,2.0) {$f_{\rm obs}(t)$};
+    plot ({\t},{1.4 - 0.8*\t/sqrt(1+\t*\t)});
+  \node[circle,fill,inner sep=1.2pt] at (0,1.4) {};
+  \node at (-0.8,1.65) {$\gamma f_0$};
+  \node[blue] at (-3.5,2.4) {$f_{\rm obs}(t)$};
 \end{tikzpicture}
 \end{center}
 
 \subsection*{(c) Resonant absorption by a moving atomic cloud and re-emission}
 
-Atoms in cloud move with $\bm v=v\hat{\bm y}$. Source emits spherical waves at $f_0<f$. From \eqref{eq:Q2b-fobs}, the frequency seen by an atom depends on the angle $\theta(t)$ between the source-to-atom direction (in $S$) and $\hat{\bm v}$. Define the resonance condition: $f_{\rm obs}=f$ within the natural linewidth $\Gamma\sim 1/(2\pi\tau)$, i.e.\
-\[ |f_{\rm obs}-f|<\Gamma. \]
+Atoms in cloud move with $\bm v=v\hat{\bm y}$. Source emits spherical waves at $f_0<f$. From \eqref{eq:Q2b-fobs}, the frequency seen by an atom is set by $\cos\theta(t)=vt/\sqrt{L^2+v^2 t^2}$:
+\[ f_{\rm atom}(t) = \gamma f_0\bigl(1 - v\cos\theta(t)/c\bigr). \]
+Resonance requires $|f_{\rm atom}-f|\lesssim\Gamma$, with the natural linewidth $\Gamma\sim 1/(2\pi\tau)$.
 
-\textbf{Critical velocity $v_c$.} Maximum blueshift is forward-Doppler, $\cos\theta=1$:
+\textbf{Critical velocity $v_c$.} Maximum blueshift occurs at $\cos\theta=-1$ (atom approaching head-on, $t\to-\infty$):
+\[ f_{\rm max}(v) = \gamma f_0(1+v/c). \]
+Simplify using $\gamma(1+v/c) = \sqrt{(1+v/c)/(1-v/c)}$:
 \[ f_{\rm max}(v) = f_0\sqrt{\frac{1+v/c}{1-v/c}}. \]
-Resonance is possible only for $v\geq v_c$ where $f_{\rm max}(v_c)=f$:
+Resonance possible iff $f_{\rm max}(v)\geq f$. Setting $f_{\rm max}(v_c) = f$:
+\[ \sqrt{\frac{1+v_c/c}{1-v_c/c}} = \frac{f}{f_0}. \]
+Square both sides and solve for $v_c$:
 \[ v_c = c\,\frac{(f/f_0)^2-1}{(f/f_0)^2+1}. \]
-Three regimes (low $v\ll v_c$, threshold $v\sim v_c$, ultra-relativistic $v\sim c$ above $v_c$):
 
 \medskip
-\noindent\emph{Geometry of re-emission to the source.} An atom at position $\bm r(t)$ absorbs a photon along $\hat{\bm n}=\bm r/r$ at frequency $f_{\rm obs}$, re-emits isotropically in its rest frame at $f$. Photons going back to the source travel along $-\hat{\bm n}$; the source receives them at frequency $f_{\rm src}$. Use Doppler twice (source$\to$atom, then atom$\to$source going back along $-\hat{\bm n}$):
-\[ f_{\rm src} = f\cdot\frac{\sqrt{1-v^2/c^2}}{1-(v/c)\cos\theta_{\rm back}},\qquad \cos\theta_{\rm back} = -\hat{\bm n}\cdot\hat{\bm v}/(-1) = \hat{\bm n}\cdot\hat{\bm v} = \cos\theta. \]
-Note: $\theta_{\rm back}$ is the angle between $\bm v$ and the direction the back-photon travels in $S$; for a photon emitted toward the origin, it is the same $\cos\theta$ with the appropriate sign convention. The full chain gives
-\[ f_{\rm src}/f_0 = \frac{1-v^2/c^2}{(1-(v/c)\cos\theta)\,(1+(v/c)\cos\theta)}\cdot\frac{f}{f_0}\cdot\delta_{\rm res} = \frac{f}{f_0}(1-v^2/c^2)/(1-v^2\cos^2\theta/c^2)\cdot\text{(resonant)}. \]
-
-\textbf{Frequency at source of returning photon.} The simplification gives
-\begin{equation}
-\boxed{\frac{f_{\rm src}}{f} = \frac{1-v^2/c^2}{1-v^2\cos^2\theta/c^2}\cdot\frac{1}{(\text{blue/red factor})},}
-\end{equation}
-where $\cos\theta=\cos\theta(t)$ is set by the resonant geometry. Practically, $f_{\rm src}\simeq f\sqrt{1-v^2/c^2}/(1+(v/c)\cos\theta)$ for the photon coming back along $-\hat{\bm n}$; at the resonant instant, with $f_{\rm obs}=f$, $\cos\theta=\cos\theta_{\rm res}(v)$ obeys
-\[ f_0\,\frac{\sqrt{1-v^2/c^2}}{1-(v/c)\cos\theta_{\rm res}}=f, \]
-\[ \cos\theta_{\rm res} = \frac{c}{v}\left(1-\frac{f_0\sqrt{1-v^2/c^2}}{f}\right). \]
+\noindent\emph{Resonant angle.} Set $f_{\rm atom} = f$:
+\[ \gamma f_0(1 - v\cos\theta_{\rm res}/c) = f. \]
+Solve for $\cos\theta_{\rm res}$:
+\[ \cos\theta_{\rm res} = \frac{c}{v}\left(1 - \frac{f}{\gamma f_0}\right). \]
+At $v = v_c$, $f/(\gamma f_0) = 1+v/c$, giving $\cos\theta_{\rm res}=-1$ (resonance at head-on).
+Resonance time $t_{\rm res}$ from $\cos\theta(t) = vt/\sqrt{L^2+v^2 t^2}$:
+\[ t_{\rm res} = \frac{L\cos\theta_{\rm res}}{v\,\sin\theta_{\rm res}} = \frac{L\cos\theta_{\rm res}}{v\sqrt{1-\cos^2\theta_{\rm res}}}. \]
+For $v$ just above $v_c$: $\cos\theta_{\rm res}\to-1$ so $t_{\rm res}\to-\infty$ (resonance with atom far away, approaching head-on). For $v\to c$: $\gamma\to\infty$ so $f/(\gamma f_0)\to 0$, giving $\cos\theta_{\rm res}\to 1$ and $t_{\rm res}\to+\infty$ (resonance after transverse passage, atom receding nearly head-on).
 
 \medskip
-\noindent\emph{Time of resonance.} From the geometry $\cos\theta(t)=vt/\sqrt{L^2+v^2 t^2}$:
-\[ t_{\rm res} = \frac{L}{v}\,\frac{\cos\theta_{\rm res}}{\sqrt{1-\cos^2\theta_{\rm res}}}. \]
-The line at $f$ has finite width $\Gamma$, so resonance is met over a window $\Delta\theta$ around $\theta_{\rm res}$; the absorbed amplitude as a function of $t$ has a Lorentzian peak of FWHM
-\[ \Delta t \sim \frac{1}{2\pi\Gamma}\cdot\bigg|\frac{\de t}{\de\cos\theta}\bigg|_{\theta_{\rm res}}\bigg|\frac{\de\cos\theta}{\de f_{\rm obs}}\bigg|_{\theta_{\rm res}}, \]
-plus the intrinsic decay time $\tau$ that smears the re-emission echo by an exponential tail $\propto e^{-(t-t_{\rm res})/\tau}$.
+\noindent\emph{Frequency of returning photon at source.} The excited atom (moving at $v\hat{\bm y}$ in $S$) re-emits at rest-frame frequency $f$; the photon travels back to the origin with direction $-\hat{\bm n}$ in $S$. Contract photon 4-momentum with atom 4-velocity, $-P_\mu U^\mu_{\rm atom} = hf$:
+\[ hf = h f_{\rm src}\,\gamma(1+v\cos\theta/c). \]
+Solve for the frequency at the source $f_{\rm src}$:
+\[ f_{\rm src} = \frac{f}{\gamma(1+v\cos\theta/c)}. \]
+Rewrite using $1/\gamma = \sqrt{1-v^2/c^2}$:
+\[ f_{\rm src} = \frac{f\sqrt{1-v^2/c^2}}{1+v\cos\theta/c}. \]
+At the resonance instant use $f/\gamma = f_0(1-v\cos\theta_{\rm res}/c)$:
+\[ f_{\rm src}^{\rm res} = f_0\,\frac{1-v\cos\theta_{\rm res}/c}{1+v\cos\theta_{\rm res}/c}. \]
+
+\medskip
+\noindent\emph{Line width and decay.} The transition has finite linewidth $\Gamma\sim 1/(2\pi\tau)$, so resonance is met over a window $\Delta t$ set by $|\de f_{\rm atom}/\de t|^{-1}\Gamma$. After absorption, the cloud re-emits exponentially with timescale $\tau$, smearing the return echo by $e^{-(t-t_{\rm res})/\tau}$ for $t>t_{\rm res}$.
 
 \medskip
 \noindent\emph{Three regimes.}
 
-\textbf{(i) $v\ll v_c$:} $f_{\rm max}<f$, no resonance. Some absorption only via the wing of the line, exponentially small. Re-emission negligible.
+\textbf{(i) $v\ll v_c$:} $f_{\rm max}<f$, no resonance. Absorption only through line wings: amplitude suppression $\propto\Gamma^2/(f-f_{\rm atom})^2$, exponentially small. Re-emitted signal at source negligible.
 
-\textbf{(ii) $v\approx v_c$:} resonance only at $\cos\theta\approx 1$, i.e.\ at $t\to\infty$ (atoms have receded behind/ahead). Absorption window broadens and is asymmetric.
+\textbf{(ii) $v\approx v_c$:} resonance only at $\cos\theta\to -1$, i.e.\ $t_{\rm res}\to-\infty$ (atom far away approaching head-on). Absorption window is broad and asymmetric (vanishing $|\de f_{\rm atom}/\de t|$ at extremes).
 
-\textbf{(iii) $v_c<v<c$:} two resonant angles (one for $\cos\theta<1$ as the cloud crosses the line of sight, possibly two times $t_{\rm res}^\pm$). Each gives an absorption dip in the through-going amplitude at that time, plus a re-emission tail at the source (received frequency depends on the back-Doppler factor).
+\textbf{(iii) $v_c < v < c$:} a single resonance angle $\cos\theta_{\rm res}\in(-1,1)$ gives a sharp absorption notch at $t_{\rm res}$ in the through-going signal, plus a re-emission echo at the source at frequency $f_{\rm src}^{\rm res}$, decaying over $\tau$.
 
-\textbf{(iv) $v\to c$:} forward Doppler huge; resonance happens at very large angles, time of resonance $\to\infty$; cloud sees ``$f$'' only when nearly along the line of sight.
+\textbf{(iv) $v\to c$:} $\cos\theta_{\rm res}\to 1$, $t_{\rm res}\to+\infty$ (resonance occurs late, when the atom is far ahead and receding). Echo arrives at very late time, frequency-shifted strongly by the back-Doppler factor.
 
 \medskip
-\noindent\emph{Effect of $f_0/f$.} If $f_0/f\to 1$, $v_c\to 0$ (resonance possible for any non-zero $v$); if $f_0/f\to 0$ (very mismatched), $v_c\to c$ (only ultra-relativistic clouds resonate).
+\noindent\emph{Effect of $f_0/f$.} As $f_0/f\to 1$, $v_c\to 0$ (resonance for arbitrarily small $v$); as $f_0/f\to 0$ (very mismatched), $v_c\to c$ (only ultra-relativistic clouds resonate).
 
 \medskip
 \noindent\emph{Schematic plots ($v$ increasing left-to-right). Top: amplitude $A(t)$; bottom: frequency $f_{\rm src}(t)$ of returning radiation.}
@@ -334,9 +381,9 @@ Key features: (1) carrier frequency at the source follows the relativistic Doppl
 
 \subsection*{(a) Invariant vs conserved; transformation of tensors}
 
-\textbf{Invariant.} A scalar with the same value in every inertial frame, e.g.\ rest mass $m$, $-P\cdot P=m^2 c^2$, proper time $\tau$.
+\textbf{Invariant.} A scalar with the same value in every inertial frame. Example: rest mass $m$, defined by $-P\cdot P = m^2 c^2$; proper time $\tau$; charge $q$.
 
-\textbf{Conserved.} A quantity whose total value is constant in time within a single frame, e.g.\ total energy or total momentum (both frame-dependent but $\de E/\de t=0$, $\de\bm p/\de t=0$ in the absence of external forces).
+\textbf{Conserved.} A quantity whose total value is constant in time within a chosen frame. Example: total energy or total momentum (both frame-dependent but with $\de E/\de t=0$, $\de\bm p/\de t=0$ in an isolated system).
 
 \textbf{Transformation.} A 4-vector transforms as
 \[ Y'^\mu = \Lambda^\mu{}_\nu\,Y^\nu, \]
@@ -345,42 +392,59 @@ and a rank-$(p,q)$ tensor as
 
 \subsection*{(b) Vanishing of a component implies vanishing of the 4-vector}
 
-Suppose $Y^0=0$ in every frame. Pick the frame $S'$ boosted with velocity $\bm v$:
-\[ Y'^0 = \gamma(Y^0 - \bm v\cdot\bm Y/c) = -\gamma\bm v\cdot\bm Y/c. \]
-$Y'^0=0$ for all $\bm v$ forces $\bm Y=0$. Combined with $Y^0=0$:
+Without loss of generality suppose $Y^0=0$ in every frame. Apply a general boost with velocity $\bm v$:
+\[ Y'^0 = \gamma(Y^0 - \bm v\cdot\bm Y/c). \]
+Use $Y^0 = 0$:
+\[ Y'^0 = -\gamma\,\bm v\cdot\bm Y/c. \]
+Demand $Y'^0 = 0$ for all $\bm v$:
+\[ \bm v\cdot\bm Y = 0\ \forall\bm v\ \Longrightarrow\ \bm Y = 0. \]
+Combined with $Y^0=0$:
 \begin{equation}
 \boxed{Y^\mu = 0.}
 \end{equation}
-By the same argument applied to a boost along any chosen axis, the result holds when any \emph{single} component is zero in all frames.
+The same argument (boost along any axis) covers vanishing of any single component.
 
 \textbf{Physical consequence.} If a 4-current $J^\mu=(c\rho,\bm j)$ has, say, charge density $\rho=0$ in every inertial frame, then $\bm j=0$ as well: there is no charge-free current. Equivalently, the existence of a current implies the existence of a charge density in some frame.
 
-\textbf{Tensor counterexample.} Take an antisymmetric rank-2 tensor with single component $T^{xy}=1$, all others zero. Then $T^{00}=0$ in every frame (antisymmetry $\Rightarrow$ diagonal zero is preserved by Lorentz transformations of $T'^{00}=\Lambda^0{}_\alpha\Lambda^0{}_\beta T^{\alpha\beta}$, a sum of off-diagonal components weighted by symmetric $\Lambda^0{}_\alpha\Lambda^0{}_\beta$, which gives $0$). Yet $T^{\mu\nu}\neq 0$. Hence
+\textbf{Tensor counterexample.} Take any antisymmetric rank-2 tensor $T^{\mu\nu}=-T^{\nu\mu}$ (e.g.\ $T^{xy}=1$, all other independent components zero). Antisymmetry is preserved under Lorentz transformations:
+\[ T'^{\mu\nu} = \Lambda^\mu{}_\alpha\Lambda^\nu{}_\beta T^{\alpha\beta}, \]
+\[ T'^{\nu\mu} = \Lambda^\nu{}_\alpha\Lambda^\mu{}_\beta T^{\alpha\beta} = -\Lambda^\nu{}_\beta\Lambda^\mu{}_\alpha T^{\beta\alpha} = -T'^{\mu\nu}. \]
+Hence $T'^{00}=0$ in every frame, yet $T^{\mu\nu}\neq 0$. The statement
 \begin{equation}
-\boxed{\text{The statement \emph{fails} for tensors.}}
+\boxed{\text{fails for tensors (antisymmetric }F_{\mu\nu}\text{ is the natural EM example).}}
 \end{equation}
 
 \subsection*{(c) The 4-potential, field tensor, and field transformations}
 
-The 4-potential is $A^\mu=(\phi/c,\bm A)$, with $A_\mu=\eta_{\mu\nu}A^\nu=(-\phi/c,\bm A)$ in the $(-,+,+,+)$ convention. The field tensor:
+The 4-potential is $A^\mu=(\phi/c,\bm A)$, with $A_\mu=\eta_{\mu\nu}A^\nu=(-\phi/c,\bm A)$ in the $(-,+,+,+)$ convention. Define the field tensor:
 \[ F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu. \]
-Recall $\bm E = -\nabla\phi - \partial_t\bm A$, $\bm B = \nabla\times\bm A$. Compute $F_{0i}$:
-\[ F_{0i} = \partial_0 A_i - \partial_i A_0 = \frac{1}{c}\partial_t A_i - \partial_i\!\left(-\frac{\phi}{c}\right) = \frac{1}{c}\partial_t A_i + \frac{1}{c}\partial_i\phi = -E_i/c. \]
-And $F_{ij}=\partial_i A_j - \partial_j A_i = \epsilon_{ijk}B^k$. With $c=1=\epsilon_0=\mu_0$:
+Recall the 3-field definitions:
+\[ \bm E = -\nabla\phi - \partial_t\bm A,\qquad \bm B = \nabla\times\bm A. \]
+Compute $F_{0i}$ using $\partial_0 = (1/c)\partial_t$ and $A_0 = -\phi/c$:
+\[ F_{0i} = \partial_0 A_i - \partial_i A_0 = \frac{1}{c}\partial_t A_i + \frac{1}{c}\partial_i\phi. \]
+Factor $-1/c$ and identify $E_i$:
+\[ F_{0i} = -\frac{1}{c}\bigl(-\partial_t A_i - \partial_i\phi\bigr) = -E_i/c. \]
+Compute the spatial components:
+\[ F_{ij}=\partial_i A_j - \partial_j A_i = \epsilon_{ijk}B^k. \]
+With $c=1=\epsilon_0=\mu_0$:
 \begin{equation}
 F_{\mu\nu} = \begin{pmatrix} 0 & -E_x & -E_y & -E_z \\ E_x & 0 & B_z & -B_y \\ E_y & -B_z & 0 & B_x \\ E_z & B_y & -B_x & 0 \end{pmatrix}.
 \label{eq:Fmunu}
 \end{equation}
 
-\textbf{Field transformations.} Boost along $\hat{\bm x}$ with $\Lambda^\mu{}_\nu$:
+\textbf{Field transformations.} Boost along $\hat{\bm x}$ with $\beta=v/c$:
 \[ F'^{\mu\nu} = \Lambda^\mu{}_\alpha\Lambda^\nu{}_\beta\,F^{\alpha\beta}. \]
-Compute the boost matrix:
+Boost matrix:
 \[ \Lambda^\mu{}_\nu = \begin{pmatrix}\gamma & -\gamma\beta & 0 & 0\\ -\gamma\beta & \gamma & 0 & 0\\ 0 & 0 & 1 & 0\\ 0 & 0 & 0 & 1\end{pmatrix}. \]
-Element-by-element calculation, e.g.\ $E'_y = F'^{02}c$:
-\[ F'^{02} = \Lambda^0{}_\alpha\Lambda^2{}_\beta F^{\alpha\beta} = \Lambda^0{}_0\Lambda^2{}_2 F^{02} + \Lambda^0{}_1\Lambda^2{}_2 F^{12}. \]
-Substitute:
-\[ F'^{02} = \gamma\cdot 1\cdot E_y + (-\gamma\beta)\cdot 1\cdot(-B_z) = \gamma(E_y - v B_z\cdot c)\cdot\ldots \]
-Restoring $c$, the standard result is
+Compute $F'^{02}$; since $\Lambda^2{}_\beta=\delta^2_\beta$ only $\beta=2$ contributes:
+\[ F'^{02} = \Lambda^0{}_\alpha F^{\alpha 2}. \]
+Only $\alpha=0,1$ give non-zero $\Lambda^0{}_\alpha$:
+\[ F'^{02} = \Lambda^0{}_0 F^{02} + \Lambda^0{}_1 F^{12}. \]
+Substitute $F^{02}=E_y$, $F^{12}=B_z$ (units $c=1$):
+\[ F'^{02} = \gamma E_y + (-\gamma\beta) B_z. \]
+Factor $\gamma$:
+\[ F'^{02} = \gamma(E_y - \beta B_z). \]
+Restore $c$ via $\beta=v/c$; repeat the same construction for the remaining entries. The standard result is
 \begin{equation}
 \boxed{
 \begin{aligned}
@@ -393,27 +457,34 @@ Compactly $\bm E'_\parallel=\bm E_\parallel$, $\bm B'_\parallel=\bm B_\parallel$
 
 \subsection*{(d) Invariants and $\int\bm E\cdot\bm B\,\de^4 x = 0$}
 
-Two scalars constructed from $F_{\mu\nu}$ and the dual $\tilde F^{\mu\nu}=\tfrac12\epsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}$:
-\[ \tfrac12 F_{\mu\nu}F^{\mu\nu} = \bm B^2 - \bm E^2/c^2, \]
+Construct two scalars from $F_{\mu\nu}$ and the dual $\tilde F^{\mu\nu}=\tfrac12\epsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}$. Contract $F_{\mu\nu}F^{\mu\nu}$ component-by-component:
+\[ \tfrac12 F_{\mu\nu}F^{\mu\nu} = \bm B^2 - \bm E^2/c^2. \]
+Contract $F_{\mu\nu}\tilde F^{\mu\nu}$ similarly:
 \[ \tfrac14 F_{\mu\nu}\tilde F^{\mu\nu} = -\bm E\cdot\bm B/c. \]
-Both are Lorentz scalars (contractions of tensors), so
+Both are full contractions of Lorentz tensors with the invariant $\eta_{\mu\nu}$ and $\epsilon^{\mu\nu\rho\sigma}$, hence Lorentz scalars:
 \begin{equation}
 \boxed{\bm E^2-\bm B^2\ (\text{up to }c^2)\text{ and }\bm E\cdot\bm B\text{ are Lorentz-invariant.}}
 \end{equation}
 
-\textbf{Vanishing integral.} Use the Bianchi identity $\partial_\mu\tilde F^{\mu\nu}=0$. Write
-\[ \bm E\cdot\bm B = -\tfrac14 F_{\mu\nu}\tilde F^{\mu\nu}\ (\text{up to }c). \]
-Show this is a total divergence. Compute
-\[ F_{\mu\nu}\tilde F^{\mu\nu} = \tfrac12 \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}. \]
-Substitute $F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$:
-\[ F_{\mu\nu}\tilde F^{\mu\nu} = 2\,\epsilon^{\mu\nu\rho\sigma}\partial_\mu A_\nu\,F_{\rho\sigma}. \]
-Use Bianchi $\epsilon^{\mu\nu\rho\sigma}\partial_\nu F_{\rho\sigma}=0$:
-\[ F_{\mu\nu}\tilde F^{\mu\nu} = \partial_\mu(2\epsilon^{\mu\nu\rho\sigma}A_\nu F_{\rho\sigma}) \equiv \partial_\mu K^\mu, \]
-the Chern--Simons current $K^\mu=2\epsilon^{\mu\nu\rho\sigma}A_\nu F_{\rho\sigma}$. Hence
-\[ \bm E\cdot\bm B \propto \partial_\mu K^\mu. \]
-Integrate over all spacetime and apply the divergence theorem:
-\[ \int\partial_\mu K^\mu\,\de^4 x = \oint_{\partial}K^\mu\,\de\Sigma_\mu = 0, \]
-since $\bm E,\bm B\to 0$ at infinity (and so does $K^\mu$, which is built from $A$ and $F$). Therefore
+\textbf{Vanishing integral.} Express $\bm E\cdot\bm B$ via the dual (units $c=1$):
+\[ \bm E\cdot\bm B = -\tfrac14 F_{\mu\nu}\tilde F^{\mu\nu}. \]
+Substitute $\tilde F^{\mu\nu}=\tfrac12\epsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}$:
+\[ F_{\mu\nu}\tilde F^{\mu\nu} = \tfrac12\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}. \]
+Sub $F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$ in the first factor:
+\[ F_{\mu\nu}\tilde F^{\mu\nu} = \tfrac12\epsilon^{\mu\nu\rho\sigma}(\partial_\mu A_\nu - \partial_\nu A_\mu)F_{\rho\sigma}. \]
+Use antisymmetry of $\epsilon$ on $\mu\nu$ to combine the two terms:
+\[ F_{\mu\nu}\tilde F^{\mu\nu} = \epsilon^{\mu\nu\rho\sigma}\partial_\mu A_\nu\,F_{\rho\sigma}. \]
+Apply the product rule to $\partial_\mu(A_\nu F_{\rho\sigma})$:
+\[ F_{\mu\nu}\tilde F^{\mu\nu} = \partial_\mu(\epsilon^{\mu\nu\rho\sigma}A_\nu F_{\rho\sigma}) - \epsilon^{\mu\nu\rho\sigma}A_\nu\partial_\mu F_{\rho\sigma}. \]
+Use the Bianchi identity $\epsilon^{\mu\nu\rho\sigma}\partial_\mu F_{\rho\sigma}=0$:
+\[ F_{\mu\nu}\tilde F^{\mu\nu} = \partial_\mu K^\mu,\qquad K^\mu \equiv \epsilon^{\mu\nu\rho\sigma}A_\nu F_{\rho\sigma}. \]
+Divide by $-4$ to obtain $\bm E\cdot\bm B$:
+\[ \bm E\cdot\bm B = -\tfrac14\partial_\mu K^\mu. \]
+Integrate over spacetime and apply the divergence theorem:
+\[ \int\partial_\mu K^\mu\,\de^4 x = \oint_{\partial}K^\mu\,\de\Sigma_\mu. \]
+Boundary term vanishes since $\bm E,\bm B\to 0$ at infinity:
+\[ \oint_{\partial}K^\mu\,\de\Sigma_\mu = 0. \]
+Therefore
 \begin{equation}
 \boxed{\int\bm E\cdot\bm B\,\de^4 x = 0.}
 \end{equation}
@@ -425,23 +496,27 @@ since $\bm E,\bm B\to 0$ at infinity (and so does $K^\mu$, which is built from $
 
 \subsection*{(a) Plane-wave and static spherically symmetric solutions}
 
-The Klein--Gordon equation, with metric $(-,+,+,+)$ so $\partial_\mu\partial^\mu=-\partial_t^2+\Lap$:
+Use metric $(-,+,+,+)$ so $\partial_\mu\partial^\mu = -\partial_t^2 + \Lap$; the equation becomes:
 \[ \partial_t^2\phi - \Lap\phi + m^2\phi = 0. \]
-\textbf{Plane wave.} Try $\phi=e^{i(\bm k\cdot\bm r-\omega t)}$:
-\[ -\omega^2 + k^2 + m^2 = 0. \]
-Hence the dispersion (with $\hbar=c=1$):
+\textbf{Plane wave.} Try $\phi = e^{i(\bm k\cdot\bm r - \omega t)}$ and compute derivatives:
+\[ \partial_t^2\phi = -\omega^2\phi,\qquad \Lap\phi = -k^2\phi. \]
+Substitute into the equation:
+\[ -\omega^2\phi + k^2\phi + m^2\phi = 0. \]
+Divide by $\phi$:
 \begin{equation}
-\boxed{\omega^2 = k^2 + m^2.}
+\boxed{\omega^2 = k^2 + m^2\quad(\hbar=c=1).}
 \end{equation}
-Restriction: $\omega^2\geq m^2$, i.e.\ $|\omega|\geq m$. Physical interpretation: a quantum of mass $m$ must have energy $\geq mc^2$ (rest energy); $\omega<m$ is forbidden as a propagating excitation.
+Restriction: $|\omega|\geq m$. Physical interpretation: a quantum of mass $m$ must carry energy $\geq mc^2$ (rest energy); modes with $\omega<m$ are non-propagating.
 
-\textbf{Static spherically symmetric.} Drop $\partial_t$, take $\phi(r)$:
+\textbf{Static spherically symmetric.} Drop $\partial_t$:
 \[ -\Lap\phi + m^2\phi = 0. \]
-In spherical symmetry $\Lap\phi = (1/r)\,\de^2(r\phi)/\de r^2$. Let $u(r)=r\phi$:
+In spherical symmetry $\Lap\phi = (1/r)\,\de^2(r\phi)/\de r^2$. Set $u(r)=r\phi$:
+\[ -\frac{1}{r}\frac{\de^2 u}{\de r^2} + \frac{m^2 u}{r} = 0. \]
+Multiply through by $-r$:
 \[ \frac{\de^2 u}{\de r^2} = m^2 u. \]
 General solution decaying at infinity:
 \[ u(r) = C\,e^{-mr}. \]
-Hence
+Divide by $r$ to obtain $\phi$:
 \begin{equation}
 \boxed{\phi(r) = \frac{C\,e^{-mr}}{r}\quad\text{(Yukawa).}}
 \label{eq:Q4-Yukawa}
@@ -482,59 +557,77 @@ A 2-spinor is a 2-component complex object $u=\begin{pmatrix}u_1\\u_2\end{pmatri
 
 \subsection*{(d) Null property and Lorentz transformation of $U^\mu=\tfrac12 u^\dagger\sigma^\mu u$}
 
-\textbf{Null.} Compute the components. Let $u=(a,b)^T$, $|u|^2=|a|^2+|b|^2$:
+\textbf{Null.} Let $u=(a,b)^T$. Compute $U^0$ using $\sigma^0 = \bm 1$:
 \[ U^0 = \tfrac12 u^\dagger u = \tfrac12(|a|^2+|b|^2). \]
-Compute $U^z$:
+Compute $U^z$ with $\sigma_z u = (a,-b)^T$:
 \[ U^z = \tfrac12 u^\dagger\sigma_z u = \tfrac12(|a|^2-|b|^2). \]
-Compute $U^x$:
-\[ U^x = \tfrac12 u^\dagger\sigma_x u = \tfrac12(a^*b+ab^*) = \mathrm{Re}(a^*b). \]
-Compute $U^y$:
-\[ U^y = \tfrac12 u^\dagger\sigma_y u = \tfrac12 i(a^*b - ab^*)\cdot(-1) = \mathrm{Im}(a^*b). \]
-Compute the norm:
-\[ (U^0)^2 - (U^x)^2-(U^y)^2-(U^z)^2 = \tfrac14(|a|^2+|b|^2)^2 - \tfrac14(|a|^2-|b|^2)^2 - |a|^2|b|^2. \]
-Expand:
-\[ = \tfrac14[(|a|^2+|b|^2)^2 - (|a|^2-|b|^2)^2] - |a|^2|b|^2. \]
-Use $(p+q)^2-(p-q)^2=4pq$:
-\[ = \tfrac14\cdot 4|a|^2|b|^2 - |a|^2|b|^2 = 0. \]
+Compute $U^x$ with $\sigma_x u = (b,a)^T$:
+\[ U^x = \tfrac12(a^*b+ab^*) = \mathrm{Re}(a^*b). \]
+Compute $U^y$ with $\sigma_y u = (-ib,ia)^T$:
+\[ U^y = \tfrac12(-ia^*b + iab^*) = \tfrac{i}{2}(ab^*-a^*b). \]
+Identify $ab^* - a^*b = 2i\,\mathrm{Im}(ab^*) = -2i\,\mathrm{Im}(a^*b)$:
+\[ U^y = \mathrm{Im}(a^*b). \]
+Compute the Minkowski norm with $(-,+,+,+)$ (so $U_\mu U^\mu = -(U^0)^2 + |\bm U|^2$):
+\[ -(U^0)^2 + (U^x)^2 + (U^y)^2 + (U^z)^2 = -\tfrac14(|a|^2+|b|^2)^2 + |a^*b|^2 + \tfrac14(|a|^2-|b|^2)^2. \]
+Use $|a^*b|^2 = |a|^2|b|^2$ and combine:
+\[ U_\mu U^\mu = -\tfrac14\bigl[(|a|^2+|b|^2)^2 - (|a|^2-|b|^2)^2\bigr] + |a|^2|b|^2. \]
+Apply $(p+q)^2-(p-q)^2 = 4pq$:
+\[ U_\mu U^\mu = -\tfrac14\cdot 4|a|^2|b|^2 + |a|^2|b|^2. \]
+Cancel:
+\[ U_\mu U^\mu = 0. \]
 Hence
 \begin{equation}
 \boxed{U_\mu U^\mu = 0,\qquad U^\mu\text{ is null.}}
 \end{equation}
 
-\textbf{Boost.} Under $u\to e^{\rho\sigma_z/2}u$, since $\sigma_z^2=\bm 1$:
+\textbf{Boost.} Expand $e^{\rho\sigma_z/2}$ using $\sigma_z^2 = \bm 1$:
 \[ e^{\rho\sigma_z/2} = \cosh(\rho/2)\,\bm 1 + \sinh(\rho/2)\,\sigma_z. \]
-Hence $u'=\begin{pmatrix}e^{\rho/2}a\\ e^{-\rho/2}b\end{pmatrix}$. New components:
-\[ U'^0 = \tfrac12(e^{\rho}|a|^2 + e^{-\rho}|b|^2), \]
+Act on $u=(a,b)^T$:
+\[ u' = \begin{pmatrix}e^{\rho/2}a\\ e^{-\rho/2}b\end{pmatrix}. \]
+Compute $U'^0$ with $|a'|^2 = e^\rho|a|^2$, $|b'|^2 = e^{-\rho}|b|^2$:
+\[ U'^0 = \tfrac12(e^{\rho}|a|^2 + e^{-\rho}|b|^2). \]
+Compute $U'^z$ similarly:
 \[ U'^z = \tfrac12(e^{\rho}|a|^2 - e^{-\rho}|b|^2). \]
-Use hyperbolic identities $e^{\pm\rho}=\cosh\rho\pm\sinh\rho$:
+Substitute $e^{\pm\rho}=\cosh\rho\pm\sinh\rho$ into $U'^0$:
 \[ U'^0 = \cosh\rho\cdot\tfrac12(|a|^2+|b|^2) + \sinh\rho\cdot\tfrac12(|a|^2-|b|^2). \]
 Recognise $U^0$ and $U^z$:
 \[ U'^0 = \cosh\rho\,U^0 + \sinh\rho\,U^z. \]
-Similarly
+Same substitution for $U'^z$:
 \[ U'^z = \sinh\rho\,U^0 + \cosh\rho\,U^z. \]
-Transverse components:
-\[ U'^x = \mathrm{Re}(a^*b)\quad(\text{phases }e^{\rho/2}e^{-\rho/2}=1) = U^x, \]
-\[ U'^y = U^y. \]
-This is exactly a Lorentz boost along $\hat{\bm z}$ with rapidity $\rho$:
+Transverse phases cancel: $a'^*b' = (e^{\rho/2}a)^*(e^{-\rho/2}b) = a^*b$. Hence
+\[ U'^x = U^x,\qquad U'^y = U^y. \]
+This is a Lorentz boost along $\hat{\bm z}$ with rapidity $\rho$:
 \begin{equation}
 \boxed{u\to e^{\rho\sigma_z/2}u\ \Longleftrightarrow\ U^\mu\to\Lambda^\mu{}_\nu(\hat{\bm z},\rho)\,U^\nu,\qquad\tanh\rho=v/c.}
 \end{equation}
 
-\textbf{Phase rotation.} For $u\to e^{i\theta\sigma_z}u$, $\sigma_z^2=\bm 1$:
+\textbf{Phase rotation.} Expand $e^{i\theta\sigma_z}$ using $\sigma_z^2 = \bm 1$:
 \[ e^{i\theta\sigma_z} = \cos\theta\,\bm 1 + i\sin\theta\,\sigma_z. \]
-Acting on $u=(a,b)^T$: $u'=(e^{i\theta}a,\, e^{-i\theta}b)$. Compute components:
-\[ U'^0 = \tfrac12(|a|^2+|b|^2) = U^0, \]
-\[ U'^z = U^z, \]
-\[ U'^x = \mathrm{Re}(e^{-i\theta}a^*\cdot e^{-i\theta}b) = \mathrm{Re}(e^{-2i\theta}a^*b) = \cos(2\theta)U^x + \sin(2\theta)U^y, \]
-\[ U'^y = -\sin(2\theta)U^x + \cos(2\theta)U^y. \]
-This is a spatial \emph{rotation} about $\hat{\bm z}$ by angle $2\theta$ (note the factor of two: spinor rotations are double-cover of $SO(3)$). Hence
+Act on $u=(a,b)^T$:
+\[ u' = \begin{pmatrix}e^{i\theta}a\\ e^{-i\theta}b\end{pmatrix}. \]
+Moduli unchanged so $U^0$ and $U^z$ are unchanged:
+\[ U'^0 = U^0,\qquad U'^z = U^z. \]
+Compute the cross product $a'^*b'$:
+\[ a'^* b' = e^{-i\theta}a^*\cdot e^{-i\theta}b = e^{-2i\theta}a^*b. \]
+Write $a^*b = U^x + iU^y$ and expand $e^{-2i\theta}$:
+\[ a'^*b' = (\cos 2\theta - i\sin 2\theta)(U^x + iU^y). \]
+Take real and imaginary parts:
+\[ U'^x = \mathrm{Re}(a'^*b') = \cos(2\theta)U^x + \sin(2\theta)U^y, \]
+\[ U'^y = \mathrm{Im}(a'^*b') = -\sin(2\theta)U^x + \cos(2\theta)U^y. \]
+This is a spatial rotation by angle $-2\theta$ about $+\hat{\bm z}$ (equivalently, $2\theta$ about $-\hat{\bm z}$); the factor of two reflects $SU(2)\to SO(3)$ being a double cover. Hence
 \begin{equation}
-\boxed{u\to e^{i\theta\sigma_z}u\ \Longleftrightarrow\ U^\mu\to R^\mu{}_\nu(\hat{\bm z},2\theta)\,U^\nu.}
+\boxed{u\to e^{i\theta\sigma_z}u\ \Longleftrightarrow\ U^\mu\to R^\mu{}_\nu(\hat{\bm z},-2\theta)\,U^\nu.}
 \end{equation}
 
 \subsection*{(e) Does a 2-spinor satisfy the massless KG equation?}
 
-A null 4-vector $K^\mu=\tfrac12 u^\dagger\sigma^\mu u$ satisfies $K_\mu K^\mu=0$, exactly the dispersion of a massless plane wave. So if $u(x)\propto e^{ik\cdot x}$ with $k_\mu k^\mu = 0$, the bilinear $u^\dagger\sigma^\mu u$ is the 4-momentum of a massless particle, and each component of $u$ obeys $\partial_\mu\partial^\mu u_a = 0$, i.e.\ the massless Klein--Gordon equation. The natural first-order equation is the \emph{Weyl equation} $\bar\sigma^\mu\partial_\mu u = 0$; squaring it gives the massless KG. Hence
+The bilinear $U^\mu=\tfrac12 u^\dagger\sigma^\mu u$ is null, $U_\mu U^\mu = 0$, which is the dispersion $\omega^2 = k^2$ of a massless field. Try a plane-wave 2-spinor $u(x) = u_0\,e^{ik\cdot x}$ with $k_\mu k^\mu = 0$:
+\[ \partial_\mu u = ik_\mu u. \]
+Apply $\partial^\mu\partial_\mu$ to each component:
+\[ \partial^\mu\partial_\mu u_a = -k^\mu k_\mu u_a = 0. \]
+Equivalently, the Weyl equation $\bar\sigma^\mu\partial_\mu u = 0$ (or $\sigma^\mu\partial_\mu u = 0$) squared via $\sigma^\mu\bar\sigma^\nu + \sigma^\nu\bar\sigma^\mu = 2\eta^{\mu\nu}$ gives:
+\[ \partial^\mu\partial_\mu u = 0. \]
+Hence
 \begin{equation}
 \boxed{\text{Yes: each component of a massless 2-spinor solution satisfies the massless KG equation.}}
 \end{equation}

@@ -27,26 +27,46 @@
 
 \subsection*{(a) Why neutrons rather than X-rays}
 
-Neutrons carry a magnetic moment that couples to unpaired electron spin density.
+Neutrons carry a magnetic moment that couples to unpaired electron spin density; X-rays scatter from charge only.
 \boxed{\;\text{Use neutrons to detect magnetic order (e.g.\ AFM Mn$^{2+}$ structure in RbMnF$_3$); X-rays cannot.}\;}
 
 \subsection*{(b) Lattice-plane spacings}
 
-de Broglie wavelength from $E=p^2/2m_n$:
+Start from $E=p^2/(2m_n)$:
 \[
-\lambda \;=\; \frac{h}{\sqrt{2 m_n E}}.
+p \;=\; \sqrt{2 m_n E}.
 \]
-Convert energy:
+de Broglie wavelength:
 \[
-E \;=\; 25\times 10^{-3}\times 1.602\times 10^{-19}\,\si{J} \;=\; 4.005\times 10^{-21}\,\si{J}.
+\lambda \;=\; \frac{h}{p} \;=\; \frac{h}{\sqrt{2 m_n E}}.
 \]
-Compute momentum:
+Convert energy to joules:
 \[
-\sqrt{2 m_n E} \;=\; \sqrt{2\cdot 1.67493\times 10^{-27}\cdot 4.005\times 10^{-21}} \;=\; 3.663\times 10^{-24}\,\si{kg.m.s^{-1}}.
+E \;=\; 25\times 10^{-3}\times 1.602\times 10^{-19}\,\si{J}.
 \]
-Wavelength:
+Evaluate the product:
 \[
-\lambda \;=\; \frac{6.626\times 10^{-34}}{3.663\times 10^{-24}} \;=\; \SI{0.1809}{nm}.
+E \;=\; 4.005\times 10^{-21}\,\si{J}.
+\]
+Plug into momentum formula:
+\[
+p \;=\; \sqrt{2\cdot 1.67493\times 10^{-27}\cdot 4.005\times 10^{-21}}\,\si{kg.m.s^{-1}}.
+\]
+Evaluate the radicand:
+\[
+p \;=\; \sqrt{1.342\times 10^{-47}}\,\si{kg.m.s^{-1}}.
+\]
+Take the square root:
+\[
+p \;=\; 3.663\times 10^{-24}\,\si{kg.m.s^{-1}}.
+\]
+Divide $h$ by $p$:
+\[
+\lambda \;=\; \frac{6.626\times 10^{-34}}{3.663\times 10^{-24}}\,\si{m}.
+\]
+Evaluate the quotient:
+\[
+\lambda \;=\; \SI{0.1809}{nm}.
 \]
 Bragg's law:
 \begin{equation}
@@ -73,36 +93,62 @@ $\ang{50.5}$ & $\ang{25.25}$ & $0.4266$ & $\SI{0.2120}{nm}$ \\
 
 \subsection*{(c) Miller indices, lattice type, and accurate $a$}
 
-Cubic spacing:
+Cubic spacing rule:
 \begin{equation}
 d_{hkl} \;=\; \frac{a}{\sqrt{N}},\qquad N\equiv h^2+k^2+l^2.
 \label{eq:dN}
 \end{equation}
-Compute $N=(a/d)^2$ with $a\approx\SI{0.4}{nm}$:
+Solve for $N$:
 \[
-N \;\approx\; 0.886,\;1.778,\;2.671,\;3.560.
+N \;=\; (a/d)^2.
 \]
-Identify $N=1,2,3,4$ after small rescaling of $a$.
+Plug in $a\approx\SI{0.4}{nm}$ for each $d$:
+\[
+N \;\approx\; \left(\tfrac{0.4}{0.4247}\right)^2,\;\left(\tfrac{0.4}{0.3000}\right)^2,\;\left(\tfrac{0.4}{0.2447}\right)^2,\;\left(\tfrac{0.4}{0.2120}\right)^2.
+\]
+Evaluate each:
+\[
+N \;\approx\; 0.887,\;1.778,\;2.671,\;3.561.
+\]
+Identify the integer ratios:
+\[
+N \;=\; 1,\;2,\;3,\;4.
+\]
 
-Selection rules: $N=1$ allowed rules out FCC (needs all-even or all-odd); $N=2$ allowed rules out BCC (needs $h+k+l$ even, but only the larger $N=2,4,6\ldots$ pattern). Hence
+Selection rules eliminate FCC and BCC: FCC requires $hkl$ all-even or all-odd (first allowed $N=3$), so $N=1$ rules it out; BCC requires $h+k+l$ even (sequence $N=2,4,6,8,\ldots$), so $N=1,3$ rule it out. Hence
 \boxed{\;\text{simple cubic.}\;}
 
 Miller indices in order: $(100),(110),(111),(200)$.
 
-Refit $a=d\sqrt{N}$:
+Invert spacing relation:
+\[
+a \;=\; d\sqrt{N}.
+\]
+Apply to ring 1 ($N=1$):
 \[
 a_1 \;=\; 0.4247\cdot 1 \;=\; \SI{0.4247}{nm}.
 \]
+Apply to ring 2 ($N=2$):
 \[
 a_2 \;=\; 0.3000\cdot \sqrt{2} \;=\; \SI{0.4243}{nm}.
 \]
+Apply to ring 3 ($N=3$):
 \[
-a_3 \;=\; 0.2447\cdot \sqrt{3} \;=\; \SI{0.4239}{nm}.
+a_3 \;=\; 0.2447\cdot \sqrt{3} \;=\; \SI{0.4238}{nm}.
 \]
+Apply to ring 4 ($N=4$):
 \[
 a_4 \;=\; 0.2120\cdot 2 \;=\; \SI{0.4240}{nm}.
 \]
-Average:
+Sum the four values:
+\[
+\sum_i a_i \;=\; 0.4247+0.4243+0.4238+0.4240 \;=\; 1.6968\,\si{nm}.
+\]
+Take the average:
+\[
+\bar a \;=\; \tfrac14\cdot 1.6968\,\si{nm}.
+\]
+Evaluate the mean:
 \begin{equation}
 \boxed{\;a \;=\; \SI{0.4242 \pm 0.0004}{nm}.\;}
 \label{eq:abox}
@@ -110,41 +156,81 @@ Average:
 
 \subsection*{(d) Field changes ring intensity but not angle}
 
-Bragg angles depend only on $d_{hkl}$; field-induced lattice distortion (magnetostriction) is negligible. Neutron structure factor splits into nuclear and magnetic parts:
+Bragg angles depend only on $d_{hkl}$; field-induced lattice distortion (magnetostriction) is negligible, so positions are fixed. Neutron structure factor splits into nuclear and magnetic parts:
 \[
 F_{hkl} \;=\; F^{\text{nuc}}_{hkl} \;+\; F^{\text{mag}}_{hkl}(\hat{\bm B}).
 \]
-Field polarises the Mn$^{2+}$ paramagnetic moments, modifying $\bm M_\perp(\bm Q)$ and hence $|F_{hkl}|^2$.
+At room temperature ($T>T_c$) Mn$^{2+}$ ions are paramagnetic; an applied $\bm B$ polarises the moments along $\hat{\bm B}$. Intensity depends on the component of magnetisation perpendicular to $\bm Q$:
+\[
+|F^{\text{mag}}|^2 \;\propto\; |\hat{\bm Q}\!\times\!(\bm M\!\times\!\hat{\bm Q})|^2.
+\]
+Hence $|F_{hkl}|^2$ varies with $\bm B$ without shifting the ring.
 \boxed{\;\text{Field aligns Mn$^{2+}$ moments; magnetic structure factor changes ring intensities.}\;}
 
 \subsection*{(e) New rings below $T_c$: G-type antiferromagnetism}
 
 Mechanism: nearest-neighbour Mn moments alternate in sign on the simple-cubic Mn sublattice (G-type AFM). Magnetic unit cell is $2a\times 2a\times 2a$.
 
-Magnetic reflections at $\bm Q=(2\pi/a)(h',k',l')$ with $h',k',l'$ half-odd-integers; lowest-order $N_{\text{mag}}=h'^2+k'^2+l'^2$.
-
-Smallest $N_{\text{mag}}$: $(\tfrac12,\tfrac12,\tfrac12)$ gives $N_{\text{mag}}=3/4$. Spacing:
+Magnetic reflections sit at $\bm Q=(2\pi/a)(h',k',l')$ with $h',k',l'$ half-odd-integers; index
 \[
-d^{*} \;=\; \frac{a}{\sqrt{3/4}} \;=\; \SI{0.4898}{nm}.
+N_{\text{mag}} \;=\; h'^2+k'^2+l'^2.
 \]
-Bragg angle:
+Take the smallest set $(\tfrac12,\tfrac12,\tfrac12)$:
 \[
-\sin\theta \;=\; \frac{\lambda}{2 d^{*}} \;=\; \frac{0.1809}{2\cdot 0.4898} \;=\; 0.1847.
+N_{\text{mag}} \;=\; \tfrac14+\tfrac14+\tfrac14 \;=\; \tfrac34.
 \]
+Magnetic plane spacing:
+\[
+d^{*} \;=\; \frac{a}{\sqrt{N_{\text{mag}}}} \;=\; \frac{0.4242}{\sqrt{3/4}}\,\si{nm}.
+\]
+Evaluate the quotient:
+\[
+d^{*} \;=\; \SI{0.4898}{nm}.
+\]
+Apply Bragg's law:
+\[
+\sin\theta \;=\; \frac{\lambda}{2 d^{*}} \;=\; \frac{0.1809}{2\cdot 0.4898}.
+\]
+Evaluate the ratio:
+\[
+\sin\theta \;=\; 0.1847.
+\]
+Take the arcsine:
+\[
+\theta \;=\; \ang{10.64}.
+\]
+Double to get $2\theta$:
 \[
 2\theta \;=\; \ang{21.3},
 \]
 matching the observation.
 \boxed{\;\text{G-type AFM ordering; magnetic period }2a.\;}
 
-Next allowed magnetic reflection: $(\tfrac32,\tfrac12,\tfrac12)$, $N_{\text{mag}}=11/4$. Spacing:
+Next allowed magnetic reflection $(\tfrac32,\tfrac12,\tfrac12)$:
 \[
-d^{**} \;=\; \frac{a}{\sqrt{11/4}} \;=\; \frac{0.4242\cdot 2}{\sqrt{11}}\,\si{nm} \;=\; \SI{0.2558}{nm}.
+N_{\text{mag}}' \;=\; \tfrac94+\tfrac14+\tfrac14 \;=\; \tfrac{11}{4}.
 \]
-Bragg angle:
+Magnetic plane spacing:
 \[
-\sin\theta \;=\; \frac{0.1809}{2\cdot 0.2558} \;=\; 0.3537.
+d^{**} \;=\; \frac{a}{\sqrt{11/4}} \;=\; \frac{2\cdot 0.4242}{\sqrt{11}}\,\si{nm}.
 \]
+Evaluate the quotient:
+\[
+d^{**} \;=\; \SI{0.2558}{nm}.
+\]
+Apply Bragg's law:
+\[
+\sin\theta \;=\; \frac{0.1809}{2\cdot 0.2558}.
+\]
+Evaluate the ratio:
+\[
+\sin\theta \;=\; 0.3537.
+\]
+Take the arcsine:
+\[
+\theta \;=\; \ang{20.71}.
+\]
+Double to get $2\theta$:
 \begin{equation}
 \boxed{\;2\theta_{\text{2nd}} \;\approx\; \ang{41.4}.\;}
 \label{eq:secondring}
@@ -185,24 +271,44 @@ FCC primitive vectors:
 \bm a_2 \;=\; \tfrac{a}{2}(\hat{\bm z}+\hat{\bm x}),\quad
 \bm a_3 \;=\; \tfrac{a}{2}(\hat{\bm x}+\hat{\bm y}).
 \]
-Compute the cross product:
+Expand the cross product:
 \[
-\bm a_2\times\bm a_3 \;=\; \tfrac{a^2}{4}(\hat{\bm z}+\hat{\bm x})\times(\hat{\bm x}+\hat{\bm y}) \;=\; \tfrac{a^2}{4}(\hat{\bm y}-\hat{\bm x}+\hat{\bm z}).
+\bm a_2\times\bm a_3 \;=\; \tfrac{a^2}{4}(\hat{\bm z}+\hat{\bm x})\times(\hat{\bm x}+\hat{\bm y}).
 \]
-Primitive-cell volume:
+Distribute and drop $\hat{\bm x}\!\times\!\hat{\bm x}=0$:
 \[
-\bm a_1\cdot(\bm a_2\times\bm a_3) \;=\; \tfrac{a^3}{8}(\hat{\bm y}+\hat{\bm z})\cdot(\hat{\bm y}-\hat{\bm x}+\hat{\bm z}) \;=\; \tfrac{a^3}{4}.
+\bm a_2\times\bm a_3 \;=\; \tfrac{a^2}{4}\bigl(\hat{\bm z}\!\times\!\hat{\bm x}+\hat{\bm z}\!\times\!\hat{\bm y}+\hat{\bm x}\!\times\!\hat{\bm y}\bigr).
 \]
-Substitute into \eqref{eq:bidef}:
+Use $\hat{\bm z}\!\times\!\hat{\bm x}=\hat{\bm y}$, $\hat{\bm z}\!\times\!\hat{\bm y}=-\hat{\bm x}$, $\hat{\bm x}\!\times\!\hat{\bm y}=\hat{\bm z}$:
 \[
-\bm b_1 \;=\; \frac{2\pi}{a}(-\hat{\bm x}+\hat{\bm y}+\hat{\bm z}),\quad
-\bm b_2 \;=\; \frac{2\pi}{a}(\hat{\bm x}-\hat{\bm y}+\hat{\bm z}),\quad
+\bm a_2\times\bm a_3 \;=\; \tfrac{a^2}{4}(-\hat{\bm x}+\hat{\bm y}+\hat{\bm z}).
+\]
+Take the triple product:
+\[
+\bm a_1\cdot(\bm a_2\times\bm a_3) \;=\; \tfrac{a^3}{8}(\hat{\bm y}+\hat{\bm z})\cdot(-\hat{\bm x}+\hat{\bm y}+\hat{\bm z}).
+\]
+Evaluate the dot product:
+\[
+\bm a_1\cdot(\bm a_2\times\bm a_3) \;=\; \tfrac{a^3}{8}(0+1+0+0+0+1) \;=\; \tfrac{a^3}{4}.
+\]
+Substitute into \eqref{eq:bidef} for $\bm b_1$:
+\[
+\bm b_1 \;=\; 2\pi\,\frac{(a^2/4)(-\hat{\bm x}+\hat{\bm y}+\hat{\bm z})}{a^3/4}.
+\]
+Cancel $a^2/4$ and simplify:
+\[
+\bm b_1 \;=\; \frac{2\pi}{a}(-\hat{\bm x}+\hat{\bm y}+\hat{\bm z}).
+\]
+By cyclic symmetry:
+\[
+\bm b_2 \;=\; \frac{2\pi}{a}(\hat{\bm x}-\hat{\bm y}+\hat{\bm z}),\qquad
 \bm b_3 \;=\; \frac{2\pi}{a}(\hat{\bm x}+\hat{\bm y}-\hat{\bm z}).
 \]
-Recognise BCC primitives:
+Form pairwise sums to identify the conventional cubic axes:
 \[
 \bm b_1+\bm b_2 \;=\; \frac{4\pi}{a}\hat{\bm z},\qquad \bm b_2+\bm b_3 \;=\; \frac{4\pi}{a}\hat{\bm x},\qquad \bm b_1+\bm b_3 \;=\; \frac{4\pi}{a}\hat{\bm y}.
 \]
+Recognise BCC primitives along cubic axes of edge $4\pi/a$.
 \begin{equation}
 \boxed{\;\text{Reciprocal lattice: BCC, conventional cubic edge }4\pi/a.\;}
 \label{eq:reclat}
@@ -218,30 +324,59 @@ Along $[100]$, $C_{4v}$ symmetry: 1 LA + 2 TA. The two TA modes are related by t
 
 \subsection*{(d) LA phonon energy at $\bm k=(2\pi/a,0,0)$ in Si}
 
-Approximation: 1D monatomic chain along $[100]$ with nearest-neighbour spacing $a/2$ (Si has atoms at $0$ and $a/2$ projected onto $[100]$).
+Approximate Si along $[100]$ by a 1D monatomic chain with spacing $a_{\text{ch}}=a/2$ so the BZ boundary $\pi/a_{\text{ch}}=2\pi/a$ coincides with $X$.
 
-Diatomic-chain dispersion:
+Monatomic-chain dispersion:
 \[
-\omega(k) \;=\; 2\sqrt{K/m}\,\big|\sin(k a_{\text{ch}}/2)\big|,\qquad a_{\text{ch}}=a/2.
+\omega(k) \;=\; 2\sqrt{K/m}\,\big|\sin(k a_{\text{ch}}/2)\big|.
 \]
-Match small-$k$ to sound speed:
+Linearise at small $k$:
 \[
-\omega \;\approx\; \sqrt{K/m}\,k a_{\text{ch}} \;\equiv\; v_L\, k.
+\omega \;\approx\; \sqrt{K/m}\,k a_{\text{ch}}.
 \]
-Read off the prefactor:
+Identify with sound speed $\omega=v_L k$:
 \[
-\omega(k) \;=\; \frac{2 v_L}{a_{\text{ch}}}\big|\sin(k a_{\text{ch}}/2)\big| \;=\; \frac{4 v_L}{a}\big|\sin(k a/4)\big|.
+\sqrt{K/m}\,a_{\text{ch}} \;=\; v_L.
 \]
-Evaluate at $k=2\pi/a$:
+Eliminate $\sqrt{K/m}$:
 \[
-\omega \;=\; \frac{4 v_L}{a}\sin(\pi/2) \;=\; \frac{4 v_L}{a}.
+\omega(k) \;=\; \frac{2 v_L}{a_{\text{ch}}}\big|\sin(k a_{\text{ch}}/2)\big|.
 \]
-Energy:
+Substitute $a_{\text{ch}}=a/2$:
 \[
-\hbar\omega \;=\; \frac{4\hbar v_L}{a} \;=\; \frac{4\cdot 1.0546\times 10^{-34}\cdot 8433}{0.5431\times 10^{-9}}\,\si{J}.
+\omega(k) \;=\; \frac{4 v_L}{a}\big|\sin(k a/4)\big|.
 \]
+Evaluate the argument at $k=2\pi/a$:
 \[
-\hbar\omega \;\approx\; 6.55\times 10^{-21}\,\si{J} \;\approx\; \SI{0.041}{eV}.
+k a/4 \;=\; \pi/2.
+\]
+Evaluate $\omega$:
+\[
+\omega \;=\; \frac{4 v_L}{a}\sin(\pi/2).
+\]
+Reduce $\sin(\pi/2)=1$:
+\[
+\omega \;=\; \frac{4 v_L}{a}.
+\]
+Multiply by $\hbar$:
+\[
+\hbar\omega \;=\; \frac{4\hbar v_L}{a}.
+\]
+Plug in numbers:
+\[
+\hbar\omega \;=\; \frac{4\cdot 1.0546\times 10^{-34}\cdot 8433}{0.5431\times 10^{-9}}\,\si{J}.
+\]
+Evaluate the numerator:
+\[
+4\cdot 1.0546\times 10^{-34}\cdot 8433 \;=\; 3.557\times 10^{-30}.
+\]
+Divide by the denominator:
+\[
+\hbar\omega \;=\; \frac{3.557\times 10^{-30}}{5.431\times 10^{-10}}\,\si{J} \;\approx\; 6.55\times 10^{-21}\,\si{J}.
+\]
+Convert to electronvolts:
+\[
+\hbar\omega \;=\; \frac{6.55\times 10^{-21}}{1.602\times 10^{-19}}\,\si{eV} \;\approx\; \SI{0.041}{eV}.
 \]
 \begin{equation}
 \boxed{\;\hbar\omega_{\text{LA}}(2\pi/a,0,0)\;\approx\;\SI{40}{meV}.\;}
@@ -253,11 +388,19 @@ Approximations: 1D chain replaces 3D dynamics; sinusoidal dispersion extrapolate
 
 In Si the two basis atoms are identical: nonsymmorphic diamond symmetry forces LA$(X)=$LO$(X)$ and TA$(X)=$TO$(X)$ (degenerate at the zone boundary).
 
-In AlP the two basis atoms differ in mass ($M_{\text{Al}}=26.98$~u, $M_{\text{P}}=30.97$~u). 1D diatomic chain at the zone boundary:
+In AlP the two basis atoms differ in mass ($M_{\text{Al}}=26.98$~u, $M_{\text{P}}=30.97$~u). Solve the 1D diatomic-chain dispersion at $k=\pi/a_{\text{ch}}$:
 \[
-\omega_{\text{LA}}^2 \;=\; \frac{2K}{M_{\max}},\qquad \omega_{\text{LO}}^2 \;=\; \frac{2K}{M_{\min}}.
+\omega^2 \;=\; K\!\left(\tfrac{1}{M_1}+\tfrac{1}{M_2}\right) \pm K\!\left|\tfrac{1}{M_1}-\tfrac{1}{M_2}\right|.
 \]
-Mass mismatch opens a gap:
+Take the $-$ root (LA) with $M_{\max}>M_{\min}$:
+\[
+\omega_{\text{LA}}^2 \;=\; \frac{2K}{M_{\max}}.
+\]
+Take the $+$ root (LO):
+\[
+\omega_{\text{LO}}^2 \;=\; \frac{2K}{M_{\min}}.
+\]
+Subtract:
 \[
 \omega_{\text{LO}}^2-\omega_{\text{LA}}^2 \;=\; 2K\!\left(\frac{1}{M_{\min}}-\frac{1}{M_{\max}}\right) \;>\; 0.
 \]
@@ -295,7 +438,19 @@ Set band edges at $E=0$ (gap $\to 0$). Parabolic 2D dispersions:
 \[
 E_c(\bm k) \;=\; +\frac{\hbar^2 k^2}{2m^*},\qquad E_v(\bm k) \;=\; -\frac{\hbar^2 k^2}{2m^*}.
 \]
-2D parabolic band DOS (per area, including 2 spins) is constant:
+$k$-space DOS (per area, two spins):
+\[
+g(\bm k)\,\de^2 k \;=\; \frac{2}{(2\pi)^2}\,\de^2 k.
+\]
+Use circular shells $\de^2 k = 2\pi k\,\de k$:
+\[
+g(\bm k)\,\de^2 k \;=\; \frac{2}{(2\pi)^2}\cdot 2\pi k\,\de k \;=\; \frac{k}{\pi}\,\de k.
+\]
+Use $E=\hbar^2 k^2/(2m^*)$ to get $k\,\de k=(m^*/\hbar^2)\,\de E$:
+\[
+g_c(E)\,\de E \;=\; \frac{1}{\pi}\cdot\frac{m^*}{\hbar^2}\,\de E \;=\; \frac{m^*}{\pi\hbar^2}\,\de E.
+\]
+Read off the (constant) DOS:
 \begin{equation}
 \boxed{\;g_c(E) \;=\; g_v(E) \;=\; \frac{m^*}{\pi\hbar^2}\quad\text{(each band)}.\;}
 \label{eq:dos2D}
@@ -305,15 +460,23 @@ E_c(\bm k) \;=\; +\frac{\hbar^2 k^2}{2m^*},\qquad E_v(\bm k) \;=\; -\frac{\hbar^
 
 Particle--hole symmetry ($m_e^*=m_h^*$) pins $\mu=0$ at all $T$.
 
-Conduction-band density per area:
+Conduction-band electron density per area:
 \[
-n_c \;=\; \int_0^\infty\!\de E\,\frac{m^*}{\pi\hbar^2}\,\frac{1}{e^{E/\kB T}+1}.
+n_c \;=\; \int_0^\infty\!\de E\,g_c(E)\,\frac{1}{e^{E/\kB T}+1}.
+\]
+Insert the constant DOS:
+\[
+n_c \;=\; \frac{m^*}{\pi\hbar^2}\int_0^\infty\!\frac{\de E}{e^{E/\kB T}+1}.
 \]
 Substitute $x=E/\kB T$:
 \[
 n_c \;=\; \frac{m^*\kB T}{\pi\hbar^2}\int_0^\infty\!\frac{\de x}{e^x+1}.
 \]
 Use $\int=\ln 2$:
+\[
+n_c \;=\; \frac{m^*\kB T\,\ln 2}{\pi\hbar^2}.
+\]
+Multiply by area $A$:
 \begin{equation}
 \boxed{\;N_c(T) \;=\; A\,\frac{m^*\kB T\,\ln 2}{\pi\hbar^2}.\;}
 \label{eq:Nc}
@@ -323,7 +486,11 @@ Conduction-band thermal energy per area:
 \[
 u_c \;=\; \int_0^\infty\!\de E\,g_c\,E\,\frac{1}{e^{E/\kB T}+1}.
 \]
-Substitute $x=E/\kB T$:
+Insert the DOS:
+\[
+u_c \;=\; \frac{m^*}{\pi\hbar^2}\int_0^\infty\!\frac{E\,\de E}{e^{E/\kB T}+1}.
+\]
+Substitute $x=E/\kB T$, $\de E=\kB T\,\de x$:
 \[
 u_c \;=\; \frac{m^*(\kB T)^2}{\pi\hbar^2}\int_0^\infty\!\frac{x\,\de x}{e^x+1}.
 \]
@@ -331,11 +498,15 @@ Use $\int=\pi^2/12$:
 \[
 u_c \;=\; \frac{m^*(\kB T)^2}{\pi\hbar^2}\cdot\frac{\pi^2}{12}.
 \]
-By particle--hole symmetry, valence band contributes equally:
+Cancel one $\pi$:
+\[
+u_c \;=\; \frac{\pi m^*\kB^2 T^2}{12\hbar^2}.
+\]
+By particle--hole symmetry the valence band contributes equally:
 \[
 u_{\text{tot}} \;=\; 2u_c \;=\; \frac{\pi m^*\kB^2 T^2}{6\hbar^2}.
 \]
-Differentiate:
+Differentiate w.r.t.\ $T$:
 \begin{equation}
 \frac{C_v^{\text{tot}}}{A} \;=\; \pd{u_{\text{tot}}}{T} \;=\; \frac{\pi m^*\kB^2 T}{3\hbar^2}.
 \label{eq:Cvtot}
@@ -344,34 +515,42 @@ Divide by $n_c$ from \eqref{eq:Nc}:
 \[
 \frac{C_v^{\text{tot}}}{N_c} \;=\; \frac{\pi m^*\kB^2 T/(3\hbar^2)}{m^*\kB T\,\ln 2/(\pi\hbar^2)}.
 \]
-Cancel:
+Cancel $m^*$, $T$, $\hbar^2$:
+\[
+\frac{C_v^{\text{tot}}}{N_c} \;=\; \frac{\pi\cdot\pi}{3\ln 2}\,\kB.
+\]
+Reduce:
 \begin{equation}
 \boxed{\;\frac{C_v^{\text{tot}}}{N_c} \;=\; \frac{\pi^2}{3\ln 2}\,\kB \;\approx\; 4.74\,\kB.\;}
 \label{eq:Cvper}
 \end{equation}
 
-No equipartition violation: at fixed $T$ there are $\sim N_c$ electrons \emph{and} $\sim N_c$ holes; the heat capacity is shared between $\sim 2N_c$ thermally active particles, not $N_c$. Moreover the carrier number itself depends on $T$ (it grows linearly), a regime equipartition does not address.
+No equipartition violation: equipartition assumes a fixed number of quadratic d.o.f., but here $N_c(T)\propto T$ grows with temperature. Heating creates new carriers (and matching holes), so part of $C_v^{\text{tot}}$ goes into producing extra excitations, not just sharing energy among a fixed set. Dividing by $N_c$ alone undercounts the active particles (electrons \emph{plus} holes); the per-particle ratio still exceeds the rigid $k_B$ because the carrier population itself is thermally generated.
 
 \subsection*{(e) Ratio $C_v^{\text{tot}}/C_v$}
 
-2D Fermi gas at $\kB T\ll E_F$ (Sommerfeld with constant DOS $g(E_F)=m/\pi\hbar^2$):
+2D Fermi gas at $\kB T\ll E_F$ via Sommerfeld with constant DOS $g(E_F)=m/(\pi\hbar^2)$:
 \[
-\frac{C_v}{A} \;=\; \frac{\pi^2}{3}\,g(E_F)\,\kB^2 T \;=\; \frac{\pi m\,\kB^2 T}{3\hbar^2}\cdot\pi.
+\frac{C_v}{A} \;=\; \frac{\pi^2}{3}\,g(E_F)\,\kB^2 T.
 \]
-Simplify:
+Insert the DOS:
 \[
-\frac{C_v}{A} \;=\; \frac{\pi^2 m\,\kB^2 T}{3\hbar^2}.
+\frac{C_v}{A} \;=\; \frac{\pi^2}{3}\cdot\frac{m}{\pi\hbar^2}\,\kB^2 T.
 \]
-Take ratio (with $m^*=m$):
+Cancel one $\pi$:
 \[
-\frac{C_v^{\text{tot}}}{C_v} \;=\; \frac{\pi m^*\kB^2 T/(3\hbar^2)}{\pi^2 m\kB^2 T/(3\hbar^2)}.
+\frac{C_v}{A} \;=\; \frac{\pi m\,\kB^2 T}{3\hbar^2}.
 \]
-Cancel:
+Form the ratio with $C_v^{\text{tot}}/A$ from \eqref{eq:Cvtot}:
+\[
+\frac{C_v^{\text{tot}}}{C_v} \;=\; \frac{\pi m^*\kB^2 T/(3\hbar^2)}{\pi m\,\kB^2 T/(3\hbar^2)}.
+\]
+Cancel $\pi$, $\kB^2 T$, $\hbar^2$:
 \begin{equation}
-\boxed{\;\frac{C_v^{\text{tot}}}{C_v} \;=\; \frac{1}{\pi} \;\approx\; 0.318.\;}
+\boxed{\;\frac{C_v^{\text{tot}}}{C_v} \;=\; \frac{m^*}{m}.\;}
 \label{eq:ratio}
 \end{equation}
-Gapless semiconductor has more heat per carrier but far fewer carriers, so per unit area the Fermi gas wins by $\pi$.
+Both regimes give heat capacity linear in $T$ with the same numerical prefactor; the ratio is set purely by the ratio of effective DOS at $\mu$ in the two systems, i.e.\ by $m^*/m$.
 
 %==============================================================
 \section*{Question 4 --- Magnetism of GaAs and shallow donors}
@@ -385,37 +564,67 @@ Filled valence band, empty conduction band, no localised moments, no Pauli param
 
 \subsection*{(b) Larmor--Langevin $\chi$ for undoped GaAs}
 
-GaAs formula-unit mass:
+Formula-unit mass:
 \[
 m_{\text{f.u.}} \;=\; (69.7+74.9)\,\text{u} \;=\; 144.6\,\text{u}.
 \]
+Convert to kg:
+\[
+m_{\text{f.u.}} \;=\; 144.6\cdot 1.6605\times 10^{-27}\,\si{kg} \;=\; 2.401\times 10^{-25}\,\si{kg}.
+\]
 Number density of formula units:
 \[
-n_{\text{f.u.}} \;=\; \frac{5.9\times 10^3}{144.6\cdot 1.6605\times 10^{-27}}\,\si{m^{-3}} \;=\; 2.46\times 10^{28}\,\si{m^{-3}}.
+n_{\text{f.u.}} \;=\; \frac{\rho_m}{m_{\text{f.u.}}} \;=\; \frac{5.9\times 10^3}{2.401\times 10^{-25}}\,\si{m^{-3}}.
 \]
-Electrons per formula unit: $Z_{\text{Ga}}+Z_{\text{As}}=64$.
-
-Electron density:
+Evaluate the quotient:
 \[
-\rho_e \;=\; 64\,n_{\text{f.u.}} \;\approx\; 1.57\times 10^{30}\,\si{m^{-3}}.
+n_{\text{f.u.}} \;=\; 2.46\times 10^{28}\,\si{m^{-3}}.
 \]
-Approximation (valence dominant, $30\%$ level): $\langle r^2\rangle\sim a_0^2$:
+Electrons per formula unit:
 \[
-\langle r^2\rangle \;\approx\; (0.529\times 10^{-10})^2\,\si{m^2} \;\approx\; 2.8\times 10^{-21}\,\si{m^2}.
+Z_{\text{tot}} \;=\; Z_{\text{Ga}}+Z_{\text{As}} \;=\; 31+33 \;=\; 64.
+\]
+Electron number density:
+\[
+\rho_e \;=\; Z_{\text{tot}}\,n_{\text{f.u.}} \;=\; 64\cdot 2.46\times 10^{28}\,\si{m^{-3}}.
+\]
+Evaluate the product:
+\[
+\rho_e \;\approx\; 1.57\times 10^{30}\,\si{m^{-3}}.
+\]
+Approximate $\langle r^2\rangle\sim a_0^2$ (rough, $\sim 30\%$):
+\[
+\langle r^2\rangle \;\approx\; (0.529\times 10^{-10})^2\,\si{m^2}.
+\]
+Evaluate the square:
+\[
+\langle r^2\rangle \;\approx\; 2.80\times 10^{-21}\,\si{m^2}.
 \]
 Substitute into $\chi=-\mu_0\rho_e e^2\langle r^2\rangle/(6 m_e)$:
 \[
-\chi_{\text{LL}} \;=\; -(4\pi\times 10^{-7})\cdot\frac{1.57\times 10^{30}\cdot(1.602\times 10^{-19})^2}{6\cdot 9.109\times 10^{-31}}\cdot 2.8\times 10^{-21}.
+\chi_{\text{LL}} \;=\; -(1.257\times 10^{-6})\cdot\frac{1.57\times 10^{30}\cdot(1.602\times 10^{-19})^2}{6\cdot 9.109\times 10^{-31}}\cdot 2.80\times 10^{-21}.
 \]
-Evaluate the inner factor:
+Evaluate $e^2$:
 \[
-\frac{1.57\times 10^{30}\cdot 2.566\times 10^{-38}}{5.466\times 10^{-30}} \;\approx\; 7.37\times 10^{21}.
+e^2 \;=\; (1.602\times 10^{-19})^2 \;=\; 2.566\times 10^{-38}\,\si{C^2}.
 \]
-Multiply by $\mu_0$ and $\langle r^2\rangle$:
+Evaluate $6m_e$:
 \[
-\chi_{\text{LL}} \;\approx\; -(1.257\times 10^{-6})\cdot 7.37\times 10^{21}\cdot 2.8\times 10^{-21}.
+6 m_e \;=\; 6\cdot 9.109\times 10^{-31} \;=\; 5.466\times 10^{-30}\,\si{kg}.
 \]
-Numerical:
+Group the fraction:
+\[
+\frac{\rho_e e^2}{6 m_e} \;=\; \frac{1.57\times 10^{30}\cdot 2.566\times 10^{-38}}{5.466\times 10^{-30}} \;\approx\; 7.37\times 10^{21}\,\si{m^{-3}.C^2.kg^{-1}}.
+\]
+Multiply by $\mu_0\langle r^2\rangle$:
+\[
+\chi_{\text{LL}} \;\approx\; -(1.257\times 10^{-6})\cdot 7.37\times 10^{21}\cdot 2.80\times 10^{-21}.
+\]
+Evaluate the product:
+\[
+\chi_{\text{LL}} \;\approx\; -2.6\times 10^{-5}.
+\]
+Round to one significant figure:
 \begin{equation}
 \boxed{\;\chi_{\text{LL}} \;\sim\; -3\times 10^{-5}\ \text{(SI, dimensionless)}.\;}
 \label{eq:chiLL}
@@ -424,63 +633,105 @@ Order-of-magnitude consistent with tabulated values for covalent semiconductors.
 
 \subsection*{(c) Donor binding radius, energy, and cancellation $T^*$}
 
-Hydrogenic with $e^2\to e^2/\epsilon_r$, $m_e\to m^*$:
+Use hydrogenic rescaling $e^2\to e^2/\epsilon_r$, $m_e\to m^*$:
 \[
-a_{\text{bind}} \;=\; \frac{4\pi\epsilon_0\epsilon_r\hbar^2}{m^* e^2} \;=\; a_0\,\frac{\epsilon_r m_e}{m^*}.
+a_{\text{bind}} \;=\; \frac{4\pi\epsilon_0\epsilon_r\hbar^2}{m^* e^2}.
 \]
-Evaluate:
+Factor out the Bohr radius:
 \[
-a_{\text{bind}} \;=\; 0.529\,\si{\angstrom}\cdot\frac{12.9}{0.067} \;=\; 192.5\,a_0 \;\approx\; \SI{10.2}{nm}.
+a_{\text{bind}} \;=\; a_0\,\frac{\epsilon_r m_e}{m^*}.
 \]
+Plug in numbers:
 \[
-E_{\text{bind}} \;=\; \mathrm{Ry}\cdot\frac{m^*/m_e}{\epsilon_r^2} \;=\; \SI{13.6}{eV}\cdot\frac{0.067}{12.9^2}.
+a_{\text{bind}} \;=\; 0.529\,\si{\angstrom}\cdot\frac{12.9}{0.067}.
 \]
-Evaluate:
+Evaluate the ratio:
 \[
-E_{\text{bind}} \;\approx\; \SI{13.6}{eV}\cdot 4.03\times 10^{-4} \;\approx\; \SI{5.5}{meV}.
+\frac{12.9}{0.067} \;=\; 192.5.
+\]
+Multiply by $a_0$:
+\[
+a_{\text{bind}} \;=\; 0.529\cdot 192.5\,\si{\angstrom} \;\approx\; \SI{10.2}{nm}.
+\]
+Likewise rescale the Rydberg:
+\[
+E_{\text{bind}} \;=\; \mathrm{Ry}\cdot\frac{m^*/m_e}{\epsilon_r^2}.
+\]
+Plug in numbers:
+\[
+E_{\text{bind}} \;=\; \SI{13.6}{eV}\cdot\frac{0.067}{12.9^2}.
+\]
+Evaluate $\epsilon_r^2$:
+\[
+\epsilon_r^2 \;=\; 12.9^2 \;=\; 166.4.
+\]
+Evaluate the rescaling factor:
+\[
+\frac{0.067}{166.4} \;=\; 4.027\times 10^{-4}.
+\]
+Multiply by the Rydberg:
+\[
+E_{\text{bind}} \;=\; 13.6\cdot 4.027\times 10^{-4}\,\si{eV} \;\approx\; \SI{5.5}{meV}.
 \]
 \begin{equation}
 \boxed{\;a_{\text{bind}}\approx\SI{10.2}{nm},\qquad E_{\text{bind}}\approx\SI{5.5}{meV}.\;}
 \label{eq:donor}
 \end{equation}
 
-Donor spin (Curie, $S=\tfrac12$):
+Donor spin Curie law ($S=\tfrac12$):
 \[
 \chi_{\text{spin}} \;=\; \frac{\mu_0 n_d g^2\mu_B^2}{4\kB T}.
 \]
-Donor orbital (Larmor with effective mass $m^*$, hydrogenic $\langle r^2\rangle_{1s}=3 a_{\text{bind}}^2$):
+Donor orbital Larmor with effective mass $m^*$ and hydrogenic $\langle r^2\rangle_{1s}=3 a_{\text{bind}}^2$:
 \[
-\chi_{\text{orb}} \;=\; -\mu_0\,\frac{n_d e^2}{6 m^*}\cdot 3 a_{\text{bind}}^2 \;=\; -\frac{\mu_0 n_d e^2 a_{\text{bind}}^2}{2 m^*}.
+\chi_{\text{orb}} \;=\; -\mu_0\,\frac{n_d e^2}{6 m^*}\cdot 3 a_{\text{bind}}^2.
 \]
-Set $\chi_{\text{spin}}+\chi_{\text{orb}}=0$:
+Simplify:
+\[
+\chi_{\text{orb}} \;=\; -\frac{\mu_0 n_d e^2 a_{\text{bind}}^2}{2 m^*}.
+\]
+Impose cancellation $\chi_{\text{spin}}+\chi_{\text{orb}}=0$:
 \[
 \frac{\mu_0 n_d g^2\mu_B^2}{4\kB T^*} \;=\; \frac{\mu_0 n_d e^2 a_{\text{bind}}^2}{2 m^*}.
 \]
-Cancel $\mu_0 n_d$:
+Cancel $\mu_0 n_d$ and solve for $\kB T^*$:
 \[
 \kB T^* \;=\; \frac{g^2\mu_B^2\, m^*}{2 e^2 a_{\text{bind}}^2}.
 \]
-Use $\mu_B^2=e^2\hbar^2/(4 m_e^2)$:
+Substitute $\mu_B^2=e^2\hbar^2/(4 m_e^2)$:
+\[
+\kB T^* \;=\; \frac{g^2 e^2\hbar^2 m^*}{8 m_e^2\, e^2 a_{\text{bind}}^2}.
+\]
+Cancel $e^2$:
 \[
 \kB T^* \;=\; \frac{g^2\hbar^2 m^*}{8 m_e^2 a_{\text{bind}}^2}.
 \]
-Use $E_{\text{bind}}=\hbar^2/(2 m^* a_{\text{bind}}^2)$, so $\hbar^2/(m^* a_{\text{bind}}^2)=2 E_{\text{bind}}$:
+Use $E_{\text{bind}}=\hbar^2/(2 m^* a_{\text{bind}}^2)$, hence $\hbar^2/a_{\text{bind}}^2=2 m^* E_{\text{bind}}$:
 \[
-\kB T^* \;=\; \frac{g^2}{8}\cdot\left(\frac{m^*}{m_e}\right)^2\cdot 2 E_{\text{bind}}.
+\kB T^* \;=\; \frac{g^2\cdot 2 m^*\, E_{\text{bind}}\cdot m^*}{8 m_e^2}.
 \]
-Simplify:
+Collect factors:
 \begin{equation}
 \boxed{\;\kB T^* \;=\; \frac{g^2}{4}\!\left(\frac{m^*}{m_e}\right)^{\!2}E_{\text{bind}}.\;}
 \label{eq:Tstar}
 \end{equation}
-Numerical with $g^2=0.2025$, $(m^*/m_e)^2=4.49\times 10^{-3}$, $E_{\text{bind}}=\SI{5.5}{meV}$:
+Plug in $g^2=0.2025$, $(m^*/m_e)^2=4.49\times 10^{-3}$, $E_{\text{bind}}=\SI{5.5}{meV}$:
 \[
-\kB T^* \;\approx\; \frac{0.2025\cdot 4.49\times 10^{-3}\cdot 5.5\times 10^{-3}}{4}\,\si{eV}.
+\kB T^* \;=\; \frac{0.2025\cdot 4.49\times 10^{-3}\cdot 5.5\times 10^{-3}}{4}\,\si{eV}.
 \]
-Evaluate:
+Evaluate the numerator:
+\[
+0.2025\cdot 4.49\times 10^{-3}\cdot 5.5\times 10^{-3} \;=\; 5.00\times 10^{-6}.
+\]
+Divide by $4$:
 \[
 \kB T^* \;\approx\; 1.25\times 10^{-6}\,\si{eV}.
 \]
+Convert via $\kB=\SI{8.617e-5}{eV/K}$:
+\[
+T^* \;=\; \frac{1.25\times 10^{-6}}{8.617\times 10^{-5}}\,\si{K}.
+\]
+Evaluate the quotient:
 \begin{equation}
 \boxed{\;T^*\;\approx\;\SI{15}{mK}.\;}
 \label{eq:Tnum}
@@ -506,25 +757,41 @@ Substitute $W$ with $\alpha=1$:
 \label{eq:chiIB}
 \end{equation}
 
-Crossover $\chi_{\text{spin}}^{\text{IB}}\sim|\chi_{\text{LL}}|=3\times 10^{-5}$. Evaluate the prefactor at $n^*\sim 1/a_{\text{bind}}^3\approx \SI{e24}{m^{-3}}$:
+Crossover $\chi_{\text{spin}}^{\text{IB}}\sim|\chi_{\text{LL}}|=3\times 10^{-5}$. Evaluate the prefactor at $n_0\equiv 1/a_{\text{bind}}^3\approx \SI{e24}{m^{-3}}$:
 \[
-\mu_0(g\mu_B)^2 \;=\; (1.257\times 10^{-6})\cdot 0.2025\cdot(9.27\times 10^{-24})^2 \;\approx\; 2.19\times 10^{-53}.
+\mu_0(g\mu_B)^2 \;=\; (1.257\times 10^{-6})\cdot 0.2025\cdot(9.27\times 10^{-24})^2.
 \]
-Divide by $E_{\text{bind}}=8.8\times 10^{-22}$~J:
+Evaluate the product:
 \[
-\frac{\mu_0 g^2\mu_B^2}{E_{\text{bind}}} \;\approx\; 2.5\times 10^{-32}\,\si{m^3}.
+\mu_0(g\mu_B)^2 \;\approx\; 2.19\times 10^{-53}\,\si{J^2.T^{-2}.m^{-1}.A^{-2}}.
 \]
-Multiply by $n=\SI{e24}{m^{-3}}$:
+Convert $E_{\text{bind}}$ to joules:
 \[
-\frac{\mu_0 g^2\mu_B^2 n}{E_{\text{bind}}} \;\approx\; 2.5\times 10^{-8}\quad\text{at }n=1/a_{\text{bind}}^3.
+E_{\text{bind}} \;=\; 5.5\times 10^{-3}\cdot 1.602\times 10^{-19} \;\approx\; 8.81\times 10^{-22}\,\si{J}.
 \]
-Match $|\chi_{\text{LL}}|=3\times 10^{-5}$ requires exponential $\sim 10^3$:
+Divide:
 \[
-n^{-1/3}/a_{\text{bind}} \;\sim\; \ln(10^3) \;\approx\; 7.
+\frac{\mu_0 g^2\mu_B^2}{E_{\text{bind}}} \;\approx\; \frac{2.19\times 10^{-53}}{8.81\times 10^{-22}} \;\approx\; 2.5\times 10^{-32}\,\si{m^3}.
 \]
-Solve:
+Multiply by $n_0=\SI{e24}{m^{-3}}$:
 \[
-n^* \;\sim\; \frac{1}{(7 a_{\text{bind}})^3} \;\sim\; 3\times 10^{-3}/a_{\text{bind}}^3 \;\sim\; \SI{3e21}{m^{-3}} \;\sim\; \SI{3e15}{cm^{-3}}.
+\frac{\mu_0 g^2\mu_B^2 n_0}{E_{\text{bind}}} \;\approx\; 2.5\times 10^{-8}.
+\]
+Match $|\chi_{\text{LL}}|=3\times 10^{-5}$ requires exponential factor:
+\[
+\exp\!\left(\frac{1}{n^{1/3} a_{\text{bind}}}\right) \;\sim\; \frac{3\times 10^{-5}}{2.5\times 10^{-8}} \;\sim\; 10^3.
+\]
+Take the logarithm:
+\[
+\frac{1}{n^{1/3} a_{\text{bind}}} \;\sim\; \ln(10^3) \;\approx\; 7.
+\]
+Solve for $n^*$:
+\[
+n^* \;\sim\; \frac{1}{(7 a_{\text{bind}})^3} \;\sim\; \frac{1}{343\,a_{\text{bind}}^3}.
+\]
+Evaluate using $a_{\text{bind}}^3\approx 10^{-24}\,\si{m^3}$:
+\[
+n^* \;\sim\; \SI{3e21}{m^{-3}} \;\sim\; \SI{3e15}{cm^{-3}}.
 \]
 \begin{equation}
 \boxed{\;n^*\;\sim\;10^{15}\text{--}10^{16}\,\si{cm^{-3}}\quad(\text{well below the Mott density }\sim 10^{18}\,\si{cm^{-3}}).\;}

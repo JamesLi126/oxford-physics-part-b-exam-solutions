@@ -38,15 +38,21 @@ Only \emph{signal-carrying} motion is bounded by $c$; geometric or non-informati
 
 \subsection*{(b) Relating $\bm f$, $\bm v$ and $\bm a$}
 
-With $\bm p=\gamma m\bm v$ and $m$ constant, differentiate:
+Newton's second law $\bm f = \de\bm p/\de t$ with $\bm p=\gamma m\bm v$ and $m$ constant:
+\[ \bm f = m\,\frac{\de(\gamma\bm v)}{\de t}. \]
+Apply the product rule:
 \begin{equation}
 \bm f = m\gamma\bm a + m\dot\gamma\,\bm v.
 \label{eq:Q1b-1}
 \end{equation}
-Differentiate $\gamma^2=1/(1-v^2/c^2)$:
+Differentiate $\gamma^2 = (1-v^2/c^2)^{-1}$ in $t$:
+\[ 2\gamma\dot\gamma = -(1-v^2/c^2)^{-2}\cdot\bigl(-2\bm v\cdot\bm a/c^2\bigr). \]
+Simplify:
 \[ 2\gamma\dot\gamma = \frac{2(\bm v\cdot\bm a)/c^2}{(1-v^2/c^2)^2}. \]
-Solve for $\dot\gamma$:
-\[ \dot\gamma = \gamma^3\,\frac{\bm v\cdot\bm a}{c^2}. \]
+Identify $(1-v^2/c^2)^{-2}=\gamma^4$:
+\[ 2\gamma\dot\gamma = \frac{2\gamma^4(\bm v\cdot\bm a)}{c^2}. \]
+Divide by $2\gamma$:
+\[ \dot\gamma = \frac{\gamma^3(\bm v\cdot\bm a)}{c^2}. \]
 Substitute into \eqref{eq:Q1b-1}:
 \begin{equation}
 \boxed{\bm f = \gamma m \bm a + \frac{\gamma^3 m}{c^2}(\bm v\cdot\bm a)\bm v,\qquad \lambda(v)=\gamma,\quad \mu(v)=\gamma^3/c^2.}
@@ -56,9 +62,13 @@ $\bm a\parallel\bm f$ iff $\bm v\cdot\bm a=0$ (transverse) or $\bm v\parallel\bm
 
 \subsection*{(c) The Lorentz factor: $\gamma^2 = 1+\bm\alpha^2$}
 
-Constant force $\bm f = qE_0\hat{\bm y}$ integrates to
+Newton's law $\de\bm p/\de t = qE_0\hat{\bm y}$ with $\bm p(0) = p_0\hat{\bm x}$. Integrate:
 \[ \bm p(t) = p_0\hat{\bm x} + qE_0 t\,\hat{\bm y}. \]
-Use $\gamma^2 = 1+(p/mc)^2$:
+Use $E^2 = (mc^2)^2 + (pc)^2$ with $E = \gamma mc^2$:
+\[ \gamma^2 m^2 c^4 = m^2 c^4 + p^2 c^2. \]
+Divide by $m^2 c^4$:
+\[ \gamma^2 = 1+\left(\frac{p}{mc}\right)^2. \]
+Substitute $|\bm p|^2 = p_0^2 + (qE_0 t)^2$:
 \[ \gamma^2 = 1 + \left(\frac{p_0}{mc}\right)^2 + \left(\frac{qE_0 t}{mc}\right)^2. \]
 Identify $\bm\alpha$:
 \begin{equation}
@@ -70,8 +80,10 @@ Identify $\bm\alpha$:
 \subsection*{(d) Energy method: relating $\gamma$ to height $y$, and the time of flight}
 
 Work--energy theorem with constant force $qE_0\hat{\bm y}$:
-\[ \Delta(\gamma mc^2) = qE_0\,y. \]
-Solve for $\gamma$:
+\[ \de(\gamma mc^2)/\de t = \bm f\cdot\bm v = qE_0\,\de y/\de t. \]
+Integrate from $t=0$ to $t$:
+\[ \gamma mc^2 - \gamma_0 mc^2 = qE_0\,y. \]
+Divide by $mc^2$:
 \begin{equation}
 \gamma = \gamma_0 + \frac{qE_0}{mc^2}\,y.
 \label{eq:Q1d-1}
@@ -94,11 +106,13 @@ Limit $y\ll\eta$: $y\approx (qE_0/2\gamma_0 m)t^2$ (effective mass $\gamma_0 m$)
 
 $p_x=\gamma m v_x=p_0$ is conserved, so
 \[ v_x = \frac{p_0}{\gamma m}. \]
-Differentiate with respect to $t$:
+Differentiate using $\de(1/\gamma)/\de t = -\dot\gamma/\gamma^2$:
+\[ a_x = \frac{\de v_x}{\de t} = \frac{p_0}{m}\,\frac{\de}{\de t}\!\left(\frac{1}{\gamma}\right). \]
+Substitute the chain rule:
 \[ a_x = -\frac{p_0}{m}\,\frac{\dot\gamma}{\gamma^2}. \]
-From \eqref{eq:Q1c-2}, differentiate $\gamma^2=\gamma_0^2+(qE_0 t/mc)^2$:
-\[ 2\gamma\dot\gamma = \frac{2(qE_0)^2 t}{m^2 c^2}, \]
-so
+Differentiate $\gamma^2=\gamma_0^2+(qE_0 t/mc)^2$ in $t$:
+\[ 2\gamma\dot\gamma = \frac{2(qE_0)^2 t}{m^2 c^2}. \]
+Divide by $2\gamma$:
 \[ \dot\gamma = \frac{(qE_0)^2 t}{\gamma\, m^2 c^2}. \]
 Substitute into the expression for $a_x$:
 \begin{equation}
@@ -133,12 +147,15 @@ At $t=0$, $a_x=0$; at small $t$, $a_x\propto -t$; at large $t$, $\gamma\sim qE_0
 
 \subsection*{(f) Fields and trajectory in the initial rest frame}
 
-The initial rest frame $S^\star$ moves with $\bm V=(p_0/\gamma_0 m)\hat{\bm x}$, $\gamma_V=\gamma_0$. Apply the standard boost formulae to $\bm E=E_0\hat{\bm y}$, $\bm B=0$:
-\[ E_y^\star = \gamma_0\,E_y = \gamma_0 E_0, \]
-\[ B_z^\star = -\gamma_0\,\frac{V}{c^2}E_y = -\frac{\gamma_0 p_0 E_0}{m c^2}. \]
+The initial rest frame $S^\star$ moves with $\bm V=(p_0/\gamma_0 m)\hat{\bm x}$, $\gamma_V=\gamma_0$. Apply the boost formula $E_y^\star = \gamma_V(E_y - V B_z)$ to $\bm E=E_0\hat{\bm y}$, $\bm B=0$:
+\[ E_y^\star = \gamma_0\,E_0. \]
+Apply $B_z^\star = \gamma_V(B_z - V E_y/c^2)$:
+\[ B_z^\star = -\gamma_0\,\frac{V E_0}{c^2}. \]
+Substitute $V = p_0/(\gamma_0 m)$:
+\[ B_z^\star = -\gamma_0\,\frac{p_0}{\gamma_0 m}\,\frac{E_0}{c^2} = -\frac{p_0 E_0}{m c^2}. \]
 Hence
 \begin{equation}
-\boxed{\bm E^\star = \gamma_0 E_0\,\hat{\bm y},\qquad \bm B^\star = -\frac{\gamma_0 p_0 E_0}{m c^2}\hat{\bm z}.}
+\boxed{\bm E^\star = \gamma_0 E_0\,\hat{\bm y},\qquad \bm B^\star = -\frac{p_0 E_0}{m c^2}\hat{\bm z}.}
 \end{equation}
 At $t^\star=0$ the particle is at rest, so it accelerates along $+\hat{\bm y}$; once $v_y^\star>0$, the term $q\bm v\times\bm B^\star$ deflects it towards $-\hat{\bm x}$. Trajectory enters the second quadrant.
 
@@ -164,10 +181,15 @@ At $t^\star=0$ the particle is at rest, so it accelerates along $+\hat{\bm y}$; 
 \end{tikzpicture}
 \end{center}
 
-Asymptotically in $S$, $v_x\to 0$, $v_y\to c$. Boosting back,
-\[ v_x^\star \to -V, \]
+At large $t$ in $S$, $v_x = p_0/(\gamma m)\to 0$ and $v_y\to c$. Apply the inverse velocity transformation $v_x^\star = (v_x-V)/(1-v_x V/c^2)$:
+\[ v_x^\star \to (0-V)/(1-0) = -V. \]
+Apply $v_y^\star = v_y/[\gamma_0(1-v_x V/c^2)]$:
 \[ v_y^\star \to c/\gamma_0. \]
-Both finite, so the asymptote is a straight line of slope $-c/(\gamma_0 V) = -mc/p_0$; never vertical.
+Both limits are finite, so the trajectory tends to a straight asymptotic line with slope
+\[ \frac{\de y^\star}{\de x^\star} = \frac{v_y^\star}{v_x^\star} = \frac{c/\gamma_0}{-V} = -\frac{c}{\gamma_0 V}. \]
+Substitute $V = p_0/(\gamma_0 m)$:
+\[ \frac{\de y^\star}{\de x^\star} = -\frac{mc}{p_0}. \]
+The slope is finite and nonzero, so the asymptote is straight but never vertical (which would require $v_x^\star\to 0$).
 
 %==================================================================
 \section*{Question 2 --- Doppler effect and resonant absorption with crossed source/detector motion}
@@ -176,9 +198,15 @@ Both finite, so the asymptote is a straight line of slope $-c/(\gamma_0 V) = -mc
 
 \subsection*{(a) The Doppler formula}
 
-For the 4-frequency $K^\mu=(\omega/c)(1,\hat{\bm n})$ and source 4-velocity $U_{\rm src}$:
-\[ \omega_0 = -\frac{K\cdot U_{\rm src}}{c} = \gamma_\beta\,\omega\,(1-\beta\cos\theta). \]
-Solve for $\omega$:
+Take the photon 4-wavevector $K^\mu = (\omega/c)(1,\hat{\bm n})$ and the source 4-velocity $U_{\rm src}^\mu = \gamma_\beta(c,\bm v_{\rm src})$. The Lorentz invariant $-K\cdot U_{\rm src}$ reduces to $\omega_0$ in the source rest frame (where $\bm v_{\rm src}=\bm 0$). Compute the invariant in $S$:
+\[ -K\cdot U_{\rm src} = -g_{\mu\nu}K^\mu U_{\rm src}^\nu = K^0 U^0 - \bm K\cdot\bm U. \]
+Substitute components:
+\[ -K\cdot U_{\rm src} = (\omega/c)\gamma_\beta c - \gamma_\beta(\bm v_{\rm src}\cdot\hat{\bm n})(\omega/c). \]
+Substitute $\bm v_{\rm src}\cdot\hat{\bm n} = v_{\rm src}\cos\theta$ and factor:
+\[ -K\cdot U_{\rm src} = \gamma_\beta\omega(1-\beta\cos\theta). \]
+Equate to $\omega_0$:
+\[ \omega_0 = \gamma_\beta\omega(1-\beta\cos\theta). \]
+Solve for $\omega$ using $\gamma_\beta = 1/\sqrt{1-\beta^2}$:
 \begin{equation}
 \boxed{\omega = \frac{\omega_0\sqrt{1-\beta^2}}{1-\beta\cos\theta}.}
 \label{eq:Q2a-2}
@@ -186,11 +214,15 @@ Solve for $\omega$:
 
 \subsection*{(b) Trajectory of the source in the detector frame $S$}
 
-Boost along $\bar{\bm x}$ at speed $v$, $\gamma=(1-v^2/c^2)^{-1/2}$. Source worldline in $\bar S$: $(\bar t,0,\bar y_0+u\bar t,0)$. Apply the inverse Lorentz transformation:
-\[ t = \gamma\bar t, \]
-\[ x = -v\,\gamma\,\bar t = -v\,t, \]
+The detector at the origin of $S$ moves along $+\hat{\bar x}$ at speed $v$ in $\bar S$, so $S$ moves at $+v\hat{\bar x}$ relative to $\bar S$ with $\gamma = (1-v^2/c^2)^{-1/2}$. Source worldline in $\bar S$: $\bar x = 0,\;\bar y = \bar y_0 + u\bar t,\;\bar z = 0$. Apply the Lorentz transformation $\bar S\to S$ at $\bar x=0$:
+\[ t = \gamma(\bar t - v\bar x/c^2) = \gamma\bar t. \]
+Apply the transformation for $x$:
+\[ x = \gamma(\bar x - v\bar t) = -\gamma v\bar t. \]
+Substitute $\bar t = t/\gamma$:
+\[ x = -v\,t. \]
+Apply $y = \bar y$ (transverse coordinate unchanged):
 \[ y = \bar y_0 + u\bar t = \bar y_0 + u\,t/\gamma. \]
-Hence
+Check $t=0$ gives $\bar t = 0$, hence $(x,y,z)=(0,\bar y_0,0)$. Combine:
 \begin{equation}
 \boxed{\bm r_{\rm src}(t) = \bigl(-v t,\;\bar y_0 + u t/\gamma,\;0\bigr).}
 \label{eq:Q2b-2}
@@ -198,9 +230,9 @@ Hence
 
 \subsection*{(c) Velocity of the source in $S$ and relative speed}
 
-Differentiate \eqref{eq:Q2b-2}:
+Differentiate \eqref{eq:Q2b-2} in $t$:
 \[ \bm v_{\rm src}^{(S)} = \left(-v,\;u/\gamma,\;0\right). \]
-The detector is at rest in $S$, so the relative speed is
+The detector is at rest in $S$, so the relative speed equals $|\bm v_{\rm src}^{(S)}|$:
 \[ v_{\rm rel}^2 = v^2 + (u/\gamma)^2. \]
 Substitute $1/\gamma^2 = 1-v^2/c^2$:
 \[ v_{\rm rel}^2 = v^2 + u^2\,(1-v^2/c^2). \]
@@ -213,15 +245,21 @@ Limits: $v,u\ll c\Rightarrow\sqrt{v^2+u^2}$; $u\to c\Rightarrow v_{\rm rel}\to c
 
 \subsection*{(d) Emission/reception geometry}
 
-A photon emitted at $\bm r_{\rm src}(t)$ reaches the origin at $t_r$ with $|\bm r_{\rm src}(t)|=c(t_r-t)$. Square components:
+A photon emitted at the source position $\bm r_{\rm src}(t)$ reaches the detector at the origin at time $t_r$ with light travel condition $|\bm r_{\rm src}(t)|=c(t_r-t)$. Substitute components from \eqref{eq:Q2b-2}:
 \begin{equation}
 \boxed{c(t_r-t) = \sqrt{v^2 t^2 + (\bar y_0 + ut/\gamma)^2}.}
 \label{eq:Q2d-2}
 \end{equation}
-The angle $\theta$ between $\bm V_{\rm src}=(-v,u/\gamma,0)$ and the source-to-detector direction $-\bm r_{\rm src}(t)$ is obtained from
+The source's velocity in $S$ is along its trajectory:
+\[ \bm V_{\rm src} = (-v,\;u/\gamma,\;0). \]
+The light ray from source to detector is along $-\bm r_{\rm src}(t)$:
+\[ -\bm r_{\rm src}(t) = \bigl(vt,\;-\bar y_0 - ut/\gamma,\;0\bigr),\qquad |-\bm r_{\rm src}| = c(t_r-t). \]
+Let $\theta$ be the angle between $\bm V_{\rm src}$ and $-\bm r_{\rm src}$:
 \[ v_{\rm rel}\,c(t_r-t)\cos\theta = \bm V_{\rm src}\cdot\bigl(-\bm r_{\rm src}(t)\bigr). \]
 Expand the dot product:
 \[ \bm V_{\rm src}\cdot\bigl(-\bm r_{\rm src}\bigr) = (-v)(vt) + (u/\gamma)\bigl(-\bar y_0 - ut/\gamma\bigr). \]
+Distribute the products:
+\[ \bm V_{\rm src}\cdot\bigl(-\bm r_{\rm src}\bigr) = -v^2 t - \frac{u\bar y_0}{\gamma} - \frac{u^2 t}{\gamma^2}. \]
 Collect:
 \begin{equation}
 \boxed{v_{\rm rel}\,c(t_r-t)\cos\theta = -v^2 t - \frac{u\bar y_0}{\gamma} - \frac{u^2 t}{\gamma^2}.}
@@ -251,19 +289,27 @@ Collect:
 
 \subsection*{(e) Frequency observed when the source crosses the $x$-axis}
 
-Set $y(t)=0$ in \eqref{eq:Q2b-2} to find the emission time:
+Set $y(t_\star)=0$ in \eqref{eq:Q2b-2}:
+\[ \bar y_0 + ut_\star/\gamma = 0. \]
+Solve for $t_\star$:
 \[ t_\star = -\gamma\bar y_0/u. \]
-At this moment the source lies on the $x$-axis, so the photon to the detector at the origin propagates along $-\hat{\bm x}$. Project $\bm V_{\rm src}$ onto the source-to-detector direction $-\hat{\bm x}$:
-\[ \bm V_{\rm src}\cdot(-\hat{\bm x}) = v. \]
-Hence
-\[ \cos\theta = \frac{\bm V_{\rm src}\cdot(-\hat{\bm x})}{v_{\rm rel}} = \frac{v}{v_{\rm rel}}. \]
-Substitute into \eqref{eq:Q2a-2} with $\beta=v_{\rm rel}/c$:
-\[ \omega = \frac{\omega_0\sqrt{1-v_{\rm rel}^2/c^2}}{1-v_{\rm rel}\cos\theta/c} = \frac{\omega_0\sqrt{1-v_{\rm rel}^2/c^2}}{1-v/c}. \]
-Use $1-v_{\rm rel}^2/c^2 = (1-v^2/c^2)(1-u^2/c^2)$:
+At this instant $\bm r_{\rm src}(t_\star) = (-v t_\star,\,0,\,0)$. Taking $\bar y_0>0,\;u>0$ gives $t_\star<0$, so the source is at $x_\star=-v t_\star>0$ and the source-to-detector light ray propagates along $-\hat{\bm x}$. Project the source velocity onto this direction:
+\[ \bm V_{\rm src}\cdot(-\hat{\bm x}) = (-v,u/\gamma,0)\cdot(-1,0,0) = v. \]
+Use $|\bm V_{\rm src}|=v_{\rm rel}$ to identify $\cos\theta$:
+\[ \cos\theta = \frac{v}{v_{\rm rel}}. \]
+Substitute $\beta = v_{\rm rel}/c$ into \eqref{eq:Q2a-2}:
+\[ \omega = \frac{\omega_0\sqrt{1-v_{\rm rel}^2/c^2}}{1-(v_{\rm rel}/c)\cos\theta}. \]
+Use $v_{\rm rel}\cos\theta = v$:
+\[ \omega = \frac{\omega_0\sqrt{1-v_{\rm rel}^2/c^2}}{1-v/c}. \]
+Expand $1-v_{\rm rel}^2/c^2$ using $v_{\rm rel}^2 = v^2 + u^2(1-v^2/c^2)$:
+\[ 1-v_{\rm rel}^2/c^2 = 1 - v^2/c^2 - u^2/c^2 + u^2 v^2/c^4. \]
+Factor:
+\[ 1-v_{\rm rel}^2/c^2 = (1-v^2/c^2)(1-u^2/c^2). \]
+Substitute back:
 \[ \omega = \omega_0\,\frac{\sqrt{(1-v^2/c^2)(1-u^2/c^2)}}{1-v/c}. \]
 Factor $1-v^2/c^2=(1-v/c)(1+v/c)$:
 \[ \omega = \omega_0\,\sqrt{\frac{(1-v/c)(1+v/c)(1-u^2/c^2)}{(1-v/c)^2}}. \]
-Cancel one $(1-v/c)$:
+Cancel one factor of $(1-v/c)$:
 \begin{equation}
 \boxed{\omega = \omega_0\sqrt{\frac{(1+v/c)(1-u^2/c^2)}{1-v/c}}.}
 \label{eq:Q2e-4}
@@ -271,28 +317,36 @@ Cancel one $(1-v/c)$:
 
 \subsection*{(f) Resonant absorption}
 
-Excited mass $M=m+\hbar\omega_0/c^2$. Conservation of 4-momentum on a stationary atom absorbing a photon of energy $\hbar\omega$ along $-\hat{\bm x}$ gives, after squaring,
+Read the paper's specification literally: ground-state rest mass $m$, excited-state rest mass $m+\hbar\omega_0/c^2$ (treating $\hbar\omega_0$ as the excitation energy). Pre-collision 4-momenta in $S$: atom at rest $\mathsf P_{\rm atom}=(mc,\bm 0)$, photon travelling along $-\hat{\bm x}$ with $\mathsf P_\gamma = (\hbar\omega/c,\,-\hbar\omega/c,\,0,\,0)$. Sum:
+\[ \mathsf P_{\rm tot} = \bigl(mc+\hbar\omega/c,\,-\hbar\omega/c,\,0,\,0\bigr). \]
+The excited atom carries this total 4-momentum, so $\mathsf P_{\rm tot}^2 = -M^2 c^2$ with $M = m+\hbar\omega_0/c^2$. Compute:
+\[ \mathsf P_{\rm tot}^2 = -(mc+\hbar\omega/c)^2 + (\hbar\omega/c)^2 = -M^2 c^2. \]
+Multiply by $-1$:
 \[ (mc+\hbar\omega/c)^2 - (\hbar\omega/c)^2 = M^2 c^2. \]
-Expand the left-hand side:
+Expand the first square:
 \[ m^2 c^2 + 2m\hbar\omega + (\hbar\omega/c)^2 - (\hbar\omega/c)^2 = M^2 c^2. \]
-Cancel the $(\hbar\omega/c)^2$ terms and substitute $M$:
-\[ m^2 c^2 + 2m\hbar\omega = m^2 c^2 + 2m\,\frac{\hbar\omega_0}{c^2}c^2 + \left(\frac{\hbar\omega_0}{c^2}\right)^2 c^2. \]
-Solve for $\omega$:
-\[ \omega = \omega_0 + \frac{(\hbar\omega_0)^2}{2mc^2\,\hbar} = \omega_0\left(1+\frac{\hbar\omega_0}{2mc^2}\right). \]
-Hence the recoil-shifted resonance condition:
+Cancel the $(\hbar\omega/c)^2$ terms:
+\[ m^2 c^2 + 2m\hbar\omega = M^2 c^2. \]
+Substitute $M = m+\hbar\omega_0/c^2$ and expand $M^2 c^2$:
+\[ m^2 c^2 + 2m\hbar\omega = m^2 c^2 + 2m\hbar\omega_0 + \hbar^2\omega_0^2/c^2. \]
+Cancel $m^2 c^2$:
+\[ 2m\hbar\omega = 2m\hbar\omega_0 + \hbar^2\omega_0^2/c^2. \]
+Divide by $2m\hbar$:
+\[ \omega = \omega_0 + \frac{\hbar\omega_0^2}{2mc^2}. \]
+Factor out $\omega_0$:
 \begin{equation}
-\omega_{\rm res} = \omega_0\left(1+\frac{\hbar\omega_0}{2mc^2}\right).
+\omega_{\rm res} = \omega_0\!\left(1+\frac{\hbar\omega_0}{2mc^2}\right).
 \label{eq:Q2f-4}
 \end{equation}
 Equate \eqref{eq:Q2e-4} with \eqref{eq:Q2f-4}:
-\[ \sqrt{\frac{(1+v/c)(1-u^2/c^2)}{1-v/c}} = 1+\frac{\hbar\omega_0}{2mc^2}. \]
-Square both sides:
-\[ \frac{(1+v/c)(1-u^2/c^2)}{1-v/c} = \left(1+\frac{\hbar\omega_0}{2mc^2}\right)^2. \]
-Solve for $1-u^2/c^2$:
-\[ 1-u^2/c^2 = \frac{1-v/c}{1+v/c}\left(1+\frac{\hbar\omega_0}{2mc^2}\right)^2. \]
-Hence
+\[ \omega_0\sqrt{\frac{(1+v/c)(1-u^2/c^2)}{1-v/c}} = \omega_0\!\left(1+\frac{\hbar\omega_0}{2mc^2}\right). \]
+Divide by $\omega_0$ and square:
+\[ \frac{(1+v/c)(1-u^2/c^2)}{1-v/c} = \!\left(1+\frac{\hbar\omega_0}{2mc^2}\right)^{\!2}. \]
+Multiply by $(1-v/c)/(1+v/c)$:
+\[ 1-u^2/c^2 = \frac{1-v/c}{1+v/c}\!\left(1+\frac{\hbar\omega_0}{2mc^2}\right)^{\!2}. \]
+Solve for $u$:
 \begin{equation}
-\boxed{u = c\sqrt{1 - \frac{1-v/c}{1+v/c}\left(1+\frac{\hbar\omega_0}{2mc^2}\right)^2}.}
+\boxed{u = c\sqrt{1 - \frac{1-v/c}{1+v/c}\!\left(1+\frac{\hbar\omega_0}{2mc^2}\right)^{\!2}}.}
 \end{equation}
 
 %==================================================================
@@ -302,32 +356,42 @@ Hence
 
 \subsection*{(a) Which are 4-vectors?}
 
-Multiplication by a Lorentz scalar preserves 4-vector character; multiplication by frame-dependent quantities does not.
+Multiplication of a 4-vector by a Lorentz scalar yields a 4-vector; multiplication by a frame-dependent quantity does not. For a particle, $\bm p = \gamma m\bm v = (E/c^2)\bm v$, so $E\bm v = c^2\bm p$.
 \begin{itemize}
-\item \textbf{1.} $X^\mu$ -- yes.
-\item \textbf{2.} $(c,\bm v)$ -- no, missing $\gamma$.
-\item \textbf{3.} $P^\mu=(E/c,\bm p)$ -- yes.
-\item \textbf{4.} $m X^\mu$ -- yes ($m$ invariant).
-\item \textbf{5.} $m(c,\bm v)$ -- no, missing $\gamma$.
-\item \textbf{6.} $E(c,\bm v)$ -- no, $E$ frame-dependent.
+\item \textbf{1.} $X^\mu = (ct,\bm r)$ -- yes (the position 4-vector).
+\item \textbf{2.} $(c,\bm v)$ -- no; the 4-velocity is $\gamma(c,\bm v)$, and $1/\gamma$ is frame-dependent.
+\item \textbf{3.} $P^\mu=(E/c,\bm p)$ -- yes (4-momentum).
+\item \textbf{4.} $m X^\mu$ -- yes ($m$ is a Lorentz invariant).
+\item \textbf{5.} $m(c,\bm v)$ -- no; again missing the $\gamma$ factor.
+\item \textbf{6.} $E(c,\bm v) = (Ec,E\bm v)$. Use $E\bm v = c^2\bm p$:
+\[ (Ec,E\bm v) = (cE,c^2\bm p). \]
+Factor out $c^2$:
+\[ (Ec,E\bm v) = c^2\,(E/c,\bm p) = c^2 P^\mu. \]
+Since $c^2$ is an invariant constant, this \emph{is} a 4-vector.
 \end{itemize}
 \begin{equation}
-\boxed{\text{4-vectors: 1, 3, 4. Not 4-vectors: 2, 5, 6.}}
+\boxed{\text{4-vectors: 1, 3, 4, 6.\quad Not 4-vectors: 2, 5.}}
 \end{equation}
 
 \subsection*{(b) Rest-mass preservation}
 
-From $U\cdot U=-c^2$, differentiate:
-\[ 2\,A\cdot U = 0,\qquad A\cdot U = 0. \]
-With $F=\dot m\,U+m A$, dot with $U$:
-\[ F\cdot U = \dot m\,(U\cdot U) + m\,(A\cdot U) = -\dot m\,c^2. \]
+Start from $U\cdot U=-c^2$ (Lorentz invariant). Differentiate in proper time $\tau$:
+\[ 2\,A\cdot U = 0. \]
+Divide by $2$:
+\[ A\cdot U = 0. \]
+Write the 4-momentum $\mathsf P = mU$ and differentiate:
+\[ \mathsf F = \dot m\,U + m\,A. \]
+Dot with $U$:
+\[ F\cdot U = \dot m\,(U\cdot U) + m\,(A\cdot U). \]
+Substitute $U\cdot U=-c^2$ and $A\cdot U=0$:
+\[ F\cdot U = -\dot m\,c^2. \]
 Hence $F\cdot U=0\Leftrightarrow\dot m=0$.
 
-For $F=q\,\mathbb{G}\cdot U$, write
+For $\mathsf F = q\,\mathbb{G}\cdot U$, write the contraction with $U$ using the metric convention $F\cdot U = F^a g_{ab}U^b = (q\mathbb{G}^{ac}U_c)\,U_a$:
 \[ F\cdot U = q\,U_a\,U_c\,\mathbb{G}^{ac}. \]
-Symmetrise $U_aU_c$:
+Decompose $\mathbb{G}^{ac} = \mathbb{G}^{(ac)} + \mathbb{G}^{[ac]}$. The symmetric tensor $U_a U_c$ contracted with the antisymmetric part vanishes:
 \[ F\cdot U = q\,U_a\,U_c\,\mathbb{G}^{(ac)}. \]
-This vanishes for all $U$ iff
+For this to vanish for \emph{every} 4-velocity $U$, the symmetric part must be zero, i.e.
 \begin{equation}
 \boxed{\mathbb{G}^{ab} = -\mathbb{G}^{ba}.}
 \end{equation}
@@ -335,25 +399,37 @@ This is why the Faraday tensor is antisymmetric.
 
 \subsection*{(c) Invariants of the EM field with parallel $\bm E,\bm B$}
 
+The two Lorentz-scalar combinations are
 \begin{align}
-I_1 &= \bm B^2 - \bm E^2/c^2, & I_2 &= -\bm E\cdot\bm B/c.
+I_1 &= \bm B^2 - \bm E^2/c^2, & I_2 &= \bm E\cdot\bm B.
 \end{align}
-With $\bm E\parallel\bm B$, $|\bm E|=E_0$, $|\bm B|=E_0/c$, evaluate:
-\[ I_1 = (E_0/c)^2 - E_0^2/c^2 = 0, \]
-\[ I_2 = -E_0\,(E_0/c)/c = -E_0^2/c. \]
-In any other frame $S^\dagger$, invariance gives $|\bm E^\dagger|^2/c^2 - |\bm B^\dagger|^2 = 0$, so
-\[ |\bm E^\dagger| = c|\bm B^\dagger|, \]
-and
+In $S$, with $\bm E\parallel\bm B$, $|\bm E|=E_0$, $|\bm B|=E_0/c$, evaluate $I_1$:
+\[ I_1 = (E_0/c)^2 - E_0^2/c^2 = 0. \]
+Evaluate $I_2$:
+\[ I_2 = E_0\,(E_0/c) = E_0^2/c. \]
+Invariance of $I_1$ in any other frame $S^\dagger$ gives $|\bm B^\dagger|^2 = |\bm E^\dagger|^2/c^2$:
+\[ |\bm E^\dagger| = c|\bm B^\dagger|. \]
+Invariance of $I_2$ gives
 \[ \bm E^\dagger\cdot\bm B^\dagger = E_0^2/c. \]
-By Cauchy--Schwarz,
-\[ E_0^2/c \leq |\bm E^\dagger||\bm B^\dagger| = c|\bm B^\dagger|^2. \]
-Hence
-\[ \boxed{|\bm B^\dagger|\geq B_0,\ |\bm E^\dagger|\geq E_0.} \]
-For $|\bm B'|=\sqrt 2 B_0$, $|\bm E'|=\sqrt 2 E_0$:
-\[ \cos\phi = \frac{\bm E'\cdot\bm B'}{|\bm E'||\bm B'|} = \frac{E_0^2/c}{\sqrt 2 E_0\cdot\sqrt 2 E_0/c} = \frac{1}{2}. \]
+Apply Cauchy--Schwarz, $\bm E^\dagger\cdot\bm B^\dagger\le|\bm E^\dagger||\bm B^\dagger|$:
+\[ E_0^2/c \leq |\bm E^\dagger||\bm B^\dagger|. \]
+Substitute $|\bm E^\dagger|=c|\bm B^\dagger|$:
+\[ E_0^2/c \le c|\bm B^\dagger|^2. \]
+Solve for $|\bm B^\dagger|$:
+\[ |\bm B^\dagger|^2 \geq E_0^2/c^2. \]
+Take the positive square root and use $|\bm E^\dagger|=c|\bm B^\dagger|$:
+\[ \boxed{|\bm B^\dagger|\geq B_0=E_0/c,\qquad |\bm E^\dagger|\geq E_0.} \]
+Given $|\bm B'|=\sqrt 2\,B_0$, use $|\bm E'|=c|\bm B'|$:
+\[ |\bm E'| = c\sqrt 2\,B_0 = \sqrt 2\,E_0. \]
+Apply the definition of $\cos\phi$:
+\[ \cos\phi = \frac{\bm E'\cdot\bm B'}{|\bm E'||\bm B'|}. \]
+Substitute $\bm E'\cdot\bm B' = I_2 = E_0^2/c$ and $|\bm E'||\bm B'| = (\sqrt 2 E_0)(\sqrt 2\,E_0/c)$:
+\[ \cos\phi = \frac{E_0^2/c}{2E_0^2/c}. \]
+Cancel:
+\[ \cos\phi = \tfrac12. \]
 Hence
 \begin{equation}
-\boxed{\phi=\pi/3.}
+\boxed{\phi = \pi/3.}
 \end{equation}
 
 \medskip
@@ -376,45 +452,73 @@ Hence
 
 \subsection*{(d) Stress-energy tensor in $S$}
 
-$\bm E=E_0\hat{\bm y}$, $\bm B=(E_0/c)\hat{\bm y}$. Energy density:
-\[ u = \tfrac12\epsilon_0 E_0^2 + \tfrac{1}{2\mu_0}(E_0/c)^2 = \tfrac12\epsilon_0 E_0^2 + \tfrac12\epsilon_0 E_0^2 = \epsilon_0 E_0^2. \]
-Poynting vector:
-\[ \bm S = \frac{1}{\mu_0}\bm E\times\bm B = 0 \quad(\text{parallel fields}). \]
-Maxwell stress is diagonal: tension $-\epsilon_0 E_0^2$ along $\hat{\bm y}$, pressure $+\epsilon_0 E_0^2$ in $\hat{\bm x},\hat{\bm z}$. Hence
+In $S$, $\bm E = E_0\hat{\bm y}$, $\bm B = (E_0/c)\hat{\bm y}$. The non-zero components of $F^{\mu\nu}$ are
+\[ F^{02} = E_0/c,\;\; F^{20} = -E_0/c,\;\; F^{13} = -B_y = -E_0/c,\;\; F^{31} = E_0/c. \]
+Compute the invariant $F^{\mu\nu}F_{\mu\nu}$ using $F_{0i}=-F^{0i}$, $F_{ij}=F^{ij}$:
+\[ F^{\mu\nu}F_{\mu\nu} = 2F^{02}F_{02} + 2F^{13}F_{13} = -2(E_0/c)^2 + 2(E_0/c)^2. \]
+Collect:
+\[ F^{\mu\nu}F_{\mu\nu} = 0 = 2I_1. \]
+Hence the trace-piece $-\tfrac14 g^{ab}F^{\mu\nu}F_{\mu\nu}$ vanishes, leaving $\mathbb{T}^{ab} = -\epsilon_0 c^2 g^{a\lambda}F_{\lambda\mu}F^{\mu b}$.
+
+Energy density $\mathbb{T}^{00} = \epsilon_0 c^2 F_{0\mu}F^{\mu 0}$:
+\[ \mathbb{T}^{00} = \epsilon_0 c^2\,F_{02}F^{20}. \]
+Substitute $F_{02} = -E_0/c$, $F^{20} = -E_0/c$:
+\[ \mathbb{T}^{00} = \epsilon_0 c^2\cdot E_0^2/c^2 = \epsilon_0 E_0^2. \]
+This equals the field energy density $\tfrac12\epsilon_0 E_0^2 + B_0^2/(2\mu_0) = \epsilon_0 E_0^2$. For the energy-flux/momentum-density entries $\mathbb{T}^{0i} = \epsilon_0 c^2 F_{0\mu}F^{\mu i}$, the only nonzero $F_{0\mu}$ component is $F_{02}$, and $F^{2i}$ vanishes for every spatial $i$ (since $B_x=B_z=0$ and $E_y$ does not enter $F^{2i}$):
+\[ \mathbb{T}^{0i} = 0\qquad(\text{Poynting vector }\bm S=\bm E\times\bm B/\mu_0 = 0). \]
+For $\mathbb{T}^{xx} = -\epsilon_0 c^2 F_{1\mu}F^{\mu 1}$, only $\mu=3$ contributes:
+\[ \mathbb{T}^{xx} = -\epsilon_0 c^2\,F_{13}F^{31}. \]
+Substitute $F_{13} = -E_0/c$, $F^{31} = E_0/c$:
+\[ \mathbb{T}^{xx} = -\epsilon_0 c^2\cdot(-E_0^2/c^2) = +\epsilon_0 E_0^2. \]
+For $\mathbb{T}^{yy} = -\epsilon_0 c^2 F_{2\mu}F^{\mu 2}$, only $\mu=0$ contributes:
+\[ \mathbb{T}^{yy} = -\epsilon_0 c^2\,F_{20}F^{02} = -\epsilon_0 c^2\cdot E_0^2/c^2 = -\epsilon_0 E_0^2. \]
+By the same calculation as $\mathbb{T}^{xx}$ (with $F_{31}F^{13}$):
+\[ \mathbb{T}^{zz} = +\epsilon_0 E_0^2. \]
+Assemble:
 \begin{equation}
 \mathbb{T} = \epsilon_0 E_0^2\begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 1\end{pmatrix},
 \end{equation}
 \begin{equation}
 \boxed{\mathbb{T}^{00}=\epsilon_0 E_0^2,\quad \mathbb{T}^{0i}=0,\quad \mathbb{T}^{xx}=\mathbb{T}^{zz}=+\epsilon_0 E_0^2,\quad \mathbb{T}^{yy}=-\epsilon_0 E_0^2.}
 \end{equation}
-Symmetry $\mathbb{T}^{0i}=\mathbb{T}^{i0}$: momentum density $=$ energy flux/$c^2$.
+Interpretation: $\mathbb{T}^{00}$ is energy density; $c\mathbb{T}^{0i}$ is energy flux (zero, since parallel $\bm E,\bm B$); $\mathbb{T}^{ij}$ is momentum-flux/stress. $\mathbb{T}^{yy}<0$ encodes tension along the field lines; $\mathbb{T}^{xx},\mathbb{T}^{zz}>0$ encode pressure transverse to them. Symmetry $\mathbb{T}^{0i}=\mathbb{T}^{i0}$: momentum density equals energy flux divided by $c^2$.
 
 \subsection*{(e) Stress-energy in $S'$}
 
-Boost along $\hat{\bm x}$ at $\beta=v/c$. Apply $\mathbb{T}'^{\mu\nu}=\Lambda^\mu{}_\alpha\Lambda^\nu{}_\beta\mathbb{T}^{\alpha\beta}$ to the $(t,x)$ block. Compute each entry:
-\[ \mathbb{T}'^{00} = \gamma^2(\mathbb{T}^{00}+\beta^2\mathbb{T}^{xx}) = \epsilon_0 E_0^2\,\gamma^2(1+\beta^2), \]
-\[ \mathbb{T}'^{0x} = -\gamma^2\beta(\mathbb{T}^{00}+\mathbb{T}^{xx}) = -2\epsilon_0 E_0^2\,\gamma^2\beta, \]
-\[ \mathbb{T}'^{xx} = \gamma^2(\beta^2\mathbb{T}^{00}+\mathbb{T}^{xx}) = \epsilon_0 E_0^2\,\gamma^2(1+\beta^2). \]
-Collect into the block form:
-\begin{equation}
-\begin{pmatrix} \mathbb{T}^{00\prime} & \mathbb{T}^{0x\prime}\\ \mathbb{T}^{0x\prime} & \mathbb{T}^{xx\prime}\end{pmatrix}
-= \epsilon_0 E_0^2\,\gamma^2\begin{pmatrix}1+\beta^2 & -2\beta\\ -2\beta & 1+\beta^2\end{pmatrix},
-\end{equation}
-others unchanged. Hence
+Boost along $\hat{\bm x}$ at $\beta=v/c$. The Lorentz matrix has nonzero entries
+\[ \Lambda^0{}_0 = \Lambda^1{}_1 = \gamma,\qquad \Lambda^0{}_1 = \Lambda^1{}_0 = -\gamma\beta, \]
+and $\Lambda^2{}_2 = \Lambda^3{}_3 = 1$. Apply $\mathbb{T}'^{\mu\nu}=\Lambda^\mu{}_\alpha\Lambda^\nu{}_\beta\mathbb{T}^{\alpha\beta}$ to the $(t,x)$-block. Compute $\mathbb{T}'^{00}$:
+\[ \mathbb{T}'^{00} = (\Lambda^0{}_0)^2\mathbb{T}^{00} + (\Lambda^0{}_1)^2\mathbb{T}^{xx}. \]
+Substitute:
+\[ \mathbb{T}'^{00} = \gamma^2\,\mathbb{T}^{00} + \gamma^2\beta^2\,\mathbb{T}^{xx} = \epsilon_0 E_0^2\,\gamma^2(1+\beta^2). \]
+Compute $\mathbb{T}'^{0x}$ (cross terms via symmetry of $\mathbb{T}$):
+\[ \mathbb{T}'^{0x} = \Lambda^0{}_0\Lambda^1{}_0\,\mathbb{T}^{00} + \Lambda^0{}_1\Lambda^1{}_1\,\mathbb{T}^{xx}. \]
+Substitute:
+\[ \mathbb{T}'^{0x} = -\gamma^2\beta\,\mathbb{T}^{00} - \gamma^2\beta\,\mathbb{T}^{xx} = -\gamma^2\beta(\mathbb{T}^{00}+\mathbb{T}^{xx}). \]
+Insert $\mathbb{T}^{00}=\mathbb{T}^{xx}=\epsilon_0 E_0^2$:
+\[ \mathbb{T}'^{0x} = -2\epsilon_0 E_0^2\,\gamma^2\beta. \]
+Compute $\mathbb{T}'^{xx}$:
+\[ \mathbb{T}'^{xx} = (\Lambda^1{}_0)^2\mathbb{T}^{00} + (\Lambda^1{}_1)^2\mathbb{T}^{xx} = \gamma^2\beta^2\,\mathbb{T}^{00} + \gamma^2\,\mathbb{T}^{xx}. \]
+Simplify:
+\[ \mathbb{T}'^{xx} = \epsilon_0 E_0^2\,\gamma^2(1+\beta^2). \]
+The $y$- and $z$-blocks are unaffected by the $x$-boost (their $\Lambda$ rows act trivially), so $\mathbb{T}'^{yy} = -\epsilon_0 E_0^2$, $\mathbb{T}'^{zz} = +\epsilon_0 E_0^2$, and all remaining off-diagonals are zero. Hence
 \begin{equation}
 \boxed{\mathbb{T}'=\epsilon_0 E_0^2\begin{pmatrix}\gamma^2(1+\beta^2) & -2\gamma^2\beta & 0 & 0\\ -2\gamma^2\beta & \gamma^2(1+\beta^2) & 0 & 0\\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 1\end{pmatrix}.}
 \end{equation}
 
 \subsection*{(f) Energy flux at low velocity}
 
-To first order in $v/c$, $\gamma\approx 1$. Read off:
-\[ cT^{0x\prime} \approx -2v\,\epsilon_0 E_0^2, \]
-\[ T^{00\prime} \approx \epsilon_0 E_0^2. \]
-Pure convection $\rho v$ with $\rho = T^{00}/c^2\cdot c^2 = \epsilon_0 E_0^2$ alone would contribute
-\[ \text{convective flux} = \rho v = \epsilon_0 E_0^2\,v\quad(\text{magnitude }\epsilon_0 E_0^2 v), \]
-i.e.\ half the actual flux. The missing piece is the Maxwell stress doing work on moving surfaces: $\sigma_{xx}=-\epsilon_0 E_0^2$, contributing $-\sigma_{xx}v=\epsilon_0 E_0^2\,v$.
+To first order in $v/c$, take $\gamma\approx 1$, so $\gamma^2\beta\approx v/c$. Read off the energy flux $cT'^{0x}$:
+\[ cT'^{0x} = -2c\,\gamma^2\beta\,\epsilon_0 E_0^2 \approx -2v\,\epsilon_0 E_0^2. \]
+Energy density unchanged at this order:
+\[ T'^{00} \approx \epsilon_0 E_0^2 \equiv \rho. \]
+In $S'$ the field configuration drifts at velocity $-v\hat{\bm x}$. The convection piece $\rho \bm v_{\rm field}$ contributes
+\[ \rho\cdot(-v) = -\epsilon_0 E_0^2\,v, \]
+which is only half of $cT'^{0x}$. The remainder comes from the work done by the Maxwell stress: the spatial stress tensor in $S$ has $T^{xx} = +\epsilon_0 E_0^2$ (lateral pressure transverse to $\bm E$). A surface moving with velocity $-v\hat{\bm x}$ against a pressure $T^{xx}$ transports energy at rate $T^{xx}\cdot(-v)$:
+\[ T^{xx}\cdot(-v) = -\epsilon_0 E_0^2\,v. \]
+Add the two contributions:
 \begin{equation}
-\boxed{\text{flux} = \underbrace{\rho v}_{-\epsilon_0 E_0^2 v} + \underbrace{(-\sigma_{xx})v}_{-\epsilon_0 E_0^2 v} = -2\epsilon_0 E_0^2 v.}
+\boxed{cT'^{0x} = \underbrace{\rho\cdot(-v)}_{-\epsilon_0 E_0^2 v} + \underbrace{T^{xx}\cdot(-v)}_{-\epsilon_0 E_0^2 v} = -2\epsilon_0 E_0^2\,v.}
 \end{equation}
 
 %==================================================================
@@ -424,78 +528,116 @@ i.e.\ half the actual flux. The missing piece is the Maxwell stress doing work o
 
 \subsection*{(a) Lorentz-invariant scalar products}
 
-Square the conservation law $\mathsf P+\mathsf Q=\mathsf P'+\mathsf Q'$:
+Conservation: $\mathsf P+\mathsf Q=\mathsf P'+\mathsf Q'$. Square both sides:
+\[ (\mathsf P+\mathsf Q)^2 = (\mathsf P'+\mathsf Q')^2. \]
+Expand:
 \[ \mathsf P^2 + 2\mathsf P\cdot\mathsf Q + \mathsf Q^2 = \mathsf P'^2 + 2\mathsf P'\cdot\mathsf Q' + \mathsf Q'^2. \]
-Use $\mathsf P^2=\mathsf P'^2=-m_1^2 c^2$, $\mathsf Q^2=\mathsf Q'^2=-m_2^2 c^2$:
-\[ 2\mathsf P\cdot\mathsf Q = 2\mathsf P'\cdot\mathsf Q'. \]
-Hence
+Substitute mass shells $\mathsf P^2=\mathsf P'^2=-m_1^2 c^2$, $\mathsf Q^2=\mathsf Q'^2=-m_2^2 c^2$:
+\[ -m_1^2 c^2 + 2\mathsf P\cdot\mathsf Q - m_2^2 c^2 = -m_1^2 c^2 + 2\mathsf P'\cdot\mathsf Q' - m_2^2 c^2. \]
+Cancel mass-shell terms and divide by $2$:
 \begin{equation}
 \boxed{\mathsf P\cdot\mathsf Q = \mathsf P'\cdot\mathsf Q'.}
 \end{equation}
-Square the rearrangement $\mathsf P-\mathsf Q'=\mathsf P'-\mathsf Q$:
+Rewrite conservation as $\mathsf P-\mathsf Q'=\mathsf P'-\mathsf Q$. Square:
+\[ (\mathsf P-\mathsf Q')^2 = (\mathsf P'-\mathsf Q)^2. \]
+Expand:
 \[ \mathsf P^2 - 2\mathsf P\cdot\mathsf Q' + \mathsf Q'^2 = \mathsf P'^2 - 2\mathsf P'\cdot\mathsf Q + \mathsf Q^2. \]
-Cancel mass-shell terms:
+Substitute mass shells and cancel:
 \begin{equation}
 \boxed{\mathsf P\cdot\mathsf Q' = \mathsf P'\cdot\mathsf Q.}
 \end{equation}
 
 \subsection*{(b) The sum $s+t+u$}
 
-With $c=1$, expand each Mandelstam square:
-\[ s = -(\mathsf P+\mathsf Q)^2 = m_1^2 + m_2^2 - 2\mathsf P\cdot\mathsf Q, \]
-\[ t = -(\mathsf P-\mathsf P')^2 = 2 m_1^2 - 2\mathsf P\cdot\mathsf P', \]
-\[ u = -(\mathsf P-\mathsf Q')^2 = m_1^2 + m_2^2 - 2\mathsf P\cdot\mathsf Q'\cdot(-1)\cdot\ldots \]
-(using metric $(-+++)$ and rest masses), or equivalently
-\[ u = m_1^2+m_2^2 -2\mathsf P\cdot\mathsf Q'. \]
+With $c=1$ and signature $(-,+,+,+)$, $\mathsf P^2=-m_1^2$, $\mathsf P'^2=-m_1^2$, $\mathsf Q^2=-m_2^2$, $\mathsf Q'^2=-m_2^2$. Expand $s=-(\mathsf P+\mathsf Q)^2$:
+\[ s = -\mathsf P^2 - 2\mathsf P\cdot\mathsf Q - \mathsf Q^2. \]
+Substitute mass shells:
+\[ s = m_1^2 + m_2^2 - 2\mathsf P\cdot\mathsf Q. \]
+Expand $t=-(\mathsf P-\mathsf P')^2$:
+\[ t = -\mathsf P^2 + 2\mathsf P\cdot\mathsf P' - \mathsf P'^2 = 2m_1^2 + 2\mathsf P\cdot\mathsf P'. \]
+Expand $u=-(\mathsf P-\mathsf Q')^2$:
+\[ u = -\mathsf P^2 + 2\mathsf P\cdot\mathsf Q' - \mathsf Q'^2 = m_1^2 + m_2^2 + 2\mathsf P\cdot\mathsf Q'. \]
 Add the three:
-\[ s+t+u = 4m_1^2 + 2m_2^2 - 2\mathsf P\cdot(\mathsf Q+\mathsf P'+\mathsf Q'). \]
-Use 4-momentum conservation $\mathsf P'+\mathsf Q'=\mathsf P+\mathsf Q$:
-\[ s+t+u = 4m_1^2 + 2m_2^2 - 2\mathsf P\cdot(2\mathsf P+2\mathsf Q-\mathsf P) = 2m_1^2 + 2m_2^2. \]
-Hence
+\[ s+t+u = 4m_1^2 + 2m_2^2 + 2\mathsf P\cdot(-\mathsf Q + \mathsf P' + \mathsf Q'). \]
+Use conservation $\mathsf P'+\mathsf Q' = \mathsf P+\mathsf Q$:
+\[ -\mathsf Q+\mathsf P'+\mathsf Q' = \mathsf P. \]
+Substitute:
+\[ s+t+u = 4m_1^2 + 2m_2^2 + 2\mathsf P\cdot\mathsf P. \]
+Substitute $\mathsf P\cdot\mathsf P = -m_1^2$:
+\[ s+t+u = 4m_1^2 + 2m_2^2 - 2m_1^2. \]
+Collect:
 \begin{equation}
 \boxed{s+t+u = 2m_1^2 + 2m_2^2.}
 \end{equation}
 
 \subsection*{(c) Energy conservation in the zero-momentum frame}
 
-In the ZMF $\bm q=-\bm p$ and $\bm q'=-\bm p'$, with $E_i=\sqrt{m_i^2+|\bm p|^2}$. Compute
-\[ E_1^2 - E_2^2 = m_1^2 - m_2^2, \]
+In the ZMF, $\bm p+\bm q=0$ gives $\bm q=-\bm p$, and similarly $\bm q'=-\bm p'$. Hence $|\bm q|=|\bm p|\equiv p$ and $|\bm q'|=|\bm p'|\equiv p'$. Use $E_i^2 = m_i^2+|\bm p_i|^2$:
+\[ E_1^2 - E_2^2 = (m_1^2 + p^2) - (m_2^2 + p^2). \]
+Cancel $p^2$:
+\[ E_1^2 - E_2^2 = m_1^2 - m_2^2. \]
+Similarly for the outgoing pair:
 \[ E_1'^2 - E_2'^2 = m_1^2 - m_2^2. \]
-Subtract:
+Equate:
 \[ E_1^2 - E_2^2 = E_1'^2 - E_2'^2. \]
-Factor as $(E_1-E_2)(E_1+E_2)=(E_1'-E_2')(E_1'+E_2')$ and use total-energy conservation $E_1+E_2=E_1'+E_2'$:
+Factor as a difference of squares:
+\[ (E_1-E_2)(E_1+E_2) = (E_1'-E_2')(E_1'+E_2'). \]
+Apply total-energy conservation $E_1+E_2=E_1'+E_2'$ and divide by this common factor:
 \[ E_1 - E_2 = E_1' - E_2'. \]
-Combine the sum and difference:
+Add to $E_1+E_2=E_1'+E_2'$ and divide by $2$:
+\[ E_1 = E_1'. \]
+Subtract and divide by $2$:
+\[ E_2 = E_2'. \]
+Conclude:
 \begin{equation}
 \boxed{E_1=E_1',\qquad E_2=E_2',}
 \end{equation}
-and consequently $|\bm p|=|\bm p'|$.
+and consequently $|\bm p|=|\bm p'|$, i.e.\ $p=p'$.
 
 \subsection*{(d) $t$ and $\cos\theta$; $s$ in terms of energies}
 
-In the ZMF, $\mathsf P-\mathsf P'=\mathsf Q'-\mathsf Q=(0,\bm q'-\bm q)$:
+In the ZMF, part (c) gives $E_1=E_1'$, so the 4-vector difference reduces to its spatial part:
+\[ \mathsf P-\mathsf P' = (0,\bm p-\bm p'). \]
+Note also $\bm q'-\bm q = (-\bm p')-(-\bm p) = \bm p-\bm p'$, so the angle between $\bm q,\bm q'$ equals that between $\bm p,\bm p'$. Square (signature $(-,+,+,+)$):
+\[ (\mathsf P-\mathsf P')^2 = |\bm p-\bm p'|^2. \]
+Expand the square using $|\bm p|=|\bm p'|=p$ and $\bm p\cdot\bm p' = p^2\cos\theta$:
+\[ |\bm p-\bm p'|^2 = p^2 - 2p^2\cos\theta + p^2. \]
+Collect:
+\[ |\bm p-\bm p'|^2 = 2p^2(1-\cos\theta). \]
+Apply $t = -(\mathsf P-\mathsf P')^2$:
 \begin{equation}
-t = (\bm q'-\bm q)^2 = 2p^2(1-\cos\theta).
+t = -2p^2(1-\cos\theta).
 \label{eq:Q4d-1}
 \end{equation}
-Also, $\bm p+\bm q=0$ in the ZMF, so
-\[ s = (E_1+E_2)^2. \]
-Expand:
-\[ s = E_1^2 + 2E_1 E_2 + E_2^2 = m_1^2 + m_2^2 + 2(E_1 E_2 + p^2). \]
-From $E_1+E_2=\sqrt s$ and $E_1-E_2=(m_1^2-m_2^2)/\sqrt s$, multiply:
-\[ E_1^2 - E_2^2 = m_1^2 - m_2^2, \]
-and individually
-\[ E_1 = \frac{s+m_1^2-m_2^2}{2\sqrt s},\qquad E_2 = \frac{s-m_1^2+m_2^2}{2\sqrt s}. \]
-Multiply:
+In the ZMF the total 4-momentum is $(E_1+E_2,\bm 0)$:
+\[ s = -(\mathsf P+\mathsf Q)^2 = -[-(E_1+E_2)^2] = (E_1+E_2)^2. \]
+Expand the square:
+\[ s = E_1^2 + 2E_1 E_2 + E_2^2. \]
+Substitute $E_i^2 = m_i^2+p^2$:
+\[ s = m_1^2 + m_2^2 + 2E_1 E_2 + 2p^2. \]
+This proves the desired identity. From $E_1+E_2=\sqrt s$ and $E_1-E_2=(m_1^2-m_2^2)/\sqrt s$ (part (c)):
+\[ E_1 = \frac{s+m_1^2-m_2^2}{2\sqrt s}. \]
+And
+\[ E_2 = \frac{s-m_1^2+m_2^2}{2\sqrt s}. \]
+Multiply (difference of squares):
 \[ E_1 E_2 = \frac{s^2 - (m_1^2-m_2^2)^2}{4s}. \]
-Solve for $p^2$ from $s = m_1^2+m_2^2+2E_1E_2+2p^2$:
+Rearrange $s = m_1^2+m_2^2+2E_1E_2+2p^2$ for $2p^2$:
+\[ 2p^2 = s - m_1^2 - m_2^2 - 2E_1E_2. \]
+Substitute $2E_1E_2$:
+\[ 2p^2 = s - m_1^2 - m_2^2 - \frac{s^2-(m_1^2-m_2^2)^2}{2s}. \]
+Multiply through by $2s$:
+\[ 4sp^2 = 2s(s-m_1^2-m_2^2) - s^2 + (m_1^2-m_2^2)^2. \]
+Expand and collect:
+\[ 4sp^2 = s^2 - 2s(m_1^2+m_2^2) + (m_1^2-m_2^2)^2. \]
+Factor as the K\"all\'en function $\lambda(s,m_1^2,m_2^2) = [s-(m_1+m_2)^2][s-(m_1-m_2)^2]$:
 \[ p^2 = \frac{[s-(m_1+m_2)^2][s-(m_1-m_2)^2]}{4s}. \]
-Substitute into \eqref{eq:Q4d-1}:
-\[ t = 2p^2(1-\cos\theta), \]
-\[ 1-\cos\theta = \frac{t}{2p^2} = \frac{2 s\, t}{[s-(m_1+m_2)^2][s-(m_1-m_2)^2]}. \]
-Hence
+Solve \eqref{eq:Q4d-1} for $1-\cos\theta$:
+\[ 1-\cos\theta = -\frac{t}{2p^2}. \]
+Substitute $p^2$:
+\[ 1-\cos\theta = -\frac{2st}{[s-(m_1+m_2)^2][s-(m_1-m_2)^2]}. \]
+Rearrange:
 \begin{equation}
-\boxed{\cos\theta = 1 - \frac{2 s\, t}{[s-(m_1+m_2)^2][s-(m_1-m_2)^2]}.}
+\boxed{\cos\theta = 1 + \frac{2 s\, t}{[s-(m_1+m_2)^2][s-(m_1-m_2)^2]}.}
 \end{equation}
 
 \medskip
@@ -534,29 +676,40 @@ A probability of obtaining $\pi\bar\pi$ versus $p\bar p$ is the ratio of two Lor
 
 \subsection*{(f) Worldline of maximum proper time}
 
-\[ \tau_{AB} = \int_A^B\sqrt{-\de X\cdot\de X}/c. \]
-By the inverse triangle inequality for timelike vectors, $\tau$ is maximised by the geodesic, i.e.\ the
+The proper time along a timelike worldline from event $A$ to event $B$:
+\[ \tau_{AB} = \int_A^B\frac{\sqrt{-\de X\cdot\de X}}{c} = \int_A^B \sqrt{1-v^2/c^2}\,\de t. \]
+The integrand $\sqrt{1-v^2/c^2} \leq 1$ is maximised pointwise when $v=0$ in the chosen frame. By the inverse triangle inequality for timelike vectors (any kink or curve shortens proper time), the global maximum is achieved by the unique unaccelerated worldline:
 \begin{equation}
-\boxed{\text{straight (inertial) worldline through } A\text{ and }B.}
+\boxed{\text{Straight (inertial) worldline through } A\text{ and }B.}
 \end{equation}
 
 \subsection*{(g) Lagrangian and Hamiltonian for the free relativistic particle}
 
 Take (with $c=1$)
 \begin{equation}
-L = -m\sqrt{1-\bm v^2},
+L = -m\sqrt{1-\bm v^2}.
 \end{equation}
-so $S=-m\int\de\tau$ is stationary on the maximal-$\tau$ worldline. Compute the canonical momentum:
-\[ \bm p = \pd{L}{\bm v} = \frac{m\,\bm v}{\sqrt{1-\bm v^2}} = \gamma m\bm v. \]
-Legendre transform:
-\[ H = \bm p\cdot\bm v - L = \frac{m\,\bm v^2}{\sqrt{1-\bm v^2}} + m\sqrt{1-\bm v^2}. \]
+Since $\de\tau = \sqrt{1-\bm v^2}\,\de t$, the action becomes
+\[ S = \int_{t_1}^{t_2} L\,\de t = -m\int_{t_1}^{t_2}\sqrt{1-\bm v^2}\,\de t = -m\int\de\tau. \]
+Stationary $S$ corresponds to extremal $\int\!\de\tau$, i.e.\ the maximal-proper-time (inertial) worldline from part (f). Compute the canonical momentum component-wise:
+\[ p_i = \pd{L}{v_i} = -m\,\pd{}{v_i}\sqrt{1-\bm v^2}. \]
+Differentiate:
+\[ p_i = -m\cdot\frac{-v_i}{\sqrt{1-\bm v^2}} = \frac{m v_i}{\sqrt{1-\bm v^2}}. \]
+Collect into vector form:
+\[ \bm p = \frac{m\bm v}{\sqrt{1-\bm v^2}} = \gamma m\bm v. \]
+Apply the Legendre transform $H = \bm p\cdot\bm v - L$:
+\[ H = \frac{m\bm v^2}{\sqrt{1-\bm v^2}} - \bigl(-m\sqrt{1-\bm v^2}\bigr). \]
 Combine over a common denominator:
-\[ H = \frac{m\,\bm v^2 + m(1-\bm v^2)}{\sqrt{1-\bm v^2}} = \frac{m}{\sqrt{1-\bm v^2}} = \gamma m. \]
-Invert $\bm p=\gamma m\bm v$ for $\bm v$:
-\[ \bm v = \frac{\bm p}{\sqrt{\bm p^2 + m^2}}. \]
-Hence
+\[ H = \frac{m\bm v^2 + m(1-\bm v^2)}{\sqrt{1-\bm v^2}}. \]
+Cancel $\bm v^2$ in the numerator:
+\[ H = \frac{m}{\sqrt{1-\bm v^2}} = \gamma m. \]
+Express in terms of canonical variables. From $\bm p=\gamma m\bm v$ and $\gamma = 1/\sqrt{1-\bm v^2}$:
+\[ \gamma^2 m^2 = m^2 + \bm p^2. \]
+Take the positive root:
+\[ \gamma m = \sqrt{m^2 + \bm p^2}. \]
+Substitute:
 \begin{equation}
-\boxed{H(\bm p,\bm r) = \sqrt{\bm p^2 + m^2}\quad(c=1),\quad\text{or}\quad H=\sqrt{\bm p^2 c^2 + m^2 c^4}.}
+\boxed{H(\bm p,\bm r) = \sqrt{\bm p^2 + m^2}\quad(c=1),\qquad \text{or}\qquad H = \sqrt{\bm p^2 c^2 + m^2 c^4}.}
 \end{equation}
 Non-relativistic limit: $H\approx mc^2 + \bm p^2/(2m)$.
 

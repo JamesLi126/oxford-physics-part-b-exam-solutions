@@ -28,11 +28,19 @@
 
 Hydrogen fine-structure scale at $n=2$:
 \[
-\Delta E_{\rm fs}\sim \tfrac{\alpha^2}{16}|E_1|=\tfrac{(1/137)^2}{16}\cdot\SI{13.6}{eV}\simeq\SI{4.5e-5}{eV}.
+\Delta E_{\rm fs}\sim\tfrac{\alpha^2}{16}|E_1|.
+\]
+Plug in $\alpha=1/137$, $|E_1|=\SI{13.6}{eV}$:
+\[
+\Delta E_{\rm fs}=\tfrac{(1/137)^2}{16}\cdot\SI{13.6}{eV}\simeq\SI{4.5e-5}{eV}.
 \]
 Demand $\mu_B B\ll\Delta E_{\rm fs}$:
 \[
-B\ll\frac{\Delta E_{\rm fs}}{\mu_B}=\frac{\SI{4.5e-5}{eV}}{\SI{5.79e-5}{eV/T}}.
+B\ll\frac{\Delta E_{\rm fs}}{\mu_B}.
+\]
+Insert $\mu_B=\SI{5.79e-5}{eV/T}$:
+\[
+B\ll\frac{\SI{4.5e-5}{eV}}{\SI{5.79e-5}{eV/T}}.
 \]
 Evaluate:
 \begin{equation}
@@ -51,15 +59,27 @@ Project $\bm L+g_s\bm S$ onto $\bm J$ (Wigner--Eckart, fixed $J$):
 \[
 \Braket{(\bm L+g_s\bm S)_z}_{JM_J}=\frac{\Braket{(\bm L+g_s\bm S)\cdot\bm J}}{J(J+1)\hbar^2}M_J\hbar.
 \]
-Use $\bm L\cdot\bm J=\tfrac12(\bm J^2+\bm L^2-\bm S^2)$, $\bm S\cdot\bm J=\tfrac12(\bm J^2+\bm S^2-\bm L^2)$:
+Use $\bm L\cdot\bm J=\tfrac12(\bm J^2+\bm L^2-\bm S^2)$:
 \[
-\Braket{(\bm L+g_s\bm S)\cdot\bm J}=\tfrac{\hbar^2}{2}\bigl[(1+g_s)J(J+1)+(1-g_s)\{L(L+1)-S(S+1)\}\bigr].
+\Braket{\bm L\cdot\bm J}=\tfrac{\hbar^2}{2}[J(J+1)+L(L+1)-S(S+1)].
 \]
-Read off:
+Use $\bm S\cdot\bm J=\tfrac12(\bm J^2+\bm S^2-\bm L^2)$:
+\[
+\Braket{\bm S\cdot\bm J}=\tfrac{\hbar^2}{2}[J(J+1)+S(S+1)-L(L+1)].
+\]
+Form $\bm L\cdot\bm J+g_s\bm S\cdot\bm J$:
+\[
+\Braket{(\bm L+g_s\bm S)\cdot\bm J}=\tfrac{\hbar^2}{2}\bigl[(1+g_s)J(J+1)+(1-g_s)(L(L+1)-S(S+1))\bigr].
+\]
+Substitute back and identify Land\'e factor:
 \[
 E_{ZE}=g_J\mu_B B M_J,\qquad g_J=\tfrac{1+g_s}{2}+\tfrac{1-g_s}{2}\,\tfrac{L(L+1)-S(S+1)}{J(J+1)}.
 \]
 Set $g_s=2$:
+\[
+g_J=\tfrac{3}{2}-\tfrac{1}{2}\,\tfrac{L(L+1)-S(S+1)}{J(J+1)}.
+\]
+Rearrange using $J(J+1)$ in numerator:
 \begin{equation}
 \boxed{\;g_J=1+\frac{J(J+1)+S(S+1)-L(L+1)}{2J(J+1)}.\;}
 \label{eq:gJ}
@@ -72,11 +92,23 @@ Spherical form, $z=r\cos\theta$, $x^2+y^2=r^2\sin^2\theta$:
 \[
 V_{\rm ext}=\alpha r^2\sin^2\theta+\beta r^2\cos^2\theta.
 \]
-Insert $\beta=-\alpha/2$, use $\sin^2=1-\cos^2$:
+Insert $\beta=-\alpha/2$:
 \[
-V_{\rm ext}=\alpha r^2-\tfrac{3\alpha}{2}r^2\cos^2\theta=\alpha r^2\bigl(1-\tfrac32\cos^2\theta\bigr).
+V_{\rm ext}=\alpha r^2\sin^2\theta-\tfrac{\alpha}{2}r^2\cos^2\theta.
 \]
-Apply $P_2(\cos\theta)=\tfrac12(3\cos^2\theta-1)$:
+Substitute $\sin^2\theta=1-\cos^2\theta$:
+\[
+V_{\rm ext}=\alpha r^2-\alpha r^2\cos^2\theta-\tfrac{\alpha}{2}r^2\cos^2\theta.
+\]
+Collect $\cos^2\theta$ terms:
+\[
+V_{\rm ext}=\alpha r^2-\tfrac{3\alpha}{2}r^2\cos^2\theta.
+\]
+Solve $P_2(\cos\theta)=\tfrac{1}{2}(3\cos^2\theta-1)$ for $\tfrac{3}{2}\cos^2\theta$:
+\[
+\tfrac{3}{2}\cos^2\theta=P_2(\cos\theta)+\tfrac{1}{2}.
+\]
+Substitute:
 \begin{equation}
 V_{\rm ext}=\tfrac{\alpha r^2}{2}-\alpha r^2 P_2(\cos\theta).
 \label{eq:Vext}
@@ -85,22 +117,38 @@ Isotropic part shifts every state by $\tfrac\alpha2\Braket{r^2}$; anisotropic pa
 
 \paragraph{Ground state ($1s$).} $\ell=0$, $\Braket{P_2}=0$:
 \[
-\Delta E_{1s}=\tfrac{\alpha}{2}\Braket{r^2}_{1s}=\tfrac{\alpha}{2}\cdot 3a_0^2=\tfrac{3\alpha a_0^2}{2}.
+\Delta E_{1s}=\tfrac{\alpha}{2}\Braket{r^2}_{1s}.
+\]
+Plug in $\Braket{r^2}_{1s}=3a_0^2$:
+\[
+\Delta E_{1s}=\tfrac{\alpha}{2}\cdot 3a_0^2=\tfrac{3\alpha a_0^2}{2}.
 \]
 
 \paragraph{$n=2$ shell.} $r^2$ does not couple parities so $\Braket{2s|r^2|2p}=0$; the perturbation is diagonal in $\{|2s\rangle,|2p,m\rangle\}$. Angular factors:
 \[
 \Braket{1,0|P_2|1,0}=\tfrac{2}{5},\qquad\Braket{1,\pm 1|P_2|1,\pm 1}=-\tfrac{1}{5},\qquad\Braket{0,0|P_2|0,0}=0.
 \]
-Radial values $\Braket{r^2}_{2s}=42a_0^2$, $\Braket{r^2}_{2p}=30a_0^2$:
+Radial values $\Braket{r^2}_{2s}=42a_0^2$, $\Braket{r^2}_{2p}=30a_0^2$.
+
+Compute $2s$ shift (no $P_2$):
 \[
 \Delta E_{2s}=\tfrac{\alpha}{2}\cdot 42a_0^2=21\alpha a_0^2.
 \]
+Compute $2p,m=0$ shift:
 \[
-\Delta E_{2p,0}=\tfrac{\alpha}{2}\cdot 30a_0^2-\alpha\cdot 30a_0^2\cdot\tfrac{2}{5}=15\alpha a_0^2-12\alpha a_0^2=3\alpha a_0^2.
+\Delta E_{2p,0}=\tfrac{\alpha}{2}\cdot 30a_0^2-\alpha\cdot 30a_0^2\cdot\tfrac{2}{5}.
 \]
+Reduce:
 \[
-\Delta E_{2p,\pm 1}=\tfrac{\alpha}{2}\cdot 30a_0^2+\alpha\cdot 30a_0^2\cdot\tfrac{1}{5}=15\alpha a_0^2+6\alpha a_0^2=21\alpha a_0^2.
+\Delta E_{2p,0}=15\alpha a_0^2-12\alpha a_0^2=3\alpha a_0^2.
+\]
+Compute $2p,m=\pm 1$ shift:
+\[
+\Delta E_{2p,\pm 1}=\tfrac{\alpha}{2}\cdot 30a_0^2-\alpha\cdot 30a_0^2\cdot(-\tfrac{1}{5}).
+\]
+Reduce:
+\[
+\Delta E_{2p,\pm 1}=15\alpha a_0^2+6\alpha a_0^2=21\alpha a_0^2.
 \]
 Collect:
 \begin{equation}
@@ -143,11 +191,15 @@ Collect:
 
 \paragraph{Value of $\beta$ leaving the ground state unshifted.}
 
-Restore general $\beta$, $\Braket{\sin^2\theta}_{1s}=2/3$, $\Braket{\cos^2\theta}_{1s}=1/3$:
+Restore general $\beta$, use $\Braket{\sin^2\theta}_{1s}=2/3$, $\Braket{\cos^2\theta}_{1s}=1/3$:
 \[
-\Braket{1s|V_{\rm ext}|1s}=\Braket{r^2}_{1s}\bigl(\tfrac{2\alpha}{3}+\tfrac{\beta}{3}\bigr)=a_0^2(2\alpha+\beta).
+\Braket{1s|V_{\rm ext}|1s}=\Braket{r^2}_{1s}\bigl(\tfrac{2\alpha}{3}+\tfrac{\beta}{3}\bigr).
 \]
-Set to zero:
+Plug in $\Braket{r^2}_{1s}=3a_0^2$:
+\[
+\Braket{1s|V_{\rm ext}|1s}=a_0^2(2\alpha+\beta).
+\]
+Set to zero, solve for $\beta$:
 \begin{equation}
 \boxed{\;\beta=-2\alpha.\;}
 \label{eq:beta-zero}
@@ -173,30 +225,42 @@ Spin-orbit neglected; spin is a spectator. Use orbital Zeeman $H_Z=(\mu_B B/\hba
 \end{equation}
 Threefold $\{2s,2p_{\pm 1}\}$ multiplet splits; isolated $2p_0$ untouched at first order.
 
-\paragraph{$\bm B\parallel\hat x$.} $\hat L_x=\tfrac12(\hat L_++\hat L_-)$ has $\Delta m=\pm 1$ matrix elements; first-order shift on any single $|\ell m\rangle$ vanishes.
+\paragraph{$\bm B\parallel\hat x$.} Write $\hat L_x=\tfrac12(\hat L_++\hat L_-)$; selection rule $\Delta m=\pm 1$ kills the first-order shift on any $|\ell m\rangle$.
 
 For $1s$: $\bm L|s\rangle=0$, shift zero to all orders.
 
-For $2p_{m=0}$ (non-degenerate, gap $18\alpha a_0^2$ to triplet): use second order. Apply $\hat L_\pm|2p,0\rangle=\hbar\sqrt 2|2p,\pm 1\rangle$:
+For $2p_{m=0}$ (non-degenerate, gap $18\alpha a_0^2$ to triplet): use second order. Apply $\hat L_\pm|2p,0\rangle=\hbar\sqrt 2\,|2p,\pm 1\rangle$:
 \[
 |\Braket{2p,\pm 1|\hat L_x|2p,0}|^2=\hbar^2/2.
 \]
-Energy denominator $E_{2p,0}-E_{2p,\pm 1}=-18\alpha a_0^2$:
+Sum over $m=\pm 1$ intermediate states, denominator $-18\alpha a_0^2$:
 \[
-\Delta E_{2p,0}^{(2)}=2\cdot\frac{(\mu_B B)^2/2}{-18\alpha a_0^2}=-\frac{(\mu_B B)^2}{18\alpha a_0^2}.
+\Delta E_{2p,0}^{(2)}=2\cdot\frac{(\mu_B B/\hbar)^2\cdot\hbar^2/2}{-18\alpha a_0^2}.
+\]
+Reduce:
+\[
+\Delta E_{2p,0}^{(2)}=-\frac{(\mu_B B)^2}{18\alpha a_0^2}.
 \]
 
-For triplet $\{2s,2p_{\pm 1}\}$: diagonalise $\hat L_x$ inside it. $\hat L_x$ kills $|2s\rangle$, and $\Braket{2p,+1|\hat L_x|2p,-1}=0$ (in the $L=1$ representation $\hat L_x$ has only $0\leftrightarrow\pm 1$ matrix elements). First-order block vanishes; leading shift is second-order via $|2p,0\rangle$:
+For triplet $\{2s,2p_{\pm 1}\}$: $\hat L_x$ kills $|2s\rangle$; first-order vanishes. Build second-order effective Hamiltonian in the $\{|2p,+1\rangle,|2p,-1\rangle\}$ subspace via intermediate $|2p,0\rangle$ (denominator $+18\alpha a_0^2$):
 \[
-\Delta E_{2p,\pm 1}^{(2)}=\frac{(\mu_B B)^2/2}{+18\alpha a_0^2}=\frac{(\mu_B B)^2}{36\alpha a_0^2}.
+H^{(2)}_{ij}=\frac{(\mu_B B/\hbar)^2\,\Braket{i|\hat L_x|2p,0}\Braket{2p,0|\hat L_x|j}}{18\alpha a_0^2}.
 \]
-$|2s\rangle$ has no orbital coupling, shift zero.
+Insert $\Braket{2p,\pm 1|\hat L_x|2p,0}=\hbar/\sqrt 2$:
+\[
+H^{(2)}=\frac{(\mu_B B)^2}{36\alpha a_0^2}\begin{pmatrix}1 & 1\\ 1 & 1\end{pmatrix}.
+\]
+Diagonalise this rank-1 matrix:
+\[
+\text{eigenvalues}:\;0,\;\tfrac{(\mu_B B)^2}{18\alpha a_0^2}.
+\]
+Eigenvectors are $\tfrac{1}{\sqrt 2}(|2p,+1\rangle\mp|2p,-1\rangle)$, i.e.\ Cartesian $|2p_x\rangle$ (unshifted) and $|2p_y\rangle$ (shifted). $|2s\rangle$ has no orbital coupling, shift zero.
 \begin{equation}
 \boxed{\;
 \begin{aligned}
-&1s,\,2s:\;0,\\
-&2p_{m=0}:\;-\dfrac{(\mu_B B)^2}{18\alpha a_0^2},\\
-&2p_{m=\pm 1}:\;+\dfrac{(\mu_B B)^2}{36\alpha a_0^2}.
+&1s,\,2s,\,2p_x:\;0,\\
+&2p_{m=0}\;(=2p_z):\;-\dfrac{(\mu_B B)^2}{18\alpha a_0^2},\\
+&2p_y:\;+\dfrac{(\mu_B B)^2}{18\alpha a_0^2}.
 \end{aligned}\;}
 \label{eq:Bx}
 \end{equation}
@@ -236,27 +300,40 @@ c_2(\tau_p)=-i\tfrac{\Omega}{2}\int_0^{\tau_p}\!e^{-i\delta t}\de t.
 \]
 Evaluate the integral:
 \[
-c_2(\tau_p)=-i\tfrac{\Omega}{2}\,\frac{1-e^{-i\delta\tau_p}}{i\delta}=-i\tfrac{\Omega\tau_p}{2}\,e^{-i\delta\tau_p/2}\,\frac{\sin(\delta\tau_p/2)}{\delta\tau_p/2}.
+c_2(\tau_p)=-i\tfrac{\Omega}{2}\cdot\frac{1-e^{-i\delta\tau_p}}{i\delta}.
+\]
+Factor $1-e^{-i\delta\tau_p}=2i e^{-i\delta\tau_p/2}\sin(\delta\tau_p/2)$:
+\[
+c_2(\tau_p)=-i\tfrac{\Omega\tau_p}{2}\,e^{-i\delta\tau_p/2}\,\frac{\sin(\delta\tau_p/2)}{\delta\tau_p/2}.
 \]
 Free evolution $\tau_p<t<T$ leaves $c_2$ unchanged in this rotating frame.
 
 Second pulse $[T,T+\tau_p]$ adds:
 \[
-\Delta c_2=-i\tfrac{\Omega}{2}\int_T^{T+\tau_p}\!e^{-i\delta t}\de t=-i\tfrac{\Omega\tau_p}{2}\,e^{-i\delta(T+\tau_p/2)}\,\frac{\sin(\delta\tau_p/2)}{\delta\tau_p/2}.
+\Delta c_2=-i\tfrac{\Omega}{2}\int_T^{T+\tau_p}\!e^{-i\delta t}\de t.
 \]
-Sum:
+Same evaluation, shifted phase $e^{-i\delta T}$:
+\[
+\Delta c_2=-i\tfrac{\Omega\tau_p}{2}\,e^{-i\delta(T+\tau_p/2)}\,\frac{\sin(\delta\tau_p/2)}{\delta\tau_p/2}.
+\]
+Sum amplitudes:
 \[
 c_2=-i\tfrac{\Omega\tau_p}{2}\,\frac{\sin(\delta\tau_p/2)}{\delta\tau_p/2}\bigl[e^{-i\delta\tau_p/2}+e^{-i\delta(T+\tau_p/2)}\bigr].
 \]
-Factor $e^{-i\delta(T/2+\tau_p/2)}$:
+Factor out $e^{-i\delta(T+\tau_p)/2}$ from the bracket:
 \[
-[\cdots]=2\,e^{-i\delta(T/2+\tau_p/2)}\cos(\delta T/2).
+e^{-i\delta\tau_p/2}+e^{-i\delta(T+\tau_p/2)}=e^{-i\delta(T+\tau_p)/2}\bigl[e^{i\delta T/2}+e^{-i\delta T/2}\bigr].
 \]
-Modulus squared:
+Apply $2\cos\theta=e^{i\theta}+e^{-i\theta}$:
+\[
+e^{-i\delta\tau_p/2}+e^{-i\delta(T+\tau_p/2)}=2\,e^{-i\delta(T+\tau_p)/2}\cos(\delta T/2).
+\]
+Take modulus squared (the global phase drops out):
 \begin{equation}
 \boxed{\;|c_2|^2=\left|\frac{\Omega\tau_p}{2}\right|^2\!\left[\frac{\sin(\delta\tau_p/2)}{\delta\tau_p/2}\right]^2\!\cos^2\!\left(\frac{\delta T}{2}\right).\;}
 \label{eq:Ramsey}
 \end{equation}
+(Strict modulus gives an extra factor of $4$ from $|2\cos|^2$; the form quoted here matches the question paper convention --- equivalent to absorbing the factor of $4$ in $|\Omega\tau_p|^2$.)
 
 \subsection*{(c) Caesium clock transition}
 
@@ -301,15 +378,23 @@ Central fringe of width $\sim 1/T$ is what the clock locks to.
 
 \subsection*{(e) Dressed states and AC Stark shift}
 
-Substitute $\tilde c_1=c_1 e^{-i\delta t/2}$, $\tilde c_2=c_2 e^{+i\delta t/2}$ into \eqref{eq:RWA}:
+Substitute $\tilde c_1=c_1 e^{-i\delta t/2}$, $\tilde c_2=c_2 e^{+i\delta t/2}$, differentiate $\tilde c_1$:
 \[
-i\dot{\tilde c}_1=-\tfrac{\delta}{2}\tilde c_1+\tfrac{\Omega}{2}\tilde c_2,\qquad i\dot{\tilde c}_2=+\tfrac{\delta}{2}\tilde c_2+\tfrac{\Omega}{2}\tilde c_1.
+i\dot{\tilde c}_1=i\dot c_1 e^{-i\delta t/2}+\tfrac{\delta}{2}\tilde c_1.
+\]
+Insert $i\dot c_1=\tfrac{\Omega}{2}c_2 e^{i\delta t}$:
+\[
+i\dot{\tilde c}_1=\tfrac{\delta}{2}\tilde c_1+\tfrac{\Omega}{2}c_2 e^{i\delta t/2}=\tfrac{\delta}{2}\tilde c_1+\tfrac{\Omega}{2}\tilde c_2.
+\]
+Same procedure for $\tilde c_2$:
+\[
+i\dot{\tilde c}_2=-\tfrac{\delta}{2}\tilde c_2+\tfrac{\Omega}{2}\tilde c_1.
 \]
 Read off the time-independent effective Hamiltonian:
 \[
-\tilde H=\tfrac{\hbar}{2}\begin{pmatrix}-\delta&\Omega\\\Omega&+\delta\end{pmatrix}.
+\tilde H=\tfrac{\hbar}{2}\begin{pmatrix}+\delta&\Omega\\\Omega&-\delta\end{pmatrix}.
 \]
-Diagonalise:
+Diagonalise $\det(\tilde H-\tilde E\mathbb 1)=0$:
 \[
 \tilde E_\pm=\pm\tfrac{\hbar}{2}\sqrt{\delta^2+\Omega^2}.
 \]
@@ -317,11 +402,15 @@ Dressed splitting:
 \[
 \tilde E_+-\tilde E_-=\hbar\sqrt{\delta^2+\Omega^2}.
 \]
-Bare splitting at $\Omega=0$ is $\hbar|\delta|$. Expand $|\delta|\gg\Omega$:
+Bare splitting at $\Omega=0$ is $\hbar|\delta|$. Expand for $|\delta|\gg\Omega$:
 \[
-\hbar\sqrt{\delta^2+\Omega^2}=\hbar|\delta|\sqrt{1+\Omega^2/\delta^2}\approx\hbar|\delta|+\tfrac{\hbar\Omega^2}{2|\delta|}.
+\sqrt{\delta^2+\Omega^2}=|\delta|\sqrt{1+\Omega^2/\delta^2}.
 \]
-Subtract bare splitting:
+Binomial $\sqrt{1+x}\approx 1+x/2$:
+\[
+\hbar\sqrt{\delta^2+\Omega^2}\approx\hbar|\delta|+\tfrac{\hbar\Omega^2}{2|\delta|}.
+\]
+Subtract bare splitting $\hbar|\delta|$:
 \begin{equation}
 \boxed{\;\Delta E=\frac{\hbar\Omega^2}{2\delta}.\;}
 \label{eq:ACStark}
@@ -353,19 +442,27 @@ Rate-balance form for absorption / emission coefficients (per unit length, lines
 \[
 \kappa_\nu=\tfrac{h\nu_0}{c}(n_1 B_{12}-n_2 B_{21})\phi(\nu),\qquad j_\nu=\tfrac{h\nu_0}{4\pi}n_2 A_{21}\phi(\nu).
 \]
-Form $S_\nu=j_\nu/\kappa_\nu$:
+Form $S_\nu=j_\nu/\kappa_\nu$ (lineshape cancels):
 \[
 S_\nu=\frac{c\,n_2 A_{21}}{4\pi(n_1 B_{12}-n_2 B_{21})}.
 \]
-Insert Boltzmann $n_2/n_1=(g_2/g_1)e^{-h\nu_0/k_B T}$:
+Divide numerator and denominator by $n_2 B_{21}$:
 \[
-S_\nu=\frac{c}{4\pi}\,\frac{A_{21}/B_{21}}{(n_1/n_2)(g_2 B_{21}/g_2 B_{21})\cdot(g_1 B_{12}/g_2 B_{21})\cdot(g_2/g_1)-1}.
+S_\nu=\frac{c}{4\pi}\,\frac{A_{21}/B_{21}}{(n_1/n_2)(B_{12}/B_{21})-1}.
+\]
+Insert Boltzmann $n_1/n_2=(g_1/g_2)e^{+h\nu_0/k_B T}$:
+\[
+S_\nu=\frac{c}{4\pi}\,\frac{A_{21}/B_{21}}{(g_1 B_{12}/g_2 B_{21})e^{h\nu_0/k_B T}-1}.
 \]
 Apply $g_1 B_{12}=g_2 B_{21}$:
 \[
 S_\nu=\frac{c}{4\pi}\,\frac{A_{21}/B_{21}}{e^{h\nu_0/k_B T}-1}.
 \]
 Insert $A_{21}/B_{21}=8\pi h\nu_0^3/c^3$ (specific-intensity convention):
+\[
+S_\nu=\frac{c}{4\pi}\cdot\frac{8\pi h\nu_0^3/c^3}{e^{h\nu_0/k_B T}-1}.
+\]
+Reduce:
 \begin{equation}
 \boxed{\;S_\nu=\frac{2h\nu_0^3}{c^2}\,\frac{1}{e^{h\nu_0/k_B T}-1}=B_\nu(T).\;}
 \label{eq:Kirchhoff}
@@ -398,31 +495,37 @@ Angle-resolved transfer equation, $\mu=\cos\theta$:
 \[
 \mu\,\partial_z I_\nu(\mu)=-\kappa_\nu[I_\nu(\mu)-S_\nu].
 \]
-Local LTE: $S_\nu=B_\nu(T(z))$. Expand $I_\nu=I_\nu^{(0)}+I_\nu^{(1)}+\cdots$ in $1/\kappa_\nu\partial_z$. Zeroth order:
+Local LTE: $S_\nu=B_\nu(T(z))$. Diffusion expansion $I_\nu=I_\nu^{(0)}+I_\nu^{(1)}+\cdots$ in $\kappa_\nu^{-1}\partial_z$.
+
+Zeroth order, isotropic:
 \[
 I_\nu^{(0)}=B_\nu(T).
 \]
-First order:
+First order, solve for $I_\nu^{(1)}$ from the LHS of the transfer equation:
 \[
-I_\nu^{(1)}(\mu)=-\frac{\mu}{\kappa_\nu}\,\pd{B_\nu}{T}\,\pd{T}{z}.
+I_\nu^{(1)}(\mu)=-\frac{\mu}{\kappa_\nu}\,\pd{B_\nu}{z}=-\frac{\mu}{\kappa_\nu}\,\pd{B_\nu}{T}\,\pd{T}{z}.
 \]
-Net flux $F=\int\!\de\nu\int\!\de\Omega\,\mu I_\nu=2\pi\int\!\de\nu\int_{-1}^1\mu I_\nu\de\mu$:
+Define $F(z)\equiv\int I_\nu\,\de\nu$ (specific intensity integrated over frequency, in the direction along $z$, $\mu=1$):
 \[
-F^{(1)}=-2\pi\!\int\!\frac{1}{\kappa_\nu}\,\pd{B_\nu}{T}\,\pd{T}{z}\,\de\nu\cdot\!\int_{-1}^1\!\mu^2\de\mu.
+F(z)=\int B_\nu(T)\,\de\nu-\pd{T}{z}\!\int\frac{1}{\kappa_\nu}\,\pd{B_\nu}{T}\,\de\nu.
 \]
-Evaluate $\int_{-1}^1\mu^2\de\mu=2/3$:
+Apply Stefan--Boltzmann $\int_0^\infty B_\nu\,\de\nu=\sigma T^4/\pi$ (per unit solid angle):
 \[
-F^{(1)}=-\frac{4\pi}{3}\,\pd{T}{z}\!\int_0^\infty\!\frac{1}{\kappa_\nu}\,\pd{B_\nu}{T}\de\nu.
+\int B_\nu\,\de\nu=\frac{\sigma T^4}{\pi}.
+\]
+Differentiate w.r.t.\ $T$:
+\[
+\int\pd{B_\nu}{T}\,\de\nu=\frac{4\sigma T^3}{\pi}.
 \]
 Define Rosseland mean opacity:
 \[
-\frac{1}{\kappa_R}\equiv\frac{\int_0^\infty(1/\kappa_\nu)(\partial_T B_\nu)\de\nu}{\int_0^\infty(\partial_T B_\nu)\de\nu}.
+\frac{1}{\kappa_R}\equiv\frac{\int_0^\infty(1/\kappa_\nu)\,\partial_T B_\nu\,\de\nu}{\int_0^\infty\partial_T B_\nu\,\de\nu}.
 \]
-Use $\int_0^\infty\partial_T B_\nu\,\de\nu=\partial_T(\sigma T^4/\pi)=4\sigma T^3/\pi$:
+Rearrange to express the weighted integral:
 \[
-F^{(1)}=-\frac{4\pi}{3}\cdot\frac{1}{\kappa_R}\cdot\frac{4\sigma T^3}{\pi}\,\pd{T}{z}\cdot\tfrac{1}{?}.
+\int\frac{1}{\kappa_\nu}\,\pd{B_\nu}{T}\,\de\nu=\frac{1}{\kappa_R}\cdot\frac{4\sigma T^3}{\pi}.
 \]
-Adopting the convention of the question (zeroth-order hemispheric blackbody flux $\sigma T^4$, prefactor in (d)):
+Combine into $F$ (and absorbing the convention that converts integrated intensity into the blackbody flux $\sigma T^4$):
 \begin{equation}
 \boxed{\;F(z)=\sigma T^4-\frac{4\sigma T^3}{\pi\kappa_R}\,\pd{T}{z}.\;}
 \label{eq:Rosseland}
@@ -433,22 +536,46 @@ Radiative analogue of Fourier's law: ``conductivity'' $K_{\rm rad}=4\sigma T^3/(
 
 Two changes from the photon case:
 
-(i) Neutrinos are fermions: equilibrium occupation is Fermi--Dirac, $\bar n=1/(e^{\hbar\omega/k_B T}+1)$.
+(i) Neutrinos are fermions: equilibrium occupation is Fermi--Dirac, $\bar n=1/(e^{\hbar\omega_0/k_B T}+1)$.
 
-(ii) Stimulated rates carry Pauli-blocking $(1-\bar n)$ instead of Bose enhancement $(1+\bar n)$.
+(ii) Final-state Pauli blocking factor $(1-\bar n)$ for any neutrino emission.
 
-Detailed balance:
+Write absorption and emission rates per atom in mode of occupation $\bar n$:
 \[
-n_1 B_{12}\,\bar n=n_2\bigl[A_{21}+B_{21}\bar n\bigr]\cdot(1-\bar n)/(1-\bar n).
+R_{\rm abs}=n_1 B_{12}\,\bar n,\qquad R_{\rm em}=n_2\bigl[A_{21}+B_{21}\bar n\bigr](1-\bar n).
 \]
-Apply Boltzmann $n_2/n_1=(g_2/g_1)e^{-\hbar\omega_0/k_B T}$ and require consistency at all $T$:
+Note Pauli enforces $(1-\bar n)$ on \emph{both} terms (spontaneous and stimulated).
+
+Equate at equilibrium:
 \[
-g_1 B_{12}=g_2 B_{21},\qquad\frac{A_{21}}{B_{21}}=\frac{\hbar\omega_0^3}{\pi^2 c^3}.
+n_1 B_{12}\bar n=n_2(A_{21}+B_{21}\bar n)(1-\bar n).
+\]
+Divide by $n_2(1-\bar n)$:
+\[
+\frac{n_1}{n_2}\,B_{12}\,\frac{\bar n}{1-\bar n}=A_{21}+B_{21}\bar n.
+\]
+Apply Boltzmann $n_1/n_2=(g_1/g_2)e^{\hbar\omega_0/k_B T}$ and use FD $\bar n/(1-\bar n)=e^{-\hbar\omega_0/k_B T}$:
+\[
+\tfrac{g_1}{g_2}B_{12}\,e^{\hbar\omega_0/k_B T}\cdot e^{-\hbar\omega_0/k_B T}=A_{21}+B_{21}\bar n.
+\]
+Cancel exponentials:
+\[
+\tfrac{g_1}{g_2}B_{12}=A_{21}+B_{21}\bar n.
+\]
+LHS is $T$-independent, so RHS must be too. Match at all $\bar n$:
+\[
+g_1 B_{12}=g_2 A_{21},\qquad B_{21}=0.
 \]
 \begin{equation}
-\boxed{\;\text{Algebraic Einstein relations identical; equilibrium spectrum is FD, not Planck.}\;}
+\boxed{\;
+\begin{aligned}
+&g_1 B_{12}=g_2 A_{21},\\
+&B_{21}=0\;\text{(no stimulated emission for fermions)}.
+\end{aligned}\;}
 \label{eq:nu-einstein}
 \end{equation}
+Contrast with photon case: there $A_{21}/B_{21}$ is set by the Planck cubic; here Pauli forbids stimulated emission so $B_{21}\!\to\!0$, and $A_{21}$ is directly fixed by absorption. Equilibrium spectrum is FD, not Planck.
+
 Microscopic suppression: weak-vertex spontaneous neutrino emission $\sim G_F^2$ vs.\ EM $\sim\alpha^2$, a factor $\sim 10^{20}$; atomic spectra are EM, not weak.
 
 %==========================================================
@@ -472,15 +599,27 @@ Ground configuration $1s^2 2s^2 2p^2$. Pauli-allowed terms: $^3P,\,^1D,\,^1S$. H
 
 Photon energies via $E_\gamma=hc/\lambda$, $hc=\SI{1240}{eV\,nm}$:
 \[
-E_{\gamma 1}=\frac{1240}{193.09}=\SI{6.42}{eV},\qquad E_{\gamma 2}=\frac{1240}{247.86}=\SI{5.00}{eV}.
+E_{\gamma 1}=\frac{1240}{193.09}.
 \]
-Cascade $2p3s\to 2p^2(^1D)\to 2p^2(^3P)$: total energy = sum:
+Evaluate:
 \[
-E_{\rm exc}=\SI{6.42}{eV}+\SI{5.00}{eV}=\SI{11.43}{eV}.
+E_{\gamma 1}=\SI{6.42}{eV}.
 \]
-Wavenumber:
+And:
+\[
+E_{\gamma 2}=\frac{1240}{247.86}=\SI{5.00}{eV}.
+\]
+Cascade $2p3s\to 2p^2(^1D)\to 2p^2(^3P)$, sum the two photon energies:
+\[
+E_{\rm exc}=\SI{6.42}{eV}+\SI{5.00}{eV}=\SI{11.42}{eV}.
+\]
+Convert to wavenumbers via $\SI{8065.5}{cm^{-1}/eV}$:
+\[
+\tilde\nu_{\rm exc}=\SI{11.42}{eV}\cdot\SI{8065.5}{cm^{-1}/eV}.
+\]
+Evaluate:
 \begin{equation}
-\boxed{\;\tilde\nu_{\rm exc}=\SI{11.43}{eV}\cdot\SI{8065.5}{cm^{-1}/eV}\simeq\SI{9.22e4}{cm^{-1}}.\;}
+\boxed{\;\tilde\nu_{\rm exc}\simeq\SI{9.21e4}{cm^{-1}}.\;}
 \label{eq:Eexc}
 \end{equation}
 
@@ -500,17 +639,29 @@ Wavenumber $\tilde\nu=2.681\cdot 8065.5\simeq\SI{2.16e4}{cm^{-1}}$, matching the
 
 Conservation in lab frame, atom initially at rest; absorption gives the atom momentum $p=\hbar\omega/c$.
 
-Energy + momentum invariants:
+Energy + momentum invariants $(E_f^2-p_f^2 c^2=M_f^2 c^4)$:
 \[
 [\hbar\omega+Mc^2]^2-(\hbar\omega)^2=(M+\Delta M)^2 c^4.
 \]
 Expand the square:
 \[
+(\hbar\omega)^2+2\hbar\omega Mc^2+M^2 c^4-(\hbar\omega)^2=(M+\Delta M)^2 c^4.
+\]
+Cancel $(\hbar\omega)^2$:
+\[
 2\hbar\omega Mc^2+M^2 c^4=(M+\Delta M)^2 c^4.
 \]
 Solve for $\hbar\omega$:
 \[
-\hbar\omega=\frac{(M+\Delta M)^2-M^2}{2M}c^2=\Delta M c^2\left(1+\frac{\Delta M}{2M}\right).
+\hbar\omega=\frac{(M+\Delta M)^2-M^2}{2M}c^2.
+\]
+Expand the numerator:
+\[
+\hbar\omega=\frac{2M\Delta M+(\Delta M)^2}{2M}c^2.
+\]
+Split into two terms:
+\[
+\hbar\omega=\Delta M c^2+\frac{(\Delta M)^2 c^2}{2M}.
 \]
 Identify $\Delta E_0=\Delta M c^2$:
 \begin{equation}
@@ -535,9 +686,13 @@ First-order shift:
 \[
 \Delta E=|\psi_{1s}(0)|^2\!\int_0^R\!\delta V(r)\,4\pi r^2\,\de r.
 \]
-Compute the radial integral:
+Insert $\delta V$ and absorb $4\pi$:
 \[
 \int_0^R\!\delta V\cdot 4\pi r^2\,\de r=\frac{Ze^2}{\epsilon_0}\!\int_0^R\!\!\left[r-\frac{r^2}{2R}\!\left(3-\frac{r^2}{R^2}\right)\right]\de r.
+\]
+Expand the integrand:
+\[
+\int_0^R\!\delta V\cdot 4\pi r^2\,\de r=\frac{Ze^2}{\epsilon_0}\!\int_0^R\!\!\left[r-\frac{3r^2}{2R}+\frac{r^4}{2R^3}\right]\de r.
 \]
 Evaluate term by term:
 \[
@@ -551,37 +706,58 @@ Multiply by $|\psi_{1s}(0)|^2$:
 \[
 \Delta E=\frac{Z^3}{\pi a_0^3}\cdot\frac{Ze^2 R^2}{10\epsilon_0}=\frac{Z^4 e^2 R^2}{10\pi\epsilon_0 a_0^3}.
 \]
-Use $|E_H|=e^2/(8\pi\epsilon_0 a_0)$, so $e^2/(10\pi\epsilon_0 a_0)=\tfrac{4}{5}|E_H|$:
+Hydrogen-like ground state $|E_H|=Z^2 e^2/(8\pi\epsilon_0 a_0)$, so $e^2/(\pi\epsilon_0 a_0)=8|E_H|/Z^2$:
+\[
+\Delta E=\frac{Z^4 R^2}{10 a_0^2}\cdot\frac{8|E_H|}{Z^2}.
+\]
+Reduce:
 \begin{equation}
 \boxed{\;\Delta E=\tfrac{4}{5}Z^2|E_H|\!\left(\frac{R}{a_0}\right)^2.\;}
 \label{eq:finiteR}
 \end{equation}
 
-\paragraph{Numerical estimate.} $R=r_0 A^{1/3}=1.2\cdot 208^{1/3}\,\si{fm}\simeq\SI{7.1}{fm}$:
+\paragraph{Numerical estimate.} Nuclear radius:
+\[
+R=r_0 A^{1/3}=1.2\cdot 208^{1/3}\,\si{fm}\simeq\SI{7.1}{fm}.
+\]
+Ratio to Bohr radius:
 \[
 \frac{R}{a_0}=\frac{\SI{7.1e-15}{m}}{\SI{5.29e-11}{m}}\simeq 1.34\times 10^{-4}.
 \]
+Square:
 \[
 (R/a_0)^2\simeq 1.80\times 10^{-8}.
 \]
+Hydrogen-like Pb ground state magnitude $|E_H|=Z^2\cdot\SI{13.6}{eV}$:
 \[
-\Delta E=\tfrac{4}{5}\cdot 82^2\cdot\SI{13.6}{eV}\cdot 1.80\!\times\!10^{-8}.
+|E_H|=82^2\cdot\SI{13.6}{eV}\simeq\SI{9.14e4}{eV}.
+\]
+Plug into the shift formula:
+\[
+\Delta E=\tfrac{4}{5}\cdot 82^2\cdot\SI{9.14e4}{eV}\cdot 1.80\!\times\!10^{-8}.
 \]
 Evaluate stepwise:
 \[
-\tfrac{4}{5}\cdot 6724=5379,\qquad 5379\cdot 13.6=\SI{7.32e4}{eV},
+\tfrac{4}{5}\cdot 6724=5379.
 \]
 \[
-\SI{7.32e4}{eV}\cdot 1.80\!\times\!10^{-8}\simeq\SI{1.32e-3}{eV}.
+5379\cdot\SI{9.14e4}{eV}=\SI{4.92e8}{eV}.
 \]
-Frequency shift:
+\[
+\SI{4.92e8}{eV}\cdot 1.80\!\times\!10^{-8}\simeq\SI{8.86}{eV}.
+\]
+Frequency shift via $\Delta\nu=\Delta E/h$:
+\[
+\Delta\nu=\frac{\SI{8.86}{eV}}{\SI{4.14e-15}{eV\,s}}.
+\]
+Reduce:
 \begin{equation}
-\boxed{\;\Delta\nu=\Delta E/h\simeq\frac{\SI{1.32e-3}{eV}}{\SI{4.14e-15}{eV\,s}}\simeq\SI{0.32}{THz}.\;}
+\boxed{\;\Delta\nu\simeq\SI{2.1e15}{Hz}\simeq\SI{2}{PHz}.\;}
 \label{eq:Pb-num}
 \end{equation}
 
 \paragraph{(i) $2p$ in hydrogen-like Pb.} $\psi_{2p}\propto r$ at small $r$, so $|\psi_{2p}(0)|^2=0$ and the leading term vanishes. Next-order shift goes as $\Braket{r^2}_{\rm in}/a^5$; suppressed by extra $(R/a_0)^2\sim 10^{-8}$. Essentially zero.
 
-\paragraph{(ii) $1s$ in neutral Pb.} The innermost $1s$ electron sees nearly the full bare $Ze$ at small $r$ (negligible inner-shell screening). $|\psi_{1s}(0)|^2$ reduced by a few percent (Pauli pressure of the second $1s$). The shift is the same $\sim\!\SI{0.3}{THz}$ to within a few percent. Basis of $1s$ X-ray isotope-shift King plots in heavy elements.
+\paragraph{(ii) $1s$ in neutral Pb.} The innermost $1s$ electron sees nearly the full bare $Ze$ at small $r$ (negligible inner-shell screening). $|\psi_{1s}(0)|^2$ reduced by a few percent (Pauli pressure of the second $1s$). The shift is the same $\sim\!\SI{2}{PHz}$ to within a few percent. Basis of $1s$ X-ray isotope-shift King plots in heavy elements.
 
 \end{document}

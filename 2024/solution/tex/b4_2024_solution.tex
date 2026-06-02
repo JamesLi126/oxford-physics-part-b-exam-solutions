@@ -47,11 +47,19 @@ Uniform sphere: $\rho=\rho_0\Theta(R-r)$, $Ze=(4/3)\pi R^{3}\rho_0$. Substitute 
 \[
 F(q)\;=\;\frac{4\pi\rho_0}{Ze}\int_{0}^{R}\frac{\sin(qr)}{qr}\,r^{2}\,\de r.
 \]
-Change variable $u=qr$:
+Insert $\rho_0/(Ze)=3/(4\pi R^{3})$:
+\[
+F(q)\;=\;\frac{3}{R^{3}}\int_{0}^{R}\frac{\sin(qr)}{qr}\,r^{2}\,\de r.
+\]
+Change variable $u=qr$, $\de r=\de u/q$:
+\[
+F(q)\;=\;\frac{3}{R^{3}}\int_{0}^{qR}\frac{\sin u}{u}\,\frac{u^{2}}{q^{2}}\,\frac{\de u}{q}.
+\]
+Collect the $q$ factors:
 \[
 F(q)\;=\;\frac{3}{R^{3}q^{3}}\int_{0}^{qR}u\sin u\,\de u.
 \]
-Integrate by parts: $\int_{0}^{x}u\sin u\,\de u=\sin x-x\cos x$:
+Integrate by parts ($f=u$, $\de g=\sin u\,\de u$): $\int_{0}^{x}u\sin u\,\de u=\sin x-x\cos x$:
 \begin{equation}
 \boxed{\;F(q)\;=\;\frac{3}{(qR)^{3}}\bigl[\sin(qR)-qR\cos(qR)\bigr]\;=\;\frac{3\,j_{1}(qR)}{qR}\;.}
 \label{eq:F-uniform}
@@ -78,7 +86,15 @@ Zeros: $\tan(qR)=qR$, i.e.\ $qR\approx 4.493,\,7.725,\dots$; one minimum within 
 
 \subsection*{(b) Limits $q\to 0$, $q\to\infty$, and softening of minima}
 
-Small-$qR$ expansion: $\sin(qR)-qR\cos(qR)=(qR)^{3}/3-(qR)^{5}/30+\dots$:
+Taylor-expand sine and cosine to order $x^{5}$:
+\[
+\sin x-x\cos x\;=\;\bigl(x-\tfrac{x^{3}}{6}+\tfrac{x^{5}}{120}\bigr)-\bigl(x-\tfrac{x^{3}}{2}+\tfrac{x^{5}}{24}\bigr).
+\]
+Combine like powers:
+\[
+\sin x-x\cos x\;=\;\tfrac{x^{3}}{3}-\tfrac{x^{5}}{30}+\dots
+\]
+Multiply by $3/x^{3}$ with $x=qR$:
 \[
 F(q)\;=\;1-\tfrac{1}{10}(qR)^{2}+\dots\;=\;1-\tfrac{1}{6}q^{2}\langle r^{2}\rangle+\dots
 \]
@@ -123,11 +139,19 @@ qR\;\gtrsim\;4.49.
 \]
 Solve for $q$ at $R=\SI{3}{fm}$ using $\hbar c=\SI{197}{MeV.fm}$:
 \[
-q\;\gtrsim\;\frac{4.49\times \SI{197}{MeV.fm}}{\SI{3}{fm}}\;\approx\;\SI{295}{MeV/c}.
+qc\;\gtrsim\;\frac{4.49\times \SI{197}{MeV.fm}}{\SI{3}{fm}}.
 \]
-Ultra-relativistic backscattering: $q_{\max}\simeq 2p\approx 2E/c$:
+Evaluate:
 \[
-E_{\min}\;\simeq\;\tfrac{1}{2}q_{\max}c\;=\;\tfrac{1}{2}\times\SI{295}{MeV}.
+qc\;\gtrsim\;\SI{295}{MeV}.
+\]
+Ultra-relativistic backscattering ($\theta=\pi$): $q_{\max}\simeq 2p\approx 2E/c$:
+\[
+E_{\min}\;\simeq\;\tfrac{1}{2}q_{\max}c.
+\]
+Substitute $q_{\max}c=\SI{295}{MeV}$:
+\[
+E_{\min}\;\simeq\;\tfrac{1}{2}\times\SI{295}{MeV}.
 \]
 \begin{equation}
 \boxed{\;E_{\min}\;\approx\;\SI{150}{MeV}\;.}
@@ -156,13 +180,17 @@ Kinetic energy $T=p^{2}/2m_{N}\sim\hbar^{2}/(2m_{N}r^{2})$ rises as $r\to 0$, op
 
 \paragraph{Two-nucleon bound state with $V=-100\,e^{2}/(4\pi\epsilon_{0}r)$.} Effective coupling $\alpha_\text{eff}=100\alpha=100/137\approx 0.73$; reduced mass $\mu=m_{N}/2$.
 
-Variational energy:
+Variational energy with $T=p^{2}/(2\mu)=\hbar^{2}/(2\mu r^{2})$:
 \[
 E(r)\;=\;\frac{\hbar^{2}}{2\mu r^{2}}-\frac{100\alpha\,\hbar c}{r}.
 \]
 Differentiate and set $\de E/\de r=0$:
 \[
--\frac{\hbar^{2}}{\mu r^{3}}+\frac{100\alpha\hbar c}{r^{2}}\;=\;0.
+-\frac{\hbar^{2}}{\mu r^{3}}+\frac{100\alpha\,\hbar c}{r^{2}}\;=\;0.
+\]
+Multiply by $r^{3}$ and rearrange:
+\[
+100\alpha\,\hbar c\,r\;=\;\frac{\hbar^{2}}{\mu}.
 \]
 Solve for $r$:
 \[
@@ -170,7 +198,11 @@ r_{\min}\;=\;\frac{\hbar^{2}}{\mu\,(100\alpha)\,\hbar c}\;=\;\frac{\hbar c}{(\mu
 \]
 Substitute $\mu c^{2}=m_{N}c^{2}/2\approx\SI{469.5}{MeV}$, $\hbar c=\SI{197}{MeV.fm}$, $100\alpha\approx 0.73$:
 \[
-r_{\min}\;=\;\frac{197}{469.5\times 0.73}\,\text{fm}\;=\;\frac{197}{342.7}\,\text{fm}.
+r_{\min}\;=\;\frac{\SI{197}{MeV.fm}}{\SI{469.5}{MeV}\times 0.73}.
+\]
+Evaluate the denominator:
+\[
+r_{\min}\;=\;\frac{197}{342.7}\,\text{fm}.
 \]
 \begin{equation}
 \boxed{\;r_{\min}\;\approx\;\SI{0.6}{fm}\;.}
@@ -210,9 +242,29 @@ BE(Z,A)\;=\;\text{($Z$-indep.)}-a_{C}\frac{Z^{2}}{A^{1/3}}-a_{A}\frac{(Z-A/2)^{2
 \end{equation}
 Atomic mass $M(Z,A)=Zm_{p}+(A-Z)m_{n}-BE/c^{2}$ is also quadratic in $Z$. For odd-$Z$ even-$N$ ($o\!-\!e$) isobars $\delta=0$, so all such isobars lie on a single parabola.
 
-Stationary point:
+Stationary point of $M(Z,A)c^{2}=Zm_{p}c^{2}+(A-Z)m_{n}c^{2}-BE$:
 \[
-\pd{BE}{Z}\bigg|_{A}\;=\;-\frac{2a_{C}Z}{A^{1/3}}+a_{A}\frac{A-2Z}{A}-(m_{n}-m_{p})c^{2}\;=\;0.
+\pd{(Mc^{2})}{Z}\;=\;(m_{p}-m_{n})c^{2}-\pd{BE}{Z}\;=\;0.
+\]
+Compute $\partial BE/\partial Z$ from \eqref{eq:semf-Zfix}:
+\[
+\pd{BE}{Z}\;=\;-\frac{2a_{C}Z}{A^{1/3}}+a_{A}\frac{A-2Z}{A}.
+\]
+Substitute and rearrange:
+\[
+-\frac{2a_{C}Z}{A^{1/3}}+a_{A}\frac{A-2Z}{A}+(m_{n}-m_{p})c^{2}\;=\;0.
+\]
+Drop the small $(m_{n}-m_{p})c^{2}\!\ll\!a_{A}$ term:
+\[
+-\frac{2a_{C}Z}{A^{1/3}}+a_{A}-\frac{2a_{A}Z}{A}\;=\;0.
+\]
+Collect $Z$ on one side:
+\[
+a_{A}\;=\;2Z\!\left(\frac{a_{C}}{A^{1/3}}+\frac{a_{A}}{A}\right).
+\]
+Multiply numerator and denominator inside by $A$:
+\[
+a_{A}\;=\;\frac{2Z\,(a_{C}A^{2/3}+a_{A})}{A}.
 \]
 Solve for $Z$:
 \begin{equation}
@@ -279,11 +331,16 @@ Check $K^{+}(I_{3}={+}1/2,S={+}1)$: $Q=1$. Check $\pi^{+}(I_{3}={+}1,S=0)$: $Q=1
 
 \subsection*{(c) Single-body decay forbidden, $\pi^{0}\to\gamma\gamma$ and Dalitz suppressions}
 
-Parent $M$ at rest, single daughter $m$. Energy: $E_{f}=Mc^{2}$. Momentum: $\vb p_{f}=0$, hence $E_{f}=mc^{2}$. Equate:
+Parent $M$ at rest, single daughter $m$. Energy conservation: $E_{f}=Mc^{2}$. Momentum conservation: $\vb p_{f}=0$.
+Apply $E_{f}^{2}=p_{f}^{2}c^{2}+m^{2}c^{4}$:
 \[
-M\;=\;m.
+E_{f}^{2}\;=\;m^{2}c^{4}.
 \]
-For $M\neq m$ impossible; require $\geq 2$ daughters. Lightest pair for $\pi^{0}$: $\gamma\gamma$.
+Take the positive root and equate to $Mc^{2}$:
+\[
+Mc^{2}\;=\;mc^{2}.
+\]
+Hence $M=m$, impossible for a genuine decay; require $\geq 2$ daughters. Lightest pair for $\pi^{0}$: $\gamma\gamma$.
 
 \paragraph{Feynman diagram for $\pi^{0}\to\gamma\gamma$.}
 \begin{center}
@@ -331,7 +388,7 @@ Double Dalitz:
 \end{equation}
 Measured: BR$(\pi^{0}\to\gamma e^{+}e^{-})=1.17\%$, BR$(\pi^{0}\to e^{+}e^{-}e^{+}e^{-})=3.3\times 10^{-5}$.
 
-\paragraph{Why BR$(\eta\to\gamma\gamma)<$BR$(\pi^{0}\to\gamma\gamma)$.} The partial $\gamma\gamma$ widths are comparable, but the $\eta$ has additional open channels (e.g.\ $3\pi^{0}$, $\pi^{+}\pi^{-}\pi^{0}$, $\pi^{+}\pi^{-}\gamma$) closed for the lighter $\pi^{0}$. Hence $\Gamma_{\eta}\approx\SI{1.3}{keV}\gg\Gamma_{\pi^{0}}\approx\SI{8}{eV}$:
+\paragraph{Why BR$(\eta\to\gamma\gamma)<$BR$(\pi^{0}\to\gamma\gamma)$.} The $\eta$ is heavier ($m_{\eta}\approx\SI{548}{MeV}$) so additional channels open ($3\pi^{0}$, $\pi^{+}\pi^{-}\pi^{0}$, $\pi^{+}\pi^{-}\gamma$,\dots) which are closed for the lighter $\pi^{0}$ ($m_{\pi^{0}}\approx\SI{135}{MeV}$). The extra phase space inflates the total width $\Gamma_{\eta}\approx\SI{1.3}{keV}\gg\Gamma_{\pi^{0}}\approx\SI{8}{eV}$ much more than the $\gamma\gamma$ partial width grows, so BR$(\gamma\gamma)$ falls:
 \begin{equation}
 \text{BR}(\eta\to\gamma\gamma)\;\approx\;39\%\;<\;\text{BR}(\pi^{0}\to\gamma\gamma)\;\approx\;99\%.
 \label{eq:eta-vs-pi0}
@@ -364,9 +421,9 @@ $\pi^{+}=u\bar d$ annihilates into virtual $W^{+}\to\ell^{+}\nu_{\ell}$:
   \node[below=2pt] at ($(V)!0.5!(d)$) {$\bar d$};
   \draw[W] (V) -- (W2);
   \node[midway, above=4pt] at ($(V)!0.5!(W2)$) {$W^{+}$};
-  \draw[qline] (W2) -- (mu);
+  \draw[qline] (mu) -- (W2);
   \node[above=2pt] at ($(W2)!0.5!(mu)$) {$\mu^{+}$};
-  \draw[qline] (nu) -- (W2);
+  \draw[qline] (W2) -- (nu);
   \node[below=2pt] at ($(W2)!0.5!(nu)$) {$\nu_{\mu}$};
   \node[left=4pt] at (-3.2,0) {$\pi^{+}\!\Big\{$};
 \end{tikzpicture}
@@ -386,7 +443,7 @@ Helicity suppression in $\pi^{+}\to\ell^{+}\nu_{\ell}$ (spin-0 parent, $V{-}A$ c
 \]
 Together $\tau_{\pi^{\pm}}\approx\SI{2.6e-8}{s}$; eight orders of magnitude longer than strong decays and than $\tau_{\pi^{0}}\approx\SI{8e-17}{s}$.
 
-\paragraph{Why $K^{0}$ cannot use the $\pi^{0}$ mode.} $K^{0}=d\bar s$, $S=+1$. Photon annihilation requires $q$ and $\bar q$ of the \emph{same} flavour, which $d\bar s$ is not; electromagnetism conserves flavour, so cannot turn $s\leftrightarrow d$. Only the weak interaction can change strangeness ($\Delta S=1$). Representative semileptonic ($K_{\ell 3}$) diagram for $K^{0}\to\pi^{+}\ell^{-}\bar\nu_{\ell}$:
+\paragraph{Why $K^{0}$ cannot use the $\pi^{0}$ mode.} $K^{0}=d\bar s$, $S=+1$. Photon annihilation requires $q$ and $\bar q$ of the \emph{same} flavour, which $d\bar s$ is not; electromagnetism conserves flavour, so cannot turn $s\leftrightarrow d$. Only the weak interaction can change strangeness ($\Delta S=1$). Representative semileptonic ($K_{\ell 3}$) diagram for $K^{0}\to\pi^{-}\ell^{+}\nu_{\ell}$:
 \begin{center}
 \begin{tikzpicture}[
   >=stealth,
@@ -409,20 +466,20 @@ Together $\tau_{\pi^{\pm}}\approx\SI{2.6e-8}{s}$; eight orders of magnitude long
   \fill (W2) circle (1.7pt);
   \fill (lep) circle (1.7pt);
   \fill (nu) circle (1.7pt);
-  \draw[qline] (s) -- (V);
+  \draw[qline] (V) -- (s);
   \node[above=2pt] at ($(s)!0.5!(V)$) {$\bar s$};
-  \draw[qline] (V) -- (u);
+  \draw[qline] (u) -- (V);
   \node[above=2pt] at ($(V)!0.5!(u)$) {$\bar u$};
   \draw[qline] (d1) -- (d2);
   \node[below=2pt] at ($(d1)!0.5!(d2)$) {$d$};
   \draw[W] (V) -- (W2);
-  \node[midway, right=2pt] at ($(V)!0.5!(W2)$) {$W^{-}$};
-  \draw[qline] (W2) -- (lep);
-  \node[above=2pt] at ($(W2)!0.5!(lep)$) {$\ell^{-}$};
-  \draw[qline] (nu) -- (W2);
-  \node[below=2pt] at ($(W2)!0.5!(nu)$) {$\bar\nu_{\ell}$};
+  \node[midway, right=2pt] at ($(V)!0.5!(W2)$) {$W^{+}$};
+  \draw[qline] (lep) -- (W2);
+  \node[above=2pt] at ($(W2)!0.5!(lep)$) {$\ell^{+}$};
+  \draw[qline] (W2) -- (nu);
+  \node[below=2pt] at ($(W2)!0.5!(nu)$) {$\nu_{\ell}$};
   \node[left=4pt] at (-3.2,0) {$K^{0}\!\Big\{$};
-  \node[right=4pt] at (2.2,0.35) {$\Big\}\pi^{+}$};
+  \node[right=4pt] at (2.2,0.35) {$\Big\}\pi^{-}$};
 \end{tikzpicture}
 \end{center}
 
@@ -485,7 +542,7 @@ Together $\tau_{\pi^{\pm}}\approx\SI{2.6e-8}{s}$; eight orders of magnitude long
   \draw[W] (V1) -- (W1);
   \node[midway, right=2pt] at ($(V1)!0.5!(W1)$) {$W^{-}$};
   \draw[qline] (W1) -- (e1);
-  \node[above=2pt] at ($(W1)!0.5!(e1)$) {$e^{-}/\mu^{-}/\bar u d/\bar c s$};
+  \node[above=2pt] at ($(W1)!0.5!(e1)$) {$e^{-}/\mu^{-}/\bar u d'$};
   \draw[qline] (nue1) -- (W1);
   \node[below=2pt] at ($(W1)!0.5!(nue1)$) {$\bar\nu_{e}/\bar\nu_{\mu}$};
   \node[font=\small] at (-1.5,-2.2) {(b) $\tau^{-}\to\nu_{\tau}+W^{-*}$};
@@ -493,7 +550,7 @@ Together $\tau_{\pi^{\pm}}\approx\SI{2.6e-8}{s}$; eight orders of magnitude long
 \end{tikzpicture}
 \end{center}
 
-\emph{Hadronic decays.} $m_{\mu}c^{2}\approx\SI{106}{MeV}<m_{\pi}\approx\SI{140}{MeV}$: muon hadronic decay forbidden. $m_{\tau}c^{2}\approx\SI{1777}{MeV}\gg m_{\pi}$: $\tau\to\nu_{\tau}+\bar u d/\bar c s$ allowed; quarks hadronise.
+\emph{Hadronic decays.} $m_{\mu}c^{2}\approx\SI{106}{MeV}<m_{\pi}\approx\SI{140}{MeV}$: muon hadronic decay forbidden. $m_{\tau}c^{2}\approx\SI{1777}{MeV}\gg m_{\pi}$: $\tau\to\nu_{\tau}+\bar u d'$ allowed; charm channels closed since $m_{D}\approx\SI{1870}{MeV/c^{2}}>m_{\tau}c^{2}$; quarks hadronise.
 
 \paragraph{The $m^{5}$ rule.} For $m_{\ell}\ll m_{W}$, the $W$ propagator contracts to a four-fermion contact:
 \[
@@ -524,21 +581,25 @@ Substitute $\tau_{\mu}=2.197\times 10^{-6}\,$s, $\tau_{\tau}=2.91\times 10^{-13}
 \[
 \frac{\Gamma_{\tau}^{(e)}}{\Gamma_{\mu}}\;=\;\frac{2.197\times 10^{-6}}{2.91\times 10^{-13}}\times 0.178.
 \]
-Evaluate:
+Evaluate the lifetime ratio:
 \[
-\frac{\Gamma_{\tau}^{(e)}}{\Gamma_{\mu}}\;\approx\;7.55\times 10^{6}\times 0.178\;\approx\;1.34\times 10^{6}.
+\frac{\tau_{\mu}}{\tau_{\tau}}\;\approx\;7.55\times 10^{6}.
+\]
+Multiply by BR:
+\[
+\frac{\Gamma_{\tau}^{(e)}}{\Gamma_{\mu}}\;\approx\;7.55\times 10^{6}\times 0.178\;\approx\;1.344\times 10^{6}.
 \]
 Mass-ratio factor:
 \[
-\left(\frac{m_{\tau}}{m_{\mu}}\right)^{5}\;=\;\left(\frac{1777.0}{105.66}\right)^{5}\;=\;(16.82)^{5}.
+\frac{m_{\tau}}{m_{\mu}}\;=\;\frac{1777.0}{105.66}\;\approx\;16.82.
 \]
-Evaluate:
+Raise to the fifth power:
 \[
-\left(\frac{m_{\tau}}{m_{\mu}}\right)^{5}\;\approx\;1.347\times 10^{6}.
+\left(\frac{m_{\tau}}{m_{\mu}}\right)^{5}\;=\;(16.82)^{5}\;\approx\;1.346\times 10^{6}.
 \]
-Take the ratio:
+Take the ratio of \eqref{eq:m5}:
 \[
-\left(\frac{g_{\tau}}{g_{\mu}}\right)^{2}\;=\;\frac{1.34\times 10^{6}}{1.347\times 10^{6}}\;\approx\;0.995.
+\left(\frac{g_{\tau}}{g_{\mu}}\right)^{2}\;=\;\frac{1.344\times 10^{6}}{1.346\times 10^{6}}\;\approx\;0.998.
 \]
 \begin{equation}
 \boxed{\;\frac{g_{\tau}}{g_{\mu}}\;\approx\;1.00\;.}

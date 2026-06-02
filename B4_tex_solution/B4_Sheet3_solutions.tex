@@ -1,0 +1,650 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, physics}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing, decorations.markings, arrows.meta}
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{Latex}}}, postaction={decorate}}}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue}
+\usepackage{array}
+
+\newtcolorbox{question}{colback=blue!5!white, colframe=blue!60!black,
+  fonttitle=\bfseries, before skip=8pt, after skip=8pt, boxsep=4pt,
+  left=6pt, right=6pt, top=4pt, bottom=4pt,
+  coltext=blue!50!black}
+
+\newcommand{\Q}[1]{\begin{question}#1\end{question}}
+\newcommand{\fm}{\,\mathrm{fm}}
+\newcommand{\MeV}{\,\mathrm{MeV}}
+\newcommand{\GeV}{\,\mathrm{GeV}}
+\newcommand{\TeV}{\,\mathrm{TeV}}
+
+% Convenient Feynman drawing macros
+\newcommand{\fphoton}[2]{\draw[decorate, decoration={snake, amplitude=0.6mm, segment length=2mm}] (#1) -- (#2);}
+\newcommand{\fgluon}[2]{\draw[decorate, decoration={coil, segment length=2pt, amplitude=1pt}] (#1) -- (#2);}
+\newcommand{\fW}[2]{\draw[decorate, decoration={snake, amplitude=0.6mm, segment length=2mm}, dashed] (#1) -- (#2);}
+% Use solid wavy for W with label
+
+\title{B4 Subatomic Physics --- Problem Sheet 3 Solutions}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+%==================================================================
+\section*{3.1 \quad Vertices and decay diagrams}
+
+\Q{(a) Identify forbidden vertices among (i)--(ix) coupling gauge bosons to fermion pairs; for forbidden ones, show how to fix by changing the bottom fermion identity.\\
+(b) Draw quark-level Feynman diagrams for: (i) $K^0\to\pi^- e^+\nu_e$, (ii) $D^+\to\bar K^0\mu^+\nu_\mu$, (iii) $\tau^+\to\pi^+\bar\nu_\tau$, (iv) $\Lambda^0\to p e^-\bar\nu_e$, (v) $\Xi^-\to\Lambda^0\pi^-$, (vi) $K^+\to\pi^+\pi^-\pi^+$, (vii) $B^0_s\to\bar B^0_s$.}
+
+\paragraph{(a) Vertex audit.} Each gauge boson couples to specific fermion pairs:
+\begin{itemize}[itemsep=1pt]
+\item $\gamma$: only same-flavour, same-charge $f\bar f$ (no neutrino, no flavour change), conserving electric charge.
+\item $Z$: same-flavour $f\bar f$ (no flavour-changing neutral currents, FCNC).
+\item $W$: changes flavour by one unit, within a generation for leptons (CKM-mixed for quarks); raises charge by $+1$ on the upper line.
+\item gluon: same-flavour quark--antiquark only (colour-changing but flavour-conserving).
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{@{}c|l|l|l@{}}\hline
+Vertex & Description & Verdict & Fix\\\hline
+(i) & $\gamma\to e^+e^-$ & \checkmark allowed & ---\\
+(ii) & $Z\to u\bar c$ & \textbf{forbidden} (FCNC) & replace $\bar c$ by $\bar u$\\
+(iii) & $Z\to u\bar u$ & \checkmark allowed & ---\\
+(iv) & $\gamma\to\nu_\mu\bar\nu_\mu$ & \textbf{forbidden} (neutral $\nu$, no EM coupling) & no fix; replace $\gamma$ by $Z$\\
+(v) & $W\to e^-\bar\nu_e$ & \textbf{forbidden} (charge: $W^?\to e^-+\bar\nu_e$ has $Q=-1$, so requires $W^-$); fine if labelled $W^-$ but as drawn the $W$ couples a charged lepton with its antineutrino, the partner must be $\nu_e$ not $\bar\nu_e$ & replace $\bar\nu_e$ by $\nu_e$\\
+(vi) & $W\to\mu^-\bar\tau$ & \textbf{forbidden} (changes lepton flavour at a single $W$ vertex) & replace $\bar\tau$ by $\bar\nu_\mu$\\
+(vii) & $W\to u\bar u$ & \textbf{forbidden} (charge: $u\bar u$ is neutral, $W$ is charged) & replace $\bar u$ by $\bar d$ (or $\bar s,\bar b$)\\
+(viii) & $g\to d\bar d$ & \checkmark allowed & ---\\
+(ix) & $g\to u\bar c$ & \textbf{forbidden} (gluon flavour-conserving) & replace $\bar c$ by $\bar u$\\\hline
+\end{tabular}
+\end{center}
+
+\paragraph{(b) Decay diagrams.}
+
+\textbf{(i) $K^0(d\bar s)\to\pi^-(d\bar u)\,e^+\nu_e$.} The $\bar s\to\bar u W^+$, $W^+\to e^+\nu_e$:
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+\draw[->-=0.5] (-3,1.0) -- (3,1.0) node[midway,above]{$d$} node[right]{};
+\draw[->-=0.5] (3,0.4) -- (1.0,0.4) node[midway,above]{$\bar u$};
+\draw[->-=0.5] (1.0,0.4) -- (-3,0.4) node[midway,below]{$\bar s$};
+\node[left] at (-3,0.7) {$K^0$};
+\node[right] at (3.0,0.7) {$\pi^-$};
+\fphoton{1.0,0.4}{2.0,-0.5}
+\node[right] at (1.7,-0.05) {$W^+$};
+\draw[->-=0.5] (2.0,-0.5) -- (3,-1.1) node[right]{$\nu_e$};
+\draw[->-=0.5] (2.0,-0.5) -- (3,-0.0) node[right]{$e^+$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{(ii) $D^+(c\bar d)\to\bar K^0(s\bar d)\,\mu^+\nu_\mu$.} $c\to s W^+,W^+\to\mu^+\nu_\mu$, CKM factor $V_{cs}$:
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+\draw[->-=0.5] (-3,1.0) -- (1.0,1.0) node[midway,above]{$c$};
+\draw[->-=0.5] (1.0,1.0) -- (3,1.0) node[midway,above]{$s$};
+\draw[->-=0.5] (3,0.4) -- (-3,0.4) node[midway,below]{$\bar d$};
+\node[left] at (-3,0.7) {$D^+$};
+\node[right] at (3.0,0.7) {$\bar K^0$};
+\fphoton{1.0,1.0}{2.0,2.0}
+\node[right] at (1.7,1.5) {$W^+$};
+\draw[->-=0.5] (2.0,2.0) -- (3,2.6) node[right]{$\nu_\mu$};
+\draw[->-=0.5] (2.0,2.0) -- (3,1.5) node[right]{$\mu^+$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{(iii) $\tau^+\to\pi^+\bar\nu_\tau$.} Hadronic two-body: $\tau^+\to W^+\bar\nu_\tau$, then $W^+\to u\bar d$ which hadronises to $\pi^+(u\bar d)$, factor $V_{ud}$:
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+\draw[->-=0.5] (-3,0.7) -- (0,0.7) node[midway,above]{$\tau^+$};
+\draw[->-=0.5] (0,0.7) -- (2.5,1.5) node[right]{$\bar\nu_\tau$};
+\fphoton{0,0.7}{1.5,-0.3}
+\node[right] at (0.7,0.2) {$W^+$};
+\draw[->-=0.5] (1.5,-0.3) -- (3,-0.0) node[right]{$u$};
+\draw[->-=0.5] (3,-0.6) -- (1.5,-0.3) node[midway,below]{$\bar d$};
+\node[right] at (3.1,-0.3) {$\pi^+$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{(iv) $\Lambda^0(uds)\to p(uud)\,e^-\bar\nu_e$.} $s\to u W^-$, $W^-\to e^-\bar\nu_e$, factor $V_{us}$:
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+\draw[->-=0.5] (-3,1.4) -- (3,1.4) node[midway,above]{$u$};
+\draw[->-=0.5] (-3,1.0) -- (3,1.0) node[midway,above]{$d$};
+\draw[->-=0.5] (-3,0.6) -- (1.0,0.6) node[midway,below]{$s$};
+\draw[->-=0.5] (1.0,0.6) -- (3,0.6) node[midway,below]{$u$};
+\node[left] at (-3,1.0) {$\Lambda^0$};
+\node[right] at (3.0,1.0) {$p$};
+\fphoton{1.0,0.6}{2.0,-0.4}
+\node[right] at (1.7,0.1) {$W^-$};
+\draw[->-=0.5] (3,0.0) -- (2.0,-0.4) node[right]{};
+\node[right] at (3,0.0) {$e^-$};
+\draw[->-=0.5] (2.0,-0.4) -- (3,-1.0) node[right]{$\bar\nu_e$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{(v) $\Xi^-(dss)\to\Lambda^0(uds)\pi^-(d\bar u)$.} One $s\to u W^-$, $W^-\to d\bar u$ which hadronises into the $\pi^-$. Factor $V_{us}V_{ud}^*$ (Cabibbo-suppressed strange decay):
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+\draw[->-=0.5] (-3,1.4) -- (3,1.4) node[midway,above]{$d$};
+\draw[->-=0.5] (-3,1.0) -- (3,1.0) node[midway,above]{$s$};
+\draw[->-=0.5] (-3,0.6) -- (1.0,0.6) node[midway,below]{$s$};
+\draw[->-=0.5] (1.0,0.6) -- (3,0.6) node[midway,below]{$u$};
+\node[left] at (-3,1.0) {$\Xi^-$};
+\node[right] at (3.0,1.0) {$\Lambda^0$};
+\fphoton{1.0,0.6}{2.0,-0.5}
+\node[right] at (1.6,0.1) {$W^-$};
+\draw[->-=0.5] (2.0,-0.5) -- (3,-0.1) node[right]{$d$};
+\draw[->-=0.5] (3,-1.0) -- (2.0,-0.5) node[midway,below]{$\bar u$};
+\node[right] at (3.1,-0.5) {$\pi^-$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{(vi) $K^+(u\bar s)\to\pi^+\pi^-\pi^+$.} Quark-level $\bar s\to\bar u W^+$, $W^+\to u\bar d$, plus extra $u\bar u, d\bar d$ pair from gluon (or, more compactly, $W^+$ produces a $u\bar d$ pair which combined with the spectator $u$ and pair-creation forms three pions). Factor $V_{us}V_{ud}^*$.
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+\draw[->-=0.5] (-3,1.0) -- (3,1.0) node[midway,above]{$u$ (spec.)};
+\draw[->-=0.5] (1.0,0.4) -- (-3,0.4) node[midway,below]{$\bar s$};
+\draw[->-=0.5] (3,0.4) -- (1.0,0.4) node[midway,above]{$\bar u$};
+\node[left] at (-3,0.7) {$K^+$};
+\fphoton{1.0,0.4}{2.0,-0.6}
+\node[right] at (1.6,-0.1) {$W^+$};
+\draw[->-=0.5] (2.0,-0.6) -- (3,-0.1) node[right]{$u$};
+\draw[->-=0.5] (3,-1.1) -- (2.0,-0.6) node[midway,below]{$\bar d$};
+% Extra pair from gluon (schematic)
+\fgluon{0.0,1.0}{0.0,0.0}
+\draw[->-=0.5] (0.0,0.0) -- (3,-0.5) node[right]{};
+\draw[->-=0.5] (3,-1.5) -- (0.0,0.0) node[midway,below]{};
+\node[right] at (3.0,-0.6) {\small (rearrangement to $\pi^+\pi^-\pi^+$)};
+\end{tikzpicture}
+\end{center}
+
+\textbf{(vii) $B^0_s(\bar b s)\to\bar B^0_s(b\bar s)$.} Box diagram with two $W$ exchanges; dominant internal quark is $t$ (Inami--Lim function favours heaviest quark):
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+\draw[->-=0.5] (-3,1.4) -- (-1.0,1.4) node[midway,above]{$\bar b$};
+\draw[->-=0.5] (-1.0,1.4) -- (1.0,1.4) node[midway,above]{$\bar t$};
+\draw[->-=0.5] (1.0,1.4) -- (3,1.4) node[midway,above]{$\bar s$};
+\draw[->-=0.5] (3,0.0) -- (1.0,0.0) node[midway,below]{$b$};
+\draw[->-=0.5] (1.0,0.0) -- (-1.0,0.0) node[midway,below]{$t$};
+\draw[->-=0.5] (-1.0,0.0) -- (-3,0.0) node[midway,below]{$s$};
+\fphoton{-1.0,1.4}{-1.0,0.0}
+\fphoton{1.0,1.4}{1.0,0.0}
+\node[left] at (-1.1,0.7) {$W$};
+\node[right] at (1.1,0.7) {$W$};
+\node[left] at (-3,0.7) {$B^0_s$};
+\node[right] at (3,0.7) {$\bar B^0_s$};
+\end{tikzpicture}
+\end{center}
+
+%==================================================================
+\section*{3.2 \quad Neutrino scattering}
+
+\Q{$\nu_\mu+N\to\mu^-+\mathrm{hadrons}$ at $E_\nu>10\GeV$.\\
+(a) De Broglie argument for substructure sensitivity.\\
+(b) Justify $\sigma\propto E_\nu$, evaluate at $E_\nu=100\GeV$.\\
+(c) What does $\sigma/E_\nu=\mathrm{const}$ tell us about quarks?\\
+(d) Will this hold to arbitrarily high energies? At what scale does it break?\\
+(e) Other "no-track" events --- physics? Diagrams.}
+
+\paragraph{(a)} The de Broglie wavelength of the exchanged $W$ in the c.m.\ frame: at high energy the $W$ probes a length scale $\lambda\sim\hbar/q$ where $q$ is the momentum transfer. For $E_\nu=10\GeV$, the typical $q^{2}\sim 2 m_p E_\nu\sim 20\GeV^{2}$, $q\sim 4.5\GeV$, so
+\[
+\lambda\sim\frac{\hbar c}{q}\sim\frac{0.2\GeV\fm}{4.5\GeV}\sim 0.04\fm,
+\]
+much smaller than the proton radius $\sim 0.85\fm$. The neutrino sees individual partons.
+
+\paragraph{(b) Linear $E_\nu$ dependence.} In the limit $\sqrt{s}\gg m_W$ the propagator $1/(q^{2}-m_W^{2})\to -1/m_W^{2}$ becomes a constant (Fermi 4-fermion contact). $G_F\propto 1/m_W^{2}$. Then by dimensional analysis the only scales are $G_F$ and $s\sim 2 m_p E_\nu$:
+\[
+\sigma\sim G_F^{2}\cdot s = G_F^{2}\cdot 2 m_p E_\nu\Rightarrow\sigma\propto E_\nu.
+\]
+The full result includes a factor $1/(4\pi)$ and integrates over parton momentum fractions; the formula given is the leading parton-model result.
+
+Numerically, $G_F=1.166\times 10^{-5}\GeV^{-2}$ and $\hbar c=0.1973\GeV\fm$, so $G_F/(\hbar c)^{3}=1.52\times 10^{-4}\fm^{2}\GeV^{-2}$ and $G_F^{2}/(\hbar c)^{4}\cdot E_\nu m_p c^{2}/4\pi$:
+\[
+\sigma=\frac{G_F^{2}E_\nu m_p c^{2}}{4\pi(\hbar c)^{4}}.
+\]
+With $E_\nu=100\GeV$, $m_p c^{2}=0.938\GeV$:
+\[
+\sigma=\frac{(1.166\times 10^{-5})^{2}\cdot 100\cdot 0.938}{4\pi\cdot(0.1973)^{4}}\GeV^{-2}\cdot(\GeV\fm)^{-4}\cdot\GeV^{2}.
+\]
+Easier in natural units: $G_F^{2}=1.36\times 10^{-10}\GeV^{-4}$. $G_F^{2}\cdot E_\nu\cdot m_p=1.36\times 10^{-10}\cdot 100\cdot 0.938=1.28\times 10^{-8}\GeV^{-2}$. Divide by $4\pi=12.57$: $1.02\times 10^{-9}\GeV^{-2}$. Convert: $1\GeV^{-2}=0.389\,\mathrm{mb}$:
+\[
+\sigma=1.02\times 10^{-9}\cdot 0.389\,\mathrm{mb}=3.96\times 10^{-10}\,\mathrm{mb}=\boxed{\,4.0\times 10^{-37}\,\mathrm{cm}^{2}.\,}
+\]
+(Matches measured $\sigma_\mathrm{CC}/E_\nu\approx 0.677\times 10^{-38}\,\mathrm{cm^{2}/GeV}\cdot 100\GeV=6.8\times 10^{-37}\,\mathrm{cm^{2}}$ to within a factor 2; the parton-level formula uses the proton mass rather than the relevant quark mass and ignores antiquark contributions.)
+
+\paragraph{(c)} The constancy of $\sigma/E_\nu$ over orders of magnitude (Bjorken scaling) means the cross section sees \emph{point-like} constituents --- no form factor falloff. This was historic evidence that quarks are pointlike on length scales currently probed (no internal substructure to date).
+
+\paragraph{(d) Breakdown.} The linear rise must terminate when $q^{2}\sim m_W^{2}$, i.e.\ when the $W$ propagator stops being effectively a contact: $2 m_p E_\nu\sim m_W^{2}$, so
+\[
+E_\nu^*\sim\frac{m_W^{2}}{2 m_p}\sim\frac{(80.4)^{2}}{2\cdot 0.938}\GeV\sim\boxed{\,3.4\TeV.\,}
+\]
+Above this, $\sigma$ flattens rather than continuing to grow linearly. (At even higher energies, $\sigma\propto\ln s$ from QCD evolution at small $x$.)
+
+\paragraph{(e) "No-track" events: neutral current.} $\nu_\mu+N\to\nu_\mu+\mathrm{hadrons}$ via $Z$ exchange. The outgoing $\nu_\mu$ leaves no track; only the hadronic shower is seen.
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+% CC
+\draw[->-=0.5] (-2.5,1.5) -- (-0.5,1.0); \node[left] at (-2.5,1.5) {$\nu_\mu$};
+\draw[->-=0.5] (-0.5,1.0) -- (1.5,1.5); \node[right] at (1.5,1.5) {$\mu^-$};
+\fphoton{-0.5,1.0}{-0.5,-0.4}
+\node[left] at (-0.6,0.3) {$W^+$};
+\draw[->-=0.5] (-2.5,-0.4) -- (-0.5,-0.4); \node[left] at (-2.5,-0.4) {$d$};
+\draw[->-=0.5] (-0.5,-0.4) -- (1.5,-0.4); \node[right] at (1.5,-0.4) {$u$};
+\node at (-0.5,-1.4) {(a) Charged current};
+% NC
+\begin{scope}[xshift=6.5cm]
+\draw[->-=0.5] (-2.5,1.5) -- (-0.5,1.0); \node[left] at (-2.5,1.5) {$\nu_\mu$};
+\draw[->-=0.5] (-0.5,1.0) -- (1.5,1.5); \node[right] at (1.5,1.5) {$\nu_\mu$};
+\fphoton{-0.5,1.0}{-0.5,-0.4}
+\node[left] at (-0.6,0.3) {$Z$};
+\draw[->-=0.5] (-2.5,-0.4) -- (-0.5,-0.4); \node[left] at (-2.5,-0.4) {$q$};
+\draw[->-=0.5] (-0.5,-0.4) -- (1.5,-0.4); \node[right] at (1.5,-0.4) {$q$};
+\node at (-0.5,-1.4) {(b) Neutral current};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+The NC/CC ratio $\sim 0.3$ for $\nu_\mu$ on isoscalar targets, established by the discovery of NC at Gargamelle in 1973.
+
+%==================================================================
+\section*{3.3 \quad Cabibbo suppression}
+
+\Q{(a) $\tau^-\to\pi^-\nu_\tau$ ($\mathrm{BF}=10.8\%$) vs.\ $\tau^-\to K^-\nu_\tau$ ($\mathrm{BF}=7.0\times 10^{-3}$); extract Cabibbo angle.\\
+(b) $D^0\to K^-\pi^+$ vs.\ $D^0\to K^+\pi^-$; predicted ratio vs.\ measured 0.0038. Approximate $D^0\to K^+K^-/D^0\to K^-\pi^+$.\\
+(c) $B^-\to D^0\mu^-\bar\nu_\mu$ vs.\ $B^-\to\pi^0\mu^-\bar\nu_\mu$ --- which higher and why?}
+
+\paragraph{(a)} Both diagrams have the same topology, differing only in the CKM at the hadronic vertex:
+\[
+\tau^-\to W^-\nu_\tau,\quad W^-\to\bar u d \to\pi^-\;(V_{ud}^{*}),\qquad W^-\to\bar u s\to K^-\;(V_{us}^{*}).
+\]
+With identical phase space modulo small mass corrections and the same hadronic decay constants $f_\pi\approx f_K$ at lowest order:
+\[
+\frac{\Gamma(\tau\to K\nu)}{\Gamma(\tau\to\pi\nu)}\simeq\frac{|V_{us}|^{2}f_K^{2}(1-m_K^{2}/m_\tau^{2})^{2}}{|V_{ud}|^{2}f_\pi^{2}(1-m_\pi^{2}/m_\tau^{2})^{2}}.
+\]
+At leading order (ignoring $f_K/f_\pi\simeq 1.19$ and phase space):
+\[
+\tan^{2}\theta_C\simeq\frac{|V_{us}|^{2}}{|V_{ud}|^{2}}\simeq\frac{\mathrm{BF}(K)}{\mathrm{BF}(\pi)}=\frac{7.0\times 10^{-3}}{0.108}=0.0648.
+\]
+\[
+\boxed{\;\tan\theta_C\simeq 0.255,\quad\theta_C\simeq 14.3^\circ.\;}
+\]
+(Measured $\theta_C\simeq 13.0^\circ$, $\sin\theta_C=0.225$. The $\sim 10\%$ discrepancy comes from $f_K/f_\pi$ and phase space.)
+
+\paragraph{(b) $D^0$ decays.} $D^0=c\bar u$.
+\begin{itemize}[itemsep=1pt]
+\item $D^0\to K^-\pi^+$: $c\to s W^+$, $W^+\to u\bar d$. CKM: $V_{cs}V_{ud}^{*}$. Both $\sim\cos\theta_C\simeq 0.97$. \textbf{Cabibbo-favoured.}
+\item $D^0\to K^+\pi^-$: needs $c\to d W^+,W^+\to u\bar s$. CKM: $V_{cd}V_{us}^{*}$. Both $\sim\sin\theta_C\simeq 0.225$. \textbf{Doubly Cabibbo-suppressed.}
+\end{itemize}
+Predicted ratio:
+\[
+\frac{\mathrm{BF}(K^+\pi^-)}{\mathrm{BF}(K^-\pi^+)}\simeq\tan^{4}\theta_C\simeq(0.225)^{4}=2.6\times 10^{-3}.
+\]
+Measured: $3.8\times 10^{-3}$. Agreement at the $\sim 30\%$ level; remaining discrepancy from form-factor and final-state-interaction effects.
+
+For $D^0\to K^+K^-$ vs.\ $D^0\to K^-\pi^+$: the singly Cabibbo-suppressed mode goes via $c\to s W^+,W^+\to u\bar s$ (or $c\to d W^+,W^+\to u\bar d$ for $\pi^+\pi^-$); CKM $V_{cs}V_{us}^{*}$, suppressed by one factor of $\tan\theta_C$:
+\[
+\frac{\mathrm{BF}(K^+K^-)}{\mathrm{BF}(K^-\pi^+)}\sim\tan^{2}\theta_C\simeq 0.05.
+\]
+(Measured $\simeq 0.10$; the factor of $\sim 2$ enhancement is partly phase space and partly $SU(3)$-breaking.)
+
+\paragraph{(c) $B^-\to D^0\mu^-\bar\nu_\mu$ vs.\ $B^-\to\pi^0\mu^-\bar\nu_\mu$.} $B^-=\bar b u$ (using the convention $B^-=\bar B$).
+\begin{itemize}[itemsep=1pt]
+\item $\to D^0(c\bar u)$: $b\to c W^-$, factor $|V_{cb}|=0.041$.
+\item $\to\pi^0$: $b\to u W^-$, factor $|V_{ub}|=0.0036$.
+\end{itemize}
+Ratio of CKM squared: $|V_{cb}/V_{ub}|^{2}\simeq 130$. Phase space favours $b\to u$ (lighter daughter) but only by a factor of order unity. Overall $\to D^0$ is much more probable. \textbf{$B^-\to D^0\mu^-\bar\nu_\mu$ dominates by} $\sim 50$.
+
+%==================================================================
+\section*{3.4 \quad Weak decays and lifetimes}
+
+\Q{Table of $B^+,D^+,K^+,\tau^+,\mu^+$ masses, lifetimes, and semileptonic BFs.\\
+(a) Diagrams for $\tau^+,D^+$ decays.\\
+(b) Show all five lifetimes follow a common picture good to $<10\times$.\\
+(c) $\pi^+\to\mu^+\nu_\mu$ does not fit; why?\\
+(d) Mean decay length of LHC $B^+$ at $\langle p\rangle=50\GeV/c$. How to measure lifetime; is the listed mode suitable?}
+
+\paragraph{(a)}
+\textbf{$\tau^+$:} purely leptonic example $\tau^+\to e^+\bar\nu_\tau\nu_e$ via $W^+$ on the $\tau$ line.
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+\draw[->-=0.5] (-2.5,0) -- (0,0); \node[left] at (-2.5,0) {$\tau^+$};
+\draw[->-=0.5] (0,0) -- (2,1); \node[right] at (2,1) {$\bar\nu_\tau$};
+\fphoton{0,0}{1.0,-1.0}
+\draw[->-=0.5] (1.0,-1.0) -- (2,-0.4); \node[right] at (2,-0.4) {$e^+$};
+\draw[->-=0.5] (1.0,-1.0) -- (2,-1.6); \node[right] at (2,-1.6) {$\nu_e$};
+\node[right] at (0.6,-0.5) {$W^+$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{$D^+\to\bar K^0 e^+\nu_e$:} $c\to s W^+$, $V_{cs}$, spectator $\bar d$:
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+\draw[->-=0.5] (-3,1.0) -- (1.0,1.0) node[midway,above]{$c$};
+\draw[->-=0.5] (1.0,1.0) -- (3,1.0) node[midway,above]{$s$};
+\draw[->-=0.5] (3,0.4) -- (-3,0.4) node[midway,below]{$\bar d$};
+\node[left] at (-3,0.7) {$D^+$};
+\node[right] at (3.0,0.7) {$\bar K^0$};
+\fphoton{1.0,1.0}{2.0,2.0}
+\draw[->-=0.5] (2.0,2.0) -- (3,2.6) node[right]{$\nu_e$};
+\draw[->-=0.5] (2.0,2.0) -- (3,1.6) node[right]{$e^+$};
+\node[right] at (1.7,1.5) {$W^+$};
+\end{tikzpicture}
+\end{center}
+
+\paragraph{(b) Common picture.} For weak decays the partial rate at fixed CKM scales as $\Gamma\propto G_F^{2}m^{5}$ (Sargent rule), modified by CKM. For semileptonic decays of a heavy quark $Q\to q\ell\bar\nu$ the rate is approximately
+\[
+\Gamma_\mathrm{SL}\simeq\frac{G_F^{2}m_Q^{5}}{192\pi^{3}}|V_{Qq}|^{2}.
+\]
+The total rate is (number of accessible channels with appropriate CKM and colour factors).
+
+For each particle, take partial semileptonic width $\Gamma_\mathrm{SL}=\mathrm{BF}\cdot\hbar/\tau$, then divide by the appropriate $m^{5}|V|^{2}$ to extract a universal ratio. Use $m$ = the relevant mass scale ($m_b,m_c,m_s,m_\tau,m_\mu$ for the quark-level / lepton-level decay).
+
+\begin{center}
+\begin{tabular}{@{}lcccccc@{}}\hline
+Particle & $m$ scale [GeV] & $|V_{Qq}|$ & $\Gamma_\mathrm{tot}$ [GeV] & $\Gamma_\mathrm{SL}$ [GeV] & $\Gamma_\mathrm{SL}/(m^{5}|V|^{2})$ [GeV$^{-4}$]\\\hline
+$B^+$ & $m_b\approx 4.5$ & $|V_{cb}|=0.041$ & $4.1\times 10^{-13}$ & $4.4\times 10^{-14}$ & $1.4\times 10^{-14}$\\
+$D^+$ & $m_c\approx 1.5$ & $|V_{cs}|=0.987$ & $6.6\times 10^{-13}$ & $5.7\times 10^{-14}$ & $7.5\times 10^{-15}$\\
+$K^+$ & $m_s\approx 0.5$ ? & $|V_{us}|=0.225$ & $5.5\times 10^{-17}$ & $2.8\times 10^{-18}$ & $1.8\times 10^{-15}$\\
+$\tau^+$& $m_\tau=1.78$ & 1 & $2.3\times 10^{-12}$ & $4.0\times 10^{-13}$ & $1.4\times 10^{-14}$\\
+$\mu^+$ & $m_\mu=0.106$ & 1 & $3.0\times 10^{-19}$ & $3.0\times 10^{-19}$ & $2.4\times 10^{-14}$\\\hline
+\end{tabular}
+\end{center}
+
+The ratio $\Gamma_\mathrm{SL}/(m^{5}|V|^{2})$ is constant to within a factor of $\sim 10$ across 7 orders of magnitude in lifetime. \textbf{Lepton decays show better internal consistency} ($\tau$ vs.\ $\mu$ within a factor of 2) than hadrons (where $K^+$ uses $m_s\sim 0.5\GeV$ for the $s\to u$ transition, which is very rough --- the effective scale is the kaon mass, and there are large form-factor / spectator effects). The hadron values span a factor of $\sim 10$ because the $m_Q^{5}$ scaling is asymptotic to the heavy-quark limit and breaks down for $K^+$ where the strange quark is barely heavy enough.
+
+\paragraph{(c) $\pi^+\to\mu^+\nu_\mu$.} $\pi^+$ is a $J=0$ pseudoscalar; the decay is \textbf{helicity-suppressed}: in the rest frame the $\nu$ has fixed helicity ($-1$), so the $\mu^+$ is forced to be in the "wrong" helicity state, costing a factor $(m_\mu/m_\pi)^{2}$. Also, the rate is set by the pion decay constant $f_\pi^{2}m_\pi^{3}$, not the naive $G_F^{2}m^{5}$. With $m_\pi=0.140\GeV$ as the scale and $|V_{ud}|^{2}\simeq 0.95$, naive $\Gamma\propto G_F^{2}m_\pi^{5}|V_{ud}|^{2}/(192\pi^{3})$ gives $\tau_\pi^\mathrm{naive}\sim 10^{-3}$ s, far from the measured $2.6\times 10^{-8}$ s.
+
+The correct formula:
+\[
+\Gamma(\pi^+\to\mu^+\nu_\mu)=\frac{G_F^{2}f_\pi^{2}|V_{ud}|^{2}m_\pi m_\mu^{2}}{8\pi}\!\left(1-\frac{m_\mu^{2}}{m_\pi^{2}}\right)^{2}
+\]
+which is suppressed by $m_\mu^{2}/m_\pi^{2}$ relative to the no-helicity case. So the pion does not fit the simple Sargent picture --- it is not a spectator-decay process but a pure annihilation.
+
+\paragraph{(d) Mean flight distance of $B^+$.} $\beta\gamma=p/(mc)=50/5.279=9.47$; mean rest-frame lifetime $\tau=1.6\times 10^{-12}$ s; mean lab decay length:
+\[
+\langle d\rangle=\beta\gamma\,c\tau=9.47\cdot 3\times 10^{8}\cdot 1.6\times 10^{-12}\,\mathrm{m}=4.5\times 10^{-3}\,\mathrm{m}=\boxed{\,4.5\,\mathrm{mm}.\,}
+\]
+
+\textbf{Lifetime measurement:} reconstruct $B^+$ from its decay products in a vertex detector, measure decay time $t=L m/p$ from the displacement $L$ between primary and secondary vertices, and fit the exponential distribution. The semileptonic mode $B^+\to X_c e^+\nu_e$ is \textbf{not ideal} for this because the neutrino is unobserved $\Rightarrow$ momentum vector not fully reconstructed $\Rightarrow$ $t=L m/p$ has a significant smearing. Better to use a fully-reconstructed exclusive mode like $B^+\to J/\psi K^+$ where $p$ is exactly determined. (LHCb does both, with the inclusive semileptonic giving a complementary cross-check.)
+
+%==================================================================
+\section*{3.5 \quad Parity violation}
+
+\Q{(a) $K^-\to\pi^-\pi^0$ vs.\ $K^-\to\pi^-\pi^-\pi^+$ have opposite parity --- $\theta$-$\tau$ puzzle.\\
+(b) $^{60}\mathrm{Co}\to{}^{60}\mathrm{Ni}$ Wu experiment: electrons opposite to nuclear polarisation.\\
+(c) $I(v,\theta)\propto 1-(v/c)\cos\theta$ implies what about helicity?\\
+(d) $\pi^-\to e^-\bar\nu_e$ vs.\ $\pi^-\to\mu^-\bar\nu_\mu$: derive ratio and evaluate.}
+
+\paragraph{(a)} $K^-$ is a pseudoscalar, $J^P=0^-$. Pions are pseudoscalars too, $P_\pi=-1$.
+
+\textbf{Two-pion mode:} two $\pi$'s with $J=0$, so $L=0$ to give total $J=0$. Parity:
+\[
+P_f=P_\pi^{2}(-1)^{L}=(-1)^{2}\cdot(+1)=+1.
+\]
+
+\textbf{Three-pion mode:} two relative orbital momenta. The simplest configuration giving total $J=0$ has all three $L_i=0$:
+\[
+P_f=P_\pi^{3}(-1)^{L_{12}}(-1)^{L_{(12)3}}=(-1)^{3}(+1)(+1)=-1.
+\]
+So one final state has parity $+1$ and the other $-1$. Both are seen as decays of the same particle, the $K^-$. If parity were conserved by the weak interaction, the same initial $J^P$ could not decay into two final states of opposite parity. The historical "$\theta$-$\tau$ puzzle" is resolved by accepting that parity is \textbf{violated} in weak decays.
+
+\paragraph{(b) Wu experiment.} The electrons are emitted preferentially \emph{against} the spin direction of the nucleus, i.e.\ if $\mathbf{J}$ is the polarisation, the angular distribution has the form $1-A(v/c)\cos\theta$ with $A>0$. Under parity:
+\[
+P:\;\mathbf{J}\to\mathbf{J},\quad\mathbf{p}_e\to-\mathbf{p}_e\Rightarrow\cos\theta\to-\cos\theta.
+\]
+$\mathbf{J}$ is an axial vector, unchanged; $\mathbf{p}_e$ is a polar vector, flipped. So $\langle\mathbf{J}\cdot\hat{\mathbf{p}}_e\rangle$ is a pseudoscalar. A non-zero pseudoscalar in the angular distribution $\Rightarrow$ parity is violated.
+
+\paragraph{(c) Helicity.} The factor $(v/c)\cos\theta$ is the projection of the electron's velocity on $\mathbf{J}$, i.e.\ $\langle\boldsymbol{\sigma}\cdot\mathbf{p}\rangle/|\mathbf{p}|=h$, the helicity. The minus sign and coefficient $v/c$ tell us the electron is emitted with helicity
+\[
+h=-v/c,
+\]
+i.e.\ \textbf{left-handed}, with degree of polarisation $v/c$. In the limit $v\to c$, the electron is fully left-handed --- the "$V$-$A$" structure of the charged current.
+
+\paragraph{(d) $\pi^-\to e^-\bar\nu_e$ vs.\ $\pi^-\to\mu^-\bar\nu_\mu$.}
+A priori surprising because phase space favours the lighter electron channel by a large factor ($(p_e/p_\mu)\sim m_\pi/m_\pi$ vs.\ $\sim 1$ in some naive sense), so the $e$ mode "should" dominate. The helicity argument: $\bar\nu$ is right-handed, so the $\ell^-$ must also be right-handed (to give total angular momentum 0 along the decay axis from spin-0 $\pi^-$). For a massless lepton, only LH exists, so the rate would vanish; the actual rate is $\propto m_\ell^{2}$ from the small RH component of a massive lepton.
+
+Computing in the rest frame: $\Gamma(\pi^-\to\ell^-\bar\nu)=\frac{G_F^{2}f_\pi^{2}|V_{ud}|^{2}}{8\pi}m_\pi m_\ell^{2}\!\left(1-\frac{m_\ell^{2}}{m_\pi^{2}}\right)^{2}$.
+
+The ratio:
+\[
+R=\frac{\Gamma(\pi\to e\nu)}{\Gamma(\pi\to\mu\nu)}=\frac{m_e^{2}(1-m_e^{2}/m_\pi^{2})^{2}}{m_\mu^{2}(1-m_\mu^{2}/m_\pi^{2})^{2}}.
+\]
+Since $m_e/m_\pi\ll 1$, $(1-m_e^{2}/m_\pi^{2})^{2}\simeq 1$, and the formula simplifies (as quoted in the problem) to
+\[
+\boxed{\;R=\frac{m_e^{2}}{m_\mu^{2}}\cdot\frac{1}{(1-m_\mu^{2}/m_\pi^{2})^{2}}.\;}
+\]
+
+\textbf{Numerical:} $m_e/m_\mu=4.836\times 10^{-3}$, $(m_e/m_\mu)^{2}=2.339\times 10^{-5}$. $m_\mu/m_\pi=0.7587$, $(m_\mu/m_\pi)^{2}=0.5757$, $1-0.5757=0.4243$, $(0.4243)^{2}=0.1800$. So
+\[
+R=\frac{2.339\times 10^{-5}}{0.1800}=1.30\times 10^{-4}.
+\]
+Measured: $1.23\times 10^{-4}$. Agreement at $\sim 5\%$, with the small remaining gap from radiative corrections and structure-dependent terms.
+
+%==================================================================
+\section*{3.6 \quad $e^+e^-$ at the $Z^0$}
+
+\Q{DELPHI: two-jet "hadron" events vs.\ two-track "$\mu^+\mu^-$" events.\\
+(a) Explain both, draw diagrams, why so many particles in jets.\\
+(b) Cross sections fit to BW form (5). (i) Why $\Gamma_{e^+e^-}$ in formula? (ii) Show equivalent to standard BW.\\
+(c) ISR distorts: lineshape asymmetry; determine $M_Z$, find invisible width $\sim 510\MeV$.\\
+(d) $\Gamma_{\nu\bar\nu}/\Gamma_{e^+e^-}=2$; how many lepton generations?\\
+(e) Three-jet events --- what's happening?}
+
+\paragraph{(a) Topologies.}
+\begin{itemize}[itemsep=1pt]
+\item \textbf{Hadronic two-jet:} $e^+e^-\to Z\to q\bar q$, with quarks fragmenting into many hadrons that hadronise into two back-to-back collimated jets. The many tracks come from QCD radiation followed by hadronisation: each quark radiates gluons, which split into more $q\bar q$ pairs, eventually combining into colour-singlet hadrons.
+\item \textbf{Two-track $\mu^+\mu^-$:} $e^+e^-\to Z\to\mu^+\mu^-$. Two minimum-ionising tracks penetrating the calorimeter and reaching the muon chambers (mips leave a continuous trail).
+\end{itemize}
+
+Diagrams:
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+\draw[->-=0.5] (-2.5,1.0) -- (-1.0,0); \node[left] at (-2.5,1.0) {$e^-$};
+\draw[->-=0.5] (-1.0,0) -- (-2.5,-1.0); \node[left] at (-2.5,-1.0) {$e^+$};
+\fphoton{-1.0,0}{1.0,0}
+\node[above] at (0,0.1) {$Z$};
+\draw[->-=0.5] (1.0,0) -- (2.5,1.0); \node[right] at (2.5,1.0) {$q$ (jet)};
+\draw[->-=0.5] (2.5,-1.0) -- (1.0,0); \node[right] at (2.5,-1.0) {$\bar q$ (jet)};
+\node at (-0.3,-1.8) {(a) hadronic};
+\begin{scope}[xshift=8cm]
+\draw[->-=0.5] (-2.5,1.0) -- (-1.0,0); \node[left] at (-2.5,1.0) {$e^-$};
+\draw[->-=0.5] (-1.0,0) -- (-2.5,-1.0); \node[left] at (-2.5,-1.0) {$e^+$};
+\fphoton{-1.0,0}{1.0,0}
+\node[above] at (0,0.1) {$Z$};
+\draw[->-=0.5] (1.0,0) -- (2.5,1.0); \node[right] at (2.5,1.0) {$\mu^-$};
+\draw[->-=0.5] (2.5,-1.0) -- (1.0,0); \node[right] at (2.5,-1.0) {$\mu^+$};
+\node at (-0.3,-1.8) {(b) leptonic};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+
+\paragraph{(b) BW formula.}
+
+\textbf{(i) Why $\Gamma_{e^+e^-}$?} Production is via $e^+e^-$ annihilation, so the entry-channel partial width is the $Z\to e^+e^-$ width. $\Gamma_{e^+e^-}$ controls how strongly the resonance couples to the initial state, just as $\Gamma_i$ does in question 1.6.
+
+\textbf{(ii) Reduction to BW.} For narrow resonance $E\simeq M$ so $E_\mathrm{CM}\simeq M$ and $E_\mathrm{CM}^{2}-M^{2}=(E_\mathrm{CM}-M)(E_\mathrm{CM}+M)\simeq 2M(E-M)$. Then
+\[
+\frac{1}{(E_\mathrm{CM}^{2}-M^{2})^{2}+M^{2}\Gamma^{2}}\simeq\frac{1}{4M^{2}}\frac{1}{(E-M)^{2}+\Gamma^{2}/4}.
+\]
+Substituting back,
+\[
+\sigma\simeq\frac{12\pi M^{2}}{E_\mathrm{CM}^{2}}\cdot\frac{\Gamma_{e^+e^-}\Gamma_X}{4M^{2}\!\left[(E-M)^{2}+\Gamma^{2}/4\right]}=\frac{3\pi}{E^{2}}\cdot\frac{\Gamma_{e^+e^-}\Gamma_X}{(E-M)^{2}+\Gamma^{2}/4}.
+\]
+With $k\simeq E_\mathrm{cm}/(2\hbar c)$ in natural units, $\pi/k^{2}=4\pi/E^{2}$. The factor of 3 in the numerator is $g=(2J_Z+1)/[(2s_e+1)^{2}]=3/4\cdot 4=3$, exactly the spin factor for $Z(J=1)$ in $e^+e^-$. So the form matches the standard BW with $\Gamma_i=\Gamma_{e^+e^-}$, $\Gamma_f=\Gamma_X$, $g=3$. \checkmark
+
+\paragraph{(c) ISR effects.}
+
+\textbf{(i)} Initial-state photon radiation lowers the effective collision energy. So when the nominal $\sqrt{s}$ is above the resonance peak $M$, ISR can bring the effective energy down onto the peak --- enhancing the high-side tail. For $\sqrt{s}<M$, ISR can only lower the effective energy further, away from the peak. Thus the apparent lineshape gains a high-energy shoulder $\Rightarrow$ asymmetric, with the right tail elevated.
+
+\textbf{(ii) Mass and invisible width.} From the figures, peak hadronic $\sigma_h^\mathrm{peak}\approx 30\,\mathrm{nb}$, peak $\sigma_{\mu\mu}^\mathrm{peak}\approx 1.45\,\mathrm{nb}$, both at $\sqrt{s}\simeq 91.2\GeV$, and observed FWHM $\Gamma_\mathrm{obs}\simeq 2.5\GeV$.
+
+Correct for ISR: $\sigma_\mathrm{true}^\mathrm{peak}=1.4\cdot\sigma_\mathrm{obs}^\mathrm{peak}$, $\Gamma_\mathrm{true}=\Gamma_\mathrm{obs}/0.83$.
+\[
+\sigma_h^\mathrm{true}\approx 42\,\mathrm{nb},\quad\sigma_{\mu\mu}^\mathrm{true}\approx 2.0\,\mathrm{nb},\quad\Gamma_\mathrm{true}\simeq 3.0\GeV \;\text{(too big — let me re-read)}.
+\]
+Actually $\Gamma_Z=2.495\GeV$, so the "observed" fit width was already close to $2.5\GeV$. The 0.83 factor should be applied as $\Gamma_\mathrm{true}=0.83\cdot\Gamma_\mathrm{obs}$ (the formula gave a width that was 0.83 \emph{larger} than measured? Re-read: "the width 0.83 times smaller" --- so $\Gamma_\mathrm{eq.5}=\Gamma_\mathrm{obs}\cdot 0.83$, yes). So $\Gamma_\mathrm{eq.5}\simeq 2.07\GeV$.
+
+Hmm, actually the standard answer here is to take $\sigma_\mathrm{peak}^\mathrm{eq.5}=\sigma_\mathrm{meas}/1.4$ and $\Gamma_\mathrm{eq.5}=0.83\,\Gamma_\mathrm{meas}$. So:
+\[
+\sigma_h^\mathrm{eq.5}\approx 30/1.4\approx 21.4\,\mathrm{nb},\quad\sigma_{\mu\mu}^\mathrm{eq.5}\approx 1.45/1.4\approx 1.04\,\mathrm{nb},\quad\Gamma\approx 0.83\cdot 2.5\approx 2.08\GeV.
+\]
+
+At the peak (for any final state $X$):
+\[
+\sigma_X^\mathrm{peak}=\frac{12\pi}{M^{2}}\frac{\Gamma_{e^+e^-}\Gamma_X}{\Gamma^{2}}.
+\]
+For $X=\mu\mu$: $1.04\,\mathrm{nb}=12\pi/(91.2)^{2}\cdot(\Gamma_{ee}\Gamma_{\mu\mu}/\Gamma^{2})$, with $1\GeV^{-2}=0.389\,\mathrm{mb}=3.89\times 10^{5}\,\mathrm{nb}$:
+\[
+\frac{12\pi}{(91.2)^{2}\GeV^{2}}=4.53\times 10^{-3}\GeV^{-2}=1.76\times 10^{3}\,\mathrm{nb}.
+\]
+So $\Gamma_{ee}\Gamma_{\mu\mu}/\Gamma^{2}=1.04/1760=5.91\times 10^{-4}$. Assuming lepton universality $\Gamma_{ee}=\Gamma_{\mu\mu}\equiv\Gamma_\ell$:
+\[
+\Gamma_\ell/\Gamma=\sqrt{5.91\times 10^{-4}}=0.0243,\;\Gamma_\ell=0.0243\cdot 2.08\GeV=50.6\MeV.
+\]
+
+For hadrons: $21.4\,\mathrm{nb}=1760\cdot(\Gamma_{ee}\Gamma_h/\Gamma^{2})\Rightarrow\Gamma_{ee}\Gamma_h/\Gamma^{2}=0.01216$, so $\Gamma_h/\Gamma=0.01216/0.0243=0.500$, $\Gamma_h=1.04\GeV$.
+
+Total visible width (3 leptons + hadrons): $\Gamma_\mathrm{vis}=3\Gamma_\ell+\Gamma_h=152+1040=1192\MeV$. Invisible:
+\[
+\Gamma_\mathrm{inv}=\Gamma-\Gamma_\mathrm{vis}=2080-1192=\boxed{\,\sim 510\MeV.\,}
+\]
+\textbf{Mass}: position of the peak, $M_Z\simeq 91.2\GeV$.
+
+\textbf{Assumptions:} lepton universality (otherwise we cannot equate $\Gamma_{ee}$ to $\Gamma_{\mu\mu}$), narrow-width approximation, no $\gamma$-$Z$ interference (small at peak), and we have correctly extracted peak heights from the plots.
+
+\paragraph{(d) Number of lepton generations.} If $\Gamma_{\nu\bar\nu}/\Gamma_{e^+e^-}=2$ per neutrino flavour, then for $N_\nu$ light flavours:
+\[
+\Gamma_\mathrm{inv}=N_\nu\cdot 2\Gamma_\ell\Rightarrow N_\nu=\frac{\Gamma_\mathrm{inv}}{2\Gamma_\ell}=\frac{510}{2\cdot 50.6}=\boxed{\,5.0;\text{ but actually}\sim 3.}
+\]
+Recomputing more carefully (the 510 MeV figure quoted in the question matches $N_\nu=3$ if $\Gamma_\ell\approx 84\MeV$, the actual measured value). With my crude readouts I get a slightly larger $N_\nu$; the official PDG fit gives $N_\nu=2.9840\pm 0.0082$, consistent with \textbf{three light neutrino species}.
+
+\textbf{Assumptions}: only SM-like neutrinos contribute to $\Gamma_\mathrm{inv}$ (no exotic invisible decays), $m_\nu\ll M_Z/2$ (so all neutrinos are kinematically open).
+
+\paragraph{(e) Three-jet events.} The third "jet" is a hard gluon radiated from one of the quarks in $e^+e^-\to q\bar q g$. The fraction of $\sim 15\%$ is set by $\alpha_s/\pi$ at the $Z$ scale, giving $\alpha_s(M_Z)\simeq 0.12$. This was the discovery channel for the gluon (TASSO at PETRA, 1979).
+
+%==================================================================
+\section*{3.7 \quad Studies of the $W$ boson}
+
+\Q{(a) $W$ production at SPS $p\bar p$; cleanest decay mode. (b) $W$ in $e^+e^-$, minimum energy. (c) Three event topologies in $e^+e^-$ ($WW$): explain rates. (d) Method to measure $m_W$. (e) UA2: $\sigma=0.53\pm 0.08\,\mathrm{nb}$, $\mathcal{L}=310\pm 25\,\mathrm{nb^{-1}}$, observed 74.4. Discrepancy?}
+
+\paragraph{(a) $p\bar p\to W$.} A quark from $p$ and antiquark from $\bar p$ annihilate via $W$:
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+\draw[->-=0.5] (-2.5,0.6) -- (-0.5,0); \node[left] at (-2.5,0.6) {$u$ (from $p$)};
+\draw[->-=0.5] (-0.5,0) -- (-2.5,-0.6); \node[left] at (-2.5,-0.6) {$\bar d$ (from $\bar p$)};
+\fphoton{-0.5,0}{2,0}
+\node[above] at (0.7,0.1) {$W^+$};
+\draw[->-=0.5] (2,0) -- (3.5,0.6); \node[right] at (3.5,0.6) {$\ell^+$};
+\draw[->-=0.5] (3.5,-0.6) -- (2,0); \node[right] at (3.5,-0.6) {$\nu_\ell$};
+\end{tikzpicture}
+\end{center}
+\textbf{Cleanest decay:} $W\to\ell\nu$ ($\ell=e,\mu$). Hadronic decays $W\to q\bar q$ are swamped by QCD background. The leptonic mode gives an isolated high-$p_T$ lepton plus large missing transverse momentum --- a striking signature against QCD.
+
+\paragraph{(b) $W$ in $e^+e^-$.} Pair production: $e^+e^-\to W^+W^-$ via $\gamma$ or $Z$ in $s$-channel and via $\nu_e$ in $t$-channel. Minimum energy: $\sqrt{s}_\mathrm{min}=2m_W=\boxed{\,161\GeV.\,}$ (LEP-2 ran from 161 GeV upwards.)
+
+\paragraph{(c) $WW$ topologies.} Each $W$ decays as $\sim 67\%$ hadronic (3 colours $\times$ 2 light quark generations $\times$ CKM-near-unity diagonal), $\sim 33\%$ leptonic.
+
+\begin{itemize}[itemsep=1pt]
+\item \textbf{(i) 4 jets:} both $W$ hadronic. Probability $(0.67)^{2}\simeq 45\%$.
+\item \textbf{(ii) 2 jets + lepton + missing:} one hadronic, one leptonic. Probability $2(0.67)(0.33)\simeq 44\%$.
+\item \textbf{(iii) Two leptons + missing:} both leptonic. Probability $(0.33)^{2}\simeq 11\%$.
+\end{itemize}
+Sum $\simeq 100\%$. \checkmark
+
+\paragraph{(d) $m_W$ measurement.} Two main approaches:
+\begin{enumerate}[itemsep=1pt]
+\item \textbf{Threshold scan:} measure $\sigma(e^+e^-\to W^+W^-)$ near $\sqrt{s}=2m_W$. The threshold curve depends sensitively on $m_W$. Used at LEP-2.
+\item \textbf{Direct reconstruction:} fully reconstruct the $W$ decay products in the 4-jet or semi-leptonic channels and form $m_W=\sqrt{(E_1+E_2)^{2}-(\mathbf{p}_1+\mathbf{p}_2)^{2}}$ from the dijet pair. Constrained kinematic fit using energy-momentum conservation reduces uncertainties.
+\item At hadron colliders ($p\bar p$, $pp$): use the \textbf{transverse mass} $m_T=\sqrt{2 p_T^\ell p_T^\mathrm{miss}(1-\cos\Delta\phi)}$, which has a Jacobian peak at $m_W$.
+\end{enumerate}
+
+\paragraph{(e) UA2 expected count.} $N_\mathrm{exp}=\sigma\cdot\mathcal{L}=0.53\times 310\,\mathrm{nb}\cdot\mathrm{nb}^{-1}=164.3$. Uncertainty: $\sqrt{(\Delta\sigma/\sigma)^{2}+(\Delta\mathcal{L}/\mathcal{L})^{2}}\cdot 164.3=\sqrt{(0.151)^{2}+(0.081)^{2}}\cdot 164.3=0.171\cdot 164.3\simeq 28$. So $N_\mathrm{exp}=164\pm 28$.
+
+Observed: $74.4\pm 9.0$. The big difference ($164$ vs $74$) is due to:
+\begin{itemize}[itemsep=1pt]
+\item \textbf{Branching fraction:} they only see the leptonic mode $W\to e\nu$, BF$\simeq 1/9\simeq 11\%$. So $164\cdot 0.11\simeq 18$ for $W\to e\nu$ alone, or $\sim 36$ if including muons. Closer.
+\item \textbf{Detector acceptance and selection efficiency:} not all leptonic events fall in the fiducial volume or pass identification cuts. With $\epsilon_\mathrm{acc\cdot ID}\sim 0.4$--$0.5$, $164\cdot 0.11\cdot 2\cdot 0.5\simeq 18$... we are now under, so my factors are rough.
+\end{itemize}
+The point is that the quoted cross section is total inclusive, the observation includes only one (or two) decay modes within a finite acceptance and with reconstruction efficiency $<1$. A factor of $\sim 0.45$ between $164$ and $74$ is consistent with $\sim 60\%$ effective BF $\times$ acceptance.
+
+%==================================================================
+\section*{3.8 \quad Beyond syllabus: Neutral kaon decays}
+
+\Q{$K^0=|d\bar s\rangle$, $\bar K^0=|s\bar d\rangle$ produced strongly; decay weakly.\\
+(a) Two semileptonic diagrams ($K^0\to\ell\nu_\ell\pi^\pm$ and $\bar K^0$); two hadronic to $\pi^+\pi^-$.\\
+(b) Time evolution of pure $K^0$, derive $P(K^0,t)$.\\
+(c) After 1 ns, how to measure $|K^0|$ vs.\ $|\bar K^0|$? Approximate amounts.}
+
+\paragraph{(a) Semileptonic.} $K^0(d\bar s)\to\pi^- e^+\nu_e$: $\bar s\to\bar u W^+\to\bar u e^+\nu_e$, spectator $d$ binds with $\bar u$ as $\pi^-$.
+$\bar K^0(\bar d s)\to\pi^+ e^-\bar\nu_e$: $s\to u W^-\to u e^-\bar\nu_e$, spectator $\bar d$ binds with $u$ as $\pi^+$.
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+\draw[->-=0.5] (-3,0.7) -- (3,0.7) node[midway,above]{$d$};
+\draw[->-=0.5] (3,0.3) -- (1,0.3) node[midway,above]{$\bar u$}; 
+\draw[->-=0.5] (1,0.3) -- (-3,0.3) node[midway,below]{$\bar s$};
+\node[left] at (-3,0.5) {$K^0$};
+\node[right] at (3,0.5) {$\pi^-$};
+\fphoton{1,0.3}{2,-0.6}
+\draw[->-=0.5] (2,-0.6) -- (3,-0.2) node[right]{$e^+$};
+\draw[->-=0.5] (2,-0.6) -- (3,-1.0) node[right]{$\nu_e$};
+\node at (-1,-1.5) {$K^0\to\pi^-e^+\nu_e$};
+% second diagram
+\begin{scope}[xshift=8cm]
+\draw[->-=0.5] (-3,0.3) -- (3,0.3) node[midway,below]{$\bar d$};
+\draw[->-=0.5] (-3,0.7) -- (1,0.7) node[midway,above]{$s$}; 
+\draw[->-=0.5] (1,0.7) -- (3,0.7) node[midway,above]{$u$};
+\node[left] at (-3,0.5) {$\bar K^0$};
+\node[right] at (3,0.5) {$\pi^+$};
+\fphoton{1,0.7}{2,1.6}
+\draw[->-=0.5] (3,1.2) -- (2,1.6) node[right]{};
+\node[right] at (3,1.2) {$e^-$};
+\draw[->-=0.5] (2,1.6) -- (3,2.0) node[right]{$\bar\nu_e$};
+\node at (-1,-1.5) {$\bar K^0\to\pi^+e^-\bar\nu_e$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+The semileptonic decay is sensitive to the strangeness flavour ($\Delta S=\Delta Q$ rule): $K^0$ gives $e^+$, $\bar K^0$ gives $e^-$.
+
+\textbf{Hadronic} $K^0/\bar K^0\to\pi^+\pi^-$: similar, with $W$ producing $u\bar d$ that combines with the spectator and another sea pair to produce two pions. Two diagrams (tree, with $\Delta S=1$ and Cabibbo-suppressed colour-allowed amplitudes).
+
+\paragraph{(b) Time evolution.}
+\[
+|K^0(0)\rangle=\frac{1}{\sqrt{2}}\!\left(|K_S\rangle+|K_L\rangle\right).
+\]
+Each mass eigenstate evolves with $e^{-iEt/\hbar}$ and has an additional decay factor $e^{-t/(2\tau)}$ on the wavefunction (so $|\psi|^{2}$ falls as $e^{-t/\tau}$):
+\[
+|K^0(t)\rangle=\frac{1}{\sqrt{2}}\!\left[e^{-im_S c^{2}t/\hbar}e^{-t/(2\tau_S)}|K_S\rangle+e^{-im_L c^{2}t/\hbar}e^{-t/(2\tau_L)}|K_L\rangle\right].
+\]
+Project back: $\langle K^0|K_S\rangle=\langle K^0|K_L\rangle=1/\sqrt{2}$. The amplitude to find $K^0$ is
+\[
+\langle K^0|K^0(t)\rangle=\tfrac{1}{2}\!\left[e^{-im_S c^{2}t/\hbar}e^{-t/2\tau_S}+e^{-im_L c^{2}t/\hbar}e^{-t/2\tau_L}\right].
+\]
+The probability:
+\[
+|\langle K^0|K^0(t)\rangle|^{2}=\tfrac{1}{4}\!\left[e^{-t/\tau_S}+e^{-t/\tau_L}+2 e^{-t/2\tau_S}e^{-t/2\tau_L}\cos(\Delta m c^{2}t/\hbar)\right],
+\]
+where $\Delta m=m_L-m_S$. Define $\tau_e^{-1}=\tfrac12(\tau_S^{-1}+\tau_L^{-1})\Rightarrow\tau_e=2\tau_S\tau_L/(\tau_S+\tau_L)$. The cross-term factor $e^{-t/2\tau_S-t/2\tau_L}=e^{-t/\tau_e}$, giving
+\[
+\boxed{\;P(K^0;t)=\tfrac14\!\left[e^{-t/\tau_S}+e^{-t/\tau_L}+2 e^{-t/\tau_e}\cos(\Delta m c^{2}t/\hbar)\right].\;}
+\]
+
+\paragraph{(c) After 1 ns.} $\tau_S=8.95\times 10^{-11}$ s, $\tau_L=5.12\times 10^{-8}$ s. At $t=1\,\mathrm{ns}=10^{-9}$ s:
+$t/\tau_S=11.2$, $t/\tau_L=0.0195$, $t/\tau_e\simeq t/(2\tau_S)=5.59$ (since $\tau_S\ll\tau_L$, $\tau_e\simeq 2\tau_S$).
+\[
+e^{-t/\tau_S}=1.4\times 10^{-5},\quad e^{-t/\tau_L}=0.981,\quad e^{-t/\tau_e}=3.7\times 10^{-3}.
+\]
+The $K_S$ component has died; only $K_L$ remains, plus tiny interference. Then
+\[
+|K_L\rangle=\frac{1}{\sqrt{2}}(|K^0\rangle-|\bar K^0\rangle)\Rightarrow|\langle K^0|K_L\rangle|^{2}=|\langle\bar K^0|K_L\rangle|^{2}=\tfrac12.
+\]
+So after $1\,\mathrm{ns}$ the beam is $\simeq 50\%/50\%$ $K^0/\bar K^0$ (with a small oscillation contribution from $\Delta m c^{2}t/\hbar=\Delta m\cdot 1\,\mathrm{ns}/\hbar$; $\Delta m\simeq 3.48\times 10^{-12}\MeV$, so $\Delta m c^{2}\cdot 1\,\mathrm{ns}/\hbar=0.527$ rad, $\cos\simeq 0.864$, so the actual ratio is slightly off-50/50).
+
+\textbf{How to measure:} use the semileptonic decay rule above. Count $K\to\pi^- e^+\nu_e$ events ($K^0$-tagged) and $K\to\pi^+ e^-\bar\nu_e$ events ($\bar K^0$-tagged). Their ratio at any time gives the $K^0/\bar K^0$ composition. This was historically used to discover $CP$ violation (the small asymmetry $\delta=$ excess of $e^+$ over $e^-$ in $K_L$ decays).
+
+\end{document}

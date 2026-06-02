@@ -45,17 +45,29 @@ Orthogonality identity:
 \[
 \bm b_i\cdot\bm a_j = 2\pi\,\delta_{ij}.
 \]
-Take any $\bm G=m_1\bm b_1+m_2\bm b_2+m_3\bm b_3$ with $m_i\in\mathbb Z$. For $\bm R=n_1\bm a_1+n_2\bm a_2+n_3\bm a_3$:
+Take $\bm G=m_1\bm b_1+m_2\bm b_2+m_3\bm b_3$ with $m_i\in\mathbb Z$ and $\bm R=n_1\bm a_1+n_2\bm a_2+n_3\bm a_3$:
 \[
-\bm G\cdot\bm R = 2\pi(m_1 n_1 + m_2 n_2 + m_3 n_3) \in 2\pi\mathbb Z.
+\bm G\cdot\bm R = \sum_{i,j} m_i n_j\,(\bm b_i \cdot \bm a_j).
+\]
+Apply orthogonality $\bm b_i\cdot\bm a_j=2\pi\delta_{ij}$:
+\[
+\bm G\cdot\bm R = 2\pi\sum_i m_i n_i.
+\]
+Sum of integers is integer:
+\[
+\bm G\cdot\bm R \in 2\pi\mathbb Z.
 \]
 Hence $e^{i\bm G\cdot\bm R}=1$: every integer combination of $\bm b_i$ is a reciprocal lattice vector.
 
 Conversely let $\bm G=\sum_i x_i\bm b_i$ with real $x_i$ satisfy $e^{i\bm G\cdot\bm R}=1$ for every lattice $\bm R$. Take $\bm R=\bm a_j$:
 \[
+\bm G\cdot\bm a_j = \sum_i x_i\,(\bm b_i \cdot \bm a_j).
+\]
+Apply orthogonality:
+\[
 \bm G\cdot\bm a_j = 2\pi x_j.
 \]
-Require $\exp(2\pi i x_j)=1$:
+Impose $e^{i\bm G\cdot\bm a_j}=e^{2\pi i x_j}=1$:
 \[
 x_j\in\mathbb Z.
 \]
@@ -71,9 +83,16 @@ V_{\bm q} = \int\de^3\bm x\, e^{i\bm q\cdot(\bm x+\bm R)} V(\bm x+\bm R).
 \]
 Use periodicity $V(\bm x+\bm R)=V(\bm x)$:
 \[
-V_{\bm q} = e^{i\bm q\cdot\bm R}\int\de^3\bm x\, e^{i\bm q\cdot\bm x}V(\bm x) = e^{i\bm q\cdot\bm R}V_{\bm q}.
+V_{\bm q} = e^{i\bm q\cdot\bm R}\int\de^3\bm x\, e^{i\bm q\cdot\bm x}V(\bm x).
 \]
-Hence $(1-e^{i\bm q\cdot\bm R})V_{\bm q}=0$ for all $\bm R$:
+Identify the remaining integral as $V_{\bm q}$:
+\[
+V_{\bm q} = e^{i\bm q\cdot\bm R}V_{\bm q}.
+\]
+Rearrange:
+\[
+(1-e^{i\bm q\cdot\bm R})V_{\bm q}=0 \quad \forall\bm R.
+\]
 \[
 \boxed{\;V_{\bm q}=0\quad\text{unless } e^{i\bm q\cdot\bm R}=1\ \forall\bm R,\ \text{i.e.\ } \bm q=\bm G.\;}
 \]
@@ -84,7 +103,11 @@ Hence $(1-e^{i\bm q\cdot\bm R})V_{\bm q}=0$ for all $\bm R$:
 
 Plane waves $|\bm k\rangle\propto e^{i\bm k\cdot\bm x}$. Matrix element:
 \[
-\langle\bm k'|V|\bm k\rangle \propto \int\de^3\bm x\, e^{-i(\bm k'-\bm k)\cdot\bm x}V(\bm x) = V_{-\bm G}, \qquad \bm G\equiv\bm k'-\bm k.
+\langle\bm k'|V|\bm k\rangle \propto \int\de^3\bm x\, e^{-i(\bm k'-\bm k)\cdot\bm x}V(\bm x).
+\]
+Identify with the Fourier component $V_{-\bm G}$, $\bm G\equiv\bm k'-\bm k$:
+\[
+\langle\bm k'|V|\bm k\rangle \propto V_{-\bm G}.
 \]
 Insert $V(\bm x)=\sum_j u_j(\bm x-\bm x_j)$:
 \[
@@ -92,7 +115,11 @@ V_{-\bm G} = \sum_j\int\de^3\bm x\, e^{-i\bm G\cdot\bm x}u_j(\bm x-\bm x_j).
 \]
 Change variable $\bm y=\bm x-\bm x_j$:
 \[
-V_{-\bm G} = \sum_j e^{-i\bm G\cdot\bm x_j}\,\tilde u_j(\bm G), \qquad \tilde u_j(\bm G)\equiv\int\de^3\bm y\, e^{-i\bm G\cdot\bm y}u_j(\bm y).
+V_{-\bm G} = \sum_j e^{-i\bm G\cdot\bm x_j}\int\de^3\bm y\, e^{-i\bm G\cdot\bm y}u_j(\bm y).
+\]
+Define atomic form factor $\tilde u_j(\bm G)\equiv\int\de^3\bm y\, e^{-i\bm G\cdot\bm y}u_j(\bm y)$:
+\[
+V_{-\bm G} = \sum_j e^{-i\bm G\cdot\bm x_j}\,\tilde u_j(\bm G).
 \]
 Split $\bm x_j=\bm R + \bm r_p$ (lattice vector + basis position):
 \[
@@ -102,7 +129,7 @@ Lattice sum gives $N_{\text{cell}}$ when $\bm G$ is a reciprocal lattice vector,
 \[
 V_{-\bm G} = N_{\text{cell}}\sum_{p\in\text{u.c.}} e^{-i\bm G\cdot\bm r_p}\tilde u_p(\bm G).
 \]
-Square and absorb constants:
+Square and absorb constants into $I(\bm G)\propto|V_{-\bm G}|^2$:
 \[
 \boxed{\;I(\bm G)\propto |S(\bm G)|^2,\quad S(\bm G)=\sum_{p\in\text{u.c.}} b_p(\bm G)\, e^{i\bm G\cdot\bm r_p},\quad b_p(\bm G)=\int\de^3\bm y\, e^{-i\bm G\cdot\bm y}u_p(\bm y).\;}
 \]
@@ -112,15 +139,15 @@ Square and absorb constants:
 
 \textbf{Problem.} \emph{Si is fcc with two atoms per unit cell at $(0,0,0)$ and $\tfrac14(1,1,1)a$. Find $|\bm G|$ for the two lowest-angle powder rings.}
 
-Reciprocal lattice of fcc is bcc with conventional cubic vectors $\bm G=(2\pi/a)(h,k,l)$. Allowed reflections require all-even or all-odd $hkl$ (fcc Bravais factor).
+Conventional cubic reciprocal vectors $\bm G=(2\pi/a)(h,k,l)$. Fcc Bravais factor restricts to $h,k,l$ all-even or all-odd.
 
-Basis sum:
+Basis sum with $\bm r_1 = 0$, $\bm r_2 = (a/4)(1,1,1)$:
 \[
-S_{hkl} \propto 1 + e^{i\pi(h+k+l)/2}.
+S_{hkl} \propto 1 + e^{i\bm G \cdot \bm r_2} = 1 + e^{i\pi(h+k+l)/2}.
 \]
-Forbidden when $h+k+l\equiv 2\pmod 4$:
+Vanishes when $(h+k+l)/2$ is odd:
 \[
-S=0\ \text{if}\ h+k+l=4n+2.
+S=0\ \text{if}\ h+k+l\equiv 2\pmod 4.
 \]
 Test allowed $hkl$ in increasing $h^2+k^2+l^2$:
 \[
@@ -134,9 +161,21 @@ Test allowed $hkl$ in increasing $h^2+k^2+l^2$:
 \]
 Magnitudes:
 \[
-|\bm G_{111}| = \frac{2\pi\sqrt 3}{a},\qquad |\bm G_{220}| = \frac{2\pi\sqrt 8}{a} = \frac{4\pi\sqrt 2}{a}.
+|\bm G_{111}| = \frac{2\pi}{a}\sqrt{1^2+1^2+1^2}.
 \]
-With $a=\SI{5.43}{\angstrom}$:
+Simplify:
+\[
+|\bm G_{111}| = \frac{2\pi\sqrt 3}{a}.
+\]
+For $(220)$:
+\[
+|\bm G_{220}| = \frac{2\pi}{a}\sqrt{2^2+2^2+0^2} = \frac{2\pi\sqrt 8}{a}.
+\]
+Simplify $\sqrt 8 = 2\sqrt 2$:
+\[
+|\bm G_{220}| = \frac{4\pi\sqrt 2}{a}.
+\]
+Plug in $a=\SI{5.43}{\angstrom}$:
 \[
 |\bm G_{111}| = \frac{2\pi\times 1.732}{5.43}\,\si{\angstrom^{-1}} \approx \SI{2.00}{\angstrom^{-1}}.
 \]
@@ -158,19 +197,39 @@ Assumptions: each atom is an independent 3D simple harmonic oscillator, all osci
 
 Single 1D oscillator partition function:
 \[
-Z_1 = \sum_{n=0}^{\infty} e^{-\beta\hbar\omega(n+\tfrac12)} = \frac{e^{-\beta\hbar\omega/2}}{1-e^{-\beta\hbar\omega}}.
+Z_1 = \sum_{n=0}^{\infty} e^{-\beta\hbar\omega(n+\tfrac12)} = e^{-\beta\hbar\omega/2}\sum_{n=0}^{\infty}(e^{-\beta\hbar\omega})^n.
 \]
-Mean energy per oscillator:
+Sum geometric series:
 \[
-\langle\epsilon\rangle = -\pd{\ln Z_1}{\beta} = \frac{\hbar\omega}{2} + \frac{\hbar\omega}{e^{\beta\hbar\omega}-1}.
+Z_1 = \frac{e^{-\beta\hbar\omega/2}}{1-e^{-\beta\hbar\omega}}.
+\]
+Take logarithm:
+\[
+\ln Z_1 = -\tfrac12 \beta\hbar\omega - \ln(1-e^{-\beta\hbar\omega}).
+\]
+Differentiate $\ln Z_1$ with respect to $\beta$:
+\[
+-\pd{\ln Z_1}{\beta} = \frac{\hbar\omega}{2} - \frac{-\hbar\omega\,e^{-\beta\hbar\omega}}{1-e^{-\beta\hbar\omega}}.
+\]
+Simplify the second term:
+\[
+\langle\epsilon\rangle = \frac{\hbar\omega}{2} + \frac{\hbar\omega}{e^{\beta\hbar\omega}-1}.
 \]
 Total energy ($3N$ oscillators):
 \[
 E = 3N\langle\epsilon\rangle = \frac{3N\hbar\omega}{2} + \frac{3N\hbar\omega}{e^{\beta\hbar\omega}-1}.
 \]
-Differentiate with respect to $T$, with $T_E\equiv\hbar\omega/k_B$:
+Define $T_E\equiv\hbar\omega/k_B$, so $\beta\hbar\omega = T_E/T$:
 \[
-C = \pd{E}{T} = 3Nk_B\left(\frac{T_E}{T}\right)^{\!2}\frac{e^{T_E/T}}{(e^{T_E/T}-1)^2}.
+E = \frac{3N\hbar\omega}{2} + \frac{3N\hbar\omega}{e^{T_E/T}-1}.
+\]
+Differentiate with respect to $T$:
+\[
+C = \pd{E}{T} = 3N\hbar\omega \cdot \frac{e^{T_E/T}(T_E/T^2)}{(e^{T_E/T}-1)^2}.
+\]
+Use $\hbar\omega = k_B T_E$:
+\[
+C = 3Nk_B\left(\frac{T_E}{T}\right)^{\!2}\frac{e^{T_E/T}}{(e^{T_E/T}-1)^2}.
 \]
 \[
 \boxed{\;C(T) = 3Nk_B\left(\frac{T_E}{T}\right)^{\!2}\frac{e^{T_E/T}}{(e^{T_E/T}-1)^2}.\;}
@@ -180,21 +239,37 @@ C = \pd{E}{T} = 3Nk_B\left(\frac{T_E}{T}\right)^{\!2}\frac{e^{T_E/T}}{(e^{T_E/T}
 
 \textbf{Problem.} \emph{Expand $C=A_0+A_1/T+A_2/T^2+\dots$ in the high-$T$ limit; find $A_0,A_1,A_2$.}
 
-Expand the energy using the hint with $x=\beta\hbar\omega=T_E/T$:
+Apply hint with $x=\beta\hbar\omega=T_E/T$:
 \[
 \frac{1}{e^x-1} = \frac{1}{x} - \frac12 + \frac{x}{12} + O(x^3).
 \]
 Multiply by $\hbar\omega$:
 \[
+\frac{\hbar\omega}{e^x-1} = \frac{\hbar\omega}{x} - \frac{\hbar\omega}{2} + \frac{\hbar\omega \cdot x}{12} + \dots
+\]
+Substitute $x = \hbar\omega/(k_B T)$:
+\[
 \frac{\hbar\omega}{e^x-1} = k_B T - \frac{\hbar\omega}{2} + \frac{(\hbar\omega)^2}{12 k_B T} + \dots
 \]
-Add zero-point and multiply by $3N$:
+Add zero-point $\hbar\omega/2$:
 \[
-E = 3N\!\left[k_B T + \frac{(\hbar\omega)^2}{12 k_B T} + O(T^{-3})\right].
+\langle\epsilon\rangle = k_B T + \frac{(\hbar\omega)^2}{12 k_B T} + O(T^{-3}).
 \]
-Differentiate term by term:
+Multiply by $3N$:
 \[
-C = 3Nk_B - \frac{3N(\hbar\omega)^2}{12 k_B T^2} + \dots = 3Nk_B - \frac{Nk_B T_E^2}{4 T^2} + \dots
+E = 3N k_B T + \frac{3N(\hbar\omega)^2}{12 k_B T} + O(T^{-3}).
+\]
+Differentiate with respect to $T$:
+\[
+C = 3Nk_B - \frac{3N(\hbar\omega)^2}{12 k_B T^2} + \dots
+\]
+Simplify the prefactor:
+\[
+C = 3Nk_B - \frac{N(\hbar\omega)^2}{4 k_B T^2} + \dots
+\]
+Substitute $(\hbar\omega)^2 = (k_B T_E)^2$:
+\[
+C = 3Nk_B - \frac{N k_B T_E^2}{4 T^2} + \dots
 \]
 Read off:
 \[
@@ -205,17 +280,33 @@ Read off:
 
 \textbf{Problem.} \emph{From $C=(25 - 7500/T^2 + \dots)\,\si{J\,K^{-1}}$, find $T_E$.}
 
-Match $A_2$:
+Match $A_2$ (units: $\si{J\,K}$):
 \[
 -\frac{N k_B T_E^2}{4} = -\SI{7500}{J\,K}.
 \]
 Match $A_0$:
 \[
-3 N k_B = \SI{25}{J\,K^{-1}} \Rightarrow Nk_B = \SI{8.333}{J\,K^{-1}}.
+3 N k_B = \SI{25}{J\,K^{-1}}.
 \]
-Solve for $T_E^2$:
+Solve for $Nk_B$:
 \[
-T_E^2 = \frac{4\times 7500}{8.333}\,\si{K^2} = \SI{3600}{K^2}.
+N k_B = \SI{8.333}{J\,K^{-1}}.
+\]
+Rearrange the $A_2$ equation for $T_E^2$:
+\[
+T_E^2 = \frac{4\times 7500}{N k_B}\,\si{K^2}.
+\]
+Substitute $N k_B$:
+\[
+T_E^2 = \frac{4\times 7500}{8.333}\,\si{K^2}.
+\]
+Evaluate:
+\[
+T_E^2 = \SI{3600}{K^2}.
+\]
+Take square root:
+\[
+T_E = \SI{60}{K}.
 \]
 \[
 \boxed{\;T_E \approx \SI{60}{K}.\;}
@@ -229,29 +320,34 @@ Number of atoms from $Nk_B=\SI{8.333}{J\,K^{-1}}$:
 \[
 N = \frac{8.333}{1.381\times 10^{-23}} \approx 6.03\times 10^{23}.
 \]
-Mass (one mole of $\SI{40}{g\,mol^{-1}}$):
+This is $\approx N_A$, so the sample is one mole:
 \[
-M = \frac{N}{N_A}\times \SI{40}{g\,mol^{-1}} \approx 1.00\times \SI{40}{g} = \SI{40}{g}.
+M = \frac{N}{N_A}\times \SI{40}{g\,mol^{-1}} \approx \SI{40}{g}.
 \]
 \[
 \boxed{\;M \approx \SI{40}{g}.\;}
 \]
 Number density:
 \[
-n = \frac{N}{V} = \frac{6.03\times 10^{23}}{\SI{21}{cm^3}} \approx \SI{2.87e22}{cm^{-3}} = \SI{2.87e28}{m^{-3}}.
+n = \frac{N}{V} = \frac{6.03\times 10^{23}}{\SI{21}{cm^3}} \approx \SI{2.87e22}{cm^{-3}}.
+\]
+Convert to SI:
+\[
+n \approx \SI{2.87e28}{m^{-3}}.
 \]
 Fcc has $4$ atoms per conventional cubic cell of side $a$:
 \[
-n = \frac{4}{a^3} \Rightarrow a = \left(\frac{4}{n}\right)^{\!1/3}.
+n = \frac{4}{a^3}.
 \]
-Evaluate:
+Solve for $a$:
 \[
-a^3 = \frac{4}{2.87\times 10^{28}}\,\si{m^3} = \SI{1.394e-28}{m^3}.
+a^3 = \frac{4}{n} = \frac{4}{2.87\times 10^{28}}\,\si{m^3} = \SI{1.394e-28}{m^3}.
 \]
+Take cube root:
 \[
 a = \SI{5.198e-10}{m} \approx \SI{0.520}{nm}.
 \]
-Nearest-neighbour distance in fcc: $d = a/\sqrt 2$:
+Nearest-neighbour distance in fcc is along the face diagonal: $d = a/\sqrt 2$:
 \[
 d = \frac{0.520}{\sqrt 2}\,\si{nm} \approx \SI{0.367}{nm}.
 \]
@@ -272,6 +368,10 @@ Solve for $\langle x^2\rangle$:
 \langle x^2\rangle = \frac{k_B T}{m\omega^2}.
 \]
 Substitute $\omega = k_B T_E/\hbar$:
+\[
+\langle x^2\rangle = \frac{k_B T}{m (k_B T_E/\hbar)^2}.
+\]
+Simplify:
 \[
 \boxed{\;\langle x^2\rangle = \frac{\hbar^2 T}{m k_B T_E^2}.\;}
 \]
@@ -332,7 +432,7 @@ Pull out $\mu$, substitute $\epsilon=E-E_c$:
 \[
 n = \frac{m_e^*}{\pi\hbar^2}\, e^{-\beta(E_c-\mu)}\int_0^{\infty}\!\de\epsilon\, e^{-\beta\epsilon}.
 \]
-Evaluate Gaussian-like integral:
+Evaluate exponential integral:
 \[
 \int_0^\infty e^{-\beta\epsilon}\de\epsilon = \frac{1}{\beta} = k_B T.
 \]
@@ -364,26 +464,43 @@ n_i = \frac{k_B T}{\pi\hbar^2}\sqrt{m_e^* m_h^*}\, e^{-E_g/(2k_B T)}.
 \]
 At $T=\SI{300}{K}$, $k_B T=\SI{0.02585}{eV}=\SI{4.142e-21}{J}$:
 \[
-\frac{k_B T}{\pi\hbar^2} = \frac{4.142\times 10^{-21}}{\pi\times (1.055\times 10^{-34})^2}\,\si{m^{-2}\,kg^{-1}} = \SI{1.184e29}{m^{-2}\,kg^{-1}}.
+\pi\hbar^2 = \pi\times (1.055\times 10^{-34})^2\,\si{J^2\,s^2} = \SI{3.497e-68}{J^2\,s^2}.
 \]
+Divide:
 \[
-\sqrt{m_e^* m_h^*} = \sqrt{0.026\times 0.41}\, m_e = 0.1033\, m_e = \SI{9.40e-32}{kg}.
+\frac{k_B T}{\pi\hbar^2} = \frac{4.142\times 10^{-21}}{3.497\times 10^{-68}}\,\si{m^{-2}\,kg^{-1}} = \SI{1.184e47}{m^{-2}\,kg^{-1}}.
 \]
-Multiply:
+Compute the effective-mass geometric mean:
 \[
-\frac{k_B T}{\pi\hbar^2}\sqrt{m_e^* m_h^*} = 1.184\times 10^{29}\times 9.40\times 10^{-32}\,\si{m^{-2}} = \SI{1.113e-2}{m^{-2}}\cdot 10^{3}.
+\sqrt{m_e^* m_h^*} = \sqrt{0.026\times 0.41}\, m_e.
 \]
-Re-evaluate cleanly:
+Evaluate:
+\[
+\sqrt{m_e^* m_h^*} = 0.1033\, m_e = \SI{9.40e-32}{kg}.
+\]
+Multiply the two factors:
+\[
+\frac{k_B T}{\pi\hbar^2}\sqrt{m_e^* m_h^*} = 1.184\times 10^{47}\times 9.40\times 10^{-32}\,\si{m^{-2}}.
+\]
+Evaluate:
 \[
 \frac{k_B T}{\pi\hbar^2}\sqrt{m_e^* m_h^*} = \SI{1.113e16}{m^{-2}} = \SI{1.113e12}{cm^{-2}}.
 \]
-Boltzmann factor:
+Boltzmann exponent:
 \[
-\frac{E_g}{2k_B T} = \frac{0.36}{2\times 0.02585} = 6.96, \qquad e^{-6.96} = 9.49\times 10^{-4}.
+\frac{E_g}{2k_B T} = \frac{0.36}{2\times 0.02585} = 6.96.
+\]
+Exponentiate:
+\[
+e^{-6.96} = 9.49\times 10^{-4}.
 \]
 Combine:
 \[
-n_i = 1.113\times 10^{12}\times 9.49\times 10^{-4}\,\si{cm^{-2}} \approx \SI{1.06e9}{cm^{-2}}.
+n_i = 1.113\times 10^{12}\times 9.49\times 10^{-4}\,\si{cm^{-2}}.
+\]
+Evaluate:
+\[
+n_i \approx \SI{1.06e9}{cm^{-2}}.
 \]
 \[
 \boxed{\;n_i(\SI{300}{K}) \approx \SI{1.1e9}{cm^{-2}}.\;}
@@ -402,41 +519,61 @@ Set $\bm r_0=0$. Hydrogenic Hamiltonian with effective mass $m_e^*$ and dielectr
 \[
 H = -\frac{\hbar^2}{2m_e^*}\Lap - \frac{e^2}{4\pi\epsilon_0\epsilon_r r}.
 \]
-2D radial Laplacian on $\psi=Ae^{-br}$:
+Compute $d\psi/dr$:
 \[
-\Lap\psi = \frac{1}{r}\dv{r}\!\left(r\dv{\psi}{r}\right) = \left(b^2 - \frac{b}{r}\right)\psi.
+\dv{\psi}{r} = -b\, A e^{-br} = -b\psi.
 \]
-Apply $H$:
+Apply 2D radial Laplacian:
 \[
-H\psi = \left[-\frac{\hbar^2}{2m_e^*}\!\left(b^2-\frac{b}{r}\right) - \frac{e^2}{4\pi\epsilon_0\epsilon_r r}\right]\psi.
+\Lap\psi = \frac{1}{r}\dv{r}\!\left(r\dv{\psi}{r}\right) = \frac{1}{r}\dv{r}(-b r\psi).
 \]
-Demand eigenstate (cancel $1/r$ term):
+Carry out the derivative:
 \[
-\frac{\hbar^2 b}{2m_e^*} = \frac{e^2}{4\pi\epsilon_0\epsilon_r}.
+\Lap\psi = \frac{1}{r}(-b\psi - b r (-b\psi)) = \left(b^2 - \frac{b}{r}\right)\psi.
+\]
+Apply $H\psi = E\psi$:
+\[
+\left[-\frac{\hbar^2}{2m_e^*}\!\left(b^2-\frac{b}{r}\right) - \frac{e^2}{4\pi\epsilon_0\epsilon_r r}\right]\psi = E\psi.
+\]
+Demand the $1/r$ coefficient vanish:
+\[
+\frac{\hbar^2 b}{2m_e^*} - \frac{e^2}{4\pi\epsilon_0\epsilon_r} = 0.
 \]
 Solve for $b$:
 \[
-b = \frac{m_e^* e^2}{2\pi\epsilon_0\epsilon_r\hbar^2} = \frac{2}{a_0^*}, \qquad a_0^* = \frac{4\pi\epsilon_0\epsilon_r\hbar^2}{m_e^* e^2}.
+b = \frac{m_e^* e^2}{2\pi\epsilon_0\epsilon_r\hbar^2}.
 \]
-Constant $r$ term gives the energy:
+Define effective Bohr radius $a_0^* = 4\pi\epsilon_0\epsilon_r\hbar^2/(m_e^* e^2)$:
+\[
+b = \frac{2}{a_0^*}.
+\]
+Constant term gives energy:
 \[
 E = -\frac{\hbar^2 b^2}{2m_e^*}.
 \]
 Substitute $b$:
 \[
-E = -\frac{\hbar^2}{2m_e^*}\!\left(\frac{m_e^* e^2}{2\pi\epsilon_0\epsilon_r\hbar^2}\right)^{\!2} = -\frac{m_e^* e^4}{2(2\pi\epsilon_0\epsilon_r)^2\hbar^2}.
+E = -\frac{\hbar^2}{2m_e^*}\!\left(\frac{m_e^* e^2}{2\pi\epsilon_0\epsilon_r\hbar^2}\right)^{\!2}.
 \]
-Compare 3D Rydberg $\mathrm{Ry}^* = m_e^* e^4/[2(4\pi\epsilon_0\epsilon_r)^2\hbar^2]$:
+Simplify:
+\[
+E = -\frac{m_e^* e^4}{2(2\pi\epsilon_0\epsilon_r)^2\hbar^2}.
+\]
+Compare with effective Rydberg $\mathrm{Ry}^* = m_e^* e^4/[2(4\pi\epsilon_0\epsilon_r)^2\hbar^2]$:
 \[
 E_{\text{2D}} = -4\,\mathrm{Ry}^*.
 \]
 Numerical Rydberg with $m_e^*=0.026\,m_e$, $\epsilon_r=15$:
 \[
-\mathrm{Ry}^* = 13.6\,\si{eV}\times \frac{0.026}{15^2} = 13.6\times 1.156\times 10^{-4}\,\si{eV} \approx \SI{1.57e-3}{eV}.
+\mathrm{Ry}^* = 13.6\,\si{eV}\times \frac{0.026}{15^2}.
 \]
-Binding energy:
+Evaluate:
 \[
-|E| = 4\times 1.57\times 10^{-3}\,\si{eV} \approx \SI{6.3}{meV}.
+\mathrm{Ry}^* = 13.6\times 1.156\times 10^{-4}\,\si{eV} \approx \SI{1.57e-3}{eV}.
+\]
+Multiply by 4:
+\[
+|E_b| = 4\times 1.57\times 10^{-3}\,\si{eV} \approx \SI{6.3}{meV}.
 \]
 \[
 \boxed{\;b = \frac{2}{a_0^*}, \qquad |E_b| = 4\,\mathrm{Ry}^* \approx \SI{6.3}{meV}.\;}
@@ -500,25 +637,42 @@ Numerical anchors: at $\SI{200}{K}$, plateau value $\sigma=\SI{e-2}{\Omega^{-1}}
 
 $^4$He is a closed-shell atom (1s$^2$, $S=L=J=0$) with no nuclear spin: purely \textbf{diamagnetic} (Larmor).
 
-Vector potential $\bm A=\tfrac12\bm B\times\bm r$ adds $\Delta H = (e^2/8m_e)(\bm B\times\bm r)^2$ per electron.
-
-Quadratic response with $\bm B=B\hat{\bm z}$:
+Minimal coupling $\bm p\to\bm p+e\bm A$ with $\bm A=\tfrac12\bm B\times\bm r$ gives, per electron:
+\[
+\Delta H = \frac{e^2}{8m_e}(\bm B\times\bm r)^2.
+\]
+Pick $\bm B=B\hat{\bm z}$:
+\[
+(\bm B\times\bm r)^2 = B^2(x^2+y^2).
+\]
+Substitute:
 \[
 \Delta H = \frac{e^2 B^2}{8m_e}(x^2+y^2).
 \]
-Spherical symmetry: $\langle x^2+y^2\rangle = \tfrac23\langle r^2\rangle$. Two electrons per atom:
+Spherical symmetry $\langle x^2\rangle=\langle y^2\rangle=\langle z^2\rangle=\langle r^2\rangle/3$:
 \[
-\Delta E_{\text{atom}} = \frac{e^2 B^2}{8m_e}\cdot 2\cdot\tfrac23\langle r^2\rangle = \frac{e^2 B^2}{6 m_e}\langle r^2\rangle.
+\langle x^2+y^2\rangle = \tfrac23\langle r^2\rangle.
 \]
-Magnetisation per atom:
+Multiply by 2 electrons per atom:
 \[
-m_{\text{atom}} = -\pd{\Delta E_{\text{atom}}}{B} = -\frac{e^2 B}{3m_e}\langle r^2\rangle.
+\Delta E_{\text{atom}} = \frac{e^2 B^2}{8m_e}\cdot 2\cdot\tfrac23\langle r^2\rangle.
 \]
-Magnetisation per volume with density $n$:
+Simplify:
 \[
-M = n m_{\text{atom}} = -\frac{n e^2}{3m_e}\langle r^2\rangle\, B.
+\Delta E_{\text{atom}} = \frac{e^2 B^2}{6 m_e}\langle r^2\rangle.
 \]
-Susceptibility ($M=\chi H$, $B=\mu_0 H$):
+Magnetisation per atom $m_{\text{atom}} = -\partial \Delta E_{\text{atom}}/\partial B$:
+\[
+m_{\text{atom}} = -\frac{e^2 B}{3m_e}\langle r^2\rangle.
+\]
+Multiply by number density $n$:
+\[
+M = -\frac{n e^2}{3m_e}\langle r^2\rangle\, B.
+\]
+Use $M=\chi H$ and $B=\mu_0 H$:
+\[
+\chi_{\text{dia}} = \frac{M}{H} = -\frac{n\mu_0 e^2}{3 m_e}\langle r^2\rangle.
+\]
 \[
 \boxed{\;\chi_{\text{dia}} = -\frac{n\mu_0 e^2}{3 m_e}\langle r^2\rangle.\;}
 \]
@@ -527,13 +681,27 @@ Susceptibility ($M=\chi H$, $B=\mu_0 H$):
 
 \textbf{Problem.} \emph{Independent $^3$He nuclei, $\mu_{^3\text{He}}=-2.13\,\mu_N$, spin $1/2$. Find $\chi_{\text{nuc}}(T,n)$.}
 
-Spin-$1/2$ nucleus with magnetic moment $\mu = -2.13\,\mu_N$ in field $B$ has two levels $E=\mp\mu B$ (using $\mu_z=\pm|\mu|$).
-
-Curie law for $J=1/2$: paramagnetic susceptibility
+Spin-$1/2$ nucleus in field $B$ has two levels $E_\pm = \mp |\mu| B$:
 \[
-\chi_{\text{nuc}} = \frac{n\mu_0\mu^2}{k_B T}.
+Z_1 = e^{\beta|\mu| B} + e^{-\beta|\mu| B} = 2\cosh(\beta|\mu| B).
 \]
-Insert $\mu = 2.13\,\mu_N$:
+Mean moment per atom $\langle m\rangle = \beta^{-1}\partial\ln Z_1/\partial B$:
+\[
+\langle m\rangle = |\mu|\tanh(\beta|\mu| B).
+\]
+Expand for $|\mu| B \ll k_B T$ (linear response):
+\[
+\langle m\rangle \approx \frac{|\mu|^2 B}{k_B T}.
+\]
+Multiply by density $n$:
+\[
+M = \frac{n|\mu|^2 B}{k_B T}.
+\]
+Apply $\chi = M/H = \mu_0 M/B$:
+\[
+\chi_{\text{nuc}} = \frac{n\mu_0 |\mu|^2}{k_B T}.
+\]
+Insert $|\mu| = 2.13\,\mu_N$:
 \[
 \boxed{\;\chi_{\text{nuc}}(T,n) = \frac{n\mu_0 (2.13\,\mu_N)^2}{k_B T}.\;}
 \]
@@ -542,9 +710,13 @@ Insert $\mu = 2.13\,\mu_N$:
 
 \textbf{Problem.} \emph{Estimate $T$ at which total $\chi$ changes sign.}
 
-Total $\chi = \chi_{\text{dia}}+\chi_{\text{nuc}}$ vanishes at
+Set total $\chi = \chi_{\text{dia}}+\chi_{\text{nuc}} = 0$:
 \[
 \frac{n\mu_0 (2.13\mu_N)^2}{k_B T^*} = \frac{n\mu_0 e^2}{3m_e}\langle r^2\rangle.
+\]
+Cancel $n\mu_0$:
+\[
+\frac{(2.13\mu_N)^2}{k_B T^*} = \frac{e^2 \langle r^2\rangle}{3m_e}.
 \]
 Solve for $T^*$:
 \[
@@ -554,23 +726,41 @@ Estimate $\langle r^2\rangle\sim a_0^2$ with $a_0=\SI{0.529e-10}{m}$:
 \[
 \langle r^2\rangle \approx \SI{2.80e-21}{m^2}.
 \]
-Numerator pieces:
+Compute $(2.13\mu_N)^2$ with $\mu_N=\SI{5.05e-27}{J\,T^{-1}}$:
 \[
-m_e = \SI{9.11e-31}{kg},\quad \mu_N = \SI{5.05e-27}{J\,T^{-1}},\quad (2.13\mu_N)^2 = (1.076\times 10^{-26})^2 = \SI{1.158e-52}{J^2\,T^{-2}}.
+2.13\mu_N = 1.076\times 10^{-26}\,\si{J\,T^{-1}}.
 \]
+Square:
 \[
-3 m_e (2.13\mu_N)^2 = 3\times 9.11\times 10^{-31}\times 1.158\times 10^{-52} = \SI{3.165e-82}{kg\,J^2\,T^{-2}}.
+(2.13\mu_N)^2 = \SI{1.158e-52}{J^2\,T^{-2}}.
 \]
-Denominator:
+Numerator:
 \[
-k_B e^2 \langle r^2\rangle = 1.381\times 10^{-23}\times (1.602\times 10^{-19})^2\times 2.80\times 10^{-21}.
+3 m_e (2.13\mu_N)^2 = 3\times 9.11\times 10^{-31}\times 1.158\times 10^{-52}.
 \]
+Evaluate:
 \[
-= 1.381\times 10^{-23}\times 2.566\times 10^{-38}\times 2.80\times 10^{-21} = \SI{9.92e-82}{J\,C^2\,m^2}.
+3 m_e (2.13\mu_N)^2 = \SI{3.165e-82}{kg\,J^2\,T^{-2}}.
 \]
-Ratio (units reduce to K via $\mu_0$ implicit; the $\mu_0$ cancelled in setting $\chi$ equal so the dimensional grouping yields kelvin):
+Denominator factors:
 \[
-T^* \approx \frac{3.165\times 10^{-82}}{9.92\times 10^{-82}}\,\si{K} \approx \SI{0.32}{K}.
+e^2 = (1.602\times 10^{-19})^2 = \SI{2.566e-38}{C^2}.
+\]
+Combine:
+\[
+k_B e^2 \langle r^2\rangle = 1.381\times 10^{-23}\times 2.566\times 10^{-38}\times 2.80\times 10^{-21}.
+\]
+Evaluate:
+\[
+k_B e^2 \langle r^2\rangle = \SI{9.92e-82}{J\,C^2\,m^2}.
+\]
+Form ratio (using $1\,\si{J/T^2} = 1\,\si{C^2\,m^2/kg}$, so $kg \cdot J^2/T^2 = J\cdot C^2 m^2$, units of K from division by $k_B$):
+\[
+T^* \approx \frac{3.165\times 10^{-82}}{9.92\times 10^{-82}}\,\si{K}.
+\]
+Evaluate:
+\[
+T^* \approx \SI{0.32}{K}.
 \]
 \[
 \boxed{\;T^* \sim \SI{0.3}{K}\ \text{(of order 100\,mK--1\,K).}\;}
@@ -580,28 +770,40 @@ T^* \approx \frac{3.165\times 10^{-82}}{9.92\times 10^{-82}}\,\si{K} \approx \SI
 
 \textbf{Problem.} \emph{Bcc $^3$He, $J_{nn}/k_B=\SI{1}{mK}$, $J_{nnn}/k_B=-\SI{0.5}{mK}$, spin $1/2$. Find $T_c$.}
 
-Bcc lattice: $z_1=8$ nearest neighbours, $z_2=6$ next-nearest neighbours. Effective mean-field coupling:
+Bcc lattice: $z_1=8$ nearest neighbours at coupling $J_1$, $z_2=6$ next-nearest at $J_2$. Effective sum:
 \[
-J_{\text{eff}} = z_1 J_1 + z_2 J_2.
+J_{\text{eff}} \equiv \sum_j J_{ij} = z_1 J_1 + z_2 J_2.
 \]
 Insert numbers:
 \[
-J_{\text{eff}}/k_B = 8(1) + 6(-0.5)\,\si{mK} = (8 - 3)\,\si{mK} = \SI{5}{mK}.
+J_{\text{eff}}/k_B = 8(1) + 6(-0.5)\,\si{mK}.
 \]
-Mean-field Curie temperature for spin $S$ (Heisenberg, with the $-\tfrac12\sum_{i,j}$ convention):
+Simplify:
 \[
-k_B T_c = \frac{2}{3}S(S+1)\, J_{\text{eff}}.
+J_{\text{eff}}/k_B = (8 - 3)\,\si{mK} = \SI{5}{mK}.
 \]
-Insert $S=1/2$:
+Mean-field decoupling $\bm S_i\cdot\bm S_j\to\bm S_i\cdot\langle\bm S_j\rangle + \langle\bm S_i\rangle\cdot\bm S_j - \langle\bm S_i\rangle\cdot\langle\bm S_j\rangle$ on $H=-\tfrac12\sum_{i,j}J_{ij}\bm S_i\cdot\bm S_j$ gives effective single-site Hamiltonian:
 \[
-S(S+1) = \tfrac34 \Rightarrow k_B T_c = \tfrac{2}{3}\cdot\tfrac34\, J_{\text{eff}} = \tfrac12 J_{\text{eff}}.
+H_i^{\text{MF}} = -\bm S_i\cdot\bm h_{\text{eff}},\qquad \bm h_{\text{eff}} = \sum_j J_{ij}\langle\bm S_j\rangle = J_{\text{eff}}\langle\bm S\rangle.
+\]
+High-$T$ Brillouin self-consistency for spin $S$:
+\[
+\langle S\rangle = \frac{S(S+1)}{3 k_B T}\, h_{\text{eff}} = \frac{S(S+1)}{3 k_B T}\, J_{\text{eff}}\langle S\rangle.
+\]
+Non-trivial solution requires coefficient unity at $T_c$:
+\[
+k_B T_c = \frac{S(S+1)}{3}\, J_{\text{eff}}.
+\]
+Insert $S=1/2$, so $S(S+1)=3/4$:
+\[
+k_B T_c = \frac{1}{3}\cdot\frac{3}{4}\, J_{\text{eff}} = \tfrac{1}{4}\, J_{\text{eff}}.
 \]
 Evaluate:
 \[
-T_c = \tfrac12\times \SI{5}{mK} = \SI{2.5}{mK}.
+T_c = \tfrac{1}{4}\times \SI{5}{mK} = \SI{1.25}{mK}.
 \]
 \[
-\boxed{\;T_c \approx \SI{2.5}{mK}.\;}
+\boxed{\;T_c \approx \SI{1.25}{mK}.\;}
 \]
 
 \end{document}

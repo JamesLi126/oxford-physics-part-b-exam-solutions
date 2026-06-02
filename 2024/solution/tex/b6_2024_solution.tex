@@ -66,12 +66,21 @@
 \end{tikzpicture}
 \end{center}
 
-Count corners (each shared $\times 1/8$) plus interior atoms:
+Count bcc corners (each shared $\times 1/8$) plus one body-centre:
 \[
-n_{\mathrm{bcc}} = 8\times\tfrac{1}{8} + 1 = 2.
+n_{\mathrm{bcc}} = 8\times\tfrac{1}{8} + 1.
 \]
+Add the two contributions:
 \[
-n_{\mathrm{fcc}} = 8\times\tfrac{1}{8} + 6\times\tfrac{1}{2} = 4.
+n_{\mathrm{bcc}} = 1 + 1 = 2.
+\]
+Count fcc corners plus six face-centres (each shared $\times 1/2$):
+\[
+n_{\mathrm{fcc}} = 8\times\tfrac{1}{8} + 6\times\tfrac{1}{2}.
+\]
+Add the two contributions:
+\[
+n_{\mathrm{fcc}} = 1 + 3 = 4.
 \]
 \[
 \boxed{\ n_{\mathrm{bcc}}=2,\quad n_{\mathrm{fcc}}=4.\ }
@@ -79,13 +88,21 @@ n_{\mathrm{fcc}} = 8\times\tfrac{1}{8} + 6\times\tfrac{1}{2} = 4.
 
 \subsection*{(a)(iii)--(iv) The $(111)$ plane and nearest-neighbour distance in it}
 
-bcc $(111)$ contains only the three corners (the body-centre atom is off the plane); side $=\sqrt 2 a$:
+bcc $(111)$ contains only the three corners; the body-centre lies off-plane. Triangle side equals the face diagonal:
 \[
-d^{\,(111)}_{\mathrm{bcc}} = \sqrt{2}\times\SI{2.90}{\angstrom} = \SI{4.10}{\angstrom}.
+d^{\,(111)}_{\mathrm{bcc}} = \sqrt{2}\,a.
 \]
-fcc $(111)$ is close-packed with separation $a'/\sqrt 2$:
+Plug in $a=\SI{2.90}{\angstrom}$:
 \[
-d^{\,(111)}_{\mathrm{fcc}} = \SI{3.65}{\angstrom}/\sqrt{2} = \SI{2.58}{\angstrom}.
+d^{\,(111)}_{\mathrm{bcc}} = \sqrt{2}\times 2.90\,\si{\angstrom} = \SI{4.10}{\angstrom}.
+\]
+fcc $(111)$ is close-packed; nearest-neighbour separation equals half the face diagonal:
+\[
+d^{\,(111)}_{\mathrm{fcc}} = \frac{a'}{\sqrt 2}.
+\]
+Plug in $a'=\SI{3.65}{\angstrom}$:
+\[
+d^{\,(111)}_{\mathrm{fcc}} = 3.65/\sqrt{2}\,\si{\angstrom} = \SI{2.58}{\angstrom}.
 \]
 
 \begin{center}
@@ -185,17 +202,29 @@ fcc, $\lambda/(2a')=0.05890$, $\sqrt N<3.674$, $N\le 12$:
 
 \subsection*{(b)(iii) Lattice parameter at $p_1=\SI{100}{GPa}$}
 
-Third allowed fcc reflection $(220)$ at $2\theta=\SI{19.18}{\degree}$ shifts up by $\SI{1.20}{\degree}$:
+Third allowed fcc reflection is $(220)$ with $N=8$. Shift up by $\SI{1.20}{\degree}$:
 \[
-2\theta^{(1)}_{220} = 19.18+1.20 = \SI{20.38}{\degree}.
+2\theta^{(1)}_{220} = 19.18 + 1.20 = \SI{20.38}{\degree}.
 \]
-Take half:
+Halve to get $\theta$:
 \[
-\sin\theta^{(1)}_{220} = \sin(\SI{10.19}{\degree}) = 0.17681.
+\theta^{(1)}_{220} = \SI{10.19}{\degree}.
+\]
+Evaluate the sine:
+\[
+\sin\theta^{(1)}_{220} = \sin(\SI{10.19}{\degree}) = 0.17688.
 \]
 Apply \eqref{eq:braggcubic} with $\sqrt N=2\sqrt 2$:
 \[
-a'_1 = \frac{\lambda\sqrt N}{2\sin\theta^{(1)}_{220}} = \frac{0.43\times 2\sqrt 2}{2\times 0.17681}\,\si{\angstrom}.
+a'_1 = \frac{\lambda\sqrt N}{2\sin\theta^{(1)}_{220}}.
+\]
+Substitute the numbers:
+\[
+a'_1 = \frac{0.43\times 2\sqrt{2}}{2\times 0.17688}\,\si{\angstrom}.
+\]
+Reduce the numerator and denominator:
+\[
+a'_1 = \frac{1.2162}{0.35376}\,\si{\angstrom} = 3.438\,\si{\angstrom}.
 \]
 \begin{equation}
 \boxed{\ a'_1 = \SI{3.44}{\angstrom}.\ }
@@ -204,47 +233,92 @@ a'_1 = \frac{\lambda\sqrt N}{2\sin\theta^{(1)}_{220}} = \frac{0.43\times 2\sqrt 
 
 \subsection*{(c) Hard-sphere atomic radius and density change at $p_c$}
 
-bcc touch along body diagonal $\sqrt 3 a = 4r$:
+bcc spheres touch along the body diagonal $\sqrt 3 a = 4r$:
 \[
-r_{\mathrm{bcc}} = \tfrac{\sqrt 3}{4}\times \SI{2.90}{\angstrom} = \SI{1.256}{\angstrom}.
+r_{\mathrm{bcc}} = \frac{\sqrt 3}{4}a.
 \]
-fcc touch along face diagonal $\sqrt 2 a' = 4r$:
+Plug in $a=\SI{2.90}{\angstrom}$:
 \[
-r_{\mathrm{fcc}} = \tfrac{\sqrt 2}{4}\times \SI{3.65}{\angstrom} = \SI{1.291}{\angstrom}.
+r_{\mathrm{bcc}} = \frac{\sqrt 3}{4}\times 2.90\,\si{\angstrom} = \SI{1.256}{\angstrom}.
 \]
-Number density $n=n_{\mathrm{cell}}/a^3$:
+fcc spheres touch along the face diagonal $\sqrt 2 a' = 4r$:
 \[
-n_b = 2/(2.90)^3\,\si{\angstrom^{-3}} = 8.20\times 10^{28}\,\si{m^{-3}}.
+r_{\mathrm{fcc}} = \frac{\sqrt 2}{4}a'.
 \]
+Plug in $a'=\SI{3.65}{\angstrom}$:
 \[
-n_f = 4/(3.65)^3\,\si{\angstrom^{-3}} = 8.23\times 10^{28}\,\si{m^{-3}}.
+r_{\mathrm{fcc}} = \frac{\sqrt 2}{4}\times 3.65\,\si{\angstrom} = \SI{1.291}{\angstrom}.
 \]
-Mass density $\rho=nM/\NA$:
+Number density $n=n_{\mathrm{cell}}/a^3$, bcc:
 \[
-\rho_{\mathrm{bcc}} = \frac{8.20\times 10^{28}\times 23\times 10^{-3}}{6.022\times 10^{23}}\,\si{kg\,m^{-3}} = \SI{3133}{kg\,m^{-3}}.
+n_b = \frac{2}{(2.90\times 10^{-10})^3}\,\si{m^{-3}}.
 \]
+Evaluate:
 \[
-\rho_{\mathrm{fcc}} = \frac{8.226\times 10^{28}\times 23\times 10^{-3}}{6.022\times 10^{23}}\,\si{kg\,m^{-3}} = \SI{3142}{kg\,m^{-3}}.
+n_b = \frac{2}{24.389\times 10^{-30}}\,\si{m^{-3}} = 8.20\times 10^{28}\,\si{m^{-3}}.
 \]
-Fractional change:
+Same for fcc:
+\[
+n_f = \frac{4}{(3.65\times 10^{-10})^3}\,\si{m^{-3}}.
+\]
+Evaluate:
+\[
+n_f = \frac{4}{48.627\times 10^{-30}}\,\si{m^{-3}} = 8.226\times 10^{28}\,\si{m^{-3}}.
+\]
+Mass density $\rho=nM/\NA$, bcc:
+\[
+\rho_{\mathrm{bcc}} = \frac{8.20\times 10^{28}\times 23\times 10^{-3}}{6.022\times 10^{23}}\,\si{kg\,m^{-3}}.
+\]
+Reduce:
+\[
+\rho_{\mathrm{bcc}} = \SI{3131}{kg\,m^{-3}}.
+\]
+fcc:
+\[
+\rho_{\mathrm{fcc}} = \frac{8.226\times 10^{28}\times 23\times 10^{-3}}{6.022\times 10^{23}}\,\si{kg\,m^{-3}}.
+\]
+Reduce:
+\[
+\rho_{\mathrm{fcc}} = \SI{3141}{kg\,m^{-3}}.
+\]
+Take the difference:
+\[
+\Delta\rho = \rho_{\mathrm{fcc}} - \rho_{\mathrm{bcc}} = +\SI{10}{kg\,m^{-3}}.
+\]
+Form the fractional change:
+\[
+\Delta\rho/\rho_{\mathrm{bcc}} = 10/3131 = 0.32\%.
+\]
 \begin{equation}
-\boxed{\ \Delta\rho/\rho_{\mathrm{bcc}} = +0.31\%,\quad \Delta\rho \approx +\SI{9}{kg\,m^{-3}}.\ }
+\boxed{\ \Delta\rho/\rho_{\mathrm{bcc}} = +0.32\%,\quad \Delta\rho \approx +\SI{10}{kg\,m^{-3}}.\ }
 \label{eq:drhobox}
 \end{equation}
 
 \subsection*{(d) Compressibility of the bcc phase between ambient and $p_c$}
 
-Per-atom volume $v=a^3/2$. Treat $\beta=-(1/V)\partial V/\partial p$ constant; integrate:
+Treat $\beta=-(1/V)\partial V/\partial p$ as constant and integrate:
 \[
-V(p) = V_0 e^{-\beta p}.
+V(p) = V_0\,e^{-\beta p}.
 \]
 Solve for $\beta$ at $p=p_c$:
 \[
-\beta = -\frac{1}{p_c}\ln\frac{V}{V_0} = -\frac{3}{p_c}\ln\frac{a}{a_0}.
+\beta = -\frac{1}{p_c}\ln\frac{V}{V_0}.
 \]
-Evaluate $\ln(2.90/4.27)=-0.3866$, $p_c=\SI{65e9}{Pa}$:
+Use $V\propto a^3$:
 \[
-\beta_{\mathrm{bcc}} = \frac{3\times 0.3866}{6.5\times 10^{10}}\,\si{Pa^{-1}}.
+\beta = -\frac{3}{p_c}\ln\frac{a}{a_0}.
+\]
+Evaluate the log:
+\[
+\ln(2.90/4.27) = -0.38670.
+\]
+Plug in numbers with $p_c=\SI{65e9}{Pa}$:
+\[
+\beta_{\mathrm{bcc}} = \frac{3\times 0.38670}{6.5\times 10^{10}}\,\si{Pa^{-1}}.
+\]
+Reduce:
+\[
+\beta_{\mathrm{bcc}} = \frac{1.1601}{6.5\times 10^{10}}\,\si{Pa^{-1}} = 1.785\times 10^{-11}\,\si{Pa^{-1}}.
 \]
 \begin{equation}
 \boxed{\ \beta_{\mathrm{bcc}} = \SI{1.78e-11}{Pa^{-1}}.\ }
@@ -253,21 +327,33 @@ Evaluate $\ln(2.90/4.27)=-0.3866$, $p_c=\SI{65e9}{Pa}$:
 
 \subsection*{(e) Mass of sodium that fits in the pressure cell}
 
-Cylindrical volume:
+Cylindrical volume with radius $50\,\si{\micro m}$ and height $1\,\si{mm}$:
 \[
-V_{\mathrm{cyl}} = \pi(50\times 10^{-6})^2\times 10^{-3}\,\si{m^3} = \SI{7.854e-12}{m^3}.
+V_{\mathrm{cyl}} = \pi(50\times 10^{-6})^2\times 10^{-3}\,\si{m^3}.
 \]
-$35\%$ void $\Rightarrow$ Na occupies $0.65\,V_{\mathrm{cyl}}$:
+Evaluate:
 \[
-V_{\mathrm{Na}} = 0.65\times \SI{7.854e-12}{m^3} = \SI{5.10e-12}{m^3}.
+V_{\mathrm{cyl}} = \pi\times 2.5\times 10^{-9}\times 10^{-3}\,\si{m^3} = 7.854\times 10^{-12}\,\si{m^3}.
 \]
-Ambient bcc density with $a_0^3=\SI{77.85e-30}{m^3}$:
+With $35\%$ void, Na occupies $0.65\,V_{\mathrm{cyl}}$:
 \[
-\rho_0 = \frac{2\times 23\times 10^{-3}}{6.022\times 10^{23}\times 77.85\times 10^{-30}}\,\si{kg\,m^{-3}} = \SI{981}{kg\,m^{-3}}.
+V_{\mathrm{Na}} = 0.65\times 7.854\times 10^{-12}\,\si{m^3} = 5.105\times 10^{-12}\,\si{m^3}.
+\]
+Ambient bcc density uses $a_0^3=(4.27\times 10^{-10})^3 = \SI{77.854e-30}{m^3}$:
+\[
+\rho_0 = \frac{2\times 23\times 10^{-3}}{6.022\times 10^{23}\times 77.854\times 10^{-30}}\,\si{kg\,m^{-3}}.
+\]
+Reduce:
+\[
+\rho_0 = \frac{46\times 10^{-3}}{4.689\times 10^{-5}}\,\si{kg\,m^{-3}} = \SI{981}{kg\,m^{-3}}.
 \]
 Mass:
 \[
-m_{\mathrm{Na}} = 981\times 5.10\times 10^{-12}\,\si{kg}.
+m_{\mathrm{Na}} = \rho_0\,V_{\mathrm{Na}} = 981\times 5.105\times 10^{-12}\,\si{kg}.
+\]
+Reduce:
+\[
+m_{\mathrm{Na}} = 5.008\times 10^{-9}\,\si{kg}.
 \]
 \begin{equation}
 \boxed{\ m_{\mathrm{Na}} \approx \SI{5.0e-9}{kg} \approx \SI{5}{ng}.\ }
@@ -281,17 +367,21 @@ m_{\mathrm{Na}} = 981\times 5.10\times 10^{-12}\,\si{kg}.
 
 \subsection*{(a) Origin of the high-$T$ saturation and Dulong--Petit limit}
 
-Equipartition for $3N$ classical modes:
+Equipartition: each of $3N$ classical modes contributes $\kB$:
 \[
 C_{\mathrm{lat}}^{(\infty)} = 3N\kB.
 \]
-Per mole of formula units, $N=z\NA$:
+Per mole of formula units use $N=z\NA$:
 \[
-C^{(\infty)} = 3zR.
+C^{(\infty)} = 3z\NA\kB = 3zR.
 \]
-Read $C^{(\infty)}\simeq \SI{120}{J\,mol^{-1}\,K^{-1}}$ from figure:
+Read $C^{(\infty)}\simeq \SI{120}{J\,mol^{-1}\,K^{-1}}$ from the figure:
 \[
-z = 120/(3\times 8.314) \approx 4.8.
+z = \frac{120}{3R} = \frac{120}{3\times 8.314}.
+\]
+Reduce:
+\[
+z \approx 4.81.
 \]
 \begin{equation}
 \boxed{\ z=5\text{ atoms per formula unit.}\ }
@@ -310,9 +400,13 @@ Differentiate:
 C_{\mathrm{el}} = \tfrac{\pi^2}{3}g(\EF)\kB^2 T \equiv \gamma T.
 \label{eq:CelGamma}
 \end{equation}
-Free-electron-like: $g(\EF) = 3N_e/(2\kB\TF)$. Substitute:
+Free-electron form $g(\EF) = 3N_e/(2\kB\TF)$. Substitute:
 \[
-C_{\mathrm{el}} = \tfrac{\pi^2}{3}\cdot\tfrac{3N_e}{2\kB\TF}\kB^2 T = \tfrac{\pi^2}{2}N_e\kB\,\tfrac{T}{\TF}.
+C_{\mathrm{el}} = \frac{\pi^2}{3}\cdot\frac{3N_e}{2\kB\TF}\,\kB^2 T.
+\]
+Cancel and tidy:
+\[
+C_{\mathrm{el}} = \frac{\pi^2}{2}\,N_e\kB\,\frac{T}{\TF}.
 \]
 Identify $N_e=z\NA$ to recover the stated prefactor.
 
@@ -321,7 +415,7 @@ Identify $N_e=z\NA$ to recover the stated prefactor.
 g_{\mathrm{ph}}(\omega) = \frac{3V\omega^2}{2\pi^2 v_s^3}.
 \label{eq:gph3D}
 \end{equation}
-Internal energy:
+Internal energy is a Bose integral over the DOS:
 \[
 U_{\mathrm{ph}}(T) = \int_0^{\omega_D}\frac{\hbar\omega}{e^{\hbar\omega/\kB T}-1}g_{\mathrm{ph}}(\omega)\,\de\omega.
 \]
@@ -331,19 +425,35 @@ U_{\mathrm{ph}}(T) = \frac{3V}{2\pi^2 v_s^3 \hbar^3}(\kB T)^4 \int_0^{x_D}\frac{
 \]
 Low $T$, extend the upper limit to $\infty$:
 \[
+\int_0^{\infty}\frac{x^3}{e^x-1}\,\de x = \frac{\pi^4}{15}.
+\]
+Insert this value:
+\[
 U_{\mathrm{ph}}(T) \approx \frac{3V}{2\pi^2 v_s^3 \hbar^3}(\kB T)^4 \cdot \frac{\pi^4}{15}.
 \]
-Eliminate $V/v_s^3$ via $\omega_D^3 = 6\pi^2 N v_s^3/V$:
+Eliminate $V/v_s^3$ via the Debye condition $\omega_D^3 = 6\pi^2 N v_s^3/V$:
+\[
+\frac{V}{v_s^3} = \frac{6\pi^2 N}{\omega_D^3}.
+\]
+Use $\hbar\omega_D = \kB\TD$:
 \[
 \frac{V}{v_s^3} = \frac{6\pi^2 N\hbar^3}{(\kB\TD)^3}.
 \]
-Substitute:
+Substitute into $U_{\mathrm{ph}}$:
 \[
-U_{\mathrm{ph}}(T) = \tfrac{3\pi^4}{5}N\kB\,\frac{T^4}{\TD^3}.
+U_{\mathrm{ph}}(T) = \frac{3(\kB T)^4}{2\pi^2 \hbar^3}\cdot\frac{6\pi^2 N\hbar^3}{(\kB\TD)^3}\cdot\frac{\pi^4}{15}.
 \]
-Differentiate, use $N=z\NA$:
+Cancel $\hbar^3$ and $2\pi^2$:
+\[
+U_{\mathrm{ph}}(T) = \frac{3\pi^4}{5}\,N\kB\,\frac{T^4}{\TD^3}.
+\]
+Differentiate with respect to $T$:
+\[
+C_{\mathrm{ph}}(T) = \frac{12\pi^4}{5}\,N\kB\,\frac{T^3}{\TD^3}.
+\]
+Per mole use $N=z\NA$:
 \begin{equation}
-\boxed{\ C_{\mathrm{ph}}(T) = \tfrac{12\pi^4}{5}z\NA\kB\,\frac{T^3}{\TD^3}.\ }
+\boxed{\ C_{\mathrm{ph}}(T) = \frac{12\pi^4}{5}\,z\NA\kB\,\frac{T^3}{\TD^3}.\ }
 \label{eq:CphlowT}
 \end{equation}
 
@@ -358,20 +468,36 @@ Read intercept $\gamma\simeq\SI{0.30}{J\,mol^{-1}\,K^{-2}}$, slope $\beta\simeq 
 
 Solve for $\TF$:
 \[
-\TF = \frac{\pi^2\times 5\times 8.314}{2\times 0.30}\,\si{K} \approx \SI{684}{K}.
+\TF = \frac{\pi^2 zR}{2\gamma}.
+\]
+Plug in numbers:
+\[
+\TF = \frac{\pi^2\times 5\times 8.314}{2\times 0.30}\,\si{K}.
+\]
+Reduce:
+\[
+\TF = \frac{410.3}{0.60}\,\si{K} \approx \SI{684}{K}.
 \]
 \begin{equation}
 \boxed{\ \TF \approx \SI{7e2}{K}.\ }
 \label{eq:TFbox}
 \end{equation}
 
-Solve for $\TD$:
+Solve for $\TD^3$:
 \[
-\TD^3 = \frac{12\pi^4\times 5\times 8.314}{5\times 1.6\times 10^{-3}}\,\si{K^3} = 6.07\times 10^5\,\si{K^3}.
+\TD^3 = \frac{12\pi^4\,zR}{5\beta}.
+\]
+Plug in numbers:
+\[
+\TD^3 = \frac{12\pi^4\times 5\times 8.314}{5\times 1.6\times 10^{-3}}\,\si{K^3}.
+\]
+Reduce numerator $12\pi^4 \times 5 \times 8.314 = 4.86\times 10^4$:
+\[
+\TD^3 = \frac{4.86\times 10^4}{8.0\times 10^{-3}}\,\si{K^3} = 6.07\times 10^6\,\si{K^3}.
 \]
 Cube root:
 \[
-\TD \approx \SI{195}{K}.
+\TD \approx \SI{183}{K}.
 \]
 \begin{equation}
 \boxed{\ \TD \approx \SI{2e2}{K}.\ }
@@ -382,28 +508,44 @@ Cube root:
 
 Equate the two contributions:
 \[
-\tfrac{\pi^2}{2}\,\frac{T^*}{\TF} = \tfrac{12\pi^4}{5}\!\left(\frac{T^*}{\TD}\right)^3.
+\frac{\pi^2}{2}\,\frac{T^*}{\TF} = \frac{12\pi^4}{5}\!\left(\frac{T^*}{\TD}\right)^3.
+\]
+Cancel one factor of $T^*$ and rearrange:
+\[
+1 = \frac{24\pi^2 (T^*)^2 \TF}{5\TD^3}.
 \]
 Solve for $(T^*)^2$:
 \[
 (T^*)^2 = \frac{5\TD^3}{24\pi^2 \TF}.
 \]
-Plug numbers:
+Plug in $\TD=\SI{183}{K}$, $\TF=\SI{684}{K}$:
 \[
-(T^*)^2 = \frac{5\times 195^3}{24\pi^2\times 684}\,\si{K^2} = 229\,\si{K^2}.
+(T^*)^2 = \frac{5\times (183)^3}{24\pi^2\times 684}\,\si{K^2}.
+\]
+Reduce numerator $5\times 183^3 = 3.064\times 10^7$:
+\[
+(T^*)^2 = \frac{3.064\times 10^7}{1.620\times 10^5}\,\si{K^2} = 189\,\si{K^2}.
+\]
+Take the square root:
+\[
+T^* \approx \SI{13.7}{K}.
 \]
 \begin{equation}
-\boxed{\ T^* \approx \SI{15}{K}.\ }
+\boxed{\ T^* \approx \SI{14}{K}.\ }
 \label{eq:Tstarbox}
 \end{equation}
 
 \subsection*{(c)(i) 2D phonon density of states}
 
-Two in-plane polarisations, mode density $A/(2\pi)^2$ per polarisation, $\omega=v_s|\mathbf q|$:
+Two in-plane polarisations, density $A/(2\pi)^2$ per polarisation in $\mathbf q$-space:
 \[
 g_{\mathrm{ph}}^{(2)}(\omega)\,\de\omega = 2\cdot\frac{A}{(2\pi)^2}\cdot 2\pi q\,\de q.
 \]
-Insert $q=\omega/v_s$:
+Use linear dispersion $\omega = v_s q$ so $q = \omega/v_s$ and $\de q = \de\omega/v_s$:
+\[
+g_{\mathrm{ph}}^{(2)}(\omega)\,\de\omega = \frac{A}{\pi}\,\frac{\omega}{v_s}\,\frac{\de\omega}{v_s}.
+\]
+Combine the $v_s$ factors:
 \[
 g_{\mathrm{ph}}^{(2)}(\omega)\,\de\omega = \frac{A\omega}{\pi v_s^2}\,\de\omega.
 \]
@@ -414,11 +556,18 @@ g_{\mathrm{ph}}^{(2)}(\omega)\,\de\omega = \frac{A\omega}{\pi v_s^2}\,\de\omega.
 
 \subsection*{(c)(ii) High-$T$ Dulong--Petit in 2D}
 
-Total in-plane modes $=2N$, each $\kB$:
+Total in-plane modes $=2N$, equipartition gives $\kB$ each:
 \[
 C^{(\infty)}_{2D} = 2N\kB.
 \]
-Per mole, $N=z\NA$:
+Per mole use $N=z\NA$ and $z=5$:
+\[
+C^{(\infty)}_{\mathrm{molar}} = 2zR = 10R.
+\]
+Plug in $R=8.314$:
+\[
+C^{(\infty)}_{\mathrm{molar}} = 10\times 8.314 \approx \SI{83}{J\,mol^{-1}\,K^{-1}}.
+\]
 \begin{equation}
 \boxed{\ C^{(\infty)}_{\mathrm{molar}} = 2zR = 10R \approx \SI{83}{J\,mol^{-1}\,K^{-1}}.\ }
 \label{eq:DP2Dbox}
@@ -426,19 +575,26 @@ Per mole, $N=z\NA$:
 
 \subsection*{(c)(iii) Low-$T$ form $C=AT+BT^\delta$ in 2D}
 
-Phonon energy with $g_{\mathrm{ph}}^{(2)}$:
+Phonon energy with 2D DOS:
 \[
 U_{\mathrm{ph}}^{(2)}(T) = \int_0^{\omega_D}\frac{\hbar\omega}{e^{\hbar\omega/\kB T}-1}\,\frac{A\omega}{\pi v_s^2}\,\de\omega.
 \]
-Substitute $x=\hbar\omega/\kB T$:
+Substitute $x=\hbar\omega/\kB T$, so $\omega = \kB T\,x/\hbar$ and $\de\omega = \kB T\,\de x/\hbar$:
 \[
 U_{\mathrm{ph}}^{(2)}(T) = \frac{A}{\pi v_s^2 \hbar^2}(\kB T)^3\int_0^{x_D}\frac{x^2}{e^x-1}\,\de x.
 \]
 Low $T$, extend the upper limit to $\infty$:
 \[
-U_{\mathrm{ph}}^{(2)}(T) \approx \frac{A}{\pi v_s^2 \hbar^2}(\kB T)^3 \cdot 2\zeta(3).
+\int_0^{\infty}\frac{x^2}{e^x-1}\,\de x = 2\zeta(3).
 \]
-Differentiate:
+Insert this value:
+\[
+U_{\mathrm{ph}}^{(2)}(T) \approx \frac{2\zeta(3)\,A}{\pi v_s^2 \hbar^2}(\kB T)^3.
+\]
+Differentiate with respect to $T$:
+\[
+C^{(2)}_{\mathrm{ph}}(T) = \frac{6\zeta(3)\,A\kB^3}{\pi v_s^2 \hbar^2}\,T^2.
+\]
 \begin{equation}
 \boxed{\ C^{(2)}_{\mathrm{ph}}(T) = \frac{6\zeta(3)A\kB^3}{\pi v_s^2 \hbar^2}\,T^2 \equiv B T^\delta,\quad \delta=2.\ }
 \label{eq:CphLowT2D}
@@ -452,19 +608,27 @@ Sommerfeld result \eqref{eq:CelGamma} is dimension-independent:
 \label{eq:Aresult}
 \end{equation}
 
-Debye condition (total in-plane modes $=2N$):
+Debye condition: total in-plane modes equals $2N$:
 \[
-2N = \int_0^{\omega_D}\frac{A\omega}{\pi v_s^2}\,\de\omega = \frac{A\omega_D^2}{2\pi v_s^2}.
+2N = \int_0^{\omega_D}\frac{A\omega}{\pi v_s^2}\,\de\omega.
+\]
+Integrate:
+\[
+2N = \frac{A\omega_D^2}{2\pi v_s^2}.
 \]
 Rearrange:
 \[
 \frac{A}{\pi v_s^2} = \frac{4N}{\omega_D^2}.
 \]
-Substitute into \eqref{eq:CphLowT2D}:
+Substitute into the result for $C^{(2)}_{\mathrm{ph}}$:
 \[
-C^{(2)}_{\mathrm{ph}} = \frac{6\zeta(3)\kB^3}{\hbar^2}\cdot\frac{4N\,T^2}{\omega_D^2} = \frac{24\zeta(3)N\kB^3}{\hbar^2\omega_D^2}\,T^2.
+C^{(2)}_{\mathrm{ph}} = \frac{6\zeta(3)\kB^3}{\hbar^2}\cdot\frac{4N}{\omega_D^2}\,T^2.
 \]
-Per mole, $N=z\NA$:
+Combine factors:
+\[
+C^{(2)}_{\mathrm{ph}} = \frac{24\zeta(3)\,N\kB^3}{\hbar^2\omega_D^2}\,T^2.
+\]
+Per mole use $N=z\NA$:
 \begin{equation}
 \boxed{\ B = \frac{24\zeta(3)\,z\NA\kB^3}{\hbar^2\omega_D^2}.\ }
 \label{eq:Bbox}
@@ -477,9 +641,17 @@ Per mole, $N=z\NA$:
 
 \subsection*{(a)(i) Band dispersion along $\Gamma\to X\to M$}
 
-Endpoint values:
+Evaluate at $\Gamma=(0,0)$:
 \[
-\epsilon(\Gamma)=\epsilon_0+4t,\quad \epsilon(X)=\epsilon_0,\quad \epsilon(M)=\epsilon_0-4t.
+\epsilon(\Gamma) = \epsilon_0 + 2t\cos 0 + 2t\cos 0 = \epsilon_0 + 4t.
+\]
+Evaluate at $X=(\pi/a,0)$:
+\[
+\epsilon(X) = \epsilon_0 + 2t\cos\pi + 2t\cos 0 = \epsilon_0.
+\]
+Evaluate at $M=(\pi/a,\pi/a)$:
+\[
+\epsilon(M) = \epsilon_0 + 2t\cos\pi + 2t\cos\pi = \epsilon_0 - 4t.
 \]
 
 \begin{center}
@@ -508,17 +680,29 @@ Endpoint values:
 
 \subsection*{(a)(iii) Constant-energy contours}
 
-Expand around $M=(\pi/a,\pi/a)$, $\mathbf k=\mathbf K_M+\mathbf q$, $\cos(\pi+qa)\simeq -1+(qa)^2/2$:
+Expand around $M=(\pi/a,\pi/a)$, $\mathbf k=\mathbf K_M+\mathbf q$, using $\cos(\pi+qa)\simeq -1+(qa)^2/2$:
+\[
+\epsilon(\mathbf k) \simeq \epsilon_0 + 2t[-1+(q_xa)^2/2] + 2t[-1+(q_ya)^2/2].
+\]
+Collect terms:
 \begin{equation}
 \epsilon(\mathbf k) \simeq \epsilon_0-4t + ta^2(q_x^2+q_y^2).
 \label{eq:expM}
 \end{equation}
-Expand around $\Gamma$, $\cos(qa)\simeq 1-(qa)^2/2$:
+Expand around $\Gamma$, using $\cos(qa)\simeq 1-(qa)^2/2$:
+\[
+\epsilon(\mathbf k) \simeq \epsilon_0 + 2t[1-(q_xa)^2/2] + 2t[1-(q_ya)^2/2].
+\]
+Collect terms:
 \begin{equation}
 \epsilon(\mathbf k) \simeq \epsilon_0+4t - ta^2(q_x^2+q_y^2).
 \label{eq:expGamma}
 \end{equation}
-Both circular. Half-filling $\epsilon=\epsilon_0$: $\cos k_xa=-\cos k_ya \Rightarrow k_xa = \pm(\pi - k_ya)$, a square rotated $45^\circ$.
+Both contours are circular near the extrema. Half-filling: $\epsilon=\epsilon_0$ gives $\cos k_xa = -\cos k_ya$:
+\[
+k_xa = \pm(\pi - k_ya).
+\]
+The contour is a square rotated $45^\circ$ joining the four $X$-points.
 
 \begin{center}
 \begin{tikzpicture}[scale=1.6]
@@ -546,13 +730,21 @@ Both circular. Half-filling $\epsilon=\epsilon_0$: $\cos k_xa=-\cos k_ya \Righta
 
 \subsection*{(a)(iv) Effective masses near band edges}
 
-From \eqref{eq:expM}, $\partial^2\epsilon/\partial q^2=2ta^2$:
+Use $1/m^* = \hbar^{-2}\,\partial^2\epsilon/\partial q^2$. From \eqref{eq:expM}:
 \[
-m^*_{\mathrm{min}} = \frac{\hbar^2}{2ta^2} > 0.
+\frac{\partial^2 \epsilon}{\partial q_x^2} = 2ta^2.
 \]
-From \eqref{eq:expGamma}, $\partial^2\epsilon/\partial q^2=-2ta^2$:
+Invert:
 \[
-m^*_{\mathrm{max}} = -\frac{\hbar^2}{2ta^2} < 0.
+m^*_{\mathrm{min}} = +\frac{\hbar^2}{2ta^2} > 0\quad(\text{electron-like}).
+\]
+From \eqref{eq:expGamma}:
+\[
+\frac{\partial^2 \epsilon}{\partial q_x^2} = -2ta^2.
+\]
+Invert:
+\[
+m^*_{\mathrm{max}} = -\frac{\hbar^2}{2ta^2} < 0\quad(\text{hole-like}).
 \]
 \begin{equation}
 \boxed{\ m^*_{\mathrm{min}} = +\frac{\hbar^2}{2ta^2},\qquad m^*_{\mathrm{max}} = -\frac{\hbar^2}{2ta^2}.\ }
@@ -561,17 +753,32 @@ m^*_{\mathrm{max}} = -\frac{\hbar^2}{2ta^2} < 0.
 
 \subsection*{(b)(i)--(ii) $\eF(N/A)$ near the band minimum}
 
-Parabolic band, $m^*=\hbar^2/(2ta^2)$. Count $\mathbf k$-states inside contour, factor 2 for spin:
+Parabolic band near $M$ with $m^*=\hbar^2/(2ta^2)$. Count states inside the Fermi disc, factor 2 for spin:
 \[
 N(\eF) = 2\cdot\frac{A}{(2\pi)^2}\cdot \pi q_F^2.
 \]
-From \eqref{eq:expM}: $ta^2 q_F^2 = \eF-(\epsilon_0-4t)$. Substitute:
+Simplify:
 \[
-\frac{N}{A} = \frac{q_F^2}{2\pi} = \frac{\eF-\epsilon_0+4t}{2\pi t a^2}.
+N(\eF) = \frac{A q_F^2}{2\pi}.
+\]
+From \eqref{eq:expM} relate $q_F$ to $\eF$:
+\[
+ta^2 q_F^2 = \eF - (\epsilon_0 - 4t).
+\]
+Solve for $q_F^2$:
+\[
+q_F^2 = \frac{\eF - \epsilon_0 + 4t}{ta^2}.
+\]
+Substitute into $N/A$:
+\[
+\frac{N}{A} = \frac{\eF - \epsilon_0 + 4t}{2\pi t a^2}.
 \]
 Solve for $\eF$:
+\[
+\eF = (\epsilon_0 - 4t) + 2\pi t a^2\,\frac{N}{A}.
+\]
 \begin{equation}
-\boxed{\ \eF = (\epsilon_0-4t) + 2\pi t a^2\,\frac{N}{A},\quad \eF'=\epsilon_0-4t,\ \alpha = 2\pi t a^2.\ }
+\boxed{\ \eF = \eF' + \alpha\,\frac{N}{A},\quad \eF'=\epsilon_0-4t,\ \alpha = 2\pi t a^2.\ }
 \label{eq:eFlinear}
 \end{equation}
 
@@ -579,8 +786,13 @@ Solve for $\eF$:
 
 Differentiate $N$ with respect to $\eF$:
 \[
-g(\epsilon) = \pd{N}{\epsilon} = \frac{A}{2\pi t a^2}.
+g(\epsilon) = \pd{N}{\epsilon}.
 \]
+Apply to $N = A(\eF-\epsilon_0+4t)/(2\pi ta^2)$:
+\[
+g(\epsilon) = \frac{A}{2\pi t a^2}.
+\]
+Identify $\beta$ via $g=\beta A$:
 \begin{equation}
 \boxed{\ \beta = \frac{1}{2\pi t a^2}.\ }
 \label{eq:gbox}
@@ -588,17 +800,25 @@ g(\epsilon) = \pd{N}{\epsilon} = \frac{A}{2\pi t a^2}.
 
 \subsection*{(c)(i) Carrier density for $A_{\mathrm{FS}}/A_{\mathrm{BZ}}=1/100$}
 
-BZ area $A_{\mathrm{BZ}}=(2\pi/a)^2$. Spin factor 2 over $\mathbf k$-cell:
+BZ area $A_{\mathrm{BZ}}=(2\pi/a)^2$. Spin factor 2 in counting:
 \[
-\frac{N}{A} = 2\cdot\frac{A_{\mathrm{FS}}}{(2\pi)^2} = \frac{2}{100}\cdot\frac{(2\pi/a)^2}{(2\pi)^2}.
+\frac{N}{A} = 2\cdot\frac{A_{\mathrm{FS}}}{(2\pi)^2}.
 \]
-Simplify:
+Use $A_{\mathrm{FS}} = A_{\mathrm{BZ}}/100 = (2\pi/a)^2/100$:
 \[
-\frac{N}{A} = \frac{1}{50 a^2}.
+\frac{N}{A} = \frac{2}{100}\cdot\frac{(2\pi/a)^2}{(2\pi)^2}.
 \]
-For $a=\SI{3.5e-10}{m}$:
+Cancel $(2\pi)^2$:
+\[
+\frac{N}{A} = \frac{1}{50\,a^2}.
+\]
+Plug in $a=\SI{3.5e-10}{m}$:
 \[
 n_{2D} = \frac{1}{50\times(3.5\times 10^{-10})^2}\,\si{m^{-2}}.
+\]
+Reduce $50\times(3.5)^2 = 612.5$:
+\[
+n_{2D} = \frac{1}{6.125\times 10^{-18}}\,\si{m^{-2}}.
 \]
 \begin{equation}
 \boxed{\ n_{2D} = \SI{1.63e17}{m^{-2}}.\ }
@@ -607,23 +827,26 @@ n_{2D} = \frac{1}{50\times(3.5\times 10^{-10})^2}\,\si{m^{-2}}.
 
 \subsection*{(c)(ii) Hall voltage}
 
-Hall coefficient (single carrier, magnitude):
+2D Hall coefficient (single carrier, magnitude):
 \[
 R_H^{(2D)} = \frac{1}{n_{2D}\,e}.
 \]
-Hall field per unit width:
+Hall voltage across the strip equals $E_y\times w$ but the 2D current density is per unit width:
 \[
 V_H = \frac{j_x B_z}{n_{2D}\,e}.
 \]
-Plug $j_x=\SI{1.0e-5}{A\,m^{-1}}$, $B_z=\SI{1}{T}$:
+Plug in $j_x = \SI{10}{\micro A\,m^{-1}} = \SI{1.0e-5}{A\,m^{-1}}$ and $B_z=\SI{1}{T}$:
 \[
 V_H = \frac{1.0\times 10^{-5}\times 1}{1.63\times 10^{17}\times 1.602\times 10^{-19}}\,\si{V}.
 \]
-Evaluate denominator:
+Evaluate the denominator:
 \[
-1.63\times 10^{17}\times 1.602\times 10^{-19} = 2.61\times 10^{-2}.
+1.63\times 10^{17}\times 1.602\times 10^{-19} = 2.612\times 10^{-2}.
 \]
-Final:
+Reduce:
+\[
+V_H = \frac{1.0\times 10^{-5}}{2.612\times 10^{-2}}\,\si{V} = 3.83\times 10^{-4}\,\si{V}.
+\]
 \begin{equation}
 \boxed{\ V_H \approx \SI{3.8e-4}{V} \approx \SI{0.38}{mV}.\ }
 \label{eq:VHbox}
@@ -636,34 +859,50 @@ Final:
 
 \subsection*{(a)(i) Hund's rules for Mn$^{2+}$ ($3d^5$) and Tb$^{3+}$ ($4f^8$)}
 
-\textbf{Mn$^{2+}$, $3d^5$.} Five $d$ electrons, one in each $m_\ell\in\{-2,\dots,2\}$:
+\textbf{Mn$^{2+}$, $3d^5$.} Five $d$ electrons, one in each $m_\ell\in\{-2,-1,0,1,2\}$, all spin up:
 \[
-S = 5\times\tfrac12 = \tfrac52,\qquad L = \sum m_\ell = 0.
+S = 5\times\tfrac12 = \tfrac52.
 \]
-Half-filled, $J=L+S$ or $|L-S|$ both give:
+Sum the $m_\ell$ values:
+\[
+L = -2-1+0+1+2 = 0.
+\]
+Half-filled shell with $L=0$ gives $J=S$:
 \[
 J = \tfrac52.
 \]
-Land\'e factor:
+Apply the Land\'e formula with $S(S+1)=35/4$, $L(L+1)=0$, $J(J+1)=35/4$:
 \[
-g_J = \tfrac32 + \frac{(5/2)(7/2)-0}{2(5/2)(7/2)} = 2.
+g_J = \tfrac32 + \frac{35/4 - 0}{2\times 35/4}.
+\]
+Reduce:
+\[
+g_J = \tfrac32 + \tfrac12 = 2.
 \]
 \begin{equation}
 \boxed{\ \mathrm{Mn^{2+}}:\ S=\tfrac52,\ L=0,\ J=\tfrac52,\ g_J=2.\ }
 \label{eq:Mnbox}
 \end{equation}
 
-\textbf{Tb$^{3+}$, $4f^8$.} Seven aligned, eighth pairs into $m_\ell=+3$:
+\textbf{Tb$^{3+}$, $4f^8$.} Place 7 electrons one in each $m_\ell\in\{-3,\dots,3\}$ then the 8th pairs into $m_\ell=+3$:
 \[
-S = \tfrac{7}{2}-\tfrac12 = 3,\qquad L = 0+3 = 3.
+S = \tfrac{7}{2} - \tfrac12 = 3.
 \]
-More than half full, $J=L+S$:
+Sum the $m_\ell$ values: the 7 aligned electrons give $L=0$, the extra spin-down at $m_\ell = +3$ adds:
 \[
-J = 6.
+L = 0 + 3 = 3.
 \]
-Land\'e factor:
+More than half-full shell gives $J=L+S$:
 \[
-g_J = \tfrac32 + \frac{12-12}{2\cdot 6\cdot 7} = \tfrac32.
+J = 3 + 3 = 6.
+\]
+Apply Land\'e with $S(S+1)=12$, $L(L+1)=12$, $J(J+1)=42$:
+\[
+g_J = \tfrac32 + \frac{12 - 12}{2\times 42}.
+\]
+Reduce:
+\[
+g_J = \tfrac32 + 0 = \tfrac32.
 \]
 \begin{equation}
 \boxed{\ \mathrm{Tb^{3+}}:\ S=3,\ L=3,\ J=6,\ g_J=\tfrac32.\ }
@@ -672,10 +911,11 @@ g_J = \tfrac32 + \frac{12-12}{2\cdot 6\cdot 7} = \tfrac32.
 
 \subsection*{(a)(ii) Saturation magnetic moment at $T=0$}
 
-$m=g_J J\,\muB$:
+At $T=0$ the moment is $m=g_J J\,\muB$. Mn$^{2+}$:
 \[
 m_{\mathrm{Mn^{2+}}} = 2\times\tfrac52\,\muB = 5\,\muB.
 \]
+Tb$^{3+}$:
 \[
 m_{\mathrm{Tb^{3+}}} = \tfrac32\times 6\,\muB = 9\,\muB.
 \]
@@ -686,24 +926,36 @@ m_{\mathrm{Tb^{3+}}} = \tfrac32\times 6\,\muB = 9\,\muB.
 
 \subsection*{(b)(i) Mean-field effective field on a bcc site}
 
-bcc coordination $z=8$. Replace $\mathbf S_j\to\langle\mathbf S\rangle$ in the Heisenberg sum:
+bcc coordination $z=8$. Replace $\mathbf S_j\to\langle\mathbf S\rangle$ in the Heisenberg sum acting on site $i$:
 \begin{equation}
-\mathcal H_i^{\mathrm{MF}} = -J_1 z\langle\mathbf S\rangle\cdot\mathbf S_i + g\muB\mathbf B\cdot\mathbf S_i \equiv g\muB\mathbf B_{\mathrm{mf}}\cdot\mathbf S_i.
+\mathcal H_i^{\mathrm{MF}} = -J_1 z\langle\mathbf S\rangle\cdot\mathbf S_i + g\muB\mathbf B\cdot\mathbf S_i.
 \label{eq:HMF}
 \end{equation}
-Read off:
+Define $\mathbf B_{\mathrm{mf}}$ by $\mathcal H_i^{\mathrm{MF}} \equiv g\muB\mathbf B_{\mathrm{mf}}\cdot\mathbf S_i$:
 \[
 \mathbf B_{\mathrm{mf}} = \mathbf B - \frac{J_1 z}{g\muB}\langle\mathbf S\rangle.
 \]
-Use $\mathbf M=-ng\muB\langle\mathbf S\rangle$, $n=2/a^3$:
+Magnetisation in terms of $\langle\mathbf S\rangle$ uses $\bm\mu = -g\muB\mathbf S$:
+\[
+\mathbf M = -n g\muB\langle\mathbf S\rangle.
+\]
+Solve for $\langle\mathbf S\rangle$:
 \[
 \langle\mathbf S\rangle = -\frac{\mathbf M}{ng\muB}.
 \]
-Substitute:
+Substitute into $\mathbf B_{\mathrm{mf}}$:
 \[
-\mathbf B_{\mathrm{mf}} = \mathbf B + \frac{J_1 z}{(g\muB)^2 n}\mathbf M \equiv \mathbf B + \lambda\mathbf M.
+\mathbf B_{\mathrm{mf}} = \mathbf B + \frac{J_1 z}{(g\muB)^2 n}\mathbf M.
 \]
-Insert $z=8$, $n=2/a^3$:
+Identify $\lambda$ via $\mathbf B_{\mathrm{mf}} = \mathbf B + \lambda\mathbf M$:
+\[
+\lambda = \frac{J_1 z}{(g\muB)^2 n}.
+\]
+Insert $z=8$ and $n=2/a^3$:
+\[
+\lambda = \frac{8 J_1}{(g\muB)^2\cdot 2/a^3}.
+\]
+Simplify:
 \begin{equation}
 \boxed{\ \lambda = \frac{4 J_1 a^3}{(g\muB)^2}.\ }
 \label{eq:lambdabox}
@@ -711,15 +963,27 @@ Insert $z=8$, $n=2/a^3$:
 
 \subsection*{(b)(ii) Self-consistent magnetisation}
 
-Single $S=1/2$ in $B_{\mathrm{mf}}$:
+Single $S=1/2$ in $B_{\mathrm{mf}}$ has partition function:
 \[
 Z = 2\cosh\!\left(\frac{g\muB B_{\mathrm{mf}}}{2\kB T}\right).
 \]
-Average projection $\tfrac12\tanh(\cdot)$, multiply by moment density $ng\muB$:
+Spin expectation along the field:
 \[
-M = \tfrac{ng\muB}{2}\tanh\!\left(\frac{g\muB B_{\mathrm{mf}}}{2\kB T}\right) \equiv M_0\tanh\!\left(\frac{g\muB B_{\mathrm{mf}}}{2\kB T}\right).
+\langle S_z\rangle = -\tfrac12\tanh\!\left(\frac{g\muB B_{\mathrm{mf}}}{2\kB T}\right).
+\]
+Magnetisation $M = -ng\muB\langle S_z\rangle$:
+\[
+M = \frac{ng\muB}{2}\tanh\!\left(\frac{g\muB B_{\mathrm{mf}}}{2\kB T}\right).
+\]
+Identify $M_0 = ng\muB/2$:
+\[
+M = M_0\tanh\!\left(\frac{g\muB B_{\mathrm{mf}}}{2\kB T}\right).
 \]
 Insert $n=2/a^3$:
+\[
+M_0 = \frac{2}{a^3}\cdot\frac{g\muB}{2}.
+\]
+Simplify:
 \begin{equation}
 \boxed{\ M_0 = \frac{g\muB}{a^3}.\ }
 \label{eq:M0box}
@@ -727,22 +991,35 @@ Insert $n=2/a^3$:
 
 \subsection*{(b)(iii) Curie--Weiss susceptibility above $T_C$}
 
-Expand $\tanh x\approx x$ for small $M$:
+Expand $\tanh x\approx x$ for small argument, with $B_{\mathrm{mf}}=B+\lambda M$:
 \[
 M \simeq M_0\cdot\frac{g\muB(B+\lambda M)}{2\kB T}.
 \]
-Collect $M$:
+Collect terms linear in $M$:
 \[
-M\!\left(1 - \frac{M_0 g\muB \lambda}{2\kB T}\right) = \frac{M_0 g\muB B}{2\kB T}.
+M\!\left(1 - \frac{M_0 g\muB \lambda}{2\kB T}\right) = \frac{M_0 g\muB}{2\kB T}\,B.
 \]
-Identify $\chi=M/B$:
+Divide and identify $\chi=M/B$:
+\[
+\chi = \frac{M_0 g\muB/(2\kB T)}{1 - M_0 g\muB \lambda/(2\kB T)}.
+\]
+Multiply top and bottom by $T$:
 \[
 \chi = \frac{M_0 g\muB/(2\kB)}{T - M_0 g\muB \lambda/(2\kB)} \equiv \frac{C}{T-\Theta}.
 \]
-Substitute $M_0,\lambda$ from \eqref{eq:M0box},\eqref{eq:lambdabox}:
+Compute $\Theta$ with $M_0=g\muB/a^3$ and $\lambda=4J_1 a^3/(g\muB)^2$:
 \[
-\Theta = \frac{g\muB}{a^3}\cdot g\muB\cdot\frac{4J_1 a^3}{(g\muB)^2}\cdot\frac{1}{2\kB} = \frac{2J_1}{\kB}.
+\Theta = \frac{g\muB}{a^3}\cdot g\muB\cdot\frac{4J_1 a^3}{(g\muB)^2}\cdot\frac{1}{2\kB}.
 \]
+Cancel $(g\muB)^2$ and $a^3$:
+\[
+\Theta = \frac{4J_1}{2\kB} = \frac{2J_1}{\kB}.
+\]
+Compute $C$:
+\[
+C = \frac{M_0 g\muB}{2\kB} = \frac{g\muB}{a^3}\cdot\frac{g\muB}{2\kB}.
+\]
+Simplify:
 \[
 C = \frac{(g\muB)^2}{2\kB a^3}.
 \]
@@ -753,11 +1030,18 @@ C = \frac{(g\muB)^2}{2\kB a^3}.
 
 \subsection*{(b)(iv) Relation $\Theta = T_C$}
 
-$B=0$ self-consistent equation $M=M_0\tanh(g\muB\lambda M/(2\kB T))$. Non-zero solution emerges when slope at $M=0$ equals one:
+At $B=0$ the self-consistent equation reads:
+\[
+M = M_0\tanh\!\left(\frac{g\muB\lambda M}{2\kB T}\right).
+\]
+A non-zero $M$ first appears when the slope at $M=0$ equals 1:
 \[
 \frac{M_0 g\muB \lambda}{2\kB T_C} = 1.
 \]
-Identical to the pole condition in $\chi$:
+Solve for $T_C$:
+\[
+T_C = \frac{M_0 g\muB \lambda}{2\kB} = \Theta.
+\]
 \begin{equation}
 \boxed{\ T_C = \Theta = \frac{2J_1}{\kB}.\ }
 \label{eq:TCbox}
@@ -765,8 +1049,21 @@ Identical to the pole condition in $\chi$:
 
 \subsection*{(b)(v) Numerical $J_1$ for $T_C=\SI{30}{K}$}
 
+Solve $T_C = 2J_1/\kB$ for $J_1$:
 \[
-J_1 = \frac{\kB T_C}{2} = \frac{1.381\times 10^{-23}\times 30}{2}\,\si{J}.
+J_1 = \frac{\kB T_C}{2}.
+\]
+Plug in $T_C=\SI{30}{K}$:
+\[
+J_1 = \frac{1.381\times 10^{-23}\times 30}{2}\,\si{J}.
+\]
+Reduce:
+\[
+J_1 = 2.072\times 10^{-22}\,\si{J}.
+\]
+Convert to meV via $1\,\mathrm{eV} = 1.602\times 10^{-19}\,\si{J}$:
+\[
+J_1 = \frac{2.072\times 10^{-22}}{1.602\times 10^{-19}}\,\si{eV} = \SI{1.29}{meV}.
 \]
 \begin{equation}
 \boxed{\ J_1 \approx \SI{2.07e-22}{J} \approx \SI{1.3}{meV},\quad J_1/\kB \approx \SI{15}{K}.\ }
@@ -775,17 +1072,45 @@ J_1 = \frac{\kB T_C}{2} = \frac{1.381\times 10^{-23}\times 30}{2}\,\si{J}.
 
 \subsection*{(c)(i) $J_1'$ for the simple-cubic lattice with $T_C'=\SI{20}{K}$}
 
-Simple cubic: $z'=6$, $n'=1/a^3$. Repeat (b)(i)--(iii):
+Simple cubic: $z'=6$, $n'=1/a^3$. Repeat (b)(i):
 \[
-\lambda' = \frac{6J_1' a^3}{(g\muB)^2},\qquad M_0' = \frac{g\muB}{2a^3}.
+\lambda' = \frac{J_1' z'}{(g\muB)^2 n'} = \frac{6 J_1'}{(g\muB)^2\cdot 1/a^3}.
+\]
+Simplify:
+\[
+\lambda' = \frac{6J_1' a^3}{(g\muB)^2}.
+\]
+Repeat (b)(ii) with $n'=1/a^3$:
+\[
+M_0' = \frac{n' g\muB}{2} = \frac{g\muB}{2a^3}.
 \]
 Compute $\Theta'$:
 \[
-\Theta' = \frac{M_0' g\muB \lambda'}{2\kB} = \frac{3J_1'}{2\kB}.
+\Theta' = \frac{M_0' g\muB \lambda'}{2\kB}.
+\]
+Substitute:
+\[
+\Theta' = \frac{g\muB}{2a^3}\cdot g\muB\cdot\frac{6J_1' a^3}{(g\muB)^2}\cdot\frac{1}{2\kB}.
+\]
+Cancel $(g\muB)^2$ and $a^3$:
+\[
+\Theta' = \frac{6J_1'}{4\kB} = \frac{3J_1'}{2\kB}.
 \]
 Set $T_C'=\Theta'$ and solve:
 \[
-J_1' = \frac{2\kB T_C'}{3} = \frac{2\times 1.381\times 10^{-23}\times 20}{3}\,\si{J}.
+J_1' = \frac{2\kB T_C'}{3}.
+\]
+Plug in $T_C'=\SI{20}{K}$:
+\[
+J_1' = \frac{2\times 1.381\times 10^{-23}\times 20}{3}\,\si{J}.
+\]
+Reduce:
+\[
+J_1' = \frac{5.524\times 10^{-22}}{3}\,\si{J} = 1.841\times 10^{-22}\,\si{J}.
+\]
+Convert to meV:
+\[
+J_1' = \frac{1.841\times 10^{-22}}{1.602\times 10^{-19}}\,\si{eV} = \SI{1.15}{meV}.
 \]
 \begin{equation}
 \boxed{\ J_1' \approx \SI{1.84e-22}{J} \approx \SI{1.15}{meV},\quad J_1'/\kB \approx \SI{13.3}{K}.\ }

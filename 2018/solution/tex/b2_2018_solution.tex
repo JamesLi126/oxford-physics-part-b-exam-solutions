@@ -26,15 +26,17 @@
 
 \textbf{Problem.} Conditions for spacelike/timelike intervals between events $D=(ct_d,\bm x_d)$, $G=(ct_g,\bm x_g)$. Null separation? Conditions $Y^\mu X_\mu=0$. Which pairs of $A,K,J$ are orthogonal?
 
-Interval 4-vector:
-\[ \Delta X^\mu = D^\mu - G^\mu = (c\Delta t,\Delta\bm x), \qquad \Delta t = t_d-t_g,\ \Delta\bm x=\bm x_d-\bm x_g. \]
-Minkowski-square (signature $(+,-,-,-)$):
+Define the interval 4-vector:
+\[ \Delta X^\mu = D^\mu - G^\mu = (c\Delta t,\Delta\bm x). \]
+Identify the components:
+\[ \Delta t = t_d-t_g,\qquad \Delta\bm x=\bm x_d-\bm x_g. \]
+Form the Minkowski-square in signature $(+,-,-,-)$:
 \[ \Delta X^\mu \Delta X_\mu = c^2\Delta t^2 - |\Delta\bm x|^2. \]
-Timelike (causally connected by sub-light signal):
+State the timelike condition (causally connected by sub-light signal):
 \[ \boxed{\;c^2\Delta t^2 - |\Delta\bm x|^2 > 0\;} \]
-Spacelike (no causal signal):
+State the spacelike condition (no causal signal possible):
 \[ \boxed{\;c^2\Delta t^2 - |\Delta\bm x|^2 < 0\;} \]
-Null (light-like, connected by photon):
+State the null (light-like) condition:
 \[ \boxed{\;c^2\Delta t^2 - |\Delta\bm x|^2 = 0\;} \]
 
 \noindent Yes, two events can be connected by a null vector --- a photon emitted at $G$ and absorbed at $D$ traces such a null worldline.
@@ -64,92 +66,149 @@ A timelike 4-vector cannot be orthogonal to another timelike 4-vector (their inn
 
 \noindent\textbf{Pairs among $A,K,J$.}
 
-4-acceleration vs.\ 4-velocity satisfies $A^\mu U_\mu=0$ identically (differentiate $U^\mu U_\mu=c^2$).
-
-For a charged particle of rest charge density $\rho_0$, $J^\mu = \rho_0 U^\mu \propto U^\mu$. Hence
+Start from the normalization $U^\mu U_\mu=c^2$:
+\[ U^\mu U_\mu = c^2. \]
+Differentiate with respect to $\tau$:
+\[ 2\,A^\mu U_\mu = 0. \]
+Conclude:
+\[ A^\mu U_\mu = 0. \]
+Write $J^\mu$ for a particle of rest charge density $\rho_0$:
+\[ J^\mu = \rho_0 U^\mu. \]
+Contract with $A_\mu$:
 \[ A^\mu J_\mu = \rho_0\, A^\mu U_\mu = 0. \]
 \[ \boxed{\;A\cdot J = 0\ \text{always}.\;} \]
 
-\noindent For $K$ (photon, null) versus $A$ (spacelike): generically $A^\mu K_\mu\neq 0$ unless special alignment. Likewise $K\cdot J\neq 0$ in general (a charge moving relative to the photon will see a nonzero phase rate). So only $A\cdot J=0$ is guaranteed.
+\noindent For $K$ (null) and $A$ (spacelike): no identity forces $A\cdot K=0$; generically $A^\mu K_\mu\neq 0$. Likewise $K\cdot J = \rho_0 K^\mu U_\mu \propto \omega_\text{rest}\neq 0$ in general (the photon frequency seen by the charge). So only $A\cdot J=0$ is guaranteed.
 
 \subsection*{(b) 4-momentum, 4-acceleration, parallel case}
 
 \textbf{Problem.} Define $\bm P$, $\bm A$. Compute $P^\mu P_\mu$. Show $A^\mu A_\mu=\gamma^6 a^2$ when $\bm v\parallel\bm a$.
 
-Definitions:
-\[ P^\mu = m U^\mu = (\gamma mc,\gamma m\bm v),\qquad A^\mu = \dv{U^\mu}{\tau} = \gamma\dv{U^\mu}{t}. \]
-Compute $P^\mu P_\mu$:
+Define 4-momentum:
+\[ P^\mu = m U^\mu = (\gamma mc,\gamma m\bm v). \]
+Define 4-acceleration:
+\[ A^\mu = \dv{U^\mu}{\tau} = \gamma\dv{U^\mu}{t}. \]
+Form the Minkowski-square of $P^\mu$:
+\[ P^\mu P_\mu = (\gamma mc)^2 - (\gamma m\bm v)\cdot(\gamma m\bm v). \]
+Expand:
 \[ P^\mu P_\mu = \gamma^2 m^2 c^2 - \gamma^2 m^2 v^2. \]
 Factor $\gamma^2 m^2$:
 \[ P^\mu P_\mu = \gamma^2 m^2 (c^2-v^2). \]
-Use $\gamma^2(c^2-v^2)=c^2$:
+Pull out $c^2$:
+\[ P^\mu P_\mu = \gamma^2 m^2 c^2(1-v^2/c^2). \]
+Apply $\gamma^2(1-v^2/c^2)=1$:
 \[ \boxed{\;P^\mu P_\mu = m^2 c^2.\;} \]
 
-\noindent\textbf{4-acceleration with $\bm v\parallel\bm a$.} Spatial 4-velocity $\bm u=\gamma\bm v$. Then
-\[ \dv{u^0}{t} = c\,\dot\gamma,\qquad \dv{\bm u}{t} = \dot\gamma\bm v + \gamma\bm a. \]
-Compute $\dot\gamma$ for $\bm v\parallel\bm a$:
-\[ \dot\gamma = \dv{t}\!\bigl[(1-v^2/c^2)^{-1/2}\bigr] = \gamma^3 \frac{\bm v\!\cdot\!\bm a}{c^2} = \gamma^3 \frac{va}{c^2}. \]
-Then
-\[ A^0 = \gamma\dot\gamma c = \gamma^4\frac{va}{c}, \qquad \bm A = \gamma\bigl(\dot\gamma\bm v + \gamma\bm a\bigr) = \gamma^4\frac{v^2 a}{c^2}\hat{\bm a} + \gamma^2 a\hat{\bm a}. \]
-Simplify $|\bm A|$:
-\[ |\bm A| = \gamma^2 a\Bigl(\gamma^2\frac{v^2}{c^2}+1\Bigr) = \gamma^2 a\cdot\gamma^2 = \gamma^4 a. \]
-Used $1+\gamma^2 v^2/c^2 = \gamma^2$. Compute the invariant:
-\[ A^\mu A_\mu = (A^0)^2 - |\bm A|^2 = \gamma^8\frac{v^2 a^2}{c^2} - \gamma^8 a^2. \]
-Factor:
-\[ A^\mu A_\mu = \gamma^8 a^2\Bigl(\frac{v^2}{c^2}-1\Bigr) = -\gamma^8 a^2/\gamma^2. \]
-\[ \boxed{\;A^\mu A_\mu = -\gamma^6 a^2.\;} \]
-The magnitude $|A^\mu A_\mu|=\gamma^6 a^2$ as required (sign reflects $A$ being spacelike).
+\noindent\textbf{4-acceleration with $\bm v\parallel\bm a$.} Write 4-velocity components:
+\[ U^0=\gamma c,\qquad \bm U=\gamma\bm v. \]
+Differentiate the time component with respect to $t$:
+\[ \dv{U^0}{t} = c\,\dot\gamma. \]
+Differentiate the spatial component:
+\[ \dv{\bm U}{t} = \dot\gamma\,\bm v + \gamma\,\bm a. \]
+Differentiate $\gamma=(1-v^2/c^2)^{-1/2}$ via the chain rule:
+\[ \dot\gamma = -\tfrac{1}{2}\bigl(1-v^2/c^2\bigr)^{-3/2}\!\bigl(-2\bm v\!\cdot\!\bm a/c^2\bigr). \]
+Simplify:
+\[ \dot\gamma = \gamma^3 \frac{\bm v\!\cdot\!\bm a}{c^2}. \]
+Apply $\bm v\parallel\bm a\Rightarrow \bm v\!\cdot\!\bm a = va$:
+\[ \dot\gamma = \gamma^3 \frac{va}{c^2}. \]
+Apply $A^\mu = \gamma\,dU^\mu/dt$ to the time component:
+\[ A^0 = \gamma\,\dot\gamma\, c. \]
+Substitute $\dot\gamma$:
+\[ A^0 = \gamma^4\frac{va}{c}. \]
+Apply $A^\mu = \gamma\,dU^\mu/dt$ to the spatial component:
+\[ \bm A = \gamma\bigl(\dot\gamma\bm v + \gamma\bm a\bigr). \]
+Substitute $\dot\gamma$ and $\bm v = v\hat{\bm a}$:
+\[ \bm A = \gamma^4\frac{v^2 a}{c^2}\hat{\bm a} + \gamma^2 a\hat{\bm a}. \]
+Factor $\gamma^2 a\,\hat{\bm a}$:
+\[ \bm A = \gamma^2 a\Bigl(\gamma^2\frac{v^2}{c^2}+1\Bigr)\hat{\bm a}. \]
+Apply $1+\gamma^2 v^2/c^2 = \gamma^2$:
+\[ \bm A = \gamma^4 a\,\hat{\bm a}. \]
+Take the magnitude:
+\[ |\bm A|=\gamma^4 a. \]
+Form the Minkowski-square:
+\[ A^\mu A_\mu = (A^0)^2 - |\bm A|^2. \]
+Substitute:
+\[ A^\mu A_\mu = \gamma^8\frac{v^2 a^2}{c^2} - \gamma^8 a^2. \]
+Factor $\gamma^8 a^2$:
+\[ A^\mu A_\mu = \gamma^8 a^2\Bigl(\frac{v^2}{c^2}-1\Bigr). \]
+Apply $v^2/c^2 - 1 = -1/\gamma^2$:
+\[ A^\mu A_\mu = -\gamma^8 a^2/\gamma^2. \]
+Simplify:
+\[ A^\mu A_\mu = -\gamma^6 a^2. \]
+In signature $(+,-,-,-)$ the spacelike 4-acceleration has negative invariant; the question's $\gamma^6 a^2$ is the magnitude (equivalent to $(-,+,+,+)$ convention):
+\[ \boxed{\;|A^\mu A_\mu| = \gamma^6 a^2.\;} \]
 
 \subsection*{(c) Inverse-square central force: energy conservation}
 
-\textbf{Problem.} For $\bm f = \alpha\bm r/r^3$, derive $\gamma mc^2 - \alpha/r = \text{const}$.
+\textbf{Problem.} For $\bm f = -\alpha\bm r/r^3$ (attractive, $\alpha>0$), derive $\gamma mc^2 - \alpha/r = \text{const}$.
 
-Relativistic 2nd law (rest mass preserved):
+Start with the relativistic 2nd law (rest mass preserved):
 \[ \dv{t}(\gamma m\bm v) = \bm f. \]
-Energy equation:
+Dot with $\bm v$:
+\[ \bm v\!\cdot\!\dv{t}(\gamma m\bm v) = \bm f\!\cdot\!\bm v. \]
+Recognise the relativistic energy equation:
 \[ \dv{t}(\gamma mc^2) = \bm f\!\cdot\!\bm v. \]
-Insert force:
-\[ \bm f\!\cdot\!\bm v = \frac{\alpha}{r^3}\bm r\!\cdot\!\bm v. \]
-Identify $\bm r\!\cdot\!\bm v = r\dot r$:
-\[ \bm f\!\cdot\!\bm v = \frac{\alpha\dot r}{r^2}. \]
-Rewrite as total derivative:
-\[ \frac{\alpha\dot r}{r^2} = -\dv{t}\!\Bigl(\frac{\alpha}{r}\Bigr). \]
+Insert the attractive inverse-square force $\bm f = -\alpha\bm r/r^3$:
+\[ \bm f\!\cdot\!\bm v = -\frac{\alpha}{r^3}\,\bm r\!\cdot\!\bm v. \]
+Use $\bm r\!\cdot\!\bm v = r\dot r$:
+\[ \bm f\!\cdot\!\bm v = -\frac{\alpha\dot r}{r^2}. \]
+Use $\dv{}{t}(1/r) = -\dot r/r^2$:
+\[ -\frac{\alpha\dot r}{r^2} = \alpha\dv{t}\!\Bigl(\frac{1}{r}\Bigr) = \dv{t}\!\Bigl(\frac{\alpha}{r}\Bigr). \]
 Combine:
-\[ \dv{t}\!\Bigl(\gamma mc^2 + \frac{\alpha}{r}\Bigr) = 0. \]
-Hence (for attractive force $\alpha<0$, or the sign convention with potential $-\alpha/r$):
+\[ \dv{t}(\gamma mc^2) = \dv{t}\!\Bigl(\frac{\alpha}{r}\Bigr). \]
+Collect into a single time derivative:
+\[ \dv{t}\!\Bigl(\gamma mc^2 - \frac{\alpha}{r}\Bigr) = 0. \]
 \[ \boxed{\;\gamma mc^2 - \frac{\alpha}{r} = \text{const}.\;} \]
-\textit{Example.} Coulomb attraction between an electron and a proton: $\alpha = -e^2/(4\pi\epsilon_0)$ (or gravitational $\alpha=-GMm$ in the weak-field Newtonian limit).
+\textit{Example.} Electron-proton Coulomb attraction with $\alpha = e^2/(4\pi\epsilon_0)$, or Newtonian gravity with $\alpha = GMm$.
 
 \subsection*{(d) Electron accelerated across a 5 m gap, $E=\SI{10}{MV/m}$}
 
 \textbf{Problem.} Find $\gamma$ at exit, time of flight, sketch $\gamma(t),\beta(t)$, $\Delta\beta$ if field reduced 20\%, and proton case.
 
-Energy gain (work-energy theorem):
+Apply the work-energy theorem:
 \[ \gamma mc^2 = mc^2 + eEL. \]
 Solve for $\gamma$:
 \[ \gamma = 1 + \frac{eEL}{mc^2}. \]
-Insert numbers ($mc^2=\SI{0.511}{MeV}$, $eEL = \SI{10}{MeV/m}\times\SI{5}{m}=\SI{50}{MeV}$):
-\[ \gamma = 1 + \frac{50}{0.511} = 1 + 97.85. \]
+Compute $eEL$ with $E=\SI{10}{MV/m}$, $L=\SI{5}{m}$:
+\[ eEL = \SI{10}{MeV/m}\times\SI{5}{m}=\SI{50}{MeV}. \]
+Insert $mc^2=\SI{0.511}{MeV}$:
+\[ \gamma = 1 + \frac{50}{0.511}. \]
+Evaluate the ratio:
+\[ \gamma = 1 + 97.85. \]
 \[ \boxed{\;\gamma\approx 98.85\;} \]
 
-\noindent\textbf{Time of flight.} Equation of motion (constant force, 1-D):
+\noindent\textbf{Time of flight.} Write the 1-D equation of motion (constant force):
 \[ \dv{t}(\gamma m v) = eE. \]
 Integrate from rest:
 \[ \gamma m v = eEt. \]
-Square and use $\gamma^2 v^2 = c^2(\gamma^2-1)$:
+Square and apply $\gamma^2 v^2 = c^2(\gamma^2-1)$:
 \[ m^2 c^2(\gamma^2-1) = (eEt)^2. \]
 Solve for $\gamma(t)$:
 \[ \gamma(t) = \sqrt{1+\Bigl(\frac{eEt}{mc}\Bigr)^2}. \]
-Position from $\dv*{x}{t}=v=c\sqrt{1-1/\gamma^2}$:
+Integrate $\dv*{x}{t}=v=c\sqrt{1-1/\gamma^2}$:
 \[ x(t) = \frac{mc^2}{eE}\Bigl[\sqrt{1+(eEt/mc)^2}-1\Bigr]. \]
-Set $x=L$ and solve:
+Set $x=L$:
 \[ \sqrt{1+(eEt/mc)^2} = 1 + \frac{eEL}{mc^2} = \gamma. \]
 Square:
 \[ \Bigl(\frac{eEt}{mc}\Bigr)^2 = \gamma^2-1. \]
-Solve $t$:
+Solve for $t$:
 \[ t = \frac{mc}{eE}\sqrt{\gamma^2-1}. \]
-Numerical: $\sqrt{\gamma^2-1}=\sqrt{98.85^2-1}\approx 98.84$, $mc^2/(eE)=\SI{0.511}{MeV}/\SI{10}{MV/m}=\SI{0.0511}{m}$, so $mc/(eE)=\SI{0.0511}{m}/c$:
-\[ t = \frac{\SI{0.0511}{m}}{c}\times 98.84 = \frac{\SI{5.05}{m}}{c}. \]
+Compute $\sqrt{\gamma^2-1}$:
+\[ \sqrt{\gamma^2-1} = \sqrt{98.85^2-1}. \]
+Evaluate:
+\[ \sqrt{\gamma^2-1} = \sqrt{9770.32} \approx 98.84. \]
+Compute $mc^2/(eE)$:
+\[ \frac{mc^2}{eE} = \frac{\SI{0.511}{MeV}}{\SI{10}{MV/m}}. \]
+Reduce the units:
+\[ \frac{mc^2}{eE} = \SI{0.0511}{m}. \]
+Divide by $c$:
+\[ \frac{mc}{eE} = \frac{\SI{0.0511}{m}}{c}. \]
+Substitute into $t = (mc/eE)\sqrt{\gamma^2-1}$:
+\[ t = \frac{\SI{0.0511}{m}}{c}\times 98.84. \]
+Multiply:
+\[ t = \frac{\SI{5.05}{m}}{c}. \]
+Insert $c=\SI{2.998e8}{m/s}$:
+\[ t = \frac{5.05}{2.998\times 10^8}\,\text{s}. \]
 \[ \boxed{\;t \approx \SI{1.69e-8}{s}\approx \SI{16.9}{ns}.\;} \]
 
 \begin{center}
@@ -174,14 +233,40 @@ Numerical: $\sqrt{\gamma^2-1}=\sqrt{98.85^2-1}\approx 98.84$, $mc^2/(eE)=\SI{0.5
 \end{tikzpicture}
 \end{center}
 
-\noindent\textbf{Field reduced by 20\% ($E\to 0.8E$).} New $\gamma' = 1+0.8\times 97.85 = 79.28$. Both $\beta$ and $\beta'$ are very close to $1$:
-\[ 1-\beta = \frac{1}{2\gamma^2} = \frac{1}{2\times 98.85^2} = \SI{5.12e-5}{},\quad 1-\beta' = \frac{1}{2\times 79.28^2} = \SI{7.96e-5}{}. \]
-\[ \boxed{\;\Delta\beta \approx -\SI{2.8e-5}{} \;\text{(decrease)}.\;} \]
+\noindent\textbf{Field reduced by 20\% ($E\to 0.8E$).} Recompute $\gamma'$:
+\[ \gamma' = 1 + \frac{e(0.8E)L}{m_ec^2}. \]
+Substitute $eEL/(m_ec^2) = 97.85$:
+\[ \gamma' = 1 + 0.8\times 97.85 = 1 + 78.28. \]
+Evaluate:
+\[ \gamma' = 79.28. \]
+Both $\beta,\beta'$ are very close to $1$; expand $\beta = \sqrt{1-1/\gamma^2}\simeq 1 - 1/(2\gamma^2)$:
+\[ 1-\beta \simeq \frac{1}{2\gamma^2}. \]
+Substitute $\gamma=98.85$:
+\[ 1-\beta = \frac{1}{2\times 98.85^2} = \frac{1}{19543}. \]
+Evaluate:
+\[ 1-\beta \approx \SI{5.12e-5}{}. \]
+Substitute $\gamma'=79.28$:
+\[ 1-\beta' = \frac{1}{2\times 79.28^2} = \frac{1}{12571}. \]
+Evaluate:
+\[ 1-\beta' \approx \SI{7.96e-5}{}. \]
+Form the difference using $\beta'-\beta = (1-\beta) - (1-\beta')$:
+\[ \Delta\beta = \SI{5.12e-5}{}-\SI{7.96e-5}{}. \]
+\[ \boxed{\;\Delta\beta \approx -\SI{2.8e-5}{}\ \text{(decrease)}.\;} \]
 
-\noindent\textbf{Proton instead.} $m_p c^2 = \SI{938.3}{MeV}\gg \SI{50}{MeV}$, so non-relativistic:
-\[ \gamma_p = 1 + \frac{50}{938.3} = 1.053. \]
-\[ \beta_p = \sqrt{1-1/\gamma_p^2} = 0.314. \]
+\noindent\textbf{Proton instead.} With $m_p c^2 = \SI{938.3}{MeV}\gg \SI{50}{MeV}$, motion is mildly relativistic. Compute $\gamma_p$:
+\[ \gamma_p = 1 + \frac{eEL}{m_p c^2} = 1 + \frac{50}{938.3}. \]
+Evaluate the ratio:
+\[ \gamma_p = 1 + 0.0533 = 1.0533. \]
+Compute $\gamma_p^2$:
+\[ \gamma_p^2 = 1.0533^2 = 1.1094. \]
+Form $1/\gamma_p^2$:
+\[ 1/\gamma_p^2 = 1/1.1094 = 0.9014. \]
+Apply $\beta_p = \sqrt{1-1/\gamma_p^2}$:
+\[ \beta_p = \sqrt{1-0.9014} = \sqrt{0.0986}. \]
+Evaluate:
+\[ \beta_p = 0.314. \]
 \[ \boxed{\;\gamma_p\approx 1.05,\ \beta_p\approx 0.31.\;} \]
+Hence the proton is far less relativistic ($\gamma_p\ll\gamma_e$, $\beta_p\ll 1$).
 
 % =====================================================================
 \section*{Question 2 --- Photons, decays, fields, mirror reflection}
@@ -190,16 +275,20 @@ Numerical: $\sqrt{\gamma^2-1}=\sqrt{98.85^2-1}\approx 98.84$, $mc^2/(eE)=\SI{0.5
 
 \textbf{Problem.} Components of $\bm K$, dispersion, $v_\text{ph}$ and $v_g$, show $\phi$ is Lorentz-invariant; is $v_\text{ph}$ invariant?
 
-4-wavevector:
-\[ K^\mu = (\omega/c,\bm k),\qquad \omega = c|\bm k|. \]
-Null condition (vacuum):
+Write the 4-wavevector:
+\[ K^\mu = (\omega/c,\bm k). \]
+Apply vacuum dispersion:
+\[ \omega = c|\bm k|. \]
+Form the null condition:
 \[ K^\mu K_\mu = \omega^2/c^2 - |\bm k|^2 = 0. \]
-Phase velocity (along $\hat{\bm k}$):
+Define the phase velocity along $\hat{\bm k}$:
 \[ v_\text{ph} = \omega/|\bm k| = c. \]
-Group velocity:
+Define the group velocity:
 \[ \bm v_g = \nabla_{\bm k}\omega = c\hat{\bm k},\qquad |\bm v_g|=c. \]
-Phase of plane wave:
-\[ \phi(\bm r,t) = \bm k\!\cdot\!\bm r - \omega t = -K^\mu X_\mu. \]
+Write the phase of a plane wave:
+\[ \phi(\bm r,t) = \bm k\!\cdot\!\bm r - \omega t. \]
+Identify the 4-vector contraction:
+\[ \phi = -K^\mu X_\mu. \]
 A contraction of two 4-vectors is a Lorentz scalar:
 \[ \boxed{\;\phi = -K^\mu X_\mu \text{ is Lorentz-invariant.}\;} \]
 
@@ -210,87 +299,124 @@ A contraction of two 4-vectors is a Lorentz scalar:
 
 \textbf{Problem.} Can $\gamma\to m+\gamma'$? Photon-photon $\to e^+e^-$: minimum number, threshold energy.
 
-\textbf{Decay $\gamma\to m+\gamma'$.} 4-momentum conservation:
-\[ K_1^\mu = P_m^\mu + K_2^\mu. \]
-Square (use $K_1^\mu K_{1\mu}=K_2^\mu K_{2\mu}=0$, $P_m^\mu P_{m\mu}=m^2c^2$):
-\[ 0 = m^2 c^2 + 2 P_m^\mu K_{2\mu}. \]
-Solve:
-\[ P_m^\mu K_{2\mu} = -\tfrac{1}{2}m^2 c^2. \]
-In rest frame of $m$: $P_m=(mc,\bm 0)$, $K_2=(\omega_2/c,\bm k_2)$, so $P\!\cdot\!K_2 = m\omega_2 \geq 0$, contradicting the negative requirement (with metric $(+,-,-,-)$ and a real positive $\omega_2$). Equivalently, work in the $m$ rest frame: 3-momentum requires $\bm k_1=\bm k_2$, but then $\omega_1=\omega_2$ and energy conservation gives $mc^2=0$.
+\textbf{Decay $\gamma\to m+\gamma'$.} Write 4-momentum conservation using $\hbar K$ for photon 4-momenta:
+\[ \hbar K_1^\mu = P_m^\mu + \hbar K_2^\mu. \]
+Isolate $P_m^\mu$:
+\[ P_m^\mu = \hbar K_1^\mu - \hbar K_2^\mu. \]
+Square both sides:
+\[ P_m^\mu P_{m\mu} = \hbar^2 K_1^\mu K_{1\mu} - 2\hbar^2 K_1^\mu K_{2\mu} + \hbar^2 K_2^\mu K_{2\mu}. \]
+Apply $K_1^\mu K_{1\mu} = K_2^\mu K_{2\mu} = 0$ and $P_m^\mu P_{m\mu} = m^2c^2$:
+\[ m^2c^2 = -2\hbar^2 K_1^\mu K_{2\mu}. \]
+Evaluate $K_1\cdot K_2$ with $\theta_{12}$ the angle between the photons:
+\[ K_1^\mu K_{2\mu} = \omega_1\omega_2/c^2 - \bm k_1\!\cdot\!\bm k_2. \]
+Substitute $\bm k_1\!\cdot\!\bm k_2 = (\omega_1\omega_2/c^2)\cos\theta_{12}$:
+\[ K_1^\mu K_{2\mu} = (\omega_1\omega_2/c^2)(1-\cos\theta_{12}). \]
+Insert into the squared equation:
+\[ m^2c^2 = -2\hbar^2(\omega_1\omega_2/c^2)(1-\cos\theta_{12}). \]
+Observe: LHS $\ge 0$, RHS $\le 0$ since $1-\cos\theta_{12}\ge 0$ and $\omega_i>0$. Equality requires $m=0$ and $\theta_{12}=0$ (trivial).
 \[ \boxed{\;\text{Forbidden: a single photon cannot decay into }m+\gamma.\;} \]
 
-\noindent\textbf{Photon-photon $\to e^+e^-$.} A single photon has $K^\mu K_\mu=0$ and cannot create a massive system ($P^2=(2m_e c)^2>0$) by itself. Two photons suffice if they are not collinear:
-\[ (K_1+K_2)^\mu (K_1+K_2)_\mu = 2 K_1^\mu K_{2\mu} \geq (2m_e c)^2. \]
+\noindent\textbf{Photon-photon $\to e^+e^-$.} A single photon has $K^\mu K_\mu=0$ and cannot create a massive system ($P_{\text{pair}}^2=(2m_e c)^2>0$) by itself. Two photons suffice if they are not collinear:
+\[ \hbar^2(K_1+K_2)^\mu (K_1+K_2)_\mu = (2m_e c)^2. \]
 \[ \boxed{\;\text{Minimum: }2\text{ photons.}\;} \]
 
-\noindent\textbf{Threshold.} Equal frequencies, head-on $\bm k_1=-\bm k_2$, $|\bm k_1|=|\bm k_2|=\omega/c$:
-\[ K_1^\mu K_{2\mu} = \omega^2/c^2 - \bm k_1\!\cdot\!\bm k_2 = \omega^2/c^2 + \omega^2/c^2 = 2\omega^2/c^2. \]
+\noindent\textbf{Threshold.} Equal frequencies, head-on collision: $\bm k_2 = -\bm k_1$ with $|\bm k_1|=|\bm k_2|=\omega/c$. Compute $K_1\!\cdot\!K_2$:
+\[ K_1^\mu K_{2\mu} = \omega^2/c^2 - \bm k_1\!\cdot\!\bm k_2. \]
+Insert $\bm k_1\!\cdot\!\bm k_2 = -\omega^2/c^2$:
+\[ K_1^\mu K_{2\mu} = \omega^2/c^2 + \omega^2/c^2 = 2\omega^2/c^2. \]
+Expand $(K_1+K_2)^2$:
+\[ (K_1+K_2)^\mu (K_1+K_2)_\mu = 2 K_1^\mu K_{2\mu} = 4\omega^2/c^2. \]
 Threshold ($e^+e^-$ produced at rest in CM):
-\[ 2\cdot 2\omega^2/c^2 = (2m_e c)^2. \]
-Solve:
-\[ \omega = m_e c^2/\hbar. \]
-Photon energy:
-\[ E_\gamma = \hbar\omega = m_e c^2 = \SI{0.511}{MeV}. \]
+\[ \hbar^2\cdot 4\omega^2/c^2 = (2m_e c)^2. \]
+Solve for $\omega$:
+\[ \hbar\omega = m_e c^2. \]
+Photon energy at threshold:
+\[ E_\gamma = \hbar\omega = m_e c^2. \]
 \[ \boxed{\;E_\gamma^\text{min} = m_e c^2 \approx \SI{0.511}{MeV}\text{ per photon.}\;} \]
 
 \subsection*{(c) Conserved 4-momentum components in $\bm E$ or $\bm B$ field}
 
 \textbf{Problem.} Electron with $\bm v_0=(v_0,0,0)$. Which $P^\mu$ are conserved for (i) $\bm E=(E_x,0,0)$, (ii) $\bm B=(0,B_y,0)$.
 
-Lorentz force:
-\[ \dv{\bm p}{t} = e(\bm E + \bm v\times\bm B),\qquad \dv{E}{t} = e\bm E\!\cdot\!\bm v. \]
+Lorentz force on electron (charge $q=-e$):
+\[ \dv{\bm p}{t} = -e(\bm E + \bm v\times\bm B). \]
+Energy rate:
+\[ \dv{E_\text{tot}}{t} = -e\bm E\!\cdot\!\bm v. \]
 
-\textbf{(i) $\bm E=(E_x,0,0)$, no $\bm B$.} The force is $eE_x\hat{\bm x}$:
-\[ \dv{p_y}{t}=0,\qquad \dv{p_z}{t}=0. \]
-Energy is \emph{not} conserved ($\bm E\!\cdot\!\bm v = E_x v_x \neq 0$). So
+\textbf{(i) $\bm E=(E_x,0,0)$, no $\bm B$.} Spatial force components:
+\[ \dv{p_x}{t} = -eE_x,\qquad \dv{p_y}{t}=0,\qquad \dv{p_z}{t}=0. \]
+Energy rate evaluated:
+\[ \dv{E_\text{tot}}{t} = -eE_xv_x\neq 0. \]
+Identify the conserved components:
 \[ \boxed{\;P^y,\, P^z\text{ conserved}; P^0,\,P^x\text{ not.}\;} \]
 Initial conditions give $p_y=p_z=0$ throughout.
 
 \textbf{(ii) $\bm B=(0,B_y,0)$, no $\bm E$.} Magnetic force does no work:
-\[ \dv{E}{t}=0\ \Rightarrow\ P^0\text{ conserved.} \]
-$\bm v\times\bm B$ has no $y$-component when $\bm v$ has no $y$-component (initially $\bm v=(v_0,0,0)$). Check that $v_y$ remains zero: starting $\bm v=(v_x,0,v_z)$ stays in the $xz$-plane:
-\[ \bm v\times\bm B = (v_x,0,v_z)\times(0,B_y,0) = (-v_z B_y,0,v_x B_y). \]
-No $y$-component generated, so $p_y$ stays zero --- conserved.
+\[ \dv{E_\text{tot}}{t}=0\ \Rightarrow\ P^0\text{ conserved.} \]
+Check the spatial force has no $y$-component. Compute $\bm v\times\bm B$ for general $\bm v=(v_x,v_y,v_z)$:
+\[ \bm v\times\bm B = (v_x,v_y,v_z)\times(0,B_y,0) = (-v_z B_y,\,0,\,v_x B_y). \]
+The $y$-component vanishes identically, so:
+\[ \dv{p_y}{t} = 0. \]
+With $p_y(0)=0$, $p_y$ remains zero. $P^x$ and $P^z$ rotate into each other (circular motion in $xz$-plane):
 \[ \boxed{\;P^0\text{ and }P^y\text{ conserved}; P^x,P^z\text{ rotate (circular motion).}\;} \]
 
 \subsection*{(d) Reflection from a relativistic mirror}
 
 \textbf{Problem.} Mirror moves at $\beta_x=0.99$ along $\hat{\bm x}$. Lab photon $\lambda_1=\SI{1}{\mu m}$. In mirror frame $\bm k'=(-k'_x,k'_y,0)$ with $|k'_x|=|k'_y|$. Find lab reflection angle and reflected $\lambda_2$.
 
-\noindent\textbf{Step 1: Lorentz factor.} $\gamma = 1/\sqrt{1-0.99^2}=7.0888$.
+\noindent\textbf{Step 1: Lorentz factor.} Compute $1-\beta^2$:
+\[ 1-\beta^2 = 1-0.99^2 = 1-0.9801 = 0.0199. \]
+Take inverse square root:
+\[ \gamma = 1/\sqrt{0.0199} = 7.0888. \]
 
-\noindent\textbf{Step 2: Lab incident $\bm K_1$.} In mirror frame, $|k'_x|=|k'_y|$ with $k'_x<0$; the photon moves in $-\hat{\bm x}$ direction (against mirror velocity), as stated:
-\[ K_1'^\mu = (\omega'/c)\,(1,-1/\sqrt{2},1/\sqrt{2},0),\qquad \omega' = c\sqrt{k'^2_x+k'^2_y}=c|k'_x|\sqrt{2}. \]
-Boost to lab (frame $S$ moves with mirror velocity $+v\hat{\bm x}$ relative to $S$, so $S'$ at velocity $+v$ relative to $S$; the inverse boost from $S'\to S$ uses $-v$, i.e.\ $K^\mu = \Lambda^\mu_{\ \nu}(+v) K'^\nu$):
-\[ \omega_1/c = \gamma(\omega'/c + \beta\, k'_x) = \gamma(\omega'/c)(1-\beta/\sqrt{2}). \]
-\[ k_{1x} = \gamma(k'_x + \beta\omega'/c) = \gamma(\omega'/c)(\beta - 1/\sqrt{2}). \]
-\[ k_{1y} = k'_y = (\omega'/c)/\sqrt{2}. \]
-Numerical with $\beta=0.99$, $\gamma=7.0888$, $1/\sqrt 2=0.7071$:
-\[ \omega_1/c = 7.0888\,(\omega'/c)(1-0.7000) = 2.127\,\omega'/c. \]
-But we want to use the given $\lambda_1=\SI{1}{\mu m}$, so this fixes $\omega'$:
+\noindent\textbf{Step 2: Lab incident $\bm K_1$.} In mirror frame, $|k'_x|=|k'_y|$ with $k'_x<0$ (photon moves in $-\hat{\bm x}$ direction in the mirror frame). Write the 4-wavevector:
+\[ K_1'^\mu = (\omega'/c)\,(1,-1/\sqrt{2},1/\sqrt{2},0),\qquad \omega' = c|k'_x|\sqrt{2}. \]
+Boost from $S'\to S$ uses relative velocity $+v$ (the mirror frame moves at $+v\hat{\bm x}$ relative to lab):
+\[ \omega_1/c = \gamma(\omega'/c + \beta k'_{1x}). \]
+Substitute $k'_{1x}=-(\omega'/c)/\sqrt 2$:
+\[ \omega_1/c = \gamma(\omega'/c)(1-\beta/\sqrt{2}). \]
+Boost $k_x$ component similarly:
+\[ k_{1x} = \gamma(k'_{1x} + \beta\omega'/c) = \gamma(\omega'/c)(\beta - 1/\sqrt{2}). \]
+Transverse components unchanged:
+\[ k_{1y} = k'_{1y} = (\omega'/c)/\sqrt{2}. \]
+Compute $\beta/\sqrt 2$ with $\beta=0.99$:
+\[ \beta/\sqrt 2 = 0.99/1.4142 = 0.7000. \]
+Insert into $\omega_1/c$:
+\[ \omega_1/c = 7.0888\,(\omega'/c)(1-0.7000). \]
+Multiply through:
+\[ \omega_1/c = 7.0888\times 0.3000\,(\omega'/c) = 2.127\,\omega'/c. \]
+Invert to express $\omega'$ in terms of given $\omega_1$:
 \[ \omega' = \omega_1/2.127. \]
 
 \noindent\textbf{Step 3: Reflection in mirror frame.} A perfect mirror flips the normal component of $\bm k'$:
 \[ K_2'^\mu = (\omega'/c)\,(1,+1/\sqrt 2,1/\sqrt 2,0). \]
 Reflection angle in mirror frame is $45^\circ$ from normal.
 
-\noindent\textbf{Step 4: Boost reflected photon back to lab.}
-\[ \omega_2/c = \gamma(\omega'/c + \beta k'_{2x}) = \gamma(\omega'/c)(1+\beta/\sqrt 2). \]
+\noindent\textbf{Step 4: Boost reflected photon back to lab.} Apply $S'\to S$ Lorentz transform:
+\[ \omega_2/c = \gamma(\omega'/c + \beta k'_{2x}). \]
+Substitute $k'_{2x}=+(\omega'/c)/\sqrt 2$:
+\[ \omega_2/c = \gamma(\omega'/c)(1+\beta/\sqrt 2). \]
+Boost the spatial component:
 \[ k_{2x} = \gamma(k'_{2x} + \beta\omega'/c) = \gamma(\omega'/c)(1/\sqrt 2 + \beta). \]
+Transverse component unchanged:
 \[ k_{2y} = k'_{2y} = (\omega'/c)/\sqrt 2. \]
-Numerics:
-\[ \omega_2/c = 7.0888\,(\omega'/c)(1+0.7071) = 12.107\,\omega'/c. \]
-Frequency ratio:
-\[ \omega_2/\omega_1 = 12.107/2.127 = 5.692. \]
-Wavelength of reflected photon:
-\[ \lambda_2 = \lambda_1\,\omega_1/\omega_2 = \SI{1}{\mu m}/5.692. \]
-\[ \boxed{\;\lambda_2 \approx \SI{0.176}{\mu m} \approx \SI{176}{nm}.\;} \]
+Insert $\beta/\sqrt 2 = 0.7000$ into $\omega_2/c$:
+\[ \omega_2/c = 7.0888\,(\omega'/c)(1+0.7000). \]
+Multiply through:
+\[ \omega_2/c = 7.0888\times 1.7000\,(\omega'/c) = 12.051\,\omega'/c. \]
+Form the frequency ratio:
+\[ \omega_2/\omega_1 = 12.051/2.127 = 5.666. \]
+Use $\lambda \propto 1/\omega$:
+\[ \lambda_2 = \lambda_1\,\omega_1/\omega_2 = \SI{1}{\mu m}/5.666. \]
+\[ \boxed{\;\lambda_2 \approx \SI{0.177}{\mu m} \approx \SI{177}{nm}.\;} \]
 
 \noindent\textbf{Reflection angle in lab.} Measure from $+\hat{\bm x}$ (mirror normal direction):
-\[ \tan\theta_2 = k_{2y}/k_{2x} = \frac{1/\sqrt 2}{\gamma(1/\sqrt 2+\beta)} = \frac{0.7071}{7.0888\times 1.6971}. \]
+\[ \tan\theta_2 = k_{2y}/k_{2x} = \frac{(\omega'/c)/\sqrt 2}{\gamma(\omega'/c)(1/\sqrt 2+\beta)}. \]
+Cancel $\omega'/c$:
+\[ \tan\theta_2 = \frac{1/\sqrt 2}{\gamma(1/\sqrt 2+\beta)} = \frac{0.7071}{7.0888\times 1.6971}. \]
 Compute denominator:
 \[ 7.0888\times 1.6971 = 12.030. \]
-So
+Evaluate:
 \[ \tan\theta_2 = 0.7071/12.030 = 0.05878. \]
 \[ \boxed{\;\theta_2 = \arctan(0.0588) \approx 3.36^\circ\;} \]
 The reflected photon emerges almost along $+\hat{\bm x}$ (relativistic beaming towards mirror motion direction).
@@ -302,110 +428,164 @@ The reflected photon emerges almost along $+\hat{\bm x}$ (relativistic beaming t
 
 \textbf{Problem.} Bounds on forces/accelerations? On phase velocity? Derive Compton shift.
 
-\textbf{No upper bound on force or acceleration.} Special relativity bounds the \emph{velocity} of a massive particle ($v<c$), but $\bm a = \de\bm v/\de t$ can be arbitrarily large in transient regimes; only the integrated speed-gain is constrained. For force, $\bm f = \de\bm p/\de t$ is similarly unbounded.
+\textbf{No upper bound on force or acceleration.} Special relativity bounds the \emph{velocity} of a massive particle ($v<c$); $\bm a = \de\bm v/\de t$ can be arbitrarily large transiently (only the integrated speed-gain is constrained). Similarly $\bm f = \de\bm p/\de t$ is unbounded since $|\bm p|=\gamma m|\bm v|\to\infty$ as $v\to c$.
 
-\noindent\textbf{Phase velocity is unbounded.} $v_\text{ph}=\omega/|\bm k|$ in a medium can exceed $c$ (e.g.\ X-rays in matter, plasma above $\omega_p$). The bound is on the group velocity / signal propagation, not phase.
+\noindent\textbf{Phase velocity is unbounded.} In vacuum $v_\text{ph}=c$ exactly. In a medium $v_\text{ph}=\omega/|\bm k|$ can exceed $c$ (e.g.\ X-rays in matter, plasmas above $\omega_p$). Special relativity bounds only the group velocity / signal speed, not the phase velocity.
 
-\noindent\textbf{Compton shift.} Initial: photon $K=(\omega/c)(1,\hat{\bm n})$, electron at rest $P_e=(m_e c,\bm 0)$. After: photon $K'=(\omega'/c)(1,\hat{\bm n}')$, electron $P_e'$. Conservation:
-\[ K + P_e = K' + P_e'. \]
-Rearrange and square:
-\[ (P_e + K - K')^\mu (P_e+K-K')_\mu = P_e'^\mu P_{e\mu}'. \]
-Use $P_e^2 = P_e'^2 = m_e^2 c^2$, $K^2=K'^2=0$:
-\[ m_e^2 c^2 + 2 P_e\!\cdot\!K - 2 P_e\!\cdot\!K' - 2 K\!\cdot\!K' = m_e^2 c^2. \]
-Cancel $m_e^2 c^2$:
-\[ P_e\!\cdot\!(K-K') = K\!\cdot\!K'. \]
-Evaluate (rest frame $P_e=(m_e c,\bm 0)$):
-\[ P_e\!\cdot\!K = m_e\omega,\quad P_e\!\cdot\!K' = m_e\omega',\quad K\!\cdot\!K' = (\omega\omega'/c^2)(1-\cos\theta). \]
-Substitute:
-\[ m_e(\omega-\omega') = (\omega\omega'/c^2)(1-\cos\theta). \]
+\noindent\textbf{Compton shift.} Write 4-momenta: photon $\hbar K = (\hbar\omega/c)(1,\hat{\bm n})$, electron at rest $P_e=(m_e c,\bm 0)$; after scatter $\hbar K'=(\hbar\omega'/c)(1,\hat{\bm n}')$, electron $P_e'$. 4-momentum conservation:
+\[ \hbar K + P_e = \hbar K' + P_e'. \]
+Isolate $P_e'$:
+\[ P_e' = P_e + \hbar K - \hbar K'. \]
+Square both sides:
+\[ P_e'^\mu P_{e\mu}' = (P_e + \hbar K - \hbar K')^\mu (P_e+\hbar K-\hbar K')_\mu. \]
+Expand:
+\[ P_e'^2 = P_e^2 + \hbar^2 K^2 + \hbar^2 K'^2 + 2\hbar P_e\!\cdot\!K - 2\hbar P_e\!\cdot\!K' - 2\hbar^2 K\!\cdot\!K'. \]
+Apply $P_e^2 = P_e'^2 = m_e^2 c^2$ and $K^2=K'^2=0$:
+\[ m_e^2 c^2 = m_e^2 c^2 + 2\hbar P_e\!\cdot\!K - 2\hbar P_e\!\cdot\!K' - 2\hbar^2 K\!\cdot\!K'. \]
+Cancel $m_e^2 c^2$ and divide by $2\hbar$:
+\[ P_e\!\cdot\!(K-K') = \hbar\, K\!\cdot\!K'. \]
+Evaluate in rest frame $P_e=(m_e c,\bm 0)$:
+\[ P_e\!\cdot\!K = m_e c\cdot \omega/c = m_e\omega. \]
+Similarly:
+\[ P_e\!\cdot\!K' = m_e\omega'. \]
+Compute $K\!\cdot\!K'$ with $\hat{\bm n}\!\cdot\!\hat{\bm n}'=\cos\theta$:
+\[ K\!\cdot\!K' = \omega\omega'/c^2 - (\omega\omega'/c^2)\cos\theta. \]
+Factor:
+\[ K\!\cdot\!K' = (\omega\omega'/c^2)(1-\cos\theta). \]
+Substitute into the conservation identity:
+\[ m_e(\omega-\omega') = \hbar(\omega\omega'/c^2)(1-\cos\theta). \]
 Divide by $m_e\omega\omega'$:
-\[ \frac{1}{\omega'}-\frac{1}{\omega} = \frac{1-\cos\theta}{m_e c^2}. \]
-Convert to wavelength $\lambda = 2\pi c/\omega$:
-\[ \boxed{\;\lambda' - \lambda = \frac{2\pi\hbar}{m_e c}(1-\cos\theta) = \lambda_C(1-\cos\theta)\;} \]
-with Compton wavelength $\lambda_C = h/m_e c \approx \SI{2.43}{pm}$.
+\[ \frac{1}{\omega'}-\frac{1}{\omega} = \frac{\hbar(1-\cos\theta)}{m_e c^2}. \]
+Use $\lambda = 2\pi c/\omega$ so $1/\omega = \lambda/(2\pi c)$:
+\[ \frac{\lambda'-\lambda}{2\pi c} = \frac{\hbar(1-\cos\theta)}{m_e c^2}. \]
+Solve for $\lambda'-\lambda$:
+\[ \lambda'-\lambda = \frac{2\pi\hbar}{m_e c}(1-\cos\theta). \]
+Use $h = 2\pi\hbar$:
+\[ \boxed{\;\lambda' - \lambda = \frac{h}{m_e c}(1-\cos\theta) = \lambda_C(1-\cos\theta)\;} \]
+with $\lambda_C = h/(m_e c) \approx \SI{2.43}{pm}$.
 
 \subsection*{(b) Distance between two photons in $S'$}
 
 \textbf{Problem.} Two photons separated by $x_0$ along $\hat{\bm x}$ in $S$. Find separation in $S'$ moving with $\bm v=(v_x,0,0)$.
 
-The two photons are at events $E_1=(ct_0,x_0,0,0)$ and $E_2=(ct_0,0,0,0)$ at lab time $t_0$. In $S'$ these events do not occur simultaneously; the photons are points propagating along null worldlines, so we need the spatial separation between them in $S'$ measured at a single $S'$-time.
-
-A photon has worldline $x = x_a + ct$ (forward-moving); both photons have parallel null worldlines $x_1 = x_0+ct$, $x_2 = ct$. The separation $x_1 - x_2 = x_0$ is constant in $S$. Apply Lorentz transformation: at fixed $t'$, find $\Delta x'$.
-
-For each photon $K^\mu = (\omega_a/c)(1,1,0,0)$, the photon worldline parametrically transforms; in $S'$ (boost $+v$):
-\[ x'_a = \gamma(x_a - vt),\qquad t'_a = \gamma(t - v x_a/c^2). \]
-Solve $t_a$ at fixed $t'$: $t = (t' + v x_a/c^2)/\gamma$. Substitute:
-\[ x'_a = \gamma\bigl(x_a - v(t'+vx_a/c^2)/\gamma\bigr) = \gamma x_a(1-v^2/c^2) - vt' = x_a/\gamma - vt'. \]
-Difference:
-\[ \Delta x' = (x_{1,a}-x_{2,a})/\gamma\Bigr|_{\text{at fixed }t}. \]
-But this measures separation along the photons' shared null trajectory at constant lab time. The cleaner way: the photons' worldline parameter $x_a$ (lab-frame $x$-intercept) is Lorentz-mapped via the Doppler factor for null separations.
-
-Use the invariant interval. $\Delta X^\mu = (0,x_0,0,0)$ between simultaneous $S$-events:
-\[ \Delta X'^0 = -\gamma\beta x_0,\qquad \Delta X'^1 = \gamma x_0. \]
-The events are not simultaneous in $S'$ ($\Delta t' = -\gamma\beta x_0/c \neq 0$). To get the $S'$-spatial separation between the photons at a single $S'$-time, slide one photon along its null worldline by $\Delta t'$:
-\[ \Delta x'_\text{measured} = \gamma x_0 - c\,\Delta t' = \gamma x_0 - c(-\gamma\beta x_0/c) = \gamma x_0(1+\beta). \]
+Take both photons propagating along $+\hat{\bm x}$. In $S$ at $t=0$ the two emission/observation events are
+\[ E_A=(0,0,0,0),\qquad E_B=(0,x_0,0,0). \]
+Apply the Lorentz boost along $+x$ at velocity $v$:
+\[ x'=\gamma(x-vt),\qquad t'=\gamma(t-vx/c^2). \]
+Transform $E_A$:
+\[ E_A'=(0,0,0,0). \]
+Transform $E_B$ with $t=0$, $x=x_0$:
+\[ x'_B = \gamma x_0. \]
+\[ t'_B = -\gamma v x_0/c^2. \]
+The events are not simultaneous in $S'$. Each photon's null worldline in $S'$ is $x'=a_i + ct'$; solve for $a_B$:
+\[ a_B = x'_B - c t'_B. \]
+Substitute:
+\[ a_B = \gamma x_0 - c(-\gamma v x_0/c^2). \]
+Simplify:
+\[ a_B = \gamma x_0 + \gamma v x_0/c. \]
+Factor $\gamma x_0$:
+\[ a_B = \gamma x_0(1+\beta). \]
+Photon A passes through the origin, so $a_A=0$. The separation at fixed $t'$ is
+\[ \Delta x' = a_B - a_A = \gamma x_0(1+\beta). \]
+Rewrite $\gamma = 1/\sqrt{(1-\beta)(1+\beta)}$:
+\[ \gamma(1+\beta) = \frac{1+\beta}{\sqrt{(1-\beta)(1+\beta)}} = \sqrt{\frac{1+\beta}{1-\beta}}. \]
 \[ \boxed{\;\Delta x' = x_0\,\gamma(1+\beta) = x_0\sqrt{\frac{1+\beta}{1-\beta}}.\;} \]
-This is the relativistic Doppler factor for a separation along the propagation direction --- consistent with photons being "stretched apart" when the observer recedes.
+This is the relativistic Doppler factor for a separation along the propagation direction (photons ``stretched apart'' when $S'$ recedes).
 
 \subsection*{(c) Head-on Compton: $\lambda_2 \approx \lambda_1/(4\gamma^2)$}
 
 \textbf{Problem.} Electron and photon counter-propagate; head-on backscatter. Show $\lambda_2 \approx \lambda_1/(4\gamma^2)$ when $\hbar\omega\ll m_e c^2$. Numerical for $\beta=0.999$, $\lambda_1=\SI{8}{\mu m}$.
 
-\textbf{Method: Doppler shift twice.} In electron rest frame the Compton shift on a low-energy photon is negligible (because $\hbar\omega'\ll m_e c^2$): $\omega'_\text{out}\approx \omega'_\text{in}$.
+\textbf{Method: Doppler shift twice.} In the electron rest frame $\hbar\omega'\ll m_ec^2$ (hint), so the Compton shift is negligible and $\omega'_\text{out}\approx \omega'_\text{in} \equiv \omega'$.
 
-Doppler shift lab $\to$ electron rest frame (head-on collision, photon moves $-\hat{\bm x}$, electron at $+\hat{\bm x}$ velocity):
-\[ \omega' = \gamma(1+\beta)\omega_1. \]
-In rest frame, backscatter: outgoing photon at $+\hat{\bm x}$. Doppler back to lab:
-\[ \omega_2 = \gamma(1+\beta)\omega'. \]
-Combine:
+Apply the relativistic Doppler formula lab $\to$ electron rest frame (head-on collision: photon along $-\hat{\bm x}$, electron along $+\hat{\bm x}$). Electron sees a blueshifted photon:
+\[ \omega' = \gamma(1+\beta)\,\omega_1. \]
+In the rest frame the photon backscatters: outgoing photon along $+\hat{\bm x}$. Apply Doppler rest $\to$ lab (source moves $+\hat{\bm x}$, observer at rest sees approaching source -- blueshift):
+\[ \omega_2 = \gamma(1+\beta)\,\omega'. \]
+Combine the two boosts:
 \[ \omega_2 = \gamma^2(1+\beta)^2\,\omega_1. \]
-Ultra-relativistic: $1+\beta \to 2$, $1-\beta\approx 1/(2\gamma^2)$:
-\[ \omega_2 \approx 4\gamma^2\omega_1. \]
-Wavelength:
+Apply ultra-relativistic limit $\beta\to 1$:
+\[ (1+\beta)^2 \to 4. \]
+Hence:
+\[ \omega_2 \approx 4\gamma^2\,\omega_1. \]
+Use $\lambda \propto 1/\omega$:
 \[ \boxed{\;\lambda_2 \approx \lambda_1/(4\gamma^2).\;} \]
 
-\noindent\textbf{Numerical.} $\beta=0.999$:
-\[ \gamma = 1/\sqrt{1-0.999^2} = 1/\sqrt{0.001999} = 22.366. \]
-\[ 4\gamma^2 = 4\times 500.2 = 2000.8. \]
-\[ \lambda_2 = \SI{8}{\mu m}/2000.8. \]
+\noindent\textbf{Numerical.} Compute $1-\beta^2$ for $\beta=0.999$:
+\[ 1-\beta^2 = 1-0.998001 = 0.001999. \]
+Take inverse square root:
+\[ \gamma = 1/\sqrt{0.001999} = 22.366. \]
+Compute $\gamma^2$:
+\[ \gamma^2 = 500.24. \]
+Multiply by 4:
+\[ 4\gamma^2 = 2000.95. \]
+Form $\lambda_2$:
+\[ \lambda_2 = \SI{8}{\mu m}/2000.95. \]
+Evaluate:
 \[ \boxed{\;\lambda_2 \approx \SI{4.0}{nm}.\;} \]
 
 \subsection*{(d) Plane EM wave: $A^\mu$, $\bm E$, $\bm B$}
 
 \textbf{Problem.} Plane wave $\omega$, $\bm k=(k_x,0,0)$. Write a possible $A^\mu$, find $\bm E,\bm B$.
 
-Lorenz-gauge null 4-potential, transverse polarization along $\hat{\bm y}$:
-\[ A^\mu = (0, 0, A_0\cos(k_x x - \omega t), 0). \]
-Fields:
-\[ \bm E = -\nabla\phi - \partial_t\bm A = -\partial_t\bm A\hat{\bm y} = -A_0\omega\sin(k_x x-\omega t)\hat{\bm y}. \]
-Use $\omega=ck_x$:
-\[ \bm E = -A_0 c k_x \sin(k_x x-\omega t)\hat{\bm y}. \]
-\[ \bm B = \nabla\times\bm A. \]
-Only $A_y$ depends on $x$:
-\[ \bm B = (\partial_x A_y)\hat{\bm z} = -A_0 k_x \sin(k_x x-\omega t)\hat{\bm z}. \]
-\[ \boxed{\;\bm E = -A_0 c k_x \sin(k_x x-\omega t)\hat{\bm y},\quad \bm B = -A_0 k_x \sin(k_x x-\omega t)\hat{\bm z}\;} \]
-$|\bm E|=c|\bm B|$, and $\bm E\times\bm B$ along $+\hat{\bm x}$ as required.
+Choose a Lorenz-gauge null 4-potential with $\hat{\bm y}$ polarization:
+\[ A^\mu = (0,\, 0,\, A_0\cos(k_x x - \omega t),\, 0). \]
+Apply $\bm E = -\nabla\phi - \partial_t\bm A$ with $\phi=0$:
+\[ \bm E = -\partial_t\bm A. \]
+Differentiate $A_y$ in time:
+\[ \partial_t A_y = A_0\omega\sin(k_x x-\omega t). \]
+Form $E_y = -\partial_t A_y$:
+\[ E_y = -A_0\omega\sin(k_x x-\omega t). \]
+Apply vacuum dispersion $\omega = ck_x$:
+\[ E_y = -A_0 c k_x \sin(k_x x-\omega t). \]
+Apply $\bm B = \nabla\times\bm A$ with only $A_y(x,t)$ nonzero:
+\[ B_z = \partial_x A_y. \]
+Differentiate:
+\[ B_z = -A_0 k_x \sin(k_x x-\omega t). \]
+Collect:
+\[ \boxed{\;\bm E = -A_0 c k_x \sin(k_x x-\omega t)\hat{\bm y},\quad \bm B = -A_0 k_x \sin(k_x x-\omega t)\hat{\bm z}.\;} \]
+Check $|\bm E|=c|\bm B|$:
+\[ |\bm E|/|\bm B| = c. \]
+Check the Poynting direction:
+\[ \bm E\times\bm B = E_y B_z\,(\hat{\bm y}\times\hat{\bm z}) = A_0^2 c k_x^2\sin^2(k_x x-\omega t)\,\hat{\bm x}. \]
+Transverse $\bm E,\bm B$ with $\bm E\times\bm B \parallel +\hat{\bm x}$ as required.
 
 \subsection*{(e) Periodic-field undulator: lab vs.\ electron rest frame}
 
 \textbf{Problem.} Undulator $A^\mu = (\phi/c,\bm 0)$, $\phi=\phi_0\cos(k_u z)$. Electron with $\bm v=(0,0,v_z)$, ultra-relativistic. Find $\bm E,\bm B$ in lab and rest frame; is the field in the rest frame an EM wave?
 
-\textbf{Lab frame.}
-\[ \bm E = -\nabla\phi = \phi_0 k_u\sin(k_u z)\hat{\bm z},\qquad \bm B = \nabla\times\bm A = 0. \]
-\[ \boxed{\;\bm E_\text{lab} = \phi_0 k_u\sin(k_u z)\hat{\bm z},\quad \bm B_\text{lab}=\bm 0.\;} \]
+\textbf{Lab frame.} With $A^0 = \phi/c$, $\bm A = \bm 0$:
+\[ \bm E = -\nabla\phi - \partial_t\bm A. \]
+Drop $\partial_t\bm A$:
+\[ \bm E = -\nabla\phi. \]
+Differentiate $\phi = \phi_0\cos(k_u z)$:
+\[ \nabla\phi = -\phi_0 k_u\sin(k_u z)\,\hat{\bm z}. \]
+Negate:
+\[ \bm E = \phi_0 k_u\sin(k_u z)\,\hat{\bm z}. \]
+With $\bm A = \bm 0$:
+\[ \bm B = \nabla\times\bm A = \bm 0. \]
+\[ \boxed{\;\bm E_\text{lab} = \phi_0 k_u\sin(k_u z)\,\hat{\bm z},\quad \bm B_\text{lab}=\bm 0.\;} \]
 A purely electrostatic, longitudinal, $z$-periodic field.
 
-\textbf{Electron rest frame ($z' = \gamma(z-v t)$, $t'=\gamma(t-vz/c^2)$).} Boost the field strength tensor. Boost direction parallel to $\bm E$, so the longitudinal $E_z$ is unchanged and a transverse $\bm B$ does not appear:
-\[ E'_z = E_z,\qquad B'_\perp = -\gamma\beta\,(E\times \hat{\bm v})_\perp / c = 0. \]
-So $\bm B'=0$ (boost along $\bm E$), but the spatial argument transforms:
-\[ k_u z = k_u(\gamma z' + \gamma v t') = \gamma k_u z' + \gamma k_u v t'. \]
-Define $k'_u = \gamma k_u$, $\omega' = \gamma k_u v \approx \gamma k_u c$ (ultra-relativistic):
-\[ \bm E'(\bm r',t') = \phi_0 k_u\sin(k'_u z' + \omega' t')\hat{\bm z}'. \]
-\[ \boxed{\;\bm E' = \phi_0 k_u \sin(\gamma k_u z' + \gamma k_u v\,t')\hat{\bm z}',\quad \bm B'=\bm 0.\;} \]
+\textbf{Electron rest frame.} Boost along $+\hat{\bm z}$ with velocity $v$. Coordinate inverse transform:
+\[ z = \gamma(z'+vt'),\qquad t = \gamma(t'+vz'/c^2). \]
+Apply the field transformation rule; $\bm v\parallel\bm E$, so the parallel component is unchanged:
+\[ E'_z = E_z. \]
+Compute the perpendicular fields ($\bm E_\perp=0$ and $\bm B=0$):
+\[ \bm E'_\perp = \gamma(\bm E_\perp + \bm v\times\bm B)_\perp = 0. \]
+\[ \bm B'_\perp = \gamma(\bm B_\perp - \bm v\times\bm E/c^2)_\perp. \]
+Apply $\bm v\times\bm E = 0$ (since $\bm v\parallel\bm E$):
+\[ \bm B'_\perp = 0. \]
+Substitute $z = \gamma(z'+vt')$ into the spatial argument:
+\[ k_u z = \gamma k_u z' + \gamma k_u v\, t'. \]
+Identify $k'_u = \gamma k_u$ and $\omega' = \gamma k_u v$:
+\[ E'_z(\bm r',t') = \phi_0 k_u\sin(\gamma k_u z' + \gamma k_u v\,t'). \]
+\[ \boxed{\;\bm E' = \phi_0 k_u \sin(\gamma k_u z' + \gamma k_u v\,t')\,\hat{\bm z}',\quad \bm B'=\bm 0.\;} \]
+In the ultra-relativistic limit $v\to c$: $\omega'\approx \gamma k_u c$ and $\omega'/k'_u = v\approx c$.
 
-\noindent\textbf{Is this an EM wave?} A vacuum plane EM wave satisfies $|\bm E|=c|\bm B|$ with $\bm E\perp\bm k$, $\bm B\perp\bm k$, $\bm B\neq 0$. Here $\bm B'=0$ and $\bm E'\parallel\hat{\bm z}'$ (longitudinal to the propagation direction $\hat{\bm z}'$).
+\noindent\textbf{Is this an EM wave?} A vacuum plane EM wave satisfies $|\bm E|=c|\bm B|$ with $\bm E\perp\bm k$ and $\bm B\perp\bm k$, $\bm B\neq 0$. Here $\bm B'=0$ and $\bm E'\parallel\hat{\bm z}'$ (longitudinal to the propagation direction $\hat{\bm z}'$).
 \[ \boxed{\;\text{Not an EM wave: longitudinal }\bm E,\ \bm B'=0.\;} \]
-It is a longitudinal oscillating electric field --- the rest-frame view of a static periodic potential as seen by a co-moving observer (no radiation; it is not transverse).
+It is a longitudinal oscillating electric field --- the rest-frame view of a static periodic potential as seen by a co-moving observer (no radiation; not transverse).
 
 % =====================================================================
 \section*{Question 4 --- Polar/axial vectors, $F^{\mu\nu}$, capacitor}
@@ -416,73 +596,117 @@ It is a longitudinal oscillating electric field --- the rest-frame view of a sta
 
 \textbf{Polar vector:} flips sign under spatial inversion $\bm r\to-\bm r$ (e.g.\ $\bm r,\bm v,\bm p,\bm E$).
 
-\textbf{Axial (pseudo-) vector:} unchanged under inversion (e.g.\ $\bm L=\bm r\times\bm p$, $\bm B$, angular velocity).
+\textbf{Axial (pseudo-)vector:} unchanged under inversion (e.g.\ $\bm L=\bm r\times\bm p$, $\bm B$, $\bm\omega$).
 
-Lorentz force $\bm F = q(\bm E + \bm v\times\bm B)$. Under parity:
-\[ \bm F\to -\bm F,\quad q\bm E\to -q\bm E\ \Rightarrow\ \bm E\text{ is polar}. \]
-\[ \bm v\times\bm B \to (-\bm v)\times \bm B \to -\bm v\times\bm B\quad\text{requires}\quad \bm B\to +\bm B. \]
-So
+Write the Lorentz force:
+\[ \bm F = q(\bm E + \bm v\times\bm B). \]
+Apply parity $\bm r\to -\bm r$, $\bm v\to -\bm v$, scalar $q$ unchanged. Since $\bm F\propto\dv*{\bm p}{t}$ is polar:
+\[ \bm F \to -\bm F. \]
+Write the transformed equation in primed fields:
+\[ -\bm F = q\bm E' + q(-\bm v)\times\bm B'. \]
+Set equal to $-\bm F = -q\bm E - q\bm v\times\bm B$:
+\[ -q\bm E - q\bm v\times\bm B = q\bm E' - q\bm v\times\bm B'. \]
+Match the $\bm v$-independent term:
+\[ \bm E' = -\bm E. \]
+Match the $\bm v$-dependent term:
+\[ -q\bm v\times\bm B = -q\bm v\times\bm B'. \]
+Solve:
+\[ \bm B' = \bm B. \]
+Hence $\bm E$ flips sign (polar) and $\bm B$ does not (axial).
 \[ \boxed{\;\bm E\text{ polar},\ \bm B\text{ axial}.\;} \]
 
 \subsection*{(b) 4-current, continuity, Lorentz force on a charge density}
 
 \textbf{Problem.} Define $J^\mu$, write continuity, derive $f_\mu = J^\nu F_{\nu\mu}$, identify $f_0$.
 
-4-current:
+Define 4-current:
 \[ J^\mu = \rho_0 U^\mu = (\rho c, \bm j),\qquad \bm j = \rho\bm v. \]
-Continuity:
+Write continuity:
 \[ \boxed{\;\partial_\mu J^\mu = 0 \quad\Leftrightarrow\quad \partial_t\rho + \nabla\!\cdot\!\bm j = 0.\;} \]
-Lorentz force per unit volume:
-\[ \bm f = \rho\bm E + \bm j\times\bm B. \]
-Power per unit volume (rate of work done on charges):
-\[ f^0 c = \bm j\!\cdot\!\bm E. \]
 
-\noindent\textbf{Derive $f_\mu = J^\nu F_{\nu\mu}$.} Field tensor:
-\[ F_{\nu\mu} = \partial_\nu A_\mu - \partial_\mu A_\nu,\qquad F^{0i}=-E_i/c,\ F^{ij}=-\epsilon_{ijk}B_k. \]
-Compute $J^\nu F_{\nu\mu}$ for $\mu=i$ (spatial):
+\noindent\textbf{Derive $f_\mu = J^\nu F_{\nu\mu}$.} Write the field tensor (covariant form):
+\[ F_{\nu\mu} = \partial_\nu A_\mu - \partial_\mu A_\nu. \]
+List components in signature $(+,-,-,-)$:
+\[ F_{0i} = E_i/c,\qquad F_{ij} = -\epsilon_{ijk}B_k. \]
+Take $\mu = i$ in $J^\nu F_{\nu i}$:
 \[ J^\nu F_{\nu i} = J^0 F_{0 i} + J^j F_{j i}. \]
-Insert components ($F_{0i}=E_i/c$, $F_{ji}=\epsilon_{jik}B_k$, $J^0=\rho c$, $J^j=j_j$):
-\[ J^\nu F_{\nu i} = \rho E_i + (\bm j\times\bm B)_i = f_i. \]
-Done.
+Apply $F_{ji} = -F_{ij} = \epsilon_{ijk}B_k$:
+\[ J^\nu F_{\nu i} = (\rho c)(E_i/c) + j_j\epsilon_{ijk}B_k. \]
+Recognise $\epsilon_{ijk}j_j B_k = (\bm j\times\bm B)_i$:
+\[ J^\nu F_{\nu i} = \rho E_i + (\bm j\times\bm B)_i. \]
+Identify $f_i = \rho E_i + (\bm j\times\bm B)_i$ as the Lorentz force density:
+\[ J^\nu F_{\nu i} = f_i. \]
 
-\noindent\textbf{$f^0$ component:}
-\[ f^0 = J^j F^{0}_{\ j} = (\bm j\!\cdot\!\bm E)/c. \]
-\[ \boxed{\;f^0 = \bm j\!\cdot\!\bm E /c = \text{rate of work done by the field per unit volume, divided by }c.\;} \]
-Physically: power density delivered by the EM field to the charges (the time component of the 4-force density).
+\noindent\textbf{$f_0$ component:}
+Take $\mu = 0$:
+\[ J^\nu F_{\nu 0} = J^0 F_{00} + J^j F_{j0}. \]
+Apply $F_{00}=0$ and $F_{j0} = -F_{0j} = -E_j/c$:
+\[ J^\nu F_{\nu 0} = -j^j E_j/c. \]
+Identify $j^j E_j = \bm j\cdot\bm E$:
+\[ |f_0| = \bm j\!\cdot\!\bm E/c. \]
+Interpret: $|f_0|\cdot c = \bm j\cdot\bm E$ is the power per unit volume delivered by the field to the charges.
+\[ \boxed{\;|f_0|\,c = \bm j\!\cdot\!\bm E = \text{(power per unit volume delivered by field to charges)}.\;} \]
 
 \subsection*{(c) $F^{\alpha\beta}$ from given $A^\mu$}
 
 \textbf{Problem.} $A^\mu = (0,A_0\cos(K\!\cdot\!X), A_0\sin(K\!\cdot\!X),0)$, $K=(\omega/c,0,0,k_z)$. Compute $F^{\alpha\beta}=\partial^\alpha A^\beta-\partial^\beta A^\alpha$.
 
-Phase: $\Phi \equiv K^\mu X_\mu = \omega t - k_z z$ (using metric $(+,-,-,-)$, $K\!\cdot\!X = (\omega/c)(ct) - k_z z$).
+Define the phase:
+\[ \Phi \equiv K^\mu X_\mu = (\omega/c)(ct) + k_z(-z) = \omega t - k_z z. \]
+List components: $A^1=A_0\cos\Phi$, $A^2=A_0\sin\Phi$, $A^0=A^3=0$.
 
-Components: $A^1=A_0\cos\Phi$, $A^2=A_0\sin\Phi$, $A^0=A^3=0$.
+Differentiate the phase:
+\[ \partial_0\Phi = \omega/c,\qquad \partial_3\Phi = -k_z. \]
+Apply $\partial^0 = \partial_0$ and $\partial^i = -\partial_i$.
 
-Derivatives ($\partial^0 = (1/c)\partial_t$, $\partial^i = -\partial_i$, $\partial_0\Phi = \omega/c$, $\partial_3\Phi = -k_z$):
-\[ \partial^0 A^1 = (1/c)\partial_t A^1 = -A_0(\omega/c)\sin\Phi. \]
-\[ \partial^0 A^2 = A_0(\omega/c)\cos\Phi. \]
-\[ \partial^3 A^1 = -\partial_z A^1 = -A_0 k_z\sin\Phi. \]
-\[ \partial^3 A^2 = A_0 k_z\cos\Phi. \]
-\[ \partial^1 A^0 = \partial^2 A^0 = \partial^1 A^3 = \partial^2 A^3 = 0. \]
-Antisymmetric tensor:
+Compute $\partial^0 A^1$:
+\[ \partial^0 A^1 = (1/c)\partial_t (A_0\cos\Phi) = -A_0(\omega/c)\sin\Phi. \]
+Compute $\partial^0 A^2$:
+\[ \partial^0 A^2 = (1/c)\partial_t (A_0\sin\Phi) = A_0(\omega/c)\cos\Phi. \]
+Compute $\partial^3 A^1$:
+\[ \partial^3 A^1 = -\partial_z(A_0\cos\Phi) = -A_0\sin\Phi\cdot k_z = -A_0 k_z\sin\Phi. \]
+Compute $\partial^3 A^2$:
+\[ \partial^3 A^2 = -\partial_z(A_0\sin\Phi) = -A_0\cos\Phi\cdot(-k_z) = A_0 k_z\cos\Phi. \]
+All other $\partial^\mu A^\nu$ vanish (no $x,y$ dependence).
+
+Assemble $F^{\alpha\beta} = \partial^\alpha A^\beta - \partial^\beta A^\alpha$:
 \[ F^{01} = \partial^0 A^1 - \partial^1 A^0 = -A_0(\omega/c)\sin\Phi. \]
-\[ F^{02} = A_0(\omega/c)\cos\Phi. \]
+\[ F^{02} = \partial^0 A^2 - \partial^2 A^0 = A_0(\omega/c)\cos\Phi. \]
 \[ F^{31} = \partial^3 A^1 - \partial^1 A^3 = -A_0 k_z\sin\Phi. \]
-\[ F^{32} = A_0 k_z\cos\Phi. \]
+\[ F^{32} = \partial^3 A^2 - \partial^2 A^3 = A_0 k_z\cos\Phi. \]
 \[ F^{12} = \partial^1 A^2 - \partial^2 A^1 = 0. \]
-Identify $\bm E$, $\bm B$ from $F^{0i}=-E_i/c$, $F^{ij}=-\epsilon_{ijk}B_k$:
-\[ \bm E = (A_0\omega\sin\Phi,\, -A_0\omega\cos\Phi,\, 0). \]
-\[ \bm B = (-A_0 k_z\cos\Phi,\, -A_0 k_z\sin\Phi,\, 0). \]
-\[ \boxed{\;|\bm E|=A_0\omega,\ |\bm B|=A_0 k_z,\ |\bm E|=c|\bm B|,\ \bm E\!\cdot\!\bm B=0.\;} \]
-Circularly polarised plane wave propagating along $+\hat{\bm z}$.
+Identify $\bm E$ via $F^{0i} = -E_i/c$:
+\[ E_x = -cF^{01} = A_0\omega\sin\Phi. \]
+\[ E_y = -cF^{02} = -A_0\omega\cos\Phi. \]
+\[ E_z = 0. \]
+Identify $\bm B$ via $F^{ij} = -\epsilon^{ijk}B_k$; so $F^{31} = -\epsilon^{312}B_2 = -B_y$ and $F^{32} = -\epsilon^{321}B_1 = +B_x$:
+\[ B_x = F^{32} = A_0 k_z\cos\Phi. \]
+\[ B_y = -F^{31} = A_0 k_z\sin\Phi. \]
+\[ B_z = 0. \]
+Collect:
+\[ \bm E = (A_0\omega\sin\Phi,\ -A_0\omega\cos\Phi,\ 0). \]
+\[ \bm B = (A_0 k_z\cos\Phi,\ A_0 k_z\sin\Phi,\ 0). \]
+Compute magnitudes and orthogonality:
+\[ |\bm E|=A_0\omega,\qquad |\bm B|=A_0 k_z,\qquad |\bm E|=c|\bm B|\ \text{(use $\omega = ck_z$)}. \]
+\[ \bm E\!\cdot\!\bm B = A_0^2\omega k_z(\sin\Phi\cos\Phi - \cos\Phi\sin\Phi) = 0. \]
+\[ \boxed{\;\bm E\perp\bm B,\ |\bm E|=c|\bm B|;\ \text{circularly polarised plane wave along }+\hat{\bm z}.\;} \]
+Verify Poynting along $+\hat{\bm z}$:
+\[ (\bm E\times\bm B)_z = E_x B_y - E_y B_x. \]
+Substitute:
+\[ (\bm E\times\bm B)_z = (A_0\omega\sin\Phi)(A_0 k_z\sin\Phi) - (-A_0\omega\cos\Phi)(A_0 k_z\cos\Phi). \]
+Simplify:
+\[ (\bm E\times\bm B)_z = A_0^2\omega k_z(\sin^2\Phi + \cos^2\Phi) = A_0^2\omega k_z. \]
 
 \subsection*{(d) Field transformation under boost}
 
 \textbf{Problem.} $S'$ moves with 3-velocity $\bm v$ relative to $S$. Write $\bm E'$, $\bm B'$.
 
-Decompose into components parallel ($\parallel$) and perpendicular ($\perp$) to $\bm v$:
+Decompose into components parallel ($\parallel$) and perpendicular ($\perp$) to $\bm v$. Parallel components unchanged:
 \[ \bm E'_\parallel = \bm E_\parallel,\qquad \bm B'_\parallel = \bm B_\parallel. \]
-\[ \boxed{\;\bm E'_\perp = \gamma(\bm E_\perp + \bm v\times\bm B)_\perp,\qquad \bm B'_\perp = \gamma\bigl(\bm B_\perp - (\bm v\times\bm E)/c^2\bigr)_\perp.\;} \]
+Perpendicular components transform with $\gamma$ and mixing:
+\[ \bm E'_\perp = \gamma\bigl(\bm E_\perp + \bm v\times\bm B\bigr). \]
+\[ \bm B'_\perp = \gamma\bigl(\bm B_\perp - (\bm v\times\bm E)/c^2\bigr). \]
+\[ \boxed{\;\bm E' = \bm E_\parallel + \gamma(\bm E_\perp + \bm v\times\bm B),\quad \bm B' = \bm B_\parallel + \gamma\bigl(\bm B_\perp - (\bm v\times\bm E)/c^2\bigr).\;} \]
 
 \subsection*{(e) Capacitor + magnetic field}
 
@@ -490,14 +714,20 @@ Decompose into components parallel ($\parallel$) and perpendicular ($\perp$) to 
 
 \textbf{(i) Energy and velocity at the second plate.}
 
-Energy gained:
-\[ \Delta E = eEd = \SI{100}{MeV/m}\times \SI{0.1}{m} \times e \cdot 1 = \SI{10}{MeV}. \]
-Wait: $E=\SI{100}{MV/m}\Rightarrow eE = \SI{100}{MeV/m}\cdot e/e = \SI{100}{MeV/m}$ (in eV-units). Times $d=\SI{0.1}{m}$:
-\[ eEd = \SI{10}{MeV}. \]
-Total energy:
-\[ E_\text{tot} = m_e c^2 + 10 = 0.511 + 10 = \SI{10.511}{MeV}. \]
-\[ \gamma = E_\text{tot}/m_e c^2 = 10.511/0.511 = 20.57. \]
-\[ \beta = \sqrt{1-1/\gamma^2} = \sqrt{1-1/423.1} = \sqrt{0.99764} = 0.99882. \]
+Compute kinetic energy from work done by $\bm E$:
+\[ E_\text{kin} = eEd. \]
+Substitute $E = \SI{100}{MV/m}$, $d=\SI{0.1}{m}$:
+\[ E_\text{kin} = e\cdot\SI{100}{MV/m}\cdot\SI{0.1}{m} = \SI{10}{MeV}. \]
+Form the total energy:
+\[ E_\text{tot} = m_e c^2 + E_\text{kin} = 0.511 + 10 = \SI{10.511}{MeV}. \]
+Compute the Lorentz factor:
+\[ \gamma = E_\text{tot}/(m_e c^2) = 10.511/0.511. \]
+Evaluate:
+\[ \gamma = 20.57. \]
+Compute $1/\gamma^2$:
+\[ 1/\gamma^2 = 1/423.1 = 0.002364. \]
+Apply $\beta = \sqrt{1-1/\gamma^2}$:
+\[ \beta = \sqrt{1-0.002364} = \sqrt{0.99764} = 0.99882. \]
 \[ \boxed{\;E_\text{kin}\approx \SI{10}{MeV},\ \gamma\approx 20.6,\ v\approx 0.999\,c.\;} \]
 
 \textbf{(ii) Can $\bm B$ prevent it reaching the positive plate?}
@@ -511,36 +741,47 @@ The electron then executes (modified) cyclotron motion in the $xz$-plane.
 
 \textbf{(iv) Strength of $\bm B$ to stop the electron at $x=d$.}
 
-Energy conservation in static fields ($\bm B$ does no work):
-\[ \tfrac{1}{2}\text{(at any position }x): \gamma(x)m_e c^2 = m_e c^2 + eEx. \]
-At the turn-back point the electron must have $v_x=0$. Use canonical momentum conservation: with $\bm B = B\hat{\bm y}$ and $\bm A = -Bx\hat{\bm z}$ (so $\bm B = \nabla\times\bm A = B\hat{\bm y}$), $A_z$ depends on $x$ only, and the system is independent of $z$:
-\[ p_z + qA_z = \text{const},\qquad q=-e. \]
-At launch: $p_z=0$, $x=0\Rightarrow A_z=0$:
-\[ p_z(x) - e(-Bx) = 0\ \Rightarrow\ p_z(x) = -eBx. \]
-Hmm sign: with $q=-e$ and $A_z = -Bx$, conservation of $p_z + q A_z$:
-\[ p_z(x) + (-e)(-Bx) = 0\ \Rightarrow\ p_z(x) = -eBx. \]
-At turn-around $v_x=0$, so $|p_z(x_\text{max})| = p_\text{tot}(x_\text{max}) = \gamma(x_\text{max})m_e v(x_\text{max})$.
-
-Total momentum at $x$:
-\[ p_\text{tot}(x) c = \sqrt{E_\text{tot}(x)^2 - (m_e c^2)^2},\quad E_\text{tot}(x) = m_e c^2 + eEx. \]
-Set $|p_z| = p_\text{tot}$ at $x=x_\text{max}=d$:
+Energy is conserved by $\bm E$ alone ($\bm B$ does no work):
+\[ \gamma(x)m_e c^2 = m_e c^2 + eEx. \]
+Choose gauge $\bm A = -Bx\hat{\bm z}$ for $\bm B = B\hat{\bm y}$:
+\[ \nabla\times\bm A = -(\partial_x A_z)\hat{\bm y} = B\hat{\bm y}\ \checkmark. \]
+System has translation symmetry along $z$, so $z$-component of canonical momentum is conserved:
+\[ \Pi_z = p_z + qA_z = \text{const},\qquad q=-e. \]
+At launch $p_z=0$, $x=0\Rightarrow A_z=0$:
+\[ \Pi_z = 0. \]
+Substitute $A_z = -Bx$ and $q = -e$ at general $x$:
+\[ p_z(x) + (-e)(-Bx) = 0. \]
+Solve for $p_z(x)$:
+\[ p_z(x) = -eBx. \]
+At turn-around $v_x = 0$, so $p_x=0$ and $|p_z| = p_\text{tot}$:
+\[ p_\text{tot}(x_\text{max}) = eBx_\text{max}. \]
+Apply energy-momentum relation:
+\[ (p_\text{tot}c)^2 = E_\text{tot}^2 - (m_ec^2)^2. \]
+Set turn-around at $x_\text{max} = d$:
 \[ eBd = p_\text{tot}(d). \]
-Solve:
+Solve for $B$:
 \[ B = p_\text{tot}(d)/(ed). \]
-At $x=d$: $E_\text{tot}=\SI{10.511}{MeV}$, so
-\[ p_\text{tot} c = \sqrt{10.511^2 - 0.511^2} = \sqrt{110.48 - 0.261} = \sqrt{110.22} = \SI{10.499}{MeV}. \]
-Hence $p_\text{tot} = \SI{10.499}{MeV}/c$. Convert:
-\[ B = \frac{\SI{10.499}{MeV}/c}{e\cdot \SI{0.1}{m}} = \frac{10.499\times \SI{e6}{eV}}{c\,\SI{0.1}{m}\,e}\,\text{T-equivalent}. \]
-Numerically using $1\,\text{T}\cdot c\cdot \SI{1}{m} = \SI{2.998e8}{V}$:
-\[ B = \frac{p c}{e d c} = \frac{\SI{10.499e6}{V}}{\SI{2.998e8}{V/T\cdot m}\times \SI{0.1}{m}}. \]
+Compute $(p_\text{tot}c)^2$ at $E_\text{tot}=\SI{10.511}{MeV}$:
+\[ (p_\text{tot}c)^2 = 10.511^2 - 0.511^2. \]
+Evaluate:
+\[ (p_\text{tot}c)^2 = 110.481 - 0.261 = 110.22\,(\text{MeV})^2. \]
+Take the square root:
+\[ p_\text{tot}c = \SI{10.499}{MeV}. \]
+Form $B = (p_\text{tot}c)/(ec d)$:
+\[ B = \frac{p_\text{tot}c}{ecd} = \frac{\SI{10.499e6}{V}}{c\,\SI{0.1}{m}}. \]
+Insert $c = \SI{2.998e8}{m/s}$:
+\[ B = \frac{\SI{10.499e6}{V}}{\SI{2.998e8}{m/s}\times\SI{0.1}{m}}. \]
 Compute denominator:
-\[ \SI{2.998e8}{}\times 0.1 = \SI{2.998e7}{V/T}. \]
-\[ B = \SI{10.499e6}{}/\SI{2.998e7}{} = 0.3502\,\text{T}. \]
+\[ (\SI{2.998e8}{m/s})(\SI{0.1}{m}) = \SI{2.998e7}{m^2/s}. \]
+Divide:
+\[ B = \frac{\SI{10.499e6}{V}}{\SI{2.998e7}{m^2/s}} = 0.350\,\text{T}. \]
 \[ \boxed{\;B \approx \SI{0.35}{T}.\;} \]
 
 \textbf{(v) Trajectory sketch.}
 
-The electron starts at the negative plate with $\bm v=\bm 0$. Initially $\bm B$ exerts no force; the $\bm E$-field accelerates it along $+\hat{\bm x}$. As $v_x$ grows, the magnetic force $-e\bm v\times\bm B = -e v_x\hat{\bm x}\times B\hat{\bm y} = -ev_xB\hat{\bm z}$ deflects it toward $-\hat{\bm z}$. The electron curves; if $B$ is exactly the threshold $\SI{0.35}{T}$ found above, $v_x\to 0$ at $x=d$ (just touching the positive plate momentarily), then it returns. Trajectory is a cycloidal arc concave toward $-\hat{\bm z}$.
+The electron starts at the negative plate with $\bm v=\bm 0$. Initially $\bm B$ exerts no force; the $\bm E$-field accelerates it along $+\hat{\bm x}$. As $v_x$ grows the magnetic force becomes:
+\[ \bm F_\text{mag} = -e\bm v\times\bm B = -e v_x\hat{\bm x}\times B\hat{\bm y} = -ev_xB\hat{\bm z}. \]
+This deflects the electron toward $-\hat{\bm z}$. The trajectory curves; at the threshold $B = \SI{0.35}{T}$, $v_x\to 0$ exactly at $x=d$ (the electron just grazes the positive plate before turning back). For $B$ slightly above threshold, the electron turns back before reaching $x=d$ and executes a cycloidal drift in the $xz$-plane.
 
 \begin{center}
 \begin{tikzpicture}[>=stealth, scale=0.9]

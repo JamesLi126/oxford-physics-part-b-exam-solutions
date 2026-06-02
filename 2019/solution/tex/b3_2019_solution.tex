@@ -40,11 +40,19 @@ Hence $L^{2},L_z,S^{2},S_z$ remain good quantum numbers; eigenstates within a co
 
 \textbf{Problem.} \emph{Explain how the spin--orbit interaction leads to fine structure in LS coupling, and derive the interval rule.}
 
-Within a term, $H_{\rm SO}=\sum_i\xi(r_i)\,\bm l_i\!\cdot\!\bm s_i$. Project onto the term using the projection theorem (Land\'e):
+Within a term, write the spin--orbit operator:
+\[
+H_{\rm SO}=\sum_i\xi(r_i)\,\bm l_i\!\cdot\!\bm s_i.
+\]
+Project onto the term (Land\'e projection theorem):
 \[
 H_{\rm SO}\big|_{^{2S+1}L}=\beta(L,S)\,\bm L\!\cdot\!\bm S.
 \]
-Couple $\bm J=\bm L+\bm S$:
+Couple $\bm J=\bm L+\bm S$ and square:
+\[
+\bm J^{2}=\bm L^{2}+\bm S^{2}+2\,\bm L\!\cdot\!\bm S.
+\]
+Solve for $\bm L\cdot\bm S$:
 \[
 \bm L\!\cdot\!\bm S=\tfrac12\bigl(\bm J^{2}-\bm L^{2}-\bm S^{2}\bigr).
 \]
@@ -56,11 +64,15 @@ Fine-structure level energy:
 \[
 E_J=E_0+\tfrac{\beta\hbar^{2}}{2}\bigl[J(J+1)-L(L+1)-S(S+1)\bigr].
 \]
-Splitting between adjacent levels $J$ and $J-1$:
+Form splitting between adjacent levels $J$ and $J-1$:
 \[
 E_J-E_{J-1}=\tfrac{\beta\hbar^{2}}{2}\bigl[J(J+1)-(J-1)J\bigr].
 \]
-Simplify $J(J+1)-(J-1)J=2J$:
+Expand the bracket:
+\[
+J(J+1)-(J-1)J=J^{2}+J-J^{2}+J=2J.
+\]
+Substitute:
 \begin{equation}
 \boxed{\;E_J-E_{J-1}=\beta\hbar^{2}\,J.\;}
 \label{eq:interval}
@@ -347,23 +359,23 @@ Quantum numbers of the unknown level:
 \boxed{\;n=2,\ l=0,\ j=\tfrac12\;\Rightarrow\;L_1=2s_{1/2}.\;}
 \]
 
-Estimate $E_{L_1}$: assign
+Estimate $E_{L_1}$ from $KL_1L_3$ assignment:
 \[
 KL_1L_3\simeq E_K-E_{L_1}-E_{L_3}=\SI{18.258}{keV}.
 \]
-Solve:
+Solve for $E_{L_1}$:
 \[
 E_{L_1}=25.514-3.351-18.258=\SI{3.905}{keV}.
 \]
-Check via $KL_1L_2=18.088$:
+Cross-check via $KL_1L_2=\SI{18.088}{keV}$:
 \[
 E_{L_1}=25.514-3.524-18.088=\SI{3.902}{keV}.
 \]
-Check via $KL_1L_1=17.793$:
+Cross-check via $KL_1L_1=\SI{17.793}{keV}$:
 \[
 E_{L_1}=\tfrac12(25.514-17.793)=\SI{3.861}{keV}.
 \]
-Allowing the same $\sim\SI{130}{eV}$ relaxation correction:
+Apply the same $\sim\SI{130}{eV}$ relaxation correction:
 \[
 \boxed{\;E_{L_1}\simeq \SI{3.8}{keV}.\;}
 \]
@@ -396,7 +408,11 @@ $\Omega_R$ is the (angular) frequency at which the population coherently oscilla
 
 \textbf{Problem.} \emph{Justify the RWA, derive the second-order ODE for $c_2$, solve with $c_1(0)=1,c_2(0)=0$ and find $\Omega_{\rm eff}$.}
 
-Write $\cos(\omega t)=\tfrac12(e^{i\omega t}+e^{-i\omega t})$ in the $c_2$ equation:
+Substitute $\cos(\omega t)=\tfrac12(e^{i\omega t}+e^{-i\omega t})$ into the given $\dot c_2$ equation:
+\[
+\dot c_2=-i\Omega_R c_1\,e^{i\omega_0 t}\cdot\tfrac12(e^{i\omega t}+e^{-i\omega t}).
+\]
+Combine the exponentials:
 \[
 \dot c_2=-\tfrac{i}{2}\Omega_R c_1\bigl[e^{i(\omega+\omega_0)t}+e^{-i(\omega-\omega_0)t}\bigr].
 \]
@@ -405,17 +421,21 @@ Near resonance the term $e^{-i\delta\omega t}$ ($\delta\omega=\omega-\omega_0$) 
 \dot c_2=-\tfrac{i}{2}\Omega_R\,e^{-i\delta\omega t}\,c_1.
 \label{eq:c2dot}
 \end{equation}
-Apply the same to $c_1$:
+Repeat the same steps on the $c_1$ equation:
 \begin{equation}
 \dot c_1=-\tfrac{i}{2}\Omega_R\,e^{i\delta\omega t}\,c_2.
 \label{eq:c1dot}
 \end{equation}
 
-Differentiate \eqref{eq:c2dot}:
+Differentiate \eqref{eq:c2dot} with respect to $t$:
 \[
 \ddot c_2=-\tfrac{i}{2}\Omega_R\bigl[-i\delta\omega\,e^{-i\delta\omega t}c_1+e^{-i\delta\omega t}\dot c_1\bigr].
 \]
-Identify $-\tfrac{i}{2}\Omega_R e^{-i\delta\omega t}c_1=\dot c_2$:
+Distribute the prefactor:
+\[
+\ddot c_2=(-i\delta\omega)\bigl(-\tfrac{i}{2}\Omega_R\,e^{-i\delta\omega t}c_1\bigr)-\tfrac{i}{2}\Omega_R\,e^{-i\delta\omega t}\,\dot c_1.
+\]
+Identify the bracket as $\dot c_2$ via \eqref{eq:c2dot}:
 \[
 \ddot c_2=-i\delta\omega\,\dot c_2-\tfrac{i}{2}\Omega_R\,e^{-i\delta\omega t}\,\dot c_1.
 \]
@@ -423,49 +443,61 @@ Substitute $\dot c_1$ from \eqref{eq:c1dot}:
 \[
 \ddot c_2=-i\delta\omega\,\dot c_2-\tfrac{i}{2}\Omega_R\,e^{-i\delta\omega t}\bigl(-\tfrac{i}{2}\Omega_R\,e^{i\delta\omega t}c_2\bigr).
 \]
-Simplify:
+Collapse the exponentials $e^{-i\delta\omega t}e^{i\delta\omega t}=1$:
+\[
+\ddot c_2=-i\delta\omega\,\dot c_2+\bigl(-\tfrac{i}{2}\bigr)\bigl(-\tfrac{i}{2}\bigr)\Omega_R^{2}\,c_2.
+\]
+Evaluate $(-i/2)(-i/2)=-1/4$:
+\[
+\ddot c_2=-i\delta\omega\,\dot c_2-\tfrac{\Omega_R^{2}}{4}\,c_2.
+\]
+Rearrange:
 \begin{equation}
 \boxed{\;\ddot c_2+i\delta\omega\,\dot c_2+\tfrac{\Omega_R^{2}}{4}\,c_2=0.\;}
 \label{eq:c2-ode}
 \end{equation}
 
-Try $c_2=Ae^{i\lambda t}$:
+Try the ansatz $c_2=Ae^{i\lambda t}$:
 \[
 -\lambda^{2}-\delta\omega\,\lambda+\tfrac{\Omega_R^{2}}{4}=0.
 \]
-Solve:
+Multiply through by $-1$:
+\[
+\lambda^{2}+\delta\omega\,\lambda-\tfrac{\Omega_R^{2}}{4}=0.
+\]
+Apply the quadratic formula:
 \[
 \lambda=\frac{-\delta\omega\pm\sqrt{\delta\omega^{2}+\Omega_R^{2}}}{2}.
 \]
-Define
+Define the effective Rabi frequency:
 \[
 \boxed{\;\Omega_{\rm eff}=\sqrt{\Omega_R^{2}+\delta\omega^{2}}.\;}
 \]
-General solution:
+Write the two roots as $\lambda_\pm=-\delta\omega/2\pm\Omega_{\rm eff}/2$ and form the general solution:
 \[
 c_2(t)=e^{-i\delta\omega t/2}\bigl[A\sin(\Omega_{\rm eff}t/2)+B\cos(\Omega_{\rm eff}t/2)\bigr].
 \]
-Initial condition $c_2(0)=0$:
+Impose $c_2(0)=0$:
 \[
 B=0.
 \]
-Compute $\dot c_2(0)$:
+Differentiate the ansatz at $t=0$:
 \[
 \dot c_2(0)=A\,\Omega_{\rm eff}/2.
 \]
-From \eqref{eq:c2dot} with $c_1(0)=1$:
+Evaluate \eqref{eq:c2dot} at $t=0$ with $c_1(0)=1$:
 \[
 \dot c_2(0)=-\tfrac{i}{2}\Omega_R.
 \]
-Equate:
+Equate the two expressions for $\dot c_2(0)$:
 \[
 A=-\frac{i\Omega_R}{\Omega_{\rm eff}}.
 \]
-Hence
+Assemble $c_2(t)$:
 \[
 c_2(t)=-\frac{i\Omega_R}{\Omega_{\rm eff}}\,e^{-i\delta\omega t/2}\sin(\Omega_{\rm eff}t/2).
 \]
-Take modulus squared:
+Take modulus squared (the phase factor has unit modulus):
 \begin{equation}
 \boxed{\;|c_2(t)|^{2}=\Bigl(\frac{\Omega_R}{\Omega_{\rm eff}}\Bigr)^{2}\sin^{2}\!\Bigl(\frac{\Omega_{\rm eff}}{2}t\Bigr).\;}
 \label{eq:rabi}
@@ -506,19 +538,23 @@ Key features: on resonance population fully transfers periodically; off resonanc
 
 \textbf{Problem.} \emph{Detuning dependence; broad-band weak-field limit.}
 
-Time-averaged upper-state population (Lorentzian in $\delta\omega$):
+Time-average \eqref{eq:rabi} using $\overline{\sin^{2}}=1/2$ (Lorentzian in $\delta\omega$):
 \[
 \overline{|c_2|^{2}}=\frac{1}{2}\,\frac{\Omega_R^{2}}{\Omega_R^{2}+\delta\omega^{2}}.
 \]
 Maximum amplitude $\Omega_R^{2}/(\Omega_R^{2}+\delta\omega^{2})$ falls; Rabi frequency $\Omega_{\rm eff}=\sqrt{\Omega_R^{2}+\delta\omega^{2}}$ rises. Hence at large $|\delta\omega|$ the atom barely excites and oscillates rapidly.
 
-\paragraph{Broad-band weak field.} Treat the spectrum as a sum of independent monochromatic components of spectral energy density $\rho(\omega)$, each with weak Rabi frequency $\Omega_R(\omega)\propto\sqrt{\rho(\omega)}$. The transition probability after time $t$ is
+\paragraph{Broad-band weak field.} Treat the spectrum as a sum of independent monochromatic components of spectral energy density $\rho(\omega)$, each with weak Rabi frequency $\Omega_R(\omega)\propto\sqrt{\rho(\omega)}$. Sum incoherent contributions of \eqref{eq:rabi}:
 \[
 P_{1\to 2}(t)=\int\Bigl(\frac{\Omega_R(\omega)}{\Omega_{\rm eff}}\Bigr)^{2}\sin^{2}\!\bigl(\Omega_{\rm eff}t/2\bigr)\,\de\omega.
 \]
-For $\Omega_R\to 0$ the integrand becomes a sharply-peaked $\sin^{2}(\delta\omega\,t/2)/\delta\omega^{2}$ in $\delta\omega$, integrating to $\pi t/2$:
+Take the weak-field limit $\Omega_R\ll|\delta\omega|$ so that $\Omega_{\rm eff}\to|\delta\omega|$:
 \[
-P_{1\to 2}(t)\propto t.
+P_{1\to 2}(t)\approx\int\Omega_R^{2}(\omega)\,\frac{\sin^{2}(\delta\omega\, t/2)}{\delta\omega^{2}}\,\de\omega.
+\]
+Pull the slowly-varying $\Omega_R^{2}(\omega)$ out at line centre and use $\int_{-\infty}^{\infty}\sin^{2}(x t/2)/x^{2}\,\de x=\pi t/2$:
+\[
+P_{1\to 2}(t)\propto\tfrac{\pi}{2}\,t\,\Omega_R^{2}(\omega_0).
 \]
 The probability grows \emph{linearly} in $t$: this is the Fermi golden-rule regime, justifying the use of an absorption rate (Einstein $B$-coefficient) rather than coherent Rabi flopping in a broad-band field.
 
@@ -536,30 +572,30 @@ For weak signals the gain coefficient $\gamma(\omega)=\sigma_{21}(\omega)N^{*}$ 
 
 \textbf{Problem.} \emph{Derive $N^{*}(0)=R_2\tau_2(1-A_{21}\tau_1)-R_1\tau_1$ for equal degeneracies.}
 
-Rate equations in the absence of stimulated emission:
+Write rate equations in the absence of stimulated emission:
 \[
 \dot N_2=R_2-N_2/\tau_2.
 \]
 \[
 \dot N_1=R_1+A_{21}N_2-N_1/\tau_1.
 \]
-Steady state $\dot N_2=0$:
+Impose steady state $\dot N_2=0$:
 \[
 N_2=R_2\tau_2.
 \]
-Steady state $\dot N_1=0$:
+Impose steady state $\dot N_1=0$:
 \[
 N_1=\tau_1(R_1+A_{21}N_2).
 \]
-Substitute $N_2$:
+Substitute the steady-state $N_2$:
 \[
 N_1=\tau_1 R_1+A_{21}\tau_1 R_2\tau_2.
 \]
-Equal degeneracies: $N^{*}=N_2-N_1$:
+Form the inversion $N^{*}=N_2-N_1$ (equal degeneracies):
 \[
 N^{*}(0)=R_2\tau_2-R_1\tau_1-A_{21}\tau_1 R_2\tau_2.
 \]
-Factor:
+Factor out $R_2\tau_2$ from the first and third terms:
 \begin{equation}
 \boxed{\;N^{*}(0)=R_2\tau_2(1-A_{21}\tau_1)-R_1\tau_1.\;}
 \label{eq:Nstar0}
@@ -569,40 +605,52 @@ Factor:
 
 \textbf{Problem.} \emph{With monochromatic radiation of intensity $I$ at frequency $\omega$, derive $N^{*}(I)=N^{*}(0)/(1+I/I_s(\omega))$ and find $I_s(\omega)$ in terms of $\sigma_{21}(\omega)$.}
 
-Stimulated rate per atom $W_{21}=\sigma_{21}(\omega)I/(\hbar\omega)$. Modify the rate equations:
+Define the stimulated rate per atom:
+\[
+W_{21}=\frac{\sigma_{21}(\omega)\,I}{\hbar\omega}.
+\]
+Add stimulated terms to the rate equations:
 \[
 \dot N_2=R_2-N_2/\tau_2-W_{21}(N_2-N_1).
 \]
 \[
 \dot N_1=R_1+A_{21}N_2-N_1/\tau_1+W_{21}(N_2-N_1).
 \]
-Define $N^{*}=N_2-N_1$ and subtract:
+Impose steady state $\dot N_2=0$:
 \[
-\dot N^{*}=R_2-R_1-N_2/\tau_2+N_1/\tau_1-A_{21}N_2-2W_{21}N^{*}.
+N_2=\tau_2\bigl[R_2-W_{21}N^{*}\bigr].
 \]
-Steady-state separately for each population, then form $N^{*}$. From $\dot N_2=0$:
+Impose steady state $\dot N_1=0$:
 \[
-N_2=\frac{R_2}{1/\tau_2+W_{21}}+\frac{W_{21}N_1}{1/\tau_2+W_{21}}.
+N_1=\tau_1\bigl[R_1+A_{21}N_2+W_{21}N^{*}\bigr].
 \]
-This algebra is cleanest by inspection: the steady-state inversion under stimulated coupling at rate $W_{21}$ is
+Subtract to form $N^{*}=N_2-N_1$:
 \[
-N^{*}=\frac{N^{*}(0)}{1+2 W_{21}\tau_{\rm eff}},
+N^{*}=\tau_2 R_2-\tau_2 W_{21}N^{*}-\tau_1 R_1-A_{21}\tau_1 N_2-\tau_1 W_{21}N^{*}.
 \]
-where $\tau_{\rm eff}^{-1}=\tau_2^{-1}+\tau_1^{-1}-A_{21}\tau_1\tau_2^{-1}\cdots$ for our level scheme reduces to a single effective recovery time $\tau$. Identify the saturation intensity by requiring $N^{*}=N^{*}(0)/2$ at $I=I_s$:
+Substitute $N_2=\tau_2(R_2-W_{21}N^{*})$ into the $A_{21}\tau_1 N_2$ term:
 \[
-2 W_{21}\tau_{\rm eff}=I/I_s,\qquad W_{21}=\sigma_{21}(\omega)I/(\hbar\omega).
+N^{*}=\tau_2 R_2-\tau_1 R_1-A_{21}\tau_1\tau_2 R_2+A_{21}\tau_1\tau_2 W_{21}N^{*}-(\tau_1+\tau_2)W_{21}N^{*}.
 \]
-Combine:
+Group the $N^{*}(0)$ terms using \eqref{eq:Nstar0}:
+\[
+N^{*}=N^{*}(0)-W_{21}N^{*}\bigl[\tau_1+\tau_2-A_{21}\tau_1\tau_2\bigr].
+\]
+Define the recovery time $\tau_R\equiv \tau_1+\tau_2-A_{21}\tau_1\tau_2$:
+\[
+N^{*}\bigl(1+W_{21}\tau_R\bigr)=N^{*}(0).
+\]
+Solve for $N^{*}$:
+\[
+N^{*}=\frac{N^{*}(0)}{1+W_{21}\tau_R}.
+\]
+Substitute $W_{21}=\sigma_{21}I/(\hbar\omega)$ and write the denominator as $1+I/I_s$:
 \begin{equation}
-\boxed{\;I_s(\omega)=\frac{\hbar\omega}{2\,\sigma_{21}(\omega)\,\tau_{\rm eff}}.\;}
+\boxed{\;N^{*}(I)=\frac{N^{*}(0)}{1+I/I_s(\omega)},\qquad I_s(\omega)=\frac{\hbar\omega}{\sigma_{21}(\omega)\,\tau_R}.\;}
 \label{eq:Is}
 \end{equation}
-With $N^{*}=N^{*}(0)/(1+I/I_s)$ recovered:
-\[
-\boxed{\;N^{*}(I)=\frac{N^{*}(0)}{1+I/I_s(\omega)}.\;}
-\]
 
-\paragraph{Importance and frequency dependence.} $I_s$ sets the intensity at which an amplifier transitions from linear (small-signal) gain to logarithmic (saturated) gain. Above $I_s$ the gain $\gamma(\omega)=\sigma_{21}(\omega)N^{*}/(1+I/I_s)$ falls; this caps the achievable single-pass amplification and fixes the energy extraction efficiency.
+\paragraph{Importance and frequency dependence.} $I_s$ sets the intensity at which an amplifier transitions from linear (small-signal) gain to logarithmic (saturated) gain. Above $I_s$ the gain $\gamma(\omega)=\sigma_{21}(\omega)N^{*}(0)/(1+I/I_s)$ falls; this caps the achievable single-pass amplification and fixes the energy extraction efficiency.
 
 The dependence on $\omega$ enters through the gain cross-section $\sigma_{21}(\omega)\propto g(\omega-\omega_0)$, the lineshape function. At line centre $\sigma_{21}$ is maximal so $I_s$ is \emph{minimal}; in the wings $\sigma_{21}$ drops and $I_s$ rises. Hence saturation is most easily reached on resonance.
 
@@ -610,15 +658,15 @@ The dependence on $\omega$ enters through the gain cross-section $\sigma_{21}(\o
 
 \textbf{Problem.} \emph{$I_1=3.2\,I_0$ at $\omega_1=\omega_0$, $I_2=2.1\,I_0$ at $\omega_2=\omega_0+\tfrac12\Delta\omega$, $I_{\rm in}=I_0$, $L=\SI{50}{mm}$. Find $I_s$ at each frequency and the small-signal gain.}
 
-Saturated propagation equation:
+Write the saturated propagation equation:
 \[
 \frac{\de I}{\de z}=\frac{\gamma_0(\omega)\,I}{1+I/I_s(\omega)}.
 \]
-Separate variables:
+Multiply through by $(1+I/I_s)/I$:
 \[
 \Bigl(\frac{1}{I}+\frac{1}{I_s}\Bigr)\de I=\gamma_0\,\de z.
 \]
-Integrate from $0$ to $L$, $I_0$ to $I_{\rm out}$:
+Integrate from $z=0,\,I=I_0$ to $z=L,\,I=I_{\rm out}$:
 \begin{equation}
 \ln\!\Bigl(\frac{I_{\rm out}}{I_0}\Bigr)+\frac{I_{\rm out}-I_0}{I_s}=\gamma_0 L.
 \label{eq:rigrod}
@@ -638,47 +686,56 @@ The small-signal gain coefficient $\gamma_0(\omega)=\sigma_{21}(\omega)N^{*}(0)$
 \gamma_0(\omega_2)=\tfrac12\,\gamma_0(\omega_1).
 \]
 
-Two equations \eqref{eq:rigrod} in two unknowns $\gamma_0(\omega_1)$ and $I_s(\omega_1)$:
+Write \eqref{eq:rigrod} at $\omega_1$ with $I_{\rm out}=3.2I_0$:
 \[
 \ln(3.2)+(3.2-1)\frac{I_0}{I_s(\omega_1)}=\gamma_0(\omega_1)L.
 \]
+Write \eqref{eq:rigrod} at $\omega_2$, using $I_s(\omega_2)=2I_s(\omega_1)$ and $\gamma_0(\omega_2)=\tfrac12\gamma_0(\omega_1)$:
 \[
 \ln(2.1)+(2.1-1)\frac{I_0}{2 I_s(\omega_1)}=\tfrac12\,\gamma_0(\omega_1)L.
 \]
-Multiply the second by 2:
+Multiply the second equation by 2:
 \[
 2\ln(2.1)+(2.1-1)\frac{I_0}{I_s(\omega_1)}=\gamma_0(\omega_1)L.
 \]
-Subtract from the first:
+Subtract from the first to eliminate $\gamma_0(\omega_1)L$:
 \[
-\ln(3.2)-2\ln(2.1)+(3.2-1-1.1)\frac{I_0}{I_s(\omega_1)}=0.
+\ln(3.2)-2\ln(2.1)+\bigl[(3.2-1)-(2.1-1)\bigr]\frac{I_0}{I_s(\omega_1)}=0.
 \]
-Evaluate logs:
+Evaluate the bracket $2.2-1.1=1.1$:
+\[
+\ln(3.2)-2\ln(2.1)+1.1\,\frac{I_0}{I_s(\omega_1)}=0.
+\]
+Evaluate the logarithms:
 \[
 \ln(3.2)=1.1632,\qquad 2\ln(2.1)=2(0.7419)=1.4839.
 \]
-Insert:
+Insert and isolate $I_0/I_s(\omega_1)$:
 \[
-1.1632-1.4839+1.1\frac{I_0}{I_s(\omega_1)}=0.
+1.1\,\frac{I_0}{I_s(\omega_1)}=1.4839-1.1632=0.3207.
 \]
-Solve:
+Divide by $1.1$:
 \[
 \frac{I_0}{I_s(\omega_1)}=\frac{0.3207}{1.1}=0.2916.
 \]
-Hence
+Invert and use $I_s(\omega_2)=2I_s(\omega_1)$:
 \[
 \boxed{\;I_s(\omega_1)=3.43\,I_0,\qquad I_s(\omega_2)=6.86\,I_0.\;}
 \]
 
-\paragraph{Small-signal gain.} Insert into the first equation:
+\paragraph{Small-signal gain.} Substitute back into the $\omega_1$ equation:
 \[
-\gamma_0(\omega_1)L=1.1632+2.2\,(0.2916)=1.1632+0.6415=1.805.
+\gamma_0(\omega_1)L=\ln(3.2)+2.2\,(0.2916).
 \]
-With $L=\SI{50}{mm}=\SI{0.050}{m}$:
+Evaluate:
+\[
+\gamma_0(\omega_1)L=1.1632+0.6415=1.805.
+\]
+Divide by $L=\SI{50}{mm}=\SI{0.050}{m}$:
 \[
 \gamma_0(\omega_1)=1.805/0.050=\SI{36.1}{m^{-1}}.
 \]
-Half at $\omega_2$:
+Apply $\gamma_0(\omega_2)=\tfrac12\gamma_0(\omega_1)$:
 \[
 \gamma_0(\omega_2)=\SI{18.0}{m^{-1}}.
 \]
@@ -686,13 +743,19 @@ Half at $\omega_2$:
 \boxed{\;\gamma_0(\omega_1)\simeq\SI{36}{m^{-1}},\qquad\gamma_0(\omega_2)\simeq\SI{18}{m^{-1}}.\;}
 \]
 
-\paragraph{Consistency check at $\omega_2$:}
+\paragraph{Consistency check at $\omega_2$.} Apply \eqref{eq:rigrod} with $I_{\rm out}=2.1I_0$:
 \[
-\gamma_0(\omega_2)L=\ln(2.1)+(2.1-1)(I_0/I_s(\omega_2)).
+\gamma_0(\omega_2)L=\ln(2.1)+(2.1-1)\,\frac{I_0}{I_s(\omega_2)}.
 \]
+Substitute $I_s(\omega_2)=6.86I_0$:
 \[
-=0.7419+1.1\times(1/6.86)=0.7419+0.1604=0.902.
+\gamma_0(\omega_2)L=0.7419+1.1\times(1/6.86).
 \]
+Evaluate:
+\[
+\gamma_0(\omega_2)L=0.7419+0.1604=0.902.
+\]
+Divide by $L$:
 \[
 \gamma_0(\omega_2)=0.902/0.050=\SI{18.0}{m^{-1}}.
 \]

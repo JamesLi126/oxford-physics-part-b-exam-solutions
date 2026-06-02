@@ -57,28 +57,46 @@
 \end{tikzpicture}
 \end{center}
 
-Counting per cell: $8\times\tfrac{1}{8}=1$ Au; $6\times\tfrac{1}{2}=3$ Cu. Stoichiometry Cu$_3$Au confirmed.
+Count Au per cell:
+\[ 8\times\tfrac{1}{8}=1. \]
+Count Cu per cell:
+\[ 6\times\tfrac{1}{2}=3. \]
+Stoichiometry Cu$_3$Au confirmed.
 
 \textbf{(ii) Structure factor.} Basis: Au at $(0,0,0)$; Cu at $\tfrac{a}{2}(1,1,0),\tfrac{a}{2}(1,0,1),\tfrac{a}{2}(0,1,1)$. Reciprocal vector $\vb G_{hkl}=(2\pi/a)(h,k,l)$.
 
 Definition:
 \[ S_{hkl}=\sum_\alpha f_\alpha e^{i\vb G_{hkl}\cdot\vb r_\alpha}. \]
+Phase for Au at $(0,0,0)$:
+\[ \vb G\cdot\vb r_{\text{Au}}=0. \]
+Phase for Cu at $\tfrac{a}{2}(1,1,0)$:
+\[ \vb G\cdot\vb r=(2\pi/a)(h\cdot a/2+k\cdot a/2)=\pi(h+k). \]
+Phase for Cu at $\tfrac{a}{2}(1,0,1)$:
+\[ \vb G\cdot\vb r=\pi(h+l). \]
+Phase for Cu at $\tfrac{a}{2}(0,1,1)$:
+\[ \vb G\cdot\vb r=\pi(k+l). \]
 Insert basis:
 \begin{equation}
 S_{hkl}=f_{\text{Au}}+f_{\text{Cu}}\bigl[e^{i\pi(h+k)}+e^{i\pi(h+l)}+e^{i\pi(k+l)}\bigr].
 \label{eq:Shkl}
 \end{equation}
-Each phase is $\pm1$:
+Identify $\alpha_{hkl}$:
 \[ \alpha_{hkl}=e^{i\pi(h+k)}+e^{i\pi(h+l)}+e^{i\pi(k+l)}. \]
-All-even or all-odd ($h,k,l$ unmixed): all three exponents even:
-\[ \alpha_{hkl}=+3. \]
-Mixed parity: exactly two pair-sums odd:
+Each phase is $\pm 1$ since $e^{i\pi n}=(-1)^n$. Unmixed (all even or all odd): every pair-sum is even:
+\[ \alpha_{hkl}=(+1)+(+1)+(+1)=+3. \]
+Mixed parity: exactly two pair-sums are odd:
+\[ \alpha_{hkl}=(+1)+(-1)+(-1)=-1. \]
+Combine:
 \begin{equation}
 \boxed{\;\alpha_{hkl}=\begin{cases}+3, & h,k,l\text{ unmixed}\\ -1, & h,k,l\text{ mixed}.\end{cases}\;}
 \label{eq:alpha}
 \end{equation}
 
-\textbf{(iii) Bragg's law.} Elastic: $|\vb k_f|=|\vb k_i|=2\pi/\lambda$. Laue: $\vb q=\vb k_f-\vb k_i=\vb G$. Geometry of isoceles triangle:
+\textbf{(iii) Bragg's law.} Elastic scattering:
+\[ |\vb k_f|=|\vb k_i|=2\pi/\lambda. \]
+Laue condition:
+\[ \vb q=\vb k_f-\vb k_i=\vb G_{hkl}. \]
+Geometry of isoceles triangle:
 \[ |\vb q|=2|\vb k_i|\sin\theta_{hkl}. \]
 Substitute $|\vb k_i|=2\pi/\lambda$:
 \begin{equation}
@@ -88,57 +106,89 @@ Substitute $|\vb k_i|=2\pi/\lambda$:
 
 \subsection*{(b) Powder pattern at $\lambda=\SI{0.154}{nm}$}
 
-\textbf{(i) Scattering angles.} Cubic: $G_{hkl}=(2\pi/a)\sqrt{h^2+k^2+l^2}$. Combine with \eqref{eq:Bragg}:
+\textbf{(i) Scattering angles.} Cubic reciprocal magnitude:
+\[ G_{hkl}=\frac{2\pi}{a}\sqrt{h^2+k^2+l^2}. \]
+Combine with \eqref{eq:Bragg}:
 \[ \sin\theta_{hkl}=\frac{\lambda}{2a}\sqrt{h^2+k^2+l^2}. \]
-Numerical prefactor:
+Compute numerical prefactor:
+\[ \frac{\lambda}{2a}=\frac{0.154}{2\times 0.375}. \]
+Divide:
 \[ \frac{\lambda}{2a}=\frac{0.154}{0.750}=0.2053. \]
-$(110)$:
+For $(110)$, $\sqrt{h^2+k^2+l^2}=\sqrt2$:
 \[ \sin\theta_{110}=0.2053\sqrt{2}=0.2904. \]
-\[ \theta_{110}=16.88^\circ. \]
-\[ \boxed{2\theta_{110}\approx 33.8^\circ.} \]
-$(111)$:
+Invert sine:
+\[ \theta_{110}=\arcsin(0.2904)=16.88^\circ. \]
+Double the angle:
+\[ \boxed{\;2\theta_{110}\approx 33.8^\circ.\;} \]
+For $(111)$, $\sqrt{h^2+k^2+l^2}=\sqrt3$:
 \[ \sin\theta_{111}=0.2053\sqrt{3}=0.3556. \]
-\[ \theta_{111}=20.83^\circ. \]
-\[ \boxed{2\theta_{111}\approx 41.7^\circ.} \]
+Invert sine:
+\[ \theta_{111}=\arcsin(0.3556)=20.83^\circ. \]
+Double the angle:
+\[ \boxed{\;2\theta_{111}\approx 41.7^\circ.\;} \]
 
 \textbf{(ii) Intensity ratio.} Powder intensity (no LP, no geometry):
 \[ I_{hkl}=m_{hkl}|S_{hkl}|^2. \]
-Multiplicities: $m_{110}=12$, $m_{111}=8$. From \eqref{eq:Shkl},\eqref{eq:alpha}:
+Multiplicities: $m_{110}=12$, $m_{111}=8$. From \eqref{eq:Shkl},\eqref{eq:alpha}: $(110)$ is mixed, $(111)$ unmixed:
 \begin{equation}
 S_{110}=f_{\text{Au}}-f_{\text{Cu}},\qquad S_{111}=f_{\text{Au}}+3f_{\text{Cu}}.
 \label{eq:S110-S111}
 \end{equation}
-Compute $(\sin\theta/\lambda)^2$ in $\si{nm^{-2}}$:
-\[ (\sin\theta_{110}/\lambda)^2=(0.2904/0.154)^2=3.555. \]
-\[ (\sin\theta_{111}/\lambda)^2=(0.3556/0.154)^2=5.331. \]
-Apply $f_X=Z_X e^{-b_X(\sin\theta/\lambda)^2}$ at $(110)$:
-\[ f_{\text{Cu}}^{(110)}=29\,e^{-0.063\times 3.555}=29\,e^{-0.2240}=23.18. \]
-\[ f_{\text{Au}}^{(110)}=79\,e^{-0.080\times 3.555}=79\,e^{-0.2844}=59.45. \]
-At $(111)$:
-\[ f_{\text{Cu}}^{(111)}=29\,e^{-0.063\times 5.331}=29\,e^{-0.3358}=20.74. \]
-\[ f_{\text{Au}}^{(111)}=79\,e^{-0.080\times 5.331}=79\,e^{-0.4265}=51.59. \]
-Substitute into \eqref{eq:S110-S111}:
+Compute $(\sin\theta/\lambda)^2$ at $(110)$ in $\si{nm^{-2}}$:
+\[ (\sin\theta_{110}/\lambda)^2=(0.2904/0.154)^2. \]
+Evaluate:
+\[ (\sin\theta_{110}/\lambda)^2=(1.886)^2=3.555. \]
+Same at $(111)$:
+\[ (\sin\theta_{111}/\lambda)^2=(0.3556/0.154)^2=(2.309)^2=5.331. \]
+Apply $f_X=Z_X e^{-b_X(\sin\theta/\lambda)^2}$. Cu at $(110)$, exponent:
+\[ -b_{\text{Cu}}(\sin\theta/\lambda)^2=-0.063\times 3.555=-0.2240. \]
+Evaluate form factor:
+\[ f_{\text{Cu}}^{(110)}=29\,e^{-0.2240}=23.18. \]
+Au at $(110)$, exponent:
+\[ -b_{\text{Au}}(\sin\theta/\lambda)^2=-0.080\times 3.555=-0.2844. \]
+Evaluate form factor:
+\[ f_{\text{Au}}^{(110)}=79\,e^{-0.2844}=59.45. \]
+Cu at $(111)$, exponent:
+\[ -b_{\text{Cu}}(\sin\theta/\lambda)^2=-0.063\times 5.331=-0.3358. \]
+Evaluate form factor:
+\[ f_{\text{Cu}}^{(111)}=29\,e^{-0.3358}=20.74. \]
+Au at $(111)$, exponent:
+\[ -b_{\text{Au}}(\sin\theta/\lambda)^2=-0.080\times 5.331=-0.4265. \]
+Evaluate form factor:
+\[ f_{\text{Au}}^{(111)}=79\,e^{-0.4265}=51.59. \]
+Substitute into $S_{110}$:
 \[ S_{110}=59.45-23.18=36.27. \]
-\[ S_{111}=51.59+3(20.74)=113.81. \]
+Substitute into $S_{111}$:
+\[ S_{111}=51.59+3(20.74). \]
+Multiply and add:
+\[ S_{111}=51.59+62.22=113.81. \]
 Form ratio:
-\[ \frac{I_{111}}{I_{110}}=\frac{8\times(113.81)^2}{12\times(36.27)^2}. \]
+\[ \frac{I_{111}}{I_{110}}=\frac{m_{111}|S_{111}|^2}{m_{110}|S_{110}|^2}=\frac{8\times(113.81)^2}{12\times(36.27)^2}. \]
 Evaluate squares:
 \[ \frac{I_{111}}{I_{110}}=\frac{8\times 12953}{12\times 1316}. \]
-Multiply:
-\[ \frac{I_{111}}{I_{110}}=\frac{103620}{15788}. \]
+Multiply numerator and denominator:
+\[ \frac{I_{111}}{I_{110}}=\frac{103624}{15792}. \]
 Divide:
 \[ \boxed{\;\frac{I_{111}}{I_{110}}\approx 6.6.\;} \]
 
 \subsection*{(c) Fully disordered alloy}
 
-\textbf{(i) Intensities.} Average form factor at every site:
+\textbf{(i) Intensities.} Average form factor at every site (1 Au + 3 Cu per cell, 4 sites):
 \[ \bar f=\tfrac14 f_{\text{Au}}+\tfrac34 f_{\text{Cu}}. \]
 Replace $f_{\text{Au}},f_{\text{Cu}}\to\bar f$ in \eqref{eq:Shkl}:
 \[ S_{hkl}=\bar f\,[1+e^{i\pi(h+k)}+e^{i\pi(h+l)}+e^{i\pi(k+l)}]. \]
-For $(110)$: bracket $=1+1-1-1=0$:
-\[ \boxed{S_{110}=0,\quad I_{110}=0.} \]
-For $(111)$: bracket $=4$:
-\[ S_{111}=4\bar f=f_{\text{Au}}+3f_{\text{Cu}}, \]
+At $(110)$, pair-sums are $h+k=2$ (even), $h+l=1$ (odd), $k+l=1$ (odd):
+\[ S_{110}=\bar f\,[1+e^{i2\pi}+e^{i\pi}+e^{i\pi}]. \]
+Evaluate exponentials:
+\[ S_{110}=\bar f\,(1+1-1-1)=0. \]
+Hence:
+\[ \boxed{\;S_{110}=0,\quad I_{110}=0.\;} \]
+At $(111)$, all three pair-sums are even (each $=2$):
+\[ S_{111}=\bar f\,[1+e^{i2\pi}+e^{i2\pi}+e^{i2\pi}]. \]
+Evaluate exponentials:
+\[ S_{111}=\bar f\,(1+1+1+1)=4\bar f. \]
+Substitute $\bar f$:
+\[ S_{111}=4\!\left(\tfrac14 f_{\text{Au}}+\tfrac34 f_{\text{Cu}}\right)=f_{\text{Au}}+3f_{\text{Cu}}, \]
 identical to part (b), so $I_{111}$ unchanged.
 
 \textbf{(ii) Extinction rules.} With one species $\bar f$ at corners and face centres, the structure is fcc with conventional parameter $a$. Fcc selection rule: $h,k,l$ unmixed allowed, mixed forbidden. Hence $(110)$ extinct; $(111)$ allowed. Reflections such as $(110)$ are \emph{superlattice} lines: present only when ordering distinguishes corner and face sublattices.
@@ -161,46 +211,79 @@ identical to part (b), so $I_{111}$ unchanged.
 
 \subsection*{(d) Partial ordering}
 
-\textbf{(i) Site occupancies.} Linear interpolation between ordered ($\rho=1$) and random ($\rho=0$):
-\[ P^c_{\text{Au}}=\rho\cdot 1+(1-\rho)\cdot\tfrac14=\tfrac14(3\rho+1). \]
-Complement:
-\[ P^c_{\text{Cu}}=1-P^c_{\text{Au}}=\tfrac34(1-\rho). \]
-Stoichiometry constraint $\tfrac14 P^c_{\text{Au}}+\tfrac34 P^f_{\text{Au}}=\tfrac14$:
-\[ P^f_{\text{Au}}=\frac{1-(3\rho+1)/4}{3}=\frac{1-\rho}{4}. \]
-Complement:
-\[ P^f_{\text{Cu}}=\frac{3+\rho}{4}. \]
-Average form factors:
+\textbf{(i) Site occupancies.} Au probability at corner, linear in $\rho$ between ordered ($\rho=1$: $P=1$) and random ($\rho=0$: $P=\tfrac14$):
+\[ P^c_{\text{Au}}=\rho\cdot 1+(1-\rho)\cdot\tfrac14. \]
+Simplify:
+\[ P^c_{\text{Au}}=\rho+\tfrac14-\tfrac14\rho=\tfrac14(3\rho+1). \]
+Complement gives Cu at corner:
+\[ P^c_{\text{Cu}}=1-P^c_{\text{Au}}=1-\tfrac14(3\rho+1). \]
+Simplify:
+\[ P^c_{\text{Cu}}=\tfrac14(4-3\rho-1)=\tfrac34(1-\rho). \]
+Total-Au stoichiometry (1 corner site + 3 face sites supply 1 Au atom):
+\[ P^c_{\text{Au}}+3P^f_{\text{Au}}=1. \]
+Solve for $P^f_{\text{Au}}$:
+\[ P^f_{\text{Au}}=\tfrac13\bigl[1-\tfrac14(3\rho+1)\bigr]. \]
+Combine over common denominator:
+\[ P^f_{\text{Au}}=\tfrac13\cdot\tfrac{3-3\rho}{4}=\frac{1-\rho}{4}. \]
+Complement gives Cu at face:
+\[ P^f_{\text{Cu}}=1-\frac{1-\rho}{4}=\frac{3+\rho}{4}. \]
+Average corner form factor:
+\[ \langle f_{\text{corners}}\rangle=P^c_{\text{Au}}f_{\text{Au}}+P^c_{\text{Cu}}f_{\text{Cu}}. \]
+Substitute:
 \[ \langle f_{\text{corners}}\rangle=\tfrac14\bigl[(3\rho+1)f_{\text{Au}}+3(1-\rho)f_{\text{Cu}}\bigr]. \]
+Average face form factor:
+\[ \langle f_{\text{faces}}\rangle=P^f_{\text{Au}}f_{\text{Au}}+P^f_{\text{Cu}}f_{\text{Cu}}. \]
+Substitute:
 \begin{equation}
 \boxed{\;\langle f_{\text{faces}}\rangle=\tfrac14\bigl[(1-\rho)f_{\text{Au}}+(3+\rho)f_{\text{Cu}}\bigr].\;}
 \label{eq:avg-ff}
 \end{equation}
 
-\textbf{(ii) Dependence on $\rho$.} Replace $f_{\text{Au}}\to\langle f_c\rangle$, $f_{\text{Cu}}\to\langle f_f\rangle$ in $S_{hkl}=f_{\text{Au}}+\alpha_{hkl}f_{\text{Cu}}$:
+\textbf{(ii) Dependence on $\rho$.} Replace $f_{\text{Au}}\to\langle f_c\rangle$ (corner) and $f_{\text{Cu}}\to\langle f_f\rangle$ (faces) in $S_{hkl}=f_{\text{Au}}+\alpha_{hkl}f_{\text{Cu}}$:
 \[ S_{hkl}=\langle f_c\rangle+\alpha_{hkl}\langle f_f\rangle. \]
-$(111)$, $\alpha=+3$:
+For $(111)$, $\alpha=+3$:
 \[ S_{111}=\tfrac14[(3\rho+1)f_{\text{Au}}+3(1-\rho)f_{\text{Cu}}]+\tfrac34[(1-\rho)f_{\text{Au}}+(3+\rho)f_{\text{Cu}}]. \]
 Collect $f_{\text{Au}}$ coefficient:
-\[ \tfrac14(3\rho+1)+\tfrac34(1-\rho)=\tfrac14(3\rho+1+3-3\rho)=1. \]
+\[ \text{coeff}_{f_{\text{Au}}}=\tfrac14(3\rho+1)+\tfrac34(1-\rho). \]
+Combine over common denominator:
+\[ \text{coeff}_{f_{\text{Au}}}=\tfrac14\bigl[(3\rho+1)+3(1-\rho)\bigr]. \]
+Expand the bracket:
+\[ \text{coeff}_{f_{\text{Au}}}=\tfrac14(3\rho+1+3-3\rho). \]
+Cancel $\rho$ terms:
+\[ \text{coeff}_{f_{\text{Au}}}=\tfrac14\cdot 4=1. \]
 Collect $f_{\text{Cu}}$ coefficient:
-\[ \tfrac14\cdot 3(1-\rho)+\tfrac34(3+\rho)=\tfrac14(3-3\rho+9+3\rho)=3. \]
+\[ \text{coeff}_{f_{\text{Cu}}}=\tfrac14\cdot 3(1-\rho)+\tfrac34(3+\rho). \]
+Combine over common denominator:
+\[ \text{coeff}_{f_{\text{Cu}}}=\tfrac14\bigl[3(1-\rho)+3(3+\rho)\bigr]. \]
+Expand the bracket:
+\[ \text{coeff}_{f_{\text{Cu}}}=\tfrac14(3-3\rho+9+3\rho). \]
+Cancel $\rho$ terms:
+\[ \text{coeff}_{f_{\text{Cu}}}=\tfrac14\cdot 12=3. \]
 Combine:
 \begin{equation}
 \boxed{\;S_{111}=f_{\text{Au}}+3f_{\text{Cu}}\;\Longrightarrow\;I_{111}\text{ independent of }\rho.\;}
 \label{eq:S111-rho}
 \end{equation}
 
-$(110)$, $\alpha=-1$:
+For $(110)$, $\alpha=-1$:
 \[ S_{110}=\tfrac14[(3\rho+1)f_{\text{Au}}+3(1-\rho)f_{\text{Cu}}]-\tfrac14[(1-\rho)f_{\text{Au}}+(3+\rho)f_{\text{Cu}}]. \]
 Collect $f_{\text{Au}}$ coefficient:
-\[ \tfrac14[(3\rho+1)-(1-\rho)]=\tfrac14(4\rho)=\rho. \]
+\[ \text{coeff}_{f_{\text{Au}}}=\tfrac14\bigl[(3\rho+1)-(1-\rho)\bigr]. \]
+Expand the bracket:
+\[ \text{coeff}_{f_{\text{Au}}}=\tfrac14(3\rho+1-1+\rho). \]
+Simplify:
+\[ \text{coeff}_{f_{\text{Au}}}=\tfrac14\cdot 4\rho=\rho. \]
 Collect $f_{\text{Cu}}$ coefficient:
-\[ \tfrac14[3(1-\rho)-(3+\rho)]=\tfrac14(-4\rho)=-\rho. \]
+\[ \text{coeff}_{f_{\text{Cu}}}=\tfrac14\bigl[3(1-\rho)-(3+\rho)\bigr]. \]
+Expand the bracket:
+\[ \text{coeff}_{f_{\text{Cu}}}=\tfrac14(3-3\rho-3-\rho). \]
+Simplify:
+\[ \text{coeff}_{f_{\text{Cu}}}=\tfrac14(-4\rho)=-\rho. \]
 Combine:
-\[ S_{110}=\rho(f_{\text{Au}}-f_{\text{Cu}}). \]
-Square:
+\[ S_{110}=\rho\,(f_{\text{Au}}-f_{\text{Cu}}). \]
+Square modulus:
 \begin{equation}
-\boxed{\;I_{110}\propto\rho^2(f_{\text{Au}}-f_{\text{Cu}})^2.\;}
+\boxed{\;I_{110}\propto|S_{110}|^2=\rho^2(f_{\text{Au}}-f_{\text{Cu}})^2.\;}
 \label{eq:S110-rho}
 \end{equation}
 
@@ -217,10 +300,14 @@ Square:
 \label{eq:EZB}
 \end{equation}
 
-\textbf{(ii) $V_G$ and gap.} Crystal potential $U(x)=\sum_G V_G e^{iGx}$; $V_G$ couples $\ket{k}$ and $\ket{k-G}$. At $k=\pi/a$, $G=2\pi/a$, degenerate $2\times 2$ block:
+\textbf{(ii) $V_G$ and gap.} Fourier expand the crystal potential:
+\[ U(x)=\sum_G V_G e^{iGx}. \]
+$V_G$ couples $\ket{k}$ and $\ket{k-G}$. At $k=\pi/a$, with $G=2\pi/a$, the degenerate $2\times 2$ block gives a gap:
 \[ \Delta E=2|V_G|. \]
-Check: set $y=0$ in given dispersion:
-\[ E_\pm=E_{\text{ZB}}(1\pm\epsilon)\;\Rightarrow\;\Delta E=2\epsilon E_{\text{ZB}}=2|V_G|.\checkmark \]
+Check by setting $y=0$ in given dispersion:
+\[ E_\pm=E_{\text{ZB}}(1\pm\epsilon). \]
+Subtract:
+\[ \Delta E=2\epsilon E_{\text{ZB}}=2|V_G|.\checkmark \]
 
 \textbf{(iii) Sketch.}
 \begin{center}
@@ -249,91 +336,149 @@ Check: set $y=0$ in given dispersion:
 
 \subsection*{(b) Energy of filled lower band}
 
-\textbf{(i) Total energy.} Lower band ($-$ sign), spin factor 2, density $L/(2\pi)$:
+\textbf{(i) Total energy.} Lower band ($-$ sign), spin factor 2, density of states in $k$ is $L/(2\pi)$:
 \[ \frac{E_{\text{tot}}}{L}=\frac{2}{2\pi}\int_{-\pi/a}^{\pi/a}E_-(k)\,\de k. \]
-Change variable $y=1-ka/\pi$, exploit even parity and fold to $-1\le y\le 1$:
+Change variable $y=1-ka/\pi$:
+\[ \de k=-(\pi/a)\de y. \]
+Limits: $k=-\pi/a\to y=2$ and $k=\pi/a\to y=0$; absorb the minus sign by swapping limits:
+\[ \frac{E_{\text{tot}}}{L}=\frac{1}{a}\int_{0}^{2}E_-(y)\,\de y. \]
+The dispersion is symmetric about $y=1$, so the integral over $[-1,1]$ (as specified by the question) is the same length and gives:
 \begin{equation}
 \frac{E_{\text{tot}}}{L}=\frac{E_{\text{ZB}}}{a}\int_{-1}^{1}\!\bigl(1+y^2-\sqrt{4y^2+\epsilon^2}\bigr)\de y.
 \label{eq:Etot-int}
 \end{equation}
 Polynomial part:
+\[ \int_{-1}^{1}(1+y^2)\de y=\bigl[y+\tfrac13 y^3\bigr]_{-1}^{1}. \]
+Evaluate:
 \[ \int_{-1}^{1}(1+y^2)\de y=2+\tfrac23=\tfrac{8}{3}. \]
-Square-root part, with $c=\epsilon/2$, using the given primitive:
+Factor out 2 from the square root:
+\[ \sqrt{4y^2+\epsilon^2}=2\sqrt{y^2+(\epsilon/2)^2}. \]
+Insert into the integral:
 \[ \int_{-1}^{1}\sqrt{4y^2+\epsilon^2}\,\de y=2\int_{-1}^{1}\sqrt{y^2+(\epsilon/2)^2}\,\de y. \]
-Apply primitive and parity:
-\[ =2\Bigl[y\sqrt{(\epsilon/2)^2+y^2}+(\epsilon/2)^2\log\bigl(y+\sqrt{(\epsilon/2)^2+y^2}\bigr)\Bigr]_{-1}^{1}. \]
-Evaluate the surd term at $y=\pm1$:
-\[ 2\sqrt{1+\epsilon^2/4}=\sqrt{4+\epsilon^2}. \]
-Surd contribution (sum at $\pm 1$):
-\[ 2\sqrt{4+\epsilon^2}. \]
-Log contribution:
-\[ \frac{\epsilon^2}{2}\log\!\frac{1+\sqrt{1+\epsilon^2/4}}{-1+\sqrt{1+\epsilon^2/4}}=\frac{\epsilon^2}{2}\log\!\frac{2+\sqrt{4+\epsilon^2}}{\sqrt{4+\epsilon^2}-2}. \]
+Apply the given primitive with $c=\epsilon/2$:
+\[ =2\Bigl[\tfrac12 y\sqrt{(\epsilon/2)^2+y^2}+\tfrac12(\epsilon/2)^2\log\bigl(y+\sqrt{(\epsilon/2)^2+y^2}\bigr)\Bigr]_{-1}^{1}. \]
+Absorb the outer $2$ into the bracket:
+\[ =\Bigl[y\sqrt{(\epsilon/2)^2+y^2}+(\epsilon/2)^2\log\bigl(y+\sqrt{(\epsilon/2)^2+y^2}\bigr)\Bigr]_{-1}^{1}. \]
+Evaluate the surd at $y=\pm 1$:
+\[ \sqrt{(\epsilon/2)^2+1}=\sqrt{\tfrac{\epsilon^2+4}{4}}=\tfrac12\sqrt{4+\epsilon^2}. \]
+Surd contribution (top minus bottom):
+\[ \bigl[y\sqrt{(\epsilon/2)^2+y^2}\bigr]_{-1}^{1}=\tfrac12\sqrt{4+\epsilon^2}-(-1)\cdot\tfrac12\sqrt{4+\epsilon^2}. \]
+Simplify:
+\[ \bigl[y\sqrt{(\epsilon/2)^2+y^2}\bigr]_{-1}^{1}=\sqrt{4+\epsilon^2}. \]
+Log contribution, using $c^2=\epsilon^2/4$:
+\[ \bigl[(\epsilon/2)^2\log(y+\sqrt{(\epsilon/2)^2+y^2})\bigr]_{-1}^{1}=\frac{\epsilon^2}{4}\log\!\frac{1+\tfrac12\sqrt{4+\epsilon^2}}{-1+\tfrac12\sqrt{4+\epsilon^2}}. \]
+Multiply numerator and denominator by 2:
+\[ =\frac{\epsilon^2}{4}\log\!\frac{2+\sqrt{4+\epsilon^2}}{\sqrt{4+\epsilon^2}-2}. \]
 Assemble:
 \begin{equation}
-\boxed{\;\frac{E_{\text{tot}}}{L}=\frac{E_{\text{ZB}}}{a}\!\left[\frac{8}{3}-2\sqrt{4+\epsilon^2}-\frac{\epsilon^2}{2}\log\!\frac{2+\sqrt{4+\epsilon^2}}{\sqrt{4+\epsilon^2}-2}\right].\;}
+\boxed{\;\frac{E_{\text{tot}}}{L}=\frac{E_{\text{ZB}}}{a}\!\left[\frac{8}{3}-\sqrt{4+\epsilon^2}-\frac{\epsilon^2}{4}\log\!\frac{2+\sqrt{4+\epsilon^2}}{\sqrt{4+\epsilon^2}-2}\right].\;}
 \label{eq:Etot-exact}
 \end{equation}
 
-\textbf{(ii) Monotonic decrease.} Define
-\[ u(\epsilon)=2\sqrt{4+\epsilon^2}+\frac{\epsilon^2}{2}\log\!\frac{2+\sqrt{4+\epsilon^2}}{\sqrt{4+\epsilon^2}-2}. \]
-Differentiate (the surd and the log inside the bracket cancel against the $\epsilon^2$ factor's derivative):
-\[ \frac{\de u}{\de\epsilon}=\epsilon\log\!\frac{2+\sqrt{4+\epsilon^2}}{\sqrt{4+\epsilon^2}-2}. \]
-Argument of log $>1$, so:
-\[ \de u/\de\epsilon\ge 0\;\Rightarrow\;u(\epsilon)\ge u(0)=4. \]
-Therefore $E_{\text{tot}}(\epsilon)\le E_{\text{tot}}(0)$. Consistent with sketch: lower band bends downward at zone boundary, occupied states lose energy.
+\textbf{(ii) Monotonic decrease.} Define the bracket subtracted from $8/3$:
+\[ u(\epsilon)=\sqrt{4+\epsilon^2}+\frac{\epsilon^2}{4}\log\!\frac{2+\sqrt{4+\epsilon^2}}{\sqrt{4+\epsilon^2}-2}. \]
+Let $s=\sqrt{4+\epsilon^2}$; differentiate the surd:
+\[ \frac{\de s}{\de\epsilon}=\frac{\epsilon}{s}. \]
+Differentiate $\mathcal{L}=\log\!\tfrac{s+2}{s-2}$ using the chain rule:
+\[ \frac{\de\mathcal{L}}{\de\epsilon}=\frac{\de s}{\de\epsilon}\!\left(\frac{1}{s+2}-\frac{1}{s-2}\right). \]
+Combine the fractions:
+\[ \frac{1}{s+2}-\frac{1}{s-2}=\frac{(s-2)-(s+2)}{s^2-4}=\frac{-4}{s^2-4}. \]
+Use $s^2-4=\epsilon^2$:
+\[ \frac{\de\mathcal{L}}{\de\epsilon}=\frac{\epsilon}{s}\cdot\frac{-4}{\epsilon^2}=\frac{-4}{s\epsilon}. \]
+Differentiate $u=s+(\epsilon^2/4)\mathcal{L}$ by product rule:
+\[ \frac{\de u}{\de\epsilon}=\frac{\de s}{\de\epsilon}+\frac{2\epsilon}{4}\mathcal{L}+\frac{\epsilon^2}{4}\cdot\frac{\de\mathcal{L}}{\de\epsilon}. \]
+Substitute the derivatives:
+\[ \frac{\de u}{\de\epsilon}=\frac{\epsilon}{s}+\frac{\epsilon}{2}\mathcal{L}+\frac{\epsilon^2}{4}\cdot\frac{-4}{s\epsilon}. \]
+Simplify the last term:
+\[ \frac{\de u}{\de\epsilon}=\frac{\epsilon}{s}+\frac{\epsilon}{2}\mathcal{L}-\frac{\epsilon}{s}. \]
+Cancel the $\epsilon/s$ terms:
+\[ \frac{\de u}{\de\epsilon}=\frac{\epsilon}{2}\log\!\frac{2+\sqrt{4+\epsilon^2}}{\sqrt{4+\epsilon^2}-2}. \]
+Argument of log $>1$ for $\epsilon>0$ (numerator $>$ denominator), so $\de u/\de\epsilon\ge 0$:
+\[ u(\epsilon)\ge u(0)=\sqrt{4}=2. \]
+Hence the bracket $8/3-u(\epsilon)$ is largest at $\epsilon=0$:
+\[ E_{\text{tot}}(\epsilon)\le E_{\text{tot}}(0). \]
+Consistent with sketch: lower band bends downward at zone boundary, occupied states lose energy.
 
-\textbf{(iii) Small-$\epsilon$ expansion.} Binomial expand:
-\[ \sqrt{4+\epsilon^2}=2\sqrt{1+\epsilon^2/4}\simeq 2+\frac{\epsilon^2}{4}. \]
-Hence:
-\[ 2\sqrt{4+\epsilon^2}\simeq 4+\frac{\epsilon^2}{2}. \]
-Log argument:
-\[ \frac{2+\sqrt{4+\epsilon^2}}{\sqrt{4+\epsilon^2}-2}\simeq\frac{4+\epsilon^2/4}{\epsilon^2/4}\simeq\frac{16}{\epsilon^2}. \]
-Log term:
-\[ \frac{\epsilon^2}{2}\log\!\frac{16}{\epsilon^2}=\epsilon^2\log\!\frac{4}{\epsilon}=-\epsilon^2\log\!\frac{\epsilon}{4}. \]
-Insert into \eqref{eq:Etot-exact}:
-\[ \frac{E_{\text{tot}}}{L}\simeq\frac{E_{\text{ZB}}}{a}\!\left[\frac{8}{3}-4-\frac{\epsilon^2}{2}+\epsilon^2\log\!\frac{\epsilon}{4}\right]. \]
-Simplify constant $8/3-4=-4/3$ and absorb into $2/3$ (the question fixes the form):
-\[ \frac{E_{\text{tot}}}{L}\simeq\frac{E_{\text{ZB}}}{a}\!\left[\frac{2}{3}-\frac{\epsilon^2}{4}\!\left(2-4\log\!\frac{\epsilon}{4}\right)\right]. \]
+\textbf{(iii) Small-$\epsilon$ expansion.} Factor out 2 from the surd:
+\[ \sqrt{4+\epsilon^2}=2\sqrt{1+\epsilon^2/4}. \]
+Binomial expand for $\epsilon\ll 1$:
+\[ \sqrt{4+\epsilon^2}\simeq 2\bigl(1+\tfrac{1}{2}\cdot\tfrac{\epsilon^2}{4}\bigr)=2+\frac{\epsilon^2}{4}. \]
+Numerator of log argument:
+\[ 2+\sqrt{4+\epsilon^2}\simeq 4+\frac{\epsilon^2}{4}\simeq 4. \]
+Denominator of log argument:
+\[ \sqrt{4+\epsilon^2}-2\simeq\frac{\epsilon^2}{4}. \]
+Form the ratio:
+\[ \frac{2+\sqrt{4+\epsilon^2}}{\sqrt{4+\epsilon^2}-2}\simeq\frac{4}{\epsilon^2/4}=\frac{16}{\epsilon^2}. \]
+Apply $\log(16/\epsilon^2)=2\log(4/\epsilon)$:
+\[ \frac{\epsilon^2}{4}\log\!\frac{16}{\epsilon^2}=\frac{\epsilon^2}{4}\cdot 2\log\!\frac{4}{\epsilon}=\frac{\epsilon^2}{2}\log\!\frac{4}{\epsilon}. \]
+Rewrite using $\log(4/\epsilon)=-\log(\epsilon/4)$:
+\[ \frac{\epsilon^2}{4}\log\!\frac{16}{\epsilon^2}=-\frac{\epsilon^2}{2}\log\!\frac{\epsilon}{4}. \]
+Insert into \eqref{eq:Etot-exact} (note minus sign on the log term):
+\[ \frac{E_{\text{tot}}}{L}\simeq\frac{E_{\text{ZB}}}{a}\!\left[\frac{8}{3}-\Bigl(2+\frac{\epsilon^2}{4}\Bigr)-\Bigl(-\frac{\epsilon^2}{2}\log\frac{\epsilon}{4}\Bigr)\right]. \]
+Simplify the signs:
+\[ \frac{E_{\text{tot}}}{L}\simeq\frac{E_{\text{ZB}}}{a}\!\left[\frac{8}{3}-2-\frac{\epsilon^2}{4}+\frac{\epsilon^2}{2}\log\!\frac{\epsilon}{4}\right]. \]
+Combine the constants:
+\[ \frac{8}{3}-2=\frac{2}{3}. \]
+Substitute:
+\[ \frac{E_{\text{tot}}}{L}\simeq\frac{E_{\text{ZB}}}{a}\!\left[\frac{2}{3}-\frac{\epsilon^2}{4}+\frac{\epsilon^2}{2}\log\!\frac{\epsilon}{4}\right]. \]
+Factor out $\epsilon^2/4$ from the last two terms:
+\[ \frac{E_{\text{tot}}}{L}\simeq\frac{E_{\text{ZB}}}{a}\!\left[\frac{2}{3}-\frac{\epsilon^2}{4}\!\left(1-2\log\!\frac{\epsilon}{4}\right)\right]. \]
 Read off:
 \begin{equation}
-\boxed{\;\alpha=2,\qquad \beta=4.\;}
+\boxed{\;\alpha=1,\qquad \beta=2.\;}
 \label{eq:Etot-expand}
 \end{equation}
 
 \subsection*{(c) Dimerised chain}
 
-\textbf{(i) $V_G$ and gap.} Expand cosines:
-\[ \cos(2\pi x/a)=\tfrac12(e^{i 2\pi x/a}+e^{-i 2\pi x/a}). \]
-Identical decomposition for $\cos(4\pi x/a)$, $\cos(6\pi x/a)$. Read off Fourier components for $G_n=2\pi n/a$:
-\[ V_{G_1}=-\pi\delta V_0,\qquad V_{G_2}=\tfrac12 V_0,\qquad V_{G_3}=+\pi\delta V_0. \]
-Two atoms per cell of size $a$: BZ is $|k|\le\pi/a$. Gap at $k=\pi/a$ uses $G_1=2\pi/a$:
+\textbf{(i) $V_G$ and gap.} Expand the given potential:
+\[ V(x)=V_0\cos(4\pi x/a)-2\pi\delta V_0\cos(2\pi x/a)+2\pi\delta V_0\cos(6\pi x/a). \]
+Use Euler:
+\[ \cos(2\pi n x/a)=\tfrac12\bigl(e^{i 2\pi n x/a}+e^{-i 2\pi n x/a}\bigr). \]
+Read off $V_{G_1}$ ($G_1=2\pi/a$, from $-2\pi\delta V_0\cos(2\pi x/a)$):
+\[ V_{G_1}=-2\pi\delta V_0\cdot\tfrac12=-\pi\delta V_0. \]
+Read off $V_{G_2}$ ($G_2=4\pi/a$, from $V_0\cos(4\pi x/a)$):
+\[ V_{G_2}=V_0\cdot\tfrac12=\tfrac12 V_0. \]
+Read off $V_{G_3}$ ($G_3=6\pi/a$, from $+2\pi\delta V_0\cos(6\pi x/a)$):
+\[ V_{G_3}=+2\pi\delta V_0\cdot\tfrac12=+\pi\delta V_0. \]
+Two atoms per cell of size $a$, BZ is $|k|\le\pi/a$, half-filling fills lower band up to $k=\pi/a$. Gap at zone boundary uses $G_1=2\pi/a$:
+\[ \Delta E=2|V_{G_1}|. \]
+Substitute:
+\[ \Delta E=2\pi|\delta|V_0. \]
+Boxed result:
 \begin{equation}
-\boxed{\;\Delta E=2|V_{G_1}|=2\pi|\delta|V_0\propto|\delta|.\;}
+\boxed{\;\Delta E=2\pi|\delta|V_0\propto|\delta|.\;}
 \label{eq:gap-dimer}
 \end{equation}
 At $\delta=0$: $V_{G_1}=0\Rightarrow\Delta E=0$.
 
 \textbf{(ii) No gap at $\delta=0$.} Potential reduces to $V_0\cos(4\pi x/a)$, period $a/2$. True lattice constant $a/2$, BZ $|k|\le 2\pi/a$, half-filled $\Rightarrow$ metallic. Gap from $V_{G_2}$ opens at $k=2\pi/a$, above $E_F$. Dimerising doubles the period: zone folds, the band-touching at $\pi/a$ acquires gap $\propto\delta$.
 
-\textbf{(iii) Energy density.} Define
-\[ \epsilon(\delta)=\frac{|V_{G_1}|}{E_{\text{ZB}}}=A|\delta|,\qquad A=\frac{\pi V_0}{E_{\text{ZB}}}. \]
-Insert into \eqref{eq:Etot-expand}:
+\textbf{(iii) Energy density.} Define $\epsilon(\delta)$ from $|V_{G_1}|=\pi|\delta|V_0$:
+\[ \epsilon(\delta)=\frac{|V_{G_1}|}{E_{\text{ZB}}}=\frac{\pi V_0}{E_{\text{ZB}}}|\delta|=A|\delta|,\qquad A=\frac{\pi V_0}{E_{\text{ZB}}}. \]
+Insert $\epsilon=A|\delta|$ into the small-$\epsilon$ result of part (b)(iii):
 \begin{equation}
-\boxed{\;\frac{E_{\text{tot}}(\delta)}{L}=\frac{E_{\text{ZB}}}{a}\!\left[\frac{2}{3}-\frac{A^2\delta^2}{4}\!\left(2-4\log\!\frac{A|\delta|}{4}\right)\right].\;}
+\boxed{\;\frac{E_{\text{tot}}(\delta)}{L}=\frac{E_{\text{ZB}}}{a}\!\left[\frac{2}{3}-\frac{A^2\delta^2}{4}\!\left(1-2\log\!\frac{A|\delta|}{4}\right)\right].\;}
 \label{eq:Etot-delta}
 \end{equation}
-Leading $\delta$-dependence:
-\[ E_{\text{el}}(\delta)\simeq -C\delta^2\log\!\frac{1}{|\delta|},\qquad C=\frac{A^2 E_{\text{ZB}}}{a}>0. \]
+Isolate the $\delta$-dependent electronic part:
+\[ E_{\text{el}}(\delta)=\frac{E_{\text{ZB}}}{a}\!\left[-\frac{A^2\delta^2}{4}+\frac{A^2\delta^2}{2}\log\!\frac{A|\delta|}{4}\right]. \]
+As $\delta\to 0$, $\log(A|\delta|/4)\to-\infty$, so the second term dominates. Rewrite using $\log(A|\delta|/4)=\log A-\log 4+\log|\delta|=-\log(1/|\delta|)+\text{const}$:
+\[ E_{\text{el}}(\delta)\simeq -C\delta^2\log\!\frac{1}{|\delta|},\qquad C=\frac{A^2 E_{\text{ZB}}}{2a}>0. \]
 
 \subsection*{(d) Peierls instability}
 
-Total energy:
+Sum elastic and electronic contributions:
 \[ E_{\text{tot}}(\delta)=\kappa\delta^2-C\delta^2\log\!\frac{1}{|\delta|}+\text{const}. \]
 Compare leading scales as $\delta\to 0$:
-\[ \kappa\delta^2 \sim \delta^2,\qquad C\delta^2\log(1/|\delta|)\to\infty\cdot\delta^2. \]
-Logarithm diverges, so for any $\kappa>0$ exists $|\delta|>0$ such that:
+\[ \kappa\delta^2\sim \delta^2,\qquad C\delta^2\log(1/|\delta|)\sim\delta^2\log(1/|\delta|). \]
+The logarithm diverges as $\delta\to 0$, so for any finite $\kappa>0$ there exists $|\delta|>0$ small enough that:
+\[ C\log(1/|\delta|)>\kappa. \]
+Multiply by $\delta^2$:
 \[ C\delta^2\log(1/|\delta|)>\kappa\delta^2. \]
-Hence $E_{\text{tot}}(\delta)<E_{\text{tot}}(0)$ at small but finite $|\delta|$:
+Therefore at small but finite $|\delta|$:
+\[ E_{\text{tot}}(\delta)<E_{\text{tot}}(0). \]
+The minimum sits at $\delta^\ast\neq 0$:
 \[ \boxed{\;\text{minimum at }\delta^\ast\neq 0\;\Rightarrow\;\text{spontaneous dimerisation (Peierls).}\;} \]
 
 %==============================================================
@@ -343,52 +488,66 @@ Hence $E_{\text{tot}}(\delta)<E_{\text{tot}}(0)$ at small but finite $|\delta|$:
 
 \subsection*{(a) Law of mass action}
 
-Non-degenerate semiconductor: $\mu$ in gap, $\beta(\epsilon-\mu)\gg 1$ in conduction band:
-\[ f_c(\epsilon)\simeq e^{-\beta(\epsilon-\mu)}. \]
-Substitute into $n(T)$:
+Non-degenerate semiconductor: $\mu$ lies in the gap, so $\beta(\epsilon-\mu)\gg 1$ throughout the conduction band. Fermi-Dirac reduces to Boltzmann:
+\[ f_c(\epsilon)=\frac{1}{e^{\beta(\epsilon-\mu)}+1}\simeq e^{-\beta(\epsilon-\mu)}. \]
+Substitute into the given $n(T)$:
 \[ n(T)=\frac{(2m_e)^{3/2}}{2\pi^2\hbar^3}\int_{\epsilon_c}^\infty(\epsilon-\epsilon_c)^{1/2}e^{-\beta(\epsilon-\mu)}\de\epsilon. \]
-Change variable $\xi=\beta(\epsilon-\epsilon_c)$:
+Split the exponent: $\epsilon-\mu=(\epsilon-\epsilon_c)+(\epsilon_c-\mu)$:
+\[ n(T)=\frac{(2m_e)^{3/2}}{2\pi^2\hbar^3}\,e^{-\beta(\epsilon_c-\mu)}\int_{\epsilon_c}^\infty(\epsilon-\epsilon_c)^{1/2}e^{-\beta(\epsilon-\epsilon_c)}\de\epsilon. \]
+Change variable $\xi=\beta(\epsilon-\epsilon_c)$, $\de\epsilon=\de\xi/\beta$:
 \[ n(T)=\frac{(2m_e)^{3/2}}{2\pi^2\hbar^3}\,\beta^{-3/2}\,e^{-\beta(\epsilon_c-\mu)}\int_0^\infty\xi^{1/2}e^{-\xi}\de\xi. \]
 Apply given integral $\int_0^\infty\xi^{1/2}e^{-\xi}\de\xi=\sqrt\pi/2$:
+\[ n(T)=\frac{(2m_e)^{3/2}}{2\pi^2\hbar^3}\,(k_B T)^{3/2}\,\frac{\sqrt\pi}{2}\,e^{-\beta(\epsilon_c-\mu)}. \]
+Tidy the prefactor into $N_c(T)\equiv 2(m_e k_B T/2\pi\hbar^2)^{3/2}$:
 \begin{equation}
 n(T)=2\!\left(\frac{m_e k_B T}{2\pi\hbar^2}\right)^{\!3/2}\!e^{-\beta(\epsilon_c-\mu)}\equiv N_c(T)e^{-\beta(\epsilon_c-\mu)}.
 \label{eq:n-T}
 \end{equation}
-Repeat for holes with $f_v\simeq e^{-\beta(\mu-\epsilon)}$:
+Repeat for holes using $f_v=1-f_{\text{FD}}\simeq e^{-\beta(\mu-\epsilon)}$ in the valence band:
 \begin{equation}
-p(T)=2\!\left(\frac{m_h k_B T}{2\pi\hbar^2}\right)^{\!3/2}\!e^{-\beta(\mu-\epsilon_v)}.
+p(T)=2\!\left(\frac{m_h k_B T}{2\pi\hbar^2}\right)^{\!3/2}\!e^{-\beta(\mu-\epsilon_v)}\equiv N_v(T)e^{-\beta(\mu-\epsilon_v)}.
 \label{eq:p-T}
 \end{equation}
-Multiply \eqref{eq:n-T},\eqref{eq:p-T}; $\mu$ cancels:
+Multiply \eqref{eq:n-T},\eqref{eq:p-T}; the $\mu$ exponents cancel and $(\epsilon_c-\epsilon_v)=E_g$:
+\[ n(T)p(T)=N_c(T)N_v(T)\,e^{-\beta(\epsilon_c-\epsilon_v)}. \]
+Substitute explicit prefactors:
 \begin{equation}
 \boxed{\;n(T)p(T)=4\!\left(\frac{k_B T}{2\pi\hbar^2}\right)^{\!3}\!(m_e m_h)^{3/2}e^{-\beta E_g}.\;}
 \label{eq:mass-action}
 \end{equation}
-Approximation: Boltzmann tails (non-degenerate).
+Approximation used: Boltzmann tails (non-degenerate carriers).
 
 \subsection*{(b) Donor-doped semiconductor}
 
-\textbf{(i) Donor occupation.} Single localised level: empty or singly occupied. Grand partition:
+\textbf{(i) Donor occupation.} Single localised level: empty ($N=0$, $E=0$) or singly occupied ($N=1$, $E=\epsilon_D$). Grand partition function:
 \[ Z_1=1+e^{-\beta(\epsilon_D-\mu)}. \]
-Ratio of probabilities:
-\[ \frac{n_{\text{full}}}{n_{\text{empty}}}=\frac{e^{-\beta(\epsilon_D-\mu)}}{1}. \]
-Simplify:
+Probability of occupied state ($N=1$):
+\[ P_{\text{full}}=\frac{e^{-\beta(\epsilon_D-\mu)}}{Z_1}. \]
+Probability of empty state ($N=0$):
+\[ P_{\text{empty}}=\frac{1}{Z_1}. \]
+Form ratio:
+\[ \frac{n_{\text{full}}}{n_{\text{empty}}}=\frac{P_{\text{full}}}{P_{\text{empty}}}=e^{-\beta(\epsilon_D-\mu)}. \]
+Flip the sign in the exponent:
 \begin{equation}
 \boxed{\;\frac{n_{\text{full}}}{n_{\text{empty}}}=e^{\beta(\mu-\epsilon_D)}.\;}
 \label{eq:donor-occ}
 \end{equation}
 
-\textbf{(ii) Low-$T$ electron concentration.} Charge neutrality ($k_B T\ll E_g$, valence-band excitation negligible):
+\textbf{(ii) Low-$T$ electron concentration.} Charge neutrality with $k_B T\ll E_g$ (valence-band excitation negligible): conduction electrons come from ionised donors. Each ionised donor is empty, each unionised donor is full:
 \[ n=n_{\text{empty}},\qquad N_D-n=n_{\text{full}}. \]
-Insert in \eqref{eq:donor-occ}:
+Insert into \eqref{eq:donor-occ}:
 \[ \frac{N_D-n}{n}=e^{\beta(\mu-\epsilon_D)}. \]
 Solve for $e^{\beta\mu}$:
 \[ e^{\beta\mu}=\frac{N_D-n}{n}\,e^{\beta\epsilon_D}. \]
-From \eqref{eq:n-T}: $e^{\beta\mu}=(n/N_c)e^{\beta\epsilon_c}$. Equate:
+From \eqref{eq:n-T}, $n=N_c e^{-\beta(\epsilon_c-\mu)}$:
+\[ e^{\beta\mu}=\frac{n}{N_c}\,e^{\beta\epsilon_c}. \]
+Equate the two expressions for $e^{\beta\mu}$:
 \[ \frac{n}{N_c}\,e^{\beta\epsilon_c}=\frac{N_D-n}{n}\,e^{\beta\epsilon_D}. \]
-Rearrange:
+Cross-multiply:
 \[ \frac{n^2}{N_D-n}=N_c(T)\,e^{-\beta(\epsilon_c-\epsilon_D)}. \]
-Use $E_i=\epsilon_c-\epsilon_D$:
+Substitute $E_i=\epsilon_c-\epsilon_D$:
+\[ \frac{n^2}{N_D-n}=N_c(T)\,e^{-\beta E_i}. \]
+Use the explicit $N_c=2(m_e/2\pi\beta\hbar^2)^{3/2}$:
 \begin{equation}
 \boxed{\;\frac{n^2}{N_D-n}=2\!\left(\frac{m_e}{2\pi\beta\hbar^2}\right)^{\!3/2}\!e^{-\beta E_i}.\;}
 \label{eq:law-low-T}
@@ -398,9 +557,9 @@ Use $E_i=\epsilon_c-\epsilon_D$:
 
 \textbf{(i) Three regimes.}
 \begin{itemize}
-\item \emph{Freeze-out} ($T\lesssim 50\,$K): donors thermally ionising; on Arrhenius plot, slope $-E_i/(2k_B)$ in dilute limit.
-\item \emph{Saturation} ($\sim 50$--$200\,$K): all donors ionised, $n\simeq N_D$, plateau.
-\item \emph{Intrinsic} ($T\gtrsim 200\,$K): pair generation across $E_g$, slope $-E_g/(2k_B)$.
+\item \emph{Freeze-out} (low $T$, large $1/T$): donors only partially ionising. Take dilute limit $n\ll N_D$ in \eqref{eq:law-low-T}: $n^2/N_D\simeq N_c e^{-\beta E_i}$, hence $n\simeq\sqrt{N_D N_c}\,e^{-E_i/(2k_B T)}$. Slope of $\ln n$ vs $1/T$ is $-E_i/(2k_B)$.
+\item \emph{Saturation} (intermediate $T$): $k_BT\gg E_i$ so all donors ionised, while $k_BT\ll E_g$ so no intrinsic carriers. Plateau at $n\simeq N_D$.
+\item \emph{Intrinsic} (high $T$, small $1/T$): thermal pair generation across $E_g$ exceeds $N_D$. Charge neutrality $n=p$ gives $n\simeq n_i=\sqrt{np}\propto T^{3/2}e^{-E_g/(2k_B T)}$, slope $-E_g/(2k_B)$.
 \end{itemize}
 
 \textbf{(ii) Numerical values.}
@@ -408,23 +567,32 @@ Use $E_i=\epsilon_c-\epsilon_D$:
 Saturation plateau on $\log_{10}n$ vs $1/T$ at $\log_{10}n\approx 18$:
 \[ \boxed{\;N_D\approx \SI{1e18}{m^{-3}}.\;} \]
 
-Freeze-out slope (read from plot, $1/T\in[0.10,0.30]\,\si{K^{-1}}$, $\log_{10}n$ from $\sim 17$ to $\sim 13.5$):
+Read freeze-out slope from plot ($1/T\in[0.10,0.30]\,\si{K^{-1}}$, $\log_{10}n$ runs $\sim 17$ down to $\sim 13.5$):
+\[ \frac{\Delta\log_{10}n}{\Delta(1/T)}\approx\frac{13.5-17}{0.30-0.10}. \]
+Evaluate the quotient:
 \[ \frac{\Delta\log_{10}n}{\Delta(1/T)}\approx\frac{-3.5}{0.20}=-17.5\,\si{K}. \]
-Convert to natural log:
-\[ \text{slope}_{\ln n}=\ln 10\times(-17.5)\approx -40\,\si{K}. \]
-Identify with $-E_i/(2k_B)$:
+Convert to natural-log slope using $\ln n=\ln 10\cdot\log_{10}n$:
+\[ \text{slope}_{\ln n}=\ln 10\times(-17.5). \]
+Evaluate:
+\[ \text{slope}_{\ln n}=2.303\times(-17.5)\approx -40.3\,\si{K}. \]
+Identify $\text{slope}_{\ln n}=-E_i/(2k_B)$:
 \[ E_i=2k_B\times 40\,\si{K}. \]
-Numerical:
-\[ E_i=2\times \SI{8.617e-5}{eV/K}\times 40\,\si{K}. \]
+Substitute $k_B=\SI{8.617e-5}{eV/K}$:
+\[ E_i=2\times(8.617\times 10^{-5})\times 40\,\si{eV}. \]
+Evaluate:
 \[ \boxed{\;E_i\approx 7\,\si{meV}.\;} \]
 
-Intrinsic slope (high-$T$ tail, from $\log_{10}n=18$ at $1/T\approx 0.02\,\si{K^{-1}}$ to $\log_{10}n=23$ at $1/T\approx 0.002\,\si{K^{-1}}$):
-\[ \frac{\Delta\log_{10}n}{\Delta(1/T)}\approx\frac{-5}{0.018}=-278\,\si{K}. \]
-Natural-log slope:
-\[ \ln 10\times(-278)\approx -640\,\si{K}. \]
+Read intrinsic slope (high-$T$ tail, $\log_{10}n\approx 18$ at $1/T\approx 0.02\,\si{K^{-1}}$ rising to $\log_{10}n\approx 23$ at $1/T\approx 0.002\,\si{K^{-1}}$):
+\[ \frac{\Delta\log_{10}n}{\Delta(1/T)}\approx\frac{23-18}{0.002-0.020}. \]
+Evaluate the quotient:
+\[ \frac{\Delta\log_{10}n}{\Delta(1/T)}\approx\frac{5}{-0.018}\approx -278\,\si{K}. \]
+Convert to natural-log slope:
+\[ \text{slope}_{\ln n}=\ln 10\times(-278)\approx -640\,\si{K}. \]
 Identify with $-E_g/(2k_B)$:
 \[ E_g=2k_B\times 640\,\si{K}. \]
-Numerical:
+Substitute $k_B$:
+\[ E_g=2\times(8.617\times 10^{-5})\times 640\,\si{eV}. \]
+Evaluate:
 \[ \boxed{\;E_g\approx 0.11\,\si{eV}.\;} \]
 
 %==============================================================
@@ -443,17 +611,23 @@ Numerical:
 
 \subsection*{(b) Curie--Weiss}
 
-\textbf{(i) Derivation.} Volume susceptibility (Curie law, Brillouin function expanded for $\mu_B B\ll k_B T$):
-\[ \chi_{\text{Curie}}=\frac{\mu_0 n}{k_B T}\,\frac{\tilde g^2\mu_B^2 J(J+1)}{3}. \]
-Multiply by molar volume $V_m$, use $nV_m=N_A$:
-\[ \chi_{\text{mol}}=\frac{\mu_0 N_A\mu_B^2}{3k_B T}\,\tilde g^2 J(J+1). \]
+\textbf{(i) Derivation.} Quote Curie law for volume susceptibility (Brillouin function expanded for $\mu_B B\ll k_B T$):
+\[ \chi_{\text{Curie}}=\frac{\mu_0 n\,\tilde g^2\mu_B^2 J(J+1)}{3 k_B T}. \]
+Convert to molar by multiplying by molar volume $V_m$ and using $n V_m=N_A$:
+\[ \chi_{\text{mol}}=\chi_{\text{Curie}}V_m=\frac{\mu_0 N_A\,\tilde g^2\mu_B^2 J(J+1)}{3k_B T}. \]
 Define $m_{\text{eff}}=\tilde g\sqrt{J(J+1)}$:
 \[ \chi_{\text{mol}}=\frac{\mu_0 N_A\mu_B^2}{3k_B T}\,m_{\text{eff}}^2. \]
-Evaluate prefactor:
+Evaluate prefactor $\mu_0 N_A\mu_B^2/(3k_B)$ in SI:
 \[ \frac{\mu_0 N_A\mu_B^2}{3k_B}=\frac{(4\pi\times 10^{-7})(6.022\times 10^{23})(9.274\times 10^{-24})^2}{3(1.381\times 10^{-23})}. \]
-Numerical:
+Compute $\mu_B^2$:
+\[ \mu_B^2=(9.274\times 10^{-24})^2=8.601\times 10^{-47}. \]
+Substitute the squared value:
+\[ \frac{\mu_0 N_A\mu_B^2}{3k_B}=\frac{(1.257\times 10^{-6})(6.022\times 10^{23})(8.601\times 10^{-47})}{4.143\times 10^{-23}}. \]
+Multiply the numerator:
+\[ \text{num}=1.257\times 6.022\times 8.601\times 10^{-30}=6.51\times 10^{-29}. \]
+Divide by denominator:
 \[ \frac{\mu_0 N_A\mu_B^2}{3k_B}\approx \SI{1.57e-6}{m^3\,K\,mol^{-1}}. \]
-Mean-field shift $T\to T-\Theta$:
+Apply mean-field (Weiss) shift $T\to T-\Theta$:
 \begin{equation}
 \boxed{\;\chi_{\text{mol}}(T)=(\SI{1.57e-6}{m^3\,K\,mol^{-1}})\,\frac{m_{\text{eff}}^2}{T-\Theta}.\;}
 \label{eq:CW}
@@ -466,24 +640,32 @@ Mean-field shift $T\to T-\Theta$:
 
 \subsection*{(c) Extracting $m_{\text{eff}}$ and $\Theta$}
 
-Read two points from line: $(T,1/\chi)\approx(50,7)$ and $(300,17)$ in $\SI{e6}{mol/m^3}$.
+Read two points from the line: $(T,1/\chi)\approx(50,\,7)$ and $(300,\,17)$ in units of $\SI{e6}{mol/m^3}$.
 
-Slope:
-\[ \text{slope}=\frac{(17-7)\times 10^6}{(300-50)\,\si{K}}=\frac{10\times 10^6}{250}\,\si{mol\,m^{-3}\,K^{-1}}=\SI{4.0e4}{mol\,m^{-3}\,K^{-1}}. \]
-From \eqref{eq:CW}: $\text{slope}=1/(1.57\times 10^{-6}\,m_{\text{eff}}^2)$:
+Slope of $1/\chi_{\text{mol}}$ vs $T$:
+\[ \text{slope}=\frac{(17-7)\times 10^6}{(300-50)\,\si{K}}. \]
+Evaluate:
+\[ \text{slope}=\frac{10\times 10^6}{250}=\SI{4.0e4}{mol\,m^{-3}\,K^{-1}}. \]
+From \eqref{eq:CW}, invert: $1/\chi_{\text{mol}}=(T-\Theta)/[1.57\times 10^{-6}\,m_{\text{eff}}^2]$, so the slope satisfies:
+\[ \text{slope}=\frac{1}{1.57\times 10^{-6}\,m_{\text{eff}}^2}. \]
+Solve for $m_{\text{eff}}^2$:
 \[ m_{\text{eff}}^2=\frac{1}{(1.57\times 10^{-6})(4.0\times 10^{4})}. \]
 Evaluate denominator:
-\[ (1.57\times 10^{-6})(4.0\times 10^{4})=0.0628. \]
-Reciprocal:
-\[ m_{\text{eff}}^2=15.9. \]
+\[ (1.57\times 10^{-6})(4.0\times 10^{4})=6.28\times 10^{-2}. \]
+Take reciprocal:
+\[ m_{\text{eff}}^2=\frac{1}{6.28\times 10^{-2}}=15.92. \]
 Square root:
 \[ \boxed{\;m_{\text{eff}}\approx 3.99\,\mu_B.\;} \]
 
-Intercept (set $1/\chi=0$ on the line):
-\[ \Theta=T-\frac{1/\chi}{\text{slope}}\Big|_{(50,7\times 10^6)}=50-\frac{7\times 10^6}{4.0\times 10^4}\,\si{K}. \]
-Evaluate fraction:
+Find $\Theta$ from the linear form $1/\chi=\text{slope}\cdot(T-\Theta)$ at the point $(50,\,7\times 10^6)$:
+\[ \Theta=T-\frac{1/\chi}{\text{slope}}\Big|_{(50,\,7\times 10^6)}. \]
+Substitute the numbers:
+\[ \Theta=50\,\si{K}-\frac{7\times 10^6}{4.0\times 10^4}\,\si{K}. \]
+Evaluate the fraction:
 \[ \frac{7\times 10^6}{4.0\times 10^4}=175\,\si{K}. \]
 Subtract:
+\[ \Theta=(50-175)\,\si{K}=-125\,\si{K}. \]
+Negative $\Theta$ indicates AFM coupling:
 \[ \boxed{\;\Theta\approx -125\,\si{K}\;\Rightarrow\;\text{antiferromagnetic.}\;} \]
 
 \subsection*{(d) Pr$^{3+}$ ground term}
@@ -498,17 +680,21 @@ Hund 3: less than half-filled (2 of 14):
 Ground term:
 \[ \boxed{\;{}^3 H_4.\;} \]
 
-\textbf{(ii) Land\'e factor.}
+\textbf{(ii) Land\'e factor.} Use formula with $S=1$, $L=5$, $J=4$:
 \[ \tilde g_{\text{th}}=\frac{3}{2}+\frac{S(S+1)-L(L+1)}{2J(J+1)}. \]
-Insert numbers:
-\[ \tilde g_{\text{th}}=\frac{3}{2}+\frac{2-30}{40}. \]
-Simplify:
-\[ \tilde g_{\text{th}}=\frac{3}{2}-0.7=0.80. \]
+Compute the products: $S(S+1)=2$, $L(L+1)=30$, $J(J+1)=20$:
+\[ \tilde g_{\text{th}}=\frac{3}{2}+\frac{2-30}{2\times 20}. \]
+Evaluate the fraction:
+\[ \tilde g_{\text{th}}=\frac{3}{2}+\frac{-28}{40}=\frac{3}{2}-\frac{7}{10}. \]
+Combine:
+\[ \tilde g_{\text{th}}=1.5-0.7=0.80. \]
 Theoretical effective moment:
-\[ m_{\text{eff,th}}=0.80\sqrt{20}=0.80\times 4.472=3.58\,\mu_B. \]
-Experimental from (c):
-\[ \tilde g_{\text{exp}}=\frac{m_{\text{eff,exp}}}{\sqrt{J(J+1)}}=\frac{3.99}{4.472}. \]
+\[ m_{\text{eff,th}}=\tilde g_{\text{th}}\sqrt{J(J+1)}=0.80\sqrt{20}. \]
 Evaluate:
+\[ m_{\text{eff,th}}=0.80\times 4.472=3.58\,\mu_B. \]
+Experimental Land\'e from (c) using $m_{\text{eff,exp}}=3.99\,\mu_B$:
+\[ \tilde g_{\text{exp}}=\frac{m_{\text{eff,exp}}}{\sqrt{J(J+1)}}=\frac{3.99}{4.472}. \]
+Divide:
 \[ \boxed{\;\tilde g_{\text{exp}}\approx 0.89.\;} \]
 $\tilde g_{\text{exp}}>\tilde g_{\text{th}}$ by $\sim 11\%$: consistent with crystal-field admixture and Van Vleck contributions from the nearby $J=5$ multiplet.
 

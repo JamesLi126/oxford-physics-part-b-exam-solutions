@@ -50,10 +50,17 @@ Substitute \eqref{eq:streamdef}:
 \label{eq:psivort}
 \end{equation}
 
-For $\psi=-\tfrac12\Omega(x^2+y^2)$, apply \eqref{eq:streamdef}:
-\[ v_x = -\Omega y,\qquad v_y = \Omega x. \]
-In polar coordinates: $\vb v=\Omega r\,\hat{\bm\theta}$, i.e.\ rigid rotation at rate $\Omega$. Apply \eqref{eq:psivort}:
-\[ \omega = -\Lap\!\left[-\tfrac12\Omega(x^2+y^2)\right] = 2\Omega. \]
+For $\psi=-\tfrac12\Omega(x^2+y^2)$, differentiate in $y$:
+\[ v_x = \pd{\psi}{y} = -\Omega y. \]
+Differentiate in $x$:
+\[ v_y = -\pd{\psi}{x} = \Omega x. \]
+Convert to polars with $x=r\cos\theta$, $y=r\sin\theta$:
+\[ \vb v = \Omega r\,\hat{\bm\theta}, \]
+i.e.\ rigid rotation at rate $\Omega$. Apply \eqref{eq:psivort}:
+\[ \omega = -\Lap\!\left[-\tfrac12\Omega(x^2+y^2)\right]. \]
+Evaluate the Laplacian:
+\[ \Lap\!\left[-\tfrac12\Omega(x^2+y^2)\right] = -\tfrac12\Omega(2+2) = -2\Omega. \]
+Therefore
 \begin{equation}
 \boxed{\;\omega = 2\Omega.\;}
 \end{equation}
@@ -89,19 +96,27 @@ Inviscid bulk: Kelvin's theorem freezes vorticity onto fluid elements. Just befo
 \label{eq:postvort}
 \end{equation}
 
-For $\psi=Ax^2+By^2$, apply \eqref{eq:streamdef}:
-\[ v_x = 2By,\qquad v_y = -2Ax. \]
+For $\psi=Ax^2+By^2$, differentiate in $y$:
+\[ v_x = \pd{\psi}{y} = 2By. \]
+Differentiate in $x$:
+\[ v_y = -\pd{\psi}{x} = -2Ax. \]
+Compute the Laplacian:
+\[ \Lap\psi = 2A+2B. \]
 Apply \eqref{eq:psivort}:
 \[ \omega = -2(A+B). \]
 Match with \eqref{eq:postvort}:
+\[ -2(A+B) = 2\Omega. \]
+Divide by $-2$:
 \[ A+B = -\Omega. \tag{i}\label{eq:vortcond}\]
-Wall is a streamline, so $\psi=$ const on $(x/L_x)^2+(y/L_y)^2=1$:
+Wall is a streamline, so $\psi=Ax^2+By^2=C$ on $(x/L_x)^2+(y/L_y)^2=1$. The two ellipse equations must define the same curve, so $Ax^2+By^2=C$ is proportional to $x^2/L_x^2+y^2/L_y^2=1$:
 \[ A = \frac{C}{L_x^2},\qquad B = \frac{C}{L_y^2}. \tag{ii}\label{eq:wallcond}\]
 Substitute \eqref{eq:wallcond} into \eqref{eq:vortcond}:
-\[ C\!\left(\frac{1}{L_x^2}+\frac{1}{L_y^2}\right) = -\Omega. \]
+\[ \frac{C}{L_x^2}+\frac{C}{L_y^2} = -\Omega. \]
+Factor $C$:
+\[ C\,\frac{L_x^2+L_y^2}{L_x^2 L_y^2} = -\Omega. \]
 Solve for $C$:
 \[ C = -\frac{\Omega L_x^2 L_y^2}{L_x^2+L_y^2}. \]
-Substitute back:
+Divide by $L_x^2$ for $A$ and by $L_y^2$ for $B$:
 \begin{equation}
 \boxed{\;A = -\frac{\Omega L_y^2}{L_x^2+L_y^2},\qquad B = -\frac{\Omega L_x^2}{L_x^2+L_y^2}.\;}
 \label{eq:ABfinal}
@@ -151,9 +166,13 @@ Impose incompressibility $\nabla\cdot\vb v=0$:
 \label{eq:laplacephi}
 \end{equation}
 
-Inviscid Navier--Stokes \eqref{eq:NS} with $\nu=0$, $\rho=$ const. Vector identity for irrotational flow:
-\[ (\vb v\cdot\nabla)\vb v = \tfrac12\nabla|\vb v|^2 - \vb v\times(\nabla\times\vb v) = \tfrac12\nabla|\nabla\phi|^2. \]
-Substitute \eqref{eq:phidef} and use $g\hat{\vb z}=\nabla(gz)$:
+Set $\nu=0$, $\rho=$ const in \eqref{eq:NS}. Apply the vector identity:
+\[ (\vb v\cdot\nabla)\vb v = \tfrac12\nabla|\vb v|^2 - \vb v\times(\nabla\times\vb v). \]
+Use $\nabla\times\vb v=0$:
+\[ (\vb v\cdot\nabla)\vb v = \tfrac12\nabla|\nabla\phi|^2. \]
+Substitute \eqref{eq:phidef} into the time derivative:
+\[ \pd{\vb v}{t} = \nabla\pd{\phi}{t}. \]
+Write $g\hat{\vb z}=\nabla(gz)$. Insert all of these into \eqref{eq:NS}:
 \[ \nabla\!\left(\pd{\phi}{t}+\tfrac12|\nabla\phi|^2+\frac{p}{\rho}+gz\right) = 0. \]
 Integrate (absorb time-dependent constant into $\phi$):
 \begin{equation}
@@ -164,54 +183,64 @@ Terms: $\partial_t\phi$ unsteady, $\tfrac12|\vb v|^2$ kinetic, $p/\rho$ pressure
 
 \subsection*{(b) Linearised boundary conditions, dispersion relation, group speed}
 
-Kinematic BC $\D(z-\eta)/\D t = 0$ at $z=\eta$:
+Kinematic BC: a fluid parcel on the surface stays on the surface, i.e.\ $\D(z-\eta)/\D t = 0$ at $z=\eta$:
 \begin{equation}
 \pd{\eta}{t} + v_x\pd{\eta}{x} = v_z \qquad \text{at }z=\eta.
 \label{eq:KBC-exact}
 \end{equation}
-Linearise (drop $v_x\partial_x\eta$, evaluate at $z=0$):
+Drop the quadratic $v_x\partial_x\eta$ and evaluate at $z=0$:
 \begin{equation}
-\pd{\phi}{z}\bigg|_{z=0} = \pd{\eta}{t}.
+v_z\big|_{z=0} = \pd{\eta}{t}.
 \label{eq:KBC-lin}
 \end{equation}
-Insert $\eta=A\cos(kx-\omega t)$:
+Use $v_z=\partial_z\phi$ and differentiate $\eta=A\cos(kx-\omega t)$ in $t$:
 \begin{equation}
 \pd{\phi}{z}\bigg|_{z=0} = \omega A\sin(kx-\omega t).
 \label{eq:KBC-explicit}
 \end{equation}
 
-Dynamic BC: pressure on the surface equals atmospheric (absorb into $C$). Evaluate \eqref{eq:bernoulli} at $z=\eta$, drop $\tfrac12|\nabla\phi|^2$ as second order, and Taylor to $z=0$:
+Dynamic BC: pressure on the free surface equals atmospheric (absorb into $C$). Evaluate \eqref{eq:bernoulli} at $z=\eta$:
+\[ \pd{\phi}{t}\bigg|_{z=\eta} + \tfrac12|\nabla\phi|^2 + g\eta = 0. \]
+Drop the quadratic $\tfrac12|\nabla\phi|^2$ and Taylor-expand $\partial_t\phi$ from $z=\eta$ back to $z=0$ (the correction is $O(\eta\,\partial_z\partial_t\phi)$, second order):
 \begin{equation}
 \pd{\phi}{t}\bigg|_{z=0} + g\eta = 0.
 \label{eq:DBC-lin}
 \end{equation}
 
-Deep water: $\phi\to 0$ as $z\to-\infty$. Take $\phi = F(z)\sin(kx-\omega t)$ in $\Lap\phi=0$:
+Deep water: $\phi\to 0$ as $z\to-\infty$. Separate variables, try $\phi = F(z)\sin(kx-\omega t)$. Substitute into $\Lap\phi=0$:
+\[ F''(z)\sin(kx-\omega t) - k^2 F(z)\sin(kx-\omega t) = 0. \]
+Divide by $\sin(kx-\omega t)$:
 \[ F''(z) - k^2 F(z) = 0. \]
-Decaying solution ($k>0$):
+General solution: $F=B\mathrm{e}^{kz}+B'\mathrm{e}^{-kz}$. Reject the growing piece by $\phi\to 0$ as $z\to -\infty$:
 \[ F(z) = B\,\mathrm{e}^{kz}. \]
-Apply \eqref{eq:KBC-explicit}:
+Differentiate in $z$ at $z=0$:
+\[ \pd{\phi}{z}\bigg|_{z=0} = kB\sin(kx-\omega t). \]
+Equate to \eqref{eq:KBC-explicit}:
 \[ kB = \omega A. \]
 Solve for $B$:
 \[ B = \frac{\omega A}{k}. \]
-So
+Therefore
 \begin{equation}
 \phi = \frac{\omega A}{k}\,\mathrm{e}^{kz}\sin(kx-\omega t).
 \label{eq:phi-soln}
 \end{equation}
 Differentiate in $t$ at $z=0$:
 \[ \pd{\phi}{t}\bigg|_{z=0} = -\frac{\omega^2 A}{k}\cos(kx-\omega t). \]
-Substitute into \eqref{eq:DBC-lin}:
+Substitute into \eqref{eq:DBC-lin} with $\eta=A\cos(kx-\omega t)$:
 \[ -\frac{\omega^2 A}{k}\cos(kx-\omega t) + gA\cos(kx-\omega t) = 0. \]
 Divide by $A\cos(kx-\omega t)$:
-\[ \frac{\omega^2}{k} = g. \]
+\[ -\frac{\omega^2}{k} + g = 0. \]
+Solve for $\omega^2$:
+\[ \omega^2 = gk. \]
 \begin{equation}
 \boxed{\;\omega = \sqrt{gk}.\;}
 \label{eq:disp}
 \end{equation}
 
-Phase and group speeds from \eqref{eq:disp}:
-\[ c_\text{ph} = \frac{\omega}{k} = \sqrt{\frac{g}{k}},\qquad c_\text{gr} = \dv{\omega}{k} = \tfrac12\sqrt{\frac{g}{k}} = \tfrac12 c_\text{ph}. \]
+Compute the phase speed from \eqref{eq:disp}:
+\[ c_\text{ph} = \frac{\omega}{k} = \frac{\sqrt{gk}}{k} = \sqrt{\frac{g}{k}}. \]
+Differentiate \eqref{eq:disp} to get the group speed:
+\[ c_\text{gr} = \dv{\omega}{k} = \tfrac12\,\frac{g}{\sqrt{gk}} = \tfrac12\sqrt{\frac{g}{k}} = \tfrac12 c_\text{ph}. \]
 
 \begin{center}
 \begin{tikzpicture}[>=stealth, scale=1.0]
@@ -234,14 +263,16 @@ A wave packet is a localised superposition; its envelope (and energy) move at $c
 
 \subsection*{(c) Surface velocity, parcel trajectory and vorticity}
 
-From \eqref{eq:phi-soln}, gradient at $z=0$:
+Differentiate \eqref{eq:phi-soln} in $x$ at $z=0$:
 \[ v_x = \pd{\phi}{x}\bigg|_{z=0} = \omega A\cos(kx-\omega t). \]
+Differentiate in $z$ at $z=0$:
 \[ v_z = \pd{\phi}{z}\bigg|_{z=0} = \omega A\sin(kx-\omega t). \]
 
-Lagrangian trajectory at leading order: integrate $\dot x = v_x(x_0,0,t)$, $\dot z = v_z(x_0,0,t)$:
-\[ x(t)-x_0 = -A\sin(kx_0-\omega t). \]
-\[ z(t)-z_0 = A\cos(kx_0-\omega t). \]
-Square and add:
+Linearised Lagrangian trajectory: integrate $\dot x = v_x(x_0,0,t)$ in $t$:
+\[ x(t)-x_0 = \omega A\int\cos(kx_0-\omega t)\,\de t = -A\sin(kx_0-\omega t). \]
+Integrate $\dot z = v_z(x_0,0,t)$ in $t$:
+\[ z(t)-z_0 = \omega A\int\sin(kx_0-\omega t)\,\de t = A\cos(kx_0-\omega t). \]
+Square and add, using $\sin^2+\cos^2=1$:
 \[ [x-x_0]^2 + [z-z_0]^2 = A^2. \]
 
 \begin{center}
@@ -262,9 +293,12 @@ Square and add:
 \end{center}
 Surface parcel moves on a circle of radius $A$, traversed clockwise for $+x$-propagating waves: forward at the crest, downward on the front face, backward in the trough, upward on the rear.
 
-Vorticity in the $(x,z)$-plane:
-\[ \omega_y = \pd{v_x}{z}-\pd{v_z}{x} = k\omega A\cos(kx-\omega t) - k\omega A\cos(kx-\omega t). \]
-Cancel:
+Vorticity in the $(x,z)$-plane: use the full $\vb v=\nabla\phi$ from \eqref{eq:phi-soln}, giving $v_x=\omega A\mathrm{e}^{kz}\cos(kx-\omega t)$ and $v_z=\omega A\mathrm{e}^{kz}\sin(kx-\omega t)$. Differentiate $v_x$ in $z$:
+\[ \pd{v_x}{z} = k\omega A\mathrm{e}^{kz}\cos(kx-\omega t). \]
+Differentiate $v_z$ in $x$:
+\[ \pd{v_z}{x} = k\omega A\mathrm{e}^{kz}\cos(kx-\omega t). \]
+Subtract:
+\[ \omega_y = \pd{v_x}{z}-\pd{v_z}{x} = 0. \]
 \begin{equation}
 \boxed{\;\omega_y = 0.\;}
 \end{equation}
@@ -291,13 +325,18 @@ Vertical momentum gives $\partial_z p=0$, so $p=p(r,t)$.
 
 No-slip at table and disk:
 \[ v_r(z=0)=0,\qquad v_r(z=h)=0. \]
-Integrate \eqref{eq:thinfilm} twice in $z$ (treat $\partial_r p$ as $z$-independent):
+Integrate \eqref{eq:thinfilm} once in $z$ (treat $\partial_r p$ as $z$-independent):
+\[ \pd{v_r}{z} = \frac{1}{\rho\nu}\pd{p}{r}\,z + C_1(r). \]
+Integrate again:
 \[ v_r = \frac{1}{2\rho\nu}\pd{p}{r}\,z^2 + C_1(r)z + C_2(r). \]
 Apply $v_r(0)=0$:
 \[ C_2 = 0. \]
 Apply $v_r(h)=0$:
+\[ 0 = \frac{1}{2\rho\nu}\pd{p}{r}\,h^2 + C_1\,h. \]
+Solve for $C_1$:
 \[ C_1 = -\frac{h}{2\rho\nu}\pd{p}{r}. \]
-Therefore
+Substitute back and factor:
+\[ v_r = \frac{1}{2\rho\nu}\pd{p}{r}(z^2-hz) = -\frac{1}{2\rho\nu}\pd{p}{r}\,z(h-z). \]
 \begin{equation}
 \boxed{\;v_r = -\frac{1}{2\rho\nu}\pd{p}{r}\,z(h-z).\;}
 \label{eq:vrprofile}
@@ -307,30 +346,39 @@ Therefore
 
 The relation $r^{-1}\partial_r(rv_r)+\partial_z v_z=0$ is $\nabla\cdot\vb v=0$ in cylindrical coordinates for axisymmetric flow.
 
-Integrate continuity from $z'=0$ ($v_z=0$ at the table) to $z$:
+Integrate continuity from $z'=0$ (no-slip $v_z=0$ at the table) to $z$:
 \[ v_z(r,z,t) = -\int_0^z \frac{1}{r}\pd{}{r}[r v_r]\,\de z'. \]
 Substitute \eqref{eq:vrprofile} and pull the $r$-only factor out:
 \[ v_z = \frac{1}{2\rho\nu}\,\frac{1}{r}\pd{}{r}\!\left[r\pd{p}{r}\right]\!\int_0^z z'(h-z')\,\de z'. \]
 Evaluate the inner integral:
 \[ \int_0^z z'(h-z')\,\de z' = \tfrac12 hz^2 - \tfrac13 z^3. \]
-Set $z=h$:
+Set $z=h$ and simplify $\tfrac12 h\cdot h^2-\tfrac13 h^3$:
+\[ \tfrac12 h^3 - \tfrac13 h^3 = \tfrac{1}{6}h^3. \]
+Substitute:
 \[ v_z(r,h,t) = \frac{h^3}{12\rho\nu}\,\frac{1}{r}\pd{}{r}\!\left(r\pd{p}{r}\right). \]
 Match to disk velocity, $v_z(r,h,t)=\dot h$:
-\[ \frac{1}{r}\pd{}{r}\!\left(r\pd{p}{r}\right) = \frac{12\rho\nu\dot h}{h^3}.
-\]
-Integrate once:
+\[ \frac{h^3}{12\rho\nu}\,\frac{1}{r}\pd{}{r}\!\left(r\pd{p}{r}\right) = \dot h. \]
+Rearrange:
+\[ \frac{1}{r}\pd{}{r}\!\left(r\pd{p}{r}\right) = \frac{12\rho\nu\dot h}{h^3}. \]
+Multiply by $r$ and integrate in $r$:
 \[ r\pd{p}{r} = \frac{6\rho\nu\dot h}{h^3}\,r^2 + C_1. \]
-Divide by $r$ and integrate again:
+Divide by $r$:
+\[ \pd{p}{r} = \frac{6\rho\nu\dot h}{h^3}\,r + \frac{C_1}{r}. \]
+Integrate in $r$:
 \[ p(r,t) = \frac{3\rho\nu\dot h}{h^3}\,r^2 + C_1\ln r + C_2. \]
 
-Pressure BCs: $p(R)=p_0$ at outer rim, $p(a)=p_0$ at hole:
+Pressure BCs: atmospheric pressure $p_0$ at the outer rim and at the hole (both communicate with the surroundings), $p(R)=p_0$, $p(a)=p_0$:
 \[ p_0 = \frac{3\rho\nu\dot h}{h^3}R^2 + C_1\ln R + C_2. \]
 \[ p_0 = \frac{3\rho\nu\dot h}{h^3}a^2 + C_1\ln a + C_2. \]
-Subtract:
+Subtract the second from the first:
 \[ 0 = \frac{3\rho\nu\dot h}{h^3}(R^2-a^2) + C_1\ln(R/a). \]
-Solve for $C_1$:
-\[ C_1 = \frac{3\rho\nu\dot h}{h^3}\,\frac{R^2-a^2}{\ln(a/R)}. \]
-Substitute back and collect:
+Solve for $C_1$ and flip the sign of the log:
+\[ C_1 = -\frac{3\rho\nu\dot h}{h^3}\,\frac{R^2-a^2}{\ln(R/a)} = \frac{3\rho\nu\dot h}{h^3}\,\frac{R^2-a^2}{\ln(a/R)}. \]
+Solve the first BC equation for $C_2$:
+\[ C_2 = p_0 - \frac{3\rho\nu\dot h}{h^3}R^2 - C_1\ln R. \]
+Substitute $C_1,C_2$ back into $p$ and gather:
+\[ p = p_0 - \frac{3\rho\nu\dot h}{h^3}(R^2-r^2) + C_1\ln(r/R). \]
+Insert the expression for $C_1$:
 \begin{equation}
 \boxed{\;p(r,t) = p_0 - \frac{3\rho\nu}{h^3}\!\left[(R^2-r^2)-(R^2-a^2)\,\frac{\ln(r/R)}{\ln(a/R)}\right]\dot h.\;}
 \label{eq:p-final}
@@ -342,26 +390,28 @@ For $\dot h>0$, $p<p_0$ throughout the film: atmospheric pressure on the top of 
 
 Net upward fluid force:
 \[ F = \int_a^R [p_0 - p(r,t)]\,2\pi r\,\de r. \]
-Set $a=0$: the second bracket of \eqref{eq:p-final} vanishes (since $(R^2-a^2)/\ln(a/R)\to 0$):
+Set $a=0$: $\ln(a/R)\to -\infty$ while $R^2-a^2\to R^2$, so $(R^2-a^2)\ln(r/R)/\ln(a/R)\to 0$:
 \[ p_0 - p(r,t) = \frac{3\rho\nu\dot h}{h^3}(R^2-r^2). \]
-Substitute:
-\[ F = \frac{6\pi\rho\nu\dot h}{h^3}\int_0^R (R^2-r^2)r\,\de r. \]
+Substitute into the force integral:
+\[ F = \frac{3\rho\nu\dot h}{h^3}\int_0^R (R^2-r^2)\,2\pi r\,\de r = \frac{6\pi\rho\nu\dot h}{h^3}\int_0^R (R^2-r^2)r\,\de r. \]
 Evaluate the integral:
 \[ \int_0^R (R^2-r^2)r\,\de r = \frac{R^4}{2}-\frac{R^4}{4} = \frac{R^4}{4}. \]
-Therefore
+Multiply:
 \begin{equation}
-F = \frac{3\pi\rho\nu\dot h R^4}{2h^3}.
+F = \frac{6\pi\rho\nu\dot h}{h^3}\cdot\frac{R^4}{4} = \frac{3\pi\rho\nu\dot h R^4}{2h^3}.
 \label{eq:Fnohole}
 \end{equation}
 
-Insert numbers. Dynamic viscosity:
-\[ \mu = \rho\nu = \SI{e-3}{Pa.s}. \]
-Numerator:
-\[ 3\pi\,\mu\,\dot h\,R^4 = 3\pi\times(\SI{e-3}{Pa.s})\times(\SI{e-3}{m.s^{-1}})\times(\SI{1}{m^4}) = 3\pi\times 10^{-6}~\text{N\,m}^3. \]
-Denominator:
-\[ 2h^3 = 2\times(\SI{5e-4}{m})^3 = \SI{2.5e-10}{m^3}. \]
+Compute the dynamic viscosity:
+\[ \mu = \rho\nu = \SI{e3}{kg.m^{-3}}\times\SI{e-6}{m^2.s^{-1}} = \SI{e-3}{Pa.s}. \]
+Compute the numerator $3\pi\mu\dot h R^4$:
+\[ 3\pi\times 10^{-3}\times 10^{-3}\times 1 = 3\pi\times 10^{-6}~\text{N\,m}^3. \]
+Compute the denominator $2h^3$:
+\[ 2\times(5\times 10^{-4})^3 = 2\times 1.25\times 10^{-10} = 2.5\times 10^{-10}~\text{m}^3. \]
 Divide:
-\[ F = \frac{3\pi\times 10^{-6}}{2.5\times 10^{-10}}~\text{N} \approx \SI{3.77e4}{N}. \]
+\[ F = \frac{3\pi\times 10^{-6}}{2.5\times 10^{-10}}~\text{N} = 1.2\pi\times 10^{4}~\text{N}. \]
+Evaluate $1.2\pi\times 10^4$:
+\[ F \approx \SI{3.77e4}{N}. \]
 \begin{equation}
 \boxed{\;F \approx \SI{3.8e4}{N}\quad(\text{about } 4~\text{tonnes-force}).\;}
 \end{equation}
@@ -387,25 +437,35 @@ Linearise continuity:
 \end{equation}
 Expand the adiabat to first order in $\rho'/\rho_0$:
 \[ p_0+p' = p_0\!\left(1+\frac{\rho'}{\rho_0}\right)^\gamma \approx p_0\!\left(1+\gamma\frac{\rho'}{\rho_0}\right). \]
-Read off:
-\[ p' = \gamma\frac{p_0}{\rho_0}\rho' = c^2\rho',\qquad c^2 \equiv \pd{p}{\rho}\bigg|_s = \gamma\frac{p_0}{\rho_0}. \]
+Subtract $p_0$ and identify $c^2\equiv\partial_\rho p|_s$:
+\[ p' = \gamma\frac{p_0}{\rho_0}\rho' = c^2\rho',\qquad c^2 = \gamma\frac{p_0}{\rho_0}. \]
 Differentiate \eqref{eq:lin-cont} in $t$:
-\[ \pdd{\rho'}{t} + \rho_0\pd{}{x}\pd{v_x'}{t} = 0. \]
-Substitute \eqref{eq:lin-mom} and $p'=c^2\rho'$:
+\[ \pdd{\rho'}{t} + \rho_0\pd{}{x}\!\pd{v_x'}{t} = 0. \]
+Substitute $\partial_t v_x'=-(1/\rho_0)\partial_x p'$ from \eqref{eq:lin-mom}:
+\[ \pdd{\rho'}{t} - \pdd{p'}{x} = 0. \]
+Eliminate $\rho'$ via $\rho'=p'/c^2$:
+\[ \frac{1}{c^2}\pdd{p'}{t} - \pdd{p'}{x} = 0. \]
+Multiply by $c^2$:
 \begin{equation}
 \pdd{p'}{t} - c^2\pdd{p'}{x} = 0.
 \label{eq:wave-eqn}
 \end{equation}
 
-Plane wave $p'\propto\mathrm{e}^{\mathrm{i}(kx-\omega t)}$ in \eqref{eq:wave-eqn}: $\omega^2=c^2 k^2$, hence
-\[ c_\text{ph} = \omega/k = c,\qquad c_\text{gr} = \de\omega/\de k = c. \]
+Insert a plane wave $p'\propto\mathrm{e}^{\mathrm{i}(kx-\omega t)}$ into \eqref{eq:wave-eqn}:
+\[ (-\omega^2 + c^2 k^2)p' = 0. \]
+Read off the dispersion relation:
+\[ \omega = ck. \]
+Compute phase and group speeds:
+\[ c_\text{ph} = \frac{\omega}{k} = c,\qquad c_\text{gr} = \dv{\omega}{k} = c. \]
 \begin{equation}
 \boxed{\;c_\text{ph}=c_\text{gr}=c=\sqrt{\dv{p}{\rho}}.\;}
 \end{equation}
 
-Insert standard atmosphere:
-\[ c^2 = \tfrac{7}{5}\cdot\frac{10^5}{1.2}~\text{m}^2\text{s}^{-2} = \frac{7\times 10^5}{6}~\text{m}^2\text{s}^{-2}. \]
-Square root:
+Plug in $\gamma=7/5$, $p_0=10^5~\text{Pa}$, $\rho_0=1.2~\text{kg\,m}^{-3}$:
+\[ c^2 = \tfrac{7}{5}\cdot\frac{10^5}{1.2}~\text{m}^2\text{s}^{-2}. \]
+Simplify the prefactor:
+\[ c^2 = \frac{7\times 10^5}{6}~\text{m}^2\text{s}^{-2} \approx 1.167\times 10^5~\text{m}^2\text{s}^{-2}. \]
+Take the square root:
 \[ c \approx \SI{341}{m.s^{-1}}. \]
 \begin{equation}
 \boxed{\;c \approx \SI{340}{m.s^{-1}}.\;}
@@ -413,24 +473,26 @@ Square root:
 
 \subsection*{(b) Riemann invariants, simple wave and shock formation}
 
-Define $\de P = \de p/(\rho c)$. For the adiabat $c^2=\gamma p/\rho$, so $c\propto\rho^{(\gamma-1)/2}$ and $P(\rho)$ is single-valued. Rewrite $\rho^{-1}\partial_x p$:
+Define $\de P = \de p/(\rho c)$. For the adiabat $c^2=\gamma p/\rho$, so $c\propto\rho^{(\gamma-1)/2}$ and $P(\rho)$ is single-valued. Use $\partial_x p = c^2\partial_x\rho$ and $\partial_x\rho = (\rho/c)\partial_x P$:
 \[ \frac{1}{\rho}\pd{p}{x} = \frac{c^2}{\rho}\pd{\rho}{x} = c\,\pd{P}{x}. \]
-Momentum becomes:
+Substitute into the momentum equation:
 \begin{equation}
 \pd{v_x}{t} + v_x\pd{v_x}{x} + c\,\pd{P}{x} = 0.
 \label{eq:mom-Riemann}
 \end{equation}
-Divide continuity by $\rho/c$ using $\de\rho = (\rho/c)\,\de P$:
+Continuity in primitive form: $\partial_t\rho+v_x\partial_x\rho+\rho\partial_x v_x=0$. Use $\partial_t\rho=(\rho/c)\partial_t P$ and $\partial_x\rho=(\rho/c)\partial_x P$:
+\[ \frac{\rho}{c}\pd{P}{t} + \frac{\rho v_x}{c}\pd{P}{x} + \rho\,\pd{v_x}{x} = 0. \]
+Divide by $\rho/c$:
 \begin{equation}
 \pd{P}{t} + v_x\pd{P}{x} + c\,\pd{v_x}{x} = 0.
 \label{eq:cont-Riemann}
 \end{equation}
-Add \eqref{eq:mom-Riemann}+\eqref{eq:cont-Riemann}:
+Add \eqref{eq:mom-Riemann}+\eqref{eq:cont-Riemann} and group $(v_x+c)\partial_x$ acting on $(v_x+P)$:
 \begin{equation}
 \boxed{\;\!\left[\pd{}{t}+(v_x+c)\pd{}{x}\right](v_x+P) = 0.\;}
 \label{eq:Rplus}
 \end{equation}
-Subtract:
+Subtract \eqref{eq:cont-Riemann} from \eqref{eq:mom-Riemann}, group $(v_x-c)\partial_x$ acting on $(v_x-P)$:
 \begin{equation}
 \boxed{\;\!\left[\pd{}{t}+(v_x-c)\pd{}{x}\right](v_x-P) = 0.\;}
 \label{eq:Rminus}
@@ -468,11 +530,13 @@ For $v_x(x,0)=v_0\sin(kx)$, positive-$v_x$ regions advance at $c+v_x>c$ and nega
 \end{tikzpicture}
 \end{center}
 
-Estimate the breaking time. Two close characteristics carrying $v_x$ and $v_x+\Delta v_x$ separated by $\Delta x$ converge at relative speed $\Delta v_x$:
-\[ \tau \sim \frac{\Delta x}{\Delta v_x}. \]
-Use $\Delta v_x \sim \Delta x\,\partial_x v_x$ at the steepest-descent point ($\partial_x v_x|_\text{max}=-kv_0$):
-\[ \tau_\text{break} \sim \frac{1}{kv_0}. \]
-The implicit-solution analysis gives prefactor unity:
+Estimate the breaking time. Two neighbouring characteristics carrying $v_x$ and $v_x+\Delta v_x$, initially separated by $\Delta x$, converge at relative speed $|\Delta v_x|$:
+\[ \tau \sim \frac{\Delta x}{|\Delta v_x|}. \]
+Write $\Delta v_x \sim \Delta x\,\partial_x v_x$ at the steepest descent of $v_x(x,0)=v_0\sin(kx)$:
+\[ \partial_x v_x\big|_\text{min} = -kv_0. \]
+Take the magnitude:
+\[ \tau_\text{break} \sim \frac{\Delta x}{|\partial_x v_x|\Delta x} = \frac{1}{kv_0}. \]
+The implicit-solution analysis confirms the prefactor of unity:
 \begin{equation}
 \boxed{\;\tau_\text{break} = \frac{1}{kv_0}.\;}
 \end{equation}

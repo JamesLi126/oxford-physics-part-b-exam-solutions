@@ -38,15 +38,31 @@ with $\hbar\vb q=\vb p_f-\vb p_i$ the momentum transfer and $\rho(\vb r)$ the nu
 
 \subsection*{(a)(ii) Form factor for a uniform sphere}
 
-Spherical symmetry, polar axis along $\vb q$:
+Adopt spherical coordinates with polar axis along $\vb q$:
 \[
 F(q)\;=\;\frac{1}{Ze}\int_{0}^{\infty}\rho(r)\,r^{2}\,\de r\int_{0}^{\pi}e^{iqr\cos\theta}\sin\theta\,\de\theta\int_{0}^{2\pi}\de\phi.
 \]
-Evaluate the angular integral:
+Substitute $u=\cos\theta$, $\de u=-\sin\theta\,\de\theta$:
 \[
-\int_{0}^{\pi}e^{iqr\cos\theta}\sin\theta\,\de\theta\;=\;\frac{2\sin(qr)}{qr}.
+\int_{0}^{\pi}e^{iqr\cos\theta}\sin\theta\,\de\theta\;=\;\int_{-1}^{+1}e^{iqru}\,\de u.
 \]
-Insert and combine constants:
+Integrate the exponential in $u$:
+\[
+\int_{-1}^{+1}e^{iqru}\,\de u\;=\;\frac{e^{iqr}-e^{-iqr}}{iqr}.
+\]
+Apply $2i\sin x=e^{ix}-e^{-ix}$:
+\[
+\frac{e^{iqr}-e^{-iqr}}{iqr}\;=\;\frac{2\sin(qr)}{qr}.
+\]
+Do the trivial $\phi$ integral:
+\[
+\int_{0}^{2\pi}\de\phi\;=\;2\pi.
+\]
+Multiply the three factors:
+\[
+F(q)\;=\;\frac{1}{Ze}\int_{0}^{\infty}\rho(r)\,r^{2}\cdot\frac{2\sin(qr)}{qr}\cdot 2\pi\,\de r.
+\]
+Combine constants and cancel one $r$:
 \[
 F(q)\;=\;\frac{4\pi}{Ze\,q}\int_{0}^{\infty}r\,\rho(r)\sin(qr)\,\de r.
 \]
@@ -55,17 +71,25 @@ The stated form (with the sign convention of the question) reads
 F(q)\;=\;-\frac{4\pi}{q}\int_{0}^{\infty}r\,\rho(r)\sin(qr)\,\de r,
 \label{eq:F-spherical}
 \end{equation}
-where $\rho(r)$ is the nuclear charge density (here \emph{not} normalised by $Ze$; sign conventional) and $q=|\vb p_i-\vb p_f|/\hbar$ is the momentum transfer.
+where $\rho(r)$ is the (normalised) nuclear-charge probability density, $\int\rho\,\de^{3}r=1$, and $q=|\vb p_i-\vb p_f|/\hbar$ is the momentum transfer. The overall sign is a convention; magnitudes agree with the derivation above.
 
 Uniform ball: $\rho(r)=\rho_{0}\Theta(R-r)$. Substitute into \eqref{eq:F-spherical}:
 \[
 F(q)\;=\;-\frac{4\pi\rho_{0}}{q}\int_{0}^{R}r\sin(qr)\,\de r.
 \]
-Integrate by parts ($u=r$, $\de v=\sin(qr)\de r$):
+Integrate by parts ($u=r$, $\de v=\sin(qr)\,\de r$):
 \[
 \int_{0}^{R}r\sin(qr)\,\de r\;=\;\Big[-\frac{r\cos(qr)}{q}\Big]_{0}^{R}+\frac{1}{q}\int_{0}^{R}\cos(qr)\,\de r.
 \]
-Evaluate:
+Evaluate the boundary term:
+\[
+\Big[-\frac{r\cos(qr)}{q}\Big]_{0}^{R}\;=\;-\frac{R\cos(qR)}{q}.
+\]
+Do the remaining integral:
+\[
+\frac{1}{q}\int_{0}^{R}\cos(qr)\,\de r\;=\;\frac{\sin(qR)}{q^{2}}.
+\]
+Collect terms:
 \[
 \int_{0}^{R}r\sin(qr)\,\de r\;=\;-\frac{R\cos(qR)}{q}+\frac{\sin(qR)}{q^{2}}.
 \]
@@ -73,11 +97,19 @@ Substitute back:
 \[
 F(q)\;=\;-\frac{4\pi\rho_{0}}{q}\left[-\frac{R\cos(qR)}{q}+\frac{\sin(qR)}{q^{2}}\right].
 \]
+Distribute the prefactor:
+\[
+F(q)\;=\;\frac{4\pi\rho_{0}R\cos(qR)}{q^{2}}-\frac{4\pi\rho_{0}\sin(qR)}{q^{3}}.
+\]
 Combine over $q^{3}$:
 \[
 F(q)\;=\;\frac{4\pi\rho_{0}}{q^{3}}\bigl[qR\cos(qR)-\sin(qR)\bigr].
 \]
-Set $x=qR$ and pull out $R^{3}$:
+Set $x=qR$, so $1/q^{3}=R^{3}/x^{3}$:
+\[
+F(q)\;=\;\frac{4\pi\rho_{0}R^{3}}{x^{3}}\bigl[x\cos x-\sin x\bigr].
+\]
+Split the bracket:
 \[
 F(q)\;=\;4\pi\rho_{0}R^{3}\left[\frac{\cos x}{x^{2}}-\frac{\sin x}{x^{3}}\right].
 \]
@@ -88,7 +120,15 @@ F(q)\;=\;4\pi\rho_{0}R^{3}\left[\frac{\cos x}{x^{2}}-\frac{\sin x}{x^{3}}\right]
 
 \subsection*{(b)(i) Radii of $^{40}$Ca and $^{48}$Ca}
 
-First diffraction minimum: $F(q)=0$ gives $\tan x = x$, smallest non-zero root
+Set $F(q)=0$ in \eqref{eq:F-uniform}; the bracket vanishes:
+\[
+x\cos x-\sin x\;=\;0.
+\]
+Divide by $\cos x$:
+\[
+\tan x\;=\;x.
+\]
+Take the smallest non-zero root:
 \[
 x_{1}\;\approx\;4.4934.
 \]
@@ -96,20 +136,41 @@ $\SI{250}{MeV}$ electrons are ultra-relativistic ($m_{e}c^{2}=\SI{0.511}{MeV}\ll
 \[
 p\,c\;\approx\;E\;=\;\SI{250}{MeV}.
 \]
-Elastic scattering at angle $\theta$:
+Elastic scattering at angle $\theta$ gives momentum transfer:
 \[
-q\,c\;=\;2pc\sin(\theta/2)\;=\;\SI{500}{MeV}\,\sin(\theta/2).
+q\,c\;=\;2pc\sin(\theta/2).
 \]
-Resolve $R$ from $qR=x_{1}$:
+Substitute $pc=\SI{250}{MeV}$:
 \[
-R\;=\;\frac{x_{1}\,\hbar c}{q c}\;=\;\frac{4.4934\times \SI{197}{MeV.fm}}{\SI{500}{MeV}\,\sin(\theta/2)}\;=\;\frac{\SI{1.770}{fm}}{\sin(\theta/2)}.
+q\,c\;=\;\SI{500}{MeV}\,\sin(\theta/2).
+\]
+Solve $qR=x_{1}$ for $R$:
+\[
+R\;=\;\frac{x_{1}\,\hbar c}{qc}.
+\]
+Insert values:
+\[
+R\;=\;\frac{4.4934\times \SI{197}{MeV.fm}}{\SI{500}{MeV}\,\sin(\theta/2)}.
+\]
+Evaluate the numerator $4.4934\times 197$:
+\[
+R\;=\;\frac{\SI{885.2}{MeV.fm}}{\SI{500}{MeV}\,\sin(\theta/2)}.
+\]
+Divide numerator by $500$:
+\[
+R\;=\;\frac{\SI{1.770}{fm}}{\sin(\theta/2)}.
 \]
 
 \paragraph{Target with $\theta=53^{\circ}$.}
+Half-angle:
+\[
+\theta/2\;=\;26.5^{\circ}.
+\]
+Evaluate the sine:
 \[
 \sin(26.5^{\circ})\;=\;0.4462.
 \]
-Evaluate $R$:
+Plug in:
 \[
 R\;=\;\frac{1.770}{0.4462}\,\text{fm}.
 \]
@@ -119,10 +180,15 @@ R\;=\;\frac{1.770}{0.4462}\,\text{fm}.
 \end{equation}
 
 \paragraph{Target with $\theta=57^{\circ}$.}
+Half-angle:
+\[
+\theta/2\;=\;28.5^{\circ}.
+\]
+Evaluate the sine:
 \[
 \sin(28.5^{\circ})\;=\;0.4772.
 \]
-Evaluate $R$:
+Plug in:
 \[
 R\;=\;\frac{1.770}{0.4772}\,\text{fm}.
 \]
@@ -138,19 +204,25 @@ R(^{48}\!\text{Ca})\;\approx\;\SI{3.97}{fm},\qquad R(^{40}\!\text{Ca})\;\approx\
 
 \subsection*{(b)(ii) Comment on the liquid-drop model}
 
-Liquid-drop scaling: $R=r_{0}A^{1/3}$. Test the ratio:
+Liquid-drop scaling: $R=r_{0}A^{1/3}$. Form the experimental ratio:
 \[
-\frac{R(^{48}\!\text{Ca})}{R(^{40}\!\text{Ca})}\;=\;\frac{3.97}{3.71}\;=\;1.070,
+\frac{R(^{48}\!\text{Ca})}{R(^{40}\!\text{Ca})}\;=\;\frac{3.97}{3.71}\;=\;1.070.
 \]
+Predict the model ratio:
 \[
-\left(\frac{48}{40}\right)^{1/3}\;=\;1.063.
+\left(\frac{48}{40}\right)^{1/3}\;=\;(1.200)^{1/3}\;=\;1.063.
 \]
-Agreement to better than $1\%$: the two radii are consistent with a constant-density incompressible drop. Read off $r_{0}$ from each:
+Agreement to better than $1\%$: the two radii are consistent with a constant-density incompressible drop. Solve $R=r_{0}A^{1/3}$ for $r_{0}$ at $A=40$:
 \[
-r_{0}\;=\;\frac{3.71}{40^{1/3}}\,\text{fm}\;=\;\frac{3.71}{3.420}\,\text{fm}\;\approx\;\SI{1.08}{fm},
+r_{0}\;=\;\frac{R(^{40}\!\text{Ca})}{40^{1/3}}.
 \]
+Substitute $40^{1/3}=3.420$:
 \[
-r_{0}\;=\;\frac{3.97}{48^{1/3}}\,\text{fm}\;=\;\frac{3.97}{3.634}\,\text{fm}\;\approx\;\SI{1.09}{fm}.
+r_{0}\;=\;\frac{3.71}{3.420}\,\text{fm}\;\approx\;\SI{1.08}{fm}.
+\]
+Repeat for $A=48$ with $48^{1/3}=3.634$:
+\[
+r_{0}\;=\;\frac{3.97}{3.634}\,\text{fm}\;\approx\;\SI{1.09}{fm}.
 \]
 Both close to the canonical $r_{0}\approx\SI{1.2}{fm}$ (slightly smaller because the uniform-sphere fit underestimates the half-density radius of a Woods--Saxon shape). Two data points cannot test saturation away from the $Z=20$ chain, and the model is silent about shell structure --- but for these neighbouring isotopes the scaling works.
 
@@ -292,10 +364,11 @@ Numerically:
 \[
 \alpha\;\approx\;\frac{1}{137}\;\approx\;7.3\times 10^{-3},\qquad \alpha^{2}\;\approx\;5.3\times 10^{-5}.
 \]
-Compare with measured ratios (relative to $2\gamma$):
+Compare $e^{+}e^{-}\gamma$ to $2\gamma$:
 \[
-1.17\%/98.8\%\;\approx\;1.2\times 10^{-2}\;\sim\;\alpha,
+1.17\%/98.8\%\;\approx\;1.2\times 10^{-2}\;\sim\;\alpha.
 \]
+Compare $e^{+}e^{-}e^{+}e^{-}$ to $2\gamma$:
 \[
 3.3\times 10^{-5}/98.8\%\;\approx\;3.3\times 10^{-5}\;\sim\;\alpha^{2}.
 \]
@@ -366,11 +439,27 @@ $D^{+}=c\bar d$. The $c$ quark decays via $c\to W^{+}q$, the $W^{+}\to u\bar q'$
 \end{equation}
 Substitute the data:
 \[
-\tan^{4}\theta_{C}\;=\;\frac{59}{7688}\;=\;7.674\times 10^{-3}.
+\tan^{4}\theta_{C}\;=\;\frac{59}{7688}.
 \]
-Take the fourth root:
+Evaluate the quotient:
 \[
-\tan\theta_{C}\;=\;(7.674\times 10^{-3})^{1/4}\;=\;0.2960.
+\tan^{4}\theta_{C}\;=\;7.674\times 10^{-3}.
+\]
+Take the square root once:
+\[
+\tan^{2}\theta_{C}\;=\;\sqrt{7.674\times 10^{-3}}.
+\]
+Evaluate:
+\[
+\tan^{2}\theta_{C}\;=\;0.08760.
+\]
+Take the square root again:
+\[
+\tan\theta_{C}\;=\;\sqrt{0.08760}.
+\]
+Evaluate:
+\[
+\tan\theta_{C}\;=\;0.2960.
 \]
 Solve for $\theta_{C}$:
 \[
@@ -389,11 +478,15 @@ Two compounding suppressions on the leptonic annihilation $c\bar d\to W^{+}\to e
 \[
 \text{rate}\;\propto\;\sin^{2}\theta_{C}\;\approx\;0.05.
 \]
-\paragraph{Helicity suppression.} Spin-0 parent $\to\ell^{+}\nu$ via $V\!-\!A$:
+\paragraph{Helicity suppression.} Spin-0 parent $\to\ell^{+}\nu_{\ell}$ via $V\!-\!A$: the outgoing $\nu$ is left-handed, the $\ell^{+}$ must also be left-handed against its spin-1/2 helicity preference, costing a factor $m_{\ell}/E_{\ell}$ in amplitude. Hence
 \[
-\Gamma\;\propto\;m_{\ell}^{2}\bigl(m_{D}^{2}-m_{\ell}^{2}\bigr)^{2}.
+\Gamma\;\propto\;m_{\ell}^{2}\,m_{D}\!\left(1-\frac{m_{\ell}^{2}}{m_{D}^{2}}\right)^{2}.
 \]
-For $\ell=e$, $m_{e}^{2}/m_{D}^{2}\sim(0.5/1870)^{2}\approx 7\times 10^{-8}$. Combined BR is predicted at the $10^{-8}$ level, well below the experimental sensitivity quoted; hence no decays were observed.
+Form the ratio for $\ell=e$:
+\[
+\frac{m_{e}^{2}}{m_{D}^{2}}\;\sim\;\left(\frac{0.5}{1870}\right)^{2}\;\approx\;7\times 10^{-8}.
+\]
+Combined BR is predicted at the $10^{-8}$ level, well below the experimental sensitivity quoted; hence no decays were observed.
 
 % =========================================================================
 \section*{Question 3 --- The $R$-ratio and physics from \SI{15}{GeV} to \SI{500}{GeV}}
@@ -431,16 +524,20 @@ The data plateau near $R=2$ for $2\lesssim\sqrt s\lesssim\SI{3}{GeV}$, then rise
 
 \emph{Sanity-check note.} The question states ``a little less than $\SI{2}{GeV}$''; the prominent narrow peak in the $R$-ratio data is the $J/\psi$ at $\sqrt s\approx\SI{3.1}{GeV}$ (a little less than $\SI{4}{GeV}$). I solve for the $J/\psi$, the only narrow peak in the cited range; the quoted $\SI{2}{GeV}$ is taken to be a typographic error for $\SI{4}{GeV}$.
 
-Resonance position from data: $\sqrt s\approx\SI{3.1}{GeV}$. The intrinsic width is far smaller than the apparent width set by beam-energy spread; from the plot the effective full width at half maximum of the $J/\psi$ peak is $\Gamma_\text{obs}\sim\SI{0.1}{GeV}$, dominated by experimental resolution. Apply the energy--time uncertainty relation:
+Read the resonance position from the plot: $\sqrt s\approx\SI{3.1}{GeV}$. The intrinsic width is far smaller than the apparent width set by beam-energy spread; from the plot the effective full width at half maximum of the $J/\psi$ peak is $\Gamma_\text{obs}\sim\SI{0.1}{GeV}$, dominated by experimental resolution. Apply the energy--time uncertainty relation:
 \[
 \tau\;=\;\frac{\hbar}{\Gamma}.
 \]
-Substitute $\Gamma\sim\SI{0.1}{GeV}$ as a (resolution-limited) bound:
+Substitute $\Gamma\sim\SI{0.1}{GeV}$ as a (resolution-limited) upper bound on the intrinsic width:
 \[
-\tau\;\gtrsim\;\frac{\SI{6.58e-25}{GeV.s}}{\SI{0.1}{GeV}}\;=\;\SI{6.6e-24}{s}.
+\tau\;\gtrsim\;\frac{\SI{6.58e-25}{GeV.s}}{\SI{0.1}{GeV}}.
+\]
+Divide:
+\[
+\tau\;\gtrsim\;\SI{6.6e-24}{s}.
 \]
 \begin{equation}
-\boxed{\;\tau_{J/\psi}\;\gtrsim\;\SI{e-23}{s}\;\text{(from plot)};\quad\text{true }\tau\;\approx\;\SI{7e-21}{s}\;.}
+\boxed{\;\tau_{J/\psi}\;\gtrsim\;\SI{7e-24}{s}\;\text{(from plot)};\quad\text{true }\tau\;\approx\;\SI{7e-21}{s}\;.}
 \label{eq:Jpsi-lifetime}
 \end{equation}
 \paragraph{Comment.} A typical strong decay has $\tau\sim\SI{e-23}{s}$. The $J/\psi$ lives $\sim 10^{2}$ times longer because the $c\bar c$ system lies below the $D\bar D$ threshold; it must annihilate via three gluons (OZI rule), suppressed by $\alpha_{s}^{6}$. The anomalously long lifetime was historical evidence for a new heavy quark.
@@ -463,9 +560,17 @@ The factor $\Gamma(Z\to e^{+}e^{-})$ cancels in $R$ (both numerator and denomina
 \[
 R_\text{peak}\;\approx\;\frac{\Gamma(Z\to\text{hadrons})}{\Gamma(Z\to\mu^{+}\mu^{-})}.
 \]
-Lepton universality: $\Gamma(Z\to\mu^{+}\mu^{-})=\Gamma(Z\to e^{+}e^{-})=3.4\%\,\Gamma_{Z}$. Hadronic branching fraction:
+Lepton universality: $\Gamma(Z\to\mu^{+}\mu^{-})=\Gamma(Z\to e^{+}e^{-})=3.4\%\,\Gamma_{Z}$. Sum charged-lepton branchings:
 \[
-\text{BR}(Z\to\text{hadrons})\;=\;1-3\times 3.4\%-20\%\;=\;1-0.102-0.20\;=\;69.8\%.
+\text{BR}(Z\to\ell^{+}\ell^{-})\;=\;3\times 3.4\%\;=\;10.2\%.
+\]
+Subtract leptons and invisibles from unity:
+\[
+\text{BR}(Z\to\text{hadrons})\;=\;1-0.102-0.20.
+\]
+Evaluate:
+\[
+\text{BR}(Z\to\text{hadrons})\;=\;0.698.
 \]
 Form the ratio:
 \[
@@ -481,7 +586,11 @@ Off-resonance (but still $\gtrsim$ a few $\Gamma_{Z}\approx\SI{2.5}{GeV}$ away),
 
 Just above $2m_{t}\approx\SI{346}{GeV}$ a sixth flavour opens. Top charge $Q_{t}=2/3$:
 \[
-\Delta R_\text{top}\;=\;N_{c}Q_{t}^{2}\;=\;3\times(2/3)^{2}\;=\;\tfrac{4}{3}.
+\Delta R_\text{top}\;=\;N_{c}Q_{t}^{2}.
+\]
+Substitute $N_{c}=3$, $Q_{t}=2/3$:
+\[
+\Delta R_\text{top}\;=\;3\times(2/3)^{2}\;=\;\tfrac{4}{3}.
 \]
 Add to the five-flavour value:
 \[
@@ -531,7 +640,19 @@ Synchrotron radiation per turn for a charged particle on a circular orbit of rad
 \[
 \Delta E\;\propto\;\frac{1}{\rho}\left(\frac{E}{m c^{2}}\right)^{4}.
 \]
-For electrons $m_{e}c^{2}=\SI{0.511}{MeV}$; the factor $(E/m_{e}c^{2})^{4}\sim(2.5\times 10^{5})^{4}\sim 4\times 10^{21}$ at $E=\SI{250}{GeV}$ per beam. Storage-ring losses scale as $E^{4}/\rho$ and become prohibitive: LEP-2 at $\sqrt s=\SI{209}{GeV}$ already lost $\sim\SI{3}{GeV}$ per turn per beam. A $\SI{500}{GeV}$ machine is realistic only as a \emph{linear} collider (ILC, CLIC), accepting single-pass acceleration and demanding extremely high gradient and luminosity.
+For electrons $m_{e}c^{2}=\SI{0.511}{MeV}$; at $E=\SI{250}{GeV}$ per beam compute the Lorentz factor:
+\[
+\gamma\;=\;\frac{E}{m_{e}c^{2}}\;=\;\frac{2.5\times 10^{5}\,\text{MeV}}{0.511\,\text{MeV}}.
+\]
+Divide:
+\[
+\gamma\;\approx\;4.9\times 10^{5}.
+\]
+Raise to the fourth power:
+\[
+\gamma^{4}\;\approx\;(4.9\times 10^{5})^{4}\;\approx\;5.8\times 10^{22}.
+\]
+Storage-ring losses scale as $E^{4}/\rho$ and become prohibitive: LEP-2 at $\sqrt s=\SI{209}{GeV}$ already lost $\sim\SI{3}{GeV}$ per turn per beam. A $\SI{500}{GeV}$ machine is realistic only as a \emph{linear} collider (ILC, CLIC), accepting single-pass acceleration and demanding extremely high gradient and luminosity.
 
 % =========================================================================
 \section*{Question 4 --- Breit--Wigner resonance and Gamow factor}
@@ -554,61 +675,125 @@ At the peak ($E=E_{0}$):
 \sigma_{\max}\;=\;\pi g\!\left(\frac{\lambda}{2\pi}\right)^{2}\frac{4\Gamma_{p}\Gamma_{\alpha}}{\Gamma^{2}}.
 \label{eq:BW-peak}
 \end{equation}
-Spin factor:
+Spin factor with $J=1$, $s_{p}=1/2$, $s_{^{11}\!B}=3/2$:
 \[
-g\;=\;\frac{2J+1}{(2s_{p}+1)(2s_{^{11}\!B}+1)}\;=\;\frac{2(1)+1}{2\times 4}\;=\;\frac{3}{8}.
+g\;=\;\frac{2J+1}{(2s_{p}+1)(2s_{^{11}\!B}+1)}.
+\]
+Substitute numbers:
+\[
+g\;=\;\frac{3}{2\times 4}\;=\;\frac{3}{8}.
 \]
 Boost to CM frame. Lab kinetic energy $T_{p}^\text{lab}=\SI{1.4}{MeV}$, target $^{11}$B at rest. CM kinetic energy:
 \[
-T_\text{cm}\;=\;T_{p}^\text{lab}\,\frac{M(^{11}\!\text{B})}{m_{p}+M(^{11}\!\text{B})}\;=\;1.4\times\frac{11}{12}\,\text{MeV}\;=\;\SI{1.283}{MeV}.
+T_\text{cm}\;=\;T_{p}^\text{lab}\,\frac{M(^{11}\!\text{B})}{m_{p}+M(^{11}\!\text{B})}.
+\]
+Use $M(^{11}\!\text{B})/(m_{p}+M(^{11}\!\text{B}))\approx 11/12$:
+\[
+T_\text{cm}\;=\;1.4\times\frac{11}{12}\,\text{MeV}.
+\]
+Evaluate:
+\[
+T_\text{cm}\;=\;\SI{1.283}{MeV}.
 \]
 Reduced mass:
 \[
-\mu c^{2}\;=\;\frac{m_{p}M(^{11}\!\text{B})}{m_{p}+M(^{11}\!\text{B})}c^{2}\;\approx\;\frac{11}{12}\times\SI{931.5}{MeV}\;=\;\SI{853.9}{MeV}.
+\mu c^{2}\;=\;\frac{m_{p}M(^{11}\!\text{B})}{m_{p}+M(^{11}\!\text{B})}c^{2}.
+\]
+Substitute $m_{p}M/(m_{p}+M)\approx (11/12)u$:
+\[
+\mu c^{2}\;\approx\;\frac{11}{12}\times\SI{931.5}{MeV}.
+\]
+Evaluate:
+\[
+\mu c^{2}\;\approx\;\SI{853.9}{MeV}.
 \]
 Non-relativistic CM momentum:
 \[
-p_\text{cm}c\;=\;\sqrt{2\mu c^{2}\,T_\text{cm}}\;=\;\sqrt{2\times 853.9\times 1.283}\;\text{MeV}.
+p_\text{cm}c\;=\;\sqrt{2\mu c^{2}\,T_\text{cm}}.
 \]
-Evaluate:
+Substitute numerical values:
 \[
-p_\text{cm}c\;=\;\sqrt{2191}\,\text{MeV}\;\approx\;\SI{46.81}{MeV}.
+p_\text{cm}c\;=\;\sqrt{2\times 853.9\times 1.283}\;\text{MeV}.
+\]
+Multiply out under the root:
+\[
+p_\text{cm}c\;=\;\sqrt{2191}\,\text{MeV}.
+\]
+Take the root:
+\[
+p_\text{cm}c\;\approx\;\SI{46.81}{MeV}.
 \]
 Reduced wavelength:
 \[
-\frac{\lambda}{2\pi}\;=\;\frac{\hbar c}{p_\text{cm}c}\;=\;\frac{197}{46.81}\,\text{fm}\;\approx\;\SI{4.21}{fm}.
+\frac{\lambda}{2\pi}\;=\;\frac{\hbar c}{p_\text{cm}c}\;=\;\frac{197}{46.81}\,\text{fm}.
 \]
-Pre-factor:
+Divide:
 \[
-\pi g\!\left(\frac{\lambda}{2\pi}\right)^{2}\;=\;\pi\times\tfrac{3}{8}\times(4.21)^{2}\,\text{fm}^{2}\;=\;\pi\times 0.375\times 17.72\,\text{fm}^{2}.
+\frac{\lambda}{2\pi}\;\approx\;\SI{4.21}{fm}.
 \]
-Evaluate:
+Form the pre-factor:
 \[
-\pi g\!\left(\frac{\lambda}{2\pi}\right)^{2}\;\approx\;20.87\,\text{fm}^{2}\;=\;\SI{208.7}{mb}.
+\pi g\!\left(\frac{\lambda}{2\pi}\right)^{2}\;=\;\pi\times\tfrac{3}{8}\times(4.21)^{2}\,\text{fm}^{2}.
 \]
-Solve \eqref{eq:BW-peak} for the partial-width product:
+Compute the square $(4.21)^{2}$:
 \[
-\frac{4\Gamma_{p}\Gamma_{\alpha}}{\Gamma^{2}}\;=\;\frac{\sigma_{\max}}{\pi g(\lambda/2\pi)^{2}}\;=\;\frac{160}{208.7}\;=\;0.767.
+\pi g\!\left(\frac{\lambda}{2\pi}\right)^{2}\;=\;\pi\times 0.375\times 17.72\,\text{fm}^{2}.
 \]
-With $\Gamma=\SI{1.15}{MeV}$:
+Multiply through:
+\[
+\pi g\!\left(\frac{\lambda}{2\pi}\right)^{2}\;\approx\;20.87\,\text{fm}^{2}.
+\]
+Convert with $1\,\text{fm}^{2}=10\,\text{mb}$:
+\[
+\pi g\!\left(\frac{\lambda}{2\pi}\right)^{2}\;\approx\;\SI{208.7}{mb}.
+\]
+Solve \eqref{eq:BW-peak} for the dimensionless factor:
+\[
+\frac{4\Gamma_{p}\Gamma_{\alpha}}{\Gamma^{2}}\;=\;\frac{\sigma_{\max}}{\pi g(\lambda/2\pi)^{2}}.
+\]
+Substitute numerical values:
+\[
+\frac{4\Gamma_{p}\Gamma_{\alpha}}{\Gamma^{2}}\;=\;\frac{160}{208.7}\;=\;0.767.
+\]
+Rearrange for the product with $\Gamma=\SI{1.15}{MeV}$:
 \[
 \Gamma_{p}\Gamma_{\alpha}\;=\;\tfrac{1}{4}\times 0.767\times(1.15)^{2}\,\text{MeV}^{2}.
 \]
+Compute the square $(1.15)^{2}$:
+\[
+\Gamma_{p}\Gamma_{\alpha}\;=\;0.1917\times 1.3225\,\text{MeV}^{2}.
+\]
+Multiply through:
+\[
+\Gamma_{p}\Gamma_{\alpha}\;\approx\;0.2540\,\text{MeV}^{2}.
+\]
+Neglect other channels: $\Gamma_{p}+\Gamma_{\alpha}=\Gamma=\SI{1.15}{MeV}$. The widths are roots of the quadratic
+\[
+x^{2}-\Gamma\,x+\Gamma_{p}\Gamma_{\alpha}\;=\;0.
+\]
+Substitute numerical values:
+\[
+x^{2}-1.15\,x+0.2540\;=\;0.
+\]
+Form the discriminant $D=b^{2}-4c$:
+\[
+D\;=\;(1.15)^{2}-4\times 0.2540.
+\]
 Evaluate:
 \[
-\Gamma_{p}\Gamma_{\alpha}\;=\;0.192\times 1.323\,\text{MeV}^{2}\;\approx\;0.2540\,\text{MeV}^{2}.
+D\;=\;1.3225-1.016\;=\;0.3065.
 \]
-Neglect other channels: $\Gamma_{p}+\Gamma_{\alpha}=\Gamma=\SI{1.15}{MeV}$. The widths are roots of
+Take the square root:
 \[
-x^{2}-\Gamma\,x+\Gamma_{p}\Gamma_{\alpha}\;=\;0\;\;\Longrightarrow\;\;x^{2}-1.15\,x+0.2540\;=\;0.
+\sqrt{D}\;=\;0.5536.
 \]
-Discriminant:
+Apply the quadratic formula:
 \[
-D\;=\;(1.15)^{2}-4\times 0.2540\;=\;1.3225-1.016\;=\;0.3065.
+x\;=\;\frac{1.15\pm 0.5536}{2}.
 \]
-Roots:
+Evaluate the two signs:
 \[
-x\;=\;\frac{1.15\pm\sqrt{0.3065}}{2}\;=\;\frac{1.15\pm 0.5536}{2}.
+x\;=\;0.852\quad\text{or}\quad 0.298.
 \]
 \begin{equation}
 \boxed{\;(\Gamma_{p},\,\Gamma_{\alpha})\;\in\;\{(0.85,\,0.30),\,(0.30,\,0.85)\}\,\text{MeV}\;.}
@@ -639,15 +824,27 @@ G\;=\;\frac{2}{\hbar}\int_{R}^{b}\!\sqrt{2\mu\bigl[V_{C}(r)-Q\bigr]}\,\de r,
 \end{equation}
 with $V_{C}(r)=Z_{1}Z_{2}e^{2}/(4\pi\epsilon_{0}r)$, inner radius $R$ (nuclear contact) and outer turning point $b$ where $V_{C}(b)=Q$.
 
-\paragraph{Comparison of $Q$ to the barrier height.} Each $\alpha$ has $A=4,Z=2$. Take $r_{0}=\SI{1.2}{fm}$ so $R_{\alpha}=r_{0}\,4^{1/3}\approx\SI{1.91}{fm}$ and contact distance
+\paragraph{Comparison of $Q$ to the barrier height.} Each $\alpha$ has $A=4,Z=2$. Take $r_{0}=\SI{1.2}{fm}$:
+\[
+R_{\alpha}\;=\;r_{0}\,4^{1/3}.
+\]
+Substitute $4^{1/3}=1.587$:
+\[
+R_{\alpha}\;=\;1.2\times 1.587\,\text{fm}\;\approx\;\SI{1.91}{fm}.
+\]
+Contact distance is twice this:
 \[
 R\;=\;2R_{\alpha}\;\approx\;\SI{3.81}{fm}.
 \]
-Barrier height (with $e^{2}/(4\pi\epsilon_{0})=\hbar c\,\alpha=\SI{1.44}{MeV.fm}$, $Z_{1}Z_{2}=4$):
+Barrier height with $e^{2}/(4\pi\epsilon_{0})=\hbar c\,\alpha=\SI{1.44}{MeV.fm}$, $Z_{1}Z_{2}=4$:
 \[
-V_{C}(R)\;=\;\frac{Z_{1}Z_{2}\times 1.44\,\text{MeV.fm}}{R}\;=\;\frac{4\times 1.44}{3.81}\,\text{MeV}.
+V_{C}(R)\;=\;\frac{Z_{1}Z_{2}\times 1.44\,\text{MeV.fm}}{R}.
 \]
-Evaluate:
+Substitute $R=\SI{3.81}{fm}$:
+\[
+V_{C}(R)\;=\;\frac{4\times 1.44}{3.81}\,\text{MeV}\;=\;\frac{5.76}{3.81}\,\text{MeV}.
+\]
+Divide:
 \[
 V_{C}(R)\;\approx\;\SI{1.51}{MeV}.
 \]
@@ -657,24 +854,48 @@ Compare to $Q=\SI{91}{keV}$:
 \]
 Tunnelling regime; thick-barrier approximation valid.
 
-\paragraph{Outer turning point.}
+\paragraph{Outer turning point.} Set $V_{C}(b)=Q$ and solve for $b$:
 \[
-b\;=\;\frac{Z_{1}Z_{2}\,\hbar c\,\alpha}{Q}\;=\;\frac{4\times 1.44}{0.091}\,\text{fm}\;\approx\;\SI{63.3}{fm}.
+b\;=\;\frac{Z_{1}Z_{2}\,\hbar c\,\alpha}{Q}.
 \]
-
-\paragraph{Sommerfeld parameter.} Reduced mass $\mu=m_{\alpha}/2$, $\mu c^{2}\approx\SI{1863}{MeV}$. Asymptotic velocity:
+Substitute numerical values:
 \[
-\beta\;=\;\frac{v}{c}\;=\;\sqrt{\frac{2Q}{\mu c^{2}}}\;=\;\sqrt{\frac{2\times 0.091}{1863}}.
+b\;=\;\frac{4\times 1.44}{0.091}\,\text{fm}.
 \]
 Evaluate:
 \[
-\beta\;=\;\sqrt{9.77\times 10^{-5}}\;\approx\;9.88\times 10^{-3}.
+b\;\approx\;\SI{63.3}{fm}.
+\]
+
+\paragraph{Sommerfeld parameter.} Reduced mass $\mu=m_{\alpha}/2$, $\mu c^{2}\approx\SI{1863}{MeV}$. Asymptotic velocity from $Q=\tfrac12\mu v^{2}$:
+\[
+\beta\;=\;\frac{v}{c}\;=\;\sqrt{\frac{2Q}{\mu c^{2}}}.
+\]
+Substitute $Q=\SI{0.091}{MeV}$, $\mu c^{2}=\SI{1863}{MeV}$:
+\[
+\beta\;=\;\sqrt{\frac{2\times 0.091}{1863}}.
+\]
+Reduce the ratio:
+\[
+\beta\;=\;\sqrt{9.77\times 10^{-5}}.
+\]
+Take the root:
+\[
+\beta\;\approx\;9.88\times 10^{-3}.
 \]
 Sommerfeld parameter:
 \[
-\eta\;=\;\frac{Z_{1}Z_{2}\alpha}{\beta}\;=\;\frac{4}{137.04\times 9.88\times 10^{-3}}\;=\;\frac{4}{1.354}.
+\eta\;=\;\frac{Z_{1}Z_{2}\alpha}{\beta}.
 \]
-Evaluate:
+Substitute $Z_{1}Z_{2}=4$, $\alpha=1/137.04$:
+\[
+\eta\;=\;\frac{4}{137.04\times 9.88\times 10^{-3}}.
+\]
+Multiply the denominator:
+\[
+\eta\;=\;\frac{4}{1.354}.
+\]
+Divide:
 \[
 \eta\;\approx\;2.953.
 \]
@@ -684,20 +905,41 @@ Evaluate:
 G\;=\;4\eta\!\left[\arccos\!\sqrt{R/b}-\sqrt{(R/b)(1-R/b)}\right].
 \label{eq:Gamow-closed}
 \end{equation}
-Insert $R/b=0.0602$:
+Compute the ratio $R/b$:
 \[
-\sqrt{R/b}\;=\;0.2454,\qquad\arccos(0.2454)\;=\;\SI{1.323}{rad}.
+\frac{R}{b}\;=\;\frac{3.81}{63.3}\;\approx\;0.0602.
 \]
+Take its square root:
 \[
-\sqrt{(R/b)(1-R/b)}\;=\;\sqrt{0.0602\times 0.9398}\;=\;\sqrt{0.0566}\;=\;0.2379.
+\sqrt{R/b}\;=\;\sqrt{0.0602}\;=\;0.2454.
 \]
-Bracket:
+Take the arccosine:
 \[
-[\,\cdot\,]\;=\;1.323-0.238\;=\;1.085.
+\arccos(0.2454)\;=\;\SI{1.323}{rad}.
 \]
-Combine:
+Form the geometric-mean product:
+\[
+(R/b)(1-R/b)\;=\;0.0602\times 0.9398\;=\;0.0566.
+\]
+Take its square root:
+\[
+\sqrt{(R/b)(1-R/b)}\;=\;\sqrt{0.0566}\;=\;0.2379.
+\]
+Form the bracket:
+\[
+\bigl[\arccos\sqrt{R/b}-\sqrt{(R/b)(1-R/b)}\bigr]\;=\;1.323-0.238\;=\;1.085.
+\]
+Combine into \eqref{eq:Gamow-closed}:
 \[
 G\;=\;4\times 2.953\times 1.085.
+\]
+Multiply:
+\[
+G\;\approx\;12.82.
+\]
+Evaluate the transmission exponent:
+\[
+e^{-G}\;=\;e^{-12.82}\;\approx\;2.7\times 10^{-6}.
 \]
 \begin{equation}
 \boxed{\;G\;\approx\;12.8\;,\qquad e^{-G}\;\approx\;2.7\times 10^{-6}\;.}

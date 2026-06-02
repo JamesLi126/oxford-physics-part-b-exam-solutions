@@ -26,9 +26,11 @@
 
 \subsection*{Laplace's equation}
 
-Irrotational: $\curl{\vb u}=0$, so $\vb u=\grad\phi$.
+Irrotational $\curl{\vb u}=0$ implies potential exists:
+\[ \vb u=\grad\phi. \]
+Take divergence:
 \[ \div{\vb u}=\div(\grad\phi)=\Lap\phi. \]
-Incompressible: $\div{\vb u}=0$:
+Apply incompressibility $\div{\vb u}=0$:
 \[ \boxed{\;\Lap\phi=0.\;} \]
 
 \subsection*{Boundary conditions}
@@ -44,13 +46,23 @@ Incompressible: $\div{\vb u}=0$:
 
 Try separable form $\pi/2$ out of phase with $\eta$:
 \[ \phi(x,z,t)=f(z)\cos(kx-\omega t). \]
-Insert in Laplace:
+Compute $\partial_x^{2}\phi$:
+\[ \partial_x^{2}\phi=-k^{2}f(z)\cos(kx-\omega t). \]
+Compute $\partial_z^{2}\phi$:
+\[ \partial_z^{2}\phi=f''(z)\cos(kx-\omega t). \]
+Sum and apply $\Lap\phi=0$:
+\[ \bigl(f''(z)-k^{2}f(z)\bigr)\cos(kx-\omega t)=0. \]
+Reduce to ODE:
 \[ f''(z)-k^{2}f(z)=0. \]
 General solution:
 \[ f(z)=Ce^{kz}+De^{-kz}. \]
-Apply $z\to-\infty$ decay: $D=0$:
+Apply $z\to-\infty$ decay (with $k>0$, $e^{-kz}\to\infty$):
+\[ D=0. \]
+Hence:
 \[ \phi=Ce^{kz}\cos(kx-\omega t). \]
-Kinematic BC at $z=0$: $\partial_t\eta=\partial_z\phi$:
+Compute $\partial_t\eta$ and $\partial_z\phi|_{z=0}$:
+\[ \partial_t\eta=-A\omega\cos(kx-\omega t),\qquad \partial_z\phi|_0=Ck\cos(kx-\omega t). \]
+Equate (kinematic BC):
 \[ -A\omega\cos(kx-\omega t)=Ck\cos(kx-\omega t). \]
 Solve for $C$:
 \[ C=-\frac{A\omega}{k}. \]
@@ -59,9 +71,13 @@ Velocity potential:
 \boxed{\;\phi(x,z,t)=-\frac{A\omega}{k}\,e^{kz}\cos(kx-\omega t).\;}
 \label{eq:phi-deep}
 \end{equation}
-Dynamic BC at $z=0$: $\partial_t\phi=-g\eta$:
+Compute $\partial_t\phi$ at $z=0$:
+\[ \partial_t\phi|_0=-\frac{A\omega^{2}}{k}\sin(kx-\omega t). \]
+Apply dynamic BC $\partial_t\phi=-g\eta$:
 \[ -\frac{A\omega^{2}}{k}\sin(kx-\omega t)=-gA\sin(kx-\omega t). \]
-Cancel and rearrange:
+Cancel $-A\sin(kx-\omega t)$:
+\[ \frac{\omega^{2}}{k}=g. \]
+Multiply by $k$:
 \begin{equation}
 \boxed{\;\omega^{2}=gk.\;}
 \label{eq:disp-deep}
@@ -71,11 +87,23 @@ Cancel and rearrange:
 
 Lagrangian displacement $(\xi,\zeta)$ of a particle about $(x_0,z_0)$:
 \[ \dot\xi=u=\partial_x\phi,\qquad \dot\zeta=w=\partial_z\phi. \]
-Evaluate at the mean position (linear theory) using $\phi=-(A\omega/k)e^{kz}\cos(kx-\omega t)$:
+Differentiate $\phi=-(A\omega/k)e^{kz}\cos(kx-\omega t)$ w.r.t.\ $x$:
+\[ \partial_x\phi=-\frac{A\omega}{k}\,e^{kz}\cdot(-k)\sin(kx-\omega t). \]
+Simplify:
+\[ \partial_x\phi=A\omega\,e^{kz}\sin(kx-\omega t). \]
+Differentiate w.r.t.\ $z$:
+\[ \partial_z\phi=-A\omega\,e^{kz}\cos(kx-\omega t). \]
+Evaluate at the mean position $(x_0,z_0)$ (linear theory):
 \[ u=A\omega\,e^{kz_0}\sin(kx_0-\omega t),\qquad w=-A\omega\,e^{kz_0}\cos(kx_0-\omega t). \]
-Integrate in time:
-\[ \xi=A\,e^{kz_0}\cos(kx_0-\omega t),\qquad \zeta=A\,e^{kz_0}\sin(kx_0-\omega t). \]
-Eliminate $t$:
+Integrate $u$ in time:
+\[ \xi=\int A\omega\,e^{kz_0}\sin(kx_0-\omega t)\,\de t. \]
+Use $\int\sin(kx_0-\omega t)\,\de t=\tfrac{1}{\omega}\cos(kx_0-\omega t)$:
+\[ \xi=A\,e^{kz_0}\cos(kx_0-\omega t). \]
+Integrate $w$ in time:
+\[ \zeta=\int -A\omega\,e^{kz_0}\cos(kx_0-\omega t)\,\de t. \]
+Use $\int\cos(kx_0-\omega t)\,\de t=-\tfrac{1}{\omega}\sin(kx_0-\omega t)$:
+\[ \zeta=A\,e^{kz_0}\sin(kx_0-\omega t). \]
+Square and add (apply $\sin^{2}+\cos^{2}=1$):
 \[ \xi^{2}+\zeta^{2}=A^{2}e^{2kz_0}. \]
 Circular paths of radius $R(z_0)=A\,e^{kz_0}$, decaying exponentially with depth:
 \[ \boxed{\;R(z_0)=A\,e^{kz_0}.\;} \]
@@ -103,18 +131,34 @@ Circular paths of radius $R(z_0)=A\,e^{kz_0}$, decaying exponentially with depth
 
 Modified dynamic BC at $z=0$:
 \[ \pd{\phi}{t}=-g\eta+\frac{\sigma}{\rho}\pdd{\eta}{x}. \]
-Insert $\eta=A\sin(kx-\omega t)$, $\phi=-(A\omega/k)e^{kz}\cos(kx-\omega t)$:
-\[ -\frac{A\omega^{2}}{k}\sin=-gA\sin-\frac{\sigma}{\rho}k^{2}A\sin. \]
-Cancel $-A\sin$:
+Compute $\partial_x^{2}\eta$:
+\[ \pdd{\eta}{x}=-Ak^{2}\sin(kx-\omega t). \]
+Insert $\partial_t\phi|_0=-(A\omega^{2}/k)\sin(kx-\omega t)$ and $\eta$:
+\[ -\frac{A\omega^{2}}{k}\sin(kx-\omega t)=-gA\sin(kx-\omega t)-\frac{\sigma}{\rho}Ak^{2}\sin(kx-\omega t). \]
+Cancel $-A\sin(kx-\omega t)$:
 \[ \frac{\omega^{2}}{k}=g+\frac{\sigma k^{2}}{\rho}. \]
 Multiply by $k$:
 \begin{equation}
 \boxed{\;\omega^{2}=gk+\frac{\sigma}{\rho}k^{3},\qquad c_{1}=g,\quad c_{2}=\sigma/\rho.\;}
 \label{eq:disp-cap}
 \end{equation}
-Wave speed:
-\[ c(k)=\frac{\omega}{k}=\sqrt{\frac{g}{k}+\frac{\sigma k}{\rho}}. \]
-Minimum at $k_{*}=\sqrt{g\rho/\sigma}$:
+Wave speed $c=\omega/k$:
+\[ c^{2}=\frac{\omega^{2}}{k^{2}}=\frac{g}{k}+\frac{\sigma k}{\rho}. \]
+Take square root:
+\[ c(k)=\sqrt{\frac{g}{k}+\frac{\sigma k}{\rho}}. \]
+Minimise $c^{2}$ via $\de(c^{2})/\de k=0$:
+\[ -\frac{g}{k^{2}}+\frac{\sigma}{\rho}=0. \]
+Solve for $k_{*}$:
+\[ k_{*}=\sqrt{g\rho/\sigma}. \]
+Insert $k_{*}=\sqrt{g\rho/\sigma}$ into $c^{2}$:
+\[ c_{\min}^{2}=\frac{g}{\sqrt{g\rho/\sigma}}+\frac{\sigma}{\rho}\sqrt{g\rho/\sigma}. \]
+Simplify first term:
+\[ \frac{g}{\sqrt{g\rho/\sigma}}=\sqrt{g\sigma/\rho}. \]
+Simplify second term:
+\[ \frac{\sigma}{\rho}\sqrt{g\rho/\sigma}=\sqrt{g\sigma/\rho}. \]
+Sum:
+\[ c_{\min}^{2}=2\sqrt{g\sigma/\rho}. \]
+Take square root:
 \[ c_{\min}=\bigl(4g\sigma/\rho\bigr)^{1/4}. \]
 
 \begin{center}
@@ -146,28 +190,41 @@ Short waves ($k\gg k_{*}$, small $\lambda$) most affected: the curvature $\parti
 
 \subsection*{Reynolds number}
 
-Steady 2-D incompressible NS:
+Steady 2-D incompressible NS (drop gravity / absorb into pressure):
 \[ (\vb u\cdot\grad)\vb u=-\frac{1}{\rho}\grad p+\nu\Lap\vb u. \]
-Scale: $\vb u=U\vb u^{*}$, $\grad=L^{-1}\grad^{*}$, $p=\rho U^{2}p^{*}$:
+Introduce scales $\vb u=U\vb u^{*}$, $\grad=L^{-1}\grad^{*}$, $p=\rho U^{2}p^{*}$:
+\[ \frac{U^{2}}{L}(\vb u^{*}\cdot\grad^{*})\vb u^{*}=-\frac{1}{\rho}\cdot\frac{\rho U^{2}}{L}\grad^{*}p^{*}+\frac{\nu U}{L^{2}}\nabla^{*2}\vb u^{*}. \]
+Cancel $\rho$ in the pressure term:
 \[ \frac{U^{2}}{L}(\vb u^{*}\cdot\grad^{*})\vb u^{*}=-\frac{U^{2}}{L}\grad^{*}p^{*}+\frac{\nu U}{L^{2}}\nabla^{*2}\vb u^{*}. \]
-Divide by $U^{2}/L$:
+Divide through by $U^{2}/L$:
+\[ (\vb u^{*}\cdot\grad^{*})\vb u^{*}=-\grad^{*}p^{*}+\frac{\nu}{UL}\nabla^{*2}\vb u^{*}. \]
+Identify dimensionless coefficient $1/\mathrm{Re}$:
 \[ (\vb u^{*}\cdot\grad^{*})\vb u^{*}=-\grad^{*}p^{*}+\frac{1}{\mathrm{Re}}\nabla^{*2}\vb u^{*}. \]
-Read off:
+Hence:
 \[ \boxed{\;\mathrm{Re}=\frac{UL}{\nu}.\;} \]
 
 Behaviour: $\mathrm{Re}\ll 1$ Stokes (creeping) flow, viscosity dominates, time-reversible streamlines. $\mathrm{Re}\sim O(1)$ steady laminar flow with separation possible. $\mathrm{Re}\gtrsim 40$ unsteady wake (von K\'arm\'an street). $\mathrm{Re}\gtrsim 10^{3}$--$10^{5}$ transition to turbulence; inertia dominates, viscous effects confined to thin boundary layers.
 
 \subsection*{Cylinder with source: $\mu$, $m$}
 
-Velocity components from $\phi$:
-\[ u_r=\pd{\phi}{r}=U\cos\theta-\frac{\mu\cos\theta}{r^{2}}+\frac{m}{r}, \]
-\[ u_\theta=\frac{1}{r}\pd{\phi}{\theta}=-U\sin\theta-\frac{\mu\sin\theta}{r^{2}}. \]
+Compute $u_r=\partial\phi/\partial r$:
+\[ u_r=\pd{}{r}\!\left[Ur\cos\theta+\frac{\mu\cos\theta}{r}+m\log r\right]. \]
+Differentiate term-by-term:
+\[ u_r=U\cos\theta-\frac{\mu\cos\theta}{r^{2}}+\frac{m}{r}. \]
+Compute $u_\theta=(1/r)\,\partial\phi/\partial\theta$:
+\[ u_\theta=\frac{1}{r}\pd{}{\theta}\!\left[Ur\cos\theta+\frac{\mu\cos\theta}{r}+m\log r\right]. \]
+Differentiate term-by-term:
+\[ u_\theta=\frac{1}{r}\!\left[-Ur\sin\theta-\frac{\mu\sin\theta}{r}\right]=-U\sin\theta-\frac{\mu\sin\theta}{r^{2}}. \]
 Apply normal BC $u_r(a,\theta)=V$ for all $\theta$:
 \[ U\cos\theta-\frac{\mu\cos\theta}{a^{2}}+\frac{m}{a}=V. \]
-Match $\cos\theta$ part:
-\[ U-\frac{\mu}{a^{2}}=0\;\Rightarrow\;\mu=Ua^{2}. \]
-Match constant part:
-\[ \frac{m}{a}=V\;\Rightarrow\;m=Va. \]
+Match $\cos\theta$ coefficient:
+\[ U-\frac{\mu}{a^{2}}=0. \]
+Solve for $\mu$:
+\[ \mu=Ua^{2}. \]
+Match constant ($\theta$-independent) part:
+\[ \frac{m}{a}=V. \]
+Solve for $m$:
+\[ m=Va. \]
 \[ \boxed{\;\mu=Ua^{2},\qquad m=Va.\;} \]
 Potential and velocities:
 \[ \phi=U\cos\theta\Bigl(r+\frac{a^{2}}{r}\Bigr)+Va\,\log r, \]
@@ -175,17 +232,23 @@ Potential and velocities:
 
 \subsection*{Stagnation point for $V=4U$}
 
-By symmetry the stagnation point lies on $\theta=\pi$ (upstream axis). Set $u_\theta=0$ automatically; require $u_r=0$:
+By symmetry, the stagnation point lies on $\theta=\pi$ (upstream axis). On this axis $\sin\theta=0$ so $u_\theta\equiv 0$; require $u_r=0$ with $V=4U$:
 \[ U\cos\pi\Bigl(1-\frac{a^{2}}{r^{2}}\Bigr)+\frac{4Ua}{r}=0. \]
-Simplify $\cos\pi=-1$:
+Substitute $\cos\pi=-1$:
 \[ -U\Bigl(1-\frac{a^{2}}{r^{2}}\Bigr)+\frac{4Ua}{r}=0. \]
-Cancel $U$, multiply by $r^{2}$:
+Cancel $U$:
+\[ -\Bigl(1-\frac{a^{2}}{r^{2}}\Bigr)+\frac{4a}{r}=0. \]
+Multiply by $r^{2}$:
 \[ -r^{2}+a^{2}+4ar=0. \]
 Rearrange:
 \[ r^{2}-4ar-a^{2}=0. \]
-Quadratic formula:
-\[ r=\frac{4a\pm\sqrt{16a^{2}+4a^{2}}}{2}=2a\pm a\sqrt{5}. \]
-Take $r>a$: $r=(2+\sqrt{5})a$. Distance from cylinder centre upstream:
+Apply quadratic formula:
+\[ r=\frac{4a\pm\sqrt{16a^{2}+4a^{2}}}{2}. \]
+Simplify the discriminant:
+\[ r=\frac{4a\pm\sqrt{20a^{2}}}{2}=\frac{4a\pm 2a\sqrt{5}}{2}. \]
+Divide by $2$:
+\[ r=2a\pm a\sqrt{5}=(2\pm\sqrt{5})a. \]
+Take the root with $r>a$ (outside cylinder); $(2-\sqrt{5})a<0$ is rejected:
 \[ \boxed{\;r_{\text{stag}}=(2+\sqrt{5})\,a.\;} \]
 
 \begin{center}
@@ -208,27 +271,31 @@ Take $r>a$: $r=(2+\sqrt{5})a$. Distance from cylinder centre upstream:
 
 \subsection*{Bernoulli along streamlines}
 
-Steady, inviscid, incompressible, gravity:
+Steady, inviscid, incompressible Euler with gravity:
 \[ (\vb u\cdot\grad)\vb u+\frac{1}{\rho}\grad p+g\hat{\vb k}=0. \]
-Use the identity:
-\[ (\vb u\cdot\grad)\vb u=\grad\!\bigl(\tfrac{1}{2}u^{2}\bigr)+\bm\omega\times\vb u. \]
-Substitute and multiply through by $\rho$:
-\[ \grad\!\bigl(\tfrac{1}{2}\rho u^{2}+p+\rho g z\bigr)=-\rho\,\bm\omega\times\vb u. \]
-Take dot product with $\vb u$:
+Write $g\hat{\vb k}=\grad(gz)$:
+\[ (\vb u\cdot\grad)\vb u+\frac{1}{\rho}\grad p+\grad(gz)=0. \]
+Apply identity $(\vb u\cdot\grad)\vb u=\grad(\tfrac12 u^{2})+\bm\omega\times\vb u$:
+\[ \grad\!\bigl(\tfrac{1}{2}u^{2}\bigr)+\bm\omega\times\vb u+\frac{1}{\rho}\grad p+\grad(gz)=0. \]
+Multiply through by $\rho$ (constant) and group gradients:
+\[ \grad\!\bigl(p+\tfrac{1}{2}\rho u^{2}+\rho g z\bigr)=-\rho\,\bm\omega\times\vb u. \]
+Take dot product with $\vb u$ and use $\vb u\cdot(\bm\omega\times\vb u)=0$:
 \[ \vb u\cdot\grad B=0,\qquad B\equiv p+\tfrac{1}{2}\rho u^{2}+\rho g z. \]
-($\vb u\cdot(\bm\omega\times\vb u)=0$.) Hence $B$ is constant along streamlines:
+Therefore $B$ is constant along streamlines:
 \[ \boxed{\;p+\tfrac{1}{2}\rho u^{2}+\rho g z=\text{const along streamlines}.\;} \]
 
 \subsection*{Tank: efflux speed and flux}
 
 Assumptions: steady, inviscid, incompressible, $A_e\ll A_0$ so surface speed $\approx 0$; both surface and exit at $p_\text{atm}$.
 
-Bernoulli surface $\to$ exit:
+Bernoulli surface $\to$ exit (take exit at $z=0$, surface at $z=H$):
 \[ p_\text{atm}+0+\rho g H=p_\text{atm}+\tfrac{1}{2}\rho u_e^{2}+0. \]
-Solve:
+Cancel $p_\text{atm}$ and divide by $\rho$:
+\[ gH=\tfrac{1}{2}u_e^{2}. \]
+Solve for $u_e$:
 \[ u_e=\sqrt{2gH}. \]
-Volume flux:
-\[ Q=A_e u_e. \]
+Volume flux from continuity at the exit:
+\[ Q=A_e u_e=A_e\sqrt{2gH}. \]
 \[ \boxed{\;u_e=\sqrt{2gH},\qquad Q=A_e\sqrt{2gH}.\;} \]
 
 \begin{center}
@@ -265,19 +332,23 @@ Stable for $r<0$, unstable for $r>0$. Bifurcation at:
 
 \subsection*{Other fixed points}
 
-Roots of $x^{2}-2x+r=0$:
-\[ x_{\pm}=1\pm\sqrt{1-r}. \]
-Real for $r\le 1$. Stability:
-\[ f'(x_\pm)=r-4x_\pm+3x_\pm^{2}. \]
-Use $x_\pm^{2}=2x_\pm-r$:
-\[ f'(x_\pm)=r-4x_\pm+3(2x_\pm-r)=2x_\pm-2r=2(x_\pm-r). \]
-Substitute $x_\pm$:
-\[ f'(x_\pm)=2\bigl(1-r\pm\sqrt{1-r}\bigr)=2\sqrt{1-r}\bigl(\sqrt{1-r}\pm 1\bigr). \]
-So $f'(x_+)>0$ (unstable) and $f'(x_-)<0$ for $0<r<1$ (stable); both vanish at $r=1$.
+Other roots solve $x^{2}-2x+r=0$:
+\[ x_{\pm}=\frac{2\pm\sqrt{4-4r}}{2}=1\pm\sqrt{1-r}. \]
+Real for $r\le 1$. Use $x_\pm^{2}=2x_\pm-r$ in $f'(x)=r-4x+3x^{2}$:
+\[ f'(x_\pm)=r-4x_\pm+3(2x_\pm-r). \]
+Expand:
+\[ f'(x_\pm)=r-4x_\pm+6x_\pm-3r. \]
+Combine like terms:
+\[ f'(x_\pm)=-2r+2x_\pm=2(x_\pm-r). \]
+Substitute $x_\pm=1\pm\sqrt{1-r}$:
+\[ f'(x_\pm)=2\bigl(1\pm\sqrt{1-r}-r\bigr)=2\bigl((1-r)\pm\sqrt{1-r}\bigr). \]
+Factor $\sqrt{1-r}$:
+\[ f'(x_\pm)=2\sqrt{1-r}\bigl(\sqrt{1-r}\pm 1\bigr). \]
+For $0<r<1$: $\sqrt{1-r}>0$ and $\sqrt{1-r}-1<0$, so $f'(x_-)<0$ (stable); $\sqrt{1-r}+1>0$, so $f'(x_+)>0$ (unstable). Both vanish at $r=1$.
 
 Second bifurcation at:
 \[ \boxed{\;r_{2}=1.\;} \]
-At $r=1$, $x_\pm=1$ collide (saddle-node). At $r=0$, $x_-=0$ collides with $x^{*}=0$ (transcritical with $x_+=2$ existing for all $r\le 1$).
+At $r=1$: $x_\pm=1$ collide (saddle-node). At $r=0$: $x_-=0$ collides with $x^{*}=0$ (transcritical; $x_+=2$ persists for all $r\le 1$).
 
 \subsection*{Bifurcation diagram and normal forms}
 
@@ -308,44 +379,62 @@ At $r=1$, $x_\pm=1$ collide (saddle-node). At $r=0$, $x_-=0$ collides with $x^{*
 
 Solid = stable, dashed = unstable.
 
-\textbf{Normal form at $r_1=0$:} Taylor expand near $(x,r)=(0,0)$:
-\[ \dot x=rx-2x^{2}+x^{3}\approx rx-2x^{2}. \]
-Two fixed points $0$ and $r/2$ exchange stability at $r=0$:
+\textbf{Normal form at $r_1=0$:} drop the cubic $x^{3}$ (higher-order near $x=0$):
+\[ \dot x\approx rx-2x^{2}. \]
+Fixed points: $x=0$ and $x=r/2$ cross at $r=0$ and exchange stability:
 \[ \boxed{\;\dot x=rx-2x^{2}\quad\text{(transcritical).}\;} \]
 
-\textbf{Normal form at $r_2=1$:} Let $r=1+\mu$, $x=1+y$:
+\textbf{Normal form at $r_2=1$:} let $r=1+\mu$, $x=1+y$ so $\dot x=\dot y$:
 \[ \dot y=(1+\mu)(1+y)-2(1+y)^{2}+(1+y)^{3}. \]
-Expand each term:
-\[ (1+\mu)(1+y)=1+y+\mu+\mu y, \]
-\[ -2(1+y)^{2}=-2-4y-2y^{2}, \]
+Expand $(1+\mu)(1+y)$:
+\[ (1+\mu)(1+y)=1+y+\mu+\mu y. \]
+Expand $-2(1+y)^{2}$:
+\[ -2(1+y)^{2}=-2-4y-2y^{2}. \]
+Expand $(1+y)^{3}$:
 \[ (1+y)^{3}=1+3y+3y^{2}+y^{3}. \]
-Sum:
+Sum the three contributions:
+\[ \dot y=(1-2+1)+(1-4+3)y+\mu+\mu y+(-2+3)y^{2}+y^{3}. \]
+Collect (constants and linear in $y$ both vanish):
 \[ \dot y=\mu+\mu y+y^{2}+y^{3}. \]
-Drop higher orders ($\mu y$, $y^{3}$) near $(0,0)$:
+Drop higher orders $\mu y$, $y^{3}$ near $(\mu,y)=(0,0)$:
 \[ \boxed{\;\dot y=\mu+y^{2}\quad\text{(saddle-node).}\;} \]
 
 \subsection*{2-D phase portrait}
 
-Fixed points: $\dot y=0\Rightarrow y=0$ or $x=2$.
+Set $\dot y=0$:
+\[ (x-2)y=0\;\Rightarrow\;y=0\ \text{or}\ x=2. \]
+On branch $y=0$, set $\dot x=0$:
+\[ x^{2}-1=0\;\Rightarrow\;x=\pm 1. \]
+On branch $x=2$, set $\dot x=0$:
+\[ 4-y-1=0\;\Rightarrow\;y=3. \]
+Fixed points: $(1,0),\,(-1,0),\,(2,3)$.
 
-\emph{Branch $y=0$:} $\dot x=x^{2}-1=0\Rightarrow x=\pm 1$. Points $(1,0)$, $(-1,0)$.
-
-\emph{Branch $x=2$:} $\dot x=4-y-1=0\Rightarrow y=3$. Point $(2,3)$.
-
-Jacobian:
-\[ J=\begin{pmatrix}2x & -1\\ y & x-2\end{pmatrix}. \]
+General Jacobian:
+\[ J=\begin{pmatrix}\partial f_1/\partial x & \partial f_1/\partial y\\ \partial f_2/\partial x & \partial f_2/\partial y\end{pmatrix}=\begin{pmatrix}2x & -1\\ y & x-2\end{pmatrix}. \]
 
 At $(1,0)$:
 \[ J=\begin{pmatrix}2 & -1\\ 0 & -1\end{pmatrix},\quad \tau=1,\;\Delta=-2. \]
-$\Delta<0$: saddle. Eigenvalues $2,-1$; eigenvectors $(1,0)^{T}$ (unstable), $(1,3)^{T}$ (stable).
+$\Delta<0$ implies saddle. Solve $\det(J-\lambda I)=(2-\lambda)(-1-\lambda)=0$:
+\[ \lambda_1=2,\quad \lambda_2=-1. \]
+Eigenvector for $\lambda_1=2$: $(J-2I)\vb v=0$ gives $-v_2=0$, so $v=(1,0)^{T}$ (unstable).
+Eigenvector for $\lambda_2=-1$: $3v_1-v_2=0$, so $v=(1,3)^{T}$ (stable).
 
 At $(-1,0)$:
 \[ J=\begin{pmatrix}-2 & -1\\ 0 & -3\end{pmatrix},\quad \tau=-5,\;\Delta=6. \]
-$\tau^{2}-4\Delta=1>0$, $\tau<0$, $\Delta>0$: stable node. Eigenvalues $-2,-3$; eigenvectors $(1,0)^{T}$ and $(1,1)^{T}$.
+Compute discriminant:
+\[ \tau^{2}-4\Delta=25-24=1>0. \]
+With $\tau<0$, $\Delta>0$, $\tau^{2}>4\Delta$: stable node. Solve $\det(J-\lambda I)=(-2-\lambda)(-3-\lambda)=0$:
+\[ \lambda_1=-2,\quad \lambda_2=-3. \]
+Eigenvectors: $(J+2I)\vb v=0$ gives $v=(1,0)^{T}$; $(J+3I)\vb v=0$ gives $v_1-v_2=0$, so $v=(1,1)^{T}$.
 
 At $(2,3)$:
 \[ J=\begin{pmatrix}4 & -1\\ 3 & 0\end{pmatrix},\quad \tau=4,\;\Delta=3. \]
-$\tau^{2}-4\Delta=4>0$, $\tau>0$, $\Delta>0$: unstable node. Eigenvalues $1,3$; eigenvectors $(1,3)^{T}$ and $(1,1)^{T}$.
+Compute discriminant:
+\[ \tau^{2}-4\Delta=16-12=4>0. \]
+With $\tau>0$, $\Delta>0$, $\tau^{2}>4\Delta$: unstable node. Solve $\lambda^{2}-4\lambda+3=0$:
+\[ \lambda_1=1,\quad \lambda_2=3. \]
+Eigenvector for $\lambda_1=1$: $3v_1-v_2=0$, so $v=(1,3)^{T}$.
+Eigenvector for $\lambda_2=3$: $v_1-v_2=0$, so $v=(1,1)^{T}$.
 
 Nullclines: $\dot x=0$ on parabola $y=x^{2}-1$; $\dot y=0$ on $y=0$ and $x=2$.
 
@@ -392,11 +481,13 @@ Nullclines: $\dot x=0$ on parabola $y=x^{2}-1$; $\dot y=0$ on $y=0$ and $x=2$.
 \end{tikzpicture}
 \end{center}
 
-End-to-end vector:
+End-to-end vector is the sum of $N$ segments of length $b$:
 \[ \vb r=\sum_{i=1}^{N}\vb b_i,\qquad |\vb b_i|=b. \]
-Square:
-\[ \vb r\cdot\vb r=\sum_{i,j}\vb b_i\cdot\vb b_j=\sum_i b^{2}+\sum_{i\ne j}\vb b_i\cdot\vb b_j. \]
-Take ensemble average; segments uncorrelated, $\langle\vb b_i\cdot\vb b_j\rangle=0$ for $i\ne j$:
+Square and split diagonal/off-diagonal:
+\[ \vb r\cdot\vb r=\sum_{i=1}^{N}\vb b_i\cdot\vb b_i+\sum_{i\ne j}\vb b_i\cdot\vb b_j. \]
+Evaluate diagonal terms ($\vb b_i\cdot\vb b_i=b^{2}$):
+\[ \vb r\cdot\vb r=Nb^{2}+\sum_{i\ne j}\vb b_i\cdot\vb b_j. \]
+Take ensemble average; non-interacting segments give $\langle\vb b_i\cdot\vb b_j\rangle=0$ for $i\ne j$:
 \[ \boxed{\;\langle r^{2}\rangle=Nb^{2}.\;} \]
 
 \subsection*{WLC: derivation and limits}
@@ -407,11 +498,13 @@ Square and average:
 \[ \langle r^{2}\rangle=\int_{0}^{L}\!\!\int_{0}^{L} e^{-|s-s'|/P}\,\de s\,\de s'. \]
 Use symmetry $s'<s$, factor of $2$:
 \[ \langle r^{2}\rangle=2\int_{0}^{L}\de s\int_{0}^{s}e^{-(s-s')/P}\de s'. \]
-Inner integral:
-\[ \int_{0}^{s}e^{-(s-s')/P}\de s'=P\bigl(1-e^{-s/P}\bigr). \]
-Outer integral:
+Substitute $u=s-s'$ in the inner integral:
+\[ \int_{0}^{s}e^{-(s-s')/P}\de s'=\int_{0}^{s}e^{-u/P}\de u=P\bigl(1-e^{-s/P}\bigr). \]
+Insert into outer integral:
 \[ \langle r^{2}\rangle=2P\int_{0}^{L}\bigl(1-e^{-s/P}\bigr)\de s. \]
-Evaluate:
+Evaluate the outer integral:
+\[ \int_{0}^{L}\bigl(1-e^{-s/P}\bigr)\de s=L+P(e^{-L/P}-1). \]
+Hence:
 \[ \langle r^{2}\rangle=2P\bigl[L+P(e^{-L/P}-1)\bigr]. \]
 \[ \boxed{\;\langle r^{2}\rangle=2P^{2}\!\left(e^{-L/P}-1+\frac{L}{P}\right).\;} \]
 
@@ -420,12 +513,18 @@ Evaluate:
 Identifies effective Kuhn length $b_K=2P$ and segment count $L/(2P)$: Gaussian-coil regime.
 
 \textbf{Limit $L\ll P$:} expand $e^{-L/P}=1-L/P+L^{2}/(2P^{2})-\dots$:
+\[ e^{-L/P}-1+L/P\approx L^{2}/(2P^{2}). \]
+Multiply by $2P^{2}$:
 \[ \langle r^{2}\rangle\to L^{2}. \]
 Rigid-rod regime; chain too short to bend.
 
 \subsection*{End-to-end distribution and width}
 
-3-D Gaussian random walk: $x,y,z$ each diffuse independently in $N$ steps, with effective $2D t\to b^{2}/3$ per step (since $\langle b_x^{2}\rangle=b^{2}/3$). Sum of $N$ steps: variance $Nb^{2}/3$ per axis. Product of three Gaussians:
+3-D Gaussian random walk: $x,y,z$ each diffuse independently in $N$ steps. For an isotropic random step, $\langle b_x^{2}\rangle=b^{2}/3$, so identify $2Dt\to Nb^{2}/3$ per axis:
+\[ P_1(x_i,N)=\sqrt{\frac{3}{2\pi Nb^{2}}}\exp\!\left(-\frac{3x_i^{2}}{2Nb^{2}}\right). \]
+Multiply three independent Gaussians $P(\vb r,N)=P_1(x)P_1(y)P_1(z)$:
+\[ P(\vb r,N)=\left(\frac{3}{2\pi Nb^{2}}\right)^{3/2}\exp\!\left(-\frac{3(x^{2}+y^{2}+z^{2})}{2Nb^{2}}\right). \]
+Use $r^{2}=x^{2}+y^{2}+z^{2}$:
 \[ P(\vb r,N)=\left(\frac{3}{2\pi Nb^{2}}\right)^{3/2}\exp\!\left(-\frac{3r^{2}}{2Nb^{2}}\right). \]
 \[ \boxed{\;P(\vb r,N)=\left(\frac{3}{2\pi Nb^{2}}\right)^{3/2}\exp\!\left(-\frac{3r^{2}}{2Nb^{2}}\right).\;} \]
 Width along one axis $\sigma=\sqrt{Nb^{2}/3}$. Total $\langle r^{2}\rangle=3\sigma^{2}=Nb^{2}$, recovering the FJC result.
@@ -451,50 +550,70 @@ Width along one axis $\sigma=\sqrt{Nb^{2}/3}$. Total $\langle r^{2}\rangle=3\sig
 
 Boltzmann entropy of conformations with end-to-end vector $\vb r$:
 \[ S(\vb r)=k_B\ln\Omega(\vb r)=k_B\ln\bigl[V P(\vb r,N)\bigr]. \]
-Insert Gaussian:
+Insert Gaussian and split into $r$-independent / $r$-dependent parts:
 \[ S(\vb r)=k_B\ln C-\frac{3k_B r^{2}}{2Nb^{2}}, \]
 with $C$ collecting $r$-independent prefactors.
-At fixed $T$, with internal energy independent of $\vb r$:
-\[ A(\vb r)=-TS(\vb r)+\text{const}. \]
-Combine:
+At fixed $T$, with internal energy $U$ independent of $\vb r$:
+\[ A(\vb r)=U-TS(\vb r). \]
+Substitute $S(\vb r)$:
+\[ A(\vb r)=U-Tk_B\ln C+\frac{3k_B T}{2Nb^{2}}r^{2}. \]
+Identify $a=U-Tk_B\ln C$, $c=3k_BT/(2Nb^{2})$:
 \[ \boxed{\;A(\vb r)=a+cr^{2},\qquad c=\frac{3k_B T}{2Nb^{2}}.\;} \]
 Quadratic in $r$ $\Rightarrow$ Hookean restoring force $\vb F=-\grad A=-2c\vb r$. Stiffness comes purely from entropy (more conformations available at small $|\vb r|$): an \emph{entropic spring}.
 
 \subsection*{High-force limit}
 
-Each segment aligns with applied force $\vb F=F\hat{\vb z}$; partition function for one segment:
-\[ Z_1=\int\frac{\de\Omega}{4\pi}\,e^{\beta Fb\cos\theta}=\frac{\sinh(\beta Fb)}{\beta Fb}. \]
-Mean projection per segment:
-\[ \langle b_z\rangle=\pd{\ln Z_1}{(\beta F)}=b\,\mathcal{L}(\beta F b),\qquad \mathcal{L}(x)=\coth x-\tfrac{1}{x}. \]
-Total extension:
+Each segment couples to applied force $\vb F=F\hat{\vb z}$; one-segment partition function with $\de\Omega=\sin\theta\,\de\theta\,\de\varphi$:
+\[ Z_1=\int_{0}^{2\pi}\!\!\de\varphi\int_{0}^{\pi}\!\!\frac{\sin\theta\,\de\theta}{4\pi}\,e^{\beta Fb\cos\theta}. \]
+Evaluate (let $u=\cos\theta$):
+\[ Z_1=\frac{1}{2}\int_{-1}^{1}e^{\beta Fb\,u}\,\de u=\frac{\sinh(\beta Fb)}{\beta Fb}. \]
+Mean projection per segment via $\langle b_z\rangle=\partial\ln Z_1/\partial(\beta F)$:
+\[ \langle b_z\rangle=b\,\mathcal{L}(\beta F b),\qquad \mathcal{L}(x)=\coth x-\tfrac{1}{x}. \]
+Total extension over $N$ segments:
 \[ z=N b\,\mathcal{L}(\beta F b). \]
-High-force ($\beta Fb\gg 1$): $\coth(\beta Fb)\to 1$, $1/(\beta Fb)\to 0$:
-\[ z\to Nb\bigl(1-\tfrac{k_B T}{Fb}\bigr). \]
+High-force limit $\beta Fb\gg 1$: $\coth(\beta Fb)\to 1$:
+\[ \mathcal{L}(\beta Fb)\to 1-\frac{1}{\beta Fb}=1-\frac{k_BT}{Fb}. \]
+Hence:
+\[ z\to Nb\!\left(1-\frac{k_BT}{Fb}\right). \]
 Solve for $F$:
+\[ 1-\frac{z}{Nb}=\frac{k_BT}{Fb}. \]
+Rearrange:
 \[ \boxed{\;F\simeq\frac{k_B T}{b}\,\frac{1}{1-z/(Nb)}.\;} \]
 $F$ diverges as the chain approaches contour length $L=Nb$.
 
 \subsection*{Bacterial DNA --- numerical estimates}
 
-\textbf{Double-stranded:}
+\textbf{Double-stranded:} contour length
 \[ L=5\times 10^{6}\times 0.34\,\text{nm}=1.7\times 10^{6}\,\text{nm}=1.7\,\text{mm}. \]
-$P=150\times 0.34\,\text{nm}=51\,\text{nm}$. $L\gg P$:
-\[ \langle r^{2}\rangle\approx 2PL=2(51)(1.7\times 10^{6})\,\text{nm}^{2}=1.73\times 10^{8}\,\text{nm}^{2}. \]
+Persistence length:
+\[ P=150\times 0.34\,\text{nm}=51\,\text{nm}. \]
+Use $L\gg P$ limit $\langle r^{2}\rangle\approx 2PL$:
+\[ \langle r^{2}\rangle\approx 2(51)(1.7\times 10^{6})\,\text{nm}^{2}=1.73\times 10^{8}\,\text{nm}^{2}. \]
+Take square root:
 \[ \boxed{\;\sqrt{\langle r^{2}\rangle}_{\text{ds}}\approx 1.32\times 10^{4}\,\text{nm}=\SI{13.2}{\micro m}.\;} \]
 
-\textbf{Single-stranded:} $P_\text{ss}=5\times 0.34\,\text{nm}=1.7\,\text{nm}$:
-\[ \langle r^{2}\rangle\approx 2P_\text{ss}L=2(1.7)(1.7\times 10^{6})\,\text{nm}^{2}=5.78\times 10^{6}\,\text{nm}^{2}. \]
+\textbf{Single-stranded:} persistence length
+\[ P_\text{ss}=5\times 0.34\,\text{nm}=1.7\,\text{nm}. \]
+Apply $\langle r^{2}\rangle\approx 2P_\text{ss}L$:
+\[ \langle r^{2}\rangle\approx 2(1.7)(1.7\times 10^{6})\,\text{nm}^{2}=5.78\times 10^{6}\,\text{nm}^{2}. \]
+Take square root:
 \[ \boxed{\;\sqrt{\langle r^{2}\rangle}_{\text{ss}}\approx 2.40\times 10^{3}\,\text{nm}=\SI{2.4}{\micro m}.\;} \]
 
-\textbf{Probability ratio} $P(R{=}0)/P(R{=}50\,\mu\text{m})$. Gaussian (with $\langle r^{2}\rangle=Nb^{2}$, identifying $Nb^{2}\to\langle r^{2}\rangle$):
+\textbf{Probability ratio} $P(R{=}0)/P(R{=}50\,\mu\text{m})$. Use Gaussian with $Nb^{2}\to\langle r^{2}\rangle$:
 \[ \frac{P(0)}{P(R)}=\exp\!\left(\frac{3R^{2}}{2\langle r^{2}\rangle}\right). \]
 
-ds: $R=5\times 10^{4}\,\text{nm}$, $\langle r^{2}\rangle=1.73\times 10^{8}\,\text{nm}^{2}$:
-\[ \frac{3R^{2}}{2\langle r^{2}\rangle}=\frac{3(2.5\times 10^{9})}{2(1.73\times 10^{8})}=21.7. \]
+ds case: $R=50\,\mu\text{m}=5\times 10^{4}\,\text{nm}$, so $R^{2}=2.5\times 10^{9}\,\text{nm}^{2}$. Substitute $\langle r^{2}\rangle=1.73\times 10^{8}\,\text{nm}^{2}$:
+\[ \frac{3R^{2}}{2\langle r^{2}\rangle}=\frac{3(2.5\times 10^{9})}{2(1.73\times 10^{8})}. \]
+Evaluate:
+\[ \frac{3R^{2}}{2\langle r^{2}\rangle}\approx 21.7. \]
+Exponentiate:
 \[ \boxed{\;P(0)/P(50\,\mu\text{m})_\text{ds}\approx e^{21.7}\approx 2.7\times 10^{9}.\;} \]
 
-ss: $\langle r^{2}\rangle=5.78\times 10^{6}\,\text{nm}^{2}$:
-\[ \frac{3R^{2}}{2\langle r^{2}\rangle}=\frac{3(2.5\times 10^{9})}{2(5.78\times 10^{6})}=649. \]
+ss case: substitute $\langle r^{2}\rangle=5.78\times 10^{6}\,\text{nm}^{2}$:
+\[ \frac{3R^{2}}{2\langle r^{2}\rangle}=\frac{3(2.5\times 10^{9})}{2(5.78\times 10^{6})}. \]
+Evaluate:
+\[ \frac{3R^{2}}{2\langle r^{2}\rangle}\approx 649. \]
+Exponentiate:
 \[ \boxed{\;P(0)/P(50\,\mu\text{m})_\text{ss}\approx e^{649}\sim 10^{282}.\;} \]
 
 Comment: ssDNA is far more compact than dsDNA (smaller $P$, smaller $\langle r^{2}\rangle$); reaching $50\,\mu$m is astronomically improbable. Both ratios $\gg 1$: extended states are heavily entropically suppressed.
